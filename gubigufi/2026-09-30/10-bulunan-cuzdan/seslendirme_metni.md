@@ -2,7 +2,7 @@
 Hedef süre: ~55 sn | Tahmini kelime: ~125 | İskelet: 0–2 kanca · 2–40 mekanizma · 40–52 "işte bu yüzden" · 52–60 kapanış
 Dikey: HUKUK (etiket rengi #8C6CFF) — yeni stratejinin ilk videosu (plan #1)
 Atmosfer (yeni kural): aydınlık, renkli gündüz ortamları — parkta/kaldırımda sonbahar sokağı, muhtarlık/karakol önü, sıcak ev içi. Koyu lacivert YOK.
-Maskotlar: Gubi soran meraklı, Gufi cüzdanı bulan (ikilem yaşayan).
+Maskotlar (MARKA v4 — ROLDE, ÖNDE): Gufi cüzdanı bulan vatandaş (ikilem yaşar), Gubi sırayla trafik polisi (kasket), hakim (gözlük + papyon) ve cüzdanın sahibi (melon şapka).
 
 ---
 
@@ -10,7 +10,7 @@ Maskotlar: Gubi soran meraklı, Gufi cüzdanı bulan (ikilem yaşayan).
 
 Yolda bir cüzdan buldun. İçinde para var, kimlik var. Ne yaparsın?
 
-Kanun burada çok net. Türk Medeni Kanunu'na göre, bulduğun eşyayı sahibine bildirmek zorundasın. Sahibini bilmiyorsan, polise ya da muhtara.
+Kanun burada çok net. Türk Medeni Kanunu'na göre, bulduğun eşyayı sahibine bildirmek zorundasın. Sahibini bilmiyorsan, polise.
 
 Bildirmeden kendine saklarsan? Bu, Türk Ceza Kanunu'na göre suç. Şikâyet olursa, bir yıla kadar hapis ya da adli para cezası var.
 
@@ -26,20 +26,20 @@ Yani bu sefer dürüstlük, gerçekten kazandırıyor.
 
 ---
 
-## 2) STORYBOARD (hedef — videoyu senin sesine göre kuracağım)
+## 2) STORYBOARD (maskotlar rolde — sesine göre kurulacak)
 
-| # | Saniye | Anlatım | Görsel (aydınlık, renkli ortam) | Olaylar / maskot | Geçiş |
-|---|---|---|---|---|---|
-| 01 | 00–05 | Yolda cüzdan buldun… ne yaparsın? | Sonbahar sokağı, gündüz; kaldırımda parlayan bir cüzdan; Gufi yürürken durur | Gufi `sasir`; cüzdan açılır: banknotlar + kimlik kartı yelpaze gibi açılır | cüzdanın içine dalış |
-| 02 | 05–13 | Medeni Kanun: sahibine, yoksa polise/muhtara bildir | Üç kapılı yol ayrımı tabelası: SAHİBİ · POLİS · MUHTAR — ok sırayla yanar; "TMK" kitabı sayfaları rüzgârda döner | Gubi `merak` tabelayı okur | — |
-| 03 | 13–21 | Saklarsan suç: TCK, 1 yıla kadar hapis / adli para cezası | Gufi cüzdanı cebine sokmaya çalışır → hayali "gölge" terazi eğilir, parmaklık gölgesi duvara düşer (gündüz sokağında sert gölge) | Gufi `korku` brrr; "ŞİKÂYETE BAĞLI" küçük etiket | — |
-| 04 | 21–27 | Geri verirsen masraf + uygun ödül | Kapıda sahibine teslim; sahibinin elinden Gufi'ye küçük bir hediye kutusu | Gufi `mutlu`; konfeti değil yaprak yağmuru | — |
-| 05 | 27–32 | "%10 kuralı" efsane | Dev "%10" rakamı taştan; üstüne "EFSANE" damgası iner, çatlar ve dağılır | taş kırılma sesi; Gubi `aha` | — |
-| 06 | 32–41 | İstisna: başkasının evi / kamu binası → görevliye teslim, ödül yok | Bölünmüş ekran: solda sokak (ödül ✓), sağda bina içi (ödül ✗) — kapı eşiğinde çizgi | Gubi iki tarafa sırayla bakar | — |
-| 07 | 41–48 | Sahibi çıkmazsa: 5 yıl sonra senin | Kum saati; takvim yaprakları 5 yıl akar (mevsim renkleri değişir: sonbahar→kış→bahar→yaz); cüzdana "SENİN" kurdelesi | Gufi `zipla` | — |
-| 08 | 48–54 | Dürüstlük kazandırıyor | Gufi cüzdanı sahibine uzatır, sahibinden gelen küçük hediye + güneşli park; Gubi & Gufi yan yana | ikisi `mutlu` | Gubi & Gufi → logo (ortada) |
+| # | Anlatım | Görsel | Maskot rolleri |
+|---|---|---|---|
+| 01 | Yolda cüzdan buldun… ne yaparsın? | Sonbahar sokağı, gündüz, yapraklar; kaldırımda parlayan cüzdan | Gufi (büyük, önde) yürürken cüzdanı bulur, açar: banknotlar + kimlik yelpaze gibi açılır; Gufi kameraya bakar "ne yapsam?" |
+| 02 | Medeni Kanun: sahibine, bilmiyorsan polise | Yol ayrımı tabelası: SAHİBİ · POLİS; açılan kanun kitabı | Gubi trafik polisi (kasket) düdükle belirir, yolu gösterir; Gufi okları takip eder |
+| 03 | Saklarsan suç: TCK, şikâyet olursa 1 yıla kadar hapis / adli para | Gufi cüzdanı cebine sokar → duvara parmaklık gölgesi düşer | Gubi hakim (gözlük + papyon) tokmağı vurur; Gufi korkar, cüzdanı hemen çıkarır |
+| 04 | Geri verirsen masraf + uygun ödül | Apartman kapısı, sahibine teslim | Gubi cüzdan sahibi (melon şapka) kapıyı açar, sevinir; Gufi'ye hediye kutusu |
+| 05 | "%10 kuralı" efsane | Taştan dev "%10" | Gufi elini açıp "%10" ister → EFSANE damgası, taş çatlar dağılır; Gubi kahkaha |
+| 06 | İstisna: başkasının evi / kamu binası → görevliye, ödül yok | Bölünmüş ekran: sokak (ödül ✓) · bina içi (ödül ✗) | Gufi iki tarafa geçer; binada Gubi görevli (kasket) teslim alır |
+| 07 | Sahibi çıkmazsa: 5 yıl sonra senin | Takvim yaprakları + mevsimler akar | Gufi 5 yıl bekler (yapraklar/kar üstüne yağar), sonunda cüzdana "SENİN" kurdelesi; zıplar |
+| 08 | Dürüstlük kazandırıyor | Güneşli park | Gufi kameraya yaklaşır, Gubi yanında; ikisi mutlu → logo |
 
-Ekranda sabit küçük uyarı (son 3 sn): "Genel bilgilendirmedir, hukuki tavsiye değildir."
+Ekranda küçük uyarı (son 3 sn): "Genel bilgilendirmedir, hukuki tavsiye değildir."
 
 ---
 
@@ -51,7 +51,7 @@ Ekranda sabit küçük uyarı (son 3 sn): "Genel bilgilendirmedir, hukuki tavsiy
 
 ---
 ### Kaynaklar
-1. 4721 sayılı Türk Medeni Kanunu m.769–771 (bulunmuş eşya: bildirim yükümlülüğü, 5 yıl sonra mülkiyet, masraf + uygun ödül, ev/kamu yerinde bulunan eşya).
+1. 4721 sayılı Türk Medeni Kanunu m.769–771 (bulunmuş eşya: malike, malik bilinmiyorsa kolluğa bildirim; 5 yıl sonra mülkiyet; masraf + uygun ödül; konut/kamu yerinde bulunan eşya görevliye, ödül yok).
 2. 5237 sayılı Türk Ceza Kanunu m.160 (kaybolmuş veya hata sonucu ele geçmiş eşya üzerinde tasarruf — şikâyete bağlı, bir yıla kadar hapis veya adli para cezası).
 3. gubigufi niş stratejisi araştırması (2026-09), Hukuk #1.
 
