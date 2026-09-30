@@ -20,7 +20,7 @@ window.renderAt = t => {
   o += `<text class="mono" x="540" y="1235" font-size="42" text-anchor="middle" letter-spacing="8" style="fill:#FFB547">VENÜS'TE</text>`;
   o += txt('1 GÜN > 1 YIL', 540, 1370, 118);
   o += txt('Doğum günün her sabahtan sık', 540, 1460, 50, '#3CD6F0', 700);
-  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  const S = 150 / 233; let l = `<g transform="translate(540 1576) scale(${S}) translate(-141.5 -141.5)">`;
   for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#F6F1E7' : p.fill}"/>`;
   $('dinamik').innerHTML = o + l + '</g>';
 };

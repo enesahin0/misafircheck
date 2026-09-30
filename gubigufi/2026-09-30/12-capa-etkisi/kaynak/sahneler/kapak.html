@@ -14,7 +14,7 @@ window.renderAt = t => {
   o += `<rect x="0" y="1150" width="1080" height="770" fill="#1F6F78"/><rect x="0" y="1150" width="1080" height="18" fill="#F2C46B"/>`;
   o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#F2C46B">BEYİN TUZAKLARI · ÇAPA ETKİSİ</text>`;
   o += txt('BİR ÇARK', 540, 1370, 100) + txt('CEVABINI DEĞİŞTİRDİ', 540, 1470, 76, '#F2C46B');
-  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  const S = 150 / 233; let l = `<g transform="translate(540 1576) scale(${S}) translate(-141.5 -141.5)">`;
   for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
   $('dinamik').innerHTML = o + l + '</g>';
 };

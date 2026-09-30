@@ -21,7 +21,7 @@ window.renderAt = t => {
   o += `<text class="mono" x="540" y="1235" font-size="42" text-anchor="middle" letter-spacing="8" style="fill:#3CD6F0">BİLİM DİYOR Kİ</text>`;
   o += txt('ŞU AN PARLIYORSUN', 540, 1362, 84);
   o += txt('Sadece gözün göremiyor', 540, 1455, 52, '#FFB547', 700);
-  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  const S = 150 / 233; let l = `<g transform="translate(540 1576) scale(${S}) translate(-141.5 -141.5)">`;
   for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#F6F1E7' : p.fill}"/>`;
   $('dinamik').innerHTML = o + l + '</g>';
 };
