@@ -59,6 +59,8 @@ Her yeni videoda konu, kategori, açılış ve görsel teknikler bu listeyle kar
 | 6 | Venüs'te bir gün > bir yıl | Uzay | İLK SKILL VİDEOSU (flat-bilim-animasyonu): Derin Uzay + Güneş Sistemi Sıcak paletleri; rim light'lı Venüs (kayan bulut bantları), Gubi & Gufi ilk görünüm (parti şapkası + mumlu pasta, konfeti), GÜN>YIL kartları, Güneş etrafında yörünge + iz + sayaç, dönüş oku + iki ilerleme çubuğu (225/243), YIL-GÜN yarışı, Dünya-Venüs zıt dönüş okları, Venüs yüzeyinde batıdan doğan Güneş (BATI/DOĞU tabelaları), kopan takvim yaprakları (117), Venüs'te kahvaltı + termometre 460°C + terleyen Gufi, terazi (pastalar vs tek sabah), maskotların logoya dönüşmesi; müzik: ambient synth pad + kristal arpej (D, 90 bpm) |
 | 7 | Şu an ışık saçıyorsun | İnsan Vücudu | Skill hattı; parlayan yüzsüz insan silüeti + üstü çizili göz, karanlık oda kesiti (5 gönüllü, ışık söner), buz kristalli soğutmalı kamera + deklanşör flaşı + GÜN sayacı, kamera ekranında REC + parlayan silüet, 1000× çubuk karşılaştırma, ölçek dalışı yüz→hücre (Mikro Dünya paleti) + moleküller + foton kaçışları, yüz parıltı haritası, saat kadranı 08→16 + parıltı çubuğu, Gufi'nin Gubi'ye iltifatı ve kendisinin de parlaması; müzik: havadar ambient + camsı arpej + mikro sahnede nabız (La minör, 80 bpm) |
 
+İptal edilen / listeden ÇIKARILAN konular (bir daha önerme): Divriği'nin Kapısında Beliren Adam (PDF #5).
+
 Sonraki videolarda kaçınılacaklar: aynı kategoriyi arka arkaya kullanmak, "geri çekilip kesit/kuşbakışı gösterme" açılımını 3. kez yapmak, sepya/eski fotoğraf, kırma-parçalama geçişi, toprağa iniş, büyüteç/röntgen, sansür şakası, kürsü-konfeti, pasaport/damga, iris geçişi, film şeridi geçişi, klaket, projektör.
 
 ## Instagram açıklama kuralları
