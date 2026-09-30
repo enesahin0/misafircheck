@@ -1,0 +1,271 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 73.56,
+  "konusma_bloklari": [
+    [
+      0.0,
+      4.757
+    ],
+    [
+      5.244,
+      6.359
+    ],
+    [
+      6.737,
+      7.208
+    ],
+    [
+      7.471,
+      9.789
+    ],
+    [
+      10.323,
+      12.009
+    ],
+    [
+      12.448,
+      16.157
+    ],
+    [
+      16.517,
+      20.325
+    ],
+    [
+      20.652,
+      22.358
+    ],
+    [
+      22.72,
+      23.93
+    ],
+    [
+      24.262,
+      28.404
+    ],
+    [
+      28.799,
+      30.354
+    ],
+    [
+      30.728,
+      35.484
+    ],
+    [
+      35.808,
+      39.622
+    ],
+    [
+      39.927,
+      41.965
+    ],
+    [
+      42.265,
+      44.074
+    ],
+    [
+      44.476,
+      44.845
+    ],
+    [
+      45.205,
+      46.522
+    ],
+    [
+      46.965,
+      47.487
+    ],
+    [
+      47.868,
+      48.828
+    ],
+    [
+      49.232,
+      50.445
+    ],
+    [
+      50.737,
+      52.165
+    ],
+    [
+      52.575,
+      56.659
+    ],
+    [
+      56.986,
+      61.288
+    ],
+    [
+      61.628,
+      64.041
+    ],
+    [
+      64.511,
+      64.868
+    ],
+    [
+      65.201,
+      69.061
+    ],
+    [
+      69.37,
+      73.56
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 4.76,
+      "sure": 4.76,
+      "metin": "Futbolda sarı ve kırmızı kart yokken, hakemler oyuncuları nasıl uyarıyordu?"
+    },
+    {
+      "no": 2,
+      "baslangic": 4.76,
+      "bitis": 6.36,
+      "sure": 1.6,
+      "metin": "Sadece sözle."
+    },
+    {
+      "no": 3,
+      "baslangic": 6.36,
+      "bitis": 9.79,
+      "sure": 3.43,
+      "metin": "Ve bu bir gün büyük bir karmaşaya yol açtı."
+    },
+    {
+      "no": 4,
+      "baslangic": 9.79,
+      "bitis": 12.01,
+      "sure": 2.22,
+      "metin": "Yıl bin dokuz yüz altmış altı."
+    },
+    {
+      "no": 5,
+      "baslangic": 12.01,
+      "bitis": 16.16,
+      "sure": 4.15,
+      "metin": "İngiltere'deki Dünya Kupası'nda İngiltere, Arjantin'le oynuyor."
+    },
+    {
+      "no": 6,
+      "baslangic": 16.16,
+      "bitis": 20.32,
+      "sure": 4.17,
+      "metin": "Alman hakem, Arjantin kaptanı Antonio Rattín'i oyundan atıyor."
+    },
+    {
+      "no": 7,
+      "baslangic": 20.32,
+      "bitis": 23.93,
+      "sure": 3.61,
+      "metin": "Ama Rattín Almanca bilmiyor, hakem de İspanyolca."
+    },
+    {
+      "no": 8,
+      "baslangic": 23.93,
+      "bitis": 28.4,
+      "sure": 4.47,
+      "metin": "Rattín sahayı terk etmeyi reddediyor ve maç dakikalarca duruyor."
+    },
+    {
+      "no": 9,
+      "baslangic": 28.4,
+      "bitis": 35.48,
+      "sure": 7.08,
+      "metin": "Ertesi gün bir sürpriz daha: İngiliz oyuncular Jack ve Bobby Charlton, uyarı aldıklarını gazetelerden öğreniyor."
+    },
+    {
+      "no": 10,
+      "baslangic": 35.48,
+      "bitis": 39.62,
+      "sure": 4.14,
+      "metin": "Hakem komitesinin başındaki Ken Aston, bu dertle arabasına biniyor."
+    },
+    {
+      "no": 11,
+      "baslangic": 39.62,
+      "bitis": 41.97,
+      "sure": 2.34,
+      "metin": "Londra'da bir trafik ışığında duruyor."
+    },
+    {
+      "no": 12,
+      "baslangic": 41.97,
+      "bitis": 44.84,
+      "sure": 2.88,
+      "metin": "Ve fikir tam orada doğuyor."
+    },
+    {
+      "no": 13,
+      "baslangic": 44.84,
+      "bitis": 47.49,
+      "sure": 2.64,
+      "metin": "Sarı: dikkat et, yavaşla."
+    },
+    {
+      "no": 14,
+      "baslangic": 47.49,
+      "bitis": 48.83,
+      "sure": 1.34,
+      "metin": "Kırmızı: dur, dışarı."
+    },
+    {
+      "no": 15,
+      "baslangic": 48.83,
+      "bitis": 50.45,
+      "sure": 1.62,
+      "metin": "Dil bilmek gerekmiyor."
+    },
+    {
+      "no": 16,
+      "baslangic": 50.45,
+      "bitis": 52.16,
+      "sure": 1.72,
+      "metin": "Herkes renkleri anlıyor."
+    },
+    {
+      "no": 17,
+      "baslangic": 52.16,
+      "bitis": 56.66,
+      "sure": 4.49,
+      "metin": "Kartlar ilk kez bin dokuz yüz yetmiş Meksika Dünya Kupası'nda kullanıldı."
+    },
+    {
+      "no": 18,
+      "baslangic": 56.66,
+      "bitis": 61.29,
+      "sure": 4.63,
+      "metin": "İlk sarı kartı, açılış maçında Sovyet oyuncu Yevgeni Lovçev gördü."
+    },
+    {
+      "no": 19,
+      "baslangic": 61.29,
+      "bitis": 64.87,
+      "sure": 3.58,
+      "metin": "Peki o turnuvada kaç kırmızı kart çıktı?"
+    },
+    {
+      "no": 20,
+      "baslangic": 64.87,
+      "bitis": 65.7,
+      "sure": 0.83,
+      "metin": "Hiç."
+    },
+    {
+      "no": 21,
+      "baslangic": 65.7,
+      "bitis": 69.06,
+      "sure": 3.36,
+      "metin": "Dünya Kupası'ndaki ilk kırmızı kart, ancak dört yıl sonra geldi."
+    },
+    {
+      "no": 22,
+      "baslangic": 69.06,
+      "bitis": 73.56,
+      "sure": 4.5,
+      "metin": "Yani futbolun en evrensel dili, bir trafik ışığından doğdu."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

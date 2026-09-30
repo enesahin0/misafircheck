@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
+</svg>
+<script>window.SB = 61.45; const TP = {"gubi": [[3.1, "uzgun"]], "gufi": [[4.2, "sasir"]]};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script><script src="../ortak/sk.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = K.yaziGen(s, fs, { mono: true, ls: 3 }) + fs * 1.7; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+const MAV = '#1FA2FF';
+const HAKEM = KO.giy('gubi', [['kasket', { renk: '#1B1B1B', siper: '#000000' }], 'duduk']);
+const KAPTAN = KO.giy('gufi', ['kaptan']);
+const ASTON = KO.giy('gufi', [['melon', { renk: '#5A4A3A', bant: '#1B1640' }], ['biyik', { renk: '#6A5A4A' }]]);
+const ARJ = '#8CC8F0', ING = '#FFFDF6';
+const seyirci = (x, y, boy, i, t) => KS.karakter(Object.assign({ x, y, boy, t, ifade: 'gulumse' }, KS.donem(1966, i)));
+
+$('zemin').innerHTML = SK.stadyum(0, { yazi: '1970 → 1974', donem: 1972 });
+window.renderAt = t => {
+  const r1 = A(t, 2.9, 3.2), r2 = A(t, 3.8, 4.1);
+  let o = SK.tabelaSkor(540, 700, 1.0, [['1970 · KIRMIZI', r1 > 0 ? '0' : '?', '#E8323C'], ['1974 · İLK KIRMIZI', r2 > 0 ? '✓' : '', '#3FC85A']]);
+  if (r1 > 0 && r1 < 1) o += FX.flas(t, 2.9, .35, .08);
+  const cb = FX.E.expo(A(t, 1.2, 2.6)); o += SK.kart(760, 1100 + 200 * cb, 1.0, '#E8323C', 10 - 30 * cb);
+  o += gubi(t, { x: 760, y: 1080, boy: 200, bakHedef: [540, 700], ust: HAKEM });
+  o += gufi(t, { x: 300, y: 1780, boy: 260, bakHedef: [540, 700], ust: KAPTAN });
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

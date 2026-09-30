@@ -1,0 +1,24 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/sk.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  let o = `<g style="filter:blur(8px)">${SK.stadyum(0, { yazi: '1966', zY: 900 })}</g><rect width="1080" height="1150" fill="#1B1F3A" opacity=".15"/>`;
+  // trafik ışığı: sarı ve kırmızı yanık, iki ışıktan kart fırlıyor
+  const Lx = 300, Ly = 1150, s = 1.2;
+  o += `<g transform="translate(${Lx} ${Ly}) scale(${s})">` + PR.R(-18, 0, 36, 700, 10, '#3A3F5C') + PR.R(-110, -520, 220, 520, 40, '#1B1F2A') + PR.R(-130, -540, 260, 30, 14, '#1B1F2A') +
+    `<circle cx="0" cy="-420" r="70" fill="#E8323C"/><circle cx="0" cy="-420" r="140" fill="#E8323C" opacity=".25"/><circle cx="0" cy="-260" r="70" fill="#FFD23F"/><circle cx="0" cy="-260" r="140" fill="#FFD23F" opacity=".25"/><circle cx="0" cy="-100" r="70" fill="#3A3A40"/></g>`;
+  o += `<path d="M${Lx + 90} ${Ly - 420 * s} Q600 ${Ly - 640} 740 ${Ly - 780}" stroke="#E8323C" stroke-width="10" stroke-dasharray="20 14" fill="none" opacity=".7"/><path d="M${Lx + 90} ${Ly - 260 * s} Q600 ${Ly - 380} 700 ${Ly - 470}" stroke="#FFD23F" stroke-width="10" stroke-dasharray="20 14" fill="none" opacity=".8"/>`;
+  o += SK.kart(760, 360, 1.25, '#E8323C', 14) + SK.kart(700, 700, 1.25, '#FFD23F', -10);
+  o += M.canli('gubi', { t: 1.2, x: 920, y: 900, boy: 200, duygu: 'kararli', bakHedef: [700, 600], ust: KO.giy('gubi', [['kasket', { renk: '#1B1B1B', siper: '#000000' }], 'duduk']) });
+  o += `<text x="170" y="360" font-size="150" font-weight="900" text-anchor="middle" style="fill:#FFFDF6" transform="rotate(-10 170 360)">!</text>`;
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#23262E"/><rect x="0" y="1150" width="1080" height="18" fill="#D8A032"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#F2CE7A">SPORUN GİZLİ KURALLARI</text>`;
+  o += txt('SARI & KIRMIZI KART', 540, 1362, 90) + txt('TRAFİK IŞIĞINDAN DOĞDU', 540, 1458, 66, '#F2CE7A');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>
