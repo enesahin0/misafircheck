@@ -137,6 +137,13 @@ Kişilik: tepkici, şaşıran, bazen yanılan — izleyicinin şaşkınlığı
 - **Göz takibi:** `bakHedef` ile göz bebekleri bir noktaya bakar → birbirlerine, anlatılan nesneye, izleyiciye (aşağı-ön) baktır. Sahne içinde bakışı ANLATIYA göre yönlendir (kim konuşuyorsa/ne gösteriliyorsa oraya).
 - **Tepkiler:** `sasir` (sıçrama + turuncu ünlem + ter), `zipla` (squash/stretch, iniş basması), `mutlu` (^^ gözler + minik gülümseme + zıplama), `aha` (Gubi: glow patlaması + pırıltı halkası), `korku` (titreme + geri bakış + ter), `selam` (sallanma), `uzgun` (kaşlar + çökme), `kararli` (çatık kaş).
 
+### Etkileşim kuralı v2 (KALICI) — maskotlar kenarda bekleyen süs değil, sahnenin oyuncusu
+- **Eller:** ikisinin de yüzen yuvarlak elleri var (kolsuz). Tepkiler: `isaret` (isaretHedef'i gösterir), `alkis`, `gozKapa` (aradan gözetler), `dusun` (el çenede + düşünce baloncukları), `omuzSilk`, `kahkaha`, `goster` ("ta-da"), `donus`, `selam` (el sallar) + eskiler.
+- **Sahnede dolaşma:** `yol: [[t, x, y, boy], ...]` → Gufi zıplayarak, Gubi süzülerek (pırıltı izi) yer değiştirir; sahneye giriş/çıkışlar böyle.
+- **Kameraya yaklaşma:** `M.yakinlas(t, t0, t1)` zarfıyla karakter ekranın ortasına büyür, `M.bulanik(k)` + `M.bulanikSar()` ile arka plan bulanıklaşır, karakter net kalır; `bakHedef: 'kamera'` ile izleyiciye bakar ve el sallar/konuşur. Ses: `maskot_ses(kim, 'yaklas')`.
+- **Konuya dokunma:** karakterler anlatılan nesneyi eliyle gösterir, taşır, üstüne çıkar, düşünce balonunda konuyu hayal eder (`M.balon`).
+- Her videoda EN AZ: 1 kameraya yaklaşma anı (kanca ya da kapanışta), 2+ el hareketi (işaret/gösterme), 1 sahneye giriş (yol) — konuya uygun seçilir.
+
 ### İmza sesler (KALICI — `marka/ses_lib.py` → `maskot_ses(kim, tip)`)
 Her tepki, aynı anda kendi imza sesiyle çalınır: `M.add('sfx', maskot_ses('gubi','aha'), t, .5)`. Bu sesler değiştirilmez; kanalın "sesli logosu" gibidir.
 - **Gubi:** kristal/cam "ting" ailesi — Mi majör pentatonik, hep yukarı kıvrılır (merak = yükselen soru); `aha` = parlak arpej.

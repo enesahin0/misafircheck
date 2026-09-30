@@ -281,7 +281,8 @@ def voice_env(v, att=0.02, rel=0.35):
 # Gufi (kırmızı kare): lastik/tombul "bup-boing" ailesi — alçak üçgen dalga,
 #   hızlı perde düşüşü + yay titreşimi (vibrato), sıcak ve komik.
 # Kullanım: M.add('sfx', maskot_ses('gubi', 'aha'), t, .5)  — tepki zamanıyla aynı an.
-# Tipler: sasir · zipla · mutlu · aha · korku · selam · uzgun · kararli · merak
+# Tipler: sasir · zipla · mutlu · aha · korku · selam · uzgun · kararli · merak ·
+#         isaret · alkis · gozKapa · dusun · omuzSilk · kahkaha · goster · donus · yaklas (kameraya yaklaşma)
 # =====================================================================
 def _gubi_ton(f0, f1, d=.32, parla=1.0):
     t = T(d); f = f0 * (f1 / f0) ** np.minimum(1, t / (d * .45))
@@ -322,6 +323,15 @@ def maskot_ses(kim, tip='merak'):
             'selam':   [(0, _gubi_ton(g[3], g[5], .18)), (.14, _gubi_ton(g[5], g[6], .26))],
             'uzgun':   [(0, _gubi_ton(g[4], g[1], .6, .6))],
             'kararli': [(0, _gubi_ton(g[3], g[3], .12)), (.12, _gubi_ton(g[6], g[6], .35))],
+            'isaret':  [(0, _gubi_ton(g[4], g[7], .18))],                                   # "tiu!" gösterir
+            'alkis':   [(i * .11, _gubi_ton(g[5 + i % 2], g[5 + i % 2], .09, 1.4)) for i in range(5)],
+            'gozKapa': [(0, _gubi_ton(g[5], g[2], .3, .6))],
+            'dusun':   [(0, _gubi_ton(g[2], g[3], .35, .5)), (.4, _gubi_ton(g[3], g[4], .35, .5))],  # "hımm"
+            'omuzSilk':[(0, _gubi_ton(g[4], g[5], .14)), (.16, _gubi_ton(g[5], g[3], .22))],
+            'kahkaha': [(i * .09, _gubi_ton(g[6 - i % 2], g[6 - i % 2], .08)) for i in range(7)],
+            'goster':  [(0, _gubi_ton(g[3], g[3], .1)), (.1, _gubi_ton(g[5], g[5], .1)), (.2, _gubi_ton(g[8], g[8], .5, 1.3))],  # "ta-da!"
+            'donus':   [(0, _gubi_ton(g[1], g[8], .6, .8))],
+            'yaklas':  [(0, _gubi_ton(g[0], g[5], .45, .7))],
         }
     else:
         b = 196.0  # Sol3 taban
@@ -335,6 +345,15 @@ def maskot_ses(kim, tip='merak'):
             'selam':   [(0, _gufi_ton(b * 1.5, b * 1.2, .12)), (.14, _gufi_ton(b * 1.2, b * 1.6, .2))],
             'uzgun':   [(0, _gufi_ton(b * 1.3, b * .7, .6, .02, 6))],                       # inen "wuuuh"
             'kararli': [(0, _gufi_ton(b * 1.2, b * 1.2, .1)), (.12, _gufi_ton(b * 1.2, b * 1.2, .16))],
+            'isaret':  [(0, _gufi_ton(b * 1.3, b * 1.9, .16))],
+            'alkis':   [(i * .11, _gufi_ton(b * 1.8, b * 1.5, .07)) for i in range(5)],
+            'gozKapa': [(0, _gufi_ton(b * 1.6, b * 1.1, .4, .08, 14))],
+            'dusun':   [(0, _gufi_ton(b * 1.1, b * 1.2, .45, .01, 5))],               # "hmmm"
+            'omuzSilk':[(0, _gufi_ton(b * 1.3, b * 1.5, .12)), (.14, _gufi_ton(b * 1.5, b * 1.1, .2))],
+            'kahkaha': [(i * .1, _gufi_ton(b * (1.6 - .05 * i), b * (1.3 - .05 * i), .08)) for i in range(7)],
+            'goster':  [(0, _gufi_ton(b * 1.2, b * 1.2, .09)), (.1, _gufi_ton(b * 1.5, b * 1.5, .09)), (.2, _gufi_ton(b * 1.2, b * 2.0, .35, .03))],
+            'donus':   [(0, _gufi_ton(b * .9, b * 1.9, .5, .05, 10))],
+            'yaklas':  [(0, _gufi_ton(b * .8, b * 1.5, .4, .02))],
         }
     return _dizi(P.get(tip, P['merak']))
 

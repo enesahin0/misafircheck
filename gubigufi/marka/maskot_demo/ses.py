@@ -1,21 +1,22 @@
-"""Maskot demo — imza sesleri (maskot_ses) + hafif pad. Tepki zamanları s01.html ile aynı."""
-import sys, subprocess
+"""Maskot demo v2 — el hareketleri, yol, kameraya yaklaşma; imza sesleri tepki.json'dan."""
+import sys, json
 import numpy as np
 from scipy.io import wavfile
 sys.path.insert(0, '..')
 from ses_lib import *
-DUR = 19.2
+DUR = 18.6
 M = Mix(DUR)
-TG = [(7.5, 'sasir'), (9.4, 'aha'), (12.6, 'uzgun'), (14.3, 'kararli'), (16.3, 'selam'), (17.2, 'mutlu')]
-TF = [(7.62, 'sasir'), (9.9, 'sasir'), (11.0, 'mutlu'), (12.6, 'korku'), (14.3, 'zipla'), (15.1, 'zipla'), (16.45, 'selam'), (17.3, 'mutlu')]
-for at, tp in TG: M.add('sfx', maskot_ses('gubi', tp), at, .5)
-for at, tp in TF: M.add('sfx', maskot_ses('gufi', tp), at + .03, .55)
-M.add('sfx', maskot_ses('gubi', 'merak'), 2.5, .35); M.add('sfx', maskot_ses('gufi', 'merak'), 2.75, .4)   # birbirine bakınca
-M.add('sfx', pop(900, .12), 7.4, .3)
-for a in (0, 8):
-    M.add('music', filt(pad([hz(n, 3) for n in ('E', 'G#', 'B', 'D#')], 11, .3) * adsr(int(11 * SR), 1.5, 2), 'lowpass', 1200), a, .25)
+T_ = json.load(open('tepki.json'))
+for kim in ('gubi', 'gufi'):
+    for at, tp in T_[kim]: M.add('sfx', maskot_ses(kim, tp), at, .5)
+for kim, at in T_['yaklas']: M.add('sfx', maskot_ses(kim, 'yaklas'), at, .45); M.add('sfx', whoosh(.6, 400, 2500, .5), at, .2); M.add('sfx', whoosh(.5, 2500, 400, .5), at + 2.6, .15)
+for i in range(4): M.add('sfx', maskot_ses('gufi', 'zipla') * .5, .1 + i * .35, .3)       # sahneye zıplayarak giriş
+M.add('sfx', maskot_ses('gubi', 'yaklas'), .4, .3)
+M.add('sfx', pop(700, .16), 3.1, .3); M.add('sfx', boom(.8, 70) * .6, 11.2, .4)
+for a in range(0, 18, 4):
+    M.add('music', filt(pad([hz(n, 3) for n in ('G', 'B', 'D')], 4.6, .3) * adsr(int(4.6 * SR), .8, 1.2), 'lowpass', 1300), a, .2)
+    for j in range(8): M.add('music', pluck(hz(['G', 'B', 'D', 'B'][j % 4], 4), .5, .5) * .4, a + j * .5, .12)
 mus = M.bus['music']; sfx = M.bus['sfx']
-full = mus / (np.abs(mus).max() + 1e-9) * .12 + sfx / (np.abs(sfx).max() + 1e-9) * .8
-full = np.stack([full, full], 1)
-wavfile.write('miks.wav', SR, (np.clip(full, -1, 1) * 32767).astype(np.int16))
-print('miks.wav')
+full = mus / (np.abs(mus).max() + 1e-9) * .14 + sfx / (np.abs(sfx).max() + 1e-9) * .8
+wavfile.write('miks.wav', SR, (np.clip(np.stack([full, full], 1), -1, 1) * 32767).astype(np.int16))
+print('ok')
