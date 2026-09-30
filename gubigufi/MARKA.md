@@ -46,7 +46,7 @@ Yere basan hiçbir şey havada durmaz: ağaç, bina, direk, masa, karakter… ze
   Izgarada ardışık kapaklar aynı rengi almaz. Panel üstünde ince vurgu şeridi; başlık krem, alt satır + etiket vurgu renginde.
 
 ### GÖRSEL TARZ REHBERİ v3 (KALICI — kullanıcının referansları: marka/referans/stil_ref_1..5.png)
-Referans: sahil yolu + kırmızı araba, yağmur ormanı, teal mutfak, sarı salon, mavi/mor ikili sahne. Hedef bu tarz:
+Referans: sahil yolu + kırmızı araba, yağmur ormanı, teal mutfak, sarı salon, mavi/mor ikili sahne. Referanslar ÇİZİM DİLİ ve RENK TONU KALİTESİ içindir — mekân ↔ renk eşleşmesi DEĞİL (mutfak hep teal, salon hep sarı olmayacak). Her videoda/sahnede ton konuya ve duyguya göre özgürce seçilir, videolar arasında çeşitlenir; CV.ton listesi sadece başlangıç paletidir, yeni tonlar türetilebilir. Hedef bu tarz:
 1. **Sahne başına TEK RENK AİLESİ (monokrom/analog):** bütün sahne bir tonla boyanır (teal mutfak, sarı salon, yeşil orman, mavi-mor gece, gül, lavanta, kum, güneşli sahil). Doygun olabilir ama UYUMLU; üstüne 1–2 tamamlayıcı vurgu (kırmızı/pembe araba, tişört, turuncu çiçek). Rastgele "şeker renkleri" yan yana konmaz — "çocuk renkleri yok" kuralı budur.
    Hazır tonlar: `marka/ortak/cevre.js` → `CV.ton('teal'|'sari'|'orman'|'gece'|'gunes'|'gul'|'lavanta'|'kum')` (fon1, fon2, orta, koyu, cokKoyu, acik, vurgu, vurgu2, isik, ten).
 2. **Dolu, yaşanmış mekân:** raf + kitap + vazo, lamba, saksı bitkisi, poster, tencere, pencere-perde… sahne asla boş fon + tek nesne değildir (`CV.oda`, `CV.raf`, `CV.bitki`, `CV.lamba`, `CV.poster`, `CV.tencere`).
