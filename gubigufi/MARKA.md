@@ -13,6 +13,13 @@
   Okunması gereken hiçbir şey bu bölgelere girmez; arka plan tüm kareyi kullanır.
 
 ## Görsel prensipler
+
+### ARKA PLAN / ATMOSFER KURALI (güncelleme, #10'dan itibaren geçerli)
+- Skill'den aldığımız şey ÇİZİM TARZIDIR (flat vektör, konturyok, rim light, glow, yuvarlak formlar). Skill'in "koyu lacivert/uzay" atmosferi varsayılan DEĞİL.
+- Videolar mavi-derin tonlara bürünmeyecek. Varsayılan: renkli, aydınlık, konuya ait doğal ortam/çevre arka planları (gündüz gökyüzü, orman, sahil, mutfak, mahkeme salonu, stadyum, atölye, pazar yeri, sokak…) + sıcak ve canlı palet.
+- Koyu zemin yalnızca konu gerçekten gerektiriyorsa (uzay, gece, karanlık oda) ve o sahneyle sınırlı. Bir videoda koyu sahne oranı en fazla ~1/3; arka arkaya iki videonun baskın tonu aynı olamaz.
+- Her videoda en az 2 farklı ortam/renk dünyası olsun (ör. sıcak mutfak → serin laboratuvar). #8'deki gündüz banka sahnesi doğru yönün örneği.
+
 - Görsel her şeydir. Slayt yok. "Kesme, dönüştür": her sahne bir öncekinin içinden doğar.
 - Geçişler her videoda konuya özel tasarlanır — maksimum yaratıcılık.
 - Yazı yalnızca vurgu: büyük rakam, kilit kelime, kaynak damgası. Yazı sahnenin parçası olur.
