@@ -19,3 +19,8 @@ Tüm kriterler ≥ 8. Determinizm TAMAM ✓.
 | Kriter | Önce | Sonra | Düzeltme |
 |---|---:|---|---|
 | Temsil & dönem | 4 | 9 | Pantolonlu futbolcular → KS.futbolcu: ARJ1966 çizgili, ING1966, BRE/ITA/MEK 1970, FRG1966, SSCB1970; sahadaki seyirciler (biri kadın) → futbolcu; Charlton kardeşler iki erkek (yelek/kravat, 1966 ev giysisi); Rattín sahnesinde atılan oyuncu artık Arjantin formalı |
+
+## Tur 4 — kullanıcı geri bildirimi (kostüm oturuşu)
+| Kriter | Önce | Sonra | Düzeltme |
+|---|---:|---|---|
+| Kostüm oturuşu | 3 | 9 | Düdük ipi gözü kesiyordu → ip ağzın altında kolye gibi, düdük altta sarkar; kaptan: yüzeyde yuvarlak rozet → gövde kenarını saran sarı pazıbant + C |

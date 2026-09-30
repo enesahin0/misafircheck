@@ -271,6 +271,12 @@ Tarihli bir olay anlatılırken o sahnelerin ön ve arka planındaki insanlar an
 - **2000 sonrası:** Günümüz kıyafeti (varsayılan).
 - Yeni bir dönem ya da coğrafya gerekirse (ör. Osmanlı çarşısı, Viktorya dönemi Londra) `kisi.js` `kiyafet` seçenekleriyle özel kıyafet çizilir. Maskotların kostümleri de döneme uydurulabilir: `KO.giy`.
 
+## KOSTÜM OTURMA KURALI (kullanıcı: "karakterlerin giydiği taktığı şeyler saçma sapan olmamalı")
+- Maskotun taktığı/giydiği her parça **gerçek hayatta nasıl duruyorsa öyle** oturur: şapka kafada, kulaklık kulak hizasında, düdük ipi boyna asılı gibi ağzın ALTINDA sarkar, pazıbant gövde kenarını SARAR (yüzeye yapışık rozet/etiket gibi değil).
+- **Hiçbir aksesuar gözü, ağzı ya da yüzü kesmez/örtmez** (ip, kordon, bant, şerit dahil). Monokl/gözlük gibi göz aksesuarları hariç.
+- Yeni parça eklerken ya da mevcut parçayı kullanırken `--kare` ile maskotun **yakın kırpımına** bakılır (en az iki farklı boyda). Tuhaf duruyorsa düzeltilmeden render yok.
+- `--inceleme` rubriğine her videoda **"Kostüm oturuşu"** maddesi eklenir.
+
 ## TEMSİL + DÖNEM GERÇEKÇİLİĞİ KURALI (kullanıcı: "bunu her seferinde söylemeyeyim")
 - Her kişi **neyi temsil ediyorsa öyle görünür ve öyle davranır**: futbolcu futbolcu gibi, aşçı aşçı gibi, asker asker gibi… Sokak kıyafetiyle "rol" verilmez.
 - **Futbolcular:** asla pantolon yok. Her zaman `KS.futbolcu('TAKIMYIL', i)` (kisi.js TAKIM tablosu) kullanılır. Kısa şort, konç, krampon, **takımın o yılki forma renkleri/çizgileri** (ör. Arjantin 1966 açık mavi-beyaz dikey çizgi + siyah şort). Tabloda olmayan takım → önce TAKIM'a eklenir (renkler kaynağa bakılarak).
