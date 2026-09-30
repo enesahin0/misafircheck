@@ -41,6 +41,7 @@ Yere basan hiçbir şey havada durmaz: ağaç, bina, direk, masa, karakter… ze
 (Gubi uçan bir pırıltı olduğu için havada süzülebilir; Gufi her zaman yere basar ya da zıplama yayındadır.)
 
 ### REELS KAPAK KURALI (KALICI — kullanıcı kararı)
+- **LOGO YERİ SABİT:** kapaklarda logo HER ZAMAN `translate(540 1600) scale(150/233)` (merkez y=1600). Instagram ızgarası 3:4 kırptığı için (y≈240–1680 görünür) 1630/1650 alttan kesiliyor. Başlık yazıları logonun üstünde bitmeli (~1480).
 - Kart şablonu (marka/kapak, v2) İPTAL. Kapaklar HER ZAMANKİ düzende: üstte tam genişlik illüstrasyon (video sahnesinden), altta düz renk yazı paneli (üst etiket · büyük başlık · vurgu satırı · logo).
 - Alt panel BEYAZ/açık OLMAZ; her videoda farklı OLGUN renk: petrol #1F6F78, bordo #7A2E3A, orman #1F4D3A, terrakota #A8452B, çivit #33429A, mürdüm #56264F, zeytin #58642C, kahve #5B3A29, okyanus #0F6A80…
   Izgarada ardışık kapaklar aynı rengi almaz. Panel üstünde ince vurgu şeridi; başlık krem, alt satır + etiket vurgu renginde.

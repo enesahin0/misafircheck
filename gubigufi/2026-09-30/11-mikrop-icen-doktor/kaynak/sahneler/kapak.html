@@ -14,7 +14,7 @@ window.renderAt = t => {
   o += `<rect x="0" y="1150" width="1080" height="770" fill="#7A2E3A"/><rect x="0" y="1150" width="1080" height="18" fill="#F6C177"/>`;
   o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#F6C177">GERÇEK HİKÂYE · NOBEL 2005</text>`;
   o += txt('BAKTERİYİ İÇTİ', 540, 1370, 100) + txt('VE HAKLI ÇIKTI', 540, 1475, 84, '#F6C177');
-  const S = 150 / 233; let l = `<g transform="translate(540 1650) scale(${S}) translate(-141.5 -141.5)">`;
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
   for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
   $('dinamik').innerHTML = o + l + '</g>';
 };

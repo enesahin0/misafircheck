@@ -17,7 +17,7 @@ window.renderAt = t => {
   o += `<rect x="0" y="1150" width="1080" height="770" fill="#6B3A5B"/><rect x="0" y="1150" width="1080" height="18" fill="#D8A032"/>`;
   o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#F2CE7A">TABLONUN SIRRI · 1911</text>`;
   o += txt('ÇALINDI', 540, 1370, 110) + txt('VE ÜNLÜ OLDU', 540, 1470, 84, '#F2CE7A');
-  const S = 150 / 233; let l = `<g transform="translate(540 1650) scale(${S}) translate(-141.5 -141.5)">`;
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
   for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
   document.getElementById('dinamik').innerHTML = o + l + '</g>';
 };
