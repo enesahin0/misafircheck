@@ -21,6 +21,19 @@ Videoların sonunda "Bölüm 2'de…" gibi bir sonraki videoya fragman VERİLMEZ
 son 6–8 sn = konunun özünü bağlayan, akılda kalan bir kapanış cümlesi (+ gerekiyorsa ekranda kısa uyarı satırı).
 (Seri adları — "Kanun Böyle Diyor", "Tıbbın Asileri" vb. — kategori kimliği olarak kullanılabilir ama "sonraki bölüm" sözü verilmez.)
 
+### GERÇEKLİK KURALI — harita, kişi, yer (KALICI)
+Tarzımız çizgi/flat kalır ama anlatılan şey GERÇEK şekline benzer:
+- **Harita:** "benzer şekil" yok; gerçek coğrafya kullanılır → `marka/harita/harita.js` (Natural Earth verisi, Türkiye 10m detay).
+  `H.ciz({ ulkeler: H.kita('AF') | H.ulke('Türkiye','Mısır') | H.dunya(), vurgu:{ 'Mısır':'#FF9F1C' }, kutu:[x,y,w,h], proj:'mercator'|'equalEarth'|'orthographic' })`,
+  `H.kure({ x, y, r, donus:[-boylam,-enlem], vurgu })` gerçek kıtalı küre, `H.igne(x, y, renk, ölçek, 'Sivas')`, konum için `h.p([boylam, enlem])`.
+  Ülke adları Türkçe veya İngilizce yazılabilir. Kıta kodları: AF, EU, AS, NA, SA, OC. Dosyalar sahne klasörüne `ortak/harita/` olarak kopyalanır.
+- **Kişiler:** gerçek bir kişiden bahsediliyorsa, o kişiye BENZEYEN flat portre → `marka/ortak/kisi.js` (`KS.kisi({...})`):
+  saç tipi/rengi, sakal-bıyık, kaş, gözlük, ten, yaş çizgileri, dönemine uygun kıyafet (önlük, ceket, papyon…). Referans fotoğraf varsa kullanıcıdan istenir ya da kullanıcı gönderir.
+  Anonim/genel insanlar için yüzsüz siluet kullanılabilir. Atatürk gibi hassas figürler yalnızca saygılı, sade portre ile ve kullanıcı onayıyla.
+- **Yerler ve nesneler:** ünlü yapılar, cihazlar, belgeler gerçek silüet ve oranlarıyla (ör. Galata Kulesi'nin gerçek konik külahı, Mark II'nin gerçek dolap dizilimi).
+- **Ölçek ve sayı:** karşılaştırmalarda oranlar gerçek (ör. 12'ye karşı 62 sütunu gerçekten 5 kat).
+- Örnek sayfa: `marka/stil_ornek.png` (Afrika/Mısır, küre, Türkiye + Sivas, Akdeniz; Einstein, Curie, Kahlo, Edison benzeri portreler).
+
 ### ARKA PLAN / ATMOSFER KURALI (güncelleme, #10'dan itibaren geçerli)
 - Skill'den aldığımız şey ÇİZİM TARZIDIR (flat vektör, konturyok, rim light, glow, yuvarlak formlar). Skill'in "koyu lacivert/uzay" atmosferi varsayılan DEĞİL.
 - Videolar mavi-derin tonlara bürünmeyecek. Varsayılan: renkli, aydınlık, konuya ait doğal ortam/çevre arka planları (gündüz gökyüzü, orman, sahil, mutfak, mahkeme salonu, stadyum, atölye, pazar yeri, sokak…) + sıcak ve canlı palet.

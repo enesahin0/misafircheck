@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="zemin"></g><g class="kamera"><g id="dinamik"></g></g></svg>
+<script src="../ortak/kit.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script>
+<script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script>
+const $ = i => document.getElementById(i);
+const txt = (s, x, y, size, renk) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="900" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  let o = `<rect width="1080" height="1920" fill="#BFE6F2"/><rect y="1280" width="1080" height="640" fill="#FFE9C7"/>`;
+  // 1) Afrika — Mısır vurgulu, Kahire iğnesi
+  const af = H.ciz({ ulkeler: H.kita('AF'), vurgu: { 'Mısır': '#FF9F1C' }, kutu: [40, 60, 520, 600], renk: '#F2D49B', rim: '#FFF3D6', sinir: '#FFFFFF' });
+  o += af.svg; const [kx, ky] = af.p([31.24, 30.04]); o += H.igne(kx, ky, '#EE312E', .8, 'Kahire');
+  o += txt('AFRİKA', 300, 720, 44, '#1B1640');
+  // 2) Dünya küresi — Türkiye'ye dönük
+  const kr = H.kure({ x: 800, y: 380, r: 230, donus: [-35, -30], vurgu: { 'Türkiye': '#EE312E' } });
+  o += kr.svg; o += txt('KÜRE', 800, 680, 44, '#1B1640');
+  // 3) Türkiye (10m detay) + Sivas iğnesi
+  const tr = H.ciz({ ulkeler: H.ulke('Türkiye'), kutu: [60, 820, 960, 420], renk: '#FFB86B', rim: '#FFE3C2', sinir: false });
+  o += tr.svg; const [sx, sy] = tr.p([37.02, 39.75]); o += H.igne(sx, sy, '#EE312E', 1, 'Sivas');
+  const [ix, iy] = tr.p([28.98, 41.01]); o += H.igne(ix, iy, '#3D8BFD', .8, 'İstanbul');
+  // 4) Avrupa + Türkiye yan yana, Akdeniz çevresi (sığdırma alanı)
+  const ak = H.ciz({ ulkeler: [...H.kita('EU'), ...H.kita('AF'), ...H.kita('AS')], sigdir: H.ulke('İtalya', 'Mısır', 'Türkiye', 'İspanya', 'Libya', 'Yunanistan'), kutu: [60, 1320, 960, 520], renk: '#A6D98A', rim: '#E4F7D8', vurgu: { 'Türkiye': '#EE312E', 'İtalya': '#7B61FF', 'Yunanistan': '#3D8BFD' } });
+  o += `<defs><clipPath id="akc"><rect x="60" y="1320" width="960" height="520" rx="40"/></clipPath></defs><rect x="60" y="1320" width="960" height="520" rx="40" fill="#8FD3EE"/><g clip-path="url(#akc)">${ak.svg}</g>`;
+  $('dinamik').innerHTML = o;
+};
+</script></body></html>
