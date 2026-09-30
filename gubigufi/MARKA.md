@@ -62,3 +62,17 @@ Sonraki videolarda kaçınılacaklar: aynı kategoriyi arka arkaya kullanmak, "g
 ## Instagram açıklama kuralları
 - En fazla **5 hashtag**. Sıra: 1 konuya özel, 1 kategori/seri, 1-2 genel keşif, en sonda her zaman #gubigufi.
 - İlk satır = kanca (akışta sadece o görünür). Sonda yorum sorusu + kaynak + "gubigufi ✦ 1 dakikada bir merak".
+
+## #6'dan itibaren: `flat-bilim-animasyonu` skill'i
+Bundan sonraki bütün videolar `.claude/skills/flat-bilim-animasyonu/` skill'ine göre üretilir.
+Skill'in stil kuralları (kontur yok, yuvarlak geometri, koyu desatüre zemin + 2-3 parlak vurgu, rim light,
+glow, parçacık, katmanlı derinlik/paralaks, her sahnede idle hareket, tek sahne = tek fikir) esastır.
+
+Kanala özel uyarlamalar (skill'le çelişmez, üstüne eklenir):
+- Format: dikey 1080×1920 (skill'in Shorts yönergesi). Odak üst-orta; alt %25 altyazıya ayrılır.
+- Güvenli alan, kinetik altyazı, kategori etiketi, 60 sn sayacı ve gubigufi logo kapanışı korunur.
+- Kanal imza renkleri: pırıltı amber #FBAC39 + kırmızı kare #EE312E (skill'in "imza rengi" kuralı).
+- Paletler skill'in `paletler.md` dosyasından seçilir; kategori renkleri etiket rengi olarak kalır.
+- Müzik: skill'e uygun ambient / sinematik synth (her videoya özgün), anlatımın altında alçak.
+- Üretim hattı: skill'in `ses_analiz.py` → sahne planı → `sahneler/sNN.html` → `render.py` → birleştirme.
+- Maskot: skill kuralı gereği özgün olmalı (kuş/ördek/köpek yok); seçim kullanıcı onayıyla yapılır.
