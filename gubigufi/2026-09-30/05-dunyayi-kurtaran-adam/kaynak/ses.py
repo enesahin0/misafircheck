@@ -56,8 +56,9 @@ def proj_loop(d): t = T(d); c = (np.sin(2 * np.pi * 18 * t) > .9).astype(float);
 S(clack(), .26, .8); S(boom(.6, 80), .27, .3)
 S(filt(noise(1.2), 'lowpass', 600) * adsr(int(1.2 * SR), .2, .5), 1.7, .1); S(scrape(.6, 2500), 1.8, .1)
 S(pop(400, .2), 4.7, .3)
-for i in range(6): S(pop(300 + (i % 2) * 80, .06), 5.0 + i * .08, .12)
-S(filt(noise(.3), 'bandpass', [3000, 7000]) * env(int(.3 * SR), .002, .1), 5.75, .3); S(bell(3200, .8, .2), 5.8, .2)   # bozuk para
+for i in range(7): S(bell(2800 + (i % 3) * 400, .25, .3), 5.02 + i * .075, .10)   # kavanozda tıngırdayan para
+S(filt(noise(.3), 'bandpass', [2000, 7000]) * env(int(.3 * SR), .005, .1), 5.6, .15)   # cam kapak
+for k_, g_ in ((5.95, .3), (6.12, .16), (6.24, .08)): S(bell(3400, .5, .3), k_, g_)   # para yere düşer
 S(pop(250, .25), 6.2, .3); S(scrape(.4, 800), 6.8, .2)
 S(tick(900, .08), 7.8, .5); S(proj_loop(3.0), 7.85, .15)
 S(whoosh(.7, 400, 2500), 8.55, .3); S(thunk_ := hit(.4, 1200), 9.85, .6); S(boom(.6, 70), 9.85, .35)

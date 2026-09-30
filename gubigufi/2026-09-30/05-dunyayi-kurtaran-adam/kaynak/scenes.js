@@ -87,11 +87,29 @@ function sceneStudio(t) {
   if (sb > 0) { ctx.save(); ctx.translate(SAFE.cx, 700); ctx.scale(sb, sb); ctx.rotate(-.03); ctx.fillStyle = '#f3ecdc'; rr(-330, -230, 660, 440, 10); ctx.fill(); ctx.strokeStyle = '#2a2a2a'; ctx.lineWidth = 5; rr(-300, -200, 600, 380, 6); ctx.stroke();
     ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(160, 90, 70, 0, 7); ctx.stroke(); for (const [px, py] of [[-150, -60], [-40, 20], [60, -100]]) { ctx.beginPath(); ctx.moveTo(px, py - 14); ctx.lineTo(px + 50, py); ctx.lineTo(px, py + 14); ctx.closePath(); ctx.stroke(); ctx.beginPath(); ctx.moveTo(px + 55, py); ctx.lineTo(px + 150, py - 30); ctx.stroke(); }
     text('UZAY SAVAŞI?', 0, 150, { size: 50, align: 'center', color: '#2a2a2a' }); ctx.restore(); }
-  // kumbara
+  // bütçe kavanozu: içinde tek bir altın para
   const pb = ease.back(pr(t, s(2), s(2) + .3)) * (1 - pr(t, s(3) + .6, s(3) + .9));
-  if (pb > 0) { const sh = Math.sin(t * 40) * 8 * pr(t, s(2) + .3, s(2) + .5) * (1 - pr(t, s(2) + 1.0, s(2) + 1.2)); ctx.save(); ctx.translate(360 + sh, 1180); ctx.scale(pb, pb); ctx.fillStyle = '#ef8fa6'; ctx.beginPath(); ctx.ellipse(0, 0, 150, 115, 0, 0, 7); ctx.fill(); ctx.beginPath(); ctx.ellipse(140, -10, 44, 36, 0, 0, 7); ctx.fill(); ctx.fillStyle = '#c4637c'; for (const nx of [132, 150]) { ctx.beginPath(); ctx.arc(nx, -10, 7, 0, 7); ctx.fill(); } ctx.fillStyle = '#2a1d15'; ctx.beginPath(); ctx.arc(90, -50, 9, 0, 7); ctx.fill(); ctx.fillStyle = '#c4637c'; ctx.fillRect(-40, -118, 80, 12); for (const lx of [-80, -30, 30, 80]) ctx.fillRect(lx - 14, 90, 28, 50);
-    text('BÜTÇE', 0, 30, { fam: 'JetBrains Mono', w: 700, size: 36, align: 'center', color: '#fff' }); ctx.restore();
-    const coin = pr(t, s(2) + 1.0, s(2) + 1.6); if (coin > 0) { const cy = lerp(1300, 1395, ease.bounce(coin)); ctx.fillStyle = '#e8b64a'; ctx.beginPath(); ctx.ellipse(360, cy, 22, 22 * Math.abs(Math.cos(coin * 10)) + 4, 0, 0, 7); ctx.fill(); } }
+  if (pb > 0) {
+    const shk = pr(t, s(2) + .3, s(2) + .4) * (1 - pr(t, s(2) + .85, s(2) + .95)), tilt = ease.io(pr(t, s(2) + .9, s(2) + 1.2));
+    const JX = 330, JY = 1060, K = 1.15; const rot = Math.sin(t * 38) * .08 * shk + tilt * 2.3;
+    ctx.save(); ctx.translate(JX, JY); ctx.scale(pb * K, pb * K); ctx.rotate(rot); ctx.translate(0, 135);
+    // cam gövde (taban orijin)
+    ctx.fillStyle = 'rgba(190,225,255,.14)'; ctx.strokeStyle = 'rgba(225,242,255,.75)'; ctx.lineWidth = 7;
+    ctx.beginPath(); ctx.moveTo(-100, -270); ctx.lineTo(-100, -250); ctx.quadraticCurveTo(-135, -230, -135, -190); ctx.lineTo(-135, -20); ctx.quadraticCurveTo(-135, 0, -110, 0); ctx.lineTo(110, 0); ctx.quadraticCurveTo(135, 0, 135, -20); ctx.lineTo(135, -190); ctx.quadraticCurveTo(135, -230, 100, -250); ctx.lineTo(100, -270); ctx.closePath(); ctx.fill(); ctx.stroke();
+    // içerideki tek altın para (düşmeden önce)
+    if (tilt < .75) { const rx = Math.sin(t * 50) * 28 * shk; ctx.fillStyle = '#b8862a'; ctx.beginPath(); ctx.ellipse(rx, -18, 40, 13, 0, 0, 7); ctx.fill(); ctx.fillStyle = '#f2c14e'; ctx.beginPath(); ctx.ellipse(rx, -24, 40, 13, 0, 0, 7); ctx.fill(); ctx.fillStyle = 'rgba(255,255,255,.5)'; ctx.beginPath(); ctx.ellipse(rx - 12, -27, 12, 4, 0, 0, 7); ctx.fill(); }
+    // parlama çizgisi
+    ctx.strokeStyle = 'rgba(255,255,255,.45)'; ctx.lineWidth = 10; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(-100, -190); ctx.lineTo(-100, -60); ctx.stroke();
+    // etiket
+    ctx.fillStyle = '#f3ead9'; ctx.fillRect(-120, -165, 240, 80); ctx.strokeStyle = 'rgba(90,60,30,.4)'; ctx.lineWidth = 3; ctx.strokeRect(-110, -157, 220, 64);
+    text('BÜTÇE', 0, -110, { fam: 'JetBrains Mono', w: 700, size: 40, align: 'center', color: '#3a2618' });
+    // kapak: devrilirken açılır
+    ctx.save(); ctx.translate(-110, -270); ctx.rotate(-tilt * .9); const lg = ctx.createLinearGradient(0, -40, 0, 0); lg.addColorStop(0, '#d9b84a'); lg.addColorStop(1, '#9c7a24'); ctx.fillStyle = lg; rr(-6, -44, 232, 44, 8); ctx.fill(); ctx.strokeStyle = 'rgba(0,0,0,.25)'; ctx.lineWidth = 3; for (let i = 0; i < 10; i++) { ctx.beginPath(); ctx.moveTo(10 + i * 22, -40); ctx.lineTo(10 + i * 22, -4); ctx.stroke(); } ctx.restore();
+    ctx.restore();
+    // düşen para: kavanoz ağzından yere, sonra yerde döner
+    const fall = pr(t, s(2) + 1.1, s(2) + 1.6);
+    if (fall > 0) { const mx = JX + Math.sin(-2.3) * 270 * -1, my = JY - Math.cos(2.3) * 270 * -1; const th = 2.3, mx0 = JX + Math.sin(th) * 150 * K, my0 = JY - Math.cos(th) * 150 * K; const x = lerp(mx0, mx0 + 90, fall), y = lerp(my0, 1395, ease.bounce(fall)); const spin = t * 14; ctx.fillStyle = '#b8862a'; ctx.beginPath(); ctx.ellipse(x, y + 3, 26, 26 * Math.abs(Math.cos(spin)) + 4, 0, 0, 7); ctx.fill(); ctx.fillStyle = '#f2c14e'; ctx.beginPath(); ctx.ellipse(x, y, 26, 26 * Math.abs(Math.cos(spin)) + 3, 0, 0, 7); ctx.fill(); if (fall > .9) glowCircle(x, y, 60, '#f2c14e', .3); }
+  }
   // karton uzay gemisi
   const bx = ease.back(pr(t, s(3), s(3) + .35)) * (1 - pr(t, s(4) - .2, s(4) + .1));
   if (bx > 0) { ctx.save(); ctx.translate(760, 1200); ctx.scale(bx, bx); ctx.rotate(-.05); ctx.fillStyle = '#b98a55'; ctx.fillRect(-160, -120, 320, 220); ctx.fillStyle = '#a3773f'; ctx.beginPath(); ctx.moveTo(-160, -120); ctx.lineTo(-100, -170); ctx.lineTo(220, -170); ctx.lineTo(160, -120); ctx.fill(); ctx.fillRect(160, -120, 60, 220);
