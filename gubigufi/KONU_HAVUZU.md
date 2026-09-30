@@ -46,3 +46,65 @@ Yayın ritmi önerisi (haftalık döngü): Hukuk → Sağlık → Ekonomi → Ps
 **Doğa & Uzay (DU)** — 34 Nötron yıldızı · 35 Ay'daki ayak izleri · 36 Çin Seddi uzaydan görünmez · 38 Güneş 8 dk geç · 39 Satürn yüzer · 40 Uzay kokusu · 53 Ahtapot · 54 Tardigrad · 55 Ölümsüz denizanası · 56 Kargalar · 57 Kangal & çita · 59 Flamingo · 60 İnci kefali (Van) · 61 Su samurları · 71 Dil haritası · 72 Japon balığı · 74 Boğa & kırmızı · 78 Deve hörgücü
 
 Yeni araştırma sonucu geldiğinde her dikeyin altına eklenecek ve öncelik puanı verilecek.
+
+---
+
+# v3 — Araştırma sonucu (arastirma/nis_stratejisi_2026-09.pdf) ile güncel plan
+
+**Strateji:** 10 dikeyi aynı anda açma. Takip motivasyonu en güçlü 4 dikeyle başla — **Hukuk, Ekonomi, Sağlık, Psikoloji** —
+diğer 6'sı (Spor, Mutfak, Kültür = Sanat+Sinema, Bilim, Tarih, Kelimenin Dipnotu) aralara "nefes" videosu olarak.
+İlk 10 videodan sonra erişim başına **gönderme + kaydetme** oranına bak; en iyi 2 dikeyin payını %50'ye çıkar.
+Ek etiket: **"Anadolu'dan"** (Sivas/yerel konular). Yeni dikey: **"Kelimenin Dipnotu"** (etimoloji köprüsü).
+
+**Video iskeleti (60 sn):** 0–2 sn kanca · 2–40 sn mekanizma · 40–52 sn "işte bu yüzden…" · 52–60 sn SERİ KANCASI
+("takip et" yerine "Bölüm 2: …"). Hukuk/Sağlık/Ekonomi videolarında ekranda kısa uyarı satırı (genel bilgilendirme, tavsiye değildir).
+Güncel rakamlı videolara "son kullanma tarihi" notu: politika faizi 22 Ekim 2026; enflasyon & kira oranı her ayın 3'ü; kıdem tavanı & hakem heyeti Ocak 2027.
+
+## İlk 30 video yayın planı
+| # | Dikey | Konu | Gerekçe |
+|---|---|---|---|
+| 1 | Hukuk | Bulduğun Cüzdan Kimin? | evrensel merak, çok gönderilir |
+| 2 | Ekonomi | Senin Enflasyonun Kaç? | güncel, kişisel |
+| 3 | Sağlık | Tahlildeki Yıldız | yüksek kaydetme |
+| 4 | Psikoloji | Çapa Etkisi | etiketleme |
+| 5 | Sinema | Yeşilçam 300 Film | nostalji |
+| 6 | Hukuk | 186.000 TL Kuralı (tüketici hakem heyeti) | güncel fayda |
+| 7 | Ekonomi | 72 Kuralı | zamansız, kaydedilir |
+| 8 | Spor | Ofsayt Neden Var? | erkek kitleyi açar |
+| 9 | Mutfak | Maillard | kaydedilir |
+| 10 | Sağlık | Kendine Mikrop İçen Doktor | hikâye gücü |
+| 11 | Ekonomi/Hukuk | Kira Zammı %31,79 | Eylül–Ekim'de çok güncel |
+| 12 | Tarih | Soyadı Olmadan | geniş kitle |
+| 13 | Psikoloji | Stanford Deneyi | güven inşası |
+| 14 | Sanat | Kaplumbağa Terbiyecisi'nin İkizi | tanıdık eser |
+| 15 | Ekonomi | Faiz Cebine Nasıl Ulaşır? | kavram serisi |
+| 16 | Hukuk | Kahve Davası | efsane çürütme |
+| 17 | Bilim | GPS ve Görelilik | çok gönderilir |
+| 18 | Spor | Sarı Kart | hikâye |
+| 19 | Sağlık | Semmelweis | seri devamı |
+| 20 | Tarih | Sivas Kongresi | yerel kimlik |
+| 21 | Hukuk | Kıdem Tavanı | çalışanlar |
+| 22 | Mutfak | Türk Kahvesi UNESCO (5 Aralık'ta yeniden) | kimlik |
+| 23 | Psikoloji | Görünmez Goril | etkileşim |
+| 24 | Sinema | Yeşilçam Dublajı | seri devamı |
+| 25 | Ekonomi | Altı Sıfır | nostalji |
+| 26 | Hukuk | Kedin Artık Eşya Değil | hayvanseverler |
+| 27 | Bilim | Okyanus Dibindeki İnternet | merak |
+| 28 | Sağlık | Kangal Balıklı Kaplıca | Sivas |
+| 29 | Tarih | Kadeş Antlaşması | gurur, paylaşım |
+| 30 | Spor | Geri Pas Kuralı | seri devamı |
+
+## Mini seriler (video sonu kancaları)
+- Hukuk: "Kiracının 5 Hakkı" · "Tuhaf Davalar" · "Hukuk Sözlüğü"
+- Sağlık: "Tahlilini Oku" · "Tıbbın Asileri" · "Vücut Mitleri"
+- Ekonomi: "Kavram Sözlüğü: Enflasyon, Faiz, Kur" · "Maaşın Matematiği" · "Büyük Krizler"
+- Psikoloji: "Çürüyen Deneyler" · "Alışverişte Beyin"
+- Mutfak: "Mutfak Kimyası 101" · "UNESCO Sofrası"
+- Spor: "Kuralların Doğum Günü" · "Topun Fiziği"
+- Sanat: "Bir Tablo, Bir Sır" · "Anadolu Taşları"
+- Sinema: "Yeşilçam Fabrikası" · "Sinema Dili"
+- Bilim: "Cebindeki Fizik" · "Tesadüf İcatlar"
+- Tarih: "Anadolu'nun İlkleri" · "Gündelik Devrimler"
+- Çapraz: "Aynı Konu, İki Dikey"
+
+Her dikeyin 25 konusunun tam listesi, kaynak ve nüanslarıyla: `arastirma/nis_stratejisi_2026-09.txt` (✓ = doğrulandı, ◐ = yayından önce birincil kaynakla kontrol et).
