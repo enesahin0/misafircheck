@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 3.17;</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/venus.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+
+$('zemin').innerHTML = V.bg({ nx: 540, ny: 700, neb: V.PAL.cyan }) + V.yildiz(5, 70);
+const kart = (y1, y2, renk, alt) => `<rect x="-190" y="-150" width="380" height="300" rx="56" fill="${renk}"/><rect x="-190" y="-150" width="60" height="300" rx="30" fill="#FFF3D6" opacity=".25"/>` + txt(y1, 0, 30, 130, '#0B1433') + txt(y2, 0, 110, 50, '#0B1433', 700);
+window.renderAt = t => {
+  let o = V.glowDaire(540, 760, 520, V.PAL.cyan, .25);
+  const g = pop(t, 1.15), y = pop(t, 1.75), win = E(A(t, 2.2, 2.7));
+  o += grp(kart('1', 'GÜN', V.PAL.cyan), 300, 760 + Math.sin(t * 2) * 8, g * (1 + .3 * win), -4 * (1 - win));
+  o += grp(kart('1', 'YIL', V.PAL.amber), 790, 760 - Math.sin(t * 2) * 8, y * (1 - .22 * win), 5);
+  o += txt('>', 545, 800, 150 * pop(t, 2.3), '#FFF3D6');
+  o += grp(M.gubi({ x: 0, y: 0, boy: 150, duygu: 'saskin', bak: [-1, -.4], kirp: -2 }), 540, 1140 + Math.sin(t * 3) * 10, pop(t, .3));
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

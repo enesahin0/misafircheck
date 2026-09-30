@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 17.67;</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/venus.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+
+$('zemin').innerHTML = V.bg({ nx: 540, ny: 900, neb: V.PAL.amber }) + V.yildiz(13, 60);
+window.renderAt = t => {
+  let o = '';
+  for (const y of [640, 900]) o += `<rect x="90" y="${y - 70}" width="900" height="140" rx="70" fill="#2E3A7A" opacity=".55"/>`;
+  // bitiş çizgisi
+  for (let i = 0; i < 8; i++) o += `<rect x="${860 + (i % 2) * 20}" y="${540 + i * 55}" width="20" height="55" fill="${i % 2 ? '#FFF3D6' : '#0B1433'}" opacity=".8"/>`;
+  const yx = 170 + 700 * E(A(t, .1, 1.3)), gx = 170 + 420 * E(A(t, .1, 4.3)) + Math.sin(t * 8) * 4;
+  const top = (x, y, et, renk, duygu) => `<g transform="translate(${x} ${y})">${K.kure({ x: 0, y: 0, r: 58, renk, rim: '#FFF3D6', golge: '#1E1B4B', isikYon: [1, -1] })}<text x="0" y="14" font-size="36" font-weight="900" text-anchor="middle" style="fill:#0B1433">${et}</text></g>`;
+  o += top(yx, 640, 'YIL', V.PAL.amber); o += top(gx, 900, 'GÜN', V.PAL.cyan);
+  o += grp(M.gubi({ x: 0, y: 0, boy: 120, duygu: A(t, 1.3, 1.4) > 0 ? 'mutlu' : 'merak', kirp: -1 }), 960, 440 - Math.abs(Math.sin(t * 7)) * 20 * A(t, 1.3, 1.5), pop(t, 1.1));
+  o += grp(M.gufi({ x: 0, y: 0, boy: 120, duygu: 'saskin', bak: [-1, 0], kirp: -2 }), 250, 1180, pop(t, 2.0));
+  const b = pop(t, 1.35); if (b > 0) o += grp(`<rect x="-120" y="-40" width="240" height="80" rx="40" fill="${V.PAL.amber}"/>` + txt('BİTTİ!', 0, 20, 48, '#0B1433'), 700, 470, b);
+  const h = pop(t, 3.0); if (h > 0) o += grp(`<rect x="-150" y="-40" width="300" height="80" rx="40" fill="${V.PAL.cyan}"/>` + txt('HÂLÂ YOLDA', 0, 18, 40, '#0B1433'), 560, 1060, h);
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

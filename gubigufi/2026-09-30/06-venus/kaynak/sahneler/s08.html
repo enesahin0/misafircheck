@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 32.07;</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/venus.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+
+window.renderAt = t => {
+  let o = V.yuzey(t, V.gunes({ x: 800, y: 500, r: 70 }));
+  // masa
+  const mp = pop(t, .2, .5);
+  let masa = `<ellipse cx="0" cy="170" rx="330" ry="26" fill="#3B1740" opacity=".4"/><rect x="-300" y="-20" width="600" height="46" rx="23" fill="#8A4F7D"/><rect x="-250" y="20" width="36" height="150" rx="18" fill="#6B2A5E"/><rect x="214" y="20" width="36" height="150" rx="18" fill="#6B2A5E"/>` +
+    `<ellipse cx="-60" cy="-26" rx="130" ry="30" fill="#FFF3D6"/>` + V.yumurta(-60, -34, E(A(t, 4.8, 6.0))) +
+    `<rect x="120" y="-110" width="80" height="90" rx="20" fill="${V.PAL.cyan}"/><rect x="194" y="-90" width="34" height="46" rx="17" fill="none" stroke="${V.PAL.cyan}" stroke-width="12"/>`;
+  // buhar / sıcak dalgaları
+  const hs = A(t, 4.6, 5.2); for (let i = 0; i < 4; i++) { let d = 'M'; for (let k = 0; k <= 12; k++) { const y = -60 - k * 22, x = -100 + i * 60 + Math.sin(k * .8 + t * 6 + i) * 12; d += (k ? ' L' : '') + x + ' ' + y; } masa += `<path d="${d}" fill="none" stroke="#FFF3D6" stroke-width="8" stroke-linecap="round" opacity="${.5 * hs}"/>`; }
+  o += grp(masa, 470, 1080, mp);
+  const ay = pop(t, 2.4); if (ay > 0) o += grp(`<rect x="-200" y="-70" width="400" height="140" rx="70" fill="#1E1B4B" opacity=".85"/>` + txt('~4 AY', 0, 36, 100, V.PAL.amber), 400, 700, ay);
+  const tp = E(A(t, 4.6, 6.4)); o += grp(V.termometre(0, 0, 460, tp), 930, 1180, pop(t, 4.5));
+  if (tp > 0) o += txt(Math.round(460 * tp) + '°C', 900, 640, 72, '#FFF3D6');
+  const gf = pop(t, 5.0); if (gf > 0) { o += grp(M.gufi({ x: 0, y: 0, boy: 150, duygu: 'saskin', bak: [1, -.3], kirp: -1 }), 150, 1235 + Math.sin(t * 30) * 2, gf);
+    for (let i = 0; i < 3; i++) { const d = ((t * 1.2 + i / 3) % 1); o += `<ellipse cx="${210 + i * 18}" cy="${1060 + d * 80}" rx="8" ry="12" fill="${V.PAL.cyan}" opacity="${1 - d}"/>`; } }
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

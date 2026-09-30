@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 22.0;</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/venus.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+
+$('zemin').innerHTML = V.bg({ nx: 540, ny: 700, neb: V.PAL.mag }) + V.yildiz(17, 70);
+window.renderAt = t => {
+  const k = E(A(t, 1.9, 2.3)); let o = '';
+  if (k < 1) { let a = '';
+    a += V.dunya({ x: 290, y: 700, r: 170 }) + V.donusOku(290, 700, 240, -1, V.PAL.cyan, E(A(t, .2, 1.3)));
+    a += V.venus({ x: 790, y: 700, r: 170, glow: false }) + V.donusOku(790, 700, 240, 1, V.PAL.mag, E(A(t, .5, 1.6)));
+    a += txt('DÜNYA', 290, 1000, 44, V.PAL.cyan, 700, 'class="mono"') + txt('VENÜS', 790, 1000, 44, V.PAL.mag, 700, 'class="mono"');
+    const tr = pop(t, .9); if (tr > 0) a += grp(`<rect x="-150" y="-45" width="300" height="90" rx="45" fill="${V.PAL.mag}"/>` + txt('TERS!', 0, 22, 60, '#0B1433'), 790, 420, tr);
+    o += `<g opacity="${1 - k}">${a}</g>`; }
+  if (k > 0) { const sy = 1100 - 420 * E(A(t, 2.6, 4.4)); let b = V.yuzey(t, V.gunes({ x: 250, y: sy, r: 110 }));
+    b += `<rect x="130" y="1000" width="16" height="170" rx="8" fill="#3B1740"/><rect x="60" y="960" width="200" height="80" rx="24" fill="#FFF3D6"/>` + txt('BATI', 160, 1015, 46, '#3B1740');
+    b += `<rect x="934" y="1000" width="16" height="170" rx="8" fill="#3B1740"/><rect x="842" y="960" width="200" height="80" rx="24" fill="#FFF3D6" opacity=".7"/>` + txt('DOĞU', 942, 1015, 46, '#3B1740');
+    b += grp(M.gufi({ x: 0, y: 0, boy: 130, duygu: 'saskin', bak: [-1, -1], kirp: -1 }), 620, 1235, pop(t, 3.2));
+    o += `<g opacity="${k}">${b}</g>`; }
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>
