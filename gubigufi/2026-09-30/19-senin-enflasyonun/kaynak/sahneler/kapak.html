@@ -5,12 +5,21 @@
 <script>
 const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
 window.renderAt = t => {
-  let o = `<rect width="1080" height="1150" fill="#DFF6EC"/>` + CV.bulut(540, 180, .8) + `<rect x="0" y="960" width="1080" height="200" fill="#86C8A8"/>`;
-  o += EN.termometre(250, 820, .8, 47, 60, '#E8505B', '') + EN.termometre(830, 820, .8, 34, 60, '#2E9AD8', '');
-  o += EN.sepet(540, 900, .7, [['gida', -120, -170, 1], ['kira', 60, -190, 1], ['saglik', 170, -160, .9]]);
-  o += `<text x="540" y="360" font-size="200" font-weight="900" text-anchor="middle" style="fill:#2FBF71">?</text>`;
-  o += M.canli('gubi', { t: 1.2, x: 250, y: 1030, boy: 160, duygu: 'saskin', bakHedef: [830, 600], ust: KO.giy('gubi', [['kep', { renk: '#1B1640', puskul: '#FFB44C' }]]) });
-  o += M.canli('gufi', { t: .5, x: 830, y: 1150, boy: 200, duygu: 'mutlu', bakHedef: [250, 600], ust: KO.giy('gufi', ['gozluk', ['kasket', { renk: '#8A8A9A', siper: '#5A5A6A' }]]) });
+  // arka plan: bulanık market rafları
+  let o = `<g style="filter:blur(10px)">${PR.market(CV.ton('seftali'), 1000)}</g><rect width="1080" height="1150" fill="#FFF3E0" opacity=".25"/>`;
+  o += `<rect x="0" y="1000" width="1080" height="150" fill="#E8B090"/><ellipse cx="540" cy="1040" rx="520" ry="40" fill="#000" opacity=".08"/>`;
+  // iki termometre: ortada, karakterlerden bağımsız
+  const ry = 880 - 570 * 40 / 60 * .95;
+  o += `<path d="M280 ${ry} H800" stroke="#1B1640" stroke-width="8" stroke-dasharray="22 14"/>`;
+  o += EN.termometre(390, 880, .95, 47, 60, '#E8505B', '') + EN.termometre(690, 880, .95, 34, 60, '#2E9AD8', '');
+  o += EN.cipO('RESMİ', 540, ry + 60, '#1B1640', '#FFE45C', 26);
+  o += EN.cipO('ÖĞRENCİ', 390, 1080, '#E8505B', '#FFFFFF', 26) + EN.cipO('EMEKLİ', 690, 1080, '#2E9AD8', '#FFFFFF', 26);
+  // karakterler dış kenarlarda, termometreye bakıyor
+  o += M.canli('gubi', { t: 1.2, x: 150, y: 640, boy: 190, duygu: 'saskin', bakHedef: [390, 300], ust: KO.giy('gubi', [['kep', { renk: '#1B1640', puskul: '#FFB44C' }]]) });
+  o += `<g transform="translate(170 900)">` + EN.ikon('kira', 0, 0, 1.2) + `</g>`;
+  o += M.canli('gufi', { t: .5, x: 950, y: 1010, boy: 200, duygu: 'mutlu', bakHedef: [690, 450], ust: KO.giy('gufi', ['gozluk', ['kasket', { renk: '#8A8A9A', siper: '#5A5A6A' }]]) });
+  o += `<g transform="translate(930 560)">` + EN.ikon('saglik', 0, 0, 1.2) + `</g>`;
+  o += `<text x="540" y="200" font-size="170" font-weight="900" text-anchor="middle" style="fill:#2FBF71" transform="rotate(-6 540 200)">%?</text>`;
   o += `<rect x="0" y="1150" width="1080" height="770" fill="#2A3A5A"/><rect x="0" y="1150" width="1080" height="18" fill="#D8A032"/>`;
   o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#F2CE7A">PARANIN DİLİ</text>`;
   o += txt('SENİN ENFLASYONUN', 540, 1362, 90) + txt('KAÇ?', 540, 1462, 92, '#F2CE7A');
