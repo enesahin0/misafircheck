@@ -57,3 +57,7 @@ Her yeni videoda konu, kategori, açılış ve görsel teknikler bu listeyle kar
 | 4 | Turkey = Hindi (Kelimenin Hikâyesi #1) | Kelimelerin Hikâyesi | Pasaport + eski harita teması; kuşta dönen bavul etiketi (TURKEY→HİNDİ→?), dil konuşma balonları, düşen kovboy şapkası/bere, pasaport kapağından sahneye açılış, parşömen haritada kesikli rota + yürüyen beç tavuğu, mürekkep damgaları (dokulu, çarpma), okyanusta gemiyle gelen hindi, etiketin uçup yapışması, Kolomb'un haritasında üstü çizilen HİNDİSTAN, sayfa çevirme, renkli rotaların yumağa dönmesi, başı dönen kuş, BM isim plakası değişimi; sahneler arası iris (daire) açılışı; müzik: pizzicato + akordeon 3/4 vals |
 
 Sonraki videolarda kaçınılacaklar: aynı kategoriyi arka arkaya kullanmak, "geri çekilip kesit/kuşbakışı gösterme" açılımını 3. kez yapmak, sepya/eski fotoğraf, kırma-parçalama geçişi, toprağa iniş, büyüteç/röntgen, sansür şakası, kürsü-konfeti, pasaport/damga, iris geçişi.
+
+## Instagram açıklama kuralları
+- En fazla **5 hashtag**. Sıra: 1 konuya özel, 1 kategori/seri, 1-2 genel keşif, en sonda her zaman #gubigufi.
+- İlk satır = kanca (akışta sadece o görünür). Sonda yorum sorusu + kaynak + "gubigufi ✦ 1 dakikada bir merak".
