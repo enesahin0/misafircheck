@@ -98,3 +98,7 @@ Kişilik: tepkici, şaşıran, bazen yanılan — izleyicinin şaşkınlığı
 İngilizce prompt tarifi: "a small rounded-square character, bright red #EE312E body, two tiny round feet, big white oval eyes with navy pupils, no mouth, no outline, flat vector"
 ```
 Kullanım: her videoda 3–6 kısa rol. Gubi soruyu sorar / aha anında parlar, Gufi şaşırır / tepki verir; kapanışta ikisi logoya dönüşür.
+
+## Logo kapanışı
+Kapanıştaki gubigufi logosu ekranın TAM ORTASINDA durur (x 540, y ~940, genişlik ~660). Kapanışta altyazı/etiket olmadığı için
+safe alan kaydırması uygulanmaz (kullanıcı geri bildirimi, #6 sonrası).

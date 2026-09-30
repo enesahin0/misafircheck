@@ -170,7 +170,7 @@ const LOGO = (() => {
   return { P, C, cx: 141.5, cy: 141.5 };
 })();
 // Logo sting: t0 = başlangıç
-function logoSting(t, t0, cx = SAFE.cx, cy = 860, width = 620, from = null) {
+function logoSting(t, t0, cx = 540, cy = 940, width = 660, from = null) { // logo tam ortada: kapanışta arayüzle çakışan öğe yok
   const s = width / 233, L = LOGO;
   const toScr = ([x, y]) => [(x - L.cx) * s + cx, (y - L.cy) * s + cy];
   const letters = ['g1', 'u1', 'b', 'i1', 'g2', 'u2', 'f', 'i2'];

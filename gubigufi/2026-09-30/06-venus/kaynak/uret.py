@@ -181,7 +181,7 @@ S[10] = r"""
 $('zemin').innerHTML = `<rect width="1080" height="1920" fill="#141112"/>`;
 const LP = {}; for (const p of window.LOGO_PATHS) LP[p.id] = p;
 const C = { g1: [44.5, 134.8], u1: [90.6, 128.5], b: [134.3, 121], i1: [165, 128], g2: [150.3, 180.6], u2: [196.4, 174.3], f: [230.1, 173], i2: [253.6, 174] };
-const S = 620 / 233, OX = 475, OY = 860, scr = ([x, y]) => [(x - 141.5) * S + OX, (y - 141.5) * S + OY];
+const S = 660 / 233, OX = 540, OY = 940, scr = ([x, y]) => [(x - 141.5) * S + OX, (y - 141.5) * S + OY];
 window.renderAt = t => {
   let o = `<g transform="translate(${OX} ${OY}) scale(${S}) translate(-141.5 -141.5)">`;
   Object.keys(C).forEach((k, i) => { const p = pop(t, .12 + i * .045, .38); if (p <= 0) return; const [cx, cy] = C[k];
