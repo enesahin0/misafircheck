@@ -16,6 +16,15 @@
 
 ### Kategori girişi denemesi İPTAL edildi (kullanıcı kararı): video başında ayrı kategori girişi YOK; kategori etiketi eskisi gibi sol üstte sade şekilde belirir.
 
+### SERİ SÖZLERİ (açık kancalar) — KALICI KURAL
+Bir videonun sonunda "Bölüm 2'de: …" diye söz verildiyse, O DİKEYİN BİR SONRAKİ videosu o sözü tutar — araya başka dikeyler girse bile.
+Yeni bir konu önerirken önce bu tabloya bak; ilgili dikeyde açık söz varsa onu öner ve kullanıcıya "bunu yapacağız, söz vermiştik" de. Söz tutulunca satırı "tutuldu" yap.
+
+| Veren video | Dikey · Seri | Söz (sıradaki bölüm) | Durum |
+|---|---|---|---|
+| #10 Bulduğun Cüzdan Kimin? | Hukuk · Kanun Böyle Diyor | B2: Bozuk ürün aldıysan avukatsız ve masrafsız nereye başvurursun? (tüketici hakem heyeti / 186.000 TL kuralı) | AÇIK |
+| #11 Kendine Mikrop İçen Doktor | Sağlık · Tıbbın Asileri | B2: Doktorlara "ellerinizi yıkayın" diyen adam neden kovuldu? (Semmelweis, 1847 Viyana) | AÇIK |
+
 ### ARKA PLAN / ATMOSFER KURALI (güncelleme, #10'dan itibaren geçerli)
 - Skill'den aldığımız şey ÇİZİM TARZIDIR (flat vektör, konturyok, rim light, glow, yuvarlak formlar). Skill'in "koyu lacivert/uzay" atmosferi varsayılan DEĞİL.
 - Videolar mavi-derin tonlara bürünmeyecek. Varsayılan: renkli, aydınlık, konuya ait doğal ortam/çevre arka planları (gündüz gökyüzü, orman, sahil, mutfak, mahkeme salonu, stadyum, atölye, pazar yeri, sokak…) + sıcak ve canlı palet.
