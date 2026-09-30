@@ -102,3 +102,8 @@ Kullanım: her videoda 3–6 kısa rol. Gubi soruyu sorar / aha anında parlar, 
 ## Logo kapanışı
 Kapanıştaki gubigufi logosu ekranın TAM ORTASINDA durur (x 540, y ~940, genişlik ~660). Kapanışta altyazı/etiket olmadığı için
 safe alan kaydırması uygulanmaz (kullanıcı geri bildirimi, #6 sonrası).
+
+## Üst köşe yerleşimi (#7'den itibaren)
+- Kategori etiketi sol üstte (x 62'den başlar, y ≈ 292).
+- 60 sn sayaç halkası SAĞA YASLI: merkez x 974, y 300 (dış kenar 1018 = 1080 − 62, sol etiketle simetrik). Kullanıcı geri bildirimi.
+- Güncel kanal katmanı: `marka/ortak/kanal.js` + `kanal.css` — her yeni videoda bunlar kopyalanır.

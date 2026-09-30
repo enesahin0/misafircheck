@@ -201,7 +201,7 @@ function grain(t, amt = .06) { ctx.save(); ctx.globalAlpha = amt; ctx.globalComp
 function vignette(a = .5) { const g = ctx.createRadialGradient(W / 2, H * .45, H * .25, W / 2, H * .5, H * .78); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, `rgba(0,0,0,${a})`); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); }
 // 60 sn sayacı: halka + ucunda kırmızı kare
 function timer(p, alpha = 1) {
-  const x = 846, y = 300, r = 28; ctx.save(); ctx.globalAlpha = alpha;
+  const x = 974, y = 300, r = 28; // sağa yaslı (dış kenar 1018) ctx.save(); ctx.globalAlpha = alpha;
   ctx.lineWidth = 6; ctx.strokeStyle = 'rgba(246,241,231,.18)'; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.stroke();
   const a1 = -Math.PI / 2 + p * Math.PI * 2;
   ctx.strokeStyle = COL.cream; ctx.lineCap = 'round'; ctx.beginPath(); ctx.arc(x, y, r, -Math.PI / 2, a1); ctx.stroke();
