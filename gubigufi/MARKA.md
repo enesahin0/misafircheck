@@ -138,7 +138,7 @@ Kişilik: tepkici, şaşıran, bazen yanılan — izleyicinin şaşkınlığı
 - **Tepkiler:** `sasir` (sıçrama + turuncu ünlem + ter), `zipla` (squash/stretch, iniş basması), `mutlu` (^^ gözler + minik gülümseme + zıplama), `aha` (Gubi: glow patlaması + pırıltı halkası), `korku` (titreme + geri bakış + ter), `selam` (sallanma), `uzgun` (kaşlar + çökme), `kararli` (çatık kaş).
 
 ### Etkileşim kuralı v2 (KALICI) — maskotlar kenarda bekleyen süs değil, sahnenin oyuncusu
-- **Eller:** ikisinin de yüzen yuvarlak elleri var (kolsuz). Tepkiler: `isaret` (isaretHedef'i gösterir), `alkis`, `gozKapa` (aradan gözetler), `dusun` (el çenede + düşünce baloncukları), `omuzSilk`, `kahkaha`, `goster` ("ta-da"), `donus`, `selam` (el sallar) + eskiler.
+- **Eller:** ikisinin de yüzen yuvarlak elleri var (kolsuz) ama NORMALDE GÖRÜNMEZ; el gerektiren harekette gövdenin ARKASINDAN çıkar, bitince geri saklanır (göz kapatırken öne geçer). Tepkiler: `isaret` (isaretHedef'i gösterir), `alkis`, `gozKapa` (aradan gözetler), `dusun` (el çenede + düşünce baloncukları), `omuzSilk`, `kahkaha`, `goster` ("ta-da"), `donus`, `selam` (el sallar) + eskiler.
 - **Sahnede dolaşma:** `yol: [[t, x, y, boy], ...]` → Gufi zıplayarak, Gubi süzülerek (pırıltı izi) yer değiştirir; sahneye giriş/çıkışlar böyle.
 - **Kameraya yaklaşma:** `M.yakinlas(t, t0, t1)` zarfıyla karakter ekranın ortasına büyür, `M.bulanik(k)` + `M.bulanikSar()` ile arka plan bulanıklaşır, karakter net kalır; `bakHedef: 'kamera'` ile izleyiciye bakar ve el sallar/konuşur. Ses: `maskot_ses(kim, 'yaklas')`.
 - **Konuya dokunma:** karakterler anlatılan nesneyi eliyle gösterir, taşır, üstüne çıkar, düşünce balonunda konuyu hayal eder (`M.balon`).
