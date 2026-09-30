@@ -1,5 +1,5 @@
-# #11 — Kendine Mikrop İçen Doktor · "Tıbbın Asileri" Bölüm 1
-Hedef süre: ~58 sn | Tahmini kelime: ~135 | İskelet: 0–2 kanca · 2–40 mekanizma/hikâye · 40–52 "işte bu yüzden" · 52–60 seri kancası
+# #11 — Kendine Mikrop İçen Doktor · "Tıbbın Asileri"
+Hedef süre: ~58 sn | Tahmini kelime: ~135 | İskelet: 0–2 kanca · 2–40 mekanizma/hikâye · 40–52 "işte bu yüzden" · 52–60 kapanış
 Dikey: SAĞLIK & VÜCUT — "Vücut Kılavuzu" (etiket #FF6B81) · niş strateji planındaki #10
 Atmosfer (yeni kural, koyu lacivert YOK): 80'ler hastanesi pastel mint + krem; güneşli Perth laboratuvarı (sıcak sarı ışık); mide içi mercan-pembe canlı dünya; Nobel sahnesi altın + bordo.
 Maskotlar: Gubi meraklı/soran, Gufi tiksinen-şaşıran (bardağı görünce).
@@ -24,7 +24,7 @@ Birkaç gün sonra kusmaya başladı. Endoskopide midesi iltihaplanmıştı ve b
 
 Yirmi bir yıl sonra, bu iki doktor Nobel Ödülü aldı.
 
-Tıbbın asileri, bölüm ikide: Doktorlara "ellerinizi yıkayın" diyen adam neden kovuldu?
+Yani bazen bilimi ilerletmek için, herkesin yanıldığını kanıtlamak gerekir. Hem de kendi midenle.
 
 ---
 
@@ -40,7 +40,7 @@ Tıbbın asileri, bölüm ikide: Doktorlara "ellerinizi yıkayın" diyen adam ne
 | 06 | 34–40 | Kustu; endoskopi: iltihap + bakteri | Mide içi canlı pembe dünya: duvarda kırmızı iltihap lekeleri yanıp söner, sarmal bakteriler duvara tutunmuş; endoskop kamerası (ışıklı hortum) içeri girer ve flaşla "yakaladım" | kamera flaşı; Gubi `sasir` | — |
 | 07 | 40–48 | İşte bu yüzden: antibiyotikle tedavi | Eski reçete "SADECE ANTASİT" üstü çizilir → yeni: "ANTİBİYOTİK + ASİT BASKILAYICI"; kapsüller bakterileri kovalar, mide duvarı iyileşip pembeleşir | Gufi `mutlu` | — |
 | 08 | 48–52 | 21 yıl sonra Nobel | Takvim 1984 → 2005 hızla döner; altın Nobel madalyası dönerek iner, iki silüet yan yana | madalya shimmer; ikisi `mutlu` | — |
-| 09 | 52–58 | Bölüm 2 kancası: el yıkamayı öneren adam | "TIBBIN ASİLERİ · BÖLÜM 2" kartı; köpüklü eller + bir kovulma mektubu | Gubi `merak` | Gubi & Gufi → logo (ortada) |
+| 09 | 52–58 | Bilimi ilerletmek için… kendi midenle | Yüzsüz doktor silueti boş bardağı masaya koyar, bardağın içinde minik bir Nobel pırıltısı; Gufi kendi karnına bakıp tutar, Gubi güler | Gufi `sasir` → `mutlu`, Gubi `mutlu` | Gubi & Gufi → logo (ortada) |
 
 Ekranda sabit küçük uyarı (son sahnede): "Tıbbi tavsiye değildir; teşhis ve tedavi için hekimine danış."
 

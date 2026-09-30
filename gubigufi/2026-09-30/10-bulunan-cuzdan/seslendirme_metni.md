@@ -1,5 +1,5 @@
 # #10 — Bulduğun Cüzdan Kimin? · "Kanun Böyle Diyor" Bölüm 1
-Hedef süre: ~55 sn | Tahmini kelime: ~125 | İskelet: 0–2 kanca · 2–40 mekanizma · 40–52 "işte bu yüzden" · 52–60 seri kancası
+Hedef süre: ~55 sn | Tahmini kelime: ~125 | İskelet: 0–2 kanca · 2–40 mekanizma · 40–52 "işte bu yüzden" · 52–60 kapanış
 Dikey: HUKUK (etiket rengi #8C6CFF) — yeni stratejinin ilk videosu (plan #1)
 Atmosfer (yeni kural): aydınlık, renkli gündüz ortamları — parkta/kaldırımda sonbahar sokağı, muhtarlık/karakol önü, sıcak ev içi. Koyu lacivert YOK.
 Maskotlar: Gubi soran meraklı, Gufi cüzdanı bulan (ikilem yaşayan).
@@ -24,8 +24,6 @@ Peki sahibi hiç çıkmazsa? Bildirdiğin tarihten itibaren beş yıl geçerse, 
 
 Yani bu sefer dürüstlük, gerçekten kazandırıyor.
 
-Bölüm ikide: Bozuk ürün aldıysan, avukatsız ve masrafsız nereye başvurursun?
-
 ---
 
 ## 2) STORYBOARD (hedef — videoyu senin sesine göre kuracağım)
@@ -39,8 +37,7 @@ Bölüm ikide: Bozuk ürün aldıysan, avukatsız ve masrafsız nereye başvurur
 | 05 | 27–32 | "%10 kuralı" efsane | Dev "%10" rakamı taştan; üstüne "EFSANE" damgası iner, çatlar ve dağılır | taş kırılma sesi; Gubi `aha` | — |
 | 06 | 32–41 | İstisna: başkasının evi / kamu binası → görevliye teslim, ödül yok | Bölünmüş ekran: solda sokak (ödül ✓), sağda bina içi (ödül ✗) — kapı eşiğinde çizgi | Gubi iki tarafa sırayla bakar | — |
 | 07 | 41–48 | Sahibi çıkmazsa: 5 yıl sonra senin | Kum saati; takvim yaprakları 5 yıl akar (mevsim renkleri değişir: sonbahar→kış→bahar→yaz); cüzdana "SENİN" kurdelesi | Gufi `zipla` | — |
-| 08 | 48–52 | Dürüstlük kazandırıyor | Gubi & Gufi el sıkışır gibi yan yana, güneşli park | ikisi `mutlu` | — |
-| 09 | 52–58 | Bölüm 2 kancası | "KANUN BÖYLE DİYOR · BÖLÜM 2" kartı; bozuk bir ürün kutusu sallanır, kutudan kıvılcım | Gufi `sasir` | Gubi & Gufi → logo (ortada) |
+| 08 | 48–54 | Dürüstlük kazandırıyor | Gufi cüzdanı sahibine uzatır, sahibinden gelen küçük hediye + güneşli park; Gubi & Gufi yan yana | ikisi `mutlu` | Gubi & Gufi → logo (ortada) |
 
 Ekranda sabit küçük uyarı (son 3 sn): "Genel bilgilendirmedir, hukuki tavsiye değildir."
 

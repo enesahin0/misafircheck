@@ -56,8 +56,8 @@ diğer 6'sı (Spor, Mutfak, Kültür = Sanat+Sinema, Bilim, Tarih, Kelimenin Dip
 İlk 10 videodan sonra erişim başına **gönderme + kaydetme** oranına bak; en iyi 2 dikeyin payını %50'ye çıkar.
 Ek etiket: **"Anadolu'dan"** (Sivas/yerel konular). Yeni dikey: **"Kelimenin Dipnotu"** (etimoloji köprüsü).
 
-**Video iskeleti (60 sn):** 0–2 sn kanca · 2–40 sn mekanizma · 40–52 sn "işte bu yüzden…" · 52–60 sn SERİ KANCASI
-("takip et" yerine "Bölüm 2: …"). Hukuk/Sağlık/Ekonomi videolarında ekranda kısa uyarı satırı (genel bilgilendirme, tavsiye değildir).
+**Video iskeleti (60 sn):** 0–2 sn kanca · 2–40 sn mekanizma · 40–52 sn "işte bu yüzden…" · 52–60 sn KAPANIŞ
+(video kendi içinde kapanır; sonraki bölüme fragman/seri kancası YOK — kullanıcı kararı). Hukuk/Sağlık/Ekonomi videolarında ekranda kısa uyarı satırı (genel bilgilendirme, tavsiye değildir).
 Güncel rakamlı videolara "son kullanma tarihi" notu: politika faizi 22 Ekim 2026; enflasyon & kira oranı her ayın 3'ü; kıdem tavanı & hakem heyeti Ocak 2027.
 
 ## İlk 30 video yayın planı
@@ -94,7 +94,7 @@ Güncel rakamlı videolara "son kullanma tarihi" notu: politika faizi 22 Ekim 20
 | 29 | Tarih | Kadeş Antlaşması | gurur, paylaşım |
 | 30 | Spor | Geri Pas Kuralı | seri devamı |
 
-## Mini seriler (video sonu kancaları)
+## Mini seriler (konu grupları — video sonunda fragman verilmez)
 - Hukuk: "Kiracının 5 Hakkı" · "Tuhaf Davalar" · "Hukuk Sözlüğü"
 - Sağlık: "Tahlilini Oku" · "Tıbbın Asileri" · "Vücut Mitleri"
 - Ekonomi: "Kavram Sözlüğü: Enflasyon, Faiz, Kur" · "Maaşın Matematiği" · "Büyük Krizler"
