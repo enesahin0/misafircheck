@@ -14,10 +14,13 @@
 
 ## Görsel prensipler
 
-### KATEGORİ GİRİŞİ (her videoda, kanal.js otomatik yapar)
-- 0–1.05 sn: kategori etiketi ekranın ortasında büyük (2.7x) belirir, arkasında kategori renginde yumuşak ışık; altında seri adı (`window.KANAL.seri`, ör. "KANUN BÖYLE DİYOR · BÖLÜM 1").
-- 1.05–1.55 sn: küçülüp sol üstteki yerine (x62, y292) kayar; sayaç halkası 1.3 sn'de gelir.
-- Sahne 1'in ilk 1.5 sn'sinde ekran ortasına önemli görsel koyma (kategori orada). Kapatmak için `KANAL.giris = false`.
+### KATEGORİ GİRİŞİ (her videoda, kanal.js otomatik yapar — KALICI)
+- 0.00–0.30 sn: kategori yıldızı ekranın ortasında dönerek doğar; kategori renginde şok halkası + etrafa saçılan kıvılcımlar, arkada renkli yumuşak ışık ve hafif karartma.
+- 0.12–0.42 sn: yıldızın yanından hap şeklinde etiket açılır; 0.30–0.80 sn harfler tek tek aşağıdan zıplayarak gelir.
+- 0.55–1.00 sn: altında seri adı imleçle yazılır (`window.KANAL.seri`, ör. "KANUN BÖYLE DİYOR · BÖLÜM 1").
+- 1.05–1.55 sn: etiket yay çizerek, arkasında iki silik iz bırakarak sol üstteki yerine (x62, y292) uçar; oturunca yıldız bir tur döner, etiket hafifçe esner. Sayaç halkası 1.3 sn'de gelir.
+- Ses: `ses_lib.kategori_giris_ses()` → ses.py'de `M.add('sfx', kategori_giris_ses(), 0, .5)` (pop + parıltı, harf tıkları, whoosh, oturma pop'u).
+- Sahne 1'in ilk 1.5 sn'sinde ekran ortasına önemli görsel koyma. Kapatmak için `KANAL.giris = false`.
 
 ### ARKA PLAN / ATMOSFER KURALI (güncelleme, #10'dan itibaren geçerli)
 - Skill'den aldığımız şey ÇİZİM TARZIDIR (flat vektör, konturyok, rim light, glow, yuvarlak formlar). Skill'in "koyu lacivert/uzay" atmosferi varsayılan DEĞİL.

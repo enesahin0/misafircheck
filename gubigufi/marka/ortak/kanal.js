@@ -28,23 +28,46 @@
     const K_ = window.KANAL || {}, son = K_.sesSonu || 60, kat = K_.kategori || '', renk = K_.renk || '#FBAC39';
     const cik = 1 - e(son - .4, son, T);
     let o = vig;
-    // KATEGORİ GİRİŞİ: ilk ~1.5 sn kategori ekranın ortasında büyük görünür, sonra küçülüp sol üstteki yerine oturur
-    const cw = genislik(kat, '700 24px "JetBrains Mono"') + 80;
-    const giris = back(e(0, .35, T)), yer = e(1.05, 1.55, T), yk = yer < .5 ? 4 * yer * yer * yer : 1 - Math.pow(-2 * yer + 2, 3) / 2;
-    const BS = 2.7, bx = 540 - cw * BS / 2, by = 900;
-    const cx = bx + (62 - bx) * yk, cy = by + (292 - by) * yk, sc = BS + (1 - BS) * yk;
-    if (kat && T < 1.6 && K_.giris !== false) {
-      const g = (1 - yk);
-      o += `<rect width="1080" height="1920" fill="#050A1C" opacity="${.35 * g * Math.min(1, giris)}"/>`;
-      o += `<defs><radialGradient id="kGiris"><stop offset="0" stop-color="${renk}" stop-opacity=".45"/><stop offset="1" stop-color="${renk}" stop-opacity="0"/></radialGradient></defs><circle cx="${cx + cw * sc / 2}" cy="${cy}" r="${420 * g + 1}" fill="url(#kGiris)" opacity="${g}"/>`;
-      if (K_.seri) o += `<text class="mono" x="540" y="${by + 95}" font-size="30" text-anchor="middle" letter-spacing="5" opacity="${Math.min(1, giris) * (1 - e(.9, 1.15, T))}" style="fill:#FFF3D6">${K_.seri}</text>`;
+    // KATEGORİ GİRİŞİ (animasyonlu): yıldız dönerek doğar + şok halkası + kıvılcımlar → hap açılır → harfler tek tek zıplar →
+    // seri adı yazılır → 1.05 sn'de iz bırakarak sol üste uçar → yerine oturunca yıldız bir tur döner ve hafif esner
+    const cw = genislik(kat, '700 24px "JetBrains Mono"') + 80, chW = genislik('M', '700 24px "JetBrains Mono"') + 2;
+    const io = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+    const yer = e(1.05, 1.55, T), yk = io(yer);
+    const BS = 2.3, bx = 540 - cw * BS / 2, by = 900;
+    const konum = k => [bx + (62 - bx) * k, by + (292 - by) * k - Math.sin(k * Math.PI) * 120, BS + (1 - BS) * k];
+    const [cx, cy, sc] = konum(yk);
+    const girisVar = kat && K_.giris !== false;
+    const yildizK = back(e(0, .3, T)), yildizR = (1 - e(0, .35, T)) * 200 + (T > 1.55 ? (1 - e(1.55, 1.95, T)) * 360 : 0);
+    const hapK = girisVar ? io(e(.12, .42, T)) : 1;
+    const oturma = T > 1.55 && T < 1.9 ? Math.sin(e(1.55, 1.9, T) * Math.PI) * .12 : 0;
+    function cip(x, y, s, op, harfT) {
+      const w = 52 + (cw - 52) * hapK; let h = `<g opacity="${op}" transform="translate(${x} ${y}) scale(${s * (1 + oturma)} ${s * (1 - oturma)})">` +
+        `<rect x="0" y="-24" width="${w}" height="48" rx="24" fill="#0B1433" opacity="${.55 + .35 * (1 - yk)}"/>` +
+        `<g transform="translate(26 0) rotate(${yildizR}) scale(${girisVar ? yildizK : 1})"><path d="${P(0, 0, 13)}" fill="${renk}"/></g>`;
+      if (hapK > .05) { h += `<defs><clipPath id="kHap"><rect x="0" y="-30" width="${w}" height="60" rx="24"/></clipPath></defs><g clip-path="url(#kHap)">`;
+        [...kat].forEach((c, i) => { const q = harfT ? back(e(.3 + i * .035, .5 + i * .035, T)) : 1; if (q <= 0) return;
+          h += `<text class="mono" x="${50 + i * chW}" y="${9 + (1 - Math.min(1, q)) * 18}" font-size="24" opacity="${Math.min(1, q * 1.5)}" style="fill:#FFF3D6">${c === ' ' ? '&#160;' : c}</text>`; });
+        h += `</g>`; }
+      return h + `</g>`;
     }
-    const cA = Math.min(1, giris * 2) * cik;
-    if (kat && cA > 0) {
-      const gs = yer > 0 ? 1 : giris;
-      o += `<g opacity="${cA * .95}" transform="translate(${cx} ${cy}) scale(${sc * gs})"><rect x="0" y="-24" width="${cw}" height="48" rx="24" fill="#0B1433" opacity="${.55 + .35 * (1 - yk)}"/>` +
-        `<path d="${P(26, 0, 13)}" fill="${renk}"/><text class="mono" x="50" y="9" font-size="24" letter-spacing="2" style="fill:#FFF3D6">${kat}</text></g>`;
+    if (girisVar && T < 1.6) {
+      const g = 1 - yk, gp = Math.min(1, e(0, .25, T) * 1.2);
+      o += `<rect width="1080" height="1920" fill="#050A1C" opacity="${.38 * g * gp}"/>`;
+      o += `<defs><radialGradient id="kGiris"><stop offset="0" stop-color="${renk}" stop-opacity=".5"/><stop offset="1" stop-color="${renk}" stop-opacity="0"/></radialGradient></defs><circle cx="${cx + cw * sc / 2}" cy="${cy}" r="${(300 + 140 * gp) * g + 1}" fill="url(#kGiris)" opacity="${g * gp}"/>`;
+      // şok halkası + kıvılcımlar (yıldızın doğduğu yerden)
+      const sx = bx + 26 * BS, sy = by, hr = e(.05, .6, T);
+      if (hr > 0 && hr < 1) o += `<circle cx="${sx}" cy="${sy}" r="${30 + 260 * io(hr)}" fill="none" stroke="${renk}" stroke-width="${10 * (1 - hr)}" opacity="${1 - hr}"/>`;
+      for (let i = 0; i < 10; i++) { const q = e(.06 + i * .012, .7 + i * .012, T); if (q <= 0 || q >= 1) continue; const a = i / 10 * Math.PI * 2 + .4, r = 40 + 300 * io(q) * (.7 + .3 * ((i * 7) % 3) / 2);
+        o += `<path d="${P(sx + Math.cos(a) * r, sy + Math.sin(a) * r, 16 * (1 - q) + 2)}" fill="${i % 2 ? renk : '#FFF3D6'}" opacity="${1 - q}"/>`; }
+      if (K_.seri) { const sp = e(.55, 1.0, T), sk = 1 - e(.95, 1.15, T), sw = genislik(K_.seri, '700 30px "JetBrains Mono"') + 5 * K_.seri.length;
+        o += `<defs><clipPath id="kSeri"><rect x="${540 - sw / 2 - 10}" y="${by + 50}" width="${(sw + 20) * sp}" height="70"/></clipPath></defs>` +
+          `<text class="mono" x="540" y="${by + 102}" font-size="30" text-anchor="middle" letter-spacing="5" clip-path="url(#kSeri)" opacity="${sk}" style="fill:#FFF3D6">${K_.seri}</text>` +
+          (sp > 0 && sp < 1 ? `<rect x="${540 - sw / 2 + sw * sp}" y="${by + 72}" width="4" height="38" fill="${renk}" opacity="${sk}"/>` : ''); }
+      // uçuş izi: önceki konumlarda silikleşen iki kopya
+      if (yer > 0 && yer < 1) for (const [d, op] of [[.12, .25], [.24, .12]]) { const [tx, ty, ts] = konum(io(Math.max(0, yer - d))); o += cip(tx, ty, ts, op, false); }
     }
+    const cA = (girisVar ? Math.min(1, e(0, .12, T) * 1.5) : e(.15, .5, T)) * cik;
+    if (kat && cA > 0) o += cip(cx, cy, sc, cA * .95, girisVar);
     const a = e(1.3, 1.7, T) * cik;
     if (a > 0) {
       o += `<g opacity="${a * .95}"><circle cx="${TX}" cy="300" r="44" fill="#0B1433" opacity=".55"/>`;
