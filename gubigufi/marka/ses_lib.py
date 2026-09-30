@@ -338,21 +338,3 @@ def maskot_ses(kim, tip='merak'):
         }
     return _dizi(P.get(tip, P['merak']))
 
-
-# =====================================================================
-# KATEGORİ GİRİŞ SESİ — KALICI. kanal.js'teki giriş animasyonuyla senkron (t=0 video başı).
-# Kullanım: M.add('sfx', kategori_giris_ses(), 0.0, .5)
-#   0.00 yıldız doğar (yumuşak pop + parıltı) · 0.30–0.80 harfler (çok hafif tıklar)
-#   1.02 sol üste uçuş (kısa whoosh) · 1.55 yerine oturma (küçük pop)
-# =====================================================================
-def kategori_giris_ses():
-    n = int(2.2 * SR); o = np.zeros(n)
-    def ek(x, at, g):
-        i = int(at * SR); j = min(n, i + len(x)); o[i:j] += x[:j - i] * g
-    ek(pop(620, .14), .0, .6)
-    ek(bell(2637, .9, .6) * .6, .02, .35); ek(bell(3951, .7, .4) * .3, .02, .35)
-    for k in range(9):
-        ek(tick(3000 + (k % 3) * 400, .02), .3 + k * .055, .08)
-    ek(whoosh(.45, 600, 3200, .5), 1.0, .4)
-    ek(pop(880, .1), 1.55, .45)
-    return o / (np.abs(o).max() + 1e-9) * .9

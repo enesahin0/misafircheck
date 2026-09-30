@@ -10,4 +10,4 @@ window.CAP = [
   [45.86, 48.0, "O güve bugün *hâlâ,*"], [48.0, 50.38, "*Smithsonian* müzesinde, defterin sayfasında duruyor."],
   [50.8, 52.63, "Yani *\"debug\"* dediğimiz şey,"], [52.93, 54.41, "bir zamanlar *gerçekten...*"], [54.87, 56.11, "*böcek ayıklamaktı.*"],
 ];
-window.KANAL = { kategori: 'BİLİM & TEKNOLOJİ', renk: '#00C2E0', sesSonu: 56.11, seri: 'NASIL ÇALIŞIR? · BÖLÜM 1' };
+window.KANAL = { kategori: 'BİLİM & TEKNOLOJİ', renk: '#00C2E0', sesSonu: 56.11 };
