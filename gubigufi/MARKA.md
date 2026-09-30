@@ -45,11 +45,16 @@ Yere basan hiçbir şey havada durmaz: ağaç, bina, direk, masa, karakter… ze
 - Alt panel BEYAZ/açık OLMAZ; her videoda farklı OLGUN renk: petrol #1F6F78, bordo #7A2E3A, orman #1F4D3A, terrakota #A8452B, çivit #33429A, mürdüm #56264F, zeytin #58642C, kahve #5B3A29, okyanus #0F6A80…
   Izgarada ardışık kapaklar aynı rengi almaz. Panel üstünde ince vurgu şeridi; başlık krem, alt satır + etiket vurgu renginde.
 
-### VİDEO RENK KURALI (KALICI) — olgun renkler, çocuk renkleri YOK
-- Şeker pembe, neon turkuaz, limon sarısı, oyuncak mor gibi "çocuk" renkleri kullanılmaz. Aydınlık kalır ama tonlar olgun/zengin:
-  terrakota #C0583A · hardal #D8A032 · petrol #1F6F78 · mürdüm #6B3A5B · adaçayı #8FAE8B · gül kurusu #C98B8B · bordo #7A2E3A · kum #EAD7BD · krem #F6EBDD · okyanus #0F6A80 · zeytin #58642C.
-- Zeminler krem/kum/adaçayı/pastel gökyüzü gibi yumuşak ama "kirli" (hafif gri/toprak karışımlı) tonlar; vurgu 2–3 olgun renk. Maskot renkleri (Gubi amber, Gufi kırmızı) sabit kalır.
-- Koyu zemin üstündeki yazı/sayı krem, açık zemin üstündeki koyu kahve/lacivert.
+### GÖRSEL TARZ REHBERİ v3 (KALICI — kullanıcının referansları: marka/referans/stil_ref_1..5.png)
+Referans: sahil yolu + kırmızı araba, yağmur ormanı, teal mutfak, sarı salon, mavi/mor ikili sahne. Hedef bu tarz:
+1. **Sahne başına TEK RENK AİLESİ (monokrom/analog):** bütün sahne bir tonla boyanır (teal mutfak, sarı salon, yeşil orman, mavi-mor gece, gül, lavanta, kum, güneşli sahil). Doygun olabilir ama UYUMLU; üstüne 1–2 tamamlayıcı vurgu (kırmızı/pembe araba, tişört, turuncu çiçek). Rastgele "şeker renkleri" yan yana konmaz — "çocuk renkleri yok" kuralı budur.
+   Hazır tonlar: `marka/ortak/cevre.js` → `CV.ton('teal'|'sari'|'orman'|'gece'|'gunes'|'gul'|'lavanta'|'kum')` (fon1, fon2, orta, koyu, cokKoyu, acik, vurgu, vurgu2, isik, ten).
+2. **Dolu, yaşanmış mekân:** raf + kitap + vazo, lamba, saksı bitkisi, poster, tencere, pencere-perde… sahne asla boş fon + tek nesne değildir (`CV.oda`, `CV.raf`, `CV.bitki`, `CV.lamba`, `CV.poster`, `CV.tencere`).
+3. **Derinlik katmanı:** ÖNDE koyu-doygun yaprak/çalı silüetleri kenarları çerçeveler (`CV.onYaprak(T, 'alt'|'ust'|'yan')`), ortada aksiyon, ARKADA açık-ışıklı fon + ışık hüzmesi (`CV.huzme`), pus.
+4. **Organik formlar:** yuvarlak, hafif dalgalı; ot tutamı, küçük çiçek, kabarık bulut, palmiye, kaya (`CV.otTutami`, `CV.cicek`, `CV.bulut`, `CV.palmiye`, `CV.kaya`). Kontur yok.
+5. **İnsan karakterler:** büyük yuvarlak baş, kakül/atkuyruğu/uzun saç, parlamasız koyu mor NOKTA göz, pembe yanak, küçük burun, sade tişört-pantolon, kapsül kollar-bacaklar (`KS.karakter({... poz:'dur'|'selam'|'goster'})`). Gerçek kişi portreleri (`KS.kisi`) de aynı yüz diline geçti (nokta göz + yanak). Ten, sahnenin ışığına göre tonlanabilir (`T.ten`).
+6. Maskotlar (Gubi amber, Gufi kırmızı) her tonda vurgu rengi gibi öne çıkar.
+Örnek: `marka/stil_ref_ornek.png` (teal mutfak · sarı salon · yeşil orman).
 
 ### KATEGORİ ETİKETİ: hap şekli yazının GERÇEK çizilen genişliğine göre ölçülür (kanal.js svgGenislik), her kategoride tam oturur.
 
