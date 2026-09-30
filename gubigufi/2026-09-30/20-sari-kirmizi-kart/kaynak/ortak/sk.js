@@ -18,7 +18,7 @@ const SK = (() => {
     o += `<path d="M0 ${zY + 380} Q540 ${zY + 300} 1080 ${zY + 380}" stroke="#FFFFFF" stroke-width="8" fill="none" opacity=".8"/>` + R(0, zY, 1080, 10, 0, '#FFFFFF', .8);
     return o; }
   function kart(x, y, s, renk, rot = 0) { return `<g transform="translate(${x} ${y}) rotate(${rot}) scale(${s})">` + R(-60, -86, 128, 180, 14, '#000', .18) + R(-66, -92, 132, 184, 14, renk) + R(-56, -82, 40, 120, 10, '#FFFFFF', .25) + '</g>'; }
-  function oyuncu(x, y, boy, t, forma, sort = '#1B1F3A', o2 = {}) { return KS.karakter(Object.assign({ x, y, boy, t, ust: forma, alt: sort, ayakkabi: '#1B1B1B', sac: { tip: 'kisa', renk: '#2A1E14' } }, o2)); }
+  function oyuncu(x, y, boy, t, kod, i = 0, o2 = {}) { return KS.karakter(Object.assign({ x, y, boy, t }, KS.futbolcu(kod, i), o2)); }
   function kahvalti(T) { let o = CV.oda(T, { zeminY: 1250, pencere: [700, 280, 280, 340] }) + CV.cerceveResim(120, 420, 200, 150, T);
     o += R(80, 1080, 920, 40, 12, '#8E5A30') + R(120, 1120, 30, 200, 8, '#6A4020') + R(930, 1120, 30, 200, 8, '#6A4020') + CV.kupa(760, 1080, 1.2, '#E8505B', 1, 0) + `<ellipse cx="880" cy="1070" rx="70" ry="16" fill="#FFFDF6"/><rect x="840" y="1030" width="80" height="40" rx="10" fill="#E0A868"/>`;
     return o; }

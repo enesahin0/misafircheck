@@ -22,6 +22,7 @@ const HAKEM = KO.giy('gubi', [['kasket', { renk: '#1B1B1B', siper: '#000000' }],
 const KAPTAN = KO.giy('gufi', ['kaptan']);
 const ASTON = KO.giy('gufi', [['melon', { renk: '#5A4A3A', bant: '#1B1640' }], ['biyik', { renk: '#6A5A4A' }]]);
 const ARJ = '#8CC8F0', ING = '#FFFDF6';
+const JACK = { ust: '#E8E0D0', sac: { tip: 'kisa', renk: '#5A3A20' }, kiyafet: { yelek: '#5A6A8A', gomlek: '#FFFDF6' } }, BOBBY = { ust: '#FFFDF6', sac: { tip: 'kisa', renk: '#8A6A3A' }, kiyafet: { yelek: '#8A6A4A', kravat: '#7E2E3A' } };
 const seyirci = (x, y, boy, i, t) => KS.karakter(Object.assign({ x, y, boy, t, ifade: 'gulumse' }, KS.donem(1966, i)));
 """
 
@@ -55,7 +56,7 @@ S = {}
 S[1] = r"""
 $('zemin').innerHTML = SK.stadyum(0, { yazi: '— : —' });
 window.renderAt = t => {
-  let o = SK.oyuncu(200, 1500, 420, t, ARJ, '#1B1F3A', { bak: [.6, -.3] }) + SK.oyuncu(900, 1480, 400, t, ING, '#1B1F3A', { bak: [-.6, -.3], ifade: 'saskin' });
+  let o = SK.oyuncu(200, 1500, 420, t, 'ARJ1966', 0, { bak: [.6, -.3] }) + SK.oyuncu(900, 1480, 400, t, 'ING1966', 1, { bak: [-.6, -.3], ifade: 'saskin' });
   o += gubi(t, { x: 540, y: 1000, boy: 230, bakHedef: 'kamera', ust: HAKEM });
   const k = pop(t, 1.2); if (k > 0) o += grp(SK.kart(-60, 0, .6, '#FFD23F', -10) + SK.kart(60, 0, .6, '#E8323C', 10) + `<path d="M-130 -110 L130 110 M130 -110 L-130 110" stroke="#1B1B1B" stroke-width="18" stroke-linecap="round"/>`, 540, 620, k) + grp(cip('KART YOK', 0, 0, '#1B1B1B', '#FFFFFF', 30), 540, 780, k);
   [[5.2, 'HEY!', 260, 560], [5.8, 'ACHTUNG!', 820, 600], [6.3, '¡OYE!', 300, 820], [7.5, '?!', 800, 860], [8.0, '??', 540, 540]].forEach(([t0, s, x, y]) => { const p = pop(t, t0); if (p > 0) o += grp(M.balon(0, 0, txt(s, 0, 16, 44, '#1B1640'), { w: K.yaziGen(s, 44) + 90, h: 110, yon: x < 540 ? 1 : -1 }), x, y + Math.sin(t * 4 + x) * 10, p); });
@@ -67,8 +68,8 @@ window.renderAt = t => {
 S[2] = r"""
 $('zemin').innerHTML = SK.stadyum(0, { yazi: '1966' });
 window.renderAt = t => {
-  let o = SK.oyuncu(260, 1560, 460, t, ING, '#1B1F3A', { bak: [.6, -.2] }) + SK.oyuncu(820, 1560, 460, t, ARJ, '#1B1F3A', { bak: [-.6, -.2] });
-  o += seyirci(120, 1880, 520, 0, t) + seyirci(960, 1880, 520, 3, t);
+  let o = SK.oyuncu(260, 1560, 460, t, 'ING1966', 0, { bak: [.6, -.2] }) + SK.oyuncu(820, 1560, 460, t, 'ARJ1966', 1, { bak: [-.6, -.2] });
+  o += SK.oyuncu(120, 1880, 520, t, 'ING1966', 2, { bak: [.4, -.4] }) + SK.oyuncu(960, 1880, 520, t, 'ARJ1966', 3, { bak: [-.4, -.4] });
   const c = pop(t, .3); if (c > 0) o += grp(cip('1966 · DÜNYA KUPASI', 0, 0, '#1B1F3A', '#FFE45C', 34), 540, 620, c);
   const f = pop(t, 2.4); if (f > 0) o += grp(`<rect x="-80" y="-50" width="160" height="100" fill="#FFFDF6"/><rect x="-80" y="-12" width="160" height="24" fill="#C8232F"/><rect x="-12" y="-50" width="24" height="100" fill="#C8232F"/>`, 260, 1000, f) + grp(`<rect x="-80" y="-50" width="160" height="100" fill="#8CC8F0"/><rect x="-80" y="-17" width="160" height="34" fill="#FFFDF6"/><circle cx="0" cy="0" r="12" fill="#F2B82A"/>`, 820, 1000, f) + grp(cip('VS', 0, 0, MAV, '#FFFFFF', 34), 540, 1000, f);
   o += gubi(t, { x: 540, y: 820, boy: 200, bakHedef: 'kamera', ust: HAKEM });
@@ -79,7 +80,7 @@ window.renderAt = t => {
 S[3] = r"""
 $('zemin').innerHTML = SK.stadyum(0, { yazi: 'İNG 0 · 0 ARJ' });
 window.renderAt = t => {
-  let o = SK.oyuncu(900, 1500, 400, t, ING, '#1B1F3A', { bak: [-.6, -.2], ifade: 'saskin' });
+  let o = SK.oyuncu(900, 1500, 400, t, 'ARJ1966', 0, { bak: [-.6, -.2], ifade: 'saskin' });
   o += gubi(t, { x: 300, y: 950, boy: 240, bakHedef: [700, 1500], isaretHedef: [1080, 1300], ust: HAKEM });
   o += gufi(t, { x: 700, y: 1780, boy: 290, bakHedef: [300, 950], ust: KAPTAN });
   const b1 = pop(t, 1.8), b2 = pop(t, 4.4), b3 = pop(t, 6.5);
@@ -103,8 +104,7 @@ const T = CV.ton('seftali');
 $('zemin').innerHTML = SK.kahvalti(T);
 window.renderAt = t => {
   const sas = t > 4.8;
-  let o = seyirci(300, 1560, 560, 0, t).replace(/ifade/g, 'ifade') + seyirci(780, 1560, 560, 2, t);
-  o = KS.karakter(Object.assign({ x: 300, y: 1560, boy: 560, t, ifade: sas ? 'saskin' : 'notr', bak: [.5, -.3] }, KS.donem(1966, 0))) + KS.karakter(Object.assign({ x: 780, y: 1560, boy: 560, t, ifade: sas ? 'saskin' : 'notr', bak: [-.5, -.3] }, KS.donem(1966, 2)));
+  let o = KS.karakter(Object.assign({ x: 300, y: 1560, boy: 560, t, ifade: sas ? 'saskin' : 'notr', bak: [.5, -.3] }, JACK)) + KS.karakter(Object.assign({ x: 780, y: 1560, boy: 560, t, ifade: sas ? 'saskin' : 'notr', bak: [-.5, -.3] }, BOBBY));
   o += SK.gazete(540, 1120, .45, -4, "CHARLTON'LARA UYARI!", 'Kardeşler gazeteden öğrendi');
   const c = pop(t, .3); if (c > 0) o += grp(cip('ERTESİ SABAH', 0, 0, '#1B1F3A', '#FFE45C', 30), 540, 420, c);
   const j = pop(t, 5.0); if (j > 0) o += grp(cip('JACK', 0, 0, ING, '#1B1640', 26), 300, 880, j) + grp(cip('BOBBY', 0, 0, ING, '#1B1640', 26), 780, 880, j);
@@ -146,7 +146,7 @@ S[8] = r"""
 $('zemin').innerHTML = SK.stadyum(0, { yazi: 'KARTLAR' });
 window.renderAt = t => {
   let o = '';
-  [['#FFD23F', '#3FA35A', 150], ['#2E4A9A', '#FFFDF6', 390], ['#FFFDF6', '#C8232F', 690], ['#E8505B', '#1B1B1B', 930]].forEach(([f, s, x], i) => { o += SK.oyuncu(x, 1600, 380, t, f, s, { bak: [(540 - x) / 500, -.5], ifade: t > 1.2 ? 'gulumse' : 'saskin' }); const p = pop(t, 1.2 + i * .15); if (p > 0) o += grp(txt('✓', 0, 0, 80, '#3FA35A'), x, 1080, p); });
+  [['BRE1970', 0, 150], ['ITA1970', 0, 390], ['MEK1970', 0, 690], ['FRG1966', 0, 930]].forEach(([f, s, x], i) => { o += SK.oyuncu(x, 1600, 380, t, f, i, { bak: [(540 - x) / 500, -.5], ifade: t > 1.2 ? 'gulumse' : 'saskin' }); const p = pop(t, 1.2 + i * .15); if (p > 0) o += grp(txt('✓', 0, 0, 80, '#3FA35A'), x, 1080, p); });
   o += gubi(t, { x: 540, y: 820, boy: 210, bakHedef: 'kamera', ust: HAKEM }) + SK.kart(380, 800, .8, '#FFD23F', -12) + SK.kart(700, 800, .8, '#E8323C', 12);
   const c = pop(t, .3); if (c > 0) o += grp(cip('DİL GEREKMEZ', 0, 0, MAV, '#FFFFFF', 36), 540, 540, c);
   $('dinamik').innerHTML = o;
@@ -155,7 +155,7 @@ window.renderAt = t => {
 S[9] = r"""
 $('zemin').innerHTML = SK.stadyum(0, { yazi: 'MEKSİKA 1970', gok: '#7ACFF0', gunes: true, sombrero: true, donem: 1970 });
 window.renderAt = t => {
-  let o = SK.oyuncu(760, 1580, 460, t, '#C8232F', '#FFFDF6', { bak: [-.6, -.3], ifade: t > 5.4 ? 'saskin' : 'notr', sac: { tip: 'kisa', renk: '#8A6A3A' } });
+  let o = SK.oyuncu(760, 1580, 460, t, 'SSCB1970', 0, { bak: [-.6, -.3], ifade: t > 5.4 ? 'saskin' : 'notr', sac: { tip: 'kisa', renk: '#8A6A3A' } });
   o += `<text x="760" y="1310" font-size="34" font-weight="900" text-anchor="middle" style="fill:#FFD23F">CCCP</text>`;
   const c = pop(t, .3); if (c > 0) o += grp(cip('1970 · MEKSİKA', 0, 0, '#3FA35A', '#FFFFFF', 34), 540, 620, c);
   if (t > 5.2) o += SK.kart(430, 820, 1.0, '#FFD23F', -8);

@@ -270,3 +270,11 @@ Tarihli bir olay anlatılırken o sahnelerin ön ve arka planındaki insanlar an
 - **1980–1999:** Canlı süveterler, atkuyruğu, arada takım elbise.
 - **2000 sonrası:** Günümüz kıyafeti (varsayılan).
 - Yeni bir dönem ya da coğrafya gerekirse (ör. Osmanlı çarşısı, Viktorya dönemi Londra) `kisi.js` `kiyafet` seçenekleriyle özel kıyafet çizilir. Maskotların kostümleri de döneme uydurulabilir: `KO.giy`.
+
+## TEMSİL + DÖNEM GERÇEKÇİLİĞİ KURALI (kullanıcı: "bunu her seferinde söylemeyeyim")
+- Her kişi **neyi temsil ediyorsa öyle görünür ve öyle davranır**: futbolcu futbolcu gibi, aşçı aşçı gibi, asker asker gibi… Sokak kıyafetiyle "rol" verilmez.
+- **Futbolcular:** asla pantolon yok. Her zaman `KS.futbolcu('TAKIMYIL', i)` (kisi.js TAKIM tablosu) kullanılır. Kısa şort, konç, krampon, **takımın o yılki forma renkleri/çizgileri** (ör. Arjantin 1966 açık mavi-beyaz dikey çizgi + siyah şort). Tabloda olmayan takım → önce TAKIM'a eklenir (renkler kaynağa bakılarak).
+- **Dönemin toplumsal gerçekliği:** o yıl/olayda olmayan şey çizilmez. Ör. 1966–1974 erkek Dünya Kupası sahnesinde kadın futbolcu yok. Kalabalık/seyirci sahada durmaz, tribünde olur.
+- Bir olay anlatılırken **çevresel koşullar** o olaya göre kurulur: yıl, ülke, şehir görüntüsü (bina tipi, araçlar, tabelalar), iklim/ışık, kültür (şapkalar, yiyecekler, müzik), giyim. Genel/"modern" varsayılan çizim kullanılmaz.
+- Gerçek kişiler (ör. Charlton kardeşler) cinsiyet/yaş/rol olarak doğru çizilir. `KS.donem(yıl, i)` rastgele kadın/erkek döndürebilir → belirli kişi için kullanılmaz.
+- `--inceleme` rubriğine her videoda **"Temsil & dönem"** maddesi eklenir: her kişi rolüne ve yılına uygun mu?

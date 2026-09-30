@@ -14,3 +14,8 @@
 
 ## Tur 2
 Tüm kriterler ≥ 8. Determinizm TAMAM ✓.
+
+## Tur 3 — kullanıcı geri bildirimi (futbolcu giysisi)
+| Kriter | Önce | Sonra | Düzeltme |
+|---|---:|---|---|
+| Temsil & dönem | 4 | 9 | Pantolonlu futbolcular → KS.futbolcu: ARJ1966 çizgili, ING1966, BRE/ITA/MEK 1970, FRG1966, SSCB1970; sahadaki seyirciler (biri kadın) → futbolcu; Charlton kardeşler iki erkek (yelek/kravat, 1966 ev giysisi); Rattín sahnesinde atılan oyuncu artık Arjantin formalı |

@@ -84,7 +84,7 @@ const KS = (() => {
   // TAM BOY KARAKTER (referans tarz: büyük yuvarlak baş, kakül, nokta göz, yanak, sade gövde, kapsül kollar/bacaklar)
   // poz: 'dur' | 'selam' (sağ kol yukarı) | 'goster' (sağ kol yana) | 'otur'. x,y = ayak tabanı ortası; boy = toplam boy
   function karakter({ x = 540, y = 1400, boy = 700, ten = '#F7B8A4', sac = { tip: 'kakul', renk: '#1B1F5E' }, ust = '#E8505B', alt = '#1B1F5E', ayakkabi = '#FFFFFF', poz = 'dur', t = 0, bak = [0, 0], ifade = 'notr', gozRenk = '#3A2350', adim = null, biyik = null, yon = 1, kiyafet = {} } = {}) {
-    const KY = Object.assign({ ceket: null, gomlek: '#FFFDF6', kravat: null, yelek: null, etek: null, etekBoy: 'uzun', sapka: null, sapkaRenk: '#2A2440' }, kiyafet);
+    const KY = Object.assign({ ceket: null, gomlek: '#FFFDF6', kravat: null, yelek: null, etek: null, etekBoy: 'uzun', sapka: null, sapkaRenk: '#2A2440', forma: null }, kiyafet);
     const s = boy / 700, hx = x, hy = y - 560 * s, hr = 118 * s, tenK = '#E0957E';
     let o = `<ellipse cx="${x}" cy="${y + 4}" rx="${120 * s}" ry="${18 * s}" fill="#000" opacity=".15"/>`;
     const kap = (x1, y1, x2, y2, w, r) => `<path d="M${x1} ${y1} L${x2} ${y2}" stroke="${r}" stroke-width="${w}" stroke-linecap="round"/>`;
@@ -93,13 +93,31 @@ const KS = (() => {
     if (sac.tip === 'atkuyrugu') o += `<path d="M${hx + hr * .8} ${hy - hr * .5} Q${hx + hr * 1.9} ${hy - hr * .6} ${hx + hr * 1.7} ${hy + hr * .5} Q${hx + hr * 1.3} ${hy} ${hx + hr * .9} ${hy - hr * .1}Z" fill="${sac.renk}"/>`;
     // bacaklar
     const ad = adim != null ? Math.sin(adim) * 60 * s : (poz === 'otur' ? 0 : Math.sin(t * 2) * 2);  // adim: yürüme fazı
+    const FR = KY.forma;
+    if (FR) {  // FUTBOLCU: diz üstü şort, çıplak diz, konç (bant), krampon
+      const bacak = (sx, a) => { const x1 = x + sx * 34 * s, x2 = x + sx * 38 * s + a, L = (k) => [x1 + (x2 - x1) * k, (y - 250 * s) + ((y - 20 * s) - (y - 250 * s)) * k];
+        const [cx0, cy0] = L(.55);
+        return kap(x1, y - 250 * s, x2, y - 20 * s, 40 * s, ten) + kap(cx0, cy0, x2, y - 24 * s, 44 * s, FR.corap || '#FFFFFF') + (FR.corapSerit ? `<path d="M${L(.57)[0]} ${L(.57)[1]} L${L(.61)[0]} ${L(.61)[1]}" stroke="${FR.corapSerit}" stroke-width="${44 * s}"/>` : ''); };
+      o += bacak(-1, ad) + bacak(1, -ad);
+      o += `<path d="M${x - 100 * s} ${y - 250 * s} L${x - 108 * s} ${y - 150 * s} L${x - 6 * s} ${y - 150 * s} L${x} ${y - 190 * s} L${x + 6 * s} ${y - 150 * s} L${x + 108 * s} ${y - 150 * s} L${x + 100 * s} ${y - 250 * s}Z" fill="${FR.sort || alt}"/>`;
+      for (const [sx, a] of [[-1, ad], [1, -ad]]) { const fx = x + sx * 44 * s + a; o += `<path d="M${fx - 36 * s} ${y - 4 * s} Q${fx - 36 * s} ${y - 34 * s} ${fx} ${y - 32 * s} Q${fx + 38 * s} ${y - 30 * s} ${fx + 38 * s} ${y - 4 * s}Z" fill="${FR.krampon || '#1B1B1B'}"/>` + [-20, 0, 20].map(d => `<rect x="${fx + d * s - 4 * s}" y="${y - 5 * s}" width="${8 * s}" height="${8 * s}" rx="${2 * s}" fill="#8A8A8A"/>`).join(''); }
+    } else {
     o += kap(x - 34 * s, y - 250 * s, x - 38 * s + ad, y - 20 * s, 44 * s, alt) + kap(x + 34 * s, y - 250 * s, x + 38 * s - ad, y - 20 * s, 44 * s, alt);
     o += `<ellipse cx="${x - 44 * s + ad}" cy="${y - 10 * s}" rx="${34 * s}" ry="${18 * s}" fill="${ayakkabi}"/><ellipse cx="${x + 44 * s - ad}" cy="${y - 10 * s}" rx="${34 * s}" ry="${18 * s}" fill="${ayakkabi}"/>`;
+    }
     // etek (dönem): bacakları örter — uzun (bilek) / diz
     if (KY.etek) { const ey = KY.etekBoy === 'uzun' ? y - 24 * s : y - 150 * s; o += `<path d="M${x - 80 * s} ${y - 250 * s} L${x - (KY.etekBoy === 'uzun' ? 150 : 120) * s} ${ey} Q${x} ${ey + 16 * s} ${x + (KY.etekBoy === 'uzun' ? 150 : 120) * s} ${ey} L${x + 80 * s} ${y - 250 * s}Z" fill="${KY.etek}"/><path d="M${x + 20 * s} ${y - 250 * s} L${x + 60 * s} ${ey + 6 * s}" stroke="#000" stroke-opacity=".08" stroke-width="${14 * s}"/>`; }
     // gövde (tişört)
     o += `<path d="M${x - 95 * s} ${y - 230 * s} Q${x - 105 * s} ${y - 420 * s} ${x - 60 * s} ${y - 440 * s} L${x + 60 * s} ${y - 440 * s} Q${x + 105 * s} ${y - 420 * s} ${x + 95 * s} ${y - 230 * s}Z" fill="${ust}"/>`;
     o += `<path d="M${x + 30 * s} ${y - 440 * s} L${x + 60 * s} ${y - 440 * s} Q${x + 105 * s} ${y - 420 * s} ${x + 95 * s} ${y - 230 * s} L${x + 60 * s} ${y - 230 * s}Z" fill="#FFFFFF" opacity=".12"/>`;
+    if (FR) { const gv = `M${x - 95 * s} ${y - 230 * s} Q${x - 105 * s} ${y - 420 * s} ${x - 60 * s} ${y - 440 * s} L${x + 60 * s} ${y - 440 * s} Q${x + 105 * s} ${y - 420 * s} ${x + 95 * s} ${y - 230 * s}Z`, fid = 'fr' + Math.round(x) + '_' + Math.round(y) + '_' + Math.round(boy);
+      let d = '';
+      if (FR.serit && FR.seritTip !== 'yatay') for (let k = -3; k <= 3; k += 2) d += `<rect x="${x + k * 26 * s - 13 * s}" y="${y - 450 * s}" width="${26 * s}" height="${230 * s}" fill="${FR.serit}"/>`;
+      if (FR.serit && FR.seritTip === 'yatay') for (let k = 0; k < 4; k++) d += `<rect x="${x - 110 * s}" y="${y - (420 - k * 55) * s}" width="${220 * s}" height="${26 * s}" fill="${FR.serit}"/>`;
+      if (FR.bant) d += `<rect x="${x - 110 * s}" y="${y - 370 * s}" width="${220 * s}" height="${40 * s}" fill="${FR.bant}"/>`;
+      o += `<defs><clipPath id="${fid}"><path d="${gv}"/></clipPath></defs><g clip-path="url(#${fid})">${d}<path d="M${x - 95 * s} ${y - 250 * s} L${x + 95 * s} ${y - 250 * s} L${x + 95 * s} ${y - 225 * s} L${x - 95 * s} ${y - 225 * s}Z" fill="#000" opacity=".08"/></g>`;
+      o += `<path d="M${x - 34 * s} ${y - 441 * s} Q${x} ${y - 400 * s} ${x + 34 * s} ${y - 441 * s}" stroke="${FR.yaka || FR.serit || '#FFFFFF'}" stroke-width="${10 * s}" fill="none" stroke-linecap="round"/>`;
+      if (FR.no) o += `<text x="${x - 45 * s}" y="${y - 350 * s}" font-size="${40 * s}" font-weight="900" text-anchor="middle" style="fill:${FR.noRenk || '#1B1B1B'}">${FR.no}</text>`; }
     // ceket / yelek / kravat (dönem)
     if (KY.ceket || KY.yelek) { const c = KY.ceket || KY.yelek;
       o += `<path d="M${x - 97 * s} ${y - 220 * s} Q${x - 107 * s} ${y - 420 * s} ${x - 62 * s} ${y - 442 * s} L${x - 18 * s} ${y - 442 * s} L${x} ${y - 330 * s} L${x + 18 * s} ${y - 442 * s} L${x + 62 * s} ${y - 442 * s} Q${x + 107 * s} ${y - 420 * s} ${x + 97 * s} ${y - 220 * s}Z" fill="${c}"/>`;
@@ -118,6 +136,8 @@ const KS = (() => {
     if (KY.ceket) { const kc = KY.ceket, ara = (a, b, k) => [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k];
       o += kap(omz[0][0], omz[0][1], ...ara(omz[0], solEl2, .8), 42 * s, kc) + kap(omz[1][0], omz[1][1], ...ara(omz[1], sagEl, .8), 42 * s, kc) + `<circle cx="${solEl2[0]}" cy="${solEl2[1]}" r="${20 * s}" fill="${ten}"/><circle cx="${sagEl[0]}" cy="${sagEl[1]}" r="${20 * s}" fill="${ten}"/>`; }
     else o += kap(omz[0][0], omz[0][1], solEl2[0], solEl2[1], 38 * s, ten) + kap(omz[1][0], omz[1][1], sagEl[0], sagEl[1], 38 * s, ten);
+    if (FR) { const ara = (a, b, k) => [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k], kk = FR.uzunKol ? .92 : .45, kr = FR.kol || ust;
+      o += kap(omz[0][0], omz[0][1], ...ara(omz[0], solEl2, kk), 44 * s, kr) + kap(omz[1][0], omz[1][1], ...ara(omz[1], sagEl, kk), 44 * s, kr); }
 
     o += `<circle cx="${omz[0][0]}" cy="${omz[0][1] + 10 * s}" r="${30 * s}" fill="${KY.ceket || ust}"/><circle cx="${omz[1][0]}" cy="${omz[1][1] + 10 * s}" r="${30 * s}" fill="${KY.ceket || ust}"/>`;
     // boyun + baş
@@ -162,5 +182,25 @@ const KS = (() => {
     if (yil < 2000) return { ust: sec(['#8A6FE0', '#2E9A9C', '#E8505B', '#FFB44C']), alt: sec(['#3A5A8C', '#2A2440']), ayakkabi: '#FFFFFF', sac: { tip: k ? 'kisa' : 'atkuyrugu', renk: sec(['#3A2A20', '#1B1410']) }, kiyafet: k && i % 3 === 0 ? { ceket: '#4A4A5A', kravat: '#E8505B' } : {} };
     return {};
   }
-  return { kisi, karakter, TEN, donem };
+  // TAKIM FORMALARI — futbolcu çizerken HER ZAMAN bunu kullan (pantolon YOK): KS.karakter(Object.assign({x,y,boy,t}, KS.futbolcu('ARJ1966', i)))
+  //   forma: { serit, seritTip: 'dikey'|'yatay', sort, corap, corapSerit, yaka, kol, uzunKol, bant, no }
+  const TAKIM = {
+    ARJ1966: { ust: '#8CC8F0', forma: { serit: '#FFFFFF', sort: '#1B1B1B', corap: '#1B1B1B', yaka: '#1B1B1B' } },
+    ING1966: { ust: '#FFFDF6', forma: { sort: '#1B2250', corap: '#FFFDF6', yaka: '#1B2250', corapSerit: '#C8232F' } },
+    FRG1966: { ust: '#FFFDF6', forma: { sort: '#1B1B1B', corap: '#FFFDF6', yaka: '#1B1B1B', corapSerit: '#1B1B1B' } },
+    BRE1970: { ust: '#FFD23F', forma: { sort: '#2350A8', corap: '#FFFDF6', yaka: '#2FA05A', kol: '#FFD23F' } },
+    ITA1970: { ust: '#2E6AC8', forma: { sort: '#FFFDF6', corap: '#2E6AC8', yaka: '#FFFDF6' } },
+    MEK1970: { ust: '#1F8A4A', forma: { sort: '#FFFDF6', corap: '#C8232F', yaka: '#FFFDF6' } },
+    SSCB1970: { ust: '#C8232F', forma: { sort: '#FFFDF6', corap: '#C8232F', yaka: '#FFFDF6' } },
+    SIL1974: { ust: '#C8232F', forma: { sort: '#1B3A8A', corap: '#FFFDF6', yaka: '#FFFDF6' } },
+    FRG1974: { ust: '#FFFDF6', forma: { sort: '#1B1B1B', corap: '#FFFDF6', yaka: '#1B1B1B' } },
+    HOL1974: { ust: '#F28A1E', forma: { sort: '#FFFDF6', corap: '#F28A1E', yaka: '#1B1B1B' } },
+  };
+  function futbolcu(kod, i = 0, ek = {}) {
+    const T = TAKIM[kod] || TAKIM.ING1966, sec = a => a[i % a.length];
+    // dönem: 1966–1974 kısa saç/favori, bıyık bazen; futbolcu = ERKEK (kadın futbolu ayrı konu değilse)
+    return Object.assign({ ust: T.ust, ayakkabi: '#1B1B1B', ten: sec(['#F7B8A4', '#E8B08A', '#F2C6A0', '#C88A60']), sac: { tip: 'kisa', renk: sec(['#2A1E14', '#5A3A20', '#1B1410', '#8A6A3A']) }, biyik: /1970|1974/.test(kod) && i % 3 === 1 ? '#2A1E14' : null,
+      kiyafet: { forma: Object.assign({}, T.forma, ek) } });
+  }
+  return { kisi, karakter, TEN, donem, futbolcu, TAKIM };
 })();

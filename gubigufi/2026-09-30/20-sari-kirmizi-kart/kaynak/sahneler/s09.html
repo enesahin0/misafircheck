@@ -24,11 +24,12 @@ const HAKEM = KO.giy('gubi', [['kasket', { renk: '#1B1B1B', siper: '#000000' }],
 const KAPTAN = KO.giy('gufi', ['kaptan']);
 const ASTON = KO.giy('gufi', [['melon', { renk: '#5A4A3A', bant: '#1B1640' }], ['biyik', { renk: '#6A5A4A' }]]);
 const ARJ = '#8CC8F0', ING = '#FFFDF6';
+const JACK = { ust: '#E8E0D0', sac: { tip: 'kisa', renk: '#5A3A20' }, kiyafet: { yelek: '#5A6A8A', gomlek: '#FFFDF6' } }, BOBBY = { ust: '#FFFDF6', sac: { tip: 'kisa', renk: '#8A6A3A' }, kiyafet: { yelek: '#8A6A4A', kravat: '#7E2E3A' } };
 const seyirci = (x, y, boy, i, t) => KS.karakter(Object.assign({ x, y, boy, t, ifade: 'gulumse' }, KS.donem(1966, i)));
 
 $('zemin').innerHTML = SK.stadyum(0, { yazi: 'MEKSİKA 1970', gok: '#7ACFF0', gunes: true, sombrero: true, donem: 1970 });
 window.renderAt = t => {
-  let o = SK.oyuncu(760, 1580, 460, t, '#C8232F', '#FFFDF6', { bak: [-.6, -.3], ifade: t > 5.4 ? 'saskin' : 'notr', sac: { tip: 'kisa', renk: '#8A6A3A' } });
+  let o = SK.oyuncu(760, 1580, 460, t, 'SSCB1970', 0, { bak: [-.6, -.3], ifade: t > 5.4 ? 'saskin' : 'notr', sac: { tip: 'kisa', renk: '#8A6A3A' } });
   o += `<text x="760" y="1310" font-size="34" font-weight="900" text-anchor="middle" style="fill:#FFD23F">CCCP</text>`;
   const c = pop(t, .3); if (c > 0) o += grp(cip('1970 · MEKSİKA', 0, 0, '#3FA35A', '#FFFFFF', 34), 540, 620, c);
   if (t > 5.2) o += SK.kart(430, 820, 1.0, '#FFD23F', -8);

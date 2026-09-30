@@ -24,12 +24,13 @@ const HAKEM = KO.giy('gubi', [['kasket', { renk: '#1B1B1B', siper: '#000000' }],
 const KAPTAN = KO.giy('gufi', ['kaptan']);
 const ASTON = KO.giy('gufi', [['melon', { renk: '#5A4A3A', bant: '#1B1640' }], ['biyik', { renk: '#6A5A4A' }]]);
 const ARJ = '#8CC8F0', ING = '#FFFDF6';
+const JACK = { ust: '#E8E0D0', sac: { tip: 'kisa', renk: '#5A3A20' }, kiyafet: { yelek: '#5A6A8A', gomlek: '#FFFDF6' } }, BOBBY = { ust: '#FFFDF6', sac: { tip: 'kisa', renk: '#8A6A3A' }, kiyafet: { yelek: '#8A6A4A', kravat: '#7E2E3A' } };
 const seyirci = (x, y, boy, i, t) => KS.karakter(Object.assign({ x, y, boy, t, ifade: 'gulumse' }, KS.donem(1966, i)));
 
 $('zemin').innerHTML = SK.stadyum(0, { yazi: '1966' });
 window.renderAt = t => {
-  let o = SK.oyuncu(260, 1560, 460, t, ING, '#1B1F3A', { bak: [.6, -.2] }) + SK.oyuncu(820, 1560, 460, t, ARJ, '#1B1F3A', { bak: [-.6, -.2] });
-  o += seyirci(120, 1880, 520, 0, t) + seyirci(960, 1880, 520, 3, t);
+  let o = SK.oyuncu(260, 1560, 460, t, 'ING1966', 0, { bak: [.6, -.2] }) + SK.oyuncu(820, 1560, 460, t, 'ARJ1966', 1, { bak: [-.6, -.2] });
+  o += SK.oyuncu(120, 1880, 520, t, 'ING1966', 2, { bak: [.4, -.4] }) + SK.oyuncu(960, 1880, 520, t, 'ARJ1966', 3, { bak: [-.4, -.4] });
   const c = pop(t, .3); if (c > 0) o += grp(cip('1966 · DÜNYA KUPASI', 0, 0, '#1B1F3A', '#FFE45C', 34), 540, 620, c);
   const f = pop(t, 2.4); if (f > 0) o += grp(`<rect x="-80" y="-50" width="160" height="100" fill="#FFFDF6"/><rect x="-80" y="-12" width="160" height="24" fill="#C8232F"/><rect x="-12" y="-50" width="24" height="100" fill="#C8232F"/>`, 260, 1000, f) + grp(`<rect x="-80" y="-50" width="160" height="100" fill="#8CC8F0"/><rect x="-80" y="-17" width="160" height="34" fill="#FFFDF6"/><circle cx="0" cy="0" r="12" fill="#F2B82A"/>`, 820, 1000, f) + grp(cip('VS', 0, 0, MAV, '#FFFFFF', 34), 540, 1000, f);
   o += gubi(t, { x: 540, y: 820, boy: 200, bakHedef: 'kamera', ust: HAKEM });
