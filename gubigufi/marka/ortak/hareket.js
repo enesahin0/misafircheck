@@ -28,6 +28,10 @@ const FX = (() => {
     inBack: (x, s = 1.70158) => (s + 1) * x * x * x - s * x * x,
   };
   const yay = (x, frek = 18, sonum = 8) => x <= 0 ? 0 : 1 - Math.exp(-sonum * x) * Math.cos(frek * x);
+  // amaca göre kapalı-form yay ayarları (axertha motion-language): cabuk = düğme/imleç geri bildirimi, normal = kart/panel/kamera,
+  // agir = büyük yazı/kahraman nesne/logo, oyuncu = maskot/çıkartma (görünür taşma). FX.yayTip(t - t0, 'agir')
+  const YAY = { cabuk: [26, 14], normal: [18, 8], agir: [10, 6], oyuncu: [16, 4.5] };
+  const yayTip = (x, tip = 'normal') => yay(x, ...(YAY[tip] || YAY.normal));
   const sallan = (x, frek = 19, sonum = 7) => x < 0 ? 0 : Math.exp(-sonum * x) * Math.cos(frek * x);
   const hash = n => { const s = Math.sin(n * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s); };
   const gurultu = x => { const i = Math.floor(x), f = x - i, u = f * f * (3 - 2 * f); return lerp(hash(i), hash(i + 1), u) * 2 - 1; };
@@ -102,5 +106,5 @@ const FX = (() => {
   }
   // soğan kabuğu izi: hızlı hareket eden nesnenin arkasında silikleşen kopyalar. ciz(t) → svg
   function sogan(ciz, t, { adet = 3, aralik = .03, op = .25 } = {}) { let o = ''; for (let i = adet; i >= 1; i--) o += `<g opacity="${op * (1 - i / (adet + 1))}">${ciz(t - i * aralik)}</g>`; return o + ciz(t); }
-  return { E, yay, sallan, hash, gurultu, sarsinti, egikSilme, seritSilme, daireOrtu, gecis, flas, sokHalkasi, maskeliYazi, harfHarf, ustunuCiz, sayac, dalgaNoktalar, sogan, ar, cl, lerp };
+  return { E, yay, yayTip, YAY, sallan, hash, gurultu, sarsinti, egikSilme, seritSilme, daireOrtu, gecis, flas, sokHalkasi, maskeliYazi, harfHarf, ustunuCiz, sayac, dalgaNoktalar, sogan, ar, cl, lerp };
 })();

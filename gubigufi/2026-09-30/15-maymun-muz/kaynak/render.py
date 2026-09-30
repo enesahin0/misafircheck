@@ -9,6 +9,7 @@ Kullanım:
   python render.py plan.json --birlestir      # render edilmiş parçaları birleştir + sesi ekle
   python render.py plan.json --onizleme       # yarım çözünürlük, 12 fps (hızlı kontrol)
   python render.py plan.json --kare 3 2.5     # 3. sahnenin 2.5. saniyesinden tek PNG (görsel kontrol)
+  python render.py plan.json --inceleme       # kontak föyü (her sahneden 2 kare) + determinizm kontrolü → inceleme/
 
 plan.json:
 {
@@ -122,10 +123,35 @@ def birlestir(plan, kok, parca_dir, onizleme):
     print(f"✅ Video hazır: {cikti}")
     return cikti
 
+async def inceleme(pw, plan, kok, w, h):
+    """Kontak föyü + determinizm kontrolü (axertha 'still review' + 'determinism check' uyarlaması).
+    Her sahneden %30 ve %75 anlarında kare alır → inceleme/kontak.png; 3 kareyi iki kez render edip hash karşılaştırır."""
+    import hashlib
+    d = kok / "inceleme"; d.mkdir(exist_ok=True)
+    kareler = []
+    for i, s in enumerate(plan["sahneler"], 1):
+        L = s["bitis"] - s["baslangic"]
+        for oran in (.3, .75):
+            t = round(L * oran, 2); out = d / f"s{i:02d}_{int(oran*100):02d}.png"
+            await tek_kare(pw, kok / s["dosya"], t, w, h, out, L); kareler.append(out)
+    n = len(kareler); sut = 8; sat = (n + sut - 1) // sut
+    girdi = []; [girdi.extend(["-i", str(k)]) for k in kareler]
+    f = "".join(f"[{j}]scale=180:320[v{j}];" for j in range(n)) + "".join(f"[v{j}]" for j in range(n)) + f"xstack=inputs={n}:layout=" + "|".join(f"{(j % sut) * 180}_{(j // sut) * 320}" for j in range(n)) + ":fill=black"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *girdi, "-filter_complex", f, str(d / "kontak.png")], check=True)
+    # determinizm: aynı an iki kez → aynı piksel
+    sorun = []
+    for i in sorted({1, len(plan["sahneler"]) // 2, len(plan["sahneler"]) - 1}):
+        s = plan["sahneler"][i - 1]; L = s["bitis"] - s["baslangic"]; t = round(L * .5, 2); hs = []
+        for k in (1, 2):
+            out = d / f"_det_{i}_{k}.png"; await tek_kare(pw, kok / s["dosya"], t, w, h, out, L); hs.append(hashlib.md5(out.read_bytes()).hexdigest()); out.unlink()
+        if hs[0] != hs[1]: sorun.append(f"sahne {i} @ {t}s")
+    print(f"Kontak föyü: {d / 'kontak.png'}  ({n} kare)")
+    print("Determinizm: " + ("TAMAM ✓" if not sorun else "FARKLI ✗ → " + ", ".join(sorun)))
+
 async def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("plan"); ap.add_argument("--sahne"); ap.add_argument("--birlestir", action="store_true")
-    ap.add_argument("--onizleme", action="store_true"); ap.add_argument("--kare", nargs=2, metavar=("SAHNE","SANIYE"))
+    ap.add_argument("--onizleme", action="store_true"); ap.add_argument("--kare", nargs=2, metavar=("SAHNE","SANIYE")); ap.add_argument("--inceleme", action="store_true")
     a = ap.parse_args()
     plan, kok = yukle(a.plan)
     from playwright.async_api import async_playwright
@@ -135,6 +161,8 @@ async def main():
     parca_dir = kok / ("_parcalar_onizleme" if a.onizleme else "_parcalar"); parca_dir.mkdir(exist_ok=True)
 
     async with async_playwright() as pw:
+        if a.inceleme:
+            await inceleme(pw, plan, kok, w, h); return
         if a.kare:
             s = plan["sahneler"][int(a.kare[0])-1]
             out = kok / f"kare_s{int(a.kare[0]):02d}_{a.kare[1]}s.png"

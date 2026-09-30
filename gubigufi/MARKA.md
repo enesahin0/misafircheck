@@ -230,3 +230,38 @@ Sahneyi büyütmek (amatör zoom) YASAK. Detay plan, anlatıda önemli olan nesn
 - ANLATI PLANLAMASI: Metin yazılırken detay planlar baştan düşünülür. Detay plana denk gelen cümle, o nesneyi anlatan tek ve kısa bir cümle olur ki görüntü ile ses birlikte otursun. Storyboard'da her detay plan saniye aralığıyla işaretlenir.
 - Kütüphane: `ortak/detay.js` → `DP.sar(t, t0, t1, d => DP.xxx(d))`. #10'daki örnekler: kaldirim, kanun, tokmak, teslim, catlak, tutanak, kurdele. Her video için konuya özel yeni detay planlar çizilir.
 - Nesne ve önemli yazılar altyazı bandının (y≈1280–1430) dışında kalır. Detay plandaki yazılar da şekillerine ölçülerek sığdırılır.
+
+## HAREKET STÜDYOSU DİSİPLİNİ (axertha-motion-studio'dan alınanlar — çizim stili DEĞİŞMEDİ)
+Bu başlıktaki maddeler üretim disiplini; görsel dil, renk ve karakter tarzı aynen korunur.
+1. **Zamanın saf fonksiyonu:** `renderAt(t)`, `t` anındaki kareyi önceki karelere bakmadan tam çizer. `Math.random` kullanılmaz (tohumlu `HK.hash` / `FX.hash` kullanılır). CSS geçişi, timer veya rAF ile zamanlama yapılmaz.
+2. **Amaca göre yay:** `FX.yayTip(t - t0, tip)`:
+   - `cabuk`: küçük geri bildirim (çip, tık).
+   - `normal`: kart, panel, kamera.
+   - `agir`: büyük başlık, kahraman nesne, logo.
+   - `oyuncu`: maskot, çıkartma (görünür taşma).
+   Bir özelliğin hedefi birden çok kez değişiyorsa her değişim zamana bağlı ayrı bir parça olarak hesaplanır.
+3. **Tempo:**
+   - İlk 2 saniye net bir "izlemeye devam et" sebebi (kanca) verir.
+   - Her 2–4 saniyede anlamlı bir görsel gelişme olur; bilinçli bir gerilim beklemesi varsa istisna.
+   - Duraklamalar vurgu için kullanılır, ekranı sadece "dolu" tutmak için hareket eklenmez.
+4. **Geçiş mantığı:** Mümkünse uzamsal süreklilik korunur: nesne devamlılığı, eşleşen kesme, kamera devamı, açılma. Kesme, süslü bir geçişten güçlüyse kesme kullanılır.
+5. **Kaçınılacak varsayılanlar:**
+   - Her şeyin aynı şekilde fade-in olması.
+   - Rastgele parçacık patlamaları.
+   - Anlamsız parıltı veya glow.
+   - Gradyan üstüne ortalanmış tek başlık.
+   - Süs amaçlı köşe etiketleri.
+6. **İnceleme turu (her video, tam render'dan ÖNCE):**
+   - `python render.py plan.json --inceleme` kontak föyü üretir (her sahneden 2 kare) ve determinizm kontrolü yapar (aynı kare iki kez → aynı hash).
+   - Föy "yönetmen gözüyle" 8 kritere göre 1–10 puanlanır: Kanca · Okunurluk (telefon boyu) · Kompozisyon · Hareket · Çeşitlilik · Marka uyumu · Ses hizası · Bitiş (kırpılma, taşma, boş kare).
+   - En zayıf 3 sorun düzeltilir, sonra tekrar incelenir.
+   - Sonuç `kaynak/inceleme.md`'ye yazılır. Hedef: hiçbir kriter 8'in altında kalmaz; kalırsa istisna açıkça not edilir.
+
+## DÖNEM GİYSİSİ KURALI
+Tarihli bir olay anlatılırken o sahnelerin ön ve arka planındaki insanlar anlatılan döneme göre giyinir. Kullanım: `KS.karakter(Object.assign({ x, y, boy, t }, KS.donem(yıl, i)))`. `i` her kişi için farklı verilir, böylece çeşitlilik olur.
+- **1925 öncesi:** Erkeklerde melon, kasket veya fes; ceket, kravat, ara sıra bıyık. Kadınlarda uzun etek; fötr ya da 1920'lerin çan şapkası.
+- **1925–1959:** Erkeklerde fötr, takım elbise ve kravat. Kadınlarda diz boyu elbise.
+- **1960–1979:** Renkli gömlekler; kadınlarda kısa etek.
+- **1980–1999:** Canlı süveterler, atkuyruğu, arada takım elbise.
+- **2000 sonrası:** Günümüz kıyafeti (varsayılan).
+- Yeni bir dönem ya da coğrafya gerekirse (ör. Osmanlı çarşısı, Viktorya dönemi Londra) `kisi.js` `kiyafet` seçenekleriyle özel kıyafet çizilir. Maskotların kostümleri de döneme uydurulabilir: `KO.giy`.
