@@ -1,0 +1,202 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 60.68,
+  "konusma_bloklari": [
+    [
+      0.0,
+      0.788
+    ],
+    [
+      1.097,
+      5.005
+    ],
+    [
+      5.522,
+      6.457
+    ],
+    [
+      6.937,
+      8.176
+    ],
+    [
+      8.54,
+      11.387
+    ],
+    [
+      11.708,
+      15.534
+    ],
+    [
+      15.952,
+      19.975
+    ],
+    [
+      20.324,
+      23.597
+    ],
+    [
+      23.969,
+      25.222
+    ],
+    [
+      25.634,
+      26.568
+    ],
+    [
+      26.916,
+      28.659
+    ],
+    [
+      29.079,
+      31.958
+    ],
+    [
+      32.336,
+      34.103
+    ],
+    [
+      34.364,
+      36.09
+    ],
+    [
+      36.498,
+      38.27
+    ],
+    [
+      38.672,
+      40.875
+    ],
+    [
+      41.173,
+      42.651
+    ],
+    [
+      43.055,
+      47.928
+    ],
+    [
+      48.21,
+      49.876
+    ],
+    [
+      50.247,
+      53.542
+    ],
+    [
+      53.95,
+      58.575
+    ],
+    [
+      58.96,
+      60.68
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 6.46,
+      "sure": 6.46,
+      "metin": "Bir doktor, haklı olduğunu kanıtlamak için bakteri dolu bir bardağı kafasına dikti."
+    },
+    {
+      "no": 2,
+      "baslangic": 6.46,
+      "bitis": 8.18,
+      "sure": 1.72,
+      "metin": "Seksenli yıllar."
+    },
+    {
+      "no": 3,
+      "baslangic": 8.18,
+      "bitis": 11.39,
+      "sure": 3.21,
+      "metin": "Tıp dünyası emindi: mide ülseri stresten ve acılı yemekten olur."
+    },
+    {
+      "no": 4,
+      "baslangic": 11.39,
+      "bitis": 15.53,
+      "sure": 4.15,
+      "metin": "Mide asidi o kadar güçlü ki, orada hiçbir bakteri yaşayamaz."
+    },
+    {
+      "no": 5,
+      "baslangic": 15.53,
+      "bitis": 25.22,
+      "sure": 9.69,
+      "metin": "Ama Avustralya'da iki doktor, Robin Warren ve Barry Marshall, hastaların midesinde sarmal şekilli bir bakteri görüyordu: Helikobakter pilori."
+    },
+    {
+      "no": 6,
+      "baslangic": 25.22,
+      "bitis": 26.57,
+      "sure": 1.35,
+      "metin": "Kimse inanmadı."
+    },
+    {
+      "no": 7,
+      "baslangic": 26.57,
+      "bitis": 28.66,
+      "sure": 2.09,
+      "metin": "Hayvan deneyleri de sonuç vermedi."
+    },
+    {
+      "no": 8,
+      "baslangic": 28.66,
+      "bitis": 31.96,
+      "sure": 3.3,
+      "metin": "Bin dokuz yüz seksen dörtte Marshall bir karar verdi."
+    },
+    {
+      "no": 9,
+      "baslangic": 31.96,
+      "bitis": 38.27,
+      "sure": 6.31,
+      "metin": "Laboratuvarda ürettiği bakteriyi, bir bardak içinde kafasına dikti."
+    },
+    {
+      "no": 10,
+      "baslangic": 38.27,
+      "bitis": 40.88,
+      "sure": 2.6,
+      "metin": "Birkaç gün sonra kusmaya başladı."
+    },
+    {
+      "no": 11,
+      "baslangic": 40.88,
+      "bitis": 42.65,
+      "sure": 1.78,
+      "metin": "Endoskopide midesi iltihaplanmıştı ve bakteri tam oradaydı."
+    },
+    {
+      "no": 12,
+      "baslangic": 42.65,
+      "bitis": 49.88,
+      "sure": 7.22,
+      "metin": "İşte bu yüzden bugün ülserlerin büyük kısmı, sadece mideyi yatıştırarak değil, antibiyotikle tedavi ediliyor."
+    },
+    {
+      "no": 13,
+      "baslangic": 49.88,
+      "bitis": 53.54,
+      "sure": 3.67,
+      "metin": "Yirmi bir yıl sonra, bu iki doktor Nobel Ödülü aldı."
+    },
+    {
+      "no": 14,
+      "baslangic": 53.54,
+      "bitis": 58.58,
+      "sure": 5.03,
+      "metin": "Yani bazen bilimi ilerletmek için, herkesin yanıldığını kanıtlamak gerekir."
+    },
+    {
+      "no": 15,
+      "baslangic": 58.58,
+      "bitis": 60.68,
+      "sure": 2.1,
+      "metin": "Hem de kendi midenle."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

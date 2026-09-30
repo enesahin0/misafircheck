@@ -1,0 +1,19 @@
+
+$('zemin').innerHTML = `<rect width="1080" height="1920" fill="#141112"/>`;
+const LP = {}; for (const p of window.LOGO_PATHS) LP[p.id] = p;
+const C = { g1: [44.5, 134.8], u1: [90.6, 128.5], b: [134.3, 121], i1: [165, 128], g2: [150.3, 180.6], u2: [196.4, 174.3], f: [230.1, 173], i2: [253.6, 174] };
+const S = 660 / 233, OX = 540, OY = 940, scr = ([x, y]) => [(x - 141.5) * S + OX, (y - 141.5) * S + OY];
+window.renderAt = t => {
+  let o = `<g transform="translate(${OX} ${OY}) scale(${S}) translate(-141.5 -141.5)">`;
+  Object.keys(C).forEach((k, i) => { const p = pop(t, .12 + i * .045, .38); if (p <= 0) return; const [cx, cy] = C[k];
+    o += `<g transform="translate(${cx} ${cy + (1 - p) * 30}) scale(${p}) translate(${-cx} ${-cy})" opacity="${Math.min(1, p * 2)}"><path transform="${LP[k].t.replace('matrix', 'matrix')}" d="${LP[k].d}" fill="#F6F1E7"/></g>`; });
+  const sp = A(t, .55, .7); o += `<g opacity="${sp}"><path transform="${LP.spark_big.t}" d="${LP.spark_big.d}" fill="#FBAC39"/><path transform="${LP.spark_small.t}" d="${LP.spark_small.d}" fill="#FBAC39"/><path transform="${LP.red_dot.t}" d="${LP.red_dot.d}" fill="#EE312E"/></g>`;
+  o += `</g>`;
+  // Gubi uçup pırıltıya, Gufi zıplayıp kırmızı kareye dönüşür
+  const [bx, by] = scr([165, 92.2]), [rx, ry] = scr([253.6, 144.9]);
+  const g = E(A(t, 0, .62)); if (g < 1) o += grp(M.gubi({ x: 0, y: 0, boy: 140, duygu: 'mutlu' }), 300 + (bx - 300) * g, 1250 + (by - 1250) * g - Math.sin(g * Math.PI) * 200, 1 - .7 * g, 0, 1 - A(t, .5, .62));
+  const f = E(A(t, .1, .72)); if (f < 1) o += grp(M.gufi({ x: 0, y: 36, boy: 120, duygu: 'mutlu' }), 780 + (rx - 780) * f, 1290 + (ry - 1290) * f - Math.sin(f * Math.PI) * 320, 1 - .8 * f, 0, 1 - A(t, .6, .72));
+  if (t > .55 && t < 1.2) o += K.glow({ x: bx, y: by, r: 160 * (1 - A(t, .55, 1.2)) + 1, renk: '#FBAC39', guc: .7 });
+  const fo = A(t, 1.8, 2.1); if (fo > 0) o += `<rect width="1080" height="1920" fill="#141112" opacity="${fo}"/>`;
+  $('dinamik').innerHTML = o;
+};
