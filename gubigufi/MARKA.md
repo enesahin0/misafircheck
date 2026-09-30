@@ -201,3 +201,12 @@ safe alan kaydırması uygulanmaz (kullanıcı geri bildirimi, #6 sonrası).
 - Kategori etiketi sol üstte (x 62'den başlar, y ≈ 292).
 - 60 sn sayaç halkası SAĞA YASLI: merkez x 974, y 300 (dış kenar 1018 = 1080 − 62, sol etiketle simetrik). Kullanıcı geri bildirimi.
 - Güncel kanal katmanı: `marka/ortak/kanal.js` + `kanal.css` — her yeni videoda bunlar kopyalanır.
+
+## MASKOTLAR ÖNDE — ROL VERME KURALI (v4)
+Gubi ve Gufi arka planda köşede bekleyen süs DEĞİL; hikâyenin OYUNCULARI.
+- Her videoda en az 3–4 sahnede maskotlara **rol** verilir: anlatılan kişiyi/nesneyi canlandırır (dedektif, hırsız, bekçi, doktor, hakem, müşteri…), deneyi kendileri yapar, kavramı kendi üzerlerinde gösterir.
+- Kostüm/aksesuar ile rol: şapka, gözlük, bıyık, önlük, düdük, büyüteç vb. maskotun üstüne giydirilir (M.canli `ust` katmanı).
+- Boyut: rol aldıkları sahnede büyük (boy 180–320), kadrajın ön/orta planında; en az bir sahnede kameraya yaklaşma.
+- Aralarında diyalog/etkileşim: biri yapar diğeri tepki verir (şaşırır, güler, itiraz eder), birbirine nesne uzatır, kovalar, çarpışır.
+- Konuşma balonları (M.balon) ile kısa laf/ünlem; altyazıyla çakışmayacak yerde.
+- Sahne başına en az bir görünür tepki; hiçbir sahnede sadece köşede "duran" maskot olmaz.
