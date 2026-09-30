@@ -15,7 +15,7 @@
         seed: 1                    // göz kırpma ritmi (her karakter farklı)
       })
       Tepkiler: sasir · zipla · mutlu · aha · korku · selam (el sallar) · uzgun · kararli ·
-        isaret (isaretHedef'i eliyle gösterir) · alkis · gozKapa (elleriyle gözünü kapatır, aradan bakar) · dusun (el çenede + düşünce baloncukları) ·
+        isaret (isaretHedef'i eliyle gösterir) · alkis · gozKapa (gözlerini sıkıca yumar, büzülür) · dusun (el çenede + düşünce baloncukları) ·
         omuzSilk · kahkaha · goster ("ta-da", iki el açık) · donus (kendi etrafında döner)
       yol: [[t, x, y, boy], ...] anahtar karelerle hareket — Gufi ZIPLAYARAK gider, Gubi SÜZÜLEREK (pırıltı izi bırakır).
       bakHedef: 'kamera' → izleyiciye bakar.  eller: false → elleri gizle.
@@ -169,8 +169,7 @@ const M = (() => {
         v = [ux, uy * .8]; const uz = 1.35 + .08 * Math.sin(d * 10); elHedef([null, [ux * uz * W, uy * uz * W]], ke); parmak[1] = [ux, uy]; rot += ux * 6 * ke; }
       if (tip === 'alkis') { const q = Math.abs(Math.sin(d * 9)), ax = (.18 + .7 * q) * W; elHedef([[-ax, -.15 * W], [ax, -.15 * W]], ke);
         if (q < .15 && ke > .5) for (let i = 0; i < 4; i++) { const a = i * 1.57 + .7; efekt += yildizcik(x + Math.cos(a) * W * .35, cy - .15 * W + Math.sin(a) * W * .35, 10 * s, '#FFE27A', .9); } }
-      if (tip === 'gozKapa') { const ex = kim === 'gubi' ? 20 * s : 24 * s, ey = gy - cy; const pk = ar(p, .45, .6) * (1 - ar(p, .72, .85)); // aradan gözetleme
-        elHedef([[-ex, ey], [ex + pk * .6 * W, ey + pk * .4 * W]], ke); }
+      if (kim === 'gufi' && tip === 'gozKapa') { gubiGozKapa = ke; sy *= 1 - .08 * ke; sx *= 1 + .04 * ke; }
       if (tip === 'dusun') { elHedef([null, [.3 * W, (.55 + .04 * Math.sin(d * 8)) * W]], ke); v = [.5, -.7]; rot -= 5 * ke;
         for (let i = 0; i < 3; i++) { const q = ar(d, .3 + i * .25, .5 + i * .25) * (1 - ar(p, .85, 1)); if (q > 0) efekt += `<circle cx="${x + W * (.9 + i * .35)}" cy="${cy - W * (1.2 + i * .45)}" r="${(6 + i * 5) * s * q}" fill="#FFF3D6" opacity=".95"/>`; } }
       if (tip === 'omuzSilk') { const u = Math.sin(cl(p * 1.2) * Math.PI); dy -= 10 * s * u; elHedef([[-1.3 * W, -.25 * W], [1.3 * W, -.25 * W]], ke); v = [0, -.2]; }
@@ -189,7 +188,7 @@ const M = (() => {
       EL.forEach(([ex, ey], i) => { const k = ELK[i]; if (k <= .02) return; const er = er0 * (.35 + .65 * Math.min(1, k * 1.3)), hx = x + ex, hy = cy + ey;
         if (parmak[i] && k > .6) { const [ux, uy] = parmak[i]; el += `<ellipse cx="${hx + ux * er * 1.1}" cy="${hy + uy * er * 1.1}" rx="${er * .55}" ry="${er * .32}" transform="rotate(${Math.atan2(uy, ux) * 57.3} ${hx + ux * er * 1.1} ${hy + uy * er * 1.1})" fill="${C.govde}"/>`; }
         el += `<circle cx="${hx + er * .08}" cy="${hy + er * .1}" r="${er}" fill="${C.golge}"/><circle cx="${hx}" cy="${hy}" r="${er}" fill="${C.govde}"/><circle cx="${hx + er * .35}" cy="${hy - er * .35}" r="${er * .32}" fill="${C.rim}" opacity=".8"/>`; }); }
-    const onde = ak && ak.tip === 'gozKapa' && Math.min(ELK[0], ELK[1]) > .6; // göz kapatırken eller öne geçer, yoksa hep gövdenin arkasında
+    const onde = false; // eller hep gövdenin arkasından çıkar
     const px = x, py = y;
     const yer = kim === 'gufi' ? (() => { const k = 1 / (1 - dy / (boy * 1.2)); return `<ellipse cx="${x + dx}" cy="${y + 4}" rx="${boy * .55 * k}" ry="${boy * .07 * k}" fill="#000" opacity="${.22 * k}"/>`; })() : '';
     return iz + yer + `<g transform="translate(${dx} ${dy}) translate(${px} ${py}) rotate(${rot}) scale(${sx} ${sy}) translate(${-px} ${-py})">${onde ? govde + ust + el : el + govde + ust}</g><g transform="translate(${dx} ${dy})">${efekt}</g>`;
