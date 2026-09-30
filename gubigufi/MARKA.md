@@ -29,3 +29,19 @@ Anlatıcı: "sen" diye hitap eden, merakını paylaşan arkadaş.
 - Seslendirme: ElevenLabs (her videoda aynı ses ve aynı ayarlar).
 - Müzik: özgün, sade, yormayan; anlatının altında kalır (konuşma sırasında kısılır).
 - Efektler anlatıyı destekler, bastırmaz.
+
+## Logo ve renkler (logo: `marka/logo.svg`, parçalar: `marka/logo_paths.json`)
+- Logo: "gubi / gufi" iki satır, geometrik yuvarlak harfler (#231F20).
+  "gubi"deki i'nin noktası iki amber pırıltı (#FBAC39), "gufi"deki i'nin noktası kırmızı kare (#EE312E).
+- Koyu zeminde harfler krem (#F6F1E7) kullanılır.
+- Marka renkleri: Gece #141112 (zemin) · Krem #F6F1E7 (yazı) · Pırıltı #FBAC39 · Kırmızı kare #EE312E
+- Motifler: pırıltı ✦ = merak/aha anı ve geçiş; kırmızı kare ■ = dikkat/zaman (60 sn sayacının ucu).
+- Ses logosu: pırıltılar "ting-ting", kırmızı kare "pıt".
+
+## Kategori renkleri
+Türkiye & Anadolu #E07A3F · Osmanlı & Türk Tarihi #16A39A · Kelimelerin Hikâyesi #3D8BFD ·
+Uzay #7B61FF · İnsan Vücudu #FF6B81 · Doğa & Hayvanlar #6CC04A · Psikoloji & Beyin #E056C1 ·
+Yanlış Bilinen #EE312E · Gündelik Şeyler #FFD23F · Bilim & Teknoloji #00C2E0 · Sinema & Perde Arkası #E8E2D6
+
+## Tipografi (`marka/fonts/`)
+Outfit (Black: başlık/rakam, Light: altyazı) · JetBrains Mono (kaynak damgası, tarih, veri)
