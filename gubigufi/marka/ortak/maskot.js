@@ -19,7 +19,7 @@
         omuzSilk · kahkaha · goster ("ta-da", iki el açık) · donus (kendi etrafında döner)
       yol: [[t, x, y, boy], ...] anahtar karelerle hareket — Gufi ZIPLAYARAK gider, Gubi SÜZÜLEREK (pırıltı izi bırakır).
       bakHedef: 'kamera' → izleyiciye bakar.  eller: false → elleri gizle.
-   ELLER: normalde görünmez; el gerektiren harekette gövdenin arkasından çıkar, bitince geri saklanır.
+   ELLER: YALNIZCA GUFİ'DE (Gubi elsiz: işarette pırıltı izi + eğilme, göz kapatmada gözlerini sıkıca yumar). Normalde görünmez; el gerektiren harekette gövdenin arkasından çıkar, bitince geri saklanır.
    SAHNE YARDIMCILARI: M.yakinlas(t, t0, t1) → 0..1 zarf (kameraya yaklaşma), M.bulanik(k) arka planı bulanıklaştırır,
       M.bulanikSar(svg, k) dinamik katmanı bulanıklaştırır, M.balon(x, y, içerik, {w,h,yon}) konuşma balonu, M.hareket(kf, t).
       Her tepki kendi hareketini + ifadesini + küçük efektini (ünlem, pırıltı, ter damlası) üretir.
@@ -119,7 +119,7 @@ const M = (() => {
     return `<g transform="translate(${x} ${y}) scale(${olcek})"><rect x="${-w / 2}" y="${-h / 2}" width="${w}" height="${h}" rx="${h / 2.3}" fill="${renk}"/><path d="M${yon * w * .18} ${h / 2 - 4} L${yon * w * .32} ${h / 2 + 56} L${yon * w * .02} ${h / 2 - 4}Z" fill="${renk}"/>${ic}</g>`;
   }
   function canli(kim, o = {}) {
-    let { t = 0, x, y, boy = kim === 'gubi' ? 160 : 140, duygu = 'merak', bakHedef = null, bak = [0, 0], tepkiler = [], seed = kim === 'gubi' ? 1 : 2, parla = .6, ust = '', yol = null, eller = true, isaretHedef = null } = o;
+    let { t = 0, x, y, boy = kim === 'gubi' ? 160 : 140, duygu = 'merak', bakHedef = null, bak = [0, 0], tepkiler = [], seed = kim === 'gubi' ? 1 : 2, parla = .6, ust = '', yol = null, eller = kim === 'gufi', isaretHedef = null } = o;  // eller yalnızca Gufi'de (Gubi elsiz)
     // yol: anahtar karelerle yer değiştirme (Gufi zıplayarak, Gubi süzülerek + pırıltı izi)
     let iz = '', hopDy = 0, yolYon = 1;
     const hr = hareket(yol, t);
@@ -130,7 +130,7 @@ const M = (() => {
     const kamera = bakHedef === 'kamera'; if (kamera) bakHedef = null;
     // aktif tepki
     let ak = null; for (const [t0, tip] of tepkiler) if (t >= t0 && t < t0 + (SURE[tip] || 1)) ak = { t0, tip, p: (t - t0) / (SURE[tip] || 1), d: t - t0, S: SURE[tip] || 1 };
-    let dy = hopDy, dx = 0, rot = 0, sx = 1, sy = 1, ifade = duygu, efekt = '', glow = parla;
+    let dy = hopDy, dx = 0, rot = 0, sx = 1, sy = 1, ifade = duygu, efekt = '', glow = parla, gubiGozKapa = 0;
     if (hopDy < -2 && kim === 'gufi') { sy *= 1.06; sx *= .95; } else if (hr && hr.hiz > 0 && kim === 'gufi') { sy *= .92; sx *= 1.07; }
     if (hr && hr.hiz > 0 && kim === 'gubi') rot += 14 * hr.hiz * yolYon;
     // idle
@@ -160,7 +160,12 @@ const M = (() => {
       if (tip === 'uzgun') { sy *= 1 - .07 * Math.sin(cl(p * 1.5) * Math.PI / 2); v = [0, .8]; elHedef([[-.85 * W, .7 * W], [.85 * W, .7 * W]], ke); }
       if (tip === 'kararli') { rot += 5 * Math.sin(cl(p * 3) * Math.PI / 2); elHedef([[-1.1 * W, .35 * W], [1.1 * W, .35 * W]], ke); }
       if (tip === 'korku' || tip === 'sasir') { for (let i = 0; i < 2; i++) { const q = (d * 1.6 + i * .5) % 1; efekt += `<ellipse cx="${x + boy * .55 + i * 14 * s}" cy="${gy - boy * .2 + q * 60 * s}" rx="${6 * s}" ry="${9 * s}" fill="#3CD6F0" opacity="${(1 - q) * (1 - p)}"/>`; } }
-      if (tip === 'isaret') { const h = isaretHedef || bakHedef || [x + 400, cy - 200]; const vx = h[0] - x, vy = h[1] - cy, L = Math.hypot(vx, vy) || 1, ux = vx / L, uy = vy / L;
+      if (kim === 'gubi' && tip === 'isaret') { const h = isaretHedef || bakHedef || [x + 400, cy - 200]; const vx = h[0] - x, vy = h[1] - cy, L = Math.hypot(vx, vy) || 1, ux = vx / L, uy = vy / L;
+        dx += ux * 14 * s * ke; dy += uy * 14 * s * ke; rot += ux * 12 * ke;
+        for (let i = 0; i < 5; i++) { const q = (d * 1.4 + i / 5) % 1, r0 = W * (1.3 + q * 2.2); efekt += yildizcik(x + ux * r0, cy + uy * r0, 18 * s * (1 - q * .6) * ke, '#FFD27A', (1 - q) * ke); } }
+      if (kim === 'gubi' && tip === 'gozKapa') { gubiGozKapa = ke; sy *= 1 - .08 * ke; }
+      if (kim === 'gubi' && tip === 'alkis') { glow = parla + .5 * Math.abs(Math.sin(d * 9)); dy -= Math.abs(Math.sin(d * 9)) * 10 * s; }
+      if (tip === 'isaret' && kim === 'gufi') { const h = isaretHedef || bakHedef || [x + 400, cy - 200]; const vx = h[0] - x, vy = h[1] - cy, L = Math.hypot(vx, vy) || 1, ux = vx / L, uy = vy / L;
         v = [ux, uy * .8]; const uz = 1.35 + .08 * Math.sin(d * 10); elHedef([null, [ux * uz * W, uy * uz * W]], ke); parmak[1] = [ux, uy]; rot += ux * 6 * ke; }
       if (tip === 'alkis') { const q = Math.abs(Math.sin(d * 9)), ax = (.18 + .7 * q) * W; elHedef([[-ax, -.15 * W], [ax, -.15 * W]], ke);
         if (q < .15 && ke > .5) for (let i = 0; i < 4; i++) { const a = i * 1.57 + .7; efekt += yildizcik(x + Math.cos(a) * W * .35, cy - .15 * W + Math.sin(a) * W * .35, 10 * s, '#FFE27A', .9); } }
@@ -175,7 +180,7 @@ const M = (() => {
         for (let i = 0; i < 2; i++) efekt += yildizcik(x + (i ? 1 : -1) * 1.8 * W, cy - .6 * W, 12 * s * ke, '#FFE27A', ke); }
       if (tip === 'donus') { rot += 360 * eio(p); const j = Math.sin(p * Math.PI); sy *= 1 - .1 * j; sx *= 1 + .1 * j; dy -= 30 * s * j; }
     }
-    const acik = ifade === 'mutlu' ? 1 : acikGoz(t, seed);
+    const acik = ifade === 'mutlu' ? 1 : (gubiGozKapa > .5 ? 0 : acikGoz(t, seed));
     const ayak = kim === 'gufi' && ((ak && (ak.tip === 'zipla' || ak.tip === 'mutlu')) || (hr && hr.hiz > 0)) ? Math.sin((ak ? ak.d : t) * 20) : 0;
     const govde = kim === 'gubi' ? gubi({ x, y, boy, duygu: ifade, bak: v, parla: glow, acik, agiz: ifade === 'mutlu' }) : gufi({ x, y, boy, duygu: ifade, bak: v, acik, ayak, golge: false, agiz: ifade === 'mutlu' });
     // eller (yüzen yuvarlak eldivenler, kontur yok; rim light)
