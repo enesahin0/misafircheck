@@ -98,6 +98,18 @@ Ayırt edici detay: zıplayarak hareket eder, şaşırınca gözleri kocaman olu
 Kişilik: tepkici, şaşıran, bazen yanılan — izleyicinin şaşkınlığı
 İngilizce prompt tarifi: "a small rounded-square character, bright red #EE312E body, two tiny round feet, big white oval eyes with navy pupils, no mouth, no outline, flat vector"
 ```
+
+### Canlı animasyon (KALICI — her videoda `M.canli` kullan, statik maskot koyma)
+`M.canli('gubi'|'gufi', { t, x, y, boy, bakHedef:[x,y], tepkiler:[[t0,'tip'],...] })` her karede çağrılır:
+- **Göz kırpma:** deterministik, karakterlere göre farklı ritim (seed); **nefes/idle:** Gubi süzülür + hafif sallanır, Gufi nefesle esner.
+- **Göz takibi:** `bakHedef` ile göz bebekleri bir noktaya bakar → birbirlerine, anlatılan nesneye, izleyiciye (aşağı-ön) baktır. Sahne içinde bakışı ANLATIYA göre yönlendir (kim konuşuyorsa/ne gösteriliyorsa oraya).
+- **Tepkiler:** `sasir` (sıçrama + turuncu ünlem + ter), `zipla` (squash/stretch, iniş basması), `mutlu` (^^ gözler + minik gülümseme + zıplama), `aha` (Gubi: glow patlaması + pırıltı halkası), `korku` (titreme + geri bakış + ter), `selam` (sallanma), `uzgun` (kaşlar + çökme), `kararli` (çatık kaş).
+
+### İmza sesler (KALICI — `marka/ses_lib.py` → `maskot_ses(kim, tip)`)
+Her tepki, aynı anda kendi imza sesiyle çalınır: `M.add('sfx', maskot_ses('gubi','aha'), t, .5)`. Bu sesler değiştirilmez; kanalın "sesli logosu" gibidir.
+- **Gubi:** kristal/cam "ting" ailesi — Mi majör pentatonik, hep yukarı kıvrılır (merak = yükselen soru); `aha` = parlak arpej.
+- **Gufi:** lastik "bup/boing" ailesi — tombul, alçak (Sol3), perde düşüşü + yay titreşimi; `korku` = titrek "brrr", `mutlu` = "bup-bup-bup".
+- Anlatıcı konuşurken tepki sesini −6 dB kısık kullan; seslendirmeyi asla örtmesin. Demo: `marka/maskot_demo/`.
 Kullanım: her videoda 3–6 kısa rol. Gubi soruyu sorar / aha anında parlar, Gufi şaşırır / tepki verir; kapanışta ikisi logoya dönüşür.
 
 ## Logo kapanışı

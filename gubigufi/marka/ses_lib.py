@@ -272,3 +272,68 @@ def voice_env(v, att=0.02, rel=0.35):
         prev = k * prev + (1 - k) * x if x > prev else kr ** 32 * prev + (1 - kr ** 32) * x
         e[i:i + 32] = prev
     return e / (e.max() + 1e-9)
+
+
+# =====================================================================
+# MASKOT İMZA SESLERİ — KALICI. Bütün videolarda aynı kalır, değiştirme.
+# Gubi (amber pırıltı): camsı/kristal "ting" ailesi — saf sinüs + 2.76x
+#   çan kısmisi, hep YUKARI kıvrılır (merak = yükselen soru), Mi majör pentatonik.
+# Gufi (kırmızı kare): lastik/tombul "bup-boing" ailesi — alçak üçgen dalga,
+#   hızlı perde düşüşü + yay titreşimi (vibrato), sıcak ve komik.
+# Kullanım: M.add('sfx', maskot_ses('gubi', 'aha'), t, .5)  — tepki zamanıyla aynı an.
+# Tipler: sasir · zipla · mutlu · aha · korku · selam · uzgun · kararli · merak
+# =====================================================================
+def _gubi_ton(f0, f1, d=.32, parla=1.0):
+    t = T(d); f = f0 * (f1 / f0) ** np.minimum(1, t / (d * .45))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    x = np.sin(ph) + .28 * parla * np.sin(2.76 * ph) * np.exp(-t * 14) + .12 * parla * np.sin(5.4 * ph) * np.exp(-t * 22)
+    return x * env(len(t), .004, d * .45) / 1.3
+
+
+def _gufi_ton(f0, f1, d=.22, vib=0.0, vf=18):
+    t = T(d); f = f0 * (f1 / f0) ** np.minimum(1, t / d) * (1 + vib * np.sin(2 * np.pi * vf * t))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    x = signal.sawtooth(ph, .5) * .8 + .5 * np.sin(ph)                # tombul üçgen gövde
+    x = filt(x, 'lowpass', 1500)
+    return x * env(len(t), .006, d * .5) / 1.1
+
+
+def _dizi(parcalar):
+    n = max(int(at * SR) + len(x) for at, x in parcalar)
+    o = np.zeros(n)
+    for at, x in parcalar:
+        i = int(at * SR); o[i:i + len(x)] += x
+    return o / max(1e-9, np.abs(o).max()) * .9
+
+
+GUBI_NOTA = [659.3, 740.0, 830.6, 987.8, 1108.7, 1318.5, 1480, 1661, 1975.5]  # Mi majör pentatonik
+
+
+def maskot_ses(kim, tip='merak'):
+    g = GUBI_NOTA
+    if kim == 'gubi':
+        P = {
+            'merak':   [(0, _gubi_ton(g[3], g[5], .35))],                                   # "ting?" yükselen
+            'sasir':   [(0, _gubi_ton(g[2], g[7], .22)), (.12, _gubi_ton(g[7], g[8], .4))],
+            'zipla':   [(0, _gubi_ton(g[4], g[6], .16))],
+            'mutlu':   [(i * .07, _gubi_ton(g[3 + i], g[3 + i], .3)) for i in range(4)],     # parlak tril yukarı
+            'aha':     [(i * .06, _gubi_ton(g[i * 2], g[i * 2], .5, 1.3)) for i in range(5)] + [(.32, _gubi_ton(g[8], g[8] * 1.06, .7, 1.4))],
+            'korku':   [(i * .09, _gubi_ton(g[5] * (1 - i * .03), g[4], .14)) for i in range(4)],
+            'selam':   [(0, _gubi_ton(g[3], g[5], .18)), (.14, _gubi_ton(g[5], g[6], .26))],
+            'uzgun':   [(0, _gubi_ton(g[4], g[1], .6, .6))],
+            'kararli': [(0, _gubi_ton(g[3], g[3], .12)), (.12, _gubi_ton(g[6], g[6], .35))],
+        }
+    else:
+        b = 196.0  # Sol3 taban
+        P = {
+            'merak':   [(0, _gufi_ton(b * 1.2, b * 1.5, .2))],                              # "bup?"
+            'sasir':   [(0, _gufi_ton(b * 2.2, b * .9, .16)), (.13, _gufi_ton(b * 1.1, b * 1.8, .3, .06))],  # "boi-yoing!"
+            'zipla':   [(0, _gufi_ton(b * 1.6, b * .8, .14)), (.16, _gufi_ton(b * .9, b * .7, .12))],        # yay + iniş
+            'mutlu':   [(i * .12, _gufi_ton(b * (1.3 + .2 * i), b * (1.1 + .2 * i), .12)) for i in range(3)],  # "bup-bup-bup"
+            'aha':     [(0, _gufi_ton(b, b * 2, .25, .03))],
+            'korku':   [(0, _gufi_ton(b * 1.4, b * 1.2, .7, .12, 22))],                     # titrek "brrr"
+            'selam':   [(0, _gufi_ton(b * 1.5, b * 1.2, .12)), (.14, _gufi_ton(b * 1.2, b * 1.6, .2))],
+            'uzgun':   [(0, _gufi_ton(b * 1.3, b * .7, .6, .02, 6))],                       # inen "wuuuh"
+            'kararli': [(0, _gufi_ton(b * 1.2, b * 1.2, .1)), (.12, _gufi_ton(b * 1.2, b * 1.2, .16))],
+        }
+    return _dizi(P.get(tip, P['merak']))
