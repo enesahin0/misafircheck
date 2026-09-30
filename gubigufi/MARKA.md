@@ -34,6 +34,12 @@ Tarzımız çizgi/flat kalır ama anlatılan şey GERÇEK şekline benzer:
 - **Ölçek ve sayı:** karşılaştırmalarda oranlar gerçek (ör. 12'ye karşı 62 sütunu gerçekten 5 kat).
 - Örnek sayfa: `marka/stil_ornek.png` (Afrika/Mısır, küre, Türkiye + Sivas, Akdeniz; Einstein, Curie, Kahlo, Edison benzeri portreler).
 
+### YERE BASMA KURALI (KALICI)
+Yere basan hiçbir şey havada durmaz: ağaç, bina, direk, masa, karakter… zemin/tepe çizgisi FONKSİYONLA tanımlanır ve nesne o çizgiye oturtulur
+(`marka/ortak/zemin.js` → `const tepe = Z.tepe({...}); tepe.yol(renk); Z.agac(x, tepe.yer(x))`). Taban çizginin birkaç px altına gömülür, temas noktasına küçük gölge elipsi konur.
+Önde duran tepe arkadaki nesnenin tabanını örtebilir ama tabanın ALTINDA boşluk kalamaz. Kontak sayfası kontrolünde her sahnede "yere basma" ayrıca kontrol edilir.
+(Gubi uçan bir pırıltı olduğu için havada süzülebilir; Gufi her zaman yere basar ya da zıplama yayındadır.)
+
 ### ARKA PLAN / ATMOSFER KURALI (güncelleme, #10'dan itibaren geçerli)
 - Skill'den aldığımız şey ÇİZİM TARZIDIR (flat vektör, konturyok, rim light, glow, yuvarlak formlar). Skill'in "koyu lacivert/uzay" atmosferi varsayılan DEĞİL.
 - Videolar mavi-derin tonlara bürünmeyecek. Varsayılan: renkli, aydınlık, konuya ait doğal ortam/çevre arka planları (gündüz gökyüzü, orman, sahil, mutfak, mahkeme salonu, stadyum, atölye, pazar yeri, sokak…) + sıcak ve canlı palet.
