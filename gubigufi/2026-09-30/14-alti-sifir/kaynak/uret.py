@@ -204,8 +204,8 @@ window.renderAt = t => {
   if (t > 4.3 && t < 7.5) for (let i = 0; i < 12; i++) { const d = t - 4.4 - i * .12; if (d < 0 || d > 1.3) continue; const q = d / 1.3, sx0 = i % 2 ? tr.sag[0] : tr.sol[0], sy0 = (i % 2 ? tr.sag[1] : tr.sol[1]) - 360;
     o += PR.sifir(sx0 + (960 - sx0) * q, sy0 + (1700 - sy0) * q - Math.sin(q * Math.PI) * 300, 70, '#7B4E96', q * 400); }
   const kv = A(t, 4.0, 4.5); if (kv > 0) o += `<g opacity="${kv}"><rect x="880" y="1610" width="160" height="200" rx="24" fill="#5A6078"/><rect x="866" y="1590" width="188" height="40" rx="16" fill="#3A3F5C"/>` + PR.Tm('SIFIRLAR', 960, 1720, 24, '#FFF3E0') + `</g>`;
-  const c = pop(t, 2.0); if (c > 0) o += grp(cip('KİMSE FAKİRLEŞMEDİ ✓', 0, 0, YESIL, '#FFFFFF', 34), 540, 300, c);
-  const c2 = pop(t, 7.6); if (c2 > 0) o += grp(cip('GİDEN SADECE SIFIRLAR', 0, 0, '#1B1F3A', '#FFE45C', 32), 540, 420, c2);
+  const c = pop(t, 2.0); if (c > 0) o += grp(cip('KİMSE FAKİRLEŞMEDİ ✓', 0, 0, YESIL, '#FFFFFF', 34), 540, 440, c);
+  const c2 = pop(t, 7.6); if (c2 > 0) o += grp(cip('GİDEN SADECE SIFIRLAR', 0, 0, '#1B1F3A', '#FFE45C', 32), 540, 550, c2);
   o += FX.gecis(t, { orta: 9.5, renk: '#D8A032', kapat: { tur: 'egik', sure: .3, yon: -1 } });
   $('dinamik').innerHTML = o;
 };"""
