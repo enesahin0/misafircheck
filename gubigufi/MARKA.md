@@ -14,6 +14,11 @@
 
 ## Görsel prensipler
 
+### KATEGORİ GİRİŞİ (her videoda, kanal.js otomatik yapar)
+- 0–1.05 sn: kategori etiketi ekranın ortasında büyük (2.7x) belirir, arkasında kategori renginde yumuşak ışık; altında seri adı (`window.KANAL.seri`, ör. "KANUN BÖYLE DİYOR · BÖLÜM 1").
+- 1.05–1.55 sn: küçülüp sol üstteki yerine (x62, y292) kayar; sayaç halkası 1.3 sn'de gelir.
+- Sahne 1'in ilk 1.5 sn'sinde ekran ortasına önemli görsel koyma (kategori orada). Kapatmak için `KANAL.giris = false`.
+
 ### ARKA PLAN / ATMOSFER KURALI (güncelleme, #10'dan itibaren geçerli)
 - Skill'den aldığımız şey ÇİZİM TARZIDIR (flat vektör, konturyok, rim light, glow, yuvarlak formlar). Skill'in "koyu lacivert/uzay" atmosferi varsayılan DEĞİL.
 - Videolar mavi-derin tonlara bürünmeyecek. Varsayılan: renkli, aydınlık, konuya ait doğal ortam/çevre arka planları (gündüz gökyüzü, orman, sahil, mutfak, mahkeme salonu, stadyum, atölye, pazar yeri, sokak…) + sıcak ve canlı palet.
