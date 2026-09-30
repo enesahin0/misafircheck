@@ -1,4 +1,4 @@
-# #10 — Bulduğun Cüzdan Kimin? · "Kanun Böyle Diyor" Bölüm 1
+# #10 — Bulduğun Cüzdan Kimin? · "Kanun Böyle Diyor"
 Hedef süre: ~55 sn | Tahmini kelime: ~125 | İskelet: 0–2 kanca · 2–40 mekanizma · 40–52 "işte bu yüzden" · 52–60 kapanış
 Dikey: HUKUK (etiket rengi #8C6CFF) — yeni stratejinin ilk videosu (plan #1)
 Atmosfer (yeni kural): aydınlık, renkli gündüz ortamları — parkta/kaldırımda sonbahar sokağı, muhtarlık/karakol önü, sıcak ev içi. Koyu lacivert YOK.
