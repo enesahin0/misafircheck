@@ -51,6 +51,8 @@ Yere basan hiçbir şey havada durmaz: ağaç, bina, direk, masa, karakter… ze
 - Zeminler krem/kum/adaçayı/pastel gökyüzü gibi yumuşak ama "kirli" (hafif gri/toprak karışımlı) tonlar; vurgu 2–3 olgun renk. Maskot renkleri (Gubi amber, Gufi kırmızı) sabit kalır.
 - Koyu zemin üstündeki yazı/sayı krem, açık zemin üstündeki koyu kahve/lacivert.
 
+### KATEGORİ ETİKETİ: hap şekli yazının GERÇEK çizilen genişliğine göre ölçülür (kanal.js svgGenislik), her kategoride tam oturur.
+
 ### ÇIKIŞ (LOGO) KONTROLÜ (KALICI)
 - Her videonun sonunda logo sahnesi (Gubi pırıltıya, Gufi kırmızı kareye dönüşür) ZORUNLU. Teslimden önce son 1 sn'den kare alınıp logonun göründüğü kontrol edilir.
 - render.py artık sahne JS hatasında durur (#12'de logo sahnesi değişken çakışması yüzünden boş çıkmıştı; logo kodu `LOGO_C` adını kullanır).

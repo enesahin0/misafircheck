@@ -8,6 +8,10 @@
   const ust = document.createElementNS(NS, 'g'); ust.setAttribute('id', 'kanalKatmani'); svg.appendChild(ust);
   const olc = document.createElement('canvas').getContext('2d');
   const genislik = (s, f) => { olc.font = f; return olc.measureText(s).width; };
+  // kategori etiketi: SVG'de gerçekten çizilen metnin genişliği (font + letter-spacing dahil) → hap şekli yazıya tam oturur
+  let olcT = null;
+  const svgGenislik = s => { if (!olcT) { olcT = document.createElementNS(NS, 'text'); olcT.setAttribute('class', 'mono'); olcT.setAttribute('font-size', '24'); olcT.setAttribute('letter-spacing', '2'); olcT.setAttribute('x', '-9999'); olcT.setAttribute('y', '-9999'); svg.appendChild(olcT); }
+    olcT.textContent = s; try { return olcT.getComputedTextLength(); } catch (e) { return genislik(s, '700 24px "JetBrains Mono"') + s.length * 2; } };
   const e = (a, b, t) => Math.min(1, Math.max(0, (t - a) / (b - a)));
   const back = x => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
   const P = (cx, cy, r) => { let d = ''; for (let i = 0; i < 4; i++) { const a = -Math.PI / 2 + i * Math.PI / 2, b = a + Math.PI / 4, n = a + Math.PI / 2; d += (i ? '' : `M${cx + Math.cos(a) * r} ${cy + Math.sin(a) * r}`) + ` Q${cx + Math.cos(b) * r * .16} ${cy + Math.sin(b) * r * .16} ${cx + Math.cos(n) * r} ${cy + Math.sin(n) * r}`; } return d + 'Z'; };
@@ -28,7 +32,7 @@
     const K_ = window.KANAL || {}, son = K_.sesSonu || 60, a = e(.15, .5, T) * (1 - e(son - .4, son, T));
     let o = vig;
     if (a > 0) {
-      o += `<g opacity="${a * .95}"><rect x="62" y="268" width="${genislik(K_.kategori || '', '700 24px "JetBrains Mono"') + 80}" height="48" rx="24" fill="#0B1433" opacity=".55"/>` +
+      o += `<g opacity="${a * .95}"><rect x="62" y="268" width="${svgGenislik(K_.kategori || '') + 50 + 26}" height="48" rx="24" fill="#0B1433" opacity=".55"/>` +
         `<path d="${P(88, 292, 13)}" fill="${K_.renk || '#FBAC39'}"/><text class="mono" x="112" y="301" font-size="24" letter-spacing="2" style="fill:#FFF3D6">${K_.kategori || ''}</text>` +
         `<circle cx="${TX}" cy="300" r="44" fill="#0B1433" opacity=".55"/>`;
       const p = Math.min(1, T / son), a1 = -Math.PI / 2 + p * Math.PI * 2, L = 2 * Math.PI * 28;
