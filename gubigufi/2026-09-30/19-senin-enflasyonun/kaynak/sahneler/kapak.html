@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/en.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  let o = `<rect width="1080" height="1150" fill="#DFF6EC"/>` + CV.bulut(540, 180, .8) + `<rect x="0" y="960" width="1080" height="200" fill="#86C8A8"/>`;
+  o += EN.termometre(250, 820, .8, 47, 60, '#E8505B', '') + EN.termometre(830, 820, .8, 34, 60, '#2E9AD8', '');
+  o += EN.sepet(540, 900, .7, [['gida', -120, -170, 1], ['kira', 60, -190, 1], ['saglik', 170, -160, .9]]);
+  o += `<text x="540" y="360" font-size="200" font-weight="900" text-anchor="middle" style="fill:#2FBF71">?</text>`;
+  o += M.canli('gubi', { t: 1.2, x: 250, y: 1030, boy: 160, duygu: 'saskin', bakHedef: [830, 600], ust: KO.giy('gubi', [['kep', { renk: '#1B1640', puskul: '#FFB44C' }]]) });
+  o += M.canli('gufi', { t: .5, x: 830, y: 1150, boy: 200, duygu: 'mutlu', bakHedef: [250, 600], ust: KO.giy('gufi', ['gozluk', ['kasket', { renk: '#8A8A9A', siper: '#5A5A6A' }]]) });
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#2A3A5A"/><rect x="0" y="1150" width="1080" height="18" fill="#D8A032"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#F2CE7A">PARANIN DİLİ</text>`;
+  o += txt('SENİN ENFLASYONUN', 540, 1362, 90) + txt('KAÇ?', 540, 1462, 92, '#F2CE7A');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>
