@@ -86,7 +86,7 @@ function bez(p0, p1, p2, p3, n = 24) { const o = []; for (let i = 0; i <= n; i++
 // ---------- insan silueti ----------
 // y = ayak hizası, h = boy. Dönen: el konumu
 function person(x, y, h, o = {}) {
-  const { phase = 0, walk = 0, lean = 0, hat = false, spear = false, color = COL.ink, face = 1, arm = null, hair = false, pick = null, clip = false, look = 0, tunic = false } = o;
+  const { phase = 0, walk = 0, lean = 0, hat = false, spear = false, color = COL.ink, face = 1, arm = null, hair = false, pick = null, clip = false, look = 0, tunic = false, sledge = null } = o;
   const s = h / 100;
   ctx.save(); ctx.translate(x, y); ctx.scale(s * face, s); ctx.rotate(lean);
   ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
@@ -113,6 +113,13 @@ function person(x, y, h, o = {}) {
     ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, -52); ctx.stroke();
     ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(-26, -44); ctx.quadraticCurveTo(0, -60, 26, -44); ctx.stroke();
     ctx.restore();
+  } else if (sledge !== null) { // balyoz: sledge = açı
+    const a = sledge; hand = [Math.cos(a) * 30, -74 + Math.sin(a) * 30];
+    ctx.beginPath(); ctx.moveTo(0, -74); ctx.lineTo(hand[0], hand[1]); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, -70); ctx.lineTo(hand[0] * .9, hand[1] + 3); ctx.stroke();
+    ctx.save(); ctx.translate(hand[0], hand[1]); ctx.rotate(a + Math.PI / 2);
+    ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(0, 8); ctx.lineTo(0, -58); ctx.stroke();
+    ctx.fillRect(-15, -72, 30, 18); ctx.restore();
   } else {
     hand = [-sw * 20 + 4, -46];
     ctx.beginPath(); ctx.moveTo(0, -74); ctx.lineTo(-sw * 16, -60); ctx.lineTo(-sw * 20 + 4, -46); ctx.stroke();
