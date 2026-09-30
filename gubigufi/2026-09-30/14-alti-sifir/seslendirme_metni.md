@@ -6,7 +6,7 @@ Bir zamanlar Türkiye'de herkes milyonerdi. Ama bu, bir simit almaya bile zor ye
 
 Yıl iki bin dört. Cüzdandaki en büyük banknot yirmi milyon lira. Bir dolar, yaklaşık bir buçuk milyon lira. Fiyatlar o kadar uzun ki kasiyerler sıfırları saymakta zorlanıyor, hesap makinelerinin ekranı bile yetmiyor.
 
-Türk lirası o yıllarda Guinness Rekorlar Kitabı'na girmişti. Ünvanı da şuydu: dünyanın en değersiz parası.
+Türk lirası o yıllarda Guinness Rekorlar Kitabı'na girmişti. Unvanı da şuydu: dünyanın en değersiz parası.
 
 Peki çözüm neydi? Paradan tam altı sıfır silmek.
 
