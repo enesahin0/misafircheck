@@ -5,7 +5,7 @@
   <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
 </svg>
 <script>window.SB = 29.6; const TP = {"gubi": [[1.9, "dusun"], [4.1, "kahkaha"]], "gufi": [[0.6, "goster"], [4.3, "sasir"]]};</script>
-<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script>
 <script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
 <script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
 <script>
@@ -37,7 +37,6 @@ const cuz = (x, y, s, rot = 0) => `<g transform="translate(${x} ${y}) rotate(${r
 const T = CV.ton('lavanta');
 $('zemin').innerHTML = `<rect width="1080" height="1920" fill="${T.fon1}"/>` + CV.bulut(160, 240, .8, '#FFFFFF', T.acik) + CV.bulut(900, 360, .6, '#FFFFFF', T.acik) + `<path d="M0 1200 Q540 1120 1080 1200 V1920 H0Z" fill="${T.orta}"/><path d="M0 1450 Q540 1400 1080 1470 V1920 H0Z" fill="${T.koyu}" opacity=".5"/>` + CV.kaya(120, 1230, .8, T) + CV.kaya(980, 1240, .6, T);
 window.renderAt = t => {
-  KAM(t, [[3.6, 4.95, 540, 840, 1.35, .35]]);
   let o = '';
   const cik = FX.E.expo(A(t, .1, .7)), cat = A(t, 4.0, 4.3), par = A(t, 4.35, 4.95);
   if (par <= 0) o += `<g transform="translate(0 ${(1 - cik) * 600})">` + HK.tas(540, 820, 1.0, cat) + `</g>`; else o += HK.tas(540, 820, 1.0, 1, par);
@@ -46,7 +45,8 @@ window.renderAt = t => {
   o += gufi(t, { x: 270, y: 1740, boy: 260, bakHedef: [540, 820] });
   if (t > .6 && t < 3.9) o += M.balon(420, 1270, txt('%10?', 0, 16, 56, '#1B1640'), { w: 220, h: 110, yon: -1 });
   o += gubi(t, { x: 860, y: 1560, boy: 200, bakHedef: t < 4 ? [540, 820] : [270, 1550] });
-  o += FX.flas(t, 4.0, .4, .06) + FX.sokHalkasi(540, 820, t, 4.35, { renk: '#FFFFFF' });
+  o += FX.sokHalkasi(540, 820, t, 4.35, { renk: '#FFFFFF' });
+  o += DP.sar(t, 3.95, 4.4, d => DP.catlak(d));
   o += FX.gecis(t, { orta: 0, renk: '#5E5874', kapat: { sure: .01 }, ac: { tur: 'daire', merkez: [540, 800], sure: .45 } });
   $('dinamik').innerHTML = o;
 };

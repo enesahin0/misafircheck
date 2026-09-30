@@ -221,7 +221,8 @@ Arkasında şekil (hap/çip, kutu, damga çerçevesi, balon) olan HER yazı şek
 - Genişlik ASLA harf sayısından tahmin edilmez; `K.yaziGen(metin, fs, { mono, agirlik, ls })` ile gerçek ölçülür (SVG getComputedTextLength; mono yazı tipi + letter-spacing dahil).
 - `cip()` artık ölçerek çizer (genişlik = ölçülen + 1.7×fs). Sabit genişlikli kutularda (balon, tabela, etiket kartı) yazı uzunsa kutu büyütülür ya da font küçültülür; kontak föyünde her şekilli yazı taşma için kontrol edilir.
 
-## YAKIN ÇEKİM / DETAY PLAN (yerine göre)
-Önemli anlarda kamera nesneye yaklaşır, sonra geri açılır: kanun maddesi, cüzdanın içi, tokmak vuruşu, teslim anı, damga, etiket/kurdele gibi. Video başına 5–8 detay plan.
-- Uygulama: HEAD'de `<g id="kamYak">` zemin + kamera gruplarını sarar. `KAM(t, [[t0, t1, cx, cy, zoom, geçiş]])` renderAt'in başında çağrılır; kadraj kenarları taşmaz. `.kamera` sınıfının CSS push-in animasyonu transform'u ezdiği için doğrudan ona uygulanmaz.
-- Zoom 1.3–2.0. Yakın planda odaklanan nesne ve yüzler altyazı bandının (y≈1280–1430) dışında kalmalı. Geçiş (gecis) anlarıyla çakışmamalı.
+## YAKIN ÇEKİM / DETAY PLAN (insert shot) — yerine göre
+Sahneyi büyütmek (amatör zoom) YASAK. Detay plan, anlatıda önemli olan nesnenin ya da konunun AYRI ÇİZİLMİŞ yakın plan kompozisyonudur. Nesne merkezde ve büyük durur, kendi zemini ve dokusu vardır (kaldırım taşı, kâğıt, ahşap, taş), alan derinliği vardır (bulanık ön ve arka plan objeleri, vinyet), kendi mini animasyonu vardır (fosforlu kalem geçer, tokmak iner, çatlak ilerler, damga basılır, kurdele sallanır).
+- Kesme ile girer (kısa beyaz parıltı + hafif 'oturma'), yavaş push-in ile sürer, kesme ile çıkar. Süresi 0,5–2,7 sn. Video başına 5–8 tane.
+- Kütüphane: `ortak/detay.js` → `DP.sar(t, t0, t1, d => DP.xxx(d))`. #10'daki örnekler: kaldirim, kanun, tokmak, teslim, catlak, tutanak, kurdele. Her video için konuya özel yeni detay planlar çizilir.
+- Nesne ve önemli yazılar altyazı bandının (y≈1280–1430) dışında kalır. Detay plandaki yazılar da şekillerine ölçülerek sığdırılır.

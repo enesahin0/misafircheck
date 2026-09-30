@@ -5,7 +5,7 @@
   <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
 </svg>
 <script>window.SB = 22.65; const TP = {"gubi": [[3.4, "mutlu"]], "gufi": [[5.9, "mutlu"]]};</script>
-<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script>
 <script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
 <script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
 <script>
@@ -37,7 +37,6 @@ const cuz = (x, y, s, rot = 0) => `<g transform="translate(${x} ${y}) rotate(${r
 const T = CV.ton('gul');
 $('zemin').innerHTML = HK.apartman(T, 0);
 window.renderAt = t => {
-  KAM(t, [[2.4, 4.1, 620, 1200, 1.7]]);
   const ac = FX.E.expo(A(t, 1.6, 2.2));
   let o = HK.apartman(T, ac) + CV.bitki(520, 1320, .9, T) + CV.bitki(1040, 1320, .8, T);
   if (ac > .3) o += gubi(t, { x: 780, y: 1000, boy: 210, bakHedef: t < 3.4 ? [430, 1400] : 'kamera', ust: SAHIP });
@@ -48,6 +47,7 @@ window.renderAt = t => {
   if (c2 > 0) o += grp(cip('UYGUN ÖDÜL ✓', 0, 0, '#FFE45C', '#1B1640', 34), 290, 690, c2);
   o += gufi(t, { x: 300, y: 1740, boy: 260, bakHedef: [780, 1000] });
   o += HK.yapraklar(t, SONBAHAR, 6, [0, 1080, 0, 1900]);
+  o += DP.sar(t, 2.3, 3.9, d => DP.teslim(d));
   o += FX.gecis(t, { orta: 6.95, renk: '#5E5874', kapat: { tur: 'daire', merkez: [540, 800], sure: .35 } });
   $('dinamik').innerHTML = o;
 };

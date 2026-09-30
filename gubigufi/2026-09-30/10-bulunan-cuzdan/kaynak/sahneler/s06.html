@@ -5,7 +5,7 @@
   <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
 </svg>
 <script>window.SB = 34.55; const TP = {"gubi": [[6.3, "mutlu"]], "gufi": [[8.9, "omuzSilk"]]};</script>
-<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script>
 <script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
 <script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
 <script>
@@ -37,7 +37,6 @@ const cuz = (x, y, s, rot = 0) => `<g transform="translate(${x} ${y}) rotate(${r
 const T = CV.ton('seftali'), TB = CV.ton('teal');
 $('zemin').innerHTML = `<defs><clipPath id="solY"><rect x="0" y="0" width="540" height="1920"/></clipPath></defs><g clip-path="url(#solY)">` + PR.sokak(T, 0, 1300) + HK.agac(300, 1320, .9, '#F28F3A', '#C8623A') + `</g>` + HK.binaIci(TB, 540, 540) + `<rect x="532" y="0" width="16" height="1920" fill="#FFFDF6"/>`;
 window.renderAt = t => {
-  KAM(t, [[5.2, 6.8, 760, 1150, 1.5], [8.35, 10.3, 810, 760, 1.7]]);
   let o = HK.danisma(810, 1180, .9, TB, 'DANIŞMA');
   o += gubi(t, { x: 810, y: 900, boy: 190, bakHedef: t < 5 ? [540, 1500] : [700, 1300], ust: GOREVLI });
   const c = pop(t, .3); if (c > 0) o += grp(cip('İSTİSNA', 0, 0, MOR, '#FFFFFF', 40), 540, 420, c);
@@ -50,7 +49,8 @@ window.renderAt = t => {
   o += gufi(t, { yol: [[1.4, 250, 1740, 240], [3.4, 690, 1740, 240]], x: 250, y: 1740, boy: 240, bakHedef: [810, 900] });
   const gx = t < 3.4 ? 250 + 440 * FX.E.inOutQuart(A(t, 1.4, 3.4)) : 690;
   o += cuz(gx + 110 + (810 - gx - 110) * tv, 1600 - 580 * tv - Math.sin(tv * Math.PI) * 100, .35 * (1 - .3 * tv), -10);
-  $('dinamik').innerHTML = o + FX.flas(t, 8.6, .2, .06);
+  o += DP.sar(t, 8.3, 10.1, d => DP.tutanak(d, .3));
+  $('dinamik').innerHTML = o;
 };
 </script>
 <script src="../ortak/kanal.js"></script>

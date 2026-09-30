@@ -37,7 +37,7 @@ HEAD = """<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
   <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
 </svg>
 <script>window.SB = __SB__; const TP = __TP__;</script>
-<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script>
 <script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
 <script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
 <script>
@@ -61,7 +61,6 @@ S[1] = r"""
 const T = CV.ton('seftali');
 $('zemin').innerHTML = PR.sokak(T, 0, 1300) + HK.agac(330, 1320, 1.0, '#F28F3A', '#C8623A') + HK.agac(830, 1320, .9, '#FFB44C', '#E07A2A');
 window.renderAt = t => {
-  KAM(t, [[.9, 1.8, 700, 1650, 1.6, .4]]);
   let o = HK.yapraklar(t, SONBAHAR, 12, [0, 1080, 100, 1800]);
   const acil = FX.E.expo(A(t, 1.7, 2.3));
   if (acil < 1) o += `<g opacity="${1 - acil}">` + K.glow({ x: 700, y: 1690, r: 120, renk: '#FFE9A8', guc: .6 + .3 * Math.sin(t * 6) }) + cuz(700, 1650, .5, -12) + `</g>`;
@@ -70,6 +69,7 @@ window.renderAt = t => {
     for (let i = 0; i < 3; i++) { const b = FX.yay(t - 2.3 - i * .12); if (b > 0) o += PR.banknot(540 + (i - 1) * 120 * b, 820 - 200 * b, 330, { deger: ['100', '200', '50'][i], birim: 'TL', pal: ['mavi', 'yesil', 'turuncu'][i], rot: (i - 1) * 16 * b }); }
     const k = FX.yay(t - 3.05); if (k > 0) o += HK.kimlik(760, 900 - 60 * k, 1.0 * Math.min(1.2, k), 12); }
   const q = pop(t, 4.1); if (q > 0) o += grp(txt('?', 0, 0, 170, MOR), 620, 1080, q, 8);
+  o += DP.sar(t, 1.35, 2.0, d => DP.kaldirim(d));
   o += FX.gecis(t, { orta: 5.0, renk: MOR, serit: '#1B1640', kapat: { tur: 'egik', sure: .3 } });
   $('dinamik').innerHTML = o;
 };"""
@@ -78,7 +78,6 @@ S[2] = r"""
 const T = CV.ton('gunes');
 $('zemin').innerHTML = `<rect width="1080" height="1920" fill="${T.isik}"/>` + CV.bulut(200, 260, .9) + CV.bulut(880, 180, .7) + `<path d="M0 1180 Q540 1100 1080 1180 V1920 H0Z" fill="#9FD27A"/><path d="M380 1920 L500 1180 L580 1180 L700 1920Z" fill="#C9C2B4"/><path d="M0 1500 Q300 1440 520 1460 L540 1520 Q260 1520 0 1600Z" fill="#C9C2B4"/><path d="M1080 1480 Q800 1430 560 1460 L550 1520 Q820 1510 1080 1580Z" fill="#C9C2B4"/>` + HK.agac(120, 1250, .8, '#6CC04A', '#3FA35A') + HK.agac(960, 1240, .75, '#8FD65A', '#3FA35A');
 window.renderAt = t => {
-  KAM(t, [[1.6, 4.5, 540, 520, 1.9]]);
   let o = '';
   const kp = pop(t, .3, .5); if (kp > 0) { const sol = PR.Tm('TÜRK MEDENİ', -160, -60, 34, '#4A348E', 'letter-spacing="3"') + PR.Tm('KANUNU', -160, -10, 34, '#4A348E', 'letter-spacing="3"') + PR.T_('§', -160, 110, 110, '#8C6CFF');
     let sag = PR.Tm('MADDE 769', 160, -100, 30, '#4A348E', 'letter-spacing="3"'); if (t > 1.9) sag += FX.harfHarf('BİLDİRMEK', 160, 0, 50, t, 1.9, { renk: '#1B1640' }) + FX.harfHarf('ZORUNLU', 160, 70, 50, t, 2.2, { renk: '#C8323C' });
@@ -88,6 +87,7 @@ window.renderAt = t => {
   o += gubi(t, { yol: [[.4, 1200, 1560, 200], [1.4, 850, 1560, 200]], x: 850, y: 1560, boy: 200, bakHedef: t < 6 ? [370, 870] : [710, 1010], isaretHedef: t < 6 ? [300, 870] : [800, 1010], ust: POLIS });
   if (t > 1.4) o += `<g transform="translate(${930} ${1640}) rotate(-20)"><rect x="-40" y="-18" width="80" height="36" rx="18" fill="#C9D2E0"/><circle cx="36" cy="0" r="24" fill="#C9D2E0"/><circle cx="36" cy="0" r="10" fill="#5A607E"/></g>`;
   o += gufi(t, { x: 260, y: 1740, boy: 250, bakHedef: t < 6 ? [370, 870] : [710, 1010] }) + cuz(430, 1640, .35, -10);
+  o += DP.sar(t, 1.7, 4.4, d => DP.kanun(d));
   o += FX.gecis(t, { orta: 0, renk: MOR, serit: '#1B1640', kapat: { sure: .01 }, ac: { tur: 'egik', sure: .4 } });
   $('dinamik').innerHTML = o;
 };"""
@@ -95,7 +95,6 @@ window.renderAt = t => {
 S[3] = r"""
 const T = CV.ton('seftali'), TM = CV.ton('kum');
 window.renderAt = t => {
-  KAM(t, [[2.75, 4.0, 760, 820, 1.9, .4], [5.9, 9.0, 540, 1010, 1.45]]);
   const g = FX.E.expo(A(t, 2.2, 2.7));
   let o = '';
   if (g < 1) { let a = `<rect width="1080" height="1920" fill="${T.fon1}"/>`; for (let r = 0; r < 14; r++) for (let c = 0; c < 6; c++) a += `<rect x="${c * 190 + (r % 2) * 95 - 60}" y="${r * 90 + 100}" width="176" height="78" rx="8" fill="${T.fon2}"/>`;
@@ -113,7 +112,8 @@ window.renderAt = t => {
     b += gufi(t, { x: 540, y: 1760, boy: 250, bakHedef: [540, 700] });
     if (t > 7.9) { const c = FX.yay(t - 7.9); b += cuz(700, 1600 - 120 * c, .45, 10); }
     o += `<g opacity="${g}">${b}</g>`; }
-  o += FX.flas(t, 3.0, .35, .06) + FX.flas(t, 5.2, .25, .06);
+  o += DP.sar(t, 2.75, 3.75, d => DP.tokmak(d, .25));
+  o += FX.flas(t, 5.2, .25, .06);
   $('dinamik').innerHTML = o;
 };"""
 # 04 — apartman kapısı: sahibine teslim, masraf + uygun ödül
@@ -121,7 +121,6 @@ S[4] = r"""
 const T = CV.ton('gul');
 $('zemin').innerHTML = HK.apartman(T, 0);
 window.renderAt = t => {
-  KAM(t, [[2.4, 4.1, 620, 1200, 1.7]]);
   const ac = FX.E.expo(A(t, 1.6, 2.2));
   let o = HK.apartman(T, ac) + CV.bitki(520, 1320, .9, T) + CV.bitki(1040, 1320, .8, T);
   if (ac > .3) o += gubi(t, { x: 780, y: 1000, boy: 210, bakHedef: t < 3.4 ? [430, 1400] : 'kamera', ust: SAHIP });
@@ -132,6 +131,7 @@ window.renderAt = t => {
   if (c2 > 0) o += grp(cip('UYGUN ÖDÜL ✓', 0, 0, '#FFE45C', '#1B1640', 34), 290, 690, c2);
   o += gufi(t, { x: 300, y: 1740, boy: 260, bakHedef: [780, 1000] });
   o += HK.yapraklar(t, SONBAHAR, 6, [0, 1080, 0, 1900]);
+  o += DP.sar(t, 2.3, 3.9, d => DP.teslim(d));
   o += FX.gecis(t, { orta: 6.95, renk: '#5E5874', kapat: { tur: 'daire', merkez: [540, 800], sure: .35 } });
   $('dinamik').innerHTML = o;
 };"""
@@ -140,7 +140,6 @@ S[5] = r"""
 const T = CV.ton('lavanta');
 $('zemin').innerHTML = `<rect width="1080" height="1920" fill="${T.fon1}"/>` + CV.bulut(160, 240, .8, '#FFFFFF', T.acik) + CV.bulut(900, 360, .6, '#FFFFFF', T.acik) + `<path d="M0 1200 Q540 1120 1080 1200 V1920 H0Z" fill="${T.orta}"/><path d="M0 1450 Q540 1400 1080 1470 V1920 H0Z" fill="${T.koyu}" opacity=".5"/>` + CV.kaya(120, 1230, .8, T) + CV.kaya(980, 1240, .6, T);
 window.renderAt = t => {
-  KAM(t, [[3.6, 4.95, 540, 840, 1.35, .35]]);
   let o = '';
   const cik = FX.E.expo(A(t, .1, .7)), cat = A(t, 4.0, 4.3), par = A(t, 4.35, 4.95);
   if (par <= 0) o += `<g transform="translate(0 ${(1 - cik) * 600})">` + HK.tas(540, 820, 1.0, cat) + `</g>`; else o += HK.tas(540, 820, 1.0, 1, par);
@@ -149,7 +148,8 @@ window.renderAt = t => {
   o += gufi(t, { x: 270, y: 1740, boy: 260, bakHedef: [540, 820] });
   if (t > .6 && t < 3.9) o += M.balon(420, 1270, txt('%10?', 0, 16, 56, '#1B1640'), { w: 220, h: 110, yon: -1 });
   o += gubi(t, { x: 860, y: 1560, boy: 200, bakHedef: t < 4 ? [540, 820] : [270, 1550] });
-  o += FX.flas(t, 4.0, .4, .06) + FX.sokHalkasi(540, 820, t, 4.35, { renk: '#FFFFFF' });
+  o += FX.sokHalkasi(540, 820, t, 4.35, { renk: '#FFFFFF' });
+  o += DP.sar(t, 3.95, 4.4, d => DP.catlak(d));
   o += FX.gecis(t, { orta: 0, renk: '#5E5874', kapat: { sure: .01 }, ac: { tur: 'daire', merkez: [540, 800], sure: .45 } });
   $('dinamik').innerHTML = o;
 };"""
@@ -158,7 +158,6 @@ S[6] = r"""
 const T = CV.ton('seftali'), TB = CV.ton('teal');
 $('zemin').innerHTML = `<defs><clipPath id="solY"><rect x="0" y="0" width="540" height="1920"/></clipPath></defs><g clip-path="url(#solY)">` + PR.sokak(T, 0, 1300) + HK.agac(300, 1320, .9, '#F28F3A', '#C8623A') + `</g>` + HK.binaIci(TB, 540, 540) + `<rect x="532" y="0" width="16" height="1920" fill="#FFFDF6"/>`;
 window.renderAt = t => {
-  KAM(t, [[5.2, 6.8, 760, 1150, 1.5], [8.35, 10.3, 810, 760, 1.7]]);
   let o = HK.danisma(810, 1180, .9, TB, 'DANIŞMA');
   o += gubi(t, { x: 810, y: 900, boy: 190, bakHedef: t < 5 ? [540, 1500] : [700, 1300], ust: GOREVLI });
   const c = pop(t, .3); if (c > 0) o += grp(cip('İSTİSNA', 0, 0, MOR, '#FFFFFF', 40), 540, 420, c);
@@ -171,7 +170,8 @@ window.renderAt = t => {
   o += gufi(t, { yol: [[1.4, 250, 1740, 240], [3.4, 690, 1740, 240]], x: 250, y: 1740, boy: 240, bakHedef: [810, 900] });
   const gx = t < 3.4 ? 250 + 440 * FX.E.inOutQuart(A(t, 1.4, 3.4)) : 690;
   o += cuz(gx + 110 + (810 - gx - 110) * tv, 1600 - 580 * tv - Math.sin(tv * Math.PI) * 100, .35 * (1 - .3 * tv), -10);
-  $('dinamik').innerHTML = o + FX.flas(t, 8.6, .2, .06);
+  o += DP.sar(t, 8.3, 10.1, d => DP.tutanak(d, .3));
+  $('dinamik').innerHTML = o;
 };"""
 # 07 — 5 yıl: bankta bekleyen Gufi, mevsimler akar, takvim döner, "SENİN" kurdelesi
 S[7] = r"""
@@ -179,7 +179,6 @@ const MEV = [['#F28F3A', '#C8623A', '#FFE0B0', '#D9A860', 0], [null, null, '#DDE
 const _kam7 = 1;
 const lerpR = (a, b, k) => { const p = c => [1, 3, 5].map(i => parseInt(c.slice(i, i + 2), 16)); const x = p(a), y = p(b); return '#' + x.map((v, i) => Math.round(v + (y[i] - v) * k).toString(16).padStart(2, '0')).join(''); };
 window.renderAt = t => {
-  KAM(t, [[5.9, 7.1, 600, 1600, 1.3, .4]]);
   const q = A(t, 2.4, 6.0) * 20, i0 = Math.floor(q) % 4, i1 = (i0 + 1) % 4, f = q % 1, m0 = MEV[i0], m1 = MEV[i1], sk = t > 6.0 ? 0 : f;
   const gok = t > 6.0 ? MEV[0][2] : lerpR(m0[2], m1[2], sk), yer = t > 6.0 ? MEV[0][3] : lerpR(m0[3], m1[3], sk), kis = t > 6.0 ? 0 : (i0 === 1 ? 1 - sk : i1 === 1 ? sk : 0);
   let o = `<rect width="1080" height="1920" fill="${gok}"/>` + CV.bulut(220, 260, .8) + `<path d="M0 1260 Q540 1180 1080 1260 V1920 H0Z" fill="${yer}"/><path d="M0 1500 Q540 1450 1080 1520 V1920 H0Z" fill="#000" opacity=".06"/>`;
@@ -194,6 +193,7 @@ window.renderAt = t => {
   if (kis > .1) o += `<ellipse cx="420" cy="${1716 - 245}" rx="${110 * kis}" ry="${26 * kis}" fill="#FFFFFF"/>`;
   o += cuz(640, 1650, .35, 0);
   const kd = pop(t, 6.1); if (kd > 0) o += grp(HK.kurdele(0, 0, .55), 640, 1610, kd);
+  o += DP.sar(t, 6.0, 7.1, d => DP.kurdele(d, t));
   o += FX.gecis(t, { orta: 7.45, renk: '#FFB44C', kapat: { tur: 'egik', sure: .3 } });
   $('dinamik').innerHTML = o;
 };"""

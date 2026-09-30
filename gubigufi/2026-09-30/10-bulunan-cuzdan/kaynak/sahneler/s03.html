@@ -5,7 +5,7 @@
   <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
 </svg>
 <script>window.SB = 13.4; const TP = {"gubi": [[3.0, "kararli"]], "gufi": [[2.6, "korku"], [7.9, "sasir"]]};</script>
-<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script>
 <script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
 <script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
 <script>
@@ -36,7 +36,6 @@ const cuz = (x, y, s, rot = 0) => `<g transform="translate(${x} ${y}) rotate(${r
 
 const T = CV.ton('seftali'), TM = CV.ton('kum');
 window.renderAt = t => {
-  KAM(t, [[2.75, 4.0, 760, 820, 1.9, .4], [5.9, 9.0, 540, 1010, 1.45]]);
   const g = FX.E.expo(A(t, 2.2, 2.7));
   let o = '';
   if (g < 1) { let a = `<rect width="1080" height="1920" fill="${T.fon1}"/>`; for (let r = 0; r < 14; r++) for (let c = 0; c < 6; c++) a += `<rect x="${c * 190 + (r % 2) * 95 - 60}" y="${r * 90 + 100}" width="176" height="78" rx="8" fill="${T.fon2}"/>`;
@@ -54,7 +53,8 @@ window.renderAt = t => {
     b += gufi(t, { x: 540, y: 1760, boy: 250, bakHedef: [540, 700] });
     if (t > 7.9) { const c = FX.yay(t - 7.9); b += cuz(700, 1600 - 120 * c, .45, 10); }
     o += `<g opacity="${g}">${b}</g>`; }
-  o += FX.flas(t, 3.0, .35, .06) + FX.flas(t, 5.2, .25, .06);
+  o += DP.sar(t, 2.75, 3.75, d => DP.tokmak(d, .25));
+  o += FX.flas(t, 5.2, .25, .06);
   $('dinamik').innerHTML = o;
 };
 </script>

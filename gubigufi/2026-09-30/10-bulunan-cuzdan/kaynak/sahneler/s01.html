@@ -5,7 +5,7 @@
   <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
 </svg>
 <script>window.SB = 0; const TP = {"gubi": [], "gufi": [[1.4, "sasir"], [4.1, "dusun"]]};</script>
-<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script>
 <script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
 <script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
 <script>
@@ -37,7 +37,6 @@ const cuz = (x, y, s, rot = 0) => `<g transform="translate(${x} ${y}) rotate(${r
 const T = CV.ton('seftali');
 $('zemin').innerHTML = PR.sokak(T, 0, 1300) + HK.agac(330, 1320, 1.0, '#F28F3A', '#C8623A') + HK.agac(830, 1320, .9, '#FFB44C', '#E07A2A');
 window.renderAt = t => {
-  KAM(t, [[.9, 1.8, 700, 1650, 1.6, .4]]);
   let o = HK.yapraklar(t, SONBAHAR, 12, [0, 1080, 100, 1800]);
   const acil = FX.E.expo(A(t, 1.7, 2.3));
   if (acil < 1) o += `<g opacity="${1 - acil}">` + K.glow({ x: 700, y: 1690, r: 120, renk: '#FFE9A8', guc: .6 + .3 * Math.sin(t * 6) }) + cuz(700, 1650, .5, -12) + `</g>`;
@@ -46,6 +45,7 @@ window.renderAt = t => {
     for (let i = 0; i < 3; i++) { const b = FX.yay(t - 2.3 - i * .12); if (b > 0) o += PR.banknot(540 + (i - 1) * 120 * b, 820 - 200 * b, 330, { deger: ['100', '200', '50'][i], birim: 'TL', pal: ['mavi', 'yesil', 'turuncu'][i], rot: (i - 1) * 16 * b }); }
     const k = FX.yay(t - 3.05); if (k > 0) o += HK.kimlik(760, 900 - 60 * k, 1.0 * Math.min(1.2, k), 12); }
   const q = pop(t, 4.1); if (q > 0) o += grp(txt('?', 0, 0, 170, MOR), 620, 1080, q, 8);
+  o += DP.sar(t, 1.35, 2.0, d => DP.kaldirim(d));
   o += FX.gecis(t, { orta: 5.0, renk: MOR, serit: '#1B1640', kapat: { tur: 'egik', sure: .3 } });
   $('dinamik').innerHTML = o;
 };
