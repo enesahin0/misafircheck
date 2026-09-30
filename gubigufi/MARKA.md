@@ -272,6 +272,12 @@ Tarihli bir olay anlatılırken o sahnelerin ön ve arka planındaki insanlar an
 - **2000 sonrası:** Günümüz kıyafeti (varsayılan).
 - Yeni bir dönem ya da coğrafya gerekirse (ör. Osmanlı çarşısı, Viktorya dönemi Londra) `kisi.js` `kiyafet` seçenekleriyle özel kıyafet çizilir. Maskotların kostümleri de döneme uydurulabilir: `KO.giy`.
 
+## GÜNDEM TAKVİMİ KURALI (kullanıcı: "şu videoyu şu tarihte atalım gibi öneriler ver")
+- Her konu önerisinde ve teslimde **önümüzdeki 2–3 haftanın Türkiye gündemine** bakılır; uyan konu varsa "bunu şu tarihte, şu saatte at" diye önerilir.
+- Sabit/yinelenen kancalar: TÜİK enflasyonu (her ayın 3'ü 10:00; hafta sonuysa ilk iş günü), asgari ücret açıklaması (Aralık), yılbaşı, bayramlar ve resmî günler (29 Ekim, 10 Kasım, 23 Nisan, 19 Mayıs, 30 Ağustos), dini bayramlar/Ramazan, sınav dönemleri (YKS, LGS), okul açılışı/karne, Efsane Cuma (Kasım), Avrupa'nın saat değişimi (Mart/Ekim son pazar — Türkiye sabit), dünya günleri (4 Ekim Hayvanlar, 16 Ekim Gıda…), Nobel haftası (Ekim başı), büyük maçlar/turnuvalar.
+- Gündem videosu, olaydan **önce** hazır bekler; olay günü (açıklamadan 1–2 saat sonra ya da akşam 20–21) atılır.
+- Paylaşım düzeni: günde en fazla 2 video, aralarında 5–6 saat; en güçlü video akşam 20:00–21:00.
+
 ## KOSTÜM OTURMA KURALI (kullanıcı: "karakterlerin giydiği taktığı şeyler saçma sapan olmamalı")
 - Maskotun taktığı/giydiği her parça **gerçek hayatta nasıl duruyorsa öyle** oturur: şapka kafada, kulaklık kulak hizasında, düdük ipi boyna asılı gibi ağzın ALTINDA sarkar, pazıbant gövde kenarını SARAR (yüzeye yapışık rozet/etiket gibi değil).
 - **Hiçbir aksesuar gözü, ağzı ya da yüzü kesmez/örtmez** (ip, kordon, bant, şerit dahil). Monokl/gözlük gibi göz aksesuarları hariç.
