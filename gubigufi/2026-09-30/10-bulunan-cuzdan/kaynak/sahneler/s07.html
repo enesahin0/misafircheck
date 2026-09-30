@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
 </head><body>
 <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
-  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+  <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
 </svg>
 <script>window.SB = 44.65; const TP = {"gubi": [[6.5, "alkis"]], "gufi": [[0.3, "dusun"], [6.3, "zipla"]]};</script>
 <script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script>
@@ -25,11 +25,20 @@ const HAKIM = KO.giy('gubi', ['gozluk', ['papyon', { renk: '#1B1640' }]]);
 const SAHIP = KO.giy('gubi', [['melon', { renk: '#6A3A20' }]]);
 const GOREVLI = KO.giy('gubi', [['kasket', { renk: '#8E1B3F', siper: '#5A0F28' }]]);
 const SONBAHAR = ['#F28F3A', '#E8505B', '#FFB44C', '#C8623A'];
+// YAKIN ÇEKİM (detay plan): liste = [[t0, t1, cx, cy, zoom]] — kamera (cx,cy)'ye yaklaşır, sonra geri açılır; kenarlar kadraj dışına taşmaz
+const KAM = (t, liste) => { let z = 1, cx = 540, cy = 960;
+  for (const [a, b, x, y, zz, g = .5] of liste) { const e = q => q < .5 ? 4 * q * q * q : 1 - Math.pow(-2 * q + 2, 3) / 2, k = e(A(t, a, a + g)) * (1 - e(A(t, b - g, b))); if (k <= 0) continue;
+    z = 1 + (zz - 1) * k; cx = 540 + (x - 540) * k; cy = 960 + (y - 960) * k; }
+  cx = Math.min(1080 - 540 / z, Math.max(540 / z, cx)); cy = Math.min(1920 - 960 / z, Math.max(960 / z, cy));
+  const tr = z > 1.0001 ? `translate(${540 - cx * z} ${960 - cy * z}) scale(${z})` : '';
+  $('kamYak').setAttribute('transform', tr); };
 const cuz = (x, y, s, rot = 0) => `<g transform="translate(${x} ${y}) rotate(${rot})">` + PR.cuzdan(0, 0, s, 0) + '</g>';
 
 const MEV = [['#F28F3A', '#C8623A', '#FFE0B0', '#D9A860', 0], [null, null, '#DDE8F2', '#EEF4FA', 1], ['#9FE07A', '#5FB85A', '#DFF3D6', '#A9DB7A', 0], ['#3FA35A', '#1F6B4E', '#FFF1B8', '#8FC860', 0]];
+const _kam7 = 1;
 const lerpR = (a, b, k) => { const p = c => [1, 3, 5].map(i => parseInt(c.slice(i, i + 2), 16)); const x = p(a), y = p(b); return '#' + x.map((v, i) => Math.round(v + (y[i] - v) * k).toString(16).padStart(2, '0')).join(''); };
 window.renderAt = t => {
+  KAM(t, [[5.9, 7.1, 600, 1600, 1.3, .4]]);
   const q = A(t, 2.4, 6.0) * 20, i0 = Math.floor(q) % 4, i1 = (i0 + 1) % 4, f = q % 1, m0 = MEV[i0], m1 = MEV[i1], sk = t > 6.0 ? 0 : f;
   const gok = t > 6.0 ? MEV[0][2] : lerpR(m0[2], m1[2], sk), yer = t > 6.0 ? MEV[0][3] : lerpR(m0[3], m1[3], sk), kis = t > 6.0 ? 0 : (i0 === 1 ? 1 - sk : i1 === 1 ? sk : 0);
   let o = `<rect width="1080" height="1920" fill="${gok}"/>` + CV.bulut(220, 260, .8) + `<path d="M0 1260 Q540 1180 1080 1260 V1920 H0Z" fill="${yer}"/><path d="M0 1500 Q540 1450 1080 1520 V1920 H0Z" fill="#000" opacity=".06"/>`;

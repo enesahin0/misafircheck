@@ -20,6 +20,13 @@ const HAKIM = KO.giy('gubi', ['gozluk', ['papyon', { renk: '#1B1640' }]]);
 const SAHIP = KO.giy('gubi', [['melon', { renk: '#6A3A20' }]]);
 const GOREVLI = KO.giy('gubi', [['kasket', { renk: '#8E1B3F', siper: '#5A0F28' }]]);
 const SONBAHAR = ['#F28F3A', '#E8505B', '#FFB44C', '#C8623A'];
+// YAKIN ÇEKİM (detay plan): liste = [[t0, t1, cx, cy, zoom]] — kamera (cx,cy)'ye yaklaşır, sonra geri açılır; kenarlar kadraj dışına taşmaz
+const KAM = (t, liste) => { let z = 1, cx = 540, cy = 960;
+  for (const [a, b, x, y, zz, g = .5] of liste) { const e = q => q < .5 ? 4 * q * q * q : 1 - Math.pow(-2 * q + 2, 3) / 2, k = e(A(t, a, a + g)) * (1 - e(A(t, b - g, b))); if (k <= 0) continue;
+    z = 1 + (zz - 1) * k; cx = 540 + (x - 540) * k; cy = 960 + (y - 960) * k; }
+  cx = Math.min(1080 - 540 / z, Math.max(540 / z, cx)); cy = Math.min(1920 - 960 / z, Math.max(960 / z, cy));
+  const tr = z > 1.0001 ? `translate(${540 - cx * z} ${960 - cy * z}) scale(${z})` : '';
+  $('kamYak').setAttribute('transform', tr); };
 const cuz = (x, y, s, rot = 0) => `<g transform="translate(${x} ${y}) rotate(${rot})">` + PR.cuzdan(0, 0, s, 0) + '</g>';
 """
 
@@ -27,7 +34,7 @@ HEAD = """<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
 <link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
 </head><body>
 <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
-  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+  <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
 </svg>
 <script>window.SB = __SB__; const TP = __TP__;</script>
 <script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script>
@@ -54,10 +61,11 @@ S[1] = r"""
 const T = CV.ton('seftali');
 $('zemin').innerHTML = PR.sokak(T, 0, 1300) + HK.agac(330, 1320, 1.0, '#F28F3A', '#C8623A') + HK.agac(830, 1320, .9, '#FFB44C', '#E07A2A');
 window.renderAt = t => {
+  KAM(t, [[.9, 1.8, 700, 1650, 1.6, .4]]);
   let o = HK.yapraklar(t, SONBAHAR, 12, [0, 1080, 100, 1800]);
   const acil = FX.E.expo(A(t, 1.7, 2.3));
-  if (acil < 1) o += `<g opacity="${1 - acil}">` + K.glow({ x: 700, y: 1600, r: 120, renk: '#FFE9A8', guc: .6 + .3 * Math.sin(t * 6) }) + cuz(700, 1560, .5, -12) + `</g>`;
-  o += gufi(t, { yol: [[0, -200, 1720, 260], [1.3, 380, 1720, 260]], x: 380, y: 1720, boy: 260, bakHedef: t < 1.3 ? [700, 1580] : t < 4 ? [540, 820] : 'kamera' });
+  if (acil < 1) o += `<g opacity="${1 - acil}">` + K.glow({ x: 700, y: 1690, r: 120, renk: '#FFE9A8', guc: .6 + .3 * Math.sin(t * 6) }) + cuz(700, 1650, .5, -12) + `</g>`;
+  o += gufi(t, { yol: [[0, -200, 1720, 260], [1.3, 380, 1720, 260]], x: 380, y: 1720, boy: 260, bakHedef: t < 1.3 ? [700, 1680] : t < 4 ? [540, 820] : 'kamera' });
   if (acil > 0) { o += grp(PR.cuzdan(0, 60, 1.5, FX.E.expo(A(t, 2.0, 2.5))), 540, 820, acil);
     for (let i = 0; i < 3; i++) { const b = FX.yay(t - 2.3 - i * .12); if (b > 0) o += PR.banknot(540 + (i - 1) * 120 * b, 820 - 200 * b, 330, { deger: ['100', '200', '50'][i], birim: 'TL', pal: ['mavi', 'yesil', 'turuncu'][i], rot: (i - 1) * 16 * b }); }
     const k = FX.yay(t - 3.05); if (k > 0) o += HK.kimlik(760, 900 - 60 * k, 1.0 * Math.min(1.2, k), 12); }
@@ -70,11 +78,12 @@ S[2] = r"""
 const T = CV.ton('gunes');
 $('zemin').innerHTML = `<rect width="1080" height="1920" fill="${T.isik}"/>` + CV.bulut(200, 260, .9) + CV.bulut(880, 180, .7) + `<path d="M0 1180 Q540 1100 1080 1180 V1920 H0Z" fill="#9FD27A"/><path d="M380 1920 L500 1180 L580 1180 L700 1920Z" fill="#C9C2B4"/><path d="M0 1500 Q300 1440 520 1460 L540 1520 Q260 1520 0 1600Z" fill="#C9C2B4"/><path d="M1080 1480 Q800 1430 560 1460 L550 1520 Q820 1510 1080 1580Z" fill="#C9C2B4"/>` + HK.agac(120, 1250, .8, '#6CC04A', '#3FA35A') + HK.agac(960, 1240, .75, '#8FD65A', '#3FA35A');
 window.renderAt = t => {
+  KAM(t, [[1.6, 4.5, 540, 520, 1.9]]);
   let o = '';
   const kp = pop(t, .3, .5); if (kp > 0) { const sol = PR.Tm('TÜRK MEDENİ', -160, -60, 34, '#4A348E', 'letter-spacing="3"') + PR.Tm('KANUNU', -160, -10, 34, '#4A348E', 'letter-spacing="3"') + PR.T_('§', -160, 110, 110, '#8C6CFF');
     let sag = PR.Tm('MADDE 769', 160, -100, 30, '#4A348E', 'letter-spacing="3"'); if (t > 1.9) sag += FX.harfHarf('BİLDİRMEK', 160, 0, 50, t, 1.9, { renk: '#1B1640' }) + FX.harfHarf('ZORUNLU', 160, 70, 50, t, 2.2, { renk: '#C8323C' });
     o += grp(PR.kitap(0, 0, 1, 1, sol, sag, '#5A3FA8'), 540, 520, kp * .85); }
-  const y1 = A(t, 1.8, 2.3), y2 = A(t, 6.4, 6.9);
+  const y1 = A(t, 4.5, 5.0), y2 = A(t, 6.4, 6.9);
   o += HK.direk(540, 780, 1480, [['SAHİBİ', -1, 870, y1 * (1 - y2 * .6), '#FFE45C'], ['POLİS', 1, 1010, y2, '#7CC8FF']]);
   o += gubi(t, { yol: [[.4, 1200, 1560, 200], [1.4, 850, 1560, 200]], x: 850, y: 1560, boy: 200, bakHedef: t < 6 ? [370, 870] : [710, 1010], isaretHedef: t < 6 ? [300, 870] : [800, 1010], ust: POLIS });
   if (t > 1.4) o += `<g transform="translate(${930} ${1640}) rotate(-20)"><rect x="-40" y="-18" width="80" height="36" rx="18" fill="#C9D2E0"/><circle cx="36" cy="0" r="24" fill="#C9D2E0"/><circle cx="36" cy="0" r="10" fill="#5A607E"/></g>`;
@@ -86,6 +95,7 @@ window.renderAt = t => {
 S[3] = r"""
 const T = CV.ton('seftali'), TM = CV.ton('kum');
 window.renderAt = t => {
+  KAM(t, [[2.75, 4.0, 760, 820, 1.9, .4], [5.9, 9.0, 540, 1010, 1.45]]);
   const g = FX.E.expo(A(t, 2.2, 2.7));
   let o = '';
   if (g < 1) { let a = `<rect width="1080" height="1920" fill="${T.fon1}"/>`; for (let r = 0; r < 14; r++) for (let c = 0; c < 6; c++) a += `<rect x="${c * 190 + (r % 2) * 95 - 60}" y="${r * 90 + 100}" width="176" height="78" rx="8" fill="${T.fon2}"/>`;
@@ -111,6 +121,7 @@ S[4] = r"""
 const T = CV.ton('gul');
 $('zemin').innerHTML = HK.apartman(T, 0);
 window.renderAt = t => {
+  KAM(t, [[2.4, 4.1, 620, 1200, 1.7]]);
   const ac = FX.E.expo(A(t, 1.6, 2.2));
   let o = HK.apartman(T, ac) + CV.bitki(520, 1320, .9, T) + CV.bitki(1040, 1320, .8, T);
   if (ac > .3) o += gubi(t, { x: 780, y: 1000, boy: 210, bakHedef: t < 3.4 ? [430, 1400] : 'kamera', ust: SAHIP });
@@ -129,6 +140,7 @@ S[5] = r"""
 const T = CV.ton('lavanta');
 $('zemin').innerHTML = `<rect width="1080" height="1920" fill="${T.fon1}"/>` + CV.bulut(160, 240, .8, '#FFFFFF', T.acik) + CV.bulut(900, 360, .6, '#FFFFFF', T.acik) + `<path d="M0 1200 Q540 1120 1080 1200 V1920 H0Z" fill="${T.orta}"/><path d="M0 1450 Q540 1400 1080 1470 V1920 H0Z" fill="${T.koyu}" opacity=".5"/>` + CV.kaya(120, 1230, .8, T) + CV.kaya(980, 1240, .6, T);
 window.renderAt = t => {
+  KAM(t, [[3.6, 4.95, 540, 840, 1.35, .35]]);
   let o = '';
   const cik = FX.E.expo(A(t, .1, .7)), cat = A(t, 4.0, 4.3), par = A(t, 4.35, 4.95);
   if (par <= 0) o += `<g transform="translate(0 ${(1 - cik) * 600})">` + HK.tas(540, 820, 1.0, cat) + `</g>`; else o += HK.tas(540, 820, 1.0, 1, par);
@@ -146,6 +158,7 @@ S[6] = r"""
 const T = CV.ton('seftali'), TB = CV.ton('teal');
 $('zemin').innerHTML = `<defs><clipPath id="solY"><rect x="0" y="0" width="540" height="1920"/></clipPath></defs><g clip-path="url(#solY)">` + PR.sokak(T, 0, 1300) + HK.agac(300, 1320, .9, '#F28F3A', '#C8623A') + `</g>` + HK.binaIci(TB, 540, 540) + `<rect x="532" y="0" width="16" height="1920" fill="#FFFDF6"/>`;
 window.renderAt = t => {
+  KAM(t, [[5.2, 6.8, 760, 1150, 1.5], [8.35, 10.3, 810, 760, 1.7]]);
   let o = HK.danisma(810, 1180, .9, TB, 'DANIŞMA');
   o += gubi(t, { x: 810, y: 900, boy: 190, bakHedef: t < 5 ? [540, 1500] : [700, 1300], ust: GOREVLI });
   const c = pop(t, .3); if (c > 0) o += grp(cip('İSTİSNA', 0, 0, MOR, '#FFFFFF', 40), 540, 420, c);
@@ -163,8 +176,10 @@ window.renderAt = t => {
 # 07 — 5 yıl: bankta bekleyen Gufi, mevsimler akar, takvim döner, "SENİN" kurdelesi
 S[7] = r"""
 const MEV = [['#F28F3A', '#C8623A', '#FFE0B0', '#D9A860', 0], [null, null, '#DDE8F2', '#EEF4FA', 1], ['#9FE07A', '#5FB85A', '#DFF3D6', '#A9DB7A', 0], ['#3FA35A', '#1F6B4E', '#FFF1B8', '#8FC860', 0]];
+const _kam7 = 1;
 const lerpR = (a, b, k) => { const p = c => [1, 3, 5].map(i => parseInt(c.slice(i, i + 2), 16)); const x = p(a), y = p(b); return '#' + x.map((v, i) => Math.round(v + (y[i] - v) * k).toString(16).padStart(2, '0')).join(''); };
 window.renderAt = t => {
+  KAM(t, [[5.9, 7.1, 600, 1600, 1.3, .4]]);
   const q = A(t, 2.4, 6.0) * 20, i0 = Math.floor(q) % 4, i1 = (i0 + 1) % 4, f = q % 1, m0 = MEV[i0], m1 = MEV[i1], sk = t > 6.0 ? 0 : f;
   const gok = t > 6.0 ? MEV[0][2] : lerpR(m0[2], m1[2], sk), yer = t > 6.0 ? MEV[0][3] : lerpR(m0[3], m1[3], sk), kis = t > 6.0 ? 0 : (i0 === 1 ? 1 - sk : i1 === 1 ? sk : 0);
   let o = `<rect width="1080" height="1920" fill="${gok}"/>` + CV.bulut(220, 260, .8) + `<path d="M0 1260 Q540 1180 1080 1260 V1920 H0Z" fill="${yer}"/><path d="M0 1500 Q540 1450 1080 1520 V1920 H0Z" fill="#000" opacity=".06"/>`;

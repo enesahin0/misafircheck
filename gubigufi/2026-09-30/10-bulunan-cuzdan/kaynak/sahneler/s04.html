@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
 </head><body>
 <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
-  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+  <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
 </svg>
 <script>window.SB = 22.65; const TP = {"gubi": [[3.4, "mutlu"]], "gufi": [[5.9, "mutlu"]]};</script>
 <script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script>
@@ -25,11 +25,19 @@ const HAKIM = KO.giy('gubi', ['gozluk', ['papyon', { renk: '#1B1640' }]]);
 const SAHIP = KO.giy('gubi', [['melon', { renk: '#6A3A20' }]]);
 const GOREVLI = KO.giy('gubi', [['kasket', { renk: '#8E1B3F', siper: '#5A0F28' }]]);
 const SONBAHAR = ['#F28F3A', '#E8505B', '#FFB44C', '#C8623A'];
+// YAKIN ÇEKİM (detay plan): liste = [[t0, t1, cx, cy, zoom]] — kamera (cx,cy)'ye yaklaşır, sonra geri açılır; kenarlar kadraj dışına taşmaz
+const KAM = (t, liste) => { let z = 1, cx = 540, cy = 960;
+  for (const [a, b, x, y, zz, g = .5] of liste) { const e = q => q < .5 ? 4 * q * q * q : 1 - Math.pow(-2 * q + 2, 3) / 2, k = e(A(t, a, a + g)) * (1 - e(A(t, b - g, b))); if (k <= 0) continue;
+    z = 1 + (zz - 1) * k; cx = 540 + (x - 540) * k; cy = 960 + (y - 960) * k; }
+  cx = Math.min(1080 - 540 / z, Math.max(540 / z, cx)); cy = Math.min(1920 - 960 / z, Math.max(960 / z, cy));
+  const tr = z > 1.0001 ? `translate(${540 - cx * z} ${960 - cy * z}) scale(${z})` : '';
+  $('kamYak').setAttribute('transform', tr); };
 const cuz = (x, y, s, rot = 0) => `<g transform="translate(${x} ${y}) rotate(${rot})">` + PR.cuzdan(0, 0, s, 0) + '</g>';
 
 const T = CV.ton('gul');
 $('zemin').innerHTML = HK.apartman(T, 0);
 window.renderAt = t => {
+  KAM(t, [[2.4, 4.1, 620, 1200, 1.7]]);
   const ac = FX.E.expo(A(t, 1.6, 2.2));
   let o = HK.apartman(T, ac) + CV.bitki(520, 1320, .9, T) + CV.bitki(1040, 1320, .8, T);
   if (ac > .3) o += gubi(t, { x: 780, y: 1000, boy: 210, bakHedef: t < 3.4 ? [430, 1400] : 'kamera', ust: SAHIP });

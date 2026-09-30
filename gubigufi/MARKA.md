@@ -220,3 +220,8 @@ video.mp4 · reels_kapak.jpg · Instagram açıklaması (en fazla 5 hashtag, "gu
 Arkasında şekil (hap/çip, kutu, damga çerçevesi, balon) olan HER yazı şeklin içine **düzgünce, iki yanda eşit boşlukla** sığmalı.
 - Genişlik ASLA harf sayısından tahmin edilmez; `K.yaziGen(metin, fs, { mono, agirlik, ls })` ile gerçek ölçülür (SVG getComputedTextLength; mono yazı tipi + letter-spacing dahil).
 - `cip()` artık ölçerek çizer (genişlik = ölçülen + 1.7×fs). Sabit genişlikli kutularda (balon, tabela, etiket kartı) yazı uzunsa kutu büyütülür ya da font küçültülür; kontak föyünde her şekilli yazı taşma için kontrol edilir.
+
+## YAKIN ÇEKİM / DETAY PLAN (yerine göre)
+Önemli anlarda kamera nesneye yaklaşır, sonra geri açılır: kanun maddesi, cüzdanın içi, tokmak vuruşu, teslim anı, damga, etiket/kurdele gibi. Video başına 5–8 detay plan.
+- Uygulama: HEAD'de `<g id="kamYak">` zemin + kamera gruplarını sarar. `KAM(t, [[t0, t1, cx, cy, zoom, geçiş]])` renderAt'in başında çağrılır; kadraj kenarları taşmaz. `.kamera` sınıfının CSS push-in animasyonu transform'u ezdiği için doğrudan ona uygulanmaz.
+- Zoom 1.3–2.0. Yakın planda odaklanan nesne ve yüzler altyazı bandının (y≈1280–1430) dışında kalmalı. Geçiş (gecis) anlarıyla çakışmamalı.
