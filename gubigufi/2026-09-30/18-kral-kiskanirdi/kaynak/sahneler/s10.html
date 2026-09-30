@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
+</svg>
+<script>window.SB = 62.3; const TP = {"gubi": [[2.2, "uzgun"]], "gufi": [[4.6, "aha"]]};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script><script src="../ortak/oc.js"></script><script src="../ortak/kr.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = K.yaziGen(s, fs, { mono: true, ls: 3 }) + fs * 1.7; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+const TAR = '#E07A3F', YB = 1000;
+const T = CV.ton('gunes');
+const KRAL = KO.giy('gubi', [['tac', {}]]);
+const saray = (t, k = 0) => KR.saray(0, YB, t, { karanlik: k });
+const cift = (t, k = 0) => saray(t, k) + KR.ev(YB, T) + KR.bolucu(YB);
+const etk = () => cip('1000 YIL ÖNCE', 190, 940, '#3A2A1A', '#F2CE7A', 24) + cip('BUGÜN', 950, 1060, '#2E9AD8', '#FFFFFF', 24);
+const hizmet = (x, y, boy, i, t) => KS.karakter(Object.assign({ x, y, boy, t, ifade: 'gulumse' }, KS.donem(1000, i)));
+
+window.renderAt = t => {
+  const bl = A(t, .2, 1.0);
+  let o = KR.ev(0, T) + `<g opacity="${1 - bl}">` + saray(t) + KR.bolucu(YB) + '</g>' + CV.oda(T, { zeminY: 1500, dolap: false, pencere: [700, 300, 280, 360] }).replace('<rect width="1080" height="1920"', '<rect width="0" height="0"');
+  const tacGit = t > 3.5, tacVar = t > 4.5;
+  o += gubi(t, { yol: [[.8, 540, 500, 220], [2.4, 780, 1000, 220]], x: 780, y: 1000, boy: 220, bakHedef: [380, 1500], ust: tacGit ? '' : KRAL });
+  if (tacGit && !tacVar) { const q = FX.E.inOutQuart(A(t, 3.5, 4.5)), x = 780 + (380 - 780) * q, y = 870 + (1440 - 870) * q - Math.sin(q * Math.PI) * 200; o += `<g transform="translate(${x} ${y})">` + KO.tek('gubi', 'tac', 0, 130, 220) + '</g>'; }
+  o += gufi(t, { x: 380, y: 1770, boy: 280, bakHedef: tacVar ? 'kamera' : [780, 1000], ust: tacVar ? KO.giy('gufi', [['tac', {}]]) : '' });
+  const it = pop(t, 3.4); if (it > 0) o += grp(KR.telefon(0, 0, .5, t) , 700, 1620, it) + grp(KR.ilac(0, 0, .6), 880, 1700, it);
+  const c = pop(t, 3.4); if (c > 0) o += grp(cip('EN ZENGİN KRAL BİLE KISKANIRDI', 0, 0, TAR, '#FFFFFF', 28), 540, 420, c);
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

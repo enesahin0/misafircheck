@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/oc.js"></script><script src="../ortak/kr.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  const T = CV.ton('gunes');
+  let o = KR.saray(0, 600, .3) + KR.taht(300, 600, .9) + M.canli('gubi', { t: .5, x: 300, y: 330, boy: 200, duygu: 'uzgun', bakHedef: [700, 900], ust: KO.giy('gubi', [['tac', {}]]) });
+  o += `<text x="480" y="260" font-size="120" font-weight="900" style="fill:#E8323C" transform="rotate(10 480 260)">!</text>`;
+  o += KR.ev(600, T) + KR.bolucu(600);
+  o += M.canli('gufi', { t: .5, x: 420, y: 1150, boy: 320, duygu: 'mutlu', bakHedef: 'kamera', ust: KO.giy('gufi', ['kulaklik']) });
+  o += `<g transform="translate(700 900) rotate(12)">` + KR.telefon(0, 0, .55, .5, `<rect x="-96" y="-200" width="192" height="400" fill="#8FC8E8"/>`) + '</g>' + KR.ilac(880, 1060, .6) + KR.yiy('cikolata', 610, 1080, 1.2) + KR.ampul(900, 780, .6, true);
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#3A2450"/><rect x="0" y="1150" width="1080" height="18" fill="#D8A032"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#F2CE7A">TARİHİN DİPNOTU</text>`;
+  o += txt('1000 YIL ÖNCEKİ KRAL', 540, 1360, 86) + txt('SENİ KISKANIRDI', 540, 1458, 84, '#F2CE7A');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>
