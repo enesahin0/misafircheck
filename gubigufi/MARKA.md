@@ -40,11 +40,10 @@ Yere basan hiçbir şey havada durmaz: ağaç, bina, direk, masa, karakter… ze
 Önde duran tepe arkadaki nesnenin tabanını örtebilir ama tabanın ALTINDA boşluk kalamaz. Kontak sayfası kontrolünde her sahnede "yere basma" ayrıca kontrol edilir.
 (Gubi uçan bir pırıltı olduğu için havada süzülebilir; Gufi her zaman yere basar ya da zıplama yayındadır.)
 
-### REELS KAPAK KURALI v2 (KALICI)
-- Şablon: `marka/kapak/` (`sablon.html` + `uret_kapak.py`). Yeni video eklerken KAPAKLAR listesine satır ekle ve çalıştır; illüstrasyonu videonun `kapak_gorsel.png` dosyası (varsa) ya da eski kapaktan kırpma sağlar.
-- Her kapak kendi OLGUN, zengin renginde (çocuk renkleri yok): petrol, bordo, orman, terrakota, çivit, mürdüm, zeytin, hardal, okyanus, kahve, gül kurusu, deniz yeşili. Izgarada yan yana/üst üste gelen kapaklar aynı ya da benzer renk ALMAZ; 12'lik döngüde sıradaki kullanılmamış renk seçilir.
-- Düzen Instagram profil ızgarasının 3:4 kırpmasına göre (görünen alan y 240–1680): üstte ✦ etiket, ortada yuvarlak köşeli görsel kartı, altında büyük başlık + vurgu renginde alt satır, logo.
-- Izgara önizlemesi: `kapak_izgara_onizleme.png`.
+### REELS KAPAK KURALI (KALICI — kullanıcı kararı)
+- Kart şablonu (marka/kapak, v2) İPTAL. Kapaklar HER ZAMANKİ düzende: üstte tam genişlik illüstrasyon (video sahnesinden), altta düz renk yazı paneli (üst etiket · büyük başlık · vurgu satırı · logo).
+- Alt panel BEYAZ/açık OLMAZ; her videoda farklı OLGUN renk: petrol #1F6F78, bordo #7A2E3A, orman #1F4D3A, terrakota #A8452B, çivit #33429A, mürdüm #56264F, zeytin #58642C, kahve #5B3A29, okyanus #0F6A80…
+  Izgarada ardışık kapaklar aynı rengi almaz. Panel üstünde ince vurgu şeridi; başlık krem, alt satır + etiket vurgu renginde.
 
 ### VİDEO RENK KURALI (KALICI) — olgun renkler, çocuk renkleri YOK
 - Şeker pembe, neon turkuaz, limon sarısı, oyuncak mor gibi "çocuk" renkleri kullanılmaz. Aydınlık kalır ama tonlar olgun/zengin:
