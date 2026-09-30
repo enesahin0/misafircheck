@@ -83,7 +83,7 @@ const KS = (() => {
   }
   // TAM BOY KARAKTER (referans tarz: büyük yuvarlak baş, kakül, nokta göz, yanak, sade gövde, kapsül kollar/bacaklar)
   // poz: 'dur' | 'selam' (sağ kol yukarı) | 'goster' (sağ kol yana) | 'otur'. x,y = ayak tabanı ortası; boy = toplam boy
-  function karakter({ x = 540, y = 1400, boy = 700, ten = '#F7B8A4', sac = { tip: 'kakul', renk: '#1B1F5E' }, ust = '#E8505B', alt = '#1B1F5E', ayakkabi = '#FFFFFF', poz = 'dur', t = 0, bak = [0, 0], ifade = 'notr', gozRenk = '#3A2350' } = {}) {
+  function karakter({ x = 540, y = 1400, boy = 700, ten = '#F7B8A4', sac = { tip: 'kakul', renk: '#1B1F5E' }, ust = '#E8505B', alt = '#1B1F5E', ayakkabi = '#FFFFFF', poz = 'dur', t = 0, bak = [0, 0], ifade = 'notr', gozRenk = '#3A2350', adim = null, biyik = null, yon = 1 } = {}) {
     const s = boy / 700, hx = x, hy = y - 560 * s, hr = 118 * s, tenK = '#E0957E';
     let o = `<ellipse cx="${x}" cy="${y + 4}" rx="${120 * s}" ry="${18 * s}" fill="#000" opacity=".15"/>`;
     const kap = (x1, y1, x2, y2, w, r) => `<path d="M${x1} ${y1} L${x2} ${y2}" stroke="${r}" stroke-width="${w}" stroke-linecap="round"/>`;
@@ -91,19 +91,22 @@ const KS = (() => {
     if (sac.tip === 'uzun') o += `<path d="M${hx - hr * 1.05} ${hy} Q${hx - hr * 1.2} ${hy + hr * 1.9} ${hx - hr * .5} ${hy + hr * 2} L${hx + hr * .5} ${hy + hr * 2} Q${hx + hr * 1.2} ${hy + hr * 1.9} ${hx + hr * 1.05} ${hy}Z" fill="${sac.renk}"/>`;
     if (sac.tip === 'atkuyrugu') o += `<path d="M${hx + hr * .8} ${hy - hr * .5} Q${hx + hr * 1.9} ${hy - hr * .6} ${hx + hr * 1.7} ${hy + hr * .5} Q${hx + hr * 1.3} ${hy} ${hx + hr * .9} ${hy - hr * .1}Z" fill="${sac.renk}"/>`;
     // bacaklar
-    const ad = poz === 'otur' ? 0 : Math.sin(t * 2) * 2;
+    const ad = adim != null ? Math.sin(adim) * 60 * s : (poz === 'otur' ? 0 : Math.sin(t * 2) * 2);  // adim: yürüme fazı
     o += kap(x - 34 * s, y - 250 * s, x - 38 * s + ad, y - 20 * s, 44 * s, alt) + kap(x + 34 * s, y - 250 * s, x + 38 * s - ad, y - 20 * s, 44 * s, alt);
-    o += `<ellipse cx="${x - 44 * s}" cy="${y - 10 * s}" rx="${34 * s}" ry="${18 * s}" fill="${ayakkabi}"/><ellipse cx="${x + 44 * s}" cy="${y - 10 * s}" rx="${34 * s}" ry="${18 * s}" fill="${ayakkabi}"/>`;
+    o += `<ellipse cx="${x - 44 * s + ad}" cy="${y - 10 * s}" rx="${34 * s}" ry="${18 * s}" fill="${ayakkabi}"/><ellipse cx="${x + 44 * s - ad}" cy="${y - 10 * s}" rx="${34 * s}" ry="${18 * s}" fill="${ayakkabi}"/>`;
     // gövde (tişört)
     o += `<path d="M${x - 95 * s} ${y - 230 * s} Q${x - 105 * s} ${y - 420 * s} ${x - 60 * s} ${y - 440 * s} L${x + 60 * s} ${y - 440 * s} Q${x + 105 * s} ${y - 420 * s} ${x + 95 * s} ${y - 230 * s}Z" fill="${ust}"/>`;
     o += `<path d="M${x + 30 * s} ${y - 440 * s} L${x + 60 * s} ${y - 440 * s} Q${x + 105 * s} ${y - 420 * s} ${x + 95 * s} ${y - 230 * s} L${x + 60 * s} ${y - 230 * s}Z" fill="#FFFFFF" opacity=".12"/>`;
     // kollar
     const omz = [[x - 88 * s, y - 410 * s], [x + 88 * s, y - 410 * s]];
-    const solEl = [x - 130 * s, y - 250 * s];
+    const kolS = adim != null ? Math.sin(adim) * 40 * s : 0;
+    const solEl = [x - 130 * s - kolS, y - 250 * s];
     let sagEl = [x + 130 * s, y - 250 * s];
     if (poz === 'selam') sagEl = [x + 170 * s + Math.sin(t * 9) * 25 * s, y - 600 * s];
     if (poz === 'goster') sagEl = [x + 260 * s, y - 420 * s];
-    o += kap(omz[0][0], omz[0][1], solEl[0], solEl[1], 38 * s, ten) + kap(omz[1][0], omz[1][1], sagEl[0], sagEl[1], 38 * s, ten);
+    if (poz === 'tasi') { sagEl = [x + 40 * s, y - 300 * s]; }
+    const solEl2 = poz === 'tasi' ? [x - 40 * s, y - 300 * s] : solEl;
+    o += kap(omz[0][0], omz[0][1], solEl2[0], solEl2[1], 38 * s, ten) + kap(omz[1][0], omz[1][1], sagEl[0], sagEl[1], 38 * s, ten);
     o += `<circle cx="${omz[0][0]}" cy="${omz[0][1] + 10 * s}" r="${30 * s}" fill="${ust}"/><circle cx="${omz[1][0]}" cy="${omz[1][1] + 10 * s}" r="${30 * s}" fill="${ust}"/>`;
     // boyun + baş
     o += `<rect x="${hx - 22 * s}" y="${hy + hr * .8}" width="${44 * s}" height="${40 * s}" fill="${tenK}"/>`;
@@ -115,6 +118,7 @@ const KS = (() => {
     const gy = hy + hr * .15, bx = bak[0] * 5 * s, by = bak[1] * 5 * s;
     for (const sx of [-1, 1]) { o += `<ellipse cx="${hx + sx * 42 * s + bx}" cy="${gy + by}" rx="${16 * s}" ry="${(ifade === 'saskin' ? 20 : 17) * s}" fill="${gozRenk}"/><ellipse cx="${hx + sx * 52 * s}" cy="${gy + 40 * s}" rx="${22 * s}" ry="${13 * s}" fill="#FF6F8E" opacity=".35"/>`; }
     o += `<rect x="${hx - 3 * s}" y="${gy + 16 * s}" width="${6 * s}" height="${16 * s}" rx="${3 * s}" fill="${tenK}"/>`;
+    if (biyik) o += `<path d="M${hx - 34 * s} ${gy + 50 * s} Q${hx - 20 * s} ${gy + 30 * s} ${hx} ${gy + 38 * s} Q${hx + 20 * s} ${gy + 30 * s} ${hx + 34 * s} ${gy + 50 * s} Q${hx} ${gy + 44 * s} ${hx - 34 * s} ${gy + 50 * s}Z" fill="${biyik}"/>`;
     o += ifade === 'gulumse' ? `<path d="M${hx - 20 * s} ${gy + 52 * s} Q${hx} ${gy + 72 * s} ${hx + 20 * s} ${gy + 52 * s}" stroke="#B8475A" stroke-width="${7 * s}" fill="none" stroke-linecap="round"/>` :
       ifade === 'saskin' ? `<ellipse cx="${hx}" cy="${gy + 60 * s}" rx="${11 * s}" ry="${14 * s}" fill="#B8475A"/>` : `<rect x="${hx - 12 * s}" y="${gy + 54 * s}" width="${24 * s}" height="${7 * s}" rx="${3.5 * s}" fill="#B8475A"/>`;
     return o;

@@ -5,7 +5,7 @@
   <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
 </svg>
 <script>window.SB = 0; const TP = {"gubi": [[4.4, "sasir"]], "gufi": []};</script>
-<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/ml.js"></script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/ml.js"></script>
 <script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
 <script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
 <script>
@@ -19,17 +19,24 @@ const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = s.length *
 const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
 const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
 
-$('zemin').innerHTML = ML.salon();
+const TL = ML2.LOUVRE;
+const SAFAK = { fon1: '#8C86DC', fon2: '#746CC8', orta: '#5C52AC', koyu: '#453C8E', cokKoyu: '#2E276A', acik: '#C2BCF4', vurgu: '#FFC24C', vurgu2: '#FF8FA8', isik: '#ECE8FF', ten: '#F5A8C0' };
+const INSAN = [['#E8505B', '#2A1E5E', 'kakul', '#2A1E5E'], ['#2E9A9C', '#3A2A20', 'kisa', '#3A2A20'], ['#FFB44C', '#1B1F5E', 'atkuyrugu', '#6A3A20'], ['#8A6FE0', '#2A2A30', 'uzun', '#1B1F5E'], ['#6CC04A', '#3A2A20', 'kisa', '#8A5A3C']];
+const insan = (i, x, y, boy, ek = {}) => { const [u, a, st, sr] = INSAN[i % INSAN.length]; return KS.karakter(Object.assign({ x, y, boy, ust: u, alt: a, sac: { tip: st, renk: sr }, ten: '#F7B39A' }, ek)); };
+
+$('zemin').innerHTML = ML2.muzeSalon(TL) + ML2.heykel(130, 1150, .75, TL) + CV.bitki(990, 1150, 1.05, TL);
 window.renderAt = t => {
   let o = '';
   const bos = t > 4.2, gh = A(t, 6.2, 7.0);
-  o += ML.cerceve(540, 720, 420, 620, ML.monaLisa(540, 720, 420, 620), bos);
-  if (bos && gh > 0) { o += K.glow({ x: 540, y: 720, r: 420, renk: '#F2CE7A', guc: .5 * gh }); o += `<g opacity="${.55 * gh}">` + ML.cerceve(540, 720, 420, 620, ML.monaLisa(540, 720, 420, 620)) + `</g>`;
-    for (let i = 0; i < 6; i++) { const q = A(t, 6.5 + i * .25, 6.9 + i * .25); if (q > 0 && q < 1) o += ML.flasPatlamasi(540 + Math.cos(i * 2.1) * 330, 720 + Math.sin(i * 2.1) * 420, 40 * (1 - q) + 10, 1 - q); } }
-  const d = pop(t, .3); if (d > 0) o += grp(`<rect x="-270" y="-56" width="540" height="112" rx="20" fill="${ML.P.terrakota}"/>` + txt('21 AĞUSTOS 1911', 0, 20, 58, '#FFF3E0'), 540, 1210, d, -4);
-  o += gubi(t, { yol: [[.4, 1250, 420, 120], [1.8, 900, 560, 120]], x: 900, y: 560, boy: 120, bakHedef: [540, 720] });
-  o += FX.flas(t, 4.2, .75, .09);
-  o += FX.gecis(t, { orta: 8.9, renk: ML.P.altin, serit: ML.P.bordo, kapat: { tur: 'egik', sure: .35 } });
+  o += ML.cerceve(540, 690, 360, 520, ML.monaLisa(540, 690, 360, 520), bos);
+  if (bos && gh > 0) { o += K.glow({ x: 540, y: 690, r: 420, renk: '#FFD27A', guc: .5 * gh }) + `<g opacity="${.55 * gh}">` + ML.cerceve(540, 690, 360, 520, ML.monaLisa(540, 690, 360, 520)) + `</g>`;
+    for (let i = 0; i < 6; i++) { const q = A(t, 6.5 + i * .25, 6.9 + i * .25); if (q > 0 && q < 1) o += ML.flasPatlamasi(540 + Math.cos(i * 2.1) * 320, 690 + Math.sin(i * 2.1) * 400, 40 * (1 - q) + 10, 1 - q); } }
+  o += ML2.kadife(360, 720, 1160, TL) + ML2.bank(840, 1330, .9, TL);
+  o += insan(0, 250, 1560, 440, { t, bak: [.5, -.4] }) + insan(2, 780, 1600, 420, { t, bak: [-.5, -.4], ifade: bos ? 'saskin' : 'notr' });
+  const d = pop(t, .3); if (d > 0) o += grp(`<rect x="-270" y="-56" width="540" height="112" rx="20" fill="${TL.vurgu}"/>` + txt('21 AĞUSTOS 1911', 0, 20, 58, TL.cokKoyu), 540, 1060, d, -4);
+  o += gubi(t, { yol: [[.4, 1250, 420, 110], [1.8, 900, 470, 110]], x: 900, y: 470, boy: 110, bakHedef: [540, 690] });
+  o += ML2.onCerceve(TL) + FX.flas(t, 4.2, .75, .09);
+  o += FX.gecis(t, { orta: 8.9, renk: TL.vurgu, serit: TL.cokKoyu, kapat: { tur: 'egik', sure: .35 } });
   $('dinamik').innerHTML = o;
 };
 </script>

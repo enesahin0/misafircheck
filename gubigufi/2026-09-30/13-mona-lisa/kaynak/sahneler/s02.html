@@ -5,7 +5,7 @@
   <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
 </svg>
 <script>window.SB = 8.9; const TP = {"gubi": [], "gufi": [[3.9, "omuzSilk"]]};</script>
-<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/ml.js"></script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/ml.js"></script>
 <script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
 <script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
 <script>
@@ -19,18 +19,24 @@ const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = s.length *
 const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
 const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
 
-const R = K.rnd(4), TAB = [];
-for (let r = 0; r < 3; r++) for (let c = 0; c < 4; c++) { const w = 150 + R() * 70, h = 150 + R() * 90; TAB.push([140 + c * 265, 480 + r * 240, w * .8, h * .75, ['#8FAE8B', '#C98B8B', '#D8A032', '#6E7443', '#C0583A', '#1F6F78'][(r * 4 + c) % 6]]); }
-$('zemin').innerHTML = ML.salon(.7);
+const TL = ML2.LOUVRE;
+const SAFAK = { fon1: '#8C86DC', fon2: '#746CC8', orta: '#5C52AC', koyu: '#453C8E', cokKoyu: '#2E276A', acik: '#C2BCF4', vurgu: '#FFC24C', vurgu2: '#FF8FA8', isik: '#ECE8FF', ten: '#F5A8C0' };
+const INSAN = [['#E8505B', '#2A1E5E', 'kakul', '#2A1E5E'], ['#2E9A9C', '#3A2A20', 'kisa', '#3A2A20'], ['#FFB44C', '#1B1F5E', 'atkuyrugu', '#6A3A20'], ['#8A6FE0', '#2A2A30', 'uzun', '#1B1F5E'], ['#6CC04A', '#3A2A20', 'kisa', '#8A5A3C']];
+const insan = (i, x, y, boy, ek = {}) => { const [u, a, st, sr] = INSAN[i % INSAN.length]; return KS.karakter(Object.assign({ x, y, boy, ust: u, alt: a, sac: { tip: st, renk: sr }, ten: '#F7B39A' }, ek)); };
+
+const T = CV.ton('lavanta'), R = K.rnd(4), TAB = [];
+for (let r = 0; r < 3; r++) for (let c = 0; c < 4; c++) { const w = 150 + R() * 60, h = 150 + R() * 80; TAB.push([140 + c * 265, 480 + r * 220, w * .8, h * .72, [T.vurgu, T.vurgu2, '#2E9A9C', '#6CC04A', '#E8505B', T.koyu][(r * 4 + c) % 6]]); }
+$('zemin').innerHTML = ML2.muzeSalon(T, 0, { tablolar: false });
 window.renderAt = t => {
   let o = '';
-  TAB.forEach(([x, y, w, h, r], i) => { if (i === 11) return; o += ML.cerceve(x, y, w, h, `<rect x="${x - w / 2}" y="${y - h / 2}" width="${w}" height="${h}" fill="${r}"/><circle cx="${x + w * .2}" cy="${y - h * .2}" r="${w * .12}" fill="#F6EBDD" opacity=".6"/><path d="M${x - w / 2} ${y + h / 2} L${x - w * .1} ${y} L${x + w * .2} ${y + h * .2} L${x + w / 2} ${y - h * .05} V${y + h / 2}Z" fill="#000" opacity=".2"/>`); });
+  TAB.forEach(([x, y, w, h, r], i) => { if (i === 11) return; o += ML.cerceve(x, y, w, h, `<rect x="${x - w / 2}" y="${y - h / 2}" width="${w}" height="${h}" fill="${r}"/><circle cx="${x + w * .2}" cy="${y - h * .2}" r="${w * .12}" fill="#FFF6E6" opacity=".7"/><path d="M${x - w / 2} ${y + h / 2} L${x - w * .1} ${y} L${x + w * .2} ${y + h * .2} L${x + w / 2} ${y - h * .05} V${y + h / 2}Z" fill="#000" opacity=".2"/>`); });
   const [mx, my] = [TAB[11][0], TAB[11][1]];
-  o += ML.cerceve(mx, my, 110, 160, ML.monaLisa(mx, my, 110, 160));
-  const k = pop(t, 1.3); if (k > 0) o += `<circle cx="${mx}" cy="${my}" r="${130 * Math.min(1, k)}" fill="none" stroke="#F2CE7A" stroke-width="8" stroke-dasharray="18 12" opacity="${.9}"/>`;
-  for (let i = 0; i < 4; i++) { const x = ((t * 140 + i * 320) % 1500) - 200; o += ML.kuyrukKisi(x, 1300, .7, ['#5E6B7A', '#7A5A4E', '#4E5E4A', '#6A4E62'][i], t * 8 + i); }
-  o += gufi(t, { x: 160, y: 1245, boy: 120, bakHedef: [mx, my] });
-  o += FX.gecis(t, { orta: 0, renk: ML.P.altin, serit: ML.P.bordo, kapat: { sure: .01 }, ac: { tur: 'egik', sure: .45 } });
+  o += ML.cerceve(mx, my, 100, 145, ML.monaLisa(mx, my, 100, 145));
+  const k = pop(t, 1.3); if (k > 0) o += `<circle cx="${mx}" cy="${my}" r="${120 * Math.min(1, k)}" fill="none" stroke="#FFD27A" stroke-width="8" stroke-dasharray="18 12"/>`;
+  o += CV.bitki(80, 1150, .9, T) + ML2.bank(540, 1200, .9, T);
+  for (let i = 0; i < 4; i++) { const x = ((t * 150 + i * 330) % 1500) - 220; o += insan(i, x, 1560 + (i % 2) * 60, 400, { adim: t * 7 + i, t }); }
+  o += gufi(t, { x: 950, y: 1240, boy: 110, bakHedef: [mx, my] });
+  o += FX.gecis(t, { orta: 0, renk: TL.vurgu, serit: TL.cokKoyu, kapat: { sure: .01 }, ac: { tur: 'egik', sure: .45 } });
   $('dinamik').innerHTML = o;
 };
 </script>

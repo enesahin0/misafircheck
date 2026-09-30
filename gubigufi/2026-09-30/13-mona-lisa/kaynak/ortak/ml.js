@@ -86,3 +86,54 @@ const ML = (() => {
   function flasPatlamasi(x, y, r, op) { let d = ''; for (let i = 0; i < 8; i++) { const a = i / 8 * Math.PI * 2, b = a + Math.PI / 8; d += (i ? ' L' : 'M') + `${x + Math.cos(a) * r} ${y + Math.sin(a) * r} L${x + Math.cos(b) * r * .4} ${y + Math.sin(b) * r * .4}`; } return `<path d="${d}Z" fill="#FFF6E0" opacity="${op}"/>`; }
   return { P, zemin, salon, cerceve, monaLisa, peruggia, vitrin, onluklu, takvim, gazete, kuyrukKisi, sandik, flasPatlamasi };
 })();
+
+/* ---------- v2: referans tarz (tek renk ailesi, dolu mekân, ön plan çerçeve, nokta gözlü karakterler) ---------- */
+const ML2 = (() => {
+  const LOUVRE = { fon1: '#E2808A', fon2: '#C95F71', orta: '#A8465E', koyu: '#82304A', cokKoyu: '#5A1E34', acik: '#F9CFCB', vurgu: '#FFC24C', vurgu2: '#2E9A9C', isik: '#FFEDDC', ten: '#F7B39A' };
+  const r = (x, y, w, h, rx, f, op = 1) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${f}" opacity="${op}"/>`;
+  function kadife(x1, x2, y, T) { let o = ''; for (const x of [x1, x2]) o += r(x - 10, y - 150, 20, 150, 10, T.vurgu) + `<circle cx="${x}" cy="${y - 158}" r="18" fill="${T.vurgu}"/>` + r(x - 34, y - 12, 68, 16, 8, T.vurgu);
+    return o + `<path d="M${x1} ${y - 130} Q${(x1 + x2) / 2} ${y - 60} ${x2} ${y - 130}" stroke="#C0283C" stroke-width="16" fill="none" stroke-linecap="round"/>`; }
+  function heykel(x, y, s, T) { return `<g transform="translate(${x} ${y}) scale(${s})">` + r(-70, -260, 140, 260, 10, T.acik) + r(-86, -276, 172, 30, 10, T.isik) + r(-70, -260, 30, 260, 8, '#FFFFFF', .3) +
+    `<path d="M-70 -276 Q-80 -380 0 -390 Q80 -380 70 -276Z" fill="${T.isik}"/><circle cx="0" cy="-450" r="62" fill="${T.isik}"/><path d="M-62 -470 Q-40 -530 20 -520 Q60 -500 62 -460 Q30 -490 -10 -488Z" fill="${T.acik}"/></g>`; }
+  function bank(x, y, s, T) { return `<g transform="translate(${x} ${y}) scale(${s})">` + r(-160, -90, 320, 40, 16, T.cokKoyu) + r(-150, -50, 24, 50, 10, T.cokKoyu) + r(126, -50, 24, 50, 10, T.cokKoyu) + r(-150, -100, 300, 14, 7, T.vurgu, .9) + `</g>`; }
+  function catiIsigi(T, t = 0) { let o = r(0, 0, 1080, 260, 0, T.koyu) + r(80, 40, 920, 180, 18, T.isik, .9); for (let i = 1; i < 6; i++) o += r(80 + i * 153, 40, 10, 180, 0, T.koyu, .5); o += r(80, 124, 920, 10, 0, T.koyu, .5);
+    for (let i = 0; i < 4; i++) { const x0 = 160 + i * 230; o += `<path d="M${x0} 220 L${x0 + 110} 220 L${x0 + 260} 1250 L${x0 - 60} 1250Z" fill="${T.isik}" opacity="${.09 + .02 * Math.sin(t + i)}"/>`; } return o; }
+  function muzeSalon(T, t = 0, { tablolar = true, zeminY = 1150 } = {}) {
+    let o = `<rect width="1080" height="1920" fill="${T.fon2}"/>` + catiIsigi(T, t);
+    o += r(0, 260, 1080, zeminY - 260, 0, T.fon1) + r(0, 330, 1080, 14, 0, T.vurgu, .8);
+    for (let i = 0; i < 6; i++) o += r(20 + i * 180, 900, 150, zeminY - 920, 12, T.orta, .6);            // lambri panelleri
+    if (tablolar) { o += CV.cerceveResim(60, 470, 140, 170, T, 'dag') + CV.cerceveResim(880, 470, 150, 190, T, 'yuz'); }
+    // mermer zemin karoları
+    o += r(0, zeminY, 1080, 1920 - zeminY, 0, T.acik);
+    for (let j = 0; j < 7; j++) for (let i = 0; i < 7; i++) if ((i + j) % 2) o += r(i * 160 - (j % 2) * 80, zeminY + j * 110, 160, 110, 0, T.isik, .55);
+    o += r(0, zeminY, 1080, 16, 0, T.koyu, .5);
+    return o;
+  }
+  function onCerceve(T) { return `<rect x="0" y="0" width="1080" height="80" fill="${T.cokKoyu}"/><path d="M0 0 H200 Q120 40 90 140 Q60 260 0 300Z" fill="${T.cokKoyu}"/><path d="M1080 0 H880 Q960 40 990 140 Q1020 260 1080 300Z" fill="${T.cokKoyu}"/>` +
+    `<path d="M0 60 Q400 110 540 90 Q680 110 1080 60 V0 H0Z" fill="#C0283C"/><path d="M0 60 Q400 110 540 90 Q680 110 1080 60" stroke="${T.vurgu}" stroke-width="10" fill="none"/>`; }  // perde saçağı
+  // atölye
+  function atolye(T) { let o = `<rect width="1080" height="1920" fill="${T.fon1}"/>` + r(0, 1100, 1080, 820, 0, T.orta);
+    o += r(60, 330, 600, 380, 20, T.koyu, .35); for (let i = 0; i < 6; i++) for (let j = 0; j < 4; j++) o += `<circle cx="${100 + i * 100}" cy="${370 + j * 90}" r="6" fill="${T.cokKoyu}" opacity=".5"/>`;
+    o += `<path d="M120 380 L150 520 L180 380Z" fill="${T.cokKoyu}"/>` + r(240, 390, 20, 160, 10, T.cokKoyu) + r(220, 380, 60, 30, 10, T.vurgu) + `<circle cx="420" cy="450" r="50" fill="none" stroke="${T.cokKoyu}" stroke-width="12"/>` + r(520, 400, 100, 16, 8, T.cokKoyu);
+    o += r(780, 300, 20, 820, 10, T.koyu) + r(920, 300, 20, 820, 10, T.koyu); for (let i = 0; i < 7; i++) o += r(780, 360 + i * 110, 160, 16, 8, T.koyu);   // merdiven
+    o += r(40, 960, 700, 40, 12, T.cokKoyu) + r(60, 1000, 30, 200, 12, T.cokKoyu) + r(690, 1000, 30, 200, 12, T.cokKoyu);        // tezgâh
+    for (let i = 0; i < 3; i++) o += `<rect x="${120 + i * 70}" y="${700 + i * 8}" width="120" height="260" rx="8" fill="#DFF6F4" opacity=".45" transform="rotate(${-8 + i * 4} ${180 + i * 70} 960)"/>`;
+    return o + CV.lamba(620, 960, .7, T) + CV.kupa(480, 960, 1, T.vurgu, 1, 0) + CV.bitki(980, 1500, 1, T); }
+  // Paris sokağı + gazete büfesi
+  function sokak(T, t = 0) { let o = `<rect width="1080" height="1920" fill="${T.fon1}"/>`;
+    for (let b = 0; b < 3; b++) { const x = b * 380 - 40; o += r(x, 260 + (b % 2) * 60, 360, 1000, 10, b % 2 ? T.fon2 : T.acik) + r(x - 10, 240 + (b % 2) * 60, 380, 40, 10, T.koyu);
+      for (let i = 0; i < 3; i++) for (let j = 0; j < 5; j++) o += r(x + 40 + i * 110, 330 + (b % 2) * 60 + j * 160, 70, 110, 10, T.isik) + r(x + 30 + i * 110, 440 + (b % 2) * 60 + j * 160, 90, 12, 6, T.cokKoyu); }
+    o += r(0, 1180, 1080, 740, 0, T.orta); for (let j = 0; j < 8; j++) for (let i = 0; i < 12; i++) o += `<ellipse cx="${i * 100 + (j % 2) * 50}" cy="${1220 + j * 80}" rx="42" ry="22" fill="${T.koyu}" opacity=".35"/>`;
+    o += r(870, 560, 22, 640, 11, T.cokKoyu) + `<circle cx="881" cy="545" r="46" fill="${T.vurgu}"/>` + K.glow({ x: 881, y: 545, r: 120, renk: T.vurgu, guc: .5 });
+    return o; }
+  function bufe(x, y, T) { let o = r(x - 220, y - 520, 440, 520, 20, T.koyu) + r(x - 250, y - 580, 500, 80, 30, T.vurgu); for (let i = 0; i < 6; i++) o += `<path d="M${x - 250 + i * 83} ${y - 500} L${x - 167 + i * 83} ${y - 500} L${x - 167 + i * 83} ${y - 450} Q${x - 208 + i * 83} ${y - 420} ${x - 250 + i * 83} ${y - 450}Z" fill="${i % 2 ? '#FFFFFF' : T.vurgu}"/>`;
+    for (let i = 0; i < 4; i++) o += r(x - 190 + i * 95, y - 400, 80, 110, 6, '#F3E6CC') + r(x - 180 + i * 95, y - 390, 60, 10, 4, '#3A2A20'); return o; }
+  // çatı katı odası
+  function cati(T, t = 0) { let o = `<rect width="1080" height="1920" fill="${T.fon1}"/>` + `<path d="M0 0 L1080 0 L1080 180 L0 560Z" fill="${T.orta}"/><path d="M0 560 L1080 180" stroke="${T.koyu}" stroke-width="30"/>`;
+    o += `<circle cx="820" cy="470" r="130" fill="${T.koyu}"/><circle cx="820" cy="470" r="110" fill="#BFE3F2"/><path d="M790 580 L820 370 L850 580Z" fill="#6A6A80"/><rect x="760" y="520" width="120" height="70" fill="#9AA8B8"/>` + r(700, 466, 240, 10, 0, T.koyu) + r(815, 360, 10, 220, 0, T.koyu);
+    o += r(0, 1180, 1080, 740, 0, T.orta); for (let i = 0; i < 6; i++) o += r(0, 1220 + i * 120, 1080, 8, 0, T.koyu, .3);
+    o += r(40, 960, 360, 220, 30, T.vurgu2) + r(40, 900, 110, 180, 30, T.acik) + r(60, 1180, 20, 60, 8, T.cokKoyu) + r(360, 1180, 20, 60, 8, T.cokKoyu);   // yatak
+    o += CV.kupa(560, 1180, 1, T.vurgu, 1, t) + r(620, 1110, 18, 70, 6, '#FFF6E0') + K.glow({ x: 629, y: 1100, r: 60, renk: '#FFD27A', guc: .7 }) + `<ellipse cx="629" cy="1100" rx="8" ry="16" fill="#FFB547"/>`;
+    return o; }
+  return { LOUVRE, kadife, heykel, bank, catiIsigi, muzeSalon, onCerceve, atolye, sokak, bufe, cati };
+})();

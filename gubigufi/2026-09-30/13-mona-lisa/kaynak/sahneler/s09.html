@@ -5,7 +5,7 @@
   <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
 </svg>
 <script>window.SB = 56.45; const TP = {"gubi": [], "gufi": [[0.15, "yaklas"], [1.5, "goster"]]};</script>
-<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/ml.js"></script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/ml.js"></script>
 <script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
 <script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
 <script>
@@ -19,12 +19,17 @@ const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = s.length *
 const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
 const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
 
-$('zemin').innerHTML = ML.salon(.8) + ML.cerceve(300, 720, 260, 380, '', true) + ML.cerceve(780, 720, 260, 380, ML.monaLisa(780, 720, 260, 380));
+const TL = ML2.LOUVRE;
+const SAFAK = { fon1: '#8C86DC', fon2: '#746CC8', orta: '#5C52AC', koyu: '#453C8E', cokKoyu: '#2E276A', acik: '#C2BCF4', vurgu: '#FFC24C', vurgu2: '#FF8FA8', isik: '#ECE8FF', ten: '#F5A8C0' };
+const INSAN = [['#E8505B', '#2A1E5E', 'kakul', '#2A1E5E'], ['#2E9A9C', '#3A2A20', 'kisa', '#3A2A20'], ['#FFB44C', '#1B1F5E', 'atkuyrugu', '#6A3A20'], ['#8A6FE0', '#2A2A30', 'uzun', '#1B1F5E'], ['#6CC04A', '#3A2A20', 'kisa', '#8A5A3C']];
+const insan = (i, x, y, boy, ek = {}) => { const [u, a, st, sr] = INSAN[i % INSAN.length]; return KS.karakter(Object.assign({ x, y, boy, ust: u, alt: a, sac: { tip: st, renk: sr }, ten: '#F7B39A' }, ek)); };
+
+$('zemin').innerHTML = ML2.muzeSalon(TL) + ML.cerceve(300, 700, 250, 360, '', true) + ML.cerceve(780, 700, 250, 360, ML.monaLisa(780, 700, 250, 360)) + ML2.bank(540, 1330, .9, TL) + CV.bitki(80, 1150, .9, TL);
 window.renderAt = t => {
   const k = M.yakinlas(t, .15, 9);
   M.bulanik(k);
   let arka = gubi(t, { x: 540, y: 470, boy: 100, bakHedef: [540, 1000] });
-  const on = gufi(t, { x: 540, y: 1250, boy: 130 + 300 * k, bakHedef: k > .5 ? 'kamera' : [780, 720] });
+  const on = gufi(t, { x: 540, y: 1250, boy: 130 + 300 * k, bakHedef: k > .5 ? 'kamera' : [780, 700] });
   $('dinamik').innerHTML = M.bulanikSar(arka, k) + on;
 };
 </script>

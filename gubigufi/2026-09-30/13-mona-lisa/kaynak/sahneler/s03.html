@@ -5,7 +5,7 @@
   <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
 </svg>
 <script>window.SB = 15.95; const TP = {"gubi": [[3.4, "isaret"]], "gufi": []};</script>
-<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/ml.js"></script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/ml.js"></script>
 <script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
 <script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
 <script>
@@ -19,13 +19,20 @@ const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = s.length *
 const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
 const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
 
-$('zemin').innerHTML = ML.zemin('#EAD7BD', '#DCC3A2') + ML.vitrin(230, 1120, 260, 520);
+const TL = ML2.LOUVRE;
+const SAFAK = { fon1: '#8C86DC', fon2: '#746CC8', orta: '#5C52AC', koyu: '#453C8E', cokKoyu: '#2E276A', acik: '#C2BCF4', vurgu: '#FFC24C', vurgu2: '#FF8FA8', isik: '#ECE8FF', ten: '#F5A8C0' };
+const INSAN = [['#E8505B', '#2A1E5E', 'kakul', '#2A1E5E'], ['#2E9A9C', '#3A2A20', 'kisa', '#3A2A20'], ['#FFB44C', '#1B1F5E', 'atkuyrugu', '#6A3A20'], ['#8A6FE0', '#2A2A30', 'uzun', '#1B1F5E'], ['#6CC04A', '#3A2A20', 'kisa', '#8A5A3C']];
+const insan = (i, x, y, boy, ek = {}) => { const [u, a, st, sr] = INSAN[i % INSAN.length]; return KS.karakter(Object.assign({ x, y, boy, ust: u, alt: a, sac: { tip: st, renk: sr }, ten: '#F7B39A' }, ek)); };
+
+const T = CV.ton('kum');
+$('zemin').innerHTML = ML2.atolye(T);
 window.renderAt = t => {
-  let o = olc(ML.peruggia({ x: 580, y: 1160, boy: 560 }), 580, 1160, pop(t, .15, .5) + .001);
-  const e = pop(t, 1.1); if (e > 0) o += grp(cip('CAM VİTRİN İŞÇİSİ', 0, 0, ML.P.petrol, '#FFF3E0', 30), 540, 420, e);
-  const n = pop(t, 3.4); if (n > 0) o += grp(cip('VINCENZO PERUGGIA', 0, 0, '#FFF3E0', ML.P.bordo, 30), 580, 1195, n);
-  o += gubi(t, { x: 930, y: 620, boy: 110, bakHedef: [580, 820], isaretHedef: [620, 760] });
-  o += FX.gecis(t, { orta: 4.95, renk: ML.P.terrakota, kapat: { tur: 'daire', merkez: [580, 800], sure: .4 } });
+  let o = olc(ML.peruggia({ x: 560, y: 1330, boy: 600 }), 560, 1330, pop(t, .15, .5) + .001);
+  const e = pop(t, 1.1); if (e > 0) o += grp(cip('CAM VİTRİN İŞÇİSİ', 0, 0, T.cokKoyu, '#FFF3E0', 30), 540, 400, e);
+  const n = pop(t, 3.4); if (n > 0) o += grp(cip('VINCENZO PERUGGIA', 0, 0, '#FFF3E0', T.cokKoyu, 30), 560, 1235, n);
+  o += gubi(t, { x: 950, y: 820, boy: 100, bakHedef: [560, 950], isaretHedef: [600, 900] });
+  o += CV.onYaprak({ koyu: T.koyu, cokKoyu: T.cokKoyu }, 'alt', 4);
+  o += FX.gecis(t, { orta: 4.95, renk: '#C0583A', kapat: { tur: 'daire', merkez: [560, 900], sure: .4 } });
   $('dinamik').innerHTML = o;
 };
 </script>

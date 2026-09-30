@@ -5,7 +5,7 @@
   <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
 </svg>
 <script>window.SB = 20.9; const TP = {"gubi": [], "gufi": [[5.0, "gozKapa"], [8.6, "sasir"]]};</script>
-<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/ml.js"></script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/ml.js"></script>
 <script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
 <script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
 <script>
@@ -19,22 +19,26 @@ const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = s.length *
 const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
 const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
 
-$('zemin').innerHTML = ML.salon(.8) + `<rect x="900" y="620" width="170" height="440" rx="16" fill="${ML.P.bordoK}"/><rect x="915" y="640" width="140" height="400" rx="12" fill="#4A1A26"/><circle cx="935" cy="860" r="10" fill="${ML.P.altin}"/>`;
+const TL = ML2.LOUVRE;
+const SAFAK = { fon1: '#8C86DC', fon2: '#746CC8', orta: '#5C52AC', koyu: '#453C8E', cokKoyu: '#2E276A', acik: '#C2BCF4', vurgu: '#FFC24C', vurgu2: '#FF8FA8', isik: '#ECE8FF', ten: '#F5A8C0' };
+const INSAN = [['#E8505B', '#2A1E5E', 'kakul', '#2A1E5E'], ['#2E9A9C', '#3A2A20', 'kisa', '#3A2A20'], ['#FFB44C', '#1B1F5E', 'atkuyrugu', '#6A3A20'], ['#8A6FE0', '#2A2A30', 'uzun', '#1B1F5E'], ['#6CC04A', '#3A2A20', 'kisa', '#8A5A3C']];
+const insan = (i, x, y, boy, ek = {}) => { const [u, a, st, sr] = INSAN[i % INSAN.length]; return KS.karakter(Object.assign({ x, y, boy, ust: u, alt: a, sac: { tip: st, renk: sr }, ten: '#F7B39A' }, ek)); };
+
+$('zemin').innerHTML = ML2.muzeSalon(SAFAK) + `<rect x="880" y="600" width="180" height="550" rx="16" fill="${SAFAK.cokKoyu}"/><rect x="896" y="620" width="148" height="510" rx="12" fill="${SAFAK.koyu}"/><circle cx="916" cy="880" r="10" fill="${SAFAK.vurgu}"/>` + ML2.heykel(140, 1150, .65, SAFAK);
 window.renderAt = t => {
   let o = '';
-  const kp = pop(t, .3); if (kp > 0) o += grp(`<rect x="-120" y="-40" width="240" height="80" rx="14" fill="#F6EBDD"/>` + txt('KAPALI', 0, 16, 40, ML.P.bordo), 985, 560, kp);
-  const pz = pop(t, 1.9); if (pz > 0) o += grp(cip('PAZARTESİ · 07:00', 0, 0, ML.P.petrol, '#FFF3E0', 28), 400, 420, pz);
-  // tablo çerçeveden kayar
-  const kay = E(A(t, 4.8, 6.4)), sak = A(t, 6.8, 7.8);
-  const bos = t > 4.8;
-  o += ML.cerceve(470, 720, 300, 440, ML.monaLisa(470, 720, 300, 440), bos);
-  // yürüyüş: girer (1.0–4.0), bekler, çıkar (8.3–10.3)
-  const gir = E(A(t, 1.0, 4.0)), cik = FX.E.inExpo(A(t, 8.3, 10.0)) ;
-  const x = -120 + (330 + 120) * gir + (1250 - 330) * cik, faz = (t < 4 ? t : t > 8.3 ? t * 1.6 : 0) * 9;
-  o += ML.onluklu(x, 1300, .8, faz, sak);
-  if (bos && sak < 1) { const px = 470 - 90 * kay, py = 720 + 330 * kay, s = 1 - .45 * kay - .5 * sak; o += `<g opacity="${1 - sak}">` + ML.cerceve(px, py, 300 * s, 440 * s, ML.monaLisa(px, py, 300 * s, 440 * s), false, 1).replace(/fill="#A8761C"|fill="#D8A032"|fill="#F2CE7A"/g, 'fill="none"') + `</g>`; }
-  o += gufi(t, { x: 820, y: 1245, boy: 120, bakHedef: [x, 1000] });
-  o += FX.gecis(t, { orta: 0, renk: ML.P.terrakota, kapat: { sure: .01 }, ac: { tur: 'daire', merkez: [580, 800], sure: .5 } });
+  const kp = pop(t, .3); if (kp > 0) o += grp(`<rect x="-120" y="-40" width="240" height="80" rx="14" fill="#FFF3E0"/>` + txt('KAPALI', 0, 16, 40, '#C0283C'), 970, 540, kp);
+  const pz = pop(t, 1.9); if (pz > 0) o += grp(cip('PAZARTESİ · 07:00', 0, 0, SAFAK.vurgu, SAFAK.cokKoyu, 28), 420, 420, pz);
+  const kay = E(A(t, 4.8, 6.4)), sak = A(t, 6.8, 7.8), bos = t > 4.8;
+  o += ML.cerceve(470, 700, 300, 440, ML.monaLisa(470, 700, 300, 440), bos);
+  const gir = E(A(t, 1.0, 4.0)), cik = FX.E.inExpo(A(t, 8.3, 10.0));
+  const x = -140 + (330 + 140) * gir + (1300 - 330) * cik, yur = (t < 4 || t > 8.3) ? t * (t > 8.3 ? 14 : 8) : null;
+  o += KS.karakter({ x, y: 1480, boy: 620, ust: '#F6F2EA', alt: '#2A2466', sac: { tip: 'kisa', renk: '#1E1612' }, biyik: '#1E1612', ten: '#F5B8A8', adim: yur, poz: sak > .5 ? 'tasi' : 'dur', t, bak: [.4, -.3] });
+  if (sak > .5) o += `<rect x="${x - 70}" y="${1480 - 310}" width="140" height="130" rx="14" fill="#EDE6DA"/>`;
+  if (bos && sak < 1) { const px = 470 - 140 * kay, py = 700 + 530 * kay, s = 1 - .45 * kay - .5 * sak; o += `<g opacity="${1 - sak}">` + ML.monaLisa(px, py, 300 * s, 440 * s) + `</g>`; }
+  o += gufi(t, { x: 830, y: 1250, boy: 110, bakHedef: [x, 1000] });
+  o += CV.onYaprak({ koyu: SAFAK.koyu, cokKoyu: SAFAK.cokKoyu }, 'alt', 6);
+  o += FX.gecis(t, { orta: 0, renk: '#C0583A', kapat: { sure: .01 }, ac: { tur: 'daire', merkez: [560, 900], sure: .5 } });
   $('dinamik').innerHTML = o;
 };
 </script>
