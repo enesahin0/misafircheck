@@ -21,10 +21,10 @@ const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o
 
 window.renderAt = t => {
   let o = C.deniz(t);
-  const c = pop(t, .2); if (c > 0) o += grp(cip('ÇAPA ETKİSİ', 0, 0, '#8C6CFF', '#FFFFFF', 40), 540, 400, c);
+  const c = pop(t, .2); if (c > 0) o += grp(cip('ÇAPA ETKİSİ', 0, 0, '#6B3A5B', '#FFFFFF', 40), 540, 400, c);
   const sp = pop(t, 2.2), don = A(t, 3.0, 3.4), bat = E(A(t, 3.3, 4.6));
   const ax = 480, ay = 640 + 860 * bat;
-  if (sp > 0 && don < 1) o += grp(txt('10', 0, 40, 200, '#FF4F9A'), ax, 640, sp * (1 - don));
+  if (sp > 0 && don < 1) o += grp(txt('10', 0, 40, 200, '#B0472E'), ax, 640, sp * (1 - don));
   if (don > 0) o += C.cipa(ax, ay, .9 * back(don), Math.sin(t * 2) * 6, '#5B6E9E');
   // kayık: ip gerildikçe geri çekilir
   const cek = A(t, 5.6, 8.0), bx = 560 + 170 * Math.min(1, cek * 1.5) - 40 * Math.max(0, Math.sin((cek - .5) * 12)) * (cek > .5), by = 905 + Math.sin(t * 1.5) * 8;

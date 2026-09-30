@@ -24,7 +24,7 @@ window.renderAt = t => {
   const g = E(A(t, 2.2, 2.7));
   if (g < 1) {
     let a = C.zemin('#FFF3D6', '#FFE3B0');
-    const h = H.ciz({ ulkeler: H.kita('EU'), sigdir: H.ulke('Almanya'), kenar: 80, vurgu: { 'Almanya': '#FF9F1C' }, kutu: [60, 380, 960, 760], renk: '#E9DDC2', rim: '#FFF6E0', sinirOp: .6 });
+    const h = H.ciz({ ulkeler: H.kita('EU'), sigdir: H.ulke('Almanya'), kenar: 80, vurgu: { 'Almanya': '#D98B3A' }, kutu: [60, 380, 960, 760], renk: '#E9DDC2', rim: '#FFF6E0', sinirOp: .6 });
     a += `<defs><clipPath id="alc"><rect x="60" y="380" width="960" height="760" rx="48"/></clipPath></defs><rect x="60" y="380" width="960" height="760" rx="48" fill="#BFE6F2"/><g clip-path="url(#alc)">${h.svg}</g>`;
     const ch = pop(t, .4); if (ch > 0) a += grp(cip('ALMANYA', 0, 0, '#FFFFFF', '#1B1640', 36), 540, 1210, ch);
     a += gubi(t, { x: 900, y: 1210, boy: 100, bakHedef: [540, 760] });
@@ -37,7 +37,7 @@ window.renderAt = t => {
     b += C.zar(120 + 190 * r, 706 - Math.abs(Math.sin(r * Math.PI * 3)) * 80 * (1 - r), .9, zd, (1 - r) * 540);
     // karşılaştırma: zar 3 → 5 ay, zar 9 → 8 ay
     const k1 = pop(t, 6.0), k2 = pop(t, 7.6);
-    if (k1 > 0) b += grp(C.zar(0, 0, .55, 3) + `<rect x="60" y="-26" width="${5 * 70 * E(A(t, 6.1, 6.9))}" height="52" rx="26" fill="#2EC4B6"/>` + `<text x="${80 + 5 * 70 * E(A(t, 6.1, 6.9))}" y="16" font-size="40" font-weight="900" style="fill:#FFF3D6">5 AY</text>`, 220, 880, k1);
+    if (k1 > 0) b += grp(C.zar(0, 0, .55, 3) + `<rect x="60" y="-26" width="${5 * 70 * E(A(t, 6.1, 6.9))}" height="52" rx="26" fill="#1F6F78"/>` + `<text x="${80 + 5 * 70 * E(A(t, 6.1, 6.9))}" y="16" font-size="40" font-weight="900" style="fill:#FFF3D6">5 AY</text>`, 220, 880, k1);
     if (k2 > 0) b += grp(C.zar(0, 0, .55, 9) + `<rect x="60" y="-26" width="${8 * 70 * E(A(t, 7.7, 8.7))}" height="52" rx="26" fill="#EE312E"/>` + `<text x="${80 + 8 * 70 * E(A(t, 7.7, 8.7))}" y="16" font-size="40" font-weight="900" style="fill:#FFF3D6">8 AY</text>`, 220, 990, k2);
     b += gufi(t, { x: 150, y: 1245, boy: 120, bakHedef: [540, 700] });
     o += `<g opacity="${g}">${b}</g>`;

@@ -61,19 +61,19 @@ window.renderAt = t => {
   const g = E(A(t, 5.6, 6.1));
   if (g < 1) {
     let a = C.studyo(t);
-    const c = pop(t, .3); if (c > 0) a += grp(cip('1974', 0, 0, '#FFFFFF', '#8C6CFF', 44), 540, 420, c);
+    const c = pop(t, .3); if (c > 0) a += grp(cip('1974', 0, 0, '#FFFFFF', '#6B3A5B', 44), 540, 420, c);
     const tv = pop(t, 2.4), kh = pop(t, 3.4);
     if (tv > 0) a += olc(C.tversky({ x: 310, y: 1150, boy: 420 }), 310, 1150, tv) + grp(cip('AMOS TVERSKY', 0, 0, '#FFFFFF', '#1B1640', 24), 310, 1180, tv);
     if (kh > 0) a += olc(C.kahneman({ x: 770, y: 1150, boy: 420 }), 770, 1150, kh) + grp(cip('DANIEL KAHNEMAN', 0, 0, '#FFFFFF', '#1B1640', 24), 770, 1180, kh);
     o += `<g opacity="${1 - g}">${a}</g>`;
   }
   if (g > 0) {
-    let b = `<rect width="540" height="1920" fill="#FFC2DD"/><rect x="540" width="540" height="1920" fill="#B8F0E9"/><rect x="532" width="16" height="1920" fill="#FFFFFF"/>`;
+    let b = `<rect width="540" height="1920" fill="#F1D9C9"/><rect x="540" width="540" height="1920" fill="#D5E6E0"/><rect x="532" width="16" height="1920" fill="#FFFFFF"/>`;
     const d1 = E(A(t, 6.0, 9.0)), d2 = E(A(t, 6.0, 10.6));
     b += C.cark(270, 700, 190, C.hedefAci(10) - (1 - d1) * 1080, t > 9 ? 10 : null) + C.cark(810, 700, 190, C.hedefAci(65) - (1 - d2) * 1260, t > 10.6 ? 65 : null);
     const n1 = pop(t, 9.1), n2 = pop(t, 10.7);
-    if (n1 > 0) b += grp(txt('10', 0, 0, 170, '#FF4F9A'), 270, 1080, n1);
-    if (n2 > 0) b += grp(txt('65', 0, 0, 170, '#12A394'), 810, 1080, n2);
+    if (n1 > 0) b += grp(txt('10', 0, 0, 170, '#B0472E'), 270, 1080, n1);
+    if (n2 > 0) b += grp(txt('65', 0, 0, 170, '#1F6F78'), 810, 1080, n2);
     b += gufi(t, { x: 540, y: 1250, boy: 120, bakHedef: t < 10 ? [270, 700] : [810, 700] });
     o += `<g opacity="${g}">${b}</g>`;
   }
@@ -85,10 +85,10 @@ $('zemin').innerHTML = C.zemin('#CDEFFA', '#EAF8FF');
 const AF = H.kita('AF');
 window.renderAt = t => {
   let o = '';
-  const kac = Math.floor(AF.length * E(A(t, .6, 3.4))), vurgu = {}; for (let i = 0; i < kac; i++) vurgu[AF[i].id] = i % 2 ? '#FF7EB6' : '#FF9F1C';
+  const kac = Math.floor(AF.length * E(A(t, .6, 3.4))), vurgu = {}; for (let i = 0; i < kac; i++) vurgu[AF[i].id] = i % 2 ? '#C0583A' : '#D98B3A';
   const h = H.ciz({ ulkeler: H.dunya(), vurgu, kutu: [30, 380, 1020, 620], proj: 'equalEarth', renk: '#E9DDC2', rim: '#FFF6E0', sinirOp: .5, sinirKal: 1 });
   o += olc(h.svg, 540, 690, pop(t, 0, .5) + .001);
-  const kp = pop(t, 1.8); if (kp > 0) o += grp(`<rect x="-400" y="-90" width="800" height="180" rx="50" fill="#FFFFFF"/><text x="0" y="-12" font-size="46" font-weight="900" text-anchor="middle" style="fill:#1B1640">BM'deki ülkelerin</text><text x="0" y="56" font-size="54" font-weight="900" text-anchor="middle" style="fill:#FF4F9A">% KAÇI AFRİKALI?</text>`, 540, 1100, kp);
+  const kp = pop(t, 1.8); if (kp > 0) o += grp(`<rect x="-400" y="-90" width="800" height="180" rx="50" fill="#FFFFFF"/><text x="0" y="-12" font-size="46" font-weight="900" text-anchor="middle" style="fill:#1B1640">BM'deki ülkelerin</text><text x="0" y="56" font-size="54" font-weight="900" text-anchor="middle" style="fill:#B0472E">% KAÇI AFRİKALI?</text>`, 540, 1100, kp);
   const af = h.p([20, 3]);
   o += gubi(t, { x: 930, y: 420, boy: 110, bakHedef: af, isaretHedef: af });
   o += gufi(t, { x: 150, y: 1245, boy: 120, bakHedef: [540, 1100] });
@@ -96,17 +96,17 @@ window.renderAt = t => {
 };"""
 # 04 — %25 ve %45 (gerçek oranlı sütunlar), tepede çarktaki sayıya bağlı ip
 S[4] = r"""
-$('zemin').innerHTML = C.zemin('#FFF0F6', '#FFDDEB') + `<rect x="0" y="1160" width="1080" height="760" fill="#FFC2DD"/>`;
+$('zemin').innerHTML = C.zemin('#F6EBDD', '#EED9C4') + `<rect x="0" y="1160" width="1080" height="760" fill="#F1D9C9"/>`;
 window.renderAt = t => {
   let o = '';
   const Y0 = 1150, K1 = 14, h1 = 25 * K1 * E(A(t, 1.5, 2.6)), h2 = 45 * K1 * E(A(t, 4.6, 5.8));
-  o += `<rect x="250" y="${Y0 - h1}" width="170" height="${Math.max(2, h1)}" rx="24" fill="#FF7EB6"/><rect x="660" y="${Y0 - h2}" width="170" height="${Math.max(2, h2)}" rx="24" fill="#2EC4B6"/>`;
-  o += `<rect x="150" y="${Y0}" width="780" height="10" rx="5" fill="#8C6CFF"/>`;
-  if (h1 > 5) o += txt('%' + Math.round(h1 / K1), 335, Y0 - h1 - 30, 64, '#FF4F9A');
-  if (h2 > 5) o += txt('%' + Math.round(h2 / K1), 745, Y0 - h2 - 30, 64, '#12A394');
+  o += `<rect x="250" y="${Y0 - h1}" width="170" height="${Math.max(2, h1)}" rx="24" fill="#C0583A"/><rect x="660" y="${Y0 - h2}" width="170" height="${Math.max(2, h2)}" rx="24" fill="#1F6F78"/>`;
+  o += `<rect x="150" y="${Y0}" width="780" height="10" rx="5" fill="#6B3A5B"/>`;
+  if (h1 > 5) o += txt('%' + Math.round(h1 / K1), 335, Y0 - h1 - 30, 64, '#B0472E');
+  if (h2 > 5) o += txt('%' + Math.round(h2 / K1), 745, Y0 - h2 - 30, 64, '#1F6F78');
   // çark rozetleri sütunun tepesine iple bağlı (çapa bağı)
-  [[335, h1, '10', '#FF7EB6', 1.3], [745, h2, '65', '#2EC4B6', 4.4]].forEach(([x, h, s, r, a]) => { const p = pop(t, a); if (p <= 0) return; const by = Y0 - Math.max(h, 40) - 190;
-    o += `<path d="M${x} ${by + 70} L${x} ${Y0 - h - 85}" stroke="#8C6CFF" stroke-width="6" stroke-dasharray="12 10"/>` + grp(`<circle r="62" fill="${r}"/><circle r="46" fill="#FFFFFF"/>` + txt(s, 0, 18, 52, '#1B1640'), x, by, p); });
+  [[335, h1, '10', '#C0583A', 1.3], [745, h2, '65', '#1F6F78', 4.4]].forEach(([x, h, s, r, a]) => { const p = pop(t, a); if (p <= 0) return; const by = Y0 - Math.max(h, 40) - 190;
+    o += `<path d="M${x} ${by + 70} L${x} ${Y0 - h - 85}" stroke="#6B3A5B" stroke-width="6" stroke-dasharray="12 10"/>` + grp(`<circle r="62" fill="${r}"/><circle r="46" fill="#FFFFFF"/>` + txt(s, 0, 18, 52, '#1B1640'), x, by, p); });
   o += `<text class="mono" x="335" y="1210" font-size="26" text-anchor="middle" letter-spacing="2" style="fill:#1B1640">ÇARK: 10</text><text class="mono" x="745" y="1210" font-size="26" text-anchor="middle" letter-spacing="2" style="fill:#1B1640">ÇARK: 65</text>`;
   o += gubi(t, { x: 540, y: 560, boy: 100, bakHedef: t < 4.5 ? [335, 900] : [745, 800], isaretHedef: [745, 700] });
   o += gufi(t, { x: 960, y: 1245, boy: 110, bakHedef: t < 4.5 ? [335, 900] : [745, 700] });
@@ -116,10 +116,10 @@ window.renderAt = t => {
 S[5] = r"""
 window.renderAt = t => {
   let o = C.deniz(t);
-  const c = pop(t, .2); if (c > 0) o += grp(cip('ÇAPA ETKİSİ', 0, 0, '#8C6CFF', '#FFFFFF', 40), 540, 400, c);
+  const c = pop(t, .2); if (c > 0) o += grp(cip('ÇAPA ETKİSİ', 0, 0, '#6B3A5B', '#FFFFFF', 40), 540, 400, c);
   const sp = pop(t, 2.2), don = A(t, 3.0, 3.4), bat = E(A(t, 3.3, 4.6));
   const ax = 480, ay = 640 + 860 * bat;
-  if (sp > 0 && don < 1) o += grp(txt('10', 0, 40, 200, '#FF4F9A'), ax, 640, sp * (1 - don));
+  if (sp > 0 && don < 1) o += grp(txt('10', 0, 40, 200, '#B0472E'), ax, 640, sp * (1 - don));
   if (don > 0) o += C.cipa(ax, ay, .9 * back(don), Math.sin(t * 2) * 6, '#5B6E9E');
   // kayık: ip gerildikçe geri çekilir
   const cek = A(t, 5.6, 8.0), bx = 560 + 170 * Math.min(1, cek * 1.5) - 40 * Math.max(0, Math.sin((cek - .5) * 12)) * (cek > .5), by = 905 + Math.sin(t * 1.5) * 8;
@@ -136,7 +136,7 @@ window.renderAt = t => {
   const g = E(A(t, 2.2, 2.7));
   if (g < 1) {
     let a = C.zemin('#FFF3D6', '#FFE3B0');
-    const h = H.ciz({ ulkeler: H.kita('EU'), sigdir: H.ulke('Almanya'), kenar: 80, vurgu: { 'Almanya': '#FF9F1C' }, kutu: [60, 380, 960, 760], renk: '#E9DDC2', rim: '#FFF6E0', sinirOp: .6 });
+    const h = H.ciz({ ulkeler: H.kita('EU'), sigdir: H.ulke('Almanya'), kenar: 80, vurgu: { 'Almanya': '#D98B3A' }, kutu: [60, 380, 960, 760], renk: '#E9DDC2', rim: '#FFF6E0', sinirOp: .6 });
     a += `<defs><clipPath id="alc"><rect x="60" y="380" width="960" height="760" rx="48"/></clipPath></defs><rect x="60" y="380" width="960" height="760" rx="48" fill="#BFE6F2"/><g clip-path="url(#alc)">${h.svg}</g>`;
     const ch = pop(t, .4); if (ch > 0) a += grp(cip('ALMANYA', 0, 0, '#FFFFFF', '#1B1640', 36), 540, 1210, ch);
     a += gubi(t, { x: 900, y: 1210, boy: 100, bakHedef: [540, 760] });
@@ -149,7 +149,7 @@ window.renderAt = t => {
     b += C.zar(120 + 190 * r, 706 - Math.abs(Math.sin(r * Math.PI * 3)) * 80 * (1 - r), .9, zd, (1 - r) * 540);
     // karşılaştırma: zar 3 → 5 ay, zar 9 → 8 ay
     const k1 = pop(t, 6.0), k2 = pop(t, 7.6);
-    if (k1 > 0) b += grp(C.zar(0, 0, .55, 3) + `<rect x="60" y="-26" width="${5 * 70 * E(A(t, 6.1, 6.9))}" height="52" rx="26" fill="#2EC4B6"/>` + `<text x="${80 + 5 * 70 * E(A(t, 6.1, 6.9))}" y="16" font-size="40" font-weight="900" style="fill:#FFF3D6">5 AY</text>`, 220, 880, k1);
+    if (k1 > 0) b += grp(C.zar(0, 0, .55, 3) + `<rect x="60" y="-26" width="${5 * 70 * E(A(t, 6.1, 6.9))}" height="52" rx="26" fill="#1F6F78"/>` + `<text x="${80 + 5 * 70 * E(A(t, 6.1, 6.9))}" y="16" font-size="40" font-weight="900" style="fill:#FFF3D6">5 AY</text>`, 220, 880, k1);
     if (k2 > 0) b += grp(C.zar(0, 0, .55, 9) + `<rect x="60" y="-26" width="${8 * 70 * E(A(t, 7.7, 8.7))}" height="52" rx="26" fill="#EE312E"/>` + `<text x="${80 + 8 * 70 * E(A(t, 7.7, 8.7))}" y="16" font-size="40" font-weight="900" style="fill:#FFF3D6">8 AY</text>`, 220, 990, k2);
     b += gufi(t, { x: 150, y: 1245, boy: 120, bakHedef: [540, 700] });
     o += `<g opacity="${g}">${b}</g>`;
@@ -159,7 +159,7 @@ window.renderAt = t => {
 # 07 — etiket: üstü çizili yüksek fiyat, küçük çapa asılı
 S[7] = r"""
 $('zemin').innerHTML = C.zemin('#E8F7FF', '#CDEFFA') + [0, 1, 2].map(i => `<rect x="60" y="${420 + i * 300}" width="960" height="30" rx="15" fill="#FFFFFF"/>`).join('') +
-  [0, 1, 2].map(i => [0, 1, 2, 3, 4, 5].map(k => `<rect x="${90 + k * 155}" y="${300 + i * 300}" width="110" height="120" rx="18" fill="${['#FF7EB6', '#FFE14D', '#2EC4B6', '#8C6CFF', '#FF9F1C', '#6CC04A'][(i + k) % 6]}" opacity=".55"/>`).join('')).join('');
+  [0, 1, 2].map(i => [0, 1, 2, 3, 4, 5].map(k => `<rect x="${90 + k * 155}" y="${300 + i * 300}" width="110" height="120" rx="18" fill="${['#C0583A', '#D8A032', '#1F6F78', '#6B3A5B', '#D98B3A', '#8FAE8B'][(i + k) % 6]}" opacity=".55"/>`).join('')).join('');
 window.renderAt = t => {
   let o = '';
   const s = pop(t, .1, .5);

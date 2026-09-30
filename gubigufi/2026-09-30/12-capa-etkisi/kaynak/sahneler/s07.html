@@ -20,7 +20,7 @@ const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o
 const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
 
 $('zemin').innerHTML = C.zemin('#E8F7FF', '#CDEFFA') + [0, 1, 2].map(i => `<rect x="60" y="${420 + i * 300}" width="960" height="30" rx="15" fill="#FFFFFF"/>`).join('') +
-  [0, 1, 2].map(i => [0, 1, 2, 3, 4, 5].map(k => `<rect x="${90 + k * 155}" y="${300 + i * 300}" width="110" height="120" rx="18" fill="${['#FF7EB6', '#FFE14D', '#2EC4B6', '#8C6CFF', '#FF9F1C', '#6CC04A'][(i + k) % 6]}" opacity=".55"/>`).join('')).join('');
+  [0, 1, 2].map(i => [0, 1, 2, 3, 4, 5].map(k => `<rect x="${90 + k * 155}" y="${300 + i * 300}" width="110" height="120" rx="18" fill="${['#C0583A', '#D8A032', '#1F6F78', '#6B3A5B', '#D98B3A', '#8FAE8B'][(i + k) % 6]}" opacity=".55"/>`).join('')).join('');
 window.renderAt = t => {
   let o = '';
   const s = pop(t, .1, .5);

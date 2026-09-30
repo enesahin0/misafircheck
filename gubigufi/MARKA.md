@@ -46,6 +46,16 @@ Yere basan hiçbir şey havada durmaz: ağaç, bina, direk, masa, karakter… ze
 - Düzen Instagram profil ızgarasının 3:4 kırpmasına göre (görünen alan y 240–1680): üstte ✦ etiket, ortada yuvarlak köşeli görsel kartı, altında büyük başlık + vurgu renginde alt satır, logo.
 - Izgara önizlemesi: `kapak_izgara_onizleme.png`.
 
+### VİDEO RENK KURALI (KALICI) — olgun renkler, çocuk renkleri YOK
+- Şeker pembe, neon turkuaz, limon sarısı, oyuncak mor gibi "çocuk" renkleri kullanılmaz. Aydınlık kalır ama tonlar olgun/zengin:
+  terrakota #C0583A · hardal #D8A032 · petrol #1F6F78 · mürdüm #6B3A5B · adaçayı #8FAE8B · gül kurusu #C98B8B · bordo #7A2E3A · kum #EAD7BD · krem #F6EBDD · okyanus #0F6A80 · zeytin #58642C.
+- Zeminler krem/kum/adaçayı/pastel gökyüzü gibi yumuşak ama "kirli" (hafif gri/toprak karışımlı) tonlar; vurgu 2–3 olgun renk. Maskot renkleri (Gubi amber, Gufi kırmızı) sabit kalır.
+- Koyu zemin üstündeki yazı/sayı krem, açık zemin üstündeki koyu kahve/lacivert.
+
+### ÇIKIŞ (LOGO) KONTROLÜ (KALICI)
+- Her videonun sonunda logo sahnesi (Gubi pırıltıya, Gufi kırmızı kareye dönüşür) ZORUNLU. Teslimden önce son 1 sn'den kare alınıp logonun göründüğü kontrol edilir.
+- render.py artık sahne JS hatasında durur (#12'de logo sahnesi değişken çakışması yüzünden boş çıkmıştı; logo kodu `LOGO_C` adını kullanır).
+
 ### ARKA PLAN / ATMOSFER KURALI (güncelleme, #10'dan itibaren geçerli)
 - Skill'den aldığımız şey ÇİZİM TARZIDIR (flat vektör, konturyok, rim light, glow, yuvarlak formlar). Skill'in "koyu lacivert/uzay" atmosferi varsayılan DEĞİL.
 - Videolar mavi-derin tonlara bürünmeyecek. Varsayılan: renkli, aydınlık, konuya ait doğal ortam/çevre arka planları (gündüz gökyüzü, orman, sahil, mutfak, mahkeme salonu, stadyum, atölye, pazar yeri, sokak…) + sıcak ve canlı palet.

@@ -57,6 +57,8 @@ async def sayfa_ac(pw, w, h, olcek, sure):
     tarayici = await pw.chromium.launch(args=["--disable-gpu", "--force-color-profile=srgb"])
     sayfa = await tarayici.new_page(viewport={"width": w, "height": h}, device_scale_factor=olcek)
     # Sahne süresini sayfaya bildir: CSS'te var(--sure), JS'te window.SAHNE_SURESI
+    sayfa._hatalar = []
+    sayfa.on("pageerror", lambda e: sayfa._hatalar.append(str(e)))  # sahne JS hatası sessizce boş kare üretmesin
     await sayfa.add_init_script(f"window.SAHNE_SURESI={sure};document.addEventListener('DOMContentLoaded',()=>document.documentElement.style.setProperty('--sure','{sure}s'));")
     return tarayici, sayfa
 
@@ -64,6 +66,7 @@ async def sahne_render(pw, sahne_yolu, bas_kare, bit_kare, fps, w, h, olcek, cik
     tarayici, sayfa = await sayfa_ac(pw, w, h, olcek, (bit_kare - bas_kare) / fps)
     await sayfa.goto(sahne_yolu.resolve().as_uri())
     await sayfa.wait_for_load_state("load")
+    if sayfa._hatalar: raise RuntimeError(f"SAHNE HATASI ({sahne_yolu.name}): {sayfa._hatalar}")
     await sayfa.evaluate("document.fonts ? document.fonts.ready : null")
     kare_sayisi = max(1, bit_kare - bas_kare)
     ow, oh = int(w*olcek), int(h*olcek)

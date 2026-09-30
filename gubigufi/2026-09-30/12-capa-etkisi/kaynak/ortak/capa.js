@@ -2,28 +2,28 @@
    ATMOSFER: aydınlık — şeker pembe/limon/turkuaz yarışma stüdyosu, gündüz deniz kıyısı, sıcak ahşap mahkeme, renkli pazar. */
 const C = (() => {
   let n = 0; const id = p => `c${p}${++n}`;
-  const P = { pembe: '#FF7EB6', pembe2: '#FFC2DD', limon: '#FFE14D', turkuaz: '#2EC4B6', mor: '#8C6CFF', lacivert: '#1B1640', krem: '#FFF3D6',
-    deniz: '#4FB3E8', deniz2: '#2A8BD0', kum: '#F7D9A0', ahsap: '#C98A4B', ahsapK: '#A56A34', ahsapA: '#E2A868', yesil: '#6CC04A', kirmizi: '#EE312E' };
+  const P = { pembe: '#C0583A', pembe2: '#F1D9C9', limon: '#D8A032', turkuaz: '#1F6F78', mor: '#6B3A5B', lacivert: '#1B1640', krem: '#FFF3D6',
+    deniz: '#4FB3E8', deniz2: '#2A8BD0', kum: '#F7D9A0', ahsap: '#C98A4B', ahsapK: '#A56A34', ahsapA: '#E2A868', yesil: '#8FAE8B', kirmizi: '#EE312E' };
   function zemin(ust, alt) { const g = id('z'); return `<defs><linearGradient id="${g}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${ust}"/><stop offset="1" stop-color="${alt}"/></linearGradient></defs><rect width="1080" height="1920" fill="url(#${g})"/>`; }
   // yarışma stüdyosu: ışık hüzmeleri + ampul şeridi + sahne zemini
   function studyo(t) {
-    let o = zemin('#FFD3E8', '#FFB3D6');
+    let o = zemin('#F3E3D3', '#E6CBB5');
     for (let i = 0; i < 5; i++) { const x = 100 + i * 220, a = Math.sin(t * .8 + i) * 12; o += `<path d="M${x} 250 L${x - 140 + a * 6} 1300 L${x + 140 + a * 6} 1300Z" fill="${[P.limon, '#FFFFFF', P.turkuaz][i % 3]}" opacity=".16"/>`; }
-    o += `<rect x="0" y="1180" width="1080" height="740" fill="#8C6CFF"/><rect x="0" y="1180" width="1080" height="30" fill="#B7A2FF"/>`;
+    o += `<rect x="0" y="1180" width="1080" height="740" fill="#6B3A5B"/><rect x="0" y="1180" width="1080" height="30" fill="#8E5A7E"/>`;
     for (let i = 0; i < 18; i++) { const on = Math.sin(t * 6 + i * 1.3) > 0; o += `<circle cx="${30 + i * 60}" cy="1196" r="9" fill="${on ? P.limon : '#FFF3D6'}" opacity="${on ? 1 : .5}"/>`; }
     return o;
   }
   // şans çarkı: dilimler + sayılar; aci = derece; ibre üstte sabit
   const DILIM = [10, 25, 45, 65, 90, 5, 35, 55, 80, 15, 70, 40];
   function cark(x, y, r, aci = 0, vurgu = null) {
-    const nD = DILIM.length, renk = [P.pembe, P.limon, P.turkuaz, P.mor, '#FF9F1C', '#6CC04A'];
+    const nD = DILIM.length, renk = [P.pembe, P.limon, P.turkuaz, P.mor, '#D98B3A', '#8FAE8B'];
     let o = `<circle cx="${x + 10}" cy="${y + 14}" r="${r + 30}" fill="#000" opacity=".15"/><circle cx="${x}" cy="${y}" r="${r + 30}" fill="#FFF3D6"/>`;
     for (let i = 0; i < 24; i++) { const a = i / 24 * Math.PI * 2; o += `<circle cx="${x + Math.cos(a) * (r + 15)}" cy="${y + Math.sin(a) * (r + 15)}" r="7" fill="${(i + Math.floor(aci / 15)) % 2 ? P.limon : '#FFFFFF'}"/>`; }
     o += `<g transform="rotate(${aci} ${x} ${y})">`;
     for (let i = 0; i < nD; i++) { const a0 = (i / nD) * Math.PI * 2 - Math.PI / 2 - Math.PI / nD, a1 = a0 + Math.PI * 2 / nD;
       o += `<path d="M${x} ${y} L${x + Math.cos(a0) * r} ${y + Math.sin(a0) * r} A${r} ${r} 0 0 1 ${x + Math.cos(a1) * r} ${y + Math.sin(a1) * r}Z" fill="${renk[i % renk.length]}"/>`;
       const am = (a0 + a1) / 2, tx = x + Math.cos(am) * r * .72, ty = y + Math.sin(am) * r * .72;
-      o += `<text x="${tx}" y="${ty + r * .06}" font-size="${r * .17}" font-weight="900" text-anchor="middle" transform="rotate(${am * 57.3 + 90} ${tx} ${ty})" style="fill:${DILIM[i] === vurgu ? '#FFFFFF' : '#1B1640'}">${DILIM[i]}</text>`; }
+      o += `<text x="${tx}" y="${ty + r * .06}" font-size="${r * .17}" font-weight="900" text-anchor="middle" transform="rotate(${am * 57.3 + 90} ${tx} ${ty})" style="fill:${DILIM[i] === vurgu ? '#FFFFFF' : ([0, 2, 3].includes(i % renk.length) ? '#FFF3E0' : '#2A1B14')}">${DILIM[i]}</text>`; }
     o += `</g><circle cx="${x}" cy="${y}" r="${r * .16}" fill="#FFF3D6"/><circle cx="${x - 3}" cy="${y + 3}" r="${r * .1}" fill="${P.mor}"/>`;
     o += `<path d="M${x - 26} ${y - r - 44} L${x + 26} ${y - r - 44} L${x} ${y - r + 16}Z" fill="${P.kirmizi}"/><circle cx="${x}" cy="${y - r - 44}" r="18" fill="${P.kirmizi}"/>`;
     return o;

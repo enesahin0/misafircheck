@@ -24,19 +24,19 @@ window.renderAt = t => {
   const g = E(A(t, 5.6, 6.1));
   if (g < 1) {
     let a = C.studyo(t);
-    const c = pop(t, .3); if (c > 0) a += grp(cip('1974', 0, 0, '#FFFFFF', '#8C6CFF', 44), 540, 420, c);
+    const c = pop(t, .3); if (c > 0) a += grp(cip('1974', 0, 0, '#FFFFFF', '#6B3A5B', 44), 540, 420, c);
     const tv = pop(t, 2.4), kh = pop(t, 3.4);
     if (tv > 0) a += olc(C.tversky({ x: 310, y: 1150, boy: 420 }), 310, 1150, tv) + grp(cip('AMOS TVERSKY', 0, 0, '#FFFFFF', '#1B1640', 24), 310, 1180, tv);
     if (kh > 0) a += olc(C.kahneman({ x: 770, y: 1150, boy: 420 }), 770, 1150, kh) + grp(cip('DANIEL KAHNEMAN', 0, 0, '#FFFFFF', '#1B1640', 24), 770, 1180, kh);
     o += `<g opacity="${1 - g}">${a}</g>`;
   }
   if (g > 0) {
-    let b = `<rect width="540" height="1920" fill="#FFC2DD"/><rect x="540" width="540" height="1920" fill="#B8F0E9"/><rect x="532" width="16" height="1920" fill="#FFFFFF"/>`;
+    let b = `<rect width="540" height="1920" fill="#F1D9C9"/><rect x="540" width="540" height="1920" fill="#D5E6E0"/><rect x="532" width="16" height="1920" fill="#FFFFFF"/>`;
     const d1 = E(A(t, 6.0, 9.0)), d2 = E(A(t, 6.0, 10.6));
     b += C.cark(270, 700, 190, C.hedefAci(10) - (1 - d1) * 1080, t > 9 ? 10 : null) + C.cark(810, 700, 190, C.hedefAci(65) - (1 - d2) * 1260, t > 10.6 ? 65 : null);
     const n1 = pop(t, 9.1), n2 = pop(t, 10.7);
-    if (n1 > 0) b += grp(txt('10', 0, 0, 170, '#FF4F9A'), 270, 1080, n1);
-    if (n2 > 0) b += grp(txt('65', 0, 0, 170, '#12A394'), 810, 1080, n2);
+    if (n1 > 0) b += grp(txt('10', 0, 0, 170, '#B0472E'), 270, 1080, n1);
+    if (n2 > 0) b += grp(txt('65', 0, 0, 170, '#1F6F78'), 810, 1080, n2);
     b += gufi(t, { x: 540, y: 1250, boy: 120, bakHedef: t < 10 ? [270, 700] : [810, 700] });
     o += `<g opacity="${g}">${b}</g>`;
   }

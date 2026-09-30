@@ -23,10 +23,10 @@ $('zemin').innerHTML = C.zemin('#CDEFFA', '#EAF8FF');
 const AF = H.kita('AF');
 window.renderAt = t => {
   let o = '';
-  const kac = Math.floor(AF.length * E(A(t, .6, 3.4))), vurgu = {}; for (let i = 0; i < kac; i++) vurgu[AF[i].id] = i % 2 ? '#FF7EB6' : '#FF9F1C';
+  const kac = Math.floor(AF.length * E(A(t, .6, 3.4))), vurgu = {}; for (let i = 0; i < kac; i++) vurgu[AF[i].id] = i % 2 ? '#C0583A' : '#D98B3A';
   const h = H.ciz({ ulkeler: H.dunya(), vurgu, kutu: [30, 380, 1020, 620], proj: 'equalEarth', renk: '#E9DDC2', rim: '#FFF6E0', sinirOp: .5, sinirKal: 1 });
   o += olc(h.svg, 540, 690, pop(t, 0, .5) + .001);
-  const kp = pop(t, 1.8); if (kp > 0) o += grp(`<rect x="-400" y="-90" width="800" height="180" rx="50" fill="#FFFFFF"/><text x="0" y="-12" font-size="46" font-weight="900" text-anchor="middle" style="fill:#1B1640">BM'deki ülkelerin</text><text x="0" y="56" font-size="54" font-weight="900" text-anchor="middle" style="fill:#FF4F9A">% KAÇI AFRİKALI?</text>`, 540, 1100, kp);
+  const kp = pop(t, 1.8); if (kp > 0) o += grp(`<rect x="-400" y="-90" width="800" height="180" rx="50" fill="#FFFFFF"/><text x="0" y="-12" font-size="46" font-weight="900" text-anchor="middle" style="fill:#1B1640">BM'deki ülkelerin</text><text x="0" y="56" font-size="54" font-weight="900" text-anchor="middle" style="fill:#B0472E">% KAÇI AFRİKALI?</text>`, 540, 1100, kp);
   const af = h.p([20, 3]);
   o += gubi(t, { x: 930, y: 420, boy: 110, bakHedef: af, isaretHedef: af });
   o += gufi(t, { x: 150, y: 1245, boy: 120, bakHedef: [540, 1100] });
