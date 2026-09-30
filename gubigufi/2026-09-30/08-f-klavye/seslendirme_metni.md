@@ -49,7 +49,7 @@ Sen hangisini kullanıyorsun?
 
 ---
 ### Kaynaklar
-1. TSE — TS 1810 / Türkçe F klavye standardı.
+1. TSE — Türkçe F klavye standardı.
 2. İhsan Sıtkı Yener ve F klavye tarihçesi — TDK harf sıklığı çalışmaları; Türk Dil Kurumu yayınları.
 3. Intersteno uluslararası daktilo yarışmalarında Türk daktilografların birincilikleri (1950'ler–1990'lar).
 
