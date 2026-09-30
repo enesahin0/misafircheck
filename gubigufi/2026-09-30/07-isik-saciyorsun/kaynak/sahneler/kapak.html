@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 0;</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/isik.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i);
+const grp = (s, x, y, k = 1) => `<g transform="translate(${x} ${y}) scale(${k})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+$('zemin').innerHTML = I.bg({ nx: 540, ny: 700, no: .25 }) + I.parca(3, 80);
+window.renderAt = t => {
+  let o = I.insan({ x: 540, y: 1300, h: 900, parla: 1, parlaRenk: I.UZ.cyan });
+  o = K.glow({ x: 540, y: 700, r: 520, renk: I.UZ.cyan, guc: .55 }) + o + K.glow({ x: 540, y: 580, r: 260, renk: '#FFFFFF', guc: .45 });
+  o += grp(M.gubi({ x: 0, y: 0, boy: 130, duygu: 'saskin', bak: [-1, 0] }), 870, 560);
+  o += grp(M.gufi({ x: 0, y: 0, boy: 130, duygu: 'saskin', bak: [1, 0] }), 200, 1080);
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#1E1B4B"/><rect x="0" y="1060" width="1080" height="100" fill="#1E1B4B" opacity=".6"/>`;
+  o += `<text class="mono" x="540" y="1235" font-size="42" text-anchor="middle" letter-spacing="8" style="fill:#3CD6F0">BİLİM DİYOR Kİ</text>`;
+  o += txt('ŞU AN PARLIYORSUN', 540, 1362, 84);
+  o += txt('Sadece gözün göremiyor', 540, 1455, 52, '#FFB547', 700);
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#F6F1E7' : p.fill}"/>`;
+  $('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>

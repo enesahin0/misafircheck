@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 25.07;</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/isik.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+
+window.renderAt = t => {
+  let o = '';
+  const d = E(A(t, 2.3, 4.4)); // dalış
+  if (d < 1) { // yüz yakın plan (karanlık)
+    let a = I.bg({ nx: 540, ny: 800 }) + I.insan({ x: 540, y: 2300, h: 2100, parla: .7 }) ;
+    a += grp(M.gubi({ x: 0, y: 0, boy: 130, duygu: 'merak', bak: [1, -.5], kirp: -1 }), 200, 560, pop(t, .2));
+    const q = pop(t, .5) * (1 - A(t, 2.1, 2.3)); if (q > 0) a += txt('?', 330, 470, 160 * q, I.UZ.amber);
+    const z = Math.pow(14, d); o += `<g transform="translate(540 760) scale(${z}) translate(-540 -760)" opacity="${1 - A(d, .75, 1)}">${a}</g>`;
+  }
+  if (d > .6) { // mikro dünya
+    const k = A(d, .6, 1); let b = I.bg({ ust: I.MK.z1, alt: I.MK.z2, neb: I.MK.pembe, nx: 540, ny: 760, no: .2 });
+    b += I.parca(13, 50, I.MK.isik);
+    const hz = 1 + (1 - k) * 2;
+    b += `<g transform="translate(540 760) scale(${hz}) translate(-540 -760)">` + I.hucre({ x: 540, y: 760, r: 330, t });
+    // moleküller hücre içinde
+    const R = K.rnd(8); for (let i = 0; i < 7; i++) { const a0 = R() * 6.28, rr = 80 + R() * 170, sp = .4 + R() * .5; const x = 540 + Math.cos(a0 + t * sp) * rr, y = 760 + Math.sin(a0 + t * sp * 1.2) * rr * .8; b += I.molekul(x, y, .8, i % 2 ? I.MK.lime : '#FFD1DC', t * (i % 2 ? 1 : -1)); }
+    // tepkimeler: foton kaçışları (s11: "ışık parçacıkları")
+    for (let j = 0; j < 9; j++) { const st = 5.9 + j * .38, p = A(t, st, st + 1.4); if (p <= 0 || p >= 1) continue; const a = j * 2.4, x = 540 + Math.cos(a) * (150 + p * 480), y = 760 + Math.sin(a) * (150 + p * 480); b += I.foton(x, y, 12, j % 2 ? I.MK.lime : '#FFFFFF', 1 - p); if (p < .15) b += K.glow({ x: 540 + Math.cos(a) * 150, y: 760 + Math.sin(a) * 150, r: 90, renk: '#FFFFFF', guc: .8 * (1 - p / .15) }); }
+    b += `</g>`;
+    const et = pop(t, 3.3) * (1 - A(t, 5.6, 5.9)); if (et > 0) b += grp(`<rect x="-290" y="-46" width="580" height="92" rx="46" fill="#0C2E3A" opacity=".85"/>` + `<text class="mono" x="0" y="14" font-size="36" text-anchor="middle" letter-spacing="2" style="fill:#B8E05A">KİMYASAL TEPKİMELER</text>`, 540, 1230, et);
+    const ft = pop(t, 7.0); if (ft > 0) b += grp(`<rect x="-240" y="-46" width="480" height="92" rx="46" fill="#0C2E3A" opacity=".85"/>` + `<text class="mono" x="0" y="14" font-size="36" text-anchor="middle" letter-spacing="2" style="fill:#FFFFFF">✦ IŞIK PARÇACIĞI</text>`, 540, 1230, ft);
+    o += `<g opacity="${k}">${b}</g>`;
+  }
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>
