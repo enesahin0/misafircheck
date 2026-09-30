@@ -211,3 +211,6 @@ Gubi ve Gufi arka planda köşede bekleyen süs DEĞİL; hikâyenin OYUNCULARI.
 - Aralarında diyalog/etkileşim: biri yapar diğeri tepki verir (şaşırır, güler, itiraz eder), birbirine nesne uzatır, kovalar, çarpışır.
 - Konuşma balonları (M.balon) ile kısa laf/ünlem; altyazıyla çakışmayacak yerde.
 - Sahne başına en az bir görünür tepki; hiçbir sahnede sadece köşede "duran" maskot olmaz.
+
+## TESLİM LİSTESİ (her video)
+video.mp4 · reels_kapak.jpg · Instagram açıklaması (en fazla 5 hashtag, "gubigufi ✦ 1 dakikada bir merak", kaynak) · YouTube Shorts başlığı · **YouTube etiketleri** (virgülle ayrılmış 12–20 anahtar kelime, sonda "gubigufi, shorts")
