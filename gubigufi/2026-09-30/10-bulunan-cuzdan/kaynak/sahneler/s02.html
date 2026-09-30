@@ -46,7 +46,7 @@ window.renderAt = t => {
   o += gubi(t, { yol: [[.4, 1200, 1560, 200], [1.4, 850, 1560, 200]], x: 850, y: 1560, boy: 200, bakHedef: t < 6 ? [370, 870] : [710, 1010], isaretHedef: t < 6 ? [300, 870] : [800, 1010], ust: POLIS });
   if (t > 1.4) o += `<g transform="translate(${930} ${1640}) rotate(-20)"><rect x="-40" y="-18" width="80" height="36" rx="18" fill="#C9D2E0"/><circle cx="36" cy="0" r="24" fill="#C9D2E0"/><circle cx="36" cy="0" r="10" fill="#5A607E"/></g>`;
   o += gufi(t, { x: 260, y: 1740, boy: 250, bakHedef: t < 6 ? [370, 870] : [710, 1010] }) + cuz(430, 1640, .35, -10);
-  o += DP.sar(t, 1.7, 4.4, d => DP.kanun(d));
+  o += DP.sar(t, 2.2, 3.3, d => DP.kanun(d));
   o += FX.gecis(t, { orta: 0, renk: MOR, serit: '#1B1640', kapat: { sure: .01 }, ac: { tur: 'egik', sure: .4 } });
   $('dinamik').innerHTML = o;
 };

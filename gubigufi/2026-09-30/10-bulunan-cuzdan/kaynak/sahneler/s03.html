@@ -53,7 +53,7 @@ window.renderAt = t => {
     b += gufi(t, { x: 540, y: 1760, boy: 250, bakHedef: [540, 700] });
     if (t > 7.9) { const c = FX.yay(t - 7.9); b += cuz(700, 1600 - 120 * c, .45, 10); }
     o += `<g opacity="${g}">${b}</g>`; }
-  o += DP.sar(t, 2.75, 3.75, d => DP.tokmak(d, .25));
+  o += DP.sar(t, 2.8, 3.5, d => DP.tokmak(d, .2));
   o += FX.flas(t, 5.2, .25, .06);
   $('dinamik').innerHTML = o;
 };

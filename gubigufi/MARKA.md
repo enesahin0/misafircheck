@@ -223,6 +223,7 @@ Arkasında şekil (hap/çip, kutu, damga çerçevesi, balon) olan HER yazı şek
 
 ## YAKIN ÇEKİM / DETAY PLAN (insert shot) — yerine göre
 Sahneyi büyütmek (amatör zoom) YASAK. Detay plan, anlatıda önemli olan nesnenin ya da konunun AYRI ÇİZİLMİŞ yakın plan kompozisyonudur. Nesne merkezde ve büyük durur, kendi zemini ve dokusu vardır (kaldırım taşı, kâğıt, ahşap, taş), alan derinliği vardır (bulanık ön ve arka plan objeleri, vinyet), kendi mini animasyonu vardır (fosforlu kalem geçer, tokmak iner, çatlak ilerler, damga basılır, kurdele sallanır).
-- Kesme ile girer (kısa beyaz parıltı + hafif 'oturma'), yavaş push-in ile sürer, kesme ile çıkar. Süresi 0,5–2,7 sn. Video başına 5–8 tane.
+- RİTİM: **geniş plan → detay plan → geniş plan**. Detay plan KISA tutulur (0,5–1,1 sn), önünde ve arkasında mutlaka aynı sahnenin geniş planı olur; bağlamı kurar, vurguyu yapar, sahneye geri döner. Maskot tepkileri detay plana değil, dönüşteki geniş plana denk getirilir.
+- Kesme ile girer (kısa beyaz parıltı + hafif 'oturma'), yavaş push-in ile sürer, kesme ile çıkar. Video başına 5–8 tane.
 - Kütüphane: `ortak/detay.js` → `DP.sar(t, t0, t1, d => DP.xxx(d))`. #10'daki örnekler: kaldirim, kanun, tokmak, teslim, catlak, tutanak, kurdele. Her video için konuya özel yeni detay planlar çizilir.
 - Nesne ve önemli yazılar altyazı bandının (y≈1280–1430) dışında kalır. Detay plandaki yazılar da şekillerine ölçülerek sığdırılır.

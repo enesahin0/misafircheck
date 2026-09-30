@@ -9,7 +9,7 @@ TEP = {
     3: [('gufi', 2.6, 'korku'), ('gubi', 3.0, 'kararli'), ('gufi', 7.9, 'sasir')],
     4: [('gubi', 3.4, 'mutlu'), ('gufi', 5.9, 'mutlu')],
     5: [('gufi', .6, 'goster'), ('gubi', 1.9, 'dusun'), ('gubi', 4.1, 'kahkaha'), ('gufi', 4.3, 'sasir')],
-    6: [('gubi', 6.3, 'mutlu'), ('gufi', 8.9, 'omuzSilk')],
+    6: [('gubi', 6.3, 'mutlu'), ('gufi', 9.45, 'omuzSilk')],
     7: [('gufi', .3, 'dusun'), ('gufi', 6.3, 'zipla'), ('gubi', 6.5, 'alkis')],
     8: [('gufi', .1, 'yaklas'), ('gufi', 1.0, 'goster'), ('gubi', 1.2, 'mutlu')],
 }
@@ -87,7 +87,7 @@ window.renderAt = t => {
   o += gubi(t, { yol: [[.4, 1200, 1560, 200], [1.4, 850, 1560, 200]], x: 850, y: 1560, boy: 200, bakHedef: t < 6 ? [370, 870] : [710, 1010], isaretHedef: t < 6 ? [300, 870] : [800, 1010], ust: POLIS });
   if (t > 1.4) o += `<g transform="translate(${930} ${1640}) rotate(-20)"><rect x="-40" y="-18" width="80" height="36" rx="18" fill="#C9D2E0"/><circle cx="36" cy="0" r="24" fill="#C9D2E0"/><circle cx="36" cy="0" r="10" fill="#5A607E"/></g>`;
   o += gufi(t, { x: 260, y: 1740, boy: 250, bakHedef: t < 6 ? [370, 870] : [710, 1010] }) + cuz(430, 1640, .35, -10);
-  o += DP.sar(t, 1.7, 4.4, d => DP.kanun(d));
+  o += DP.sar(t, 2.2, 3.3, d => DP.kanun(d));
   o += FX.gecis(t, { orta: 0, renk: MOR, serit: '#1B1640', kapat: { sure: .01 }, ac: { tur: 'egik', sure: .4 } });
   $('dinamik').innerHTML = o;
 };"""
@@ -112,7 +112,7 @@ window.renderAt = t => {
     b += gufi(t, { x: 540, y: 1760, boy: 250, bakHedef: [540, 700] });
     if (t > 7.9) { const c = FX.yay(t - 7.9); b += cuz(700, 1600 - 120 * c, .45, 10); }
     o += `<g opacity="${g}">${b}</g>`; }
-  o += DP.sar(t, 2.75, 3.75, d => DP.tokmak(d, .25));
+  o += DP.sar(t, 2.8, 3.5, d => DP.tokmak(d, .2));
   o += FX.flas(t, 5.2, .25, .06);
   $('dinamik').innerHTML = o;
 };"""
@@ -131,7 +131,7 @@ window.renderAt = t => {
   if (c2 > 0) o += grp(cip('UYGUN ÖDÜL ✓', 0, 0, '#FFE45C', '#1B1640', 34), 290, 690, c2);
   o += gufi(t, { x: 300, y: 1740, boy: 260, bakHedef: [780, 1000] });
   o += HK.yapraklar(t, SONBAHAR, 6, [0, 1080, 0, 1900]);
-  o += DP.sar(t, 2.3, 3.9, d => DP.teslim(d));
+  o += DP.sar(t, 2.7, 3.5, d => DP.teslim(d));
   o += FX.gecis(t, { orta: 6.95, renk: '#5E5874', kapat: { tur: 'daire', merkez: [540, 800], sure: .35 } });
   $('dinamik').innerHTML = o;
 };"""
@@ -170,7 +170,7 @@ window.renderAt = t => {
   o += gufi(t, { yol: [[1.4, 250, 1740, 240], [3.4, 690, 1740, 240]], x: 250, y: 1740, boy: 240, bakHedef: [810, 900] });
   const gx = t < 3.4 ? 250 + 440 * FX.E.inOutQuart(A(t, 1.4, 3.4)) : 690;
   o += cuz(gx + 110 + (810 - gx - 110) * tv, 1600 - 580 * tv - Math.sin(tv * Math.PI) * 100, .35 * (1 - .3 * tv), -10);
-  o += DP.sar(t, 8.3, 10.1, d => DP.tutanak(d, .3));
+  o += DP.sar(t, 8.4, 9.4, d => DP.tutanak(d, .2));
   $('dinamik').innerHTML = o;
 };"""
 # 07 — 5 yıl: bankta bekleyen Gufi, mevsimler akar, takvim döner, "SENİN" kurdelesi
@@ -193,7 +193,7 @@ window.renderAt = t => {
   if (kis > .1) o += `<ellipse cx="420" cy="${1716 - 245}" rx="${110 * kis}" ry="${26 * kis}" fill="#FFFFFF"/>`;
   o += cuz(640, 1650, .35, 0);
   const kd = pop(t, 6.1); if (kd > 0) o += grp(HK.kurdele(0, 0, .55), 640, 1610, kd);
-  o += DP.sar(t, 6.0, 7.1, d => DP.kurdele(d, t));
+  o += DP.sar(t, 6.1, 6.8, d => DP.kurdele(d, t));
   o += FX.gecis(t, { orta: 7.45, renk: '#FFB44C', kapat: { tur: 'egik', sure: .3 } });
   $('dinamik').innerHTML = o;
 };"""

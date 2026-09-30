@@ -4,7 +4,7 @@
 <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
   <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
 </svg>
-<script>window.SB = 34.55; const TP = {"gubi": [[6.3, "mutlu"]], "gufi": [[8.9, "omuzSilk"]]};</script>
+<script>window.SB = 34.55; const TP = {"gubi": [[6.3, "mutlu"]], "gufi": [[9.45, "omuzSilk"]]};</script>
 <script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script>
 <script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
 <script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
@@ -49,7 +49,7 @@ window.renderAt = t => {
   o += gufi(t, { yol: [[1.4, 250, 1740, 240], [3.4, 690, 1740, 240]], x: 250, y: 1740, boy: 240, bakHedef: [810, 900] });
   const gx = t < 3.4 ? 250 + 440 * FX.E.inOutQuart(A(t, 1.4, 3.4)) : 690;
   o += cuz(gx + 110 + (810 - gx - 110) * tv, 1600 - 580 * tv - Math.sin(tv * Math.PI) * 100, .35 * (1 - .3 * tv), -10);
-  o += DP.sar(t, 8.3, 10.1, d => DP.tutanak(d, .3));
+  o += DP.sar(t, 8.4, 9.4, d => DP.tutanak(d, .2));
   $('dinamik').innerHTML = o;
 };
 </script>

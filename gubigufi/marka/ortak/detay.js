@@ -42,7 +42,7 @@ const DP = (() => {
     o += Tm('TÜRK MEDENİ KANUNU', 520, 260, 30, '#8A7A9E', 'letter-spacing="6"') + T_('Madde 769', 520, 400, 100, '#2A1E5E') + R(170, 440, 700, 8, 4, '#8C6CFF');
     const sat = [['Kaybolmuş bir eşyayı', 0], ['bulan kimse, durumu', 0], ['malikine bildirmek;', 1], ['malikini tanımıyorsa', 0], ['kolluk kuvvetine', 2], ['bildirmekle yükümlüdür.', 0]];
     sat.forEach(([s, v], i) => { const y = 580 + i * 110, fs = 64;
-      if (v) { const p = eio(ar(d, v === 1 ? .5 : 1.4, v === 1 ? 1.0 : 1.9)), wd = K.yaziGen(s, fs, { agirlik: 700 }) + 30; o += R(520 - wd / 2, y - 58, wd * p, 80, 10, '#FFE45C', .85); }
+      if (v) { const p = eio(ar(d, v === 1 ? .15 : .5, v === 1 ? .45 : .8)), wd = K.yaziGen(s, fs, { agirlik: 700 }) + 30; o += R(520 - wd / 2, y - 58, wd * p, 80, 10, '#FFE45C', .85); }
       o += `<text x="520" y="${y}" font-size="${fs}" font-weight="700" text-anchor="middle" style="fill:#2A2440">${s}</text>`; });
     o += Tm('(özet)', 520, 1300, 30, '#8A7A9E') + T_('§', 860, 360, 120, '#8C6CFF', 900, 'opacity=".25"') + '</g>';
     o += bul(`<g transform="translate(900 1560) rotate(-35)">${R(-40, -260, 80, 520, 20, '#FFE45C')}${R(-40, -260, 80, 90, 20, '#2A2440')}</g>`, 10);
@@ -67,7 +67,7 @@ const DP = (() => {
     o += R(0, 0, 200, 1920, 0, '#B84A78') + R(880, 0, 200, 1920, 0, '#B84A78') + R(180, 0, 30, 1920, 0, '#7E2E5A') + R(870, 0, 30, 1920, 0, '#7E2E5A');
     o += R(0, 1180, 1080, 740, 0, '#E86A93') + R(0, 1180, 1080, 24, 0, '#7E2E5A', .5);
     o += `<g transform="rotate(-4 540 1450)">` + R(170, 1320, 740, 300, 30, '#8E5A3A') + R(195, 1345, 690, 250, 20, '#A8704A') + `<text class="mono" x="540" y="1495" font-size="${K.yaziGen('HOŞ GELDİNİZ', 58, { mono: true, ls: 4 }) > 600 ? 50 : 58}" text-anchor="middle" letter-spacing="4" style="fill:#5A3020">HOŞ GELDİNİZ</text></g>`;
-    const g = eio(ar(d, 0, .7)), x = -200 + 450 * g, y = 900 - 40 * g;
+    const g = eio(ar(d, 0, .45)), x = -200 + 450 * g, y = 900 - 40 * g;
     o += `<g transform="translate(${x} ${y}) rotate(${-6 + 4 * g})">` + R(-40, 40, 620, 400, 60, '#000', .2) + R(-60, 0, 620, 400, 60, '#6B3A2A') + `<rect x="-36" y="24" width="572" height="352" rx="44" fill="none" stroke="#D8A878" stroke-width="5" stroke-dasharray="16 12"/>` + `<circle cx="480" cy="200" r="30" fill="#D8A032"/>` +
       `<circle cx="-40" cy="230" r="110" fill="#8E1B3F"/><circle cx="-50" cy="220" r="110" fill="#EE312E"/><circle cx="-10" cy="170" r="36" fill="#FFC7BD" opacity=".8"/>` + '</g>';
     return o + vinyet('#1B0A20', .45);
@@ -94,7 +94,7 @@ const DP = (() => {
     [['Eşya', 'Cüzdan'], ['Bulunduğu yer', 'Kamu binası'], ['Teslim alan', 'Görevli'], ['Ödül', '—']].forEach(([a, b], i) => { const y = 580 + i * 120; o += `<text x="210" y="${y}" font-size="40" font-weight="700" style="fill:#5A8E8A">${a}:</text><text x="830" y="${y}" font-size="44" font-weight="900" text-anchor="end" style="fill:#155A63">${b}</text>` + R(210, y + 22, 620, 4, 2, '#155A63', .2); });
     const iz = ar(d, vur, vur + .05); if (iz > 0) { const w = K.yaziGen('ÖDÜL YOK', 90) + 90; o += `<g transform="rotate(-14 520 1130)" opacity="${.9 * iz}"><rect x="${520 - w / 2}" y="1060" width="${w}" height="140" rx="16" fill="none" stroke="#C8323C" stroke-width="14"/>` + T_('ÖDÜL YOK', 520, 1162, 90, '#C8323C') + `</g>`; }
     o += '</g>';
-    const inis = d < vur ? eio(d / vur) : 1 - eio(ar(d, vur + .15, vur + .6));
+    const inis = d < vur ? eio(d / vur) : 1 - eio(ar(d, vur + .12, vur + .45));
     o += `<g transform="translate(520 ${1130 - 800 + 700 * inis})">` + `<ellipse cx="0" cy="-10" rx="170" ry="30" fill="#000" opacity=".2"/>` + R(-160, -80, 320, 80, 16, '#3A3F5C') + R(-40, -300, 80, 230, 30, '#6A3A20') + `<circle cx="0" cy="-320" r="80" fill="#8E5226"/>` + '</g>';
     if (d > vur && d < vur + .4) o += `<ellipse cx="520" cy="1130" rx="${420 * (d - vur) / .4 + 200}" ry="${120 * (d - vur) / .4 + 60}" fill="none" stroke="#FFFFFF" stroke-width="8" opacity="${1 - (d - vur) / .4}"/>`;
     return o + vinyet('#0A2A2E', .45);
