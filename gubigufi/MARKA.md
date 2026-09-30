@@ -76,3 +76,24 @@ Kanala özel uyarlamalar (skill'le çelişmez, üstüne eklenir):
 - Müzik: skill'e uygun ambient / sinematik synth (her videoya özgün), anlatımın altında alçak.
 - Üretim hattı: skill'in `ses_analiz.py` → sahne planı → `sahneler/sNN.html` → `render.py` → birleştirme.
 - Maskot: skill kuralı gereği özgün olmalı (kuş/ördek/köpek yok); seçim kullanıcı onayıyla yapılır.
+
+## Maskotlar: Gubi & Gufi (çizim: `marka/ortak/maskot.js`, kart: `marka/maskot_karti.png`)
+
+```
+MASKOT KARTI — GUBİ
+Ad: Gubi
+Şekil: uçları yuvarlatılmış, tombul 4 köşeli yıldız (logodaki pırıltıdan doğar); arkasında yumuşak glow
+Renkler: gövde #FBAC39, gölge #B4532A, rim light #FFE9B8, glow #FFD27A, göz bebeği #1B1640
+Ayırt edici detay: sürekli hafif parlar; heyecanlanınca glow büyür
+Kişilik: meraklı, soru soran, "aha!" anlarının sahibi — izleyicinin merakı
+İngilizce prompt tarifi: "a small chubby four-pointed star character with rounded tips, warm amber #FBAC39 body, soft golden glow, big white oval eyes with navy pupils, no mouth, no outline, flat vector"
+
+MASKOT KARTI — GUFİ
+Ad: Gufi
+Şekil: yuvarlak köşeli kırmızı kare gövde + iki minik yuvarlak ayak (logodaki kırmızı kareden doğar)
+Renkler: gövde #EE312E, gölge #8E1B3F, rim light #FFC7BD, göz bebeği #1B1640
+Ayırt edici detay: zıplayarak hareket eder, şaşırınca gözleri kocaman olur
+Kişilik: tepkici, şaşıran, bazen yanılan — izleyicinin şaşkınlığı
+İngilizce prompt tarifi: "a small rounded-square character, bright red #EE312E body, two tiny round feet, big white oval eyes with navy pupils, no mouth, no outline, flat vector"
+```
+Kullanım: her videoda 3–6 kısa rol. Gubi soruyu sorar / aha anında parlar, Gufi şaşırır / tepki verir; kapanışta ikisi logoya dönüşür.
