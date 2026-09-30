@@ -357,3 +357,41 @@ def maskot_ses(kim, tip='merak'):
         }
     return _dizi(P.get(tip, P['merak']))
 
+
+
+# =====================================================================
+# ft-motion'dan uyarlananlar (github.com/imserhatdemir/ft-motion, MIT) — bizim miks yapımıza göre
+# =====================================================================
+def reverb(x, oran=.25, sure=2.2, sonum=.5, parlak=5500):
+    """Hafif oda yankısı (gürültü IR ile konvolüsyon). Pad/çan gibi uzun seslerde; konuşmaya UYGULAMA."""
+    rng = np.random.default_rng(11); t = T(sure)
+    ir = rng.standard_normal(len(t)) * np.exp(-t / sonum); ir = filt(ir, 'lowpass', parlak); ir[: int(.015 * SR)] = 0
+    ir /= np.sqrt(np.sum(ir ** 2)) + 1e-9
+    wet = signal.fftconvolve(x, ir)[: len(x)]
+    return x + oran * filt(wet, 'highpass', 200)
+
+
+def sidechain(x, vurus_zamanlari, derinlik=.55, birakma=.11):
+    """Vuruşlarda (kick/darbe) müziği kısa süre kıs → vuruş öne çıkar ('pompalama')."""
+    t = np.arange(len(x)) / SR; sc = np.ones(len(x))
+    for tk in vurus_zamanlari:
+        m = t >= tk; sc[m] = np.minimum(sc[m], 1 - derinlik * np.exp(-(t[m] - tk) / birakma))
+    return x * sc
+
+
+def sayac_tiklari(M, t0, sure, adet, f0=1800, f1=3300, kazanc=.15, bus='sfx'):
+    """FX.sayac ile eşleşen, expo gibi yavaşlayan ve inceleşen tıklar."""
+    for k in range(adet):
+        x = k / max(1, adet - 1); tt = t0 + sure * (x ** 2.2)
+        M.add(bus, tick(f0 + (f1 - f0) * x, .025), tt, kazanc)
+
+
+def damga(f=110, sure=.35):
+    """Yazı çarpması ('stamp'): perdeli tom + kısa kick — büyük başlık/rakam inişinde."""
+    t = T(sure); tom = np.sin(2 * np.pi * np.cumsum(f * (1 + .6 * np.exp(-t * 30))) / SR) * np.exp(-t / .13)
+    return (tom + soft_kick(sure)[: len(t)] * .7) / 1.7
+
+
+def riser_hedefli(t0, t1, f0=300, f1=4000):
+    """TAM t1 anında biten yükseliş (ft-motion riser mantığı): M.add('sfx', riser_hedefli(a, b), a)."""
+    return riser(max(.1, t1 - t0), f0, f1)

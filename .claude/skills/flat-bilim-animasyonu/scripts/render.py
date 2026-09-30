@@ -62,7 +62,8 @@ async def sayfa_ac(pw, w, h, olcek, sure):
     await sayfa.add_init_script(f"window.SAHNE_SURESI={sure};document.addEventListener('DOMContentLoaded',()=>document.documentElement.style.setProperty('--sure','{sure}s'));")
     return tarayici, sayfa
 
-async def sahne_render(pw, sahne_yolu, bas_kare, bit_kare, fps, w, h, olcek, cikti):
+async def sahne_render(pw, sahne_yolu, bas_kare, bit_kare, fps, w, h, olcek, cikti, alt_kare=1):
+    # alt_kare > 1: HAREKET BULANIKLIĞI (ft-motion tekniği) — her kare, 180° obtüratörle (yarım kare süresi) N alt karenin ortalaması
     tarayici, sayfa = await sayfa_ac(pw, w, h, olcek, (bit_kare - bas_kare) / fps)
     await sayfa.goto(sahne_yolu.resolve().as_uri())
     await sayfa.wait_for_load_state("load")
@@ -70,17 +71,20 @@ async def sahne_render(pw, sahne_yolu, bas_kare, bit_kare, fps, w, h, olcek, cik
     await sayfa.evaluate("document.fonts ? document.fonts.ready : null")
     kare_sayisi = max(1, bit_kare - bas_kare)
     ow, oh = int(w*olcek), int(h*olcek)
-    ff = subprocess.Popen(["ffmpeg","-y","-loglevel","error","-f","image2pipe","-framerate",str(fps),
-                           "-c:v","mjpeg","-i","-","-vf",f"scale={ow}:{oh},format=yuv420p",
+    N = max(1, int(alt_kare))
+    vf = f"scale={ow}:{oh},format=yuv420p" if N == 1 else f"tmix=frames={N},select='not(mod(n+1\\,{N}))',setpts=N/({fps}*TB),scale={ow}:{oh},format=yuv420p"
+    ff = subprocess.Popen(["ffmpeg","-y","-loglevel","error","-f","image2pipe","-framerate",str(fps * N),
+                           "-c:v","mjpeg","-i","-","-vf",vf,
                            "-c:v","libx264","-preset","veryfast","-crf","18","-r",str(fps),str(cikti)],
                           stdin=subprocess.PIPE)
     # CDP ile doğrudan ekran görüntüsü: Playwright screenshot'tan belirgin şekilde hızlı
     cdp = await sayfa.context.new_cdp_session(sayfa)
     t0 = time.time()
     for i in range(kare_sayisi):
-        await sayfa.evaluate(SEEK_JS, i / fps)
-        r = await cdp.send("Page.captureScreenshot", {"format": "jpeg", "quality": 92, "optimizeForSpeed": True})
-        ff.stdin.write(base64.b64decode(r["data"]))
+        for k in range(N):
+            await sayfa.evaluate(SEEK_JS, i / fps + (k / N) * (0.5 / fps))
+            r = await cdp.send("Page.captureScreenshot", {"format": "jpeg", "quality": 92, "optimizeForSpeed": True})
+            ff.stdin.write(base64.b64decode(r["data"]))
     ff.stdin.close(); ff.wait(); await tarayici.close()
     return kare_sayisi, time.time() - t0
 
@@ -140,7 +144,7 @@ async def main():
             for i in aralik(a.sahne, len(plan["sahneler"])):
                 s = plan["sahneler"][i-1]
                 bk, ek = round(s["baslangic"]*fps), round(s["bitis"]*fps)
-                n, sure = await sahne_render(pw, kok / s["dosya"], bk, ek, fps, w, h, olcek, parca_dir / f"parca_{i:03d}.mp4")
+                n, sure = await sahne_render(pw, kok / s["dosya"], bk, ek, fps, w, h, olcek, parca_dir / f"parca_{i:03d}.mp4", 1 if a.onizleme else s.get("alt_kare", plan.get("hareket_bulanikligi", 1)))
                 print(f"Sahne {i:02d}: {n} kare, {sure:.1f} sn ({n/max(sure,1e-6):.1f} kare/sn)")
     if a.birlestir or a.sahne is None:
         birlestir(plan, kok, parca_dir, a.onizleme)

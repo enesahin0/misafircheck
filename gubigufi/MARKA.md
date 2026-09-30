@@ -57,6 +57,17 @@ Yere basan hiçbir şey havada durmaz: ağaç, bina, direk, masa, karakter… ze
 - Her videonun sonunda logo sahnesi (Gubi pırıltıya, Gufi kırmızı kareye dönüşür) ZORUNLU. Teslimden önce son 1 sn'den kare alınıp logonun göründüğü kontrol edilir.
 - render.py artık sahne JS hatasında durur (#12'de logo sahnesi değişken çakışması yüzünden boş çıkmıştı; logo kodu `LOGO_C` adını kullanır).
 
+### HAREKET / MOTION EFEKTLERİ — ft-motion'dan uyarlandı (KALICI)
+Kaynak: github.com/imserhatdemir/ft-motion (MIT). Motoru Canvas tabanlı; biz SVG + flat tarzımızda kaldık, yalnızca TEKNİKLERİ aldık:
+- **Hareket bulanıklığı:** `plan.json` → `"hareket_bulanikligi": 3` (ya da sahne bazında `"alt_kare": 4`). Her kare, 180° obtüratörle N alt karenin ortalaması; hızlı hareketler doğal akar. Render süresi N katına çıkar → yalnız hızlı sahnelerde (zıplama, uçuş, kamera yaklaşması, geçiş) kullan. Önizlemede kapalı.
+- **Easing sözlüğü** (`marka/ortak/hareket.js` → `FX`): girişler `FX.E.expo`, pop/beliriş `FX.yay(t - t0)` (back yerine), darbe/squash `FX.sallan`, büyük çıkış öncesi hazırlık `FX.E.inBack`, emilme `FX.E.inExpo`.
+- **Geçişler:** `FX.gecis(t, { orta, renk, serit, kapat:{tur:'egik'|'serit'|'daire', merkez}, ac:{...} })` — ekran `orta` anında tam kapalı, sahne orada değişir. Komşu geçişlerde tür/yön/renk değiştir; renkler olgun paletten. "A, B'ye dönüşür": daireyi önceki sahnenin bir nesnesinden (ör. soru işaretinin noktası) büyüt.
+- **Darbeler (idareli):** `FX.flas`, `FX.sokHalkasi`, `FX.sarsinti(t, [[zaman, px]])` kamera sarsıntısı.
+- **Kinetik yazı:** `FX.harfHarf` (harfler sırayla yaylanır), `FX.maskeliYazi` (kutudan yükselir; Türkçe aksanlara pay bırakır), `FX.ustunuCiz`, `FX.sayac` (expo ile yavaşlayan sayma), `FX.dalgaNoktalar`, `FX.sogan` (soğan kabuğu izi).
+- **Ses (ses_lib):** `reverb()` (pad/çanlara), `sidechain()` (vuruşlarda müziği kıs), `sayac_tiklari()` (FX.sayac ile eşli), `damga()` (büyük başlık çarpması), `riser_hedefli()` (tam patlama anında biten yükseliş). Her görsel olayın aynı zaman çizelgesinde bir sesi olur.
+- ALINMAYANLAR (tarzımıza uymaz): glitch, kromatik sapma, HUD/editör çerçevesi, film greni, neon/teknoloji reklamı estetiği.
+- Yeni video klasörüne `ortak/hareket.js` kopyalanır ve HEAD'de maskot.js'ten sonra yüklenir.
+
 ### ARKA PLAN / ATMOSFER KURALI (güncelleme, #10'dan itibaren geçerli)
 - Skill'den aldığımız şey ÇİZİM TARZIDIR (flat vektör, konturyok, rim light, glow, yuvarlak formlar). Skill'in "koyu lacivert/uzay" atmosferi varsayılan DEĞİL.
 - Videolar mavi-derin tonlara bürünmeyecek. Varsayılan: renkli, aydınlık, konuya ait doğal ortam/çevre arka planları (gündüz gökyüzü, orman, sahil, mutfak, mahkeme salonu, stadyum, atölye, pazar yeri, sokak…) + sıcak ve canlı palet.
