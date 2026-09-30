@@ -60,7 +60,7 @@ const HK = (() => {
     if (catlak > 0) o += `<path d="M-40 -262 L-10 -120 L-70 -20 L10 90 L-30 240" stroke="#2A2440" stroke-width="10" fill="none" stroke-dasharray="${900 * catlak} 900"/><path d="M120 -255 L90 -100 L160 20" stroke="#2A2440" stroke-width="8" fill="none" stroke-dasharray="${500 * catlak} 500"/>`;
     return o + '</g>';
   }
-  function damgaYazi(x, y, s, yazi, renk = '#C8323C', rot = -12, op = 1) { const w = yazi.length * 60 + 80; return `<g transform="translate(${x} ${y}) rotate(${rot}) scale(${s})" opacity="${op}"><rect x="${-w / 2}" y="-70" width="${w}" height="140" rx="16" fill="none" stroke="${renk}" stroke-width="16"/>` + T_(yazi, 0, 30, 96, renk) + '</g>'; }
+  function damgaYazi(x, y, s, yazi, renk = '#C8323C', rot = -12, op = 1) { const w = K.yaziGen(yazi, 96) + 90; return `<g transform="translate(${x} ${y}) rotate(${rot}) scale(${s})" opacity="${op}"><rect x="${-w / 2}" y="-70" width="${w}" height="140" rx="16" fill="none" stroke="${renk}" stroke-width="16"/>` + T_(yazi, 0, 30, 96, renk) + '</g>'; }
   function binaIci(T, x0 = 540, w = 540) {
     let o = R(x0, 0, w, 1920, 0, T.fon1) + R(x0, 1180, w, 740, 0, T.acik);
     for (let i = 0; i < 4; i++) for (let j = 0; j < 4; j++) o += R(x0 + i * w / 4, 1180 + j * 185, w / 4 - 4, 181, 0, (i + j) % 2 ? T.fon2 : T.isik, .6);

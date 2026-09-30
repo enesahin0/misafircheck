@@ -96,5 +96,13 @@ const K = (() => {
     const t0 = performance.now();
     (function d() { window.renderAt((performance.now() - t0) / 1000); requestAnimationFrame(d); })();
   }
-  return { gok, yildizlar, glow, kure, goz, yaratik, etiket, ease, aralik, sayi, onizleme, rnd };
+  // yazı genişliğini GERÇEKTEN ölç (SVG getComputedTextLength) — arkasında şekil olan her yazı buna göre boyutlanır
+  let _olc = null;
+  function yaziGen(s, fs, { mono = false, agirlik = 900, ls = 0 } = {}) {
+    try { if (!_olc) { const svg = document.querySelector('svg'); _olc = document.createElementNS('http://www.w3.org/2000/svg', 'text'); _olc.setAttribute('x', '-9999'); _olc.setAttribute('y', '-9999'); svg.appendChild(_olc); }
+      _olc.setAttribute('class', mono ? 'mono' : ''); _olc.setAttribute('font-size', fs); _olc.setAttribute('font-weight', agirlik); _olc.setAttribute('letter-spacing', ls); _olc.textContent = s;
+      const w = _olc.getComputedTextLength(); if (w > 0) return w; } catch (e) {}
+    return s.length * fs * (mono ? .62 : .6) + s.length * ls;
+  }
+  return { gok, yildizlar, glow, kure, goz, yaratik, etiket, ease, aralik, sayi, onizleme, rnd, yaziGen };
 })();

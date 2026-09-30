@@ -215,3 +215,8 @@ Gubi ve Gufi arka planda köşede bekleyen süs DEĞİL; hikâyenin OYUNCULARI.
 
 ## TESLİM LİSTESİ (her video)
 video.mp4 · reels_kapak.jpg · Instagram açıklaması (en fazla 5 hashtag, "gubigufi ✦ 1 dakikada bir merak", kaynak) · YouTube Shorts başlığı · **YouTube etiketleri** (virgülle ayrılmış 12–20 anahtar kelime, sonda "gubigufi, shorts")
+
+## ŞEKİLLİ YAZI KURALI (çip, etiket, damga, balon, tabela)
+Arkasında şekil (hap/çip, kutu, damga çerçevesi, balon) olan HER yazı şeklin içine **düzgünce, iki yanda eşit boşlukla** sığmalı.
+- Genişlik ASLA harf sayısından tahmin edilmez; `K.yaziGen(metin, fs, { mono, agirlik, ls })` ile gerçek ölçülür (SVG getComputedTextLength; mono yazı tipi + letter-spacing dahil).
+- `cip()` artık ölçerek çizer (genişlik = ölçülen + 1.7×fs). Sabit genişlikli kutularda (balon, tabela, etiket kartı) yazı uzunsa kutu büyütülür ya da font küçültülür; kontak föyünde her şekilli yazı taşma için kontrol edilir.
