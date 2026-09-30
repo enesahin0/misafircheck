@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 51.3; const TP = {"gubi": [[3.6, "selam"]], "gufi": [[0.5, "sasir"], [3.9, "mutlu"]]};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/limon.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = s.length * fs * .62 + 70; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+$('zemin').innerHTML = L.bg({ nx: 540, ny: 700, neb: L.P.limon, no: .12 }) + L.parca(19, 50);
+window.renderAt = t => {
+  let o = '';
+  const mx = 770, my = 660, ap = pop(t, .05, .5);
+  let ay = `<ellipse cx="${mx}" cy="${my}" rx="215" ry="295" fill="#C98A3A"/><ellipse cx="${mx}" cy="${my}" rx="190" ry="270" fill="#2C3A78"/><ellipse cx="${mx}" cy="${my}" rx="190" ry="270" fill="#8FA2F0" opacity=".25"/>`;
+  // yansıma: aynadaki Gufi (ters), limon parıl parıl
+  ay += `<defs><clipPath id="ayc"><ellipse cx="${mx}" cy="${my}" rx="190" ry="270"/></clipPath></defs><g clip-path="url(#ayc)"><g transform="translate(${2 * mx} 0) scale(-1 1)">` + gufi(t, { x: mx, y: 900, boy: 230, bakHedef: [mx + 400, 700], ust: L.cila(mx, 900, 230, 1, t) }) + `</g>` + K.glow({ x: mx, y: 720, r: 200, renk: L.P.limon, guc: .35 + .2 * Math.sin(t * 4) }) + `</g>`;
+  ay += `<path d="M${mx + 90} ${my - 200} L${mx + 140} ${my - 120}" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" opacity=".5"/>`;
+  o += olc(ay, mx, my, ap);
+  o += gufi(t, { x: 330, y: 960, boy: 210, bakHedef: [mx, my], ust: L.cila(330, 960, 210, 1, t) });
+  if (t > 3.4) o += gubi(t, { x: 190, y: 560, boy: 110, bakHedef: [330, 850] });
+  const a1 = pop(t, 1.6); if (a1 > 0) o += grp(txt('EMİN OLMAK', 0, 0, 92, L.P.limon), 540, 1110, a1);
+  const a2 = pop(t, 3.2); if (a2 > 0) o += grp(txt('≠ BİLMEK', 0, 0, 92, '#FFF3D6'), 540, 1225, a2);
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>
