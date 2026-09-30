@@ -40,6 +40,12 @@ Yere basan hiçbir şey havada durmaz: ağaç, bina, direk, masa, karakter… ze
 Önde duran tepe arkadaki nesnenin tabanını örtebilir ama tabanın ALTINDA boşluk kalamaz. Kontak sayfası kontrolünde her sahnede "yere basma" ayrıca kontrol edilir.
 (Gubi uçan bir pırıltı olduğu için havada süzülebilir; Gufi her zaman yere basar ya da zıplama yayındadır.)
 
+### REELS KAPAK KURALI v2 (KALICI)
+- Şablon: `marka/kapak/` (`sablon.html` + `uret_kapak.py`). Yeni video eklerken KAPAKLAR listesine satır ekle ve çalıştır; illüstrasyonu videonun `kapak_gorsel.png` dosyası (varsa) ya da eski kapaktan kırpma sağlar.
+- Her kapak kendi OLGUN, zengin renginde (çocuk renkleri yok): petrol, bordo, orman, terrakota, çivit, mürdüm, zeytin, hardal, okyanus, kahve, gül kurusu, deniz yeşili. Izgarada yan yana/üst üste gelen kapaklar aynı ya da benzer renk ALMAZ; 12'lik döngüde sıradaki kullanılmamış renk seçilir.
+- Düzen Instagram profil ızgarasının 3:4 kırpmasına göre (görünen alan y 240–1680): üstte ✦ etiket, ortada yuvarlak köşeli görsel kartı, altında büyük başlık + vurgu renginde alt satır, logo.
+- Izgara önizlemesi: `kapak_izgara_onizleme.png`.
+
 ### ARKA PLAN / ATMOSFER KURALI (güncelleme, #10'dan itibaren geçerli)
 - Skill'den aldığımız şey ÇİZİM TARZIDIR (flat vektör, konturyok, rim light, glow, yuvarlak formlar). Skill'in "koyu lacivert/uzay" atmosferi varsayılan DEĞİL.
 - Videolar mavi-derin tonlara bürünmeyecek. Varsayılan: renkli, aydınlık, konuya ait doğal ortam/çevre arka planları (gündüz gökyüzü, orman, sahil, mutfak, mahkeme salonu, stadyum, atölye, pazar yeri, sokak…) + sıcak ve canlı palet.
