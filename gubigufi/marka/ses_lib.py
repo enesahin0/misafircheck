@@ -23,6 +23,7 @@ def env(n, a=0.005, r=0.2, curve=4.0):
 def adsr(n, a, r):
     e = np.ones(n)
     na, nr = int(a * SR), int(r * SR)
+    na, nr = min(na, n), min(nr, n)  # kısa seslerde zarf taşmasın
     if na:
         e[:na] = np.sin(np.linspace(0, np.pi / 2, na)) ** 2
     if nr:
