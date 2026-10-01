@@ -295,6 +295,16 @@ Tarihli bir olay anlatılırken o sahnelerin ön ve arka planındaki insanlar an
 - Dil: "hayatını kaybetti", "yaralandı"; sansasyon kelimesi yok ("dehşet", "kan donduran", "vahşet"…). Sayılar yalnızca resmî kaynaktan, saatle: "valilikten yapılan son açıklamaya göre". Kurban adı verilmez (resmî açıklamada yoksa), çocuk kimliği asla.
 - Kapanış: başsağlığı/geçmiş olsun cümlesi; varsa faydalı bilgi (AFAD/112 hattı, Kızılay kan bağışı, yol kapanışları). "Takip edin" çağrısı bu bültenlerde YAPILMAZ.
 **Doğruluk:** Doğrulanamayan rakam/iddia kullanılmaz; haber o gün çıkmazsa çıkmaz. Hata olursa düzeltme bülteni/açıklaması yapılır.
+**TON EŞLEMESİ (maskot duygusu + ses efekti haberin içeriğine uyar; absürt durmaz):** Her bültende önce ton seçilir, tüm tepki/efekt/müzik ona göre kurulur.
+| Ton | Haber örneği | Maskot (Gubi sunucu · Gufi muhabir) | Ses efektleri & müzik |
+|---|---|---|---|
+| OLUMLU | başarı, rekor, iyi gelişme, tatil müjdesi | gülümser, 'mutlu'/'alkis'/'aha' serbest | parlak çan, pop, alkış; tempolu altlık |
+| NÖTR / BİLGİ | düzenleme, açıklama, takvim, siyasi gelişme | sakin, profesyonel; yalnızca 'dusun'/'isaret'/'goster' | yumuşak whoosh, veri tikleri; nötr altlık |
+| ENDİŞE | zam, kriz, salgın uyarısı, olumsuz veri | ciddi, hafif kaygılı; 'dusun', hafif 'uzgun'; sıçrama/kahkaha YOK | alçak vuruş, tik; pop/çan yok; koyu altlık |
+| HASSAS | ölüm, afet, kaza, şiddet | ağır başlı, hareketsiz; yalnızca yavaş göz kırpma/hafif 'uzgun'; tepki sesi YOK | maskot imza sesleri KAPALI; pop/parazit/whoosh YOK; yalnızca çok alçak hüzünlü pad ya da sessizlik |
+| SPOR / KUTLAMA | maç sonucu, şampiyonluk | enerjik, 'zipla'/'mutlu' | tribün uğultusu, düdük, tempolu altlık |
+- Maskot imza sesleri (bip/tını) yalnızca OLUMLU ve SPOR tonlarında; NÖTR'de çok kısık; ENDİŞE ve HASSAS'ta hiç kullanılmaz.
+- Aynı bültende ton değişirse (ör. kötü haber + yardım bilgisi) geçiş yavaş yapılır; kapanış tonu haberin genel tonunu korur.
 
 ## GÜNDEM TAKVİMİ KURALI (kullanıcı: "şu videoyu şu tarihte atalım gibi öneriler ver")
 - Her konu önerisinde ve teslimde **önümüzdeki 2–3 haftanın Türkiye gündemine** bakılır; uyan konu varsa "bunu şu tarihte, şu saatte at" diye önerilir.
