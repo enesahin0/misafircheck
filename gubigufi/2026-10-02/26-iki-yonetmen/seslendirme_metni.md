@@ -3,27 +3,29 @@ Kategori: SİNEMA & KÜLTÜR. Hedef ~55 sn. Anlatı: MERAK SIRASI.
 KURALLAR (MARKA): gerçek kişiler maskotla CANLANDIRILMAZ → yönetmenler "boş yönetmen koltuğu" simgesiyle gösterilir; tüm alıntılar atıflı; hakaret/küfür aktarılmaz; iddia ≠ hüküm; iki taraf eşit.
 Maskotlar ROLDE (kenarda beklemez): Gufi PROJEKSİYONCU (makara takar, film şeridini sahneye çeker, tarihleri çevirir), Gubi ARŞİVCİ (gazete kupürü/X paylaşımı kartlarını panoya iğneler, "iddia" ve "yanıt" kartlarını yan yana dizer); finalde ikisi iki makarayı iki elde tutar: "1. ANLATIM · 2. ANLATIM".
 
-> DOĞRULAMA NOTU (v2: kullanıcı "her şeyin belgesine gerek yok, iddiaları ekle" dedi → iddialar/alıntılar ATIFLI şekilde metinde; uydurma YOK, küfür/"yumruk atmak istedim" gibi şiddet içeren alıntılar aktarılmadı): Olgular haber arşivlerinden derlendi (Hürriyet, Habertürk, Medyascope, BirGün, Cumhuriyet, NTV, Gazete Duvar, Serbestiyet, bianet). Yayından önce 3 noktayı kendi gözünle teyit et: (1) Altın Portakal 2006 sonuçları, (2) Ceylan'ın kitabının yayın ayı, (3) Demirkubuz'un "Cannes" gerekçesinin yönü (kim kimin Cannes eleştirisine kırıldı). Emin olunmayan her şey metinden çıkarıldı (küslüğün gerçek nedeni, intihalin doğru olup olmadığı).
+> DOĞRULAMA NOTU (v3: kullanıcı "yumuşatma yapma, magazin dili" dedi → dil sert/dramatik, alıntılar tam; ama "iddia" kelimesi ve her sözün sahibi KALIR; küfür ve şiddet alıntısı yok; v2: kullanıcı "her şeyin belgesine gerek yok, iddiaları ekle" dedi → iddialar/alıntılar ATIFLI şekilde metinde; uydurma YOK, küfür/"yumruk atmak istedim" gibi şiddet içeren alıntılar aktarılmadı): Olgular haber arşivlerinden derlendi (Hürriyet, Habertürk, Medyascope, BirGün, Cumhuriyet, NTV, Gazete Duvar, Serbestiyet, bianet). Yayından önce 3 noktayı kendi gözünle teyit et: (1) Altın Portakal 2006 sonuçları, (2) Ceylan'ın kitabının yayın ayı, (3) Demirkubuz'un "Cannes" gerekçesinin yönü (kim kimin Cannes eleştirisine kırıldı). Emin olunmayan her şey metinden çıkarıldı (küslüğün gerçek nedeni, intihalin doğru olup olmadığı).
 
 ---
 
-## 1) ElevenLabs'e YAPIŞTIRILACAK METİN (v2 — iddialar ve atıflı sert sözler eklendi)
+## 1) ElevenLabs'e YAPIŞTIRILACAK METİN (v3 — magazin dili, yumuşatma yok)
 
-Türkiye'nin iki ünlü yönetmeni, on yedi yıllık sessizliği bir muhtarlık sorusuyla bozdu: "Sen Cannes'ın muhtarı mısın?"
+"Cannes'ın muhtarı mısın, nesin sen?" Türk sinemasının iki devi, on yedi yıllık sessizliği bu cümleyle bozdu.
 
-Soran, Zeki Demirkubuz'du. Karşısındaki, Nuri Bilge Ceylan. İkisi de bir zamanlar yakın dosttu.
+Soran Zeki Demirkubuz. Soru, Nuri Bilge Ceylan'a.
 
-Birçok haber, küslüğün kökenini iki bin altıdaki Antalya Altın Portakal'a bağlıyor. O yıl Demirkubuz'un Kader'i en iyi film seçildi.
+Ortada eski bir dostluk vardı. Ortada eski bir kırgınlık da. Başlangıç, iki bin altıdaki Antalya Altın Portakal denildi: Demirkubuz'un Kader'i en iyi film oldu.
 
-Sonra yıllarca ikisi de konuşmadı. İki bin yirmi üçün sonunda Ceylan, Kış Uykusu kitabını çıkardı. Günlük notları, eski küslüğü yeniden açtı.
+Sonra on yedi yıl ses yok. Ta ki Ceylan, Kış Uykusu kitabını çıkarana kadar. Günlük notlar, eski yarayı açtı.
 
-Demirkubuz ilk kez bir televizyon programında konuştu. Küslüğü Ceylan'ın başlattığını söyledi. Ona göre Ceylan, kendisinin Cannes'a yönelik eleştirilerine kırılmıştı. Ceylan'a "Adilik yapmasın" dedi. Ve bir şey daha: Üç Maymun filmini hiç izlemediğini.
+Demirkubuz televizyona çıktı. Küslüğü Ceylan'ın başlattığını söyledi. Cannes çıkışını yaptı. "Adilik yapmasın" dedi. Ve bomba: Üç Maymun'u hiç izlemediğini.
 
-Çünkü yıllardır bir iddia dolaşıyordu: Üç Maymun'un senaryosu, Demirkubuz'dan alınmıştı.
+Çünkü yıllardır bir iddia konuşuluyordu: Üç Maymun'un senaryosu, Demirkubuz'dan çalınmıştı.
 
-Ceylan X'ten yanıt verdi: "Kendine şimdiden bir YouTube kanalı açarsa iyi eder." Sonra uzun bir mesaj yazdı: "Hiçbir kanıtı olmayan bir sürü hayal ürünü iddiayla uğraşmak kolay değilmiş." Ve ekledi: "Filmlerimin hiçbirinde sana yapılmış bir gönderme yok."
+Ceylan sessizliğini bozdu. X'ten yazdı: "Kendine şimdiden bir YouTube kanalı açarsa iyi eder." Demirkubuz'un cevabı gecikmedi: "Otur oturduğun yerde ve dişini sıkmaya devam et."
 
-İki yönetmen, aynı hikâyeyi iki ayrı film gibi anlattı. Hangisini izleyeceğine sen karar ver.
+Ceylan son sözü yazdı: "Hiçbir kanıtı olmayan bir sürü hayal ürünü iddiayla uğraşmak kolay değilmiş." Ve ekledi: "Filmlerimin hiçbirinde sana yapılmış bir gönderme yok."
+
+İki yönetmen, aynı olayı iki ayrı film gibi anlattı. Final sahnesini sen seç.
 
 ---
 
@@ -47,7 +49,7 @@ Ceylan X'ten yanıt verdi: "Kendine şimdiden bir YouTube kanalı açarsa iyi ed
 | 05 | Yıllarca sessizlik → 2023 kitap | Takvim yaprakları 2007→2023 hızla çevrilir | **Kitap: KIŞ UYKUSU 2023 (2 sn)** | Gufi takvim çarkını çevirir |
 | 06 | Aralık, TV programı, "küslüğü başlatan Ceylan; filmi izlemedim" | Stüdyo ekranı: "HABERTÜRK · MESELELER · 26 ARALIK 2023" (kişi yok; boş sandalye) | **Alıntı kartı: "Üç Maymun'u izlemedim" (2 sn, atıflı)** | Gubi alıntı kartını iğneler; Gufi mikrofon uzatma jesti |
 | 07 | İddia: senaryo alındı | Pano: iki yan yana kart "İDDİA" ↔ "YANIT" | — | Gubi iddia kartını, Gufi yanıt kartını yan yana asar |
-| 08 | Ceylan X'ten yanıt, sözler sertleşti | Telefon ekranı: "X · 27 ARALIK" (metin yok, sadece kart) | **Alıntı: "Filmlerimin hiçbirinde sana yapılmış bir gönderme yok" (2,5 sn)** | Gufi ekranı tutar; Gubi "sert" kartını kısık bırakır |
+| 08 | Ceylan X'ten yanıt, sözler sertleşti | Telefon ekranı: "X · 27 ARALIK" (metin yok, sadece kart) | **Alıntı kartları: "Kendine bir YouTube kanalı açarsa iyi eder" → "Otur oturduğun yerde…" → "Filmlerimin hiçbirinde sana yapılmış bir gönderme yok" (3 sn)** | Gufi ekranı tutar; Gubi "sert" kartını kısık bırakır |
 | 09 | Ceylan: kanıt yok · Demirkubuz: filmi izlemedim | Terazi YOK; iki makara yan yana, eşit boy | — | Gubi ve Gufi birer makara tutar |
 | 10 | İki ayrı film, sen karar ver | İki makara perdeye bakar; "1. ANLATIM · 2. ANLATIM" | — | İkisi izleyiciye döner, "?" jesti |
 | 11 | Takip kartı → logo | | | |
