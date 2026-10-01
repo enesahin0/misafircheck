@@ -90,13 +90,14 @@ S[3] = r"""
 window.renderAt = t => {
   const T = t + 11.8, k = A(t, 2.5, 3.2);
   const heart = (dx, rot, op) => `<g transform="translate(${450 + dx} 315) rotate(${rot})" opacity="${op}"><path d="M0 110 C-170 -10 -150 -170 -60 -170 C-20 -170 0 -140 0 -120 C0 -140 20 -170 60 -170 C150 -170 170 -10 0 110Z" fill="#E8505B"/><path d="M-70 -120 Q-100 -60 -50 -10" stroke="#FFF" stroke-width="12" fill="none" opacity=".5" stroke-linecap="round"/></g>`;
-  const ic = k < .02 ? heart(0, 0, 1).replace('translate(450 315)', `translate(450 315) scale(${1 + .06 * Math.sin(T * 6)})`) : `<g clip-path="url(#nbl)"><defs><clipPath id="nbl"><path d="M0 0 L450 0 L470 120 L430 220 L470 330 L440 460 L0 630Z"/></clipPath><clipPath id="nbr"><path d="M900 0 L450 0 L470 120 L430 220 L470 330 L440 460 L900 630Z"/></clipPath></defs>` + heart(-70 * k, -10 * k, 1) + `</g><g clip-path="url(#nbr)">` + heart(70 * k, 10 * k, 1) + `</g>`;
+  const zz = "M450 190 L482 250 L424 310 L476 370 L440 440";
+  const bant = A(t, 3.1, 3.7), sk = k * (1 - .8 * bant);
+  const bantSvg = bant > 0 ? `<g transform="translate(452 ${315 + 15 - 40 * (1 - bant)}) rotate(-24)" opacity="${bant}">` + NB.R(-130, -24, 260, 48, 6, '#E8D090') + NB.R(-130, -24, 260, 9, 4, '#FFF', .35) + `<path d="M-100 0 H100" stroke="#C9B070" stroke-width="3" stroke-dasharray="10 12"/></g>` : '';
+  const ic = k < .02 ? heart(0, 0, 1).replace('translate(450 315)', `translate(450 315) scale(${1 + .06 * Math.sin(T * 6)})`) : `<defs><clipPath id="nbl"><path d="M0 -400 L450 -400 L450 190 L482 250 L424 310 L476 370 L440 440 L440 700 L0 700Z"/></clipPath><clipPath id="nbr"><path d="M900 -400 L450 -400 L450 190 L482 250 L424 310 L476 370 L440 440 L440 700 L900 700Z"/></clipPath></defs><g clip-path="url(#nbl)">` + heart(-16 * sk, -4 * sk, 1) + `</g><g clip-path="url(#nbr)">` + heart(16 * sk, 4 * sk, 1) + `</g><path d="${zz}" transform="translate(${-0} 0)" stroke="#2A0A14" stroke-width="${10 * sk + 2}" fill="none" stroke-linejoin="round" stroke-linecap="round" opacity="${1 - .5 * bant}"/>` + bantSvg;
   let o = NB.salon(T, ic, { sallan: A(t, 2.5, 2.8) * (1 - A(t, 2.8, 3.2)) });
   o += NB.koltuk(300 + 60 * k * -1 + 90 * (1 - k), 1250, 1.0, 'Z.D.') + NB.koltuk(780 - 90 * (1 - k) + 60 * k, 1250, 1.0, 'N.B.C.');
   const a = pop(t, .35); if (a > 0) o += grp(NB.cipO('ESKİ DOSTLUK', 0, 0, '#2E8A4A', '#FFFFFF', 36), 540, 1130, a);
   const b = pop(t, 2.6); if (b > 0) o += grp(NB.cipO('ESKİ KIRGINLIK', 0, 0, '#B8232F', '#FFFFFF', 36), 540, 1200, b);
-  // bant: Gufi çatlağı kapatmaya çalışır, yapışmaz
-  if (t > 3.1) { const bt = A(t, 3.1, 3.7), dus = A(t, 4.0, 4.6); o += `<g transform="translate(${540 + 40 * dus} ${700 + 260 * dus * dus}) rotate(${-14 + 90 * dus})" opacity="${bt}">` + NB.R(-120, -20, 240, 40, 6, '#E8D090') + NB.R(-120, -20, 240, 8, 4, '#FFF', .35) + '</g>'; }
   o += gufi(t, { yol: [[0, 240, 1800, 270], [2.9, 240, 1800, 270], [3.6, 470, 1720, 240]], x: 240, y: 1800, boy: 270, bakHedef: [540, 700], isaretHedef: [540, 700], ust: PROJ });
   o += gubi(t, { x: 840, y: 1620, boy: 220, duygu: t > 2.5 ? 'uzgun' : 'merak', bakHedef: [540, 700], ust: ARSIV });
   $('dinamik').innerHTML = o;
