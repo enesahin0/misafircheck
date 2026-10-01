@@ -311,6 +311,17 @@ Tarihli bir olay anlatılırken o sahnelerin ön ve arka planındaki insanlar an
 - Maskot imza sesleri (bip/tını): OLUMLU, SPOR, NÖTR ve ENDİŞE'de (eşel bülteni seviyesinde) kullanılır; yalnızca HASSAS'ta hiç kullanılmaz.
 - Aynı bültende ton değişirse (ör. kötü haber + yardım bilgisi) geçiş yavaş yapılır; kapanış tonu haberin genel tonunu korur.
 
+## ANLATI YAPISI — MERAK SIRASI (kullanıcı kuralı, gubigufi metinlerinde VARSAYILAN)
+Konu seçimi, bilgi doğruluğu ve tarz aynı kalır; değişen yalnızca bilginin veriliş sırasıdır.
+- Akış: **merak → kısmi cevap → yeni soru → daha ilginç detay → yeni merak → ana cevap/payoff.** Her bilgi verildiği anda yeni bir devam sebebi açılır.
+- **İlk cümle (ilk 1–3 sn):** doğrudan olayın içine gir; giriş, tanıtım, hazırlık cümlesi YOK. "Nasıl yani? / Neden? / Sonra ne oldu?" hissi yaratır ama en önemli bilgiyi tamamen açıklamaz. Örnek: "Venüs'te bir gün bir yıldan uzundur." değil → "Venüs'te bugün doğsan, bir sonraki güne ulaşmadan doğum günün gelebilirdi."
+- **10–30. saniye:** düz bilgi sıralaması YASAK; her yeni detay olayı daha ilginç yapmalı.
+- Ana cevap gereksiz saklanmaz ama ilk 10 sn'de "tamam anladım" denmemeli; en tatmin edici bilgi mümkünse ikinci yarıda.
+- Kısa cümle, konuşma dili, arkadaşa anlatır gibi; yapay heyecan, abartılı clickbait, art arda soru cümlesi YOK. Klişeler YOK: "Biliyor muydunuz?", "Hiç düşündünüz mü?", "Bugün size anlatacağım…", "Peki bunun sebebi ne?".
+- Anlatıcı açıklama yapan biri değil; hikâyenin içinden izleyiciyi bir sonraki bilgiye çeken biri.
+- Mümkünse "arkadaşına gönderilecek" bir detay: absürt, şaşırtıcı, komik ya da "bunu bilmiyordum" dedirten. **Yeni bilgi UYDURULMAZ**, mevcut gerçekler daha iyi sıralanır.
+- **Yazdıktan sonra test:** her cümlenin sonunda "burada durdursam izleyici sonrakini merak eder mi?" Hayırsa yeniden yaz. İlk cümle en sert değerlendirilir; zayıfsa geri kalanı yazmadan önce o değişir.
+
 ## GÜNDEM TAKVİMİ KURALI (kullanıcı: "şu videoyu şu tarihte atalım gibi öneriler ver")
 - Her konu önerisinde ve teslimde **önümüzdeki 2–3 haftanın Türkiye gündemine** bakılır; uyan konu varsa "bunu şu tarihte, şu saatte at" diye önerilir.
 - Sabit/yinelenen kancalar: TÜİK enflasyonu (her ayın 3'ü 10:00; hafta sonuysa ilk iş günü), asgari ücret açıklaması (Aralık), yılbaşı, bayramlar ve resmî günler (29 Ekim, 10 Kasım, 23 Nisan, 19 Mayıs, 30 Ağustos), dini bayramlar/Ramazan, sınav dönemleri (YKS, LGS), okul açılışı/karne, Efsane Cuma (Kasım), Avrupa'nın saat değişimi (Mart/Ekim son pazar — Türkiye sabit), dünya günleri (4 Ekim Hayvanlar, 16 Ekim Gıda…), Nobel haftası (Ekim başı), büyük maçlar/turnuvalar.
