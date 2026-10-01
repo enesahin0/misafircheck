@@ -22,7 +22,7 @@ const HB = (() => {
     return o; }
   // ---------- stüdyo ----------
   // duvar: dev ekran (x,y,w,h) — içine 'ic' çizilir
-  const DUVAR = [170, 330, 740, 416];
+  const DUVAR = [170, 352, 740, 416];
   // ---------- HABER MERKEZİ STÜDYOSU (katmanlı: bulanık haber odası → ışık → ana video duvarı) ----------
   // mini ekran içerikleri (haber odası monitörleri)
   function miniEkran(x, y, w, hh, tip, t, i) { let o = R(x - 6, y - 6, w + 12, hh + 12, 6, '#05080F') + R(x, y, w, hh, 3, ['#0E2A52', '#102238', '#1A1030', '#0A2A2A'][i % 4]);
@@ -81,13 +81,13 @@ const HB = (() => {
   // ---------- TV ekranı katmanı ----------
   // canli: ● CANLI rozeti; alt: [başlık, üst etiket]; serit: kayan haber; saat
   function ekran(t, { canli = true, alt = null, altP = 1, serit = null, saat = '20:00', yer = null } = {}) { let o = '';
-    if (canli) { const nf = .55 + .45 * Math.abs(Math.sin(t * 3)); o += R(62, 336, 250, 44, 8, '#0B1433', .7) + `<circle cx="88" cy="358" r="9" fill="${KR}" opacity="${nf}"/>` + mono('CANLI', 106, 368, 24, AK, 'letter-spacing="2"') + mono(saat, 210, 368, 24, '#9FC0E8'); }
+    if (canli) { const nf = .55 + .45 * Math.abs(Math.sin(t * 3)), cw = 270, cx0 = 1018 - cw; o += R(cx0, 262, cw, 64, 8, '#0B1433', .85) + `<rect x="${cx0}" y="262" width="${cw}" height="64" rx="8" fill="none" stroke="#4A8AD8" stroke-width="2" opacity=".6"/>` + `<circle cx="${cx0 + 28}" cy="294" r="10" fill="${KR}" opacity="${nf}"/>` + mono('CANLI', cx0 + 48, 305, 30, AK, 'letter-spacing="2" style="font-weight:700"') + mono(saat, cx0 + 168, 305, 28, '#9FC0E8'); }
     if (alt && altP > 0) { const [bas, ust] = alt, fs = Math.min(46, 900 / (bas.length * .6)), w = Math.min(980, gen(bas, fs) + 70), k = FX.E.outExpo(altP);
-      o += `<g transform="translate(${50 + (1 - k) * -900} 0)">` + (ust ? R(0, 1060, gen(ust, 24, { mono: true, ls: 2 }) + 50, 40, 0, KR) + mono(ust, 24, 1089, 24, AK, 'letter-spacing="2"') : '') + R(0, 1100, w, 84, 0, AK) + R(0, 1100, 14, 84, 0, KR) + `<text x="40" y="${1142 + fs * .36}" font-size="${fs}" font-weight="900" style="fill:${LAC}">${bas}</text></g>`; }
+      o += `<g transform="translate(${50 + (1 - k) * -900} 0)">` + (ust ? R(0, 1060, gen(ust, 24, { mono: true, ls: 2 }) + 50, 40, 0, KR) + mono(ust, 24, 1089, 24, AK, 'letter-spacing="2"') : '') + R(6, 1106, w, 84, 0, '#000', .35) + R(0, 1100, w, 84, 0, AK) + `<rect x="0" y="1100" width="${w}" height="84" fill="none" stroke="#0B1433" stroke-width="3"/>` + R(0, 1100, 14, 84, 0, KR) + `<text x="40" y="${1142 + fs * .36}" font-size="${fs}" font-weight="900" style="fill:${LAC}">${bas}</text></g>`; }
     if (serit) { const tw = gen(serit, 26, { mono: true, ls: 2 }) + 120, off = (t * 140) % tw;
-      o += R(0, 1196, 1080, 48, 0, LAC) + R(0, 1196, 150, 48, 0, KR) + mono('SON DAKİKA', 14, 1228, 22, AK, 'letter-spacing="1"');
-      o += `<svg x="150" y="1196" width="930" height="48"><g transform="translate(${20 - off} 0)">${[0, 1, 2].map(k => mono(serit, k * tw, 32, 26, AK, 'letter-spacing="2"')).join('')}</g></svg>`; }
-    if (yer) o += R(62, 392, gen(yer, 22, { mono: true, ls: 2 }) + 40, 38, 8, KR, .9) + mono(yer, 82, 418, 22, AK, 'letter-spacing="2"');
+      const lw = gen('SON DAKİKA', 22, { mono: true, ls: 1 }) + 32; o += R(0, 1196, 1080, 48, 0, LAC) + R(0, 1196, lw, 48, 0, KR) + mono('SON DAKİKA', 16, 1228, 22, AK, 'letter-spacing="1"');
+      o += `<svg x="${lw}" y="1196" width="${1080 - lw}" height="48"><g transform="translate(${20 - off} 0)">${[0, 1, 2].map(k => mono(serit, k * tw, 32, 26, AK, 'letter-spacing="2"')).join('')}</g></svg>`; }
+    if (yer) { const yw = gen(yer, 22, { mono: true, ls: 2 }) + 40; o += R(1018 - yw, 338, yw, 38, 8, KR, .9) + mono(yer, 1018 - yw + 20, 364, 22, AK, 'letter-spacing="2"'); }
     return o; }
   // parazit / sinyal geçişi: t0 merkezli, d süre
   function parazit(t, t0, d = .5) { const q = 1 - Math.abs((t - t0) / (d / 2)); if (q <= 0) return ''; const f = Math.floor(t * 30);
