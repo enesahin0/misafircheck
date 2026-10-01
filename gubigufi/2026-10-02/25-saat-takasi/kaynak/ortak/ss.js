@@ -23,10 +23,21 @@ const SS = (() => {
     o += kubbe(0, -90, 132, renk, true);                                                                                              // merkez kubbe + alem
     o += minare(-290, 0, 400, renk) + minare(-112, 0, 285, renk) + minare(168, 0, 440, renk) + minare(262, 0, 305, renk);
     return o + '</g>'; }
+  let gmid = 0;
+  // Galata Kulesi (referans siluet): geniş kaide, 3 kat pencere (alt: küçük, orta: büyük kemerli, üst: küçük), çıkıntılı balkonlar, sivri külah + külahta pencere, alem; pencereler MASKEYLE oyulur (gökyüzü görünür)
+  function galata(x, y0, k, renk) { const id = 'gm' + (++gmid);
+    const win = (cx, cy, w, hh) => `<path d="M${cx - w / 2} ${cy} L${cx - w / 2} ${cy - hh + w / 2} A${w / 2} ${w / 2} 0 0 1 ${cx + w / 2} ${cy - hh + w / 2} L${cx + w / 2} ${cy}Z" fill="#000"/>`;
+    let m = `<mask id="${id}" maskUnits="userSpaceOnUse" x="-200" y="-460" width="400" height="480"><rect x="-200" y="-460" width="400" height="480" fill="#fff"/>`;
+    [-34, 0, 34].forEach(cx => m += win(cx, -92, 15, 26));
+    [-42, -14, 14, 42].forEach(cx => m += win(cx, -156, 20, 38));
+    [-44, -22, 0, 22, 44].forEach(cx => m += win(cx, -207, 11, 17));
+    m += win(0, -278, 13, 22) + '</mask>';
+    let b = R(-79, -11, 158, 11, 0, renk) + R(-52, -236, 104, 226, 0, renk) + R(-58, -152, 116, 8, 0, renk) + R(-62, -198, 124, 9, 0, renk) + R(-54, -242, 108, 46, 0, renk) + R(-60, -248, 120, 8, 0, renk) +
+      `<path d="M-57 -248 L0 -354 L57 -248Z" fill="${renk}"/>` + R(-2.5, -394, 5, 44, 0, renk) + `<circle cx="0" cy="-372" r="6" fill="${renk}"/><circle cx="0" cy="-396" r="3.6" fill="${renk}"/>`;
+    return `<g transform="translate(${x} ${y0}) scale(${k})"><defs>${m}</defs><g mask="url(#${id})">${b}</g></g>`; }
   function siluet(renk, y0) { let o = '';
-    for (let b = 0; b < 16; b++) { const bx = b * 70 - 20, bh = 60 + h(b + 3) * 120; if (bx + 62 > 340 && bx < 1000) continue; o += R(bx, y0 - bh, 62, bh, 0, renk); if (h(b + 11) > .6) o += `<path d="M${bx - 3} ${y0 - bh} L${bx + 31} ${y0 - bh - 26} L${bx + 65} ${y0 - bh}Z" fill="${renk}"/>`; }
-    // Galata Kulesi
-    o += R(180, y0 - 300, 70, 300, 0, renk) + R(170, y0 - 318, 90, 22, 5, renk) + R(176, y0 - 304, 78, 8, 3, renk) + `<path d="M178 ${y0 - 318} L215 ${y0 - 392} L252 ${y0 - 318}Z" fill="${renk}"/><circle cx="215" cy="${y0 - 398}" r="5" fill="${renk}"/>`;
+    for (let b = 0; b < 16; b++) { const bx = b * 70 - 20, bh = 60 + h(b + 3) * 120; if ((bx + 62 > 340 && bx < 1000) || (bx + 62 > 110 && bx < 300)) continue; o += R(bx, y0 - bh, 62, bh, 0, renk); if (h(b + 11) > .6) o += `<path d="M${bx - 3} ${y0 - bh} L${bx + 31} ${y0 - bh - 26} L${bx + 65} ${y0 - bh}Z" fill="${renk}"/>`; }
+    o += galata(205, y0, .98, renk);
     o += cami(690, y0, .86, renk) + R(0, y0 - 44, 1080, 44, 0, renk);
     [[352, 64, 80], [418, 56, 62], [940, 56, 66], [998, 64, 88]].forEach(([bx, bw, bh], q) => { o += R(bx, y0 - bh, bw, bh, 0, renk); if (q % 2) o += `<path d="M${bx - 3} ${y0 - bh} L${bx + bw / 2} ${y0 - bh - 24} L${bx + bw + 3} ${y0 - bh}Z" fill="${renk}"/>`; });   // ön plan evleri (cami binaların arasında)
     return o; }
