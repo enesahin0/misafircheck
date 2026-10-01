@@ -9,14 +9,22 @@ const SS = (() => {
   const hx = c => [parseInt(c.slice(1, 3), 16), parseInt(c.slice(3, 5), 16), parseInt(c.slice(5, 7), 16)];
   const mix = (a, b, k) => { const A = hx(a), B = hx(b); return '#' + A.map((v, i) => Math.round(v + (B[i] - v) * k).toString(16).padStart(2, '0')).join(''); };
   const ALT = '#F2C14E', MAVI = '#4A8AD8', KOYU = '#0E1830';
-  // ---------- İstanbul silueti (Galata, cami + minareler, binalar) ----------
+  // ---------- İstanbul silueti: Galata Kulesi + klasik Osmanlı camisi (merkez kubbe, yarım kubbeler, şerefeli minareler) + binalar ----------
+  function minare(x, y0, hh, renk) { return R(x - 17, y0 - 70, 34, 70, 2, renk) + R(x - 11, y0 - hh, 22, hh - 60, 0, renk) + R(x - 22, y0 - hh * .62, 44, 9, 3, renk) + R(x - 22, y0 - hh * .86, 44, 9, 3, renk) + `<path d="M${x - 13} ${y0 - hh} L${x} ${y0 - hh - 78} L${x + 13} ${y0 - hh}Z" fill="${renk}"/><circle cx="${x}" cy="${y0 - hh - 84}" r="5" fill="${renk}"/>`; }
+  function cami(x, y0, k, renk) { let o = `<g transform="translate(${x} ${y0}) scale(${k})">`;
+    o += R(-430, -66, 860, 66, 0, renk);                                                                     // avlu duvarı
+    o += `<path d="M-300 -66 L-300 -120 L300 -120 L300 -66Z" fill="${renk}"/>`;                              // ana gövde
+    o += `<path d="M-285 -120 A110 110 0 0 1 -65 -120Z" fill="${renk}"/><path d="M65 -120 A110 110 0 0 1 285 -120Z" fill="${renk}"/>`;   // yarım kubbeler
+    o += `<path d="M-365 -66 A58 58 0 0 1 -249 -66Z" fill="${renk}"/><path d="M249 -66 A58 58 0 0 1 365 -66Z" fill="${renk}"/>`;        // küçük kubbeler
+    o += `<path d="M-140 -120 L-140 -208 A140 140 0 0 1 140 -208 L140 -120Z" fill="${renk}"/>`;               // merkez tambur + kubbe
+    o += `<path d="M0 -348 L0 -394" stroke="${renk}" stroke-width="6" stroke-linecap="round"/><circle cx="0" cy="-402" r="10" fill="${renk}"/>`;   // alem (kubbeye bağlı)
+    o += minare(-400, 0, 420, renk) + minare(400, 0, 420, renk) + minare(-312, 0, 340, renk) + minare(312, 0, 340, renk);
+    return o + '</g>'; }
   function siluet(renk, y0) { let o = '';
-    for (let b = 0; b < 16; b++) { const bx = b * 70 - 20, bh = 70 + h(b + 3) * 150; o += R(bx, y0 - bh, 62, bh, 0, renk); if (h(b + 11) > .6) o += `<path d="M${bx} ${y0 - bh} L${bx + 31} ${y0 - bh - 32} L${bx + 62} ${y0 - bh}Z" fill="${renk}"/>`; }
+    for (let b = 0; b < 16; b++) { const bx = b * 70 - 20, bh = 60 + h(b + 3) * 120; o += R(bx, y0 - bh, 62, bh, 0, renk); if (h(b + 11) > .6) o += `<path d="M${bx - 3} ${y0 - bh} L${bx + 31} ${y0 - bh - 26} L${bx + 65} ${y0 - bh}Z" fill="${renk}"/>`; }
     // Galata Kulesi
-    o += R(262, y0 - 330, 76, 330, 0, renk) + R(250, y0 - 350, 100, 26, 6, renk) + `<path d="M256 ${y0 - 350} L300 ${y0 - 420} L344 ${y0 - 350}Z" fill="${renk}"/>` + R(296, y0 - 450, 8, 34, 2, renk);
-    // cami: kubbe + 4 minare
-    o += `<path d="M590 ${y0} Q590 ${y0 - 200} 740 ${y0 - 200} Q890 ${y0 - 200} 890 ${y0}Z" fill="${renk}"/><path d="M660 ${y0 - 190} Q740 ${y0 - 320} 820 ${y0 - 190}Z" fill="${renk}"/><circle cx="740" cy="${y0 - 322}" r="8" fill="${renk}"/>`;
-    [570, 910, 640, 840].forEach((x, i) => { const hh = i < 2 ? 380 : 300; o += R(x - 11, y0 - hh, 22, hh, 0, renk) + R(x - 18, y0 - hh * .72, 36, 10, 3, renk) + `<path d="M${x - 11} ${y0 - hh} L${x} ${y0 - hh - 70} L${x + 11} ${y0 - hh}Z" fill="${renk}"/>`; });
+    o += R(180, y0 - 300, 70, 300, 0, renk) + R(170, y0 - 318, 90, 22, 5, renk) + R(176, y0 - 304, 78, 8, 3, renk) + `<path d="M178 ${y0 - 318} L215 ${y0 - 392} L252 ${y0 - 318}Z" fill="${renk}"/><circle cx="215" cy="${y0 - 398}" r="5" fill="${renk}"/>`;
+    o += cami(730, y0, .66, renk) + R(0, y0 - 44, 1080, 44, 0, renk);
     return o; }
   // p: 0 şafak (lacivert→turuncu) … 1 gün (mavi); gunes: [x, y] ; sokak lambaları p<.6 yanar
   function istanbul(t, p, gunes, { lamba = true } = {}) {
@@ -27,7 +35,7 @@ const SS = (() => {
     o += siluet(sil, 1180) + R(0, 1180, 1080, 190, 0, su);
     for (let i = 0; i < 10; i++) o += R(60 + h(i) * 940, 1200 + (i % 4) * 40, 90 + h(i + 5) * 140, 5, 3, '#FFFFFF', .1 + .1 * Math.sin(t * 2 + i));
     o += R(0, 1370, 1080, 550, 0, mix('#2A2A3A', '#8A8A94', p)) + R(0, 1360, 1080, 20, 0, mix('#3A3A4A', '#B0B0B8', p));
-    if (lamba) [140, 540, 940].forEach(x => { const on = p < .62 ? 1 : .15; o += R(x - 5, 1020, 10, 350, 3, '#2A2A34') + `<circle cx="${x}" cy="1010" r="22" fill="#FFD98A" opacity="${on}"/><circle cx="${x}" cy="1010" r="110" fill="#FFD98A" opacity="${.15 * on}"/>`; });
+    if (lamba) [70, 370, 1010].forEach(x => { const on = p < .62 ? 1 : .15; o += R(x - 5, 1020, 10, 350, 3, '#2A2A34') + `<circle cx="${x}" cy="1010" r="22" fill="#FFD98A" opacity="${on}"/><circle cx="${x}" cy="1010" r="58" fill="#FFD98A" opacity="${.12 * on}"/>`; });
     return o; }
   // ---------- saat kadranı ----------
   function kadran(x, y, r, hh, mm, { yuz = '#FFFDF6', cerceve = '#1B2240', akrep = '#1B2240', yelkovan = '#E8323C', ad = '' } = {}) {
