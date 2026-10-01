@@ -3,27 +3,25 @@ Kategori: SİNEMA & KÜLTÜR. Hedef ~55 sn. Anlatı: MERAK SIRASI.
 KURALLAR (MARKA): gerçek kişiler maskotla CANLANDIRILMAZ → yönetmenler "boş yönetmen koltuğu" simgesiyle gösterilir; tüm alıntılar atıflı; hakaret/küfür aktarılmaz; iddia ≠ hüküm; iki taraf eşit.
 Maskotlar ROLDE (kenarda beklemez): Gufi PROJEKSİYONCU (makara takar, film şeridini sahneye çeker, tarihleri çevirir), Gubi ARŞİVCİ (gazete kupürü/X paylaşımı kartlarını panoya iğneler, "iddia" ve "yanıt" kartlarını yan yana dizer); finalde ikisi iki makarayı iki elde tutar: "1. ANLATIM · 2. ANLATIM".
 
-> DOĞRULAMA NOTU: Olgular haber arşivlerinden derlendi (Hürriyet, Habertürk, Medyascope, BirGün, Cumhuriyet, NTV, Gazete Duvar, Serbestiyet, bianet). Yayından önce 3 noktayı kendi gözünle teyit et: (1) Altın Portakal 2006 sonuçları, (2) Ceylan'ın kitabının yayın ayı, (3) Ceylan'ın 31 Aralık tarihli yanıtı. Emin olunmayan her şey metinden çıkarıldı (küslüğün gerçek nedeni, intihalin doğru olup olmadığı).
+> DOĞRULAMA NOTU (v2: kullanıcı "her şeyin belgesine gerek yok, iddiaları ekle" dedi → iddialar/alıntılar ATIFLI şekilde metinde; uydurma YOK, küfür/"yumruk atmak istedim" gibi şiddet içeren alıntılar aktarılmadı): Olgular haber arşivlerinden derlendi (Hürriyet, Habertürk, Medyascope, BirGün, Cumhuriyet, NTV, Gazete Duvar, Serbestiyet, bianet). Yayından önce 3 noktayı kendi gözünle teyit et: (1) Altın Portakal 2006 sonuçları, (2) Ceylan'ın kitabının yayın ayı, (3) Demirkubuz'un "Cannes" gerekçesinin yönü (kim kimin Cannes eleştirisine kırıldı). Emin olunmayan her şey metinden çıkarıldı (küslüğün gerçek nedeni, intihalin doğru olup olmadığı).
 
 ---
 
-## 1) ElevenLabs'e YAPIŞTIRILACAK METİN
+## 1) ElevenLabs'e YAPIŞTIRILACAK METİN (v2 — iddialar ve atıflı sert sözler eklendi)
 
-İki ünlü yönetmen on yedi yıl boyunca küslüklerini kimseye anlatmadı. Sonra bir kitap çıktı ve sessizlik bozuldu.
+Türkiye'nin iki ünlü yönetmeni, on yedi yıllık sessizliği bir muhtarlık sorusuyla bozdu: "Sen Cannes'ın muhtarı mısın?"
 
-Nuri Bilge Ceylan ile Zeki Demirkubuz. Türk sinemasının iki büyük adı. Bir zamanlar yakın dosttular.
+Soran, Zeki Demirkubuz'du. Karşısındaki, Nuri Bilge Ceylan. İkisi de bir zamanlar yakın dosttu.
 
 Birçok haber, küslüğün kökenini iki bin altıdaki Antalya Altın Portakal'a bağlıyor. O yıl Demirkubuz'un Kader'i en iyi film seçildi.
 
-Sonra yıllarca ses çıkmadı. İki bin yirmi üçün sonunda Ceylan, Kış Uykusu kitabını çıkardı. Günlük notları, eski küslüğü yeniden gündeme taşıdı.
+Sonra yıllarca ikisi de konuşmadı. İki bin yirmi üçün sonunda Ceylan, Kış Uykusu kitabını çıkardı. Günlük notları, eski küslüğü yeniden açtı.
 
-Aralık ayında Demirkubuz ilk kez bir televizyon programında konuştu. Küslüğü Ceylan'ın başlattığını söyledi. Bir şey daha söyledi: Ceylan'ın Üç Maymun filmini hiç izlemediğini.
+Demirkubuz ilk kez bir televizyon programında konuştu. Küslüğü Ceylan'ın başlattığını söyledi. Ona göre Ceylan, kendisinin Cannes'a yönelik eleştirilerine kırılmıştı. Ceylan'a "Adilik yapmasın" dedi. Ve bir şey daha: Üç Maymun filmini hiç izlemediğini.
 
-Çünkü yıllardır tek bir iddia dolaşıyordu: Üç Maymun'un senaryosu, Demirkubuz'dan alınmıştı.
+Çünkü yıllardır bir iddia dolaşıyordu: Üç Maymun'un senaryosu, Demirkubuz'dan alınmıştı.
 
-Ceylan ertesi gün X'ten yanıt verdi. Sonra sözler sertleşti. Ceylan'ın son cümlelerinden biri şuydu: "Filmlerimin hiçbirinde sana yapılmış bir gönderme yok."
-
-Ceylan, iddiaların hiçbir kanıtı olmadığını söylüyor. Demirkubuz ise filmi izlemediğini ve meselenin başka olduğunu.
+Ceylan X'ten yanıt verdi: "Kendine şimdiden bir YouTube kanalı açarsa iyi eder." Sonra uzun bir mesaj yazdı: "Hiçbir kanıtı olmayan bir sürü hayal ürünü iddiayla uğraşmak kolay değilmiş." Ve ekledi: "Filmlerimin hiçbirinde sana yapılmış bir gönderme yok."
 
 İki yönetmen, aynı hikâyeyi iki ayrı film gibi anlattı. Hangisini izleyeceğine sen karar ver.
 
