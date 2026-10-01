@@ -300,10 +300,10 @@ Tarihli bir olay anlatılırken o sahnelerin ön ve arka planındaki insanlar an
 |---|---|---|---|
 | OLUMLU | başarı, rekor, iyi gelişme, tatil müjdesi | gülümser, 'mutlu'/'alkis'/'aha' serbest | parlak çan, pop, alkış; tempolu altlık |
 | NÖTR / BİLGİ | düzenleme, açıklama, takvim, siyasi gelişme | sakin, profesyonel; yalnızca 'dusun'/'isaret'/'goster' | yumuşak whoosh, veri tikleri; nötr altlık |
-| ENDİŞE | zam, kriz, salgın uyarısı, olumsuz veri | ciddi, hafif kaygılı; 'dusun', hafif 'uzgun'; sıçrama/kahkaha YOK | alçak vuruş, tik; pop/çan yok; koyu altlık |
+| ENDİŞE | zam, kriz, olumsuz veri | **REFERANS: Haber #1 eşel mobil (kullanıcı onaylı)** — 'sasir', 'kararli', 'isaret', 'selam' uygun; kahkaha/sevinç/dans YOK | veri açılışlarında pop/çan/whoosh ve tik uygun (eşel bülteni seviyesinde); tempolu haber altlığı |
 | HASSAS | ölüm, afet, kaza, şiddet | ağır başlı, hareketsiz; yalnızca yavaş göz kırpma/hafif 'uzgun'; tepki sesi YOK | maskot imza sesleri KAPALI; pop/parazit/whoosh YOK; yalnızca çok alçak hüzünlü pad ya da sessizlik |
 | SPOR / KUTLAMA | maç sonucu, şampiyonluk | enerjik, 'zipla'/'mutlu' | tribün uğultusu, düdük, tempolu altlık |
-- Maskot imza sesleri (bip/tını) yalnızca OLUMLU ve SPOR tonlarında; NÖTR'de çok kısık; ENDİŞE ve HASSAS'ta hiç kullanılmaz.
+- Maskot imza sesleri (bip/tını): OLUMLU, SPOR, NÖTR ve ENDİŞE'de (eşel bülteni seviyesinde) kullanılır; yalnızca HASSAS'ta hiç kullanılmaz.
 - Aynı bültende ton değişirse (ör. kötü haber + yardım bilgisi) geçiş yavaş yapılır; kapanış tonu haberin genel tonunu korur.
 
 ## GÜNDEM TAKVİMİ KURALI (kullanıcı: "şu videoyu şu tarihte atalım gibi öneriler ver")
