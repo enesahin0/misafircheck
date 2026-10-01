@@ -272,6 +272,12 @@ Tarihli bir olay anlatılırken o sahnelerin ön ve arka planındaki insanlar an
 - **2000 sonrası:** Günümüz kıyafeti (varsayılan).
 - Yeni bir dönem ya da coğrafya gerekirse (ör. Osmanlı çarşısı, Viktorya dönemi Londra) `kisi.js` `kiyafet` seçenekleriyle özel kıyafet çizilir. Maskotların kostümleri de döneme uydurulabilir: `KO.giy`.
 
+## GUBİGUFİ HABER FORMATI (deneme, `haber/` klasörü)
+- Haber dili: tarafsız, yorumsuz, yalnızca doğrulanmış rakamlar; siyasi/hukuki/afet haberleri seçilmez. Kaynaklar metin dosyasına yazılır.
+- Akış: JENERİK (2 sn, ses 2,0 sn gecikmeli) → STÜDYO (Gubi sunucu, papyon; dev ekran, masa) → arka ekranda Gufi yayını → ekran tam kadraja büyür + parazit → SAHA (Gufi muhabir, mikrofon) ↔ HABER GRAFİKLERİ (lacivert ızgara) → parazitle STÜDYOYA dönüş + "TAKİP ET" kartı → logo.
+- TV katmanı (`hb.js` HB.ekran): ● CANLI + saat, alt bant (y 1060–1184, kırmızı üst etiket), SON DAKİKA kayan şeridi (y 1196–1244), yer etiketi. Altyazı bandı 1280–1430 boş kalır; Gufi sahada y≈1830 (yüz bandın altında).
+- Pompa vb. ekranlarda gerçek fiyat uydurulmaz (yalnızca ↑ / sayaç).
+
 ## GÜNDEM TAKVİMİ KURALI (kullanıcı: "şu videoyu şu tarihte atalım gibi öneriler ver")
 - Her konu önerisinde ve teslimde **önümüzdeki 2–3 haftanın Türkiye gündemine** bakılır; uyan konu varsa "bunu şu tarihte, şu saatte at" diye önerilir.
 - Sabit/yinelenen kancalar: TÜİK enflasyonu (her ayın 3'ü 10:00; hafta sonuysa ilk iş günü), asgari ücret açıklaması (Aralık), yılbaşı, bayramlar ve resmî günler (29 Ekim, 10 Kasım, 23 Nisan, 19 Mayıs, 30 Ağustos), dini bayramlar/Ramazan, sınav dönemleri (YKS, LGS), okul açılışı/karne, Efsane Cuma (Kasım), Avrupa'nın saat değişimi (Mart/Ekim son pazar — Türkiye sabit), dünya günleri (4 Ekim Hayvanlar, 16 Ekim Gıda…), Nobel haftası (Ekim başı), büyük maçlar/turnuvalar.
