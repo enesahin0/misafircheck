@@ -1,0 +1,203 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 66.93,
+  "konusma_bloklari": [
+    [
+      0.0,
+      3.162
+    ],
+    [
+      3.746,
+      7.083
+    ],
+    [
+      7.565,
+      8.143
+    ],
+    [
+      8.69,
+      10.743
+    ],
+    [
+      11.238,
+      13.153
+    ],
+    [
+      13.791,
+      16.309
+    ],
+    [
+      16.84,
+      20.076
+    ],
+    [
+      20.408,
+      23.468
+    ],
+    [
+      23.941,
+      25.444
+    ],
+    [
+      25.739,
+      28.776
+    ],
+    [
+      29.247,
+      30.931
+    ],
+    [
+      31.456,
+      35.131
+    ],
+    [
+      35.621,
+      40.336
+    ],
+    [
+      40.709,
+      42.997
+    ],
+    [
+      43.484,
+      44.588
+    ],
+    [
+      45.046,
+      47.631
+    ],
+    [
+      48.054,
+      50.315
+    ],
+    [
+      50.811,
+      51.78
+    ],
+    [
+      52.185,
+      54.895
+    ],
+    [
+      55.384,
+      58.628
+    ],
+    [
+      59.055,
+      59.644
+    ],
+    [
+      59.9,
+      61.099
+    ],
+    [
+      61.569,
+      64.84
+    ],
+    [
+      65.307,
+      66.93
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 3.16,
+      "sure": 3.16,
+      "metin": "Bir sabah kapına kırmızı bir çarpı atıldığını düşün."
+    },
+    {
+      "no": 2,
+      "baslangic": 3.16,
+      "bitis": 7.08,
+      "sure": 3.92,
+      "metin": "Türkiye'de bazı Alevi aileler bunu gerçekten yaşadı."
+    },
+    {
+      "no": 3,
+      "baslangic": 7.08,
+      "bitis": 8.14,
+      "sure": 1.06,
+      "metin": "Peki neden?"
+    },
+    {
+      "no": 4,
+      "baslangic": 8.14,
+      "bitis": 16.31,
+      "sure": 8.17,
+      "metin": "Çünkü bu işaret bir mesaj: \"Burada kim yaşadığını biliyoruz.\" Aralık bin dokuz yüz yetmiş sekiz, Maraş."
+    },
+    {
+      "no": 5,
+      "baslangic": 16.31,
+      "bitis": 23.47,
+      "sure": 7.16,
+      "metin": "Tanıkların anlatımına göre, saldırılardan günler önce bazı Alevi evlerinin kapıları boyayla işaretlendi."
+    },
+    {
+      "no": 6,
+      "baslangic": 23.47,
+      "bitis": 30.93,
+      "sure": 7.46,
+      "metin": "Bir hafta süren olaylarda, iddianameye göre yüz on bir kişi hayatını kaybetti, beş yüzden fazla ev yakıldı."
+    },
+    {
+      "no": 7,
+      "baslangic": 30.93,
+      "bitis": 35.13,
+      "sure": 4.2,
+      "metin": "O günden sonra kapıdaki çarpı, korkunun simgesi oldu."
+    },
+    {
+      "no": 8,
+      "baslangic": 35.13,
+      "bitis": 43.0,
+      "sure": 7.87,
+      "metin": "İki bin on ikiden bu yana Adıyaman, Malatya, İzmir gibi pek çok şehirde, Alevi evlerine yeniden çarpılar atıldı."
+    },
+    {
+      "no": 9,
+      "baslangic": 43.0,
+      "bitis": 44.59,
+      "sure": 1.59,
+      "metin": "Bu yöntem yeni değil."
+    },
+    {
+      "no": 10,
+      "baslangic": 44.59,
+      "bitis": 51.78,
+      "sure": 7.19,
+      "metin": "Nazi Almanyası'nda Yahudi dükkânları boyandı, Musul'da Hristiyan evleri işaretlendi."
+    },
+    {
+      "no": 11,
+      "baslangic": 51.78,
+      "bitis": 54.9,
+      "sure": 3.12,
+      "metin": "Amaç hep aynı: bir topluluğu hedef göstermek ve korkutmak."
+    },
+    {
+      "no": 12,
+      "baslangic": 54.9,
+      "bitis": 59.64,
+      "sure": 4.75,
+      "metin": "Yani bir kapıya atılan çarpı, sadece boya değil."
+    },
+    {
+      "no": 13,
+      "baslangic": 59.64,
+      "bitis": 61.1,
+      "sure": 1.45,
+      "metin": "Komşunu \"öteki\" ilan etmek."
+    },
+    {
+      "no": 14,
+      "baslangic": 61.1,
+      "bitis": 66.93,
+      "sure": 5.83,
+      "metin": "Ona verilecek en güçlü cevap da yine komşudan gelir: o kapının yanında durmak."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}
