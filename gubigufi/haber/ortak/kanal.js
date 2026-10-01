@@ -33,8 +33,8 @@
     let o = vig;
     if (a > 0) {   // GUFİBU HABER: sol üstte büyük SON DAKİKA rozeti (kategori etiketi + süre çemberi YOK; CANLI sağ üstte hb.js'de)
       const yz = 'SON DAKİKA', w = svgGenislik(yz) * (36 / 24) + 70, nb = .55 + .45 * Math.abs(Math.sin(T * 3));
-      o += `<g opacity="${a}"><rect x="62" y="262" width="${w}" height="64" rx="8" fill="#E8323C"/><rect x="62" y="262" width="${w}" height="64" rx="8" fill="none" stroke="#7A1018" stroke-width="3"/>` +
-        `<circle cx="92" cy="294" r="9" fill="#FFFFFF" opacity="${nb}"/><text class="mono" x="112" y="307" font-size="36" letter-spacing="2" style="fill:#FFFFFF;font-weight:700">${yz}</text></g>`;
+      o += `<g opacity="${a}"><rect x="62" y="196" width="${w}" height="60" rx="8" fill="#E8323C"/><rect x="62" y="196" width="${w}" height="60" rx="8" fill="none" stroke="#7A1018" stroke-width="3"/>` +
+        `<circle cx="92" cy="226" r="9" fill="#FFFFFF" opacity="${nb}"/><text class="mono" x="112" y="239" font-size="36" letter-spacing="2" style="fill:#FFFFFF;font-weight:700">${yz}</text></g>`;
     }
     ust.innerHTML = o + altyazi(T);
   }
