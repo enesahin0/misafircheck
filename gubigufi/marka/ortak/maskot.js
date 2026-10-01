@@ -63,7 +63,7 @@ const M = (() => {
       const N = pt(a + Math.PI / 2 - d0, r * .82); d += ` Q${C[0]} ${C[1]} ${N[0]} ${N[1]}`; }
     return d + 'Z';
   }
-  function gubi({ x, y, boy = 160, duygu = 'merak', bak = [0, 0], kirp = 0, parla = .6, agiz = false, acik = null } = {}) {
+  function gubi({ x, y, boy = 160, duygu = 'merak', bak = [0, 0], kirp = 0, parla = .6, agiz = false, acik = null, konus = null } = {}) {
     const r = boy / 2, c = id('gb'), g = id('gg'), C = R.gubi, s = boy / 160;
     return `<g class="gubi">` +
       `<defs><radialGradient id="${g}"><stop offset="0" stop-color="${C.glow}" stop-opacity="${parla}"/><stop offset="1" stop-color="${C.glow}" stop-opacity="0"/></radialGradient>` +
@@ -72,10 +72,18 @@ const M = (() => {
       `<g clip-path="url(#${c})"><path d="${gubiYol(x, y, r)}" fill="${C.rim}"/><path d="${gubiYol(x, y, r, -r * .07, r * .07)}" fill="${C.govde}"/>` +
       `<path d="${gubiYol(x, y, r * 1.05, -r * .55, r * .55)}" fill="${C.golge}" opacity=".45"/></g>` +
       gozler(x, y - r * .05, s, 20 * s, bak, duygu, kirp, acik) +
-      (agiz ? `<path d="M${x - 9 * s} ${y + 28 * s} Q${x} ${y + 38 * s} ${x + 9 * s} ${y + 28 * s}" fill="${C.golge}"/>` : '') + `</g>`;
+      (konus != null ? konusAgiz(x, y + 31 * s, s, konus, '#4A1A2A') : agiz ? `<path d="M${x - 9 * s} ${y + 28 * s} Q${x} ${y + 38 * s} ${x + 9 * s} ${y + 28 * s}" fill="${C.golge}"/>` : '') + `</g>`;
   }
+  // KONUŞAN AĞIZ (dudak senkronu): a ∈ [0,1] ses zarfından; kapalıyken hafif gülümseyen ince yay
+  function konusAgiz(x, y, s, a, renk) { a = Math.max(0, Math.min(1, a));
+    if (a < .06) return `<path d="M${x - 9 * s} ${y - 1 * s} Q${x} ${y + 5 * s} ${x + 9 * s} ${y - 1 * s}" stroke="${renk}" stroke-width="${3.4 * s}" fill="none" stroke-linecap="round"/>`;
+    const w = (9 + 3 * a) * s, h = (2.5 + 13 * a) * s;
+    return `<path d="M${x - w} ${y - h * .25} Q${x} ${y - h * .55} ${x + w} ${y - h * .25} Q${x + w * .9} ${y + h} ${x} ${y + h} Q${x - w * .9} ${y + h} ${x - w} ${y - h * .25}Z" fill="${renk}"/>` + (a > .35 ? `<ellipse cx="${x}" cy="${y + h * .7}" rx="${w * .5}" ry="${h * .28}" fill="#E8708A"/>` : ''); }
+  // ses zarfı izi: window.AGIZ = { gubi: [...], gufi: [...] } (30 fps, global saniye); agiz.js ile yüklenir
+  const agizAt = (kim, T) => { const A = window.AGIZ && window.AGIZ[kim]; if (!A) return 0; const i = Math.round(T * 30); return i >= 0 && i < A.length ? A[i] : 0; };
+  const agizOrt = (kim, T, w = .5) => { let s = 0, n = 0; for (let d = 0; d <= w; d += 1 / 30) { s += agizAt(kim, T - d); n++; } return s / n; };
   // ---------- Gufi ----------
-  function gufi({ x, y, boy = 140, duygu = 'merak', bak = [0, 0], kirp = 0, agiz = false, acik = null, ayak = 0, golge = true } = {}) {
+  function gufi({ x, y, boy = 140, duygu = 'merak', bak = [0, 0], kirp = 0, agiz = false, acik = null, ayak = 0, golge = true, konus = null } = {}) {
     const w = boy, h = boy, rx = boy * .28, c = id('gf'), C = R.gufi, s = boy / 140;
     const kutu = (ox, oy, k = 1) => `<rect x="${x - w * k / 2 + ox}" y="${y - h * k + oy}" width="${w * k}" height="${h * k}" rx="${rx}"`;
     return `<g class="gufi">` +
@@ -84,7 +92,7 @@ const M = (() => {
       `<defs><clipPath id="${c}">${kutu(0, -h * .06)}/></clipPath></defs>` +
       `<g clip-path="url(#${c})">${kutu(0, -h * .06)} fill="${C.rim}"/>${kutu(-w * .07, -h * .06 + w * .07)} fill="${C.govde}"/><circle cx="${x - w * .75}" cy="${y + h * .05}" r="${w * .95}" fill="${C.golge}" opacity=".45"/></g>` +
       gozler(x, y - h * .62, s, 24 * s, bak, duygu, kirp, acik) +
-      (agiz ? `<path d="M${x - 10 * s} ${y - h * .32} Q${x} ${y - h * .22} ${x + 10 * s} ${y - h * .32}" fill="${C.golge}"/>` : '') + `</g>`;
+      (konus != null ? konusAgiz(x, y - h * .29, s * 1.15, konus, '#5A0E22') : agiz ? `<path d="M${x - 10 * s} ${y - h * .32} Q${x} ${y - h * .22} ${x + 10 * s} ${y - h * .32}" fill="${C.golge}"/>` : '') + `</g>`;
   }
 
   // ---------- canlı animasyon ----------
@@ -120,7 +128,7 @@ const M = (() => {
     return `<g transform="translate(${x} ${y}) scale(${olcek})"><rect x="${-w / 2}" y="${-h / 2}" width="${w}" height="${h}" rx="${h / 2.3}" fill="${renk}"/><path d="M${yon * w * .18} ${h / 2 - 4} L${yon * w * .32} ${h / 2 + 56} L${yon * w * .02} ${h / 2 - 4}Z" fill="${renk}"/>${ic}</g>`;
   }
   function canli(kim, o = {}) {
-    let { t = 0, x, y, boy = kim === 'gubi' ? 160 : 140, duygu = 'merak', bakHedef = null, bak = [0, 0], tepkiler = [], seed = kim === 'gubi' ? 1 : 2, parla = .6, ust = '', yol = null, eller = kim === 'gufi', isaretHedef = null } = o;  // eller yalnızca Gufi'de (Gubi elsiz)
+    let { t = 0, x, y, boy = kim === 'gubi' ? 160 : 140, duygu = 'merak', bakHedef = null, bak = [0, 0], tepkiler = [], seed = kim === 'gubi' ? 1 : 2, parla = .6, ust = '', yol = null, eller = kim === 'gufi', isaretHedef = null, soyler = false } = o;  // soyler: dudak senkronu + konuşma jestleri (window.AGIZ)  // eller yalnızca Gufi'de (Gubi elsiz)
     // yol: anahtar karelerle yer değiştirme (Gufi zıplayarak, Gubi süzülerek + pırıltı izi)
     let iz = '', hopDy = 0, yolYon = 1;
     const hr = hareket(yol, t);
@@ -180,13 +188,19 @@ const M = (() => {
         for (let i = 0; i < 2; i++) efekt += yildizcik(x + (i ? 1 : -1) * 1.8 * W, cy - .6 * W, 12 * s * ke, '#FFE27A', ke); }
       if (tip === 'donus') { rot += 360 * eio(p); const j = Math.sin(p * Math.PI); sy *= 1 - .1 * j; sx *= 1 + .1 * j; dy -= 30 * s * j; }
     }
+    // konuşma: ağız + baş sallama/eğilme + (Gufi) boştaki sol elle jest
+    let konus = null;
+    if (soyler) { const T = (window.SB || 0) + t; konus = agizAt(kim, T); const g = agizOrt(kim, T, .6);
+      dy -= konus * 6 * s; rot += Math.sin(t * 2.1 + seed) * 3 * g; if (kim === 'gubi') glow += .35 * konus;
+      if (kim === 'gufi' && g > .18 && !ak) { const ph = Math.floor(T / 2.4), on = (Math.abs(Math.sin(ph * 12.9898 + seed * 78.233) * 43758.5453) % 1) > .35;
+        if (on) elHedef([[-1.25 * W, (-.25 + .12 * Math.sin(t * 4.5)) * W], null], Math.min(1, (g - .18) * 4)); } }
     const acik = ifade === 'mutlu' ? 1 : (gubiGozKapa > .5 ? 0 : acikGoz(t, seed));
     const ayak = kim === 'gufi' && ((ak && (ak.tip === 'zipla' || ak.tip === 'mutlu')) || (hr && hr.hiz > 0)) ? Math.sin((ak ? ak.d : t) * 20) : 0;
-    const govde = kim === 'gubi' ? gubi({ x, y, boy, duygu: ifade, bak: v, parla: glow, acik, agiz: ifade === 'mutlu' }) : gufi({ x, y, boy, duygu: ifade, bak: v, acik, ayak, golge: false, agiz: ifade === 'mutlu' });
+    const govde = kim === 'gubi' ? gubi({ x, y, boy, duygu: ifade, bak: v, parla: glow, acik, agiz: ifade === 'mutlu', konus }) : gufi({ x, y, boy, duygu: ifade, bak: v, acik, ayak, golge: false, agiz: ifade === 'mutlu', konus });
     // eller (yüzen yuvarlak eldivenler, kontur yok; rim light)
     let el = '';
     if (eller) { const C = R[kim], er0 = boy * (kim === 'gubi' ? .12 : .14);
-      EL.forEach(([ex, ey], i) => { const k = ELK[i]; if (k <= .02) return; const er = er0 * (.35 + .65 * Math.min(1, k * 1.3)), hx = x + ex, hy = cy + ey;
+      EL.forEach(([ex, ey], i) => { const k = ELK[i]; if (k <= .02 || (eller === 'sol' && i === 1)) return; const er = er0 * (.35 + .65 * Math.min(1, k * 1.3)), hx = x + ex, hy = cy + ey;
         if (parmak[i] && k > .6) { const [ux, uy] = parmak[i]; el += `<ellipse cx="${hx + ux * er * 1.1}" cy="${hy + uy * er * 1.1}" rx="${er * .55}" ry="${er * .32}" transform="rotate(${Math.atan2(uy, ux) * 57.3} ${hx + ux * er * 1.1} ${hy + uy * er * 1.1})" fill="${C.govde}"/>`; }
         el += `<circle cx="${hx + er * .08}" cy="${hy + er * .1}" r="${er}" fill="${C.golge}"/><circle cx="${hx}" cy="${hy}" r="${er}" fill="${C.govde}"/><circle cx="${hx + er * .35}" cy="${hy - er * .35}" r="${er * .32}" fill="${C.rim}" opacity=".8"/>`; }); }
     const ustS = typeof ust === 'function' ? ust(x, y, boy, ifade, t) : ust; // kostüm: KO.giy(...) fonksiyonu konuma göre çizilir
