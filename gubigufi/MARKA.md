@@ -313,6 +313,12 @@ Tarihli bir olay anlatılırken o sahnelerin ön ve arka planındaki insanlar an
 - Maskot imza sesleri (bip/tını): OLUMLU, SPOR, NÖTR ve ENDİŞE'de (eşel bülteni seviyesinde) kullanılır; yalnızca HASSAS'ta hiç kullanılmaz.
 - Aynı bültende ton değişirse (ör. kötü haber + yardım bilgisi) geçiş yavaş yapılır; kapanış tonu haberin genel tonunu korur.
 
+## MASKOTLAR ANLATININ İÇİNDE (kullanıcı kuralı: "kenarda boş boş beklemesinler, gerekirse oyuncu yap")
+- Her sahnede Gubi/Gufi **olayın bir parçasıdır**: hikâyeyi taşıyan bir rolleri/eylemleri olur (makara takar, kâğıt çeker, kapı açar, sayacı çevirir, kanıt gösterir, tanık/izleyici olarak tepki verir). Köşede durup bakmak YASAK.
+- Konuya göre **oyuncu/rol** verilir (futbolcu, bankacı, projeksiyoncu, gönüllü, öğrenci…); kostüm KO.giy ile.
+- **İstisna:** gerçek kişiler (yaşayan ya da tarihî, özellikle siyasi/sanat/spor figürleri) maskotla canlandırılmaz, karikatürize edilmez. Onların yerine simge kullanılır (boş koltuk, silüet, makara, kürsü, imza) ve maskotlar *anlatıcı/arşivci/projeksiyoncu/seyirci* rolünde olayı sahneler.
+- **Güncel kişi çekişmeleri:** yalnızca belgeli, atıflı (kim, nerede, ne zaman) ve iki tarafı eşit aktaran anlatım; hakaret/küfür aktarılmaz; iddia ile gerçek ayrı tutulur; hüküm cümlesi kurulmaz.
+
 ## ANLATI YAPISI — MERAK SIRASI (kullanıcı kuralı, gubigufi metinlerinde VARSAYILAN)
 Konu seçimi, bilgi doğruluğu ve tarz aynı kalır; değişen yalnızca bilginin veriliş sırasıdır.
 - Akış: **merak → kısmi cevap → yeni soru → daha ilginç detay → yeni merak → ana cevap/payoff.** Her bilgi verildiği anda yeni bir devam sebebi açılır.
