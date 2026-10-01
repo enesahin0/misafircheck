@@ -10,21 +10,25 @@ const SS = (() => {
   const mix = (a, b, k) => { const A = hx(a), B = hx(b); return '#' + A.map((v, i) => Math.round(v + (B[i] - v) * k).toString(16).padStart(2, '0')).join(''); };
   const ALT = '#F2C14E', MAVI = '#4A8AD8', KOYU = '#0E1830';
   // ---------- İstanbul silueti: Galata Kulesi + klasik Osmanlı camisi (merkez kubbe, yarım kubbeler, şerefeli minareler) + binalar ----------
-  function minare(x, y0, hh, renk) { return R(x - 17, y0 - 70, 34, 70, 2, renk) + R(x - 11, y0 - hh, 22, hh - 60, 0, renk) + R(x - 22, y0 - hh * .62, 44, 9, 3, renk) + R(x - 22, y0 - hh * .86, 44, 9, 3, renk) + `<path d="M${x - 13} ${y0 - hh} L${x} ${y0 - hh - 78} L${x + 13} ${y0 - hh}Z" fill="${renk}"/><circle cx="${x}" cy="${y0 - hh - 84}" r="5" fill="${renk}"/>`; }
+  // Sultanahmet tarzı: geniş aralıklı, ince ve uzun minareler (3 şerefe, uzun sivri külah), basık geniş merkez kubbe, kademeli küçük kubbeler
+  function minare(x, y0, hh, renk) { let o = R(x - 17, y0 - hh * .14, 34, hh * .14, 0, renk) + R(x - 12, y0 - hh * .74, 24, hh * .74, 0, renk);
+    [.14, .33, .53].forEach(f => { const yy = y0 - hh * f; o += `<path d="M${x - 27} ${yy - 11} L${x + 27} ${yy - 11} L${x + 27} ${yy} L${x + 15} ${yy + 17} L${x - 15} ${yy + 17} L${x - 27} ${yy}Z" fill="${renk}"/>`; });
+    o += `<path d="M${x - 12} ${y0 - hh * .72} L${x - 3} ${y0 - hh - 8} L${x + 3} ${y0 - hh - 8} L${x + 12} ${y0 - hh * .72}Z" fill="${renk}"/><circle cx="${x}" cy="${y0 - hh - 14}" r="5" fill="${renk}"/><circle cx="${x}" cy="${y0 - hh - 25}" r="3.4" fill="${renk}"/>`;
+    return o; }
+  function kubbe(cx, cy, r, renk, alem = false) { return `<path d="M${cx - r} ${cy} A${r} ${r * .92} 0 0 1 ${cx + r} ${cy}Z" fill="${renk}"/>` + (alem ? `<path d="M${cx} ${cy - r * .92} L${cx} ${cy - r * .92 - 38}" stroke="${renk}" stroke-width="6"/><circle cx="${cx}" cy="${cy - r * .92 - 22}" r="9" fill="${renk}"/><circle cx="${cx}" cy="${cy - r * .92 - 42}" r="6" fill="${renk}"/>` : `<path d="M${cx} ${cy - r * .92} L${cx} ${cy - r * .92 - 18}" stroke="${renk}" stroke-width="4"/>`); }
   function cami(x, y0, k, renk) { let o = `<g transform="translate(${x} ${y0}) scale(${k})">`;
-    o += R(-430, -66, 860, 66, 0, renk);                                                                     // avlu duvarı
-    o += `<path d="M-300 -66 L-300 -120 L300 -120 L300 -66Z" fill="${renk}"/>`;                              // ana gövde
-    o += `<path d="M-285 -120 A110 110 0 0 1 -65 -120Z" fill="${renk}"/><path d="M65 -120 A110 110 0 0 1 285 -120Z" fill="${renk}"/>`;   // yarım kubbeler
-    o += `<path d="M-365 -66 A58 58 0 0 1 -249 -66Z" fill="${renk}"/><path d="M249 -66 A58 58 0 0 1 365 -66Z" fill="${renk}"/>`;        // küçük kubbeler
-    o += `<path d="M-140 -120 L-140 -208 A140 140 0 0 1 140 -208 L140 -120Z" fill="${renk}"/>`;               // merkez tambur + kubbe
-    o += `<path d="M0 -348 L0 -394" stroke="${renk}" stroke-width="6" stroke-linecap="round"/><circle cx="0" cy="-402" r="10" fill="${renk}"/>`;   // alem (kubbeye bağlı)
-    o += minare(-400, 0, 420, renk) + minare(400, 0, 420, renk) + minare(-312, 0, 340, renk) + minare(312, 0, 340, renk);
+    o += `<path d="M-350 0 L-350 -26 Q-310 -34 -270 -64 L-210 -96 L210 -96 L270 -64 Q310 -34 350 -26 L350 0Z" fill="${renk}"/>`;     // kademeli gövde
+    o += kubbe(-150, -92, 84, renk) + kubbe(150, -92, 84, renk);                                                                     // yarım kubbeler
+    o += kubbe(-232, -70, 40, renk) + kubbe(232, -70, 40, renk) + kubbe(-292, -40, 28, renk) + kubbe(292, -40, 28, renk) + kubbe(-90, -150, 34, renk) + kubbe(100, -146, 30, renk);   // küçük kubbeler
+    o += kubbe(0, -90, 132, renk, true);                                                                                              // merkez kubbe + alem
+    o += minare(-290, 0, 400, renk) + minare(-112, 0, 285, renk) + minare(168, 0, 440, renk) + minare(262, 0, 305, renk);
     return o + '</g>'; }
   function siluet(renk, y0) { let o = '';
-    for (let b = 0; b < 16; b++) { const bx = b * 70 - 20, bh = 60 + h(b + 3) * 120; o += R(bx, y0 - bh, 62, bh, 0, renk); if (h(b + 11) > .6) o += `<path d="M${bx - 3} ${y0 - bh} L${bx + 31} ${y0 - bh - 26} L${bx + 65} ${y0 - bh}Z" fill="${renk}"/>`; }
+    for (let b = 0; b < 16; b++) { const bx = b * 70 - 20, bh = 60 + h(b + 3) * 120; if (bx + 62 > 340 && bx < 1000) continue; o += R(bx, y0 - bh, 62, bh, 0, renk); if (h(b + 11) > .6) o += `<path d="M${bx - 3} ${y0 - bh} L${bx + 31} ${y0 - bh - 26} L${bx + 65} ${y0 - bh}Z" fill="${renk}"/>`; }
     // Galata Kulesi
     o += R(180, y0 - 300, 70, 300, 0, renk) + R(170, y0 - 318, 90, 22, 5, renk) + R(176, y0 - 304, 78, 8, 3, renk) + `<path d="M178 ${y0 - 318} L215 ${y0 - 392} L252 ${y0 - 318}Z" fill="${renk}"/><circle cx="215" cy="${y0 - 398}" r="5" fill="${renk}"/>`;
-    o += cami(730, y0, .66, renk) + R(0, y0 - 44, 1080, 44, 0, renk);
+    o += cami(690, y0, .86, renk) + R(0, y0 - 44, 1080, 44, 0, renk);
+    [[352, 64, 80], [418, 56, 62], [940, 56, 66], [998, 64, 88]].forEach(([bx, bw, bh], q) => { o += R(bx, y0 - bh, bw, bh, 0, renk); if (q % 2) o += `<path d="M${bx - 3} ${y0 - bh} L${bx + bw / 2} ${y0 - bh - 24} L${bx + bw + 3} ${y0 - bh}Z" fill="${renk}"/>`; });   // ön plan evleri (cami binaların arasında)
     return o; }
   // p: 0 şafak (lacivert→turuncu) … 1 gün (mavi); gunes: [x, y] ; sokak lambaları p<.6 yanar
   function istanbul(t, p, gunes, { lamba = true } = {}) {
