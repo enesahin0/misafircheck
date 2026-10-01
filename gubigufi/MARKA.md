@@ -349,3 +349,4 @@ Konu seçimi, bilgi doğruluğu ve tarz aynı kalır; değişen yalnızca bilgin
 - Bir olay anlatılırken **çevresel koşullar** o olaya göre kurulur: yıl, ülke, şehir görüntüsü (bina tipi, araçlar, tabelalar), iklim/ışık, kültür (şapkalar, yiyecekler, müzik), giyim. Genel/"modern" varsayılan çizim kullanılmaz.
 - Gerçek kişiler (ör. Charlton kardeşler) cinsiyet/yaş/rol olarak doğru çizilir. `KS.donem(yıl, i)` rastgele kadın/erkek döndürebilir → belirli kişi için kullanılmaz.
 - `--inceleme` rubriğine her videoda **"Temsil & dönem"** maddesi eklenir: her kişi rolüne ve yılına uygun mu?
+| 26 | İki Yönetmen (Ceylan–Demirkubuz) | Sinema salonu dünyası, boş yönetmen koltukları (gerçek kişi canlandırılmaz), atıflı alıntı kartları, mısır/klaket, maskotlar projeksiyoncu/arşivci/dedektif rolünde | magazin tonu, 'iddia' kelimesi korunur |
