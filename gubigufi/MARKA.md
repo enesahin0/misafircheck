@@ -272,6 +272,8 @@ Tarihli bir olay anlatılırken o sahnelerin ön ve arka planındaki insanlar an
 - **2000 sonrası:** Günümüz kıyafeti (varsayılan).
 - Yeni bir dönem ya da coğrafya gerekirse (ör. Osmanlı çarşısı, Viktorya dönemi Londra) `kisi.js` `kiyafet` seçenekleriyle özel kıyafet çizilir. Maskotların kostümleri de döneme uydurulabilir: `KO.giy`.
 
+> ⚠️ **GUBİGUFİ ve GUFİBU HABER TAMAMEN AYRI PROJELERDİR** (kullanıcı kuralı). Haber kuralları/kodu (`haber/`, `haber/ortak/`) gubigufi videolarına uygulanmaz; gubigufi kuralları/kodu (`marka/ortak/`) haber için değiştirilmez. Ortak olan yalnızca Gubi & Gufi karakterleri.
+
 ## GUFİBU HABER FORMATI (`haber/` klasörü; kanal adı: **Gufibu Haber**, logo GUFİBU|HABER, mikrofon küpü 'GB')
 - Haber dili: tarafsız, yorumsuz, yalnızca doğrulanmış rakamlar; siyasi/hukuki/afet haberleri seçilmez. Kaynaklar metin dosyasına yazılır.
 - Akış: JENERİK (2 sn, ses 2,0 sn gecikmeli) → STÜDYO (haber merkezi, İNSAN YOK: derinlik katmanları — uzak: panoramik gece şehri penceresi; orta: monitör sırası, perspektif zemin/tavan çizgileri, derinlikte küçülen boş masalar (yanık monitörler), ışık şeritli sütunlar; yakın: tripod kameralar; tavan spotları + ışık hüzmeleri; keskin ana video duvarı; Gubi sunucu masada, papyon; ön planda bulanık kamera + prompter) → arka ekranda Gufi yayını → ekran tam kadraja büyür + parazit → SAHA (Gufi muhabir, mikrofon; şebeke/sinyal işareti YOK) ↔ HABER GRAFİKLERİ (lacivert ızgara) → parazitle STÜDYOYA dönüş + "TAKİP ET" kartı → logo.
