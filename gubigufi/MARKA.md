@@ -277,6 +277,7 @@ Tarihli bir olay anlatılırken o sahnelerin ön ve arka planındaki insanlar an
 - Akış: JENERİK (2 sn, ses 2,0 sn gecikmeli) → STÜDYO (Gubi sunucu, papyon; dev ekran, masa) → arka ekranda Gufi yayını → ekran tam kadraja büyür + parazit → SAHA (Gufi muhabir, mikrofon) ↔ HABER GRAFİKLERİ (lacivert ızgara) → parazitle STÜDYOYA dönüş + "TAKİP ET" kartı → logo.
 - TV katmanı (`hb.js` HB.ekran): ● CANLI + saat, alt bant (y 1060–1184, kırmızı üst etiket), SON DAKİKA kayan şeridi (y 1196–1244), yer etiketi. Altyazı bandı 1280–1430 boş kalır; Gufi sahada y≈1830 (yüz bandın altında).
 - Pompa vb. ekranlarda gerçek fiyat uydurulmaz (yalnızca ↑ / sayaç).
+- **ÇOK SESLİ KURGU (kullanıcı kuralı):** Metin her zaman 3 parça yazılır ve ayrı ayrı seslendirilir: **1 = STÜDYO AÇILIŞ** (sunucu sesi, "…sahadaki muhabirimize bağlanıyoruz" ile biter) · **2 = SAHA** (farklı ses, saha muhabiri; olay yeri + grafikler bu seste) · **3 = STÜDYO KAPANIŞ** (1 ile aynı sunucu sesi; özet/veda + takip çağrısı). Kullanıcı mp3'leri 1-2-3 diye adlandırıp gönderir; parçalar arası boşluğa bağlantı geçişi (parazit/sinyal, ~0,8 sn) ve stüdyoya dönüş geçişi yerleştirilir, altyazı/sahne zamanları birleşik zaman çizelgesine göre kurulur.
 
 ## GÜNDEM TAKVİMİ KURALI (kullanıcı: "şu videoyu şu tarihte atalım gibi öneriler ver")
 - Her konu önerisinde ve teslimde **önümüzdeki 2–3 haftanın Türkiye gündemine** bakılır; uyan konu varsa "bunu şu tarihte, şu saatte at" diye önerilir.
