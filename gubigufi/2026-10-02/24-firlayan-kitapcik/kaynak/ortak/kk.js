@@ -86,20 +86,14 @@ const KK = (() => {
   function tv(t, { flas = 1 } = {}) { let o = `<defs><linearGradient id="tvg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A3A5A"/><stop offset="1" stop-color="#16203A"/></linearGradient></defs>`;
     o += R(150, 340, 780, 640, 56, '#2A2A30') + R(150, 340, 780, 24, 24, '#4A4A52') + R(190, 380, 700, 540, 40, '#0A0A10') + R(200, 390, 680, 520, 34, 'url(#tvg)');
     o += `<defs><clipPath id="tvc"><rect x="200" y="390" width="680" height="520" rx="34"/></clipPath></defs><g clip-path="url(#tvc)">`;
-    // ekran içeriği: yüzsüz erkek siluet (takım elbise) + ona doğru patlayan flaşlar (mikrofon YOK — kullanıcı kararı)
-    const mx = 690, hy = 580;                                                           // adamın baş merkezi
-    o += `<g><path d="M520 905 L548 770 Q566 706 636 696 L744 696 Q814 706 832 770 L860 905Z" fill="#0A0A14"/><path d="M636 696 L690 790 L744 696Z" fill="#161A2A"/><path d="M682 704 L698 704 L704 790 L690 818 L676 790Z" fill="#B8232F" opacity=".85"/><rect x="664" y="650" width="52" height="52" fill="#0A0A14"/><circle cx="${mx}" cy="${hy}" r="64" fill="#0A0A14"/><path d="M626 556 Q690 500 754 556" stroke="#161A2A" stroke-width="10" fill="none"/></g>`;
-    // flaş kaynakları (ekranın sol/alt kenarı → adama doğru ışık huzmesi)
-    const FK = [[290, 448], [470, 432], [236, 520], [400, 520], [262, 470]];
-    let fl = 0;
-    FK.forEach(([fx, fy], k) => { const on = h(Math.floor(t * 9) + k * 13) > .76; if (!on) return; fl++;
-      const dx = mx - fx, dy = hy + 60 - fy, L = Math.hypot(dx, dy), nx = -dy / L, ny = dx / L;
-      o += `<path d="M${fx} ${fy} L${mx - nx * 70} ${hy + 60 - ny * 70} L${mx + nx * 70} ${hy + 60 + ny * 70}Z" fill="#FFFFFF" opacity=".16"/>` +
-        `<circle cx="${fx}" cy="${fy}" r="64" fill="#FFFFFF" opacity=".4"/><circle cx="${fx}" cy="${fy}" r="26" fill="#FFFFFF"/>` + [0, 1, 2, 3, 4, 5, 6, 7].map(q => { const a = q * Math.PI / 4 + .2; return `<path d="M${fx + Math.cos(a) * 30} ${fy + Math.sin(a) * 30} L${fx + Math.cos(a) * (q % 2 ? 78 : 112)} ${fy + Math.sin(a) * (q % 2 ? 78 : 112)}" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>`; }).join(''); });
-    if (fl) o += R(200, 390, 680, 520, 34, '#FFFFFF', Math.min(.34, .12 * fl));
+    // ekran içeriği: yüzsüz erkek siluet (ortada) + kırmızı SON DAKİKA alt bandı (mikrofon ve flaş YOK — kullanıcı kararı)
+    const mx = 540, hy = 580;                                                           // adamın baş merkezi
+    o += `<g transform="translate(-150 0)"><path d="M520 905 L548 770 Q566 706 636 696 L744 696 Q814 706 832 770 L860 905Z" fill="#0A0A14"/><path d="M636 696 L690 790 L744 696Z" fill="#161A2A"/><path d="M682 704 L698 704 L704 790 L690 818 L676 790Z" fill="#B8232F" opacity=".85"/><rect x="664" y="650" width="52" height="52" fill="#0A0A14"/><circle cx="${mx + 150}" cy="${hy}" r="64" fill="#0A0A14"/><path d="M626 556 Q690 500 754 556" stroke="#161A2A" stroke-width="10" fill="none"/></g>`;
+    // alt bant: kırmızı zeminli SON DAKİKA (ekranın altında)
+    o += R(200, 834, 680, 70, 0, '#D8232F') + R(200, 834, 680, 6, 0, '#FF6A6A', .6) + `<circle cx="248" cy="869" r="10" fill="#FFFFFF" opacity="${.6 + .4 * Math.abs(Math.sin(t * 3))}"/>` + mono('SON DAKİKA', 276, 884, 38, '#FFFFFF', 'letter-spacing="3" style="font-weight:700;fill:#FFFFFF"');
     o += '</g>';
     o += R(200, 390, 680, 520, 34, '#FFFFFF', .035) + [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19].map(i => R(200, 400 + i * 26, 680, 2, 0, '#000', .12)).join('');
-    o += R(240, 880, 600, 20, 6, KIRMIZI) + R(470, 980, 140, 36, 6, '#1B1B22') + R(380, 1010, 320, 26, 10, '#3A3A42') + `<circle cx="880" cy="640" r="14" fill="#6A6A72"/><circle cx="880" cy="700" r="14" fill="#6A6A72"/>`;
+    o += R(470, 980, 140, 36, 6, '#1B1B22') + R(380, 1010, 320, 26, 10, '#3A3A42') + `<circle cx="880" cy="640" r="14" fill="#6A6A72"/><circle cx="880" cy="700" r="14" fill="#6A6A72"/>`;
     return o; }
   // ---------- terazi: kitapçık ↔ tek cümle ----------
   function terazi(t, p) { const ang = 16 * FX.E.outExpo(cl(p)), rad = ang * Math.PI / 180, L = 330;
