@@ -85,11 +85,22 @@ const KK = (() => {
   // ---------- TV (tüplü, 2001) ----------
   function tv(t, { flas = 1 } = {}) { let o = `<defs><linearGradient id="tvg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A3A5A"/><stop offset="1" stop-color="#16203A"/></linearGradient></defs>`;
     o += R(150, 340, 780, 640, 56, '#2A2A30') + R(150, 340, 780, 24, 24, '#4A4A52') + R(190, 380, 700, 540, 40, '#0A0A10') + R(200, 390, 680, 520, 34, 'url(#tvg)');
-    // ekran içeriği: mikrofon demeti + siluet
-    o += `<g><ellipse cx="660" cy="760" rx="150" ry="120" fill="#0A0A14"/><circle cx="660" cy="590" r="76" fill="#0A0A14"/><rect x="610" y="640" width="100" height="60" fill="#0A0A14"/>`;
-    for (let i = 0; i < 3; i++) o += `<g transform="translate(${420 + i * 20} ${620 + i * 60}) rotate(${-8 + i * 8})"><rect x="0" y="-9" width="130" height="18" rx="9" fill="#1B1B22"/><circle cx="-6" cy="0" r="26" fill="#5A607E"/></g>`;
+    o += `<defs><clipPath id="tvc"><rect x="200" y="390" width="680" height="520" rx="34"/></clipPath></defs><g clip-path="url(#tvc)">`;
+    // ekran içeriği: yüzsüz erkek siluet (takım elbise) + ona UZANAN mikrofonlar + ona doğru patlayan flaşlar
+    const mx = 690, hy = 580;                                                           // adamın baş merkezi
+    o += `<g><path d="M520 905 L548 770 Q566 706 636 696 L744 696 Q814 706 832 770 L860 905Z" fill="#0A0A14"/><path d="M636 696 L690 790 L744 696Z" fill="#161A2A"/><path d="M682 704 L698 704 L704 790 L690 818 L676 790Z" fill="#B8232F" opacity=".85"/><rect x="664" y="650" width="52" height="52" fill="#0A0A14"/><circle cx="${mx}" cy="${hy}" r="64" fill="#0A0A14"/><path d="M626 556 Q690 500 754 556" stroke="#161A2A" stroke-width="10" fill="none"/></g>`;
+    // flaş kaynakları (ekranın sol/alt kenarı → adama doğru ışık huzmesi)
+    const FK = [[290, 448], [470, 432], [236, 520], [400, 520], [262, 470]];
+    let fl = 0;
+    FK.forEach(([fx, fy], k) => { const on = h(Math.floor(t * 9) + k * 13) > .76; if (!on) return; fl++;
+      const dx = mx - fx, dy = hy + 60 - fy, L = Math.hypot(dx, dy), nx = -dy / L, ny = dx / L;
+      o += `<path d="M${fx} ${fy} L${mx - nx * 70} ${hy + 60 - ny * 70} L${mx + nx * 70} ${hy + 60 + ny * 70}Z" fill="#FFFFFF" opacity=".16"/>` +
+        `<circle cx="${fx}" cy="${fy}" r="64" fill="#FFFFFF" opacity=".4"/><circle cx="${fx}" cy="${fy}" r="26" fill="#FFFFFF"/>` + [0, 1, 2, 3, 4, 5, 6, 7].map(q => { const a = q * Math.PI / 4 + .2; return `<path d="M${fx + Math.cos(a) * 30} ${fy + Math.sin(a) * 30} L${fx + Math.cos(a) * (q % 2 ? 78 : 112)} ${fy + Math.sin(a) * (q % 2 ? 78 : 112)}" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>`; }).join(''); });
+    if (fl) o += R(200, 390, 680, 520, 34, '#FFFFFF', Math.min(.34, .12 * fl));
+    // mikrofonlar: sapı soldan gelir, BAŞ adama dönük (sağ uçta); sapı tutan el sol kenarda
+    [[205, 600, 560, 640], [205, 740, 566, 730], [205, 860, 548, 790]].forEach(([x0, y0, x1, y1], i) => { const sw = Math.sin(t * 3 + i) * 4;
+      o += `<path d="M${x0} ${y0 + sw} L${x1} ${y1 + sw}" stroke="#1B1B22" stroke-width="16" stroke-linecap="round"/><circle cx="${x0 + 34}" cy="${y0 + sw + (y1 - y0) * .1}" r="22" fill="#E8B08A"/><circle cx="${x1 + 14}" cy="${y1 + sw}" r="34" fill="#5A607E"/><circle cx="${x1 + 14}" cy="${y1 + sw}" r="34" fill="none" stroke="#2A2E40" stroke-width="5"/><path d="M${x1 - 4} ${y1 + sw - 14} L${x1 + 32} ${y1 + sw - 14} M${x1 - 6} ${y1 + sw + 2} L${x1 + 34} ${y1 + sw + 2} M${x1 - 2} ${y1 + sw + 16} L${x1 + 30} ${y1 + sw + 16}" stroke="#2A2E40" stroke-width="4"/>`; });
     o += '</g>';
-    const f = Math.abs(Math.sin(t * 13)) > .93 ? flas : 0; if (f) o += R(200, 390, 680, 520, 34, '#FFFFFF', .35);
     o += R(200, 390, 680, 520, 34, '#FFFFFF', .035) + [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19].map(i => R(200, 400 + i * 26, 680, 2, 0, '#000', .12)).join('');
     o += R(240, 880, 600, 20, 6, KIRMIZI) + R(470, 980, 140, 36, 6, '#1B1B22') + R(380, 1010, 320, 26, 10, '#3A3A42') + `<circle cx="880" cy="640" r="14" fill="#6A6A72"/><circle cx="880" cy="700" r="14" fill="#6A6A72"/>`;
     return o; }
