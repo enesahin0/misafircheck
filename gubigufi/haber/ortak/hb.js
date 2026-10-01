@@ -32,34 +32,34 @@ const HB = (() => {
     else if (tip === 3) { o += R(x, y, w, hh * .28, 0, KR) + R(x + 10, y + hh * .4, w * .7, 8, 4, '#FFFFFF', .7) + R(x + 10, y + hh * .58, w * .5, 8, 4, '#FFFFFF', .5) + R(x + 10, y + hh * .76, w * .6, 8, 4, '#FFFFFF', .5); }
     else { o += `<circle cx="${x + w * .3}" cy="${y + hh * .45}" r="${hh * .2}" fill="#FFD23F"/>` + R(x + w * .55, y + hh * .3, w * .35, 10, 5, '#FFFFFF', .6) + R(x + w * .55, y + hh * .55, w * .25, 10, 5, '#FFFFFF', .4); }
     return o + R(x, y, w, hh * .08, 0, '#FFFFFF', .06); }
-  // çalışan: masada oturan (üst gövde) ya da yürüyen
-  const CALISAN = [['#FFFDF6', '#2A2E40', { tip: 'kisa', renk: '#2A1E14' }, '#F2C6A0', { ceket: '#2E3A5A' }], ['#C8D8F0', '#2A2440', { tip: 'atkuyrugu', renk: '#5A3A20' }, '#E8B08A', {}], ['#E8505B', '#1B1F3A', { tip: 'kakul', renk: '#1B1410' }, '#F7B8A4', {}],
-    ['#3A5A8C', '#2A2E40', { tip: 'kisa', renk: '#8A6A3A' }, '#C88A60', {}], ['#FFFFFF', '#3A3A48', { tip: 'uzun', renk: '#3A2A20' }, '#F2C6A0', { ceket: '#5A3A5A' }], ['#6A8A6A', '#2A2E40', { tip: 'kisa', renk: '#1B1410' }, '#E8B08A', {}]];
-  const kisi = (x, y, boy, t, i, o2 = {}) => { const [u, a, sac, ten, ky] = CALISAN[i % CALISAN.length]; return KS.karakter(Object.assign({ x, y, boy, t, ust: u, alt: a, sac, ten, ayakkabi: '#1B1B22', kiyafet: ky, bak: [Math.sin(i * 2.3) * .6, .3], ifade: 'notr' }, o2)); };
-  function masaBas(x, y, t, i, yon = 1) { // y = masa üst yüzeyi; monitör kişinin yanında (yüzü kapatmaz)
-    let o = R(x + yon * 70 - 60, y - 105, 120, 85, 6, '#05080F') + R(x + yon * 70 - 54, y - 99, 108, 70, 3, ['#1E4A8A', '#2A6A4A', '#4A2A6A'][i % 3]) + R(x + yon * 70 - 8, y - 20, 16, 20, 3, '#2A2E40');
-    o += kisi(x, y + 175, 300, t + i, i, { bak: [yon * .8, .2] });
-    o += R(x - 140, y, 280, 20, 4, '#C8CED8') + R(x - 140, y + 20, 280, 140, 0, '#8A94A8');
-    return o; }
+  // boş masa (monitörleri yanık) — perspektifte ölçeklenir
+  function masaBos(x, y, k, t, i) { return `<g transform="translate(${x} ${y}) scale(${k})">` + R(-150, 0, 300, 18, 4, '#C8CED8') + R(-150, 18, 300, 90, 0, '#7A849A') +
+      [-70, 60].map((mx, q) => R(mx - 52, -90, 104, 78, 6, '#05080F') + R(mx - 46, -84, 92, 64, 3, ['#1E4A8A', '#2A6A4A', '#4A2A6A', '#6A3A2A'][(i + q) % 4]) + R(mx - 46, -84, 92 * (.3 + .3 * Math.abs(Math.sin(t * .7 + i + q))), 6, 2, '#9FC0E8', .6) + R(mx - 6, -12, 12, 12, 2, '#2A2E40')).join('') + '</g>'; }
   function haberOdasi(t) { let o = '';
-    // arka duvar: monitör duvarı (üst) + cam bölme + neon tabela
-    o += R(0, 0, 1080, 1180, 0, '#0B1A33');
+    const VX = 540, VY = 760;   // kaybolma noktası
+    // UZAK: monitör sırasının altında panoramik gece şehri penceresi (Gubi'nin arkasındaki derinlik)
+    let uzak = R(0, 0, 1080, 1180, 0, '#081428') + R(0, 180, 1080, 180, 0, '#16305C');
+    uzak += `<defs><linearGradient id="gok" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2E5C"/><stop offset="1" stop-color="#3A3A6A"/></linearGradient></defs>` + R(0, 180, 1080, 180, 0, 'url(#gok)');
+    for (let b = 0; b < 30; b++) { const bx = b * 38 - 20 + h(b) * 16, bh = 40 + h(b + 50) * 120, bw = 30 + h(b + 9) * 26; uzak += R(bx, 360 - bh, bw, bh, 2, ['#14284A', '#182E54', '#102240'][b % 3]);
+      for (let wy = 360 - bh + 8; wy < 354; wy += 16) for (let wx = bx + 5; wx < bx + bw - 5; wx += 10) if (h(b * 97 + wx * 3 + wy) > .55) uzak += R(wx, wy, 5, 7, 1, '#FFD98A', .55 + .25 * Math.sin(t * .5 + wx)); }
+    uzak += [0, 1, 2, 3, 4, 5, 6].map(c => R(c * 175, 180, 8, 180, 0, '#1E3A66')).join('') + R(0, 172, 1080, 10, 0, '#1E3A66') + R(0, 356, 1080, 10, 0, '#1E3A66');
+    o += `<g style="filter:blur(5px)">${uzak}</g>`;
+    // ORTA: monitör duvarı + tavan/zemin perspektif çizgileri + derinlikte masa sıraları + sütunlar
+    let orta = '';
     const tipler = [0, 2, 3, 1, 4, 0, 1, 2, 3, 4];
-    for (let r = 0; r < 2; r++) for (let c = 0; c < 5; c++) o += miniEkran(20 + c * 212, 40 + r * 150, 190, 120, tipler[(r * 5 + c) % 10], t, r * 5 + c);
-    o += R(0, 340, 1080, 10, 0, '#1E3A66') + R(0, 350, 1080, 300, 0, '#12284A', .9);
-    for (let c = 0; c < 6; c++) o += R(c * 190 + 30, 360, 6, 290, 0, '#2A4A7A', .6);
-    // masalar + çalışanlar (duvarın iki yanı ve altı)
-    [[95, 960, 0, 1], [290, 975, 1, -1], [790, 975, 2, 1], [985, 960, 3, -1]].forEach(([x, y, i, yn]) => o += masaBas(x, y, t, i, yn));
-    // ayakta konuşan iki çalışan (sağ arka)
-    o += kisi(1010, 760, 330, t, 4, { bak: [-.8, 0], poz: 'goster' }) + kisi(70, 760, 320, t + 2, 5, { bak: [.8, 0] });
-    // yürüyen çalışan (dosya taşıyan)
-    const wx = 1180 - ((t * 70) % 1500);
-    o += kisi(wx, 1060, 340, t, 2, { adim: t * 6, poz: 'tasi', bak: [-.8, 0] }) + R(wx - 40, 1060 - 340 * .4 - 18, 70, 46, 4, '#F4F0E6');
-    // stüdyo kameraları (tripod)
-    for (const [x, sx] of [[200, 1], [880, -1]]) o += `<g transform="translate(${x} 1150) scale(${sx} 1)">` + `<path d="M0 0 L-60 140 M0 0 L60 140 M0 0 L0 150" stroke="#2A2E40" stroke-width="10"/>` + R(-70, -110, 140, 100, 12, '#2A2E40') + R(30, -95, 70, 70, 35, '#1B1F2A') + `<circle cx="65" cy="-60" r="22" fill="#4A8AD8" opacity=".5"/>` + R(-60, -100, 30, 14, 4, KR) + '</g>';
+    for (let r = 0; r < 1; r++) for (let c = 0; c < 5; c++) orta += miniEkran(20 + c * 212, 34, 190, 116, tipler[(r * 5 + c) % 10], t, r * 5 + c);
+    for (let k = 0; k < 9; k++) { const x0 = -200 + k * 185; orta += `<path d="M${x0} 1180 L${VX + (x0 - VX) * .25} ${VY + 40}" stroke="#2A4A7A" stroke-width="3" opacity=".5"/>`; }
+    for (let k = 0; k < 4; k++) { const yy = 800 + k * k * 30; orta += R(0, yy, 1080, 2, 0, '#2A4A7A', .4); }
+    [[250, 820, .55, 0], [830, 820, .55, 1], [130, 900, .8, 2], [950, 900, .8, 3], [330, 1010, 1.0, 4], [750, 1010, 1.0, 5]].forEach(([x, y, k, i]) => orta += masaBos(x, y, k, t, i));
+    for (const [x, k] of [[60, 1.1], [1020, 1.1], [300, .7], [780, .7]]) orta += `<g transform="translate(${x} 0) scale(${k} 1)">` + R(-28, 0, 56, 1180, 0, '#13284A') + R(-4, 0, 8, 1180, 0, '#4A8AD8', .35 + .15 * Math.sin(t * 1.5 + x)) + '</g>';
+    o += `<g style="filter:blur(4px)">${orta}</g>`;
+    // YAKIN: stüdyo kameraları (tripod)
+    let yakin = '';
+    for (const [x, sx] of [[200, 1], [880, -1]]) yakin += `<g transform="translate(${x} 1150) scale(${sx} 1)">` + `<path d="M0 0 L-60 140 M0 0 L60 140 M0 0 L0 150" stroke="#2A2E40" stroke-width="10"/>` + R(-70, -110, 140, 100, 12, '#2A2E40') + R(30, -95, 70, 70, 35, '#1B1F2A') + `<circle cx="65" cy="-60" r="22" fill="#4A8AD8" opacity=".5"/>` + R(-60, -100, 30, 14, 4, KR) + '</g>';
+    o += `<g style="filter:blur(3px)">${yakin}</g>`;
     return o; }
   function studyo(t, ic = '', { duvarIsik = 1 } = {}) {
-    let o = `<g style="filter:blur(5px)">${haberOdasi(t)}</g>` + `<rect width="1080" height="1180" fill="#081630" opacity=".35"/>`;
+    let o = haberOdasi(t) + `<rect width="1080" height="1180" fill="#081630" opacity=".3"/>`;
     // tavan ışık kirişi + spotlar + hacimli ışık
     o += R(0, 0, 1080, 26, 0, '#1B1F2A') + R(0, 26, 1080, 6, 0, '#2A3A5A');
     for (let i = 0; i < 6; i++) { const x = 90 + i * 180; o += `<path d="M${x - 18} 40 L${x + 18} 40 L${x + 150} 1100 L${x - 150} 1100Z" fill="#9FC8FF" opacity="${.035 + .01 * Math.sin(t * 1.3 + i)}"/>` + R(x - 22, 24, 44, 30, 8, '#2A2E40') + `<ellipse cx="${x}" cy="56" rx="16" ry="6" fill="#FFF8D0"/>`; }
@@ -97,7 +97,7 @@ const HB = (() => {
     if (q > .85) o += `<rect width="1080" height="1920" fill="#FFFFFF" opacity="${(q - .85) * 2}"/>`;
     return o; }
   // sinyal çubukları (bağlantı)
-  const sinyal = (x, y, n = 4) => [0, 1, 2, 3].map(i => R(x + i * 14, y - 10 - i * 8, 10, 10 + i * 8, 2, i < n ? AK : '#FFFFFF', i < n ? 1 : .3)).join('');
+  const sinyal = () => '';   // şebeke işareti kullanılmaz (kullanıcı kararı)
   // ---------- SAHA: akaryakıt istasyonu (akşam, markasız) ----------
   function pompa(x, y, s, { lpg = false, ekr = '' } = {}) { const c = lpg ? '#2E8A4A' : '#E8EEF4', b = lpg ? '#1F6A36' : KR;
     return `<g transform="translate(${x} ${y}) scale(${s})">` + R(-90, -420, 180, 420, 16, c) + R(-90, -420, 180, 60, 16, b) + yaz(lpg ? 'LPG' : 'BENZİN', 0, -378, 34, AK) + R(-66, -330, 132, 100, 10, '#0B1E1A') + (ekr || [0, 1].map(i => R(-54, -316 + i * 46, 108, 30, 4, '#3AE08A', .7)).join('')) + R(-110, -40, 220, 40, 8, '#6A7484') + `<path d="M90 -200 Q150 -200 150 -120 L150 -40" stroke="#1B1B1B" stroke-width="12" fill="none"/>` + R(70, -250, 50, 90, 10, '#2A2A30') + '</g>'; }
