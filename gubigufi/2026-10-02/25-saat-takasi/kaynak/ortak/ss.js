@@ -39,7 +39,6 @@ const SS = (() => {
     for (let b = 0; b < 16; b++) { const bx = b * 70 - 20, bh = 60 + h(b + 3) * 120; if ((bx + 62 > 340 && bx < 1000) || (bx + 62 > 110 && bx < 300)) continue; o += R(bx, y0 - bh, 62, bh, 0, renk); if (h(b + 11) > .6) o += `<path d="M${bx - 3} ${y0 - bh} L${bx + 31} ${y0 - bh - 26} L${bx + 65} ${y0 - bh}Z" fill="${renk}"/>`; }
     o += galata(205, y0, .98, renk);
     o += cami(690, y0, .86, renk) + R(0, y0 - 44, 1080, 44, 0, renk);
-    [[352, 64, 80], [418, 56, 62], [940, 56, 66], [998, 64, 88]].forEach(([bx, bw, bh], q) => { o += R(bx, y0 - bh, bw, bh, 0, renk); if (q % 2) o += `<path d="M${bx - 3} ${y0 - bh} L${bx + bw / 2} ${y0 - bh - 24} L${bx + bw + 3} ${y0 - bh}Z" fill="${renk}"/>`; });   // ön plan evleri (cami binaların arasında)
     return o; }
   // p: 0 şafak (lacivert→turuncu) … 1 gün (mavi); gunes: [x, y] ; sokak lambaları p<.6 yanar
   function istanbul(t, p, gunes, { lamba = true } = {}) {
