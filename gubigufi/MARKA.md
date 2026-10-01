@@ -279,6 +279,23 @@ Tarihli bir olay anlatılırken o sahnelerin ön ve arka planındaki insanlar an
 - Pompa vb. ekranlarda gerçek fiyat uydurulmaz (yalnızca ↑ / sayaç).
 - **ÇOK SESLİ KURGU (kullanıcı kuralı):** Metin her zaman 3 parça yazılır ve ayrı ayrı seslendirilir: **1 = STÜDYO AÇILIŞ** (sunucu sesi, "…sahadaki muhabirimize bağlanıyoruz" ile biter) · **2 = SAHA** (farklı ses, saha muhabiri; olay yeri + grafikler bu seste) · **3 = STÜDYO KAPANIŞ** (1 ile aynı sunucu sesi; özet/veda + takip çağrısı). Kullanıcı mp3'leri 1-2-3 diye adlandırıp gönderir; parçalar arası boşluğa bağlantı geçişi (parazit/sinyal, ~0,8 sn) ve stüdyoya dönüş geçişi yerleştirilir, altyazı/sahne zamanları birleşik zaman çizelgesine göre kurulur.
 
+## GUBİGUFİ HABER — YAYIN İLKELERİ (kullanıcı: "amacımız haberleri anlaşılır ve düzgünce anlatmak")
+**Haber seçimi** (her gün 3 bülten; gündem taranır, aday haberler puanlanır):
+1. Etki: kaç kişiyi doğrudan ilgilendiriyor (cebi, işi, okulu, sağlığı, yolu)?
+2. Önem/sıcaklık: bugün konuşulan, bugün değişen bir şey mi?
+3. Anlaşılırlık: grafikle/animasyonla "ne oldu, ne anlama geliyor" anlatılabiliyor mu?
+4. Güvenilirlik: resmî kaynak (Resmî Gazete, bakanlık, TÜİK, AFAD, valilik…) ya da en az iki büyük kuruluşta doğrulanmış mı?
+- Günlük karışım: 1 "cebimi ilgilendiren" (ekonomi/yaşam) + 1 Türkiye'nin ana gelişmesi (siyaset/toplum dahil) + 1 dengeleyici (bilim, spor, kültür, başarı, teknoloji).
+**Siyaset: girilir ama TARAFSIZ.** Ne oldu, kim ne dedi (atıfla: "… açıklamasına göre"), ne anlama geliyor. Yorum, sıfat, taraf tutma, tahmin YOK. Karşıt görüş varsa ikisi de aynı ağırlıkla verilir. Gerçek kişiler karikatürize edilmez/maskotla canlandırılmaz; kurumlar (Meclis, bakanlık binası, mahkeme) simgeyle gösterilir. Hakaret içeren alıntı aktarılmaz.
+**Hukuk:** Soruşturmada kişiler "şüpheli", iddialar "iddia" olarak verilir; suçlu ilan edilmez. Mahkeme kararı yoksa hüküm cümlesi kurulmaz. Yayın yasağı (RTÜK/mahkeme) varsa o haber YAPILMAZ — her afet/saldırı haberinde kontrol edilir.
+**Ölümlü / kötü haber protokolü (HASSAS ŞABLON):**
+- Görsel: kan, yaralı, ceset, yıkım detayı, kurban yüzü YOK. Sembolik anlatım: harita iğnesi, ekip simgeleri (AFAD/112/itfaiye genel çizim), yağmur/sel çizgisi, mum.
+- Maskotlar: ciddi ve sakin ifade; zıplama, şaka, kostüm, komik tepki YOK. Gufi sahada mikrofonla ağır başlı durur.
+- Renk & ses: soluk palet, siyah kurdele köşe ikonu; müzik altlığı yok ya da çok alçak ve hüzünlü; pop/tik/parazit efektleri kısılır; geçişler yavaş (parazit yerine yumuşak karartma).
+- Dil: "hayatını kaybetti", "yaralandı"; sansasyon kelimesi yok ("dehşet", "kan donduran", "vahşet"…). Sayılar yalnızca resmî kaynaktan, saatle: "valilikten yapılan son açıklamaya göre". Kurban adı verilmez (resmî açıklamada yoksa), çocuk kimliği asla.
+- Kapanış: başsağlığı/geçmiş olsun cümlesi; varsa faydalı bilgi (AFAD/112 hattı, Kızılay kan bağışı, yol kapanışları). "Takip edin" çağrısı bu bültenlerde YAPILMAZ.
+**Doğruluk:** Doğrulanamayan rakam/iddia kullanılmaz; haber o gün çıkmazsa çıkmaz. Hata olursa düzeltme bülteni/açıklaması yapılır.
+
 ## GÜNDEM TAKVİMİ KURALI (kullanıcı: "şu videoyu şu tarihte atalım gibi öneriler ver")
 - Her konu önerisinde ve teslimde **önümüzdeki 2–3 haftanın Türkiye gündemine** bakılır; uyan konu varsa "bunu şu tarihte, şu saatte at" diye önerilir.
 - Sabit/yinelenen kancalar: TÜİK enflasyonu (her ayın 3'ü 10:00; hafta sonuysa ilk iş günü), asgari ücret açıklaması (Aralık), yılbaşı, bayramlar ve resmî günler (29 Ekim, 10 Kasım, 23 Nisan, 19 Mayıs, 30 Ağustos), dini bayramlar/Ramazan, sınav dönemleri (YKS, LGS), okul açılışı/karne, Efsane Cuma (Kasım), Avrupa'nın saat değişimi (Mart/Ekim son pazar — Türkiye sabit), dünya günleri (4 Ekim Hayvanlar, 16 Ekim Gıda…), Nobel haftası (Ekim başı), büyük maçlar/turnuvalar.
