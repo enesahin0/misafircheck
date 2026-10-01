@@ -57,7 +57,7 @@ const KO = (() => {
       return [-1, 1].map(k => `<circle cx="${c.tx + k * c.ga}" cy="${y}" r="${r}" fill="#FFFFFF" opacity=".15" stroke="${renk}" stroke-width="${r * .2}"/>`).join('') + `<path d="M${c.tx - c.ga + r} ${y} Q${c.tx} ${y - r * .4} ${c.tx + c.ga - r} ${y}" stroke="${renk}" stroke-width="${r * .18}" fill="none"/>`; },
     biyik: (c, { renk = '#3A2A20' } = {}) => { const y = c.gy + c.ga * 1.25, w = c.ga * 1.3, x = c.tx;
       return `<path d="M${x} ${y} Q${x - w * .5} ${y - w * .35} ${x - w} ${y + w * .05} Q${x - w * .5} ${y + w * .25} ${x} ${y + w * .08} Q${x + w * .5} ${y + w * .25} ${x + w} ${y + w * .05} Q${x + w * .5} ${y - w * .35} ${x} ${y}Z" fill="${renk}"/>`; },
-    papyon: (c, { renk = '#E8505B' } = {}) => { const x = c.tx, y = c.gv + c.ga * .6, w = c.ga * 1.1;
+    papyon: (c, { renk = '#E8505B' } = {}) => { const x = c.tx, y = c.gv + c.ga * 1.0, w = c.ga * 1.1;
       return `<path d="M${x} ${y} L${x - w} ${y - w * .55} L${x - w} ${y + w * .55}Z M${x} ${y} L${x + w} ${y - w * .55} L${x + w} ${y + w * .55}Z" fill="${renk}"/><circle cx="${x}" cy="${y}" r="${w * .25}" fill="${renk}"/>`; },
     kravat: (c, { renk = '#2E5AAC', desen = '#FFC24C' } = {}) => { const x = c.tx, y = c.gv, w = c.ga * .7, h = c.ga * 3.2;
       return `<path d="M${x - w * .5} ${y} L${x + w * .5} ${y} L${x + w * .3} ${y + w * .6} L${x - w * .3} ${y + w * .6}Z" fill="${renk}"/><path d="M${x - w * .3} ${y + w * .6} L${x + w * .3} ${y + w * .6} L${x + w * .7} ${y + h} L${x} ${y + h + w * .6} L${x - w * .7} ${y + h}Z" fill="${renk}"/><path d="M${x - w * .45} ${y + h * .45} L${x + w * .45} ${y + h * .3} M${x - w * .55} ${y + h * .8} L${x + w * .55} ${y + h * .65}" stroke="${desen}" stroke-width="${w * .18}"/>`; },
