@@ -272,15 +272,15 @@ Tarihli bir olay anlatılırken o sahnelerin ön ve arka planındaki insanlar an
 - **2000 sonrası:** Günümüz kıyafeti (varsayılan).
 - Yeni bir dönem ya da coğrafya gerekirse (ör. Osmanlı çarşısı, Viktorya dönemi Londra) `kisi.js` `kiyafet` seçenekleriyle özel kıyafet çizilir. Maskotların kostümleri de döneme uydurulabilir: `KO.giy`.
 
-## GUBİGUFİ HABER FORMATI (deneme, `haber/` klasörü)
+## GUFİBU HABER FORMATI (`haber/` klasörü; kanal adı: **Gufibu Haber**, logo GUFİBU|HABER, mikrofon küpü 'GB')
 - Haber dili: tarafsız, yorumsuz, yalnızca doğrulanmış rakamlar; siyasi/hukuki/afet haberleri seçilmez. Kaynaklar metin dosyasına yazılır.
-- Akış: JENERİK (2 sn, ses 2,0 sn gecikmeli) → STÜDYO (Gubi sunucu, papyon; dev ekran, masa) → arka ekranda Gufi yayını → ekran tam kadraja büyür + parazit → SAHA (Gufi muhabir, mikrofon) ↔ HABER GRAFİKLERİ (lacivert ızgara) → parazitle STÜDYOYA dönüş + "TAKİP ET" kartı → logo.
+- Akış: JENERİK (2 sn, ses 2,0 sn gecikmeli) → STÜDYO (haber merkezi: bulanık arka planda monitör duvarı, masalarda çalışanlar, ayakta konuşanlar, yürüyen çalışan, tripod kameralar, tavan spotları + ışık hüzmeleri; keskin ana video duvarı; Gubi sunucu masada, papyon; ön planda bulanık kamera + prompter) → arka ekranda Gufi yayını → ekran tam kadraja büyür + parazit → SAHA (Gufi muhabir, mikrofon) ↔ HABER GRAFİKLERİ (lacivert ızgara) → parazitle STÜDYOYA dönüş + "TAKİP ET" kartı → logo.
 - TV katmanı (`hb.js` HB.ekran): ● CANLI + saat, alt bant (y 1060–1184, kırmızı üst etiket), SON DAKİKA kayan şeridi (y 1196–1244), yer etiketi. Altyazı bandı 1280–1430 boş kalır; Gufi sahada y≈1830 (yüz bandın altında).
 - Pompa vb. ekranlarda gerçek fiyat uydurulmaz (yalnızca ↑ / sayaç).
 - **DUDAK SENKRONU + KONUŞMA JESTLERİ — YALNIZCA HABER PROJESİ (kullanıcı kuralı; gubigufi kanalında maskotlar konuşmaz, bu kod orada kullanılmaz):** Konuşan maskot göründüğü her sahnede konuşur: `M.canli(..., { soyler: true })` → ağız ses zarfına göre hece hece açılır (`konusAgiz`), baş hafif sallanır, Gubi'nin parıltısı sesle atar, Gufi boştaki SOL eliyle jest yapar (`eller: 'sol'`; sağ elde mikrofon). İz: `haber/ortak/agiz_lib.py` → `agiz_izi(ses, toplam, bas=parçanın başlangıcı)` → `agiz_js_yaz('ortak/agiz.js', {'gubi': [...1+3 sesleri], 'gufi': [...2 sesi]})`, sahnelere `agiz.js` eklenir. Görünmediği sahnede (grafik/detay) gerek yok. Mikrofon ağız hizasında, göz/yüzü kapatmaz. Haber şablonu ve haber sürümü maskot/kostüm: `haber/ortak/` (hb.js, maskot.js, kostum.js, agiz_lib.py) — her bültende `kaynak/ortak/` içine bunlar kopyalanır; `marka/ortak/` (gubigufi) DEĞİŞMEZ.
 - **ÇOK SESLİ KURGU (kullanıcı kuralı):** Metin her zaman 3 parça yazılır ve ayrı ayrı seslendirilir: **1 = STÜDYO AÇILIŞ** (sunucu sesi, "…sahadaki muhabirimize bağlanıyoruz" ile biter) · **2 = SAHA** (farklı ses, saha muhabiri; olay yeri + grafikler bu seste) · **3 = STÜDYO KAPANIŞ** (1 ile aynı sunucu sesi; özet/veda + takip çağrısı). Kullanıcı mp3'leri 1-2-3 diye adlandırıp gönderir; parçalar arası boşluğa bağlantı geçişi (parazit/sinyal, ~0,8 sn) ve stüdyoya dönüş geçişi yerleştirilir, altyazı/sahne zamanları birleşik zaman çizelgesine göre kurulur.
 
-## GUBİGUFİ HABER — YAYIN İLKELERİ (kullanıcı: "amacımız haberleri anlaşılır ve düzgünce anlatmak")
+## GUFİBU HABER — YAYIN İLKELERİ (kullanıcı: "amacımız haberleri anlaşılır ve düzgünce anlatmak")
 **Haber seçimi** (her gün 3 bülten; gündem taranır, aday haberler puanlanır):
 1. Etki: kaç kişiyi doğrudan ilgilendiriyor (cebi, işi, okulu, sağlığı, yolu)?
 2. Önem/sıcaklık: bugün konuşulan, bugün değişen bir şey mi?

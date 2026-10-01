@@ -1,4 +1,4 @@
-# GubiGufi Haber #2 — Sokak hayvanları: iki taraf, bir ortak nokta (4 Ekim Dünya Hayvanları Koruma Günü)
+# Gufibu Haber #2 — Sokak hayvanları: iki taraf, bir ortak nokta (4 Ekim Dünya Hayvanları Koruma Günü)
 Paylaşım: **4 Ekim Pazar 20:00** (Koruma Günü kancası). TON: NÖTR (hafif endişe) — maskotlar sakin, ciddi; şaka/zıplama yok; efektler eşel bülteni seviyesinin altında, yumuşak.
 Format: 3 PARÇA / 2 SES → `1` stüdyo açılış (SUNUCU) · `2` saha (SAHA MUHABİRİ) · `3` stüdyo kapanış (SUNUCU).
 Yayın ilkesi: iki taraf eşit ağırlıkta, atıflı ve yorumsuz; kapanışta iki tarafın kaygısını birleştiren yapıcı vurgu (kullanıcı isteği).
@@ -7,7 +7,7 @@ Yayın ilkesi: iki taraf eşit ağırlıkta, atıflı ve yorumsuz; kapanışta i
 
 ## 1) ElevenLabs — PARÇA 1 · STÜDYO AÇILIŞ (SUNUCU sesi) → dosya adı: 1
 
-İyi akşamlar, GubiGufi Haber'desiniz.
+İyi akşamlar, Gufibu Haber'desiniz.
 
 Bugün Dünya Hayvanları Koruma Günü. Ve Türkiye'nin en çok tartışılan konularından biri yine gündemde: sokak hayvanları.
 
@@ -33,7 +33,7 @@ Teşekkürler Gufi.
 
 Sokak hayvanları meselesinde kalıcı çözüm, iki tarafın da kaygısını duyan bir yaklaşımdan geçiyor.
 
-Haberleri animasyonla takip etmek için GubiGufi Haber'i takip edin. İyi akşamlar.
+Haberleri animasyonla takip etmek için Gufibu Haber'i takip edin. İyi akşamlar.
 
 ---
 
