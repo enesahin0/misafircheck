@@ -1,0 +1,4 @@
+# #29 Güvercin — inceleme
+- 102,4 sn (ses 97,3 + logo), 12 sahne. Determinizm TAMAM.
+- Deneyler animasyonla: (1) baş izleri + kırmızı sabit çizgi (YANLIŞ! damgası), (2) ölçü ızgarasında 0,25× ağır çekim — BAŞ SABİT kilidi, GÖVDE oku, ≈5 cm atılış, (3) 1978 koşu bandı — PARKTA merdiven / BANTTA düz çizgi grafiği, (4) tepeden 340° görüş konileri, dar ön alan, kör nokta (Gubi saklanır), kayan görüntü, (5) her tutma anında deklanşör + polaroid, (6) paralaks: yakın/orta/uzak katman okları, (7) tren: göz takip-sıçra inseti vs güvercin kafası, (8) UV süpürme, (9) Monet/Picasso tarzı (temsili, özgün çizim) gagalama ✓, (10) dokunmatik ekran %85 → sürü %99.
+- Güvercin çizimi gerçek kaya güvercini: gri-mavi gövde, iki koyu kanat bandı, yeşil-mor boyun, turuncu göz, pembe ayak; baş ayrı konumlanır (GV.yurur: tutma %70 / itme %30).

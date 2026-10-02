@@ -367,3 +367,4 @@ Paketin palet/font/stack önerileri ALINMADI (çizim stilimiz, renklerimiz, kitl
 
 
 - **CAM KASK KURALI (#28):** Maskot cam kask/fanus içindeyse kask gövdeyi TAMAMEN içine alır ve ortalıdır: Gubi'de y = gövde merkezi (r = .62·boy), Gufi'de gövde merkezi y − .52·boy (r = .8·boy). Kask boyu karakterin boyuna göre (Gufi > Gubi). `AL.astroKask(x, y, boy, kim)`.
+| 29 | Güvercin Kafası | Kafa sabitleme (tut-it), koşu bandı deneyi grafiği, 340° görüş konisi + kör nokta, dur-bak-ilerle polaroidleri, paralaks okları, tren göz takibi, UV, Monet/Picasso, kanser %85→%99 | gerçekçi güvercin kiti gv.js |
