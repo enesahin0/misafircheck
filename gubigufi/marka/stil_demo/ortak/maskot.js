@@ -1,0 +1,1 @@
+../../ortak/maskot.js

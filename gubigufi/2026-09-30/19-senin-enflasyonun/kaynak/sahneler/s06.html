@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
+</svg>
+<script>window.SB = 31.15; const TP = {"gubi": [[2.5, "korku"]], "gufi": []};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script><script src="../ortak/en.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = K.yaziGen(s, fs, { mono: true, ls: 3 }) + fs * 1.7; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+const YES = '#2FBF71';
+const T = CV.ton('teal');
+const OGR = KO.giy('gubi', [['kep', { renk: '#1B1640', puskul: '#FFB44C' }]]);
+const EMK = KO.giy('gufi', ['gozluk', ['kasket', { renk: '#8A8A9A', siper: '#5A5A6A' }]]);
+const ornek = () => cip('ÖRNEK', 130, 380, '#FFE45C', '#1B1640', 22);
+const OGR_P = [['Kira', .40, '#E8505B'], ['Gıda', .35, '#FFB44C'], ['Ulaşım', .15, '#2E9AD8'], ['Diğer', .10, '#8A6FE0']];
+const EMK_P = [['Gıda', .40, '#FFB44C'], ['Fatura', .25, '#2E9AD8'], ['İlaç', .15, '#E8505B'], ['Diğer', .20, '#8A6FE0']];
+
+$('zemin').innerHTML = EN.ogrenciOda(T);
+window.renderAt = t => {
+  let o = '';
+  [[.2, 'KİRA', 60, '#E8505B', 320], [1.9, 'GIDA', 45, '#FFB44C', 700]].forEach(([t0, ad, v, r, x]) => { const p = FX.E.expo(A(t, t0, t0 + 1.0)); if (p <= 0) return; const hgt = 500 * v / 60 * p;
+    o += `<rect x="${x - 90}" y="${1150 - hgt}" width="180" height="${hgt}" rx="20" fill="${r}"/>` + txt(`+%${Math.round(v * p)}`, x, 1120 - hgt, 70, r) + grp(cip(ad, 0, 0, '#1B1640', '#FFFFFF', 28), x, 1200, 1); });
+  o += ornek();
+  o += gubi(t, { x: 520, y: 520, boy: 200, bakHedef: [500, 900], ust: OGR });
+  if (t > 2.5) for (let i = 0; i < 2; i++) { const q = ((t * 1.3 + i / 2) % 1); o += `<ellipse cx="${620 + i * 20}" cy="${470 + q * 120}" rx="10" ry="15" fill="#6CC8F0" opacity="${1 - q}"/>`; }
+  o += DP.sar(t, 3.9, 99, d => END.hesap(d, [['Kira', 40, 60], ['Gıda', 35, 45], ['Ulaşım', 15, 30], ['Diğer', 10, 25]], 47, '#E8505B'));
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
+</svg>
+<script>window.SB = 31.29; const TP = {"gubi": [[8.3, "kahkaha"]], "gufi": [[0.7, "isaret"], [9.4, "sasir"]]};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script><script src="../ortak/au.js"></script><script src="../ortak/al.js"></script><script src="../ortak/gv.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = q => q < .5 ? 4 * q * q * q : 1 - Math.pow(-2 * q + 2, 3) / 2;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = K.yaziGen(s, fs, { mono: true, ls: 3 }) + fs * 1.7; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+const R = PR.R, h = HK.hash, C = AU.C;
+const BILGE = KO.giy('gubi', ['gozluk']);
+const KAMERACI = KO.giy('gubi', [['kasket', { renk: '#2A2E40', siper: '#1B1F2A' }]]);
+const REHBER = KO.giy('gubi', [['papyon', { renk: '#E8505B' }], 'gozluk']);
+const BILIMCI = KO.giy('gubi', ['gozluk', ['papyon', { renk: '#4A8AD8' }]]);
+const kam = (s, { x = 540, y = 900, k = 1, dx = 0, dy = 0 } = {}) => `<g transform="translate(${dx} ${dy}) translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+
+window.renderAt = t => {
+  let o = AU.zemin('#2A3A2A', '#1A2A1A');
+  const kay = A(t, 9.2, 11.2); for (let i = 0; i < 14; i++) { const y = ((i * 170 + kay * 1400 * (t - 9.2 > 0 ? 1 : 0)) % 1900) - 100 + (t > 9.2 ? (t - 9.2) * 600 : 0) % 170; o += `<circle cx="${i % 2 ? 140 : 940}" cy="${((i * 170 + (t > 9.2 ? (t - 9.2) * 700 : 0)) % 1900) - 100}" r="${50 + h(i) * 30}" fill="#3E6A3A"/>`; }
+  if (t > 9.2) for (let i = 0; i < 16; i++) o += `<path d="M${60 + h(i) * 960} ${((i * 130 + (t - 9.2) * 1500) % 1700) + 200} v${80 + h(i + 3) * 80}" stroke="#FFFFFF" stroke-width="4" opacity=".35"/>`;
+  const cx = 540, cy = 880, p = E(A(t, 2.6, 3.6));
+  if (p > 0) o += GV.gorusAlani(cx, cy, 470, p, { vurguOn: A(t, 6.4, 7.0), vurguKor: A(t, 7.4, 8.0) });
+  o += GV.basUstten(cx, cy, 1.5);
+  const g = pop(t, .6); if (g > 0 && t < 2.6) [-60, 60].forEach(dx => o += `<circle cx="${cx + dx}" cy="${cy - 30}" r="${40 * g}" fill="none" stroke="${C.ALT}" stroke-width="6"/>`);
+  const a = pop(t, 3.4); if (a > 0) o += grp(AU.panel(-150, -60, 300, 120, C.LAC) + AU.yaz('340°', 0, 26, 76, C.ALTA), 540, 420, a);
+  const b = pop(t, 6.4); if (b > 0) o += grp(AU.cip('İKİ GÖZ: SADECE DAR BİR ÖN ALAN', 0, 0, C.YES, '#FFFFFF', 24), 540, 1290 - 760, b);
+  const c = pop(t, 7.6); if (c > 0) o += grp(AU.cip('KÖR NOKTA', 0, 0, '#1B1F3A', '#FFFFFF', 26), 540, 1260, c);
+  o += gubi(t, { yol: [[0, 940, 1640, 150], [7.0, 940, 1640, 150], [8.2, 540, 1190, 120]], x: 940, y: 1640, boy: 150, ust: BILGE, duygu: t > 8.2 ? 'mutlu' : 'merak', bakHedef: [cx, cy] });
+  o += gufi(t, { x: 180, y: 1760, boy: 240, duygu: t > 9.3 ? 'sasir' : 'merak', isaretHedef: t > 3 && t < 6 ? [cx - 300, cy] : null, bakHedef: [cx, cy] });
+  if (t > 9.4) { const q = pop(t, 9.4); o += grp(AU.cip('YÜRÜRKEN GÖRÜNTÜ KAYIYOR', 0, 0, C.KIR, '#FFFFFF', 26), 540, 1130 - 720, q); }
+  $('dinamik').innerHTML = kam(o, { y: cy, k: 1 - .06 * E(A(t, 2.4, 4)) });
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 31.0; const TP = {"gubi": [], "gufi": [[5.3, "kararli"], [7.0, "uzgun"]]};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/capa.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = s.length * fs * .62 + 70; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+window.renderAt = t => {
+  let o = C.deniz(t);
+  const c = pop(t, .2); if (c > 0) o += grp(cip('ÇAPA ETKİSİ', 0, 0, '#6B3A5B', '#FFFFFF', 40), 540, 400, c);
+  const sp = pop(t, 2.2), don = A(t, 3.0, 3.4), bat = E(A(t, 3.3, 4.6));
+  const ax = 480, ay = 640 + 860 * bat;
+  if (sp > 0 && don < 1) o += grp(txt('10', 0, 40, 200, '#B0472E'), ax, 640, sp * (1 - don));
+  if (don > 0) o += C.cipa(ax, ay, .9 * back(don), Math.sin(t * 2) * 6, '#5B6E9E');
+  // kayık: ip gerildikçe geri çekilir
+  const cek = A(t, 5.6, 8.0), bx = 560 + 170 * Math.min(1, cek * 1.5) - 40 * Math.max(0, Math.sin((cek - .5) * 12)) * (cek > .5), by = 905 + Math.sin(t * 1.5) * 8;
+  if (bat > 0) o += `<path d="M${ax} ${ay - 140} Q${(ax + bx) / 2} ${(ay + by) / 2 + (cek > .6 ? 0 : 60)} ${bx - 120} ${by}" stroke="#8A5A3C" stroke-width="8" fill="none"/>`;
+  o += gufi(t, { x: bx + 10, y: by - 12, boy: 110, bakHedef: cek > 0 ? [1000, 800] : [ax, 700] });
+  o += C.kayik(bx, by, 1, Math.sin(t * 1.5) * 3);
+  o += `<text class="mono" x="${bx}" y="${by + 40}" font-size="26" text-anchor="middle" style="fill:#FFFFFF">TAHMİN</text>`;
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

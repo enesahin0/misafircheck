@@ -1,0 +1,376 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 109.32,
+  "konusma_bloklari": [
+    [
+      0.0,
+      2.959
+    ],
+    [
+      3.326,
+      4.97
+    ],
+    [
+      5.389,
+      9.176
+    ],
+    [
+      9.505,
+      12.843
+    ],
+    [
+      13.17,
+      14.978
+    ],
+    [
+      15.268,
+      18.203
+    ],
+    [
+      18.547,
+      20.846
+    ],
+    [
+      21.217,
+      22.334
+    ],
+    [
+      22.652,
+      26.041
+    ],
+    [
+      26.393,
+      27.508
+    ],
+    [
+      27.796,
+      29.639
+    ],
+    [
+      29.989,
+      32.284
+    ],
+    [
+      32.536,
+      35.165
+    ],
+    [
+      35.494,
+      39.043
+    ],
+    [
+      39.358,
+      41.458
+    ],
+    [
+      41.72,
+      44.831
+    ],
+    [
+      45.145,
+      46.857
+    ],
+    [
+      47.16,
+      50.579
+    ],
+    [
+      50.847,
+      52.226
+    ],
+    [
+      52.535,
+      56.871
+    ],
+    [
+      57.135,
+      59.833
+    ],
+    [
+      60.131,
+      64.434
+    ],
+    [
+      64.751,
+      66.481
+    ],
+    [
+      66.829,
+      68.828
+    ],
+    [
+      69.128,
+      71.126
+    ],
+    [
+      71.452,
+      74.391
+    ],
+    [
+      74.728,
+      77.164
+    ],
+    [
+      77.415,
+      79.028
+    ],
+    [
+      79.358,
+      83.049
+    ],
+    [
+      83.355,
+      85.927
+    ],
+    [
+      86.283,
+      88.052
+    ],
+    [
+      88.428,
+      90.389
+    ],
+    [
+      90.675,
+      92.881
+    ],
+    [
+      93.135,
+      95.434
+    ],
+    [
+      95.732,
+      97.807
+    ],
+    [
+      98.164,
+      100.53
+    ],
+    [
+      100.816,
+      101.588
+    ],
+    [
+      101.869,
+      103.01
+    ],
+    [
+      103.332,
+      106.017
+    ],
+    [
+      106.366,
+      107.929
+    ],
+    [
+      108.326,
+      109.32
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 2.96,
+      "sure": 2.96,
+      "metin": "Parmağındaki altın yüzük, Dünya'dan daha yaşlı."
+    },
+    {
+      "no": 2,
+      "baslangic": 2.96,
+      "bitis": 4.97,
+      "sure": 2.01,
+      "metin": "Çünkü altın burada oluşmadı."
+    },
+    {
+      "no": 3,
+      "baslangic": 4.97,
+      "bitis": 9.18,
+      "sure": 4.21,
+      "metin": "Uzayda, iki ölü yıldızın çarpıştığı dev bir patlamada doğdu."
+    },
+    {
+      "no": 4,
+      "baslangic": 9.18,
+      "bitis": 12.84,
+      "sure": 3.67,
+      "metin": "Bu çarpışma iki bin on yedide ilk kez canlı izlendi."
+    },
+    {
+      "no": 5,
+      "baslangic": 12.84,
+      "bitis": 18.2,
+      "sure": 5.36,
+      "metin": "Bilim insanlarına göre o altın, milyarlarca yıl önce göktaşlarıyla Dünya'ya yağdı."
+    },
+    {
+      "no": 6,
+      "baslangic": 18.2,
+      "bitis": 22.33,
+      "sure": 4.13,
+      "metin": "İnsanlar onu bulduğunda bir şey fark etti: Altın paslanmıyor."
+    },
+    {
+      "no": 7,
+      "baslangic": 22.33,
+      "bitis": 26.04,
+      "sure": 3.71,
+      "metin": "Binlerce yıl toprakta kalsa bile ilk günkü gibi parlıyor."
+    },
+    {
+      "no": 8,
+      "baslangic": 26.04,
+      "bitis": 29.64,
+      "sure": 3.6,
+      "metin": "Üstelik bir gramı, kilometrelerce tele çekilebiliyor."
+    },
+    {
+      "no": 9,
+      "baslangic": 29.64,
+      "bitis": 32.28,
+      "sure": 2.64,
+      "metin": "Mısırlılar firavunlarını altına gömdü."
+    },
+    {
+      "no": 10,
+      "baslangic": 32.28,
+      "bitis": 35.16,
+      "sure": 2.88,
+      "metin": "Tutankamon'un maskesi tek başına on kilo."
+    },
+    {
+      "no": 11,
+      "baslangic": 35.16,
+      "bitis": 39.04,
+      "sure": 3.88,
+      "metin": "Dünyanın ilk sikkeleri ise Anadolu'da, Lidya'da basıldı."
+    },
+    {
+      "no": 12,
+      "baslangic": 39.04,
+      "bitis": 44.83,
+      "sure": 5.79,
+      "metin": "Hemen yanı başında da bir efsane doğdu: Dokunduğu her şeyi altına çeviren Kral Midas."
+    },
+    {
+      "no": 13,
+      "baslangic": 44.83,
+      "bitis": 46.86,
+      "sure": 2.03,
+      "metin": "Bu rüya yüzyıllar sürdü."
+    },
+    {
+      "no": 14,
+      "baslangic": 46.86,
+      "bitis": 50.58,
+      "sure": 3.72,
+      "metin": "Simyacılar kurşunu altına çevirmek için hayatlarını harcadı."
+    },
+    {
+      "no": 15,
+      "baslangic": 50.58,
+      "bitis": 52.23,
+      "sure": 1.65,
+      "metin": "Isaac Newton bile denedi."
+    },
+    {
+      "no": 16,
+      "baslangic": 52.23,
+      "bitis": 59.83,
+      "sure": 7.61,
+      "metin": "Tarihin en zengini sayılan Mali kralı Mansa Musa, hacca giderken rivayete göre on sekiz ton altın taşıdı."
+    },
+    {
+      "no": 17,
+      "baslangic": 59.83,
+      "bitis": 64.43,
+      "sure": 4.6,
+      "metin": "Kahire'de o kadar altın dağıttı ki, altının değeri yıllarca düştü."
+    },
+    {
+      "no": 18,
+      "baslangic": 64.43,
+      "bitis": 71.13,
+      "sure": 6.69,
+      "metin": "Ama asıl şaşırtıcı olan şu: O on sekiz ton altını eritsen, kenarı bir metrelik bir küpe sığar."
+    },
+    {
+      "no": 19,
+      "baslangic": 71.13,
+      "bitis": 77.16,
+      "sure": 6.04,
+      "metin": "İnsanlığın bugüne kadar çıkardığı bütün altın ise, kenarı yirmi iki metre olan tek bir küp."
+    },
+    {
+      "no": 20,
+      "baslangic": 77.16,
+      "bitis": 79.03,
+      "sure": 1.86,
+      "metin": "Yedi katlı bir apartman kadar."
+    },
+    {
+      "no": 21,
+      "baslangic": 79.03,
+      "bitis": 83.05,
+      "sure": 4.02,
+      "metin": "Bunun tahminen beş bin tonu Türkiye'de, yastık altında duruyor."
+    },
+    {
+      "no": 22,
+      "baslangic": 83.05,
+      "bitis": 85.93,
+      "sure": 2.88,
+      "metin": "İki katlı bir ev büyüklüğünde bir altın küpü."
+    },
+    {
+      "no": 23,
+      "baslangic": 85.93,
+      "bitis": 88.05,
+      "sure": 2.12,
+      "metin": "Peki simyacıların rüyası?"
+    },
+    {
+      "no": 24,
+      "baslangic": 88.05,
+      "bitis": 92.88,
+      "sure": 4.83,
+      "metin": "İki bin yirmi beşte CERN açıkladı: Kurşun gerçekten altına dönüştü."
+    },
+    {
+      "no": 25,
+      "baslangic": 92.88,
+      "bitis": 95.43,
+      "sure": 2.55,
+      "metin": "Ama gramın milyarda birinden bile azı."
+    },
+    {
+      "no": 26,
+      "baslangic": 95.43,
+      "bitis": 97.81,
+      "sure": 2.37,
+      "metin": "Ve göz açıp kapayana kadar yok oldu."
+    },
+    {
+      "no": 27,
+      "baslangic": 97.81,
+      "bitis": 106.02,
+      "sure": 8.21,
+      "metin": "Yani altını değerli yapan üç şey var: Az olması, hiç bozulmaması ve insanların beş bin yıldır ona güvenmesi."
+    },
+    {
+      "no": 28,
+      "baslangic": 106.02,
+      "bitis": 107.93,
+      "sure": 1.91,
+      "metin": "Senin yastığının altında ne var?"
+    },
+    {
+      "no": 29,
+      "baslangic": 107.93,
+      "bitis": 109.32,
+      "sure": 1.39,
+      "metin": "Yorumlara yaz."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

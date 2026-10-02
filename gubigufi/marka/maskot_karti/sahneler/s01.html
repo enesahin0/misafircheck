@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../ortak/stil.css">
+<style>:root{ --zemin1:#1B1640; --zemin2:#2D1F5E; --v1:#B79CFF; --v2:#7FF0C8; --rim:#F5F0FF; --isik:#F5F0FF; }</style>
+</head><body>
+<svg viewBox="0 0 1920 1080" width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sahne"></g></g>
+</svg>
+<script src="../../ortak/kit.js"></script><script src="../../ortak/maskot.js"></script>
+<script>
+  document.getElementById('zemin').innerHTML = K.gok({ nebula:{ x:1500, y:200, r:700, renk:'--v1' } }) + K.yildizlar({ adet: 50, seed: 4 });
+  const D = ['merak','saskin','mutlu','kararli']; const AD = {merak:'merak',saskin:'şaşkın',mutlu:'mutlu',kararli:'kararlı'};
+  let s = `<text x="960" y="110" font-size="64" text-anchor="middle">GUBİ &amp; GUFİ</text>` +
+          `<text x="960" y="165" font-size="30" text-anchor="middle" style="fill:var(--v2)">gubigufi maskotları · merak · şaşkın · mutlu · kararlı</text>`;
+  D.forEach((d, i) => {
+    const x = 330 + i * 420;
+    s += `<g class="float" style="animation-delay:-${i}s">` + M.gubi({ x, y: 400, boy: 190, duygu: d, bak: [i % 2 ? -1 : 1, -.3], kirp: -i }) + `</g>`;
+    s += `<g class="nefes">` + M.gufi({ x, y: 900, boy: 170, duygu: d, bak: [i % 2 ? 1 : -1, 0], kirp: -i - 1 }) + `</g>`;
+    s += `<text x="${x}" y="620" font-size="30" text-anchor="middle" style="fill:var(--v2)">${AD[d]}</text>`;
+  });
+  document.getElementById('sahne').innerHTML = s;
+  K.onizleme();
+</script></body></html>

@@ -1,0 +1,251 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 71.24,
+  "konusma_bloklari": [
+    [
+      0.0,
+      2.261
+    ],
+    [
+      2.666,
+      6.121
+    ],
+    [
+      6.544,
+      8.516
+    ],
+    [
+      8.938,
+      9.545
+    ],
+    [
+      9.995,
+      11.924
+    ],
+    [
+      12.23,
+      14.592
+    ],
+    [
+      14.907,
+      17.847
+    ],
+    [
+      18.136,
+      18.599
+    ],
+    [
+      18.863,
+      22.072
+    ],
+    [
+      22.429,
+      24.931
+    ],
+    [
+      25.314,
+      27.7
+    ],
+    [
+      28.156,
+      30.015
+    ],
+    [
+      30.367,
+      31.23
+    ],
+    [
+      31.486,
+      32.7
+    ],
+    [
+      33.094,
+      34.938
+    ],
+    [
+      35.322,
+      37.837
+    ],
+    [
+      38.198,
+      41.706
+    ],
+    [
+      42.088,
+      44.502
+    ],
+    [
+      44.976,
+      47.602
+    ],
+    [
+      47.952,
+      48.993
+    ],
+    [
+      49.388,
+      50.957
+    ],
+    [
+      51.215,
+      51.786
+    ],
+    [
+      52.038,
+      53.839
+    ],
+    [
+      54.209,
+      55.523
+    ],
+    [
+      55.87,
+      59.379
+    ],
+    [
+      59.657,
+      60.641
+    ],
+    [
+      60.996,
+      64.688
+    ],
+    [
+      65.071,
+      67.662
+    ],
+    [
+      67.948,
+      71.24
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 2.26,
+      "sure": 2.26,
+      "metin": "Orta Çağ denince aklına ne geliyor?"
+    },
+    {
+      "no": 2,
+      "baslangic": 2.26,
+      "bitis": 6.12,
+      "sure": 3.86,
+      "metin": "Çamurlu köyler ve her gün aynı gri, tatsız lapa mı?"
+    },
+    {
+      "no": 3,
+      "baslangic": 6.12,
+      "bitis": 9.54,
+      "sure": 3.42,
+      "metin": "Aslında o lapanın bir adı vardı: pottaj."
+    },
+    {
+      "no": 4,
+      "baslangic": 9.54,
+      "bitis": 11.92,
+      "sure": 2.38,
+      "metin": "Ve sanıldığı kadar sıkıcı değildi."
+    },
+    {
+      "no": 5,
+      "baslangic": 11.92,
+      "bitis": 22.07,
+      "sure": 10.15,
+      "metin": "Pottaj, yulaf ya da arpanın yanında bezelye, fasulye, soğan, pırasa, lahana ve bahçeden toplanan otlarla pişen koyu bir çorbaydı."
+    },
+    {
+      "no": 6,
+      "baslangic": 22.07,
+      "bitis": 24.93,
+      "sure": 2.86,
+      "metin": "Mevsime göre rengi de tadı da değişirdi."
+    },
+    {
+      "no": 7,
+      "baslangic": 24.93,
+      "bitis": 27.7,
+      "sure": 2.77,
+      "metin": "Yanında çavdar ya da arpa ekmeği vardı."
+    },
+    {
+      "no": 8,
+      "baslangic": 27.7,
+      "bitis": 30.02,
+      "sure": 2.32,
+      "metin": "İçecek olarak da hafif bir bira."
+    },
+    {
+      "no": 9,
+      "baslangic": 30.02,
+      "bitis": 32.7,
+      "sure": 2.69,
+      "metin": "Et nadirdi ama hiç yok değildi."
+    },
+    {
+      "no": 10,
+      "baslangic": 32.7,
+      "bitis": 37.84,
+      "sure": 5.14,
+      "metin": "Köylülerin çoğu domuz beslerdi; pastırma ve sosis kışın sofraya gelirdi."
+    },
+    {
+      "no": 11,
+      "baslangic": 37.84,
+      "bitis": 41.71,
+      "sure": 3.87,
+      "metin": "Peynir, yumurta ve süt ise günlük hayatın parçasıydı."
+    },
+    {
+      "no": 12,
+      "baslangic": 41.71,
+      "bitis": 44.5,
+      "sure": 2.8,
+      "metin": "Kilisenin perhiz günlerinde et yasaktı."
+    },
+    {
+      "no": 13,
+      "baslangic": 44.5,
+      "bitis": 47.6,
+      "sure": 3.1,
+      "metin": "O günlerde tuzlanmış ringa balığı yenirdi."
+    },
+    {
+      "no": 14,
+      "baslangic": 47.6,
+      "bitis": 53.84,
+      "sure": 6.24,
+      "metin": "Baharat pahalıydı, ama köylünün sarımsağı, hardalı, maydanozu ve adaçayı vardı."
+    },
+    {
+      "no": 15,
+      "baslangic": 53.84,
+      "bitis": 60.64,
+      "sure": 6.8,
+      "metin": "En şaşırtıcısı da şu: bin üç yüz kırk sekizdeki Kara Ölüm'den sonra işçi azaldı, ücretler arttı."
+    },
+    {
+      "no": 16,
+      "baslangic": 60.64,
+      "bitis": 64.69,
+      "sure": 4.05,
+      "metin": "Hasat işçilerinin sofrasına çok daha fazla et ve bira girdi."
+    },
+    {
+      "no": 17,
+      "baslangic": 64.69,
+      "bitis": 67.66,
+      "sure": 2.97,
+      "metin": "Yani Orta Çağ köylüsü zengin değildi."
+    },
+    {
+      "no": 18,
+      "baslangic": 67.66,
+      "bitis": 71.24,
+      "sure": 3.58,
+      "metin": "Ama sofrası, sandığın kadar gri de değildi."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

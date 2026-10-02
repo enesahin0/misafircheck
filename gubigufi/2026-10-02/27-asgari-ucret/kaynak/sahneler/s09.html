@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
+</svg>
+<script>window.SB = 79.42; const TP = {"gubi": [[4.9, "isaret"]], "gufi": [[1.6, "uzgun"], [5.2, "sasir"]]};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script><script src="../ortak/au.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = q => q < .5 ? 4 * q * q * q : 1 - Math.pow(-2 * q + 2, 3) / 2;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = K.yaziGen(s, fs, { mono: true, ls: 3 }) + fs * 1.7; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+const R = PR.R, h = HK.hash, C = AU.C;
+const VEZNEDAR = KO.giy('gubi', [['papyon', { renk: '#E8505B' }], 'gozluk']);
+const VATANDAS = KO.giy('gufi', [['kasket', { renk: '#2A2E40', siper: '#1B1F2A' }]]);
+const kam = (s, { x = 540, y = 900, k = 1, dx = 0, dy = 0 } = {}) => `<g transform="translate(${dx} ${dy}) translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+
+window.renderAt = t => {
+  let o = AU.zemin('#0F1E3A', '#0B1433');
+  o += AU.cip("AVRUPA'DA ASGARİ ÜCRET · BRÜT €", 540, 390, C.KREM, C.LAC, 28);
+  o += AU.Tm('Eurostat · Ocak 2026 · zirvede Lüksemburg', 540, 460, 24, '#8A90A8');
+  const RW = [['İrlanda', 2391], ['Almanya', 2343], ['Hollanda', 2295], ['Belçika', 2112], null, ['Letonya', 780], ['Sırbistan', 744], ['Karadağ', 670], ['TÜRKİYE', 654]];
+  RW.forEach((r, i) => { const y = 490 + i * 82; if (!r) { o += AU.yaz('· · ·', 330, y + 40, 50, '#8A90A8'); return; }
+    const g = E(A(t, .2 + i * .18, .9 + i * .18)), w = r[1] * .27 * g, tr = r[0] === 'TÜRKİYE', de = r[0] === 'Almanya' && t > 4.7;
+    o += `<text x="310" y="${y + 46}" font-size="36" font-weight="${tr ? 900 : 700}" text-anchor="end" style="fill:${tr ? C.KIR : '#FFF3D6'}">${r[0]}</text>`;
+    o += AU.R(330, y + 10, w, 50, 14, tr ? C.KIR : de ? C.ALT : '#3A5A9C') + (g > .9 ? `<text class="mono" x="${330 + w - 14}" y="${y + 46}" font-size="28" text-anchor="end" style="fill:#FFFFFF">${r[1].toLocaleString('tr-TR')}</text>` : ''); });
+  const k = E(A(t, 4.8, 5.6));
+  if (k > 0) { const y1 = 490 + 82 + 35, y2 = 490 + 8 * 82 + 35, yy = y1 + (y2 - y1) * k; o += `<path d="M1010 ${y1} V${yy}" stroke="${C.ALT}" stroke-width="10" stroke-linecap="round"/><path d="M990 ${y1} h40 M990 ${y2} h40" stroke="${C.ALT}" stroke-width="10" opacity="${k}"/>`; o += grp(AU.cip('3,5 KAT+', 0, 0, C.ALT, C.LAC, 34), 820, 860, pop(t, 5.4)); }
+  o += gufi(t, { x: 700, y: 1150, boy: 160, ust: VATANDAS, duygu: t > 5 ? 'uzgun' : 'merak', bakHedef: [700, 500] });
+  o += gubi(t, { x: 860, y: 1700, boy: 210, ust: VEZNEDAR, isaretHedef: t > 4.8 ? [700, 530] : null, bakHedef: [600, 800] });
+  $('dinamik').innerHTML = kam(o, { dy: 80 * (1 - E(A(t, 0, 1.6))) });
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="ortak/stil.css">
+<!-- Kit kullanan kısa sahne örneği. Proje klasöründe sahneler/ içindeysen yolları ../ortak/ yap.
+     Paleti değiştirmek için :root değişkenlerini bu sahnede ez (bkz. references/paletler.md). -->
+<style>:root{ --zemin1:#0C2E3A; --zemin2:#10414F; --v1:#FF6F91; --v2:#B8E05A; --rim:#E8FFF6; --golge:#0C2E3A; }</style>
+</head><body>
+<svg viewBox="0 0 1920 1080" width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g>
+  <g class="kamera"><g id="sahne"></g></g>
+</svg>
+<script src="ortak/kit.js"></script>
+<script>
+  document.getElementById('zemin').innerHTML = K.gok({ nebula:{ x:1500, y:250, r:600, renk:'--v1' } });
+  document.getElementById('sahne').innerHTML =
+      K.yildizlar({ adet: 30, seed: 3, renk: '--rim' })                                   // mikro dünyada "kabarcık"
+    + `<g class="popIn" style="animation-delay:.4s">` + K.yaratik({ x: 760, y: 760, boy: 260, renk: '--v1', duygu: 'merak', bak:[1,0] }) + `</g>`
+    + `<g class="popIn" style="animation-delay:.9s">` + K.yaratik({ x: 1160, y: 780, boy: 200, renk: '--v2', duygu: 'saskin', bak:[-1,0], kirpGecikme:-2 }) + `</g>`
+    + `<g class="fadeUp" style="animation-delay:1.6s"><text id="sayi" x="960" y="330" font-size="120" text-anchor="middle">0</text>`
+    + `<text x="960" y="400" font-size="40" text-anchor="middle" style="fill:var(--v2)">hücre</text></g>`;
+
+  window.renderAt = t => {
+    document.getElementById('sayi').textContent = K.sayi(37 * K.ease(K.aralik(t, 1.6, 3.2))) + ' trilyon';
+  };
+  K.onizleme();
+</script>
+</body></html>

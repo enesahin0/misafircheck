@@ -1,0 +1,302 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 86.05,
+  "konusma_bloklari": [
+    [
+      0.0,
+      3.124
+    ],
+    [
+      3.623,
+      5.148
+    ],
+    [
+      5.428,
+      8.627
+    ],
+    [
+      9.088,
+      9.427
+    ],
+    [
+      9.715,
+      10.751
+    ],
+    [
+      11.016,
+      12.65
+    ],
+    [
+      13.038,
+      14.566
+    ],
+    [
+      15.136,
+      16.741
+    ],
+    [
+      17.232,
+      19.578
+    ],
+    [
+      19.872,
+      20.651
+    ],
+    [
+      20.991,
+      23.758
+    ],
+    [
+      24.077,
+      27.164
+    ],
+    [
+      27.614,
+      31.7
+    ],
+    [
+      32.156,
+      34.564
+    ],
+    [
+      35.058,
+      37.687
+    ],
+    [
+      38.178,
+      40.529
+    ],
+    [
+      40.882,
+      42.839
+    ],
+    [
+      43.24,
+      45.263
+    ],
+    [
+      45.562,
+      48.118
+    ],
+    [
+      48.386,
+      50.198
+    ],
+    [
+      50.621,
+      51.25
+    ],
+    [
+      51.726,
+      53.459
+    ],
+    [
+      53.832,
+      56.294
+    ],
+    [
+      56.665,
+      57.285
+    ],
+    [
+      57.736,
+      59.992
+    ],
+    [
+      60.345,
+      66.513
+    ],
+    [
+      66.912,
+      68.084
+    ],
+    [
+      68.378,
+      72.593
+    ],
+    [
+      73.024,
+      76.422
+    ],
+    [
+      76.832,
+      78.919
+    ],
+    [
+      79.382,
+      80.111
+    ],
+    [
+      80.491,
+      82.488
+    ],
+    [
+      83.023,
+      86.05
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 3.12,
+      "sure": 3.12,
+      "metin": "Bir toplantıda masaya küçük bir kitapçık fırlatıldı."
+    },
+    {
+      "no": 2,
+      "baslangic": 3.12,
+      "bitis": 9.43,
+      "sure": 6.3,
+      "metin": "İki gün sonra bankalar, birbirine yüzde yedi bin beş yüz faizle para veriyordu."
+    },
+    {
+      "no": 3,
+      "baslangic": 9.43,
+      "bitis": 10.75,
+      "sure": 1.32,
+      "metin": "Evet, yedi bin beş yüz."
+    },
+    {
+      "no": 4,
+      "baslangic": 10.75,
+      "bitis": 14.57,
+      "sure": 3.82,
+      "metin": "Üstelik bu bir yıllık değil, tek bir gecelik borç içindi."
+    },
+    {
+      "no": 5,
+      "baslangic": 14.57,
+      "bitis": 16.74,
+      "sure": 2.17,
+      "metin": "On dokuz Şubat iki bin bir."
+    },
+    {
+      "no": 6,
+      "baslangic": 16.74,
+      "bitis": 20.65,
+      "sure": 3.91,
+      "metin": "Ankara'da Milli Güvenlik Kurulu toplanıyor."
+    },
+    {
+      "no": 7,
+      "baslangic": 20.65,
+      "bitis": 21.73,
+      "sure": 1.08,
+      "metin": "Kapılar kapalı."
+    },
+    {
+      "no": 8,
+      "baslangic": 21.73,
+      "bitis": 27.16,
+      "sure": 5.43,
+      "metin": "Bir tartışma büyüyor ve Cumhurbaşkanı Sezer, Anayasa kitapçığını Başbakan Ecevit'e doğru fırlatıyor."
+    },
+    {
+      "no": 9,
+      "baslangic": 27.16,
+      "bitis": 37.69,
+      "sure": 10.52,
+      "metin": "Ecevit toplantıyı terk ediyor ve kameralara tek bir cümle söylüyor: \"Devlet yönetiminde ciddi bir kriz var.\" Bu cümle, kitapçıktan çok daha ağır geldi."
+    },
+    {
+      "no": 10,
+      "baslangic": 37.69,
+      "bitis": 40.53,
+      "sure": 2.84,
+      "metin": "Aynı gün borsa yüzde on dört düştü."
+    },
+    {
+      "no": 11,
+      "baslangic": 40.53,
+      "bitis": 42.84,
+      "sure": 2.31,
+      "metin": "Milyarlarca dolar ülkeden çıktı."
+    },
+    {
+      "no": 12,
+      "baslangic": 42.84,
+      "bitis": 51.25,
+      "sure": 8.41,
+      "metin": "Bankalar paraya öyle sıkıştı ki, gecelik faiz önce yüzde yedi yüz altmışa, sonra yedi bin beş yüze fırladı."
+    },
+    {
+      "no": 13,
+      "baslangic": 51.25,
+      "bitis": 53.46,
+      "sure": 2.21,
+      "metin": "Şöyle düşün: Akşam yüz lira borç veriyorsun."
+    },
+    {
+      "no": 14,
+      "baslangic": 53.46,
+      "bitis": 57.28,
+      "sure": 3.83,
+      "metin": "Sabah yaklaşık yüz yirmi lira geri alıyorsun."
+    },
+    {
+      "no": 15,
+      "baslangic": 57.28,
+      "bitis": 59.99,
+      "sure": 2.71,
+      "metin": "Tek gecede."
+    },
+    {
+      "no": 16,
+      "baslangic": 59.99,
+      "bitis": 61.42,
+      "sure": 1.43,
+      "metin": "Ama asıl darbe üç gün sonra geldi."
+    },
+    {
+      "no": 17,
+      "baslangic": 61.42,
+      "bitis": 68.08,
+      "sure": 6.66,
+      "metin": "Sabit kur bırakıldı ve dolar bir gecede altı yüz seksen beş bin liradan dokuz yüz kırk bine fırladı."
+    },
+    {
+      "no": 18,
+      "baslangic": 68.08,
+      "bitis": 69.23,
+      "sure": 1.15,
+      "metin": "Maaşın aynı kaldı."
+    },
+    {
+      "no": 19,
+      "baslangic": 69.23,
+      "bitis": 72.59,
+      "sure": 3.36,
+      "metin": "Ama cebindeki paranın dörtte birinden fazlası, sen uyurken eridi."
+    },
+    {
+      "no": 20,
+      "baslangic": 72.59,
+      "bitis": 76.42,
+      "sure": 3.83,
+      "metin": "Yani o hafta Türkiye'yi sarsan şey bir kitapçık değildi."
+    },
+    {
+      "no": 21,
+      "baslangic": 76.42,
+      "bitis": 80.11,
+      "sure": 3.69,
+      "metin": "Piyasaların en çok korktuğu şeydi: belirsizlik."
+    },
+    {
+      "no": 22,
+      "baslangic": 80.11,
+      "bitis": 82.49,
+      "sure": 2.38,
+      "metin": "Ve onu tek bir cümle başlattı."
+    },
+    {
+      "no": 23,
+      "baslangic": 82.49,
+      "bitis": 86.05,
+      "sure": 3.56,
+      "metin": "Her gün bir merak için gubigufi'yi takip et."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

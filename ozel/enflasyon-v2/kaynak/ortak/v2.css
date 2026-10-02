@@ -1,0 +1,12 @@
+@import url(fonts/fonts.css);
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #0B0B0E; }
+#sahne, #sahne > * { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+#gl { display: block; }
+.t { position: absolute; white-space: nowrap; text-align: center; line-height: .92; }
+.hud { position: absolute; font-family: 'Martian Mono', monospace; font-weight: 500; font-size: 24px; letter-spacing: 4px; color: rgba(242,239,230,.75); }
+#hudk, #flas, #gren, #vin { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; pointer-events: none; }
+#flas { background: #fff; opacity: 0; }
+#gren { background-size: 270px 480px; opacity: .07; mix-blend-mode: overlay; }
+#vin { background: radial-gradient(ellipse at 50% 45%, transparent 50%, rgba(0,0,0,.6) 100%); }
+.tag { position: absolute; left: 540px; top: 1500px; padding: 26px 70px 30px 60px; background: #F2C230; color: #0B0B0E; border-radius: 26px 110px 110px 26px; font-family: 'Big Shoulders Display'; font-weight: 900; font-size: 170px; line-height: .9; box-shadow: 0 26px 0 #6A5200, 0 40px 80px rgba(0,0,0,.6); text-align: center; white-space: nowrap; }
+.tag small { display: block; font-family: 'Martian Mono'; font-weight: 500; font-size: 26px; letter-spacing: 4px; line-height: 1.4; }

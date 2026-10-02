@@ -1,0 +1,220 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 58.12,
+  "konusma_bloklari": [
+    [
+      0.0,
+      1.416
+    ],
+    [
+      1.878,
+      3.762
+    ],
+    [
+      4.156,
+      4.864
+    ],
+    [
+      5.138,
+      6.934
+    ],
+    [
+      7.469,
+      9.05
+    ],
+    [
+      9.641,
+      12.73
+    ],
+    [
+      13.162,
+      14.969
+    ],
+    [
+      15.47,
+      17.133
+    ],
+    [
+      17.421,
+      18.779
+    ],
+    [
+      19.277,
+      20.262
+    ],
+    [
+      20.856,
+      24.101
+    ],
+    [
+      24.671,
+      27.804
+    ],
+    [
+      28.267,
+      30.659
+    ],
+    [
+      31.192,
+      32.72
+    ],
+    [
+      33.195,
+      36.189
+    ],
+    [
+      36.639,
+      39.248
+    ],
+    [
+      39.713,
+      41.538
+    ],
+    [
+      42.032,
+      45.254
+    ],
+    [
+      45.702,
+      46.88
+    ],
+    [
+      47.173,
+      49.275
+    ],
+    [
+      49.858,
+      54.337
+    ],
+    [
+      54.83,
+      56.046
+    ],
+    [
+      56.335,
+      57.841
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 1.42,
+      "sure": 1.42,
+      "metin": "Bir çarkı çevirdiler."
+    },
+    {
+      "no": 2,
+      "baslangic": 1.42,
+      "bitis": 3.76,
+      "sure": 2.35,
+      "metin": "Çark rastgele bir sayıda durdu."
+    },
+    {
+      "no": 3,
+      "baslangic": 3.76,
+      "bitis": 6.93,
+      "sure": 3.17,
+      "metin": "Ve bu sayı, insanların cevabını değiştirdi."
+    },
+    {
+      "no": 4,
+      "baslangic": 6.93,
+      "bitis": 9.05,
+      "sure": 2.12,
+      "metin": "Bin dokuz yüz yetmiş dört."
+    },
+    {
+      "no": 5,
+      "baslangic": 9.05,
+      "bitis": 12.73,
+      "sure": 3.68,
+      "metin": "Psikologlar Tversky ve Kahneman bir deney yaptı."
+    },
+    {
+      "no": 6,
+      "baslangic": 12.73,
+      "bitis": 18.78,
+      "sure": 6.05,
+      "metin": "Önce bir şans çarkı çevrildi: Bazı gruplarda onda durdu, bazılarında altmış beşte."
+    },
+    {
+      "no": 7,
+      "baslangic": 18.78,
+      "bitis": 24.1,
+      "sure": 5.32,
+      "metin": "Sonra soru geldi: Birleşmiş Milletler'deki ülkelerin yüzde kaçı Afrikalı?"
+    },
+    {
+      "no": 8,
+      "baslangic": 24.1,
+      "bitis": 27.8,
+      "sure": 3.7,
+      "metin": "Çarkta on görenler, ortalama yüzde yirmi beş dedi."
+    },
+    {
+      "no": 9,
+      "baslangic": 27.8,
+      "bitis": 30.66,
+      "sure": 2.86,
+      "metin": "Altmış beş görenler ise, yüzde kırk beş."
+    },
+    {
+      "no": 10,
+      "baslangic": 30.66,
+      "bitis": 32.72,
+      "sure": 2.06,
+      "metin": "Buna çapa etkisi deniyor."
+    },
+    {
+      "no": 11,
+      "baslangic": 32.72,
+      "bitis": 36.19,
+      "sure": 3.47,
+      "metin": "Duyduğun ilk sayı, beynine bir çapa gibi takılıyor."
+    },
+    {
+      "no": 12,
+      "baslangic": 36.19,
+      "bitis": 39.25,
+      "sure": 3.06,
+      "metin": "Sonraki tahminin, ondan pek uzaklaşamıyor."
+    },
+    {
+      "no": 13,
+      "baslangic": 39.25,
+      "bitis": 41.54,
+      "sure": 2.29,
+      "metin": "Üstelik uzmanlar da kurtulamıyor."
+    },
+    {
+      "no": 14,
+      "baslangic": 41.54,
+      "bitis": 45.25,
+      "sure": 3.72,
+      "metin": "Almanya'da deneyimli hâkimlere hileli zar attırıldı."
+    },
+    {
+      "no": 15,
+      "baslangic": 45.25,
+      "bitis": 49.27,
+      "sure": 4.02,
+      "metin": "Yüksek zar gelenler, aynı dosyaya daha uzun ceza verdi."
+    },
+    {
+      "no": 16,
+      "baslangic": 49.27,
+      "bitis": 54.34,
+      "sure": 5.06,
+      "metin": "İşte bu yüzden etiketlerde önce, üstü çizili yüksek fiyatı görürsün."
+    },
+    {
+      "no": 17,
+      "baslangic": 54.34,
+      "bitis": 57.84,
+      "sure": 3.5,
+      "metin": "Bir dahaki pazarlıkta, ilk sayıyı söyleyen sen ol."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

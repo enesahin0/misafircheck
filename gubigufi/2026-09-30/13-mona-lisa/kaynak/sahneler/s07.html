@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 42.55; const TP = {"gubi": [[1.2, "merak"], [8.2, "sasir"]], "gufi": []};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/ml.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = s.length * fs * .62 + 70; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+const TL = ML2.LOUVRE;
+const SAFAK = { fon1: '#8C86DC', fon2: '#746CC8', orta: '#5C52AC', koyu: '#453C8E', cokKoyu: '#2E276A', acik: '#C2BCF4', vurgu: '#FFC24C', vurgu2: '#FF8FA8', isik: '#ECE8FF', ten: '#F5A8C0' };
+const INSAN = [['#E8505B', '#2A1E5E', 'kakul', '#2A1E5E'], ['#2E9A9C', '#3A2A20', 'kisa', '#3A2A20'], ['#FFB44C', '#1B1F5E', 'atkuyrugu', '#6A3A20'], ['#8A6FE0', '#2A2A30', 'uzun', '#1B1F5E'], ['#6CC04A', '#3A2A20', 'kisa', '#8A5A3C']];
+const insan = (i, x, y, boy, ek = {}) => { const [u, a, st, sr] = INSAN[i % INSAN.length]; return KS.karakter(Object.assign({ x, y, boy, ust: u, alt: a, sac: { tip: st, renk: sr }, ten: '#F7B39A' }, ek)); };
+
+window.renderAt = t => {
+  let o = '';
+  const g = E(A(t, 5.0, 5.5));
+  if (g < 1) {
+    const T = CV.ton('kum'); let a = ML2.cati(T, t);
+    const ac = E(A(t, .9, 1.6));
+    a += ML.sandik(620, 1450, 1.2, ac, ac > .2 ? `<g transform="translate(0 -175) rotate(90) scale(.8)">` + ML.cerceve(0, 0, 110, 170, ML.monaLisa(0, 0, 110, 170)).replace(/fill="#000" opacity=".25"/, 'fill="none"') + `</g>` : '');
+    const yl = pop(t, 2.2); if (yl > 0) a += grp(`<rect x="-170" y="-70" width="340" height="140" rx="40" fill="#C0583A"/>` + txt(FX.sayac(t, 2.2, 3.6, 0, 2) + ' YIL', 0, 26, 76, '#FFF3E0'), 540, 760, yl);
+    a += gubi(t, { x: 180, y: 780, boy: 100, bakHedef: [620, 1300] });
+    o += `<g opacity="${1 - g}">${a}</g>`;
+  }
+  if (g > 0) {
+    const T = CV.ton('adacayi');
+    let b = `<rect width="1080" height="1920" fill="${T.fon1}"/>` + `<rect x="0" y="1180" width="1080" height="740" fill="${T.koyu}"/><rect x="0" y="1180" width="1080" height="24" fill="${T.cokKoyu}"/>` + CV.raf(60, 330, 360, T, 5) + CV.lamba(950, 1180, .9, T) + CV.bitki(110, 1180, .8, T);
+    const h = H.ciz({ ulkeler: H.kita('EU'), sigdir: H.ulke('İtalya', 'İsviçre', 'Belçika', 'Avusturya'), kenar: 30, vurgu: { 'Fransa': '#8FAE8B', 'İtalya': '#E8A0A0' }, kutu: [110, 420, 860, 720], renk: '#F3E6CC', rim: '#FFF8EC', sinirOp: .6 });
+    b += `<g transform="rotate(-2 540 780)"><rect x="100" y="410" width="880" height="740" rx="24" fill="#F6EEDC"/><defs><clipPath id="avc"><rect x="110" y="420" width="860" height="720" rx="18"/></clipPath></defs><rect x="110" y="420" width="860" height="720" rx="18" fill="#BFDDE6"/><g clip-path="url(#avc)">${h.svg}</g></g>`;
+    const [px, py] = h.p([2.35, 48.86]), [fx, fy] = h.p([11.26, 43.77]);
+    b += H.igne(px, py, '#2E9A9C', .9, 'Paris');
+    const yolp = E(A(t, 5.8, 7.6)); if (yolp > 0) { const mx = (px + fx) / 2 + 60, my = (py + fy) / 2 - 80; let d = `M${px} ${py - 50}`; for (let i = 1; i <= 24 * yolp; i++) { const u = i / 24; d += ` L${(1 - u) * (1 - u) * px + 2 * (1 - u) * u * mx + u * u * fx} ${(1 - u) * (1 - u) * (py - 50) + 2 * (1 - u) * u * my + u * u * (fy - 50)}`; }
+      b += `<path d="${d}" stroke="#C0583A" stroke-width="9" stroke-dasharray="20 14" fill="none" stroke-linecap="round"/>`; }
+    const fp = pop(t, 7.6); if (fp > 0) b += grp(H.igne(0, 0, '#C0583A', 1, 'Floransa'), fx, fy, fp);
+    const yk = pop(t, 8.3); if (yk > 0) b += grp(`<rect x="-160" y="-54" width="320" height="108" rx="30" fill="#7A2E3A"/>` + txt('1913', -40, 20, 56, '#FFF3E0') + `<circle cx="80" cy="-6" r="22" fill="none" stroke="#FFF3E0" stroke-width="9"/><circle cx="118" cy="-6" r="22" fill="none" stroke="#FFF3E0" stroke-width="9"/>`, fx - 40, fy + 110, yk);
+    b += CV.kupa(880, 1180, 1.2, T.vurgu, 1, t) + gubi(t, { x: 540, y: 1260, boy: 100, bakHedef: yolp < 1 ? [px + (fx - px) * yolp, py + (fy - py) * yolp] : [fx, fy] });
+    o += `<g opacity="${g}">${b}</g>`;
+  }
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>
