@@ -59,10 +59,10 @@ window.renderAt = t => {
   const s = pop(t, 6.25); if (s > 0) o += grp(AU.panel(-330, -70, 660, 140, C.LAC) + AU.yaz('2017 · İLK KEZ GÖZLENDİ', 0, 16, 44, C.ALTA), 540, 420, s);
   const dol = A(t, 5.0, 8.5);
   const gx = 800 + 30 * Math.sin(t * 1.2), gy = 1190 + 20 * Math.sin(t * 1.7), bx = 250 + 20 * Math.sin(t * 1.4 + 1), by = 1150 + 24 * Math.sin(t * 1.1);
-  const AB = astro('gubi', t, { x: bx, y: by + 40, r: 82, duygu: t > tc ? 'sasir' : 'merak', bakHedef: [cx, cy], kolSol: 210, kolSag: -40 });
-  const AF = astro('gufi', t, { x: gx, y: gy + 40, r: 92, duygu: t > 5 ? 'mutlu' : 'merak', bakHedef: [cx, cy], kolSol: 225, kolSag: 20 });
-  o += AB.svg + AF.svg + AL.kavanoz(AF.sol[0], AF.sol[1] + 10, 1.0, dol);
-  if (t > tc + .6) for (let i = 0; i < 6; i++) { const p = ((t - tc) * .8 + i / 6) % 1; o += `<circle cx="${cx + (AF.sol[0] - cx) * p}" cy="${cy + (AF.sol[1] - 60 - cy) * p}" r="7" fill="${G.AA}" opacity="${1 - p * .5}"/>`; }
+  o += gubi(t, { x: bx, y: by, boy: 180, duygu: t > tc ? 'sasir' : 'merak', ust: BILGE, bakHedef: [cx, cy] }) + AL.astroKask(bx, by, 180);
+  o += gufi(t, { x: gx, y: gy, boy: 200, duygu: t > 5 ? 'mutlu' : 'merak', isaretHedef: [gx - 120, gy - 230], bakHedef: [cx, cy] }) + AL.astroKask(gx, gy, 200);
+  o += AL.kavanoz(gx - 125, gy - 150, 1.1, dol);
+  if (t > tc + .6) for (let i = 0; i < 6; i++) { const p = ((t - tc) * .8 + i / 6) % 1; o += `<circle cx="${cx + (gx - 125 - cx) * p}" cy="${cy + (gy - 200 - cy) * p}" r="7" fill="${G.AA}" opacity="${1 - p * .5}"/>`; }
   $('dinamik').innerHTML = `<g transform="rotate(${-4 + 8 * A(t, 0, 9.9)} 540 900)">` + o + '</g>';
 };
 </script>

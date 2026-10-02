@@ -54,10 +54,9 @@ window.renderAt = t => {
   w += AL.gencDunya(540, 2250, 1260, t);
   const c = pop(t, .4); if (c > 0) w += grp(AU.cip('MİLYARLARCA YIL ÖNCE', 0, 0, '#FFB45C', C.LAC, 32), 540, 420, c);
   const gx = 160 + 760 * E(A(t, .6, 5.0)), gy = 1000;
-  const AF = astro('gufi', t, { x: gx, y: gy, r: 70, duygu: 'korku', kolSol: 210, kolSag: -80 });
-  w += AF.svg + AL.semsiye(AF.sag[0], AF.sag[1] - 110, .9, '#4A8AD8');
-  for (let i = 0; i < 4; i++) { const d = t - (1.2 + i * .9); if (d > 0 && d < .5) w += AL.parilti(AF.sag[0] + (i % 2 ? 50 : -50), AF.sag[1] - 220 + d * 60, 26, 1 - d * 2); }
-  w += astro('gubi', t, { x: 820, y: 760 + 20 * Math.sin(t * 2), r: 64, duygu: 'sasir', bakHedef: [gx, gy], kolSol: 160, kolSag: -30 }).svg;
+  w += gufi(t, { x: gx, y: gy, boy: 170, duygu: 'korku', isaretHedef: [gx + 10, gy - 260] }) + AL.astroKask(gx, gy, 170) + AL.semsiye(gx + 10, gy - 200, .95, '#4A8AD8');
+  for (let i = 0; i < 4; i++) { const d = t - (1.2 + i * .9); if (d > 0 && d < .5) w += AL.parilti(gx + 10 + (i % 2 ? 50 : -50), gy - 320 + d * 60, 26, 1 - d * 2); }
+  w += gubi(t, { x: 820, y: 640 + 20 * Math.sin(t * 2), boy: 150, duygu: 'sasir', ust: BILGE, bakHedef: [gx, gy] }) + AL.astroKask(820, 640 + 20 * Math.sin(t * 2), 150);
   $('dinamik').innerHTML = kam(w, { dy: -260 * (1 - E(A(t, 0, 2.2))) });
 };
 </script>

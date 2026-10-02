@@ -365,4 +365,3 @@ Paketin palet/font/stack önerileri ALINMADI (çizim stilimiz, renklerimiz, kitl
 | 27 | Asgari Ücret: Dolar mı, Altın mı? | Grafik ağırlıklı karşılaştırma (dolar/altın, kelime anlamı, maliyet pastası, Avrupa sıralaması); Gubi veznedar, Gufi vatandaş; kamera her sahnede farklı | metinde 'vergi' ifadesi hatalı — grafikte düzeltildi |
 | 28 | Altın: Uzaydan Gelen Servet | Kilonova → göktaşı → paslanmazlık → Mısır → Lidya/Midas → simya → Mansa Musa → küp kıyasları → yastık altı → CERN; maskotlar her sahnede oyuncu; kask içinde şapka yok kuralı | 114 sn (uzun) |
 
-- **ASTRONOT KURALI (#28):** Uzay sahnelerinde maskot cam fanusa konmaz; beyaz astronot tulumu (kollar, bacaklar, sırt çantası, göğüs paneli) çizilir ve maskot yuvarlak cam kaskın İÇİNDE ORTALI durur (uret.py `astro()` yardımcısı). Kask içinde şapka/aksesuar olmaz.
