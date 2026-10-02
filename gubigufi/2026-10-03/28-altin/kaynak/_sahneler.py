@@ -24,8 +24,8 @@ window.renderAt = t => {
   const s = pop(t, 6.25); if (s > 0) o += grp(AU.panel(-330, -70, 660, 140, C.LAC) + AU.yaz('2017 · İLK KEZ GÖZLENDİ', 0, 16, 44, C.ALTA), 540, 420, s);
   const dol = A(t, 5.0, 8.5);
   const gx = 800 + 30 * Math.sin(t * 1.2), gy = 1190 + 20 * Math.sin(t * 1.7), bx = 250 + 20 * Math.sin(t * 1.4 + 1), by = 1150 + 24 * Math.sin(t * 1.1);
-  o += gubi(t, { x: bx, y: by, boy: 180, duygu: t > tc ? 'sasir' : 'merak', ust: BILGE, bakHedef: [cx, cy] }) + AL.astroKask(bx, by, 180);
-  o += gufi(t, { x: gx, y: gy, boy: 200, duygu: t > 5 ? 'mutlu' : 'merak', isaretHedef: [gx - 120, gy - 230], bakHedef: [cx, cy] }) + AL.astroKask(gx, gy, 200);
+  o += gubi(t, { x: bx, y: by, boy: 180, duygu: t > tc ? 'sasir' : 'merak', ust: BILGE, bakHedef: [cx, cy] }) + AL.astroKask(bx, by, 180, 'gubi');
+  o += gufi(t, { x: gx, y: gy, boy: 200, duygu: t > 5 ? 'mutlu' : 'merak', isaretHedef: [gx - 120, gy - 230], bakHedef: [cx, cy] }) + AL.astroKask(gx, gy, 200, 'gufi');
   o += AL.kavanoz(gx - 125, gy - 150, 1.1, dol);
   if (t > tc + .6) for (let i = 0; i < 6; i++) { const p = ((t - tc) * .8 + i / 6) % 1; o += `<circle cx="${cx + (gx - 125 - cx) * p}" cy="${cy + (gy - 200 - cy) * p}" r="7" fill="${G.AA}" opacity="${1 - p * .5}"/>`; }
   $('dinamik').innerHTML = `<g transform="rotate(${-4 + 8 * A(t, 0, 9.9)} 540 900)">` + o + '</g>';
@@ -44,10 +44,10 @@ window.renderAt = t => {
       w += `<circle cx="${tx}" cy="${ty}" r="9" fill="${G.A}"/><circle cx="${tx}" cy="${ty}" r="${14 + 4 * Math.sin(t * 5 + i)}" fill="${G.AA}" opacity=".35"/>` + (i % 3 === 0 ? AU.Tm('Au', tx + Math.cos(an) * 34, ty + Math.sin(an) * 34, 24, G.AA) : ''); } });
   // Gufi'nin göktaşı: sağ üstten süzülür, kürenin sol üstüne iner
   const gq = E(A(t, .2, 4.2)), an0 = -2.45, lx = cx + Math.cos(an0) * r * .98, ly = cy + Math.sin(an0) * r * .98, mx = 1180 + (lx - 1180) * gq, my = 140 + (ly - 140) * gq;
-  if (t < 4.2) w += AL.meteor(mx, my, 1.25, 150) + gufi(t, { x: mx + 6, y: my - 26, boy: 120, duygu: 'korku', bakHedef: [cx, cy] }) + AL.astroKask(mx + 6, my - 26, 120);
-  else { const e = t - 4.2; w += (e < .5 ? `<circle cx="${lx}" cy="${ly}" r="${30 + 200 * e}" fill="#FFE9A8" opacity="${.85 * (1 - e * 2)}"/>` : '') + `<circle cx="${lx}" cy="${ly}" r="12" fill="${G.A}"/>` + gufi(t, { x: lx + 40, y: ly - 4 - 60 * Math.abs(Math.sin(Math.min(e, .6) * 5.2)) * Math.max(0, 1 - e), boy: 120, duygu: 'mutlu', bakHedef: 'kamera' }) + AL.astroKask(lx + 40, ly - 4 - 60 * Math.abs(Math.sin(Math.min(e, .6) * 5.2)) * Math.max(0, 1 - e), 120); }
+  if (t < 4.2) w += AL.meteor(mx, my, 1.25, 150) + gufi(t, { x: mx + 6, y: my - 26, boy: 150, duygu: 'korku', bakHedef: [cx, cy] }) + AL.astroKask(mx + 6, my - 26, 150, 'gufi');
+  else { const e = t - 4.2; w += (e < .5 ? `<circle cx="${lx}" cy="${ly}" r="${30 + 200 * e}" fill="#FFE9A8" opacity="${.85 * (1 - e * 2)}"/>` : '') + `<circle cx="${lx}" cy="${ly}" r="12" fill="${G.A}"/>` + gufi(t, { x: lx + 40, y: ly - 4 - 60 * Math.abs(Math.sin(Math.min(e, .6) * 5.2)) * Math.max(0, 1 - e), boy: 150, duygu: 'mutlu', bakHedef: 'kamera' }) + AL.astroKask(lx + 40, ly - 4 - 60 * Math.abs(Math.sin(Math.min(e, .6) * 5.2)) * Math.max(0, 1 - e), 150, 'gufi'); }
   const by = 1580 + 18 * Math.sin(t * 1.6);
-  w += gubi(t, { x: 820, y: by, boy: 170, duygu: 'sasir', ust: BILGE, bakHedef: [cx, cy] }) + AL.astroKask(820, by, 170);
+  w += gubi(t, { x: 820, y: by, boy: 130, duygu: 'sasir', ust: BILGE, bakHedef: [cx, cy] }) + AL.astroKask(820, by, 130, 'gubi');
   let o = kam(w, { y: cy, k: 1.0 + .1 * E(A(t, 0, 5.36)) });
   const c = pop(t, .4); if (c > 0 && t < 3.2) o += grp(AU.cip('MİLYARLARCA YIL ÖNCE', 0, 0, '#FFB45C', C.LAC, 32), 540, 420, c);
   const c2 = pop(t, 3.2); if (c2 > 0) o += grp(AU.cip('GÖKTAŞLARI ALTIN GETİRDİ', 0, 0, G.A, C.LAC, 30), 540, 420, c2);

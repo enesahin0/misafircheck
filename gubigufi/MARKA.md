@@ -365,3 +365,5 @@ Paketin palet/font/stack önerileri ALINMADI (çizim stilimiz, renklerimiz, kitl
 | 27 | Asgari Ücret: Dolar mı, Altın mı? | Grafik ağırlıklı karşılaştırma (dolar/altın, kelime anlamı, maliyet pastası, Avrupa sıralaması); Gubi veznedar, Gufi vatandaş; kamera her sahnede farklı | metinde 'vergi' ifadesi hatalı — grafikte düzeltildi |
 | 28 | Altın: Uzaydan Gelen Servet | Kilonova → göktaşı → paslanmazlık → Mısır → Lidya/Midas → simya → Mansa Musa → küp kıyasları → yastık altı → CERN; maskotlar her sahnede oyuncu; kask içinde şapka yok kuralı | 114 sn (uzun) |
 
+
+- **CAM KASK KURALI (#28):** Maskot cam kask/fanus içindeyse kask gövdeyi TAMAMEN içine alır ve ortalıdır: Gubi'de y = gövde merkezi (r = .62·boy), Gufi'de gövde merkezi y − .52·boy (r = .8·boy). Kask boyu karakterin boyuna göre (Gufi > Gubi). `AL.astroKask(x, y, boy, kim)`.

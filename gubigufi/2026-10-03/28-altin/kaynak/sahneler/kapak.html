@@ -18,8 +18,8 @@ function astro(kim, t, { x, y, r = 90, duygu = 'merak', bakHedef = null, kolSol 
   o += R(x - .55 * r, cy + .78 * r, 1.1 * r, .32 * r, .14 * r, KOY);
   const cid = 'ak' + kim + Math.round(x) + Math.round(y);
   o += `<defs><clipPath id="${cid}"><circle cx="${x}" cy="${cy}" r="${r * .96}"/></clipPath></defs><circle cx="${x}" cy="${cy}" r="${r}" fill="#1B2A55" opacity=".55"/>`;
-  const mb = r * (kim === 'gubi' ? 1.2 : 1.05);
-  o += `<g clip-path="url(#${cid})">` + M.canli(kim, { t, x, y: cy + mb * (kim === 'gubi' ? .3 : .5), boy: mb, duygu, bakHedef, parla: 0, eller: false, tepkiler: [] }) + '</g>';
+  const mb = r * (kim === 'gubi' ? 1.45 : 1.15);
+  o += `<g clip-path="url(#${cid})">` + M.canli(kim, { t, x, y: cy + (kim === 'gubi' ? 0 : mb * .52), boy: mb, duygu, bakHedef, parla: 0, eller: false, tepkiler: [] }) + '</g>';
   o += `<circle cx="${x}" cy="${cy}" r="${r}" fill="#BFE8FF" opacity=".12"/><circle cx="${x}" cy="${cy}" r="${r}" fill="none" stroke="#E8F6FF" stroke-width="${r * .07}" opacity=".85"/><path d="M${x - r * .62} ${cy - r * .45} A${r * .78} ${r * .78} 0 0 1 ${x - r * .05} ${cy - r * .8}" stroke="#FFFFFF" stroke-width="${r * .08}" fill="none" opacity=".8" stroke-linecap="round"/>`;
   return { svg: o, sol: [l3, l4], sag: [r3, r4] };
 }

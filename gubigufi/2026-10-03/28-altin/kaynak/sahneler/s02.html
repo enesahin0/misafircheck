@@ -41,8 +41,8 @@ function astro(kim, t, { x, y, r = 90, duygu = 'merak', bakHedef = null, kolSol 
   o += R(x - .55 * r, cy + .78 * r, 1.1 * r, .32 * r, .14 * r, KOY);
   const cid = 'ak' + kim + Math.round(x) + Math.round(y);
   o += `<defs><clipPath id="${cid}"><circle cx="${x}" cy="${cy}" r="${r * .96}"/></clipPath></defs><circle cx="${x}" cy="${cy}" r="${r}" fill="#1B2A55" opacity=".55"/>`;
-  const mb = r * (kim === 'gubi' ? 1.2 : 1.05);
-  o += `<g clip-path="url(#${cid})">` + M.canli(kim, { t, x, y: cy + mb * (kim === 'gubi' ? .3 : .5), boy: mb, duygu, bakHedef, parla: 0, eller: false, tepkiler: tepkiler ? TP[kim] : [] }) + '</g>';
+  const mb = r * (kim === 'gubi' ? 1.45 : 1.15);
+  o += `<g clip-path="url(#${cid})">` + M.canli(kim, { t, x, y: cy + (kim === 'gubi' ? 0 : mb * .52), boy: mb, duygu, bakHedef, parla: 0, eller: false, tepkiler: tepkiler ? TP[kim] : [] }) + '</g>';
   o += `<circle cx="${x}" cy="${cy}" r="${r}" fill="#BFE8FF" opacity=".12"/><circle cx="${x}" cy="${cy}" r="${r}" fill="none" stroke="#E8F6FF" stroke-width="${r * .07}" opacity=".85"/><path d="M${x - r * .62} ${cy - r * .45} A${r * .78} ${r * .78} 0 0 1 ${x - r * .05} ${cy - r * .8}" stroke="#FFFFFF" stroke-width="${r * .08}" fill="none" opacity=".8" stroke-linecap="round"/>`;
   return { svg: o, sol: [l3, l4], sag: [r3, r4] };
 }
@@ -59,8 +59,8 @@ window.renderAt = t => {
   const s = pop(t, 6.25); if (s > 0) o += grp(AU.panel(-330, -70, 660, 140, C.LAC) + AU.yaz('2017 · İLK KEZ GÖZLENDİ', 0, 16, 44, C.ALTA), 540, 420, s);
   const dol = A(t, 5.0, 8.5);
   const gx = 800 + 30 * Math.sin(t * 1.2), gy = 1190 + 20 * Math.sin(t * 1.7), bx = 250 + 20 * Math.sin(t * 1.4 + 1), by = 1150 + 24 * Math.sin(t * 1.1);
-  o += gubi(t, { x: bx, y: by, boy: 180, duygu: t > tc ? 'sasir' : 'merak', ust: BILGE, bakHedef: [cx, cy] }) + AL.astroKask(bx, by, 180);
-  o += gufi(t, { x: gx, y: gy, boy: 200, duygu: t > 5 ? 'mutlu' : 'merak', isaretHedef: [gx - 120, gy - 230], bakHedef: [cx, cy] }) + AL.astroKask(gx, gy, 200);
+  o += gubi(t, { x: bx, y: by, boy: 180, duygu: t > tc ? 'sasir' : 'merak', ust: BILGE, bakHedef: [cx, cy] }) + AL.astroKask(bx, by, 180, 'gubi');
+  o += gufi(t, { x: gx, y: gy, boy: 200, duygu: t > 5 ? 'mutlu' : 'merak', isaretHedef: [gx - 120, gy - 230], bakHedef: [cx, cy] }) + AL.astroKask(gx, gy, 200, 'gufi');
   o += AL.kavanoz(gx - 125, gy - 150, 1.1, dol);
   if (t > tc + .6) for (let i = 0; i < 6; i++) { const p = ((t - tc) * .8 + i / 6) % 1; o += `<circle cx="${cx + (gx - 125 - cx) * p}" cy="${cy + (gy - 200 - cy) * p}" r="7" fill="${G.AA}" opacity="${1 - p * .5}"/>`; }
   $('dinamik').innerHTML = `<g transform="rotate(${-4 + 8 * A(t, 0, 9.9)} 540 900)">` + o + '</g>';
