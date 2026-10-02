@@ -311,7 +311,13 @@ def _dizi(parcalar):
 GUBI_NOTA = [659.3, 740.0, 830.6, 987.8, 1108.7, 1318.5, 1480, 1661, 1975.5]  # Mi majör pentatonik
 
 
+MASKOT_SES_ESLE = {'dans': 'mutlu', 'kos': 'zipla', 'titre': 'korku', 'esne': 'uzgun', 'uyu': 'uzgun', 'tokezle': 'sasir', 'bayil': 'uzgun',
+    'evet': 'kararli', 'hayir': 'kararli', 'sinir': 'korku', 'utan': 'selam', 'agla': 'uzgun', 'ask': 'aha', 'egil': 'selam', 'takla': 'donus',
+    'yorgun': 'uzgun', 'saklan': 'gozKapa', 'kafaKasi': 'dusun', 'ayakTap': 'kararli'}  # v3 hareketleri → en yakın imza sesi
+
+
 def maskot_ses(kim, tip='merak'):
+    tip = MASKOT_SES_ESLE.get(tip, tip)
     g = GUBI_NOTA
     if kim == 'gubi':
         P = {

@@ -377,3 +377,11 @@ Neden tuttu — sonraki videolarda bu formül varsayılan:
 4. **Maskotlar deneyin içinde iş yapar** (kameraman, düğmeye basan, kör noktaya saklanan, yem veren, irkilen).
 5. **Gündelik benzetme** ("sen de tren camından bakarken…") ve sona doğru artan "vay be" bilgileri (UV → Picasso → kanser %99).
 6. Rakamlar/denemeler doğrulanır; çelişkili bilgi (saniyede kaç kare) dışarıda bırakılır.
+
+## MASKOT v3 (yaşlı haller · yeni duygular · yeni hareketler · canlılık)
+Kaynak: `marka/ortak/maskot.js` (yeni videoda ortak/ kopyalanırken maskot.js BURADAN alınır). Önizleme: `marka/demo/maskot_v3/maskot_v3_ozet.png` (+ demo mp4).
+- **Yaşlı:** `gubi(t, { yasli: true, ... })` / `gufi(t, { yasli: true })` → solgun renk, beyaz gür kaş (duyguya göre şekil alır), sarkık göz kapağı, göz altı + kaz ayağı çizgileri, pembe yanak; Gufi: beyaz bıyık + BASTON (`baston: false` kapatır); Gubi: beyaz perçem + sakal tutamı; daha yavaş, hafif titrek. Tüm duygu/hareketlerle çalışır. Gerektiğinde (geçmiş/gelecek, "yaşlanınca", nostalji, emeklilik, dede-nine rolü) kullan.
+- **Yeni duygular (duygu:):** sinirli · uykulu · uyu · asik · utangac · aglamakli (+ merak, mutlu, saskin, korku, uzgun, kararli).
+- **Yeni hareketler (tepkiler):** dans · kos · titre · esne · uyu · tokezle · bayil · evet · hayir · sinir · utan · agla · ask · egil · takla · yorgun · saklan · kafaKasi · ayakTap (eskiler: sasir, zipla, mutlu, aha, korku, selam, uzgun, kararli, isaret, alkis, gozKapa, dusun, omuzSilk, kahkaha, goster, donus). Sesleri `ses_lib.maskot_ses` en yakın imza sesine eşler.
+- **Canlılık (varsayılan açık):** tepki yokken kendiliğinden etrafa bakma, minik zıplama, sallanma, derin nefes → maskotlar "stabil/aynı" görünmez. `canlilik: false` ile kapatılır.
+- **Kural:** Bir videoda aynı tepkiyi 3'ten fazla tekrar etme; her sahnede en az bir farklı hareket kullan (TEP tablosunu çeşitlendir).
