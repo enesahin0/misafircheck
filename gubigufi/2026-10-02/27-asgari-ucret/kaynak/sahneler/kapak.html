@@ -1,0 +1,24 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/au.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const R = PR.R, h = HK.hash, C = AU.C;
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  let o = AU.zemin('#0E2A4A', '#123A66', { desen: '$', op: .05 });
+  o += `<path d="M640 0 L1080 0 L1080 1160 L520 1160Z" fill="#3A2A12"/><path d="M640 0 L520 1160" stroke="#FFF3D6" stroke-width="10" opacity=".85"/>`;
+  [170, 250, 370, 560].forEach((v, i) => o += AU.cubuk(90 + i * 100, 1120, 74, v, i === 3 ? C.YES : C.MAV, i === 3 ? C.YESK : C.MAVK));
+  o += AU.piramit(700, 1120, 3, 3, 1.05);
+  o += AU.cip('DOLARLA ↑', 230, 260, C.YES, '#FFFFFF', 40) + AU.cip('ALTINLA ↓', 850, 260, C.KIR, '#FFFFFF', 40);
+  o += `<g transform="translate(560 640)"><circle r="120" fill="#FFF3D6"/><circle r="120" fill="none" stroke="${C.ALT}" stroke-width="10"/>` + AU.yaz('?', 0, 62, 180, C.LAC) + '</g>';
+  o += M.canli('gubi', { t: 1, x: 390, y: 560, boy: 150, duygu: 'mutlu', bakHedef: [560, 640], ust: KO.giy('gubi', [['papyon', { renk: '#E8505B' }], 'gozluk']) });
+  o += M.canli('gufi', { t: 1, x: 920, y: 1150, boy: 210, duygu: 'uzgun', bakHedef: [560, 640], ust: KO.giy('gufi', [['kasket', { renk: '#2A2E40', siper: '#1B1F2A' }]]) });
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#0B1433"/><rect x="0" y="1150" width="1080" height="18" fill="#2FBF71"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#8FE3B4">PARANIN DİLİ</text>`;
+  o += txt('ASGARİ ÜCRET:', 540, 1362, 88) + txt('DOLAR MI, ALTIN MI?', 540, 1458, 74, '#FFD978');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>
