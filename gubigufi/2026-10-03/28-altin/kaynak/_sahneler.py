@@ -30,18 +30,28 @@ window.renderAt = t => {
   if (t > tc + .6) for (let i = 0; i < 6; i++) { const p = ((t - tc) * .8 + i / 6) % 1; o += `<circle cx="${cx + (gx - 125 - cx) * p}" cy="${cy + (gy - 200 - cy) * p}" r="7" fill="${G.AA}" opacity="${1 - p * .5}"/>`; }
   $('dinamik').innerHTML = `<g transform="rotate(${-4 + 8 * A(t, 0, 9.9)} 540 900)">` + o + '</g>';
 };"""
-# 03 — GÖKTAŞI YAĞMURU: genç Dünya; altınlı göktaşları; Gufi şemsiyeyle koşar; kamera aşağı iner
+# 03 — GÖKTAŞI YAĞMURU (v2): genç Dünya küresi; altınlı göktaşları çarpar, altın noktaları birikir; Gufi bir göktaşına binmiş iner; Gubi kaskla izler
 S[3] = r"""
 window.renderAt = t => {
-  let w = AL.uzay(t + 13, { ust: '#140A20', alt: '#3A1A2A' });
-  for (let i = 0; i < 14; i++) { const p = ((t * .55 + h(i)) % 1), x = 1200 - p * 1400 + h(i + 9) * 600 - 200, y = -200 + p * 1350; w += AL.gokTasi(x, y, .7 + h(i + 3) * .7, 40); if (p > .9) w += AL.parilti(x, y + 30, 40 * (1 - (p - .9) * 10), .9); }
-  w += AL.gencDunya(540, 2250, 1260, t);
-  const c = pop(t, .4); if (c > 0) w += grp(AU.cip('MİLYARLARCA YIL ÖNCE', 0, 0, '#FFB45C', C.LAC, 32), 540, 420, c);
-  const gx = 160 + 760 * E(A(t, .6, 5.0)), gy = 1000;
-  w += gufi(t, { x: gx, y: gy, boy: 170, duygu: 'korku', isaretHedef: [gx + 10, gy - 260] }) + AL.astroKask(gx, gy, 170) + AL.semsiye(gx + 10, gy - 200, .95, '#4A8AD8');
-  for (let i = 0; i < 4; i++) { const d = t - (1.2 + i * .9); if (d > 0 && d < .5) w += AL.parilti(gx + 10 + (i % 2 ? 50 : -50), gy - 320 + d * 60, 26, 1 - d * 2); }
-  w += gubi(t, { x: 820, y: 640 + 20 * Math.sin(t * 2), boy: 150, duygu: 'sasir', ust: BILGE, bakHedef: [gx, gy] }) + AL.astroKask(820, 640 + 20 * Math.sin(t * 2), 150);
-  $('dinamik').innerHTML = kam(w, { dy: -260 * (1 - E(A(t, 0, 2.2))) });
+  let w = AL.uzay(t + 13, { ust: '#0A0820', alt: '#1A0E2A' });
+  const cx = 540, cy = 860, r = 300;
+  w += AL.gencKure(cx, cy, r, t);
+  // çarpan göktaşları: hedef açıları küre yüzeyinde (ışıklı taraf)
+  const MT = [[.2, -2.3], [.7, -1.6], [1.1, -2.7], [1.5, -1.2], [2.0, -2.0], [2.5, -2.9], [2.9, -1.45], [3.4, -2.45], [3.9, -1.8], [4.4, -2.15]];
+  MT.forEach(([t0, an], i) => { const tx = cx + Math.cos(an) * r * .92, ty = cy + Math.sin(an) * r * .92, sx = tx + 900, sy = ty - 900, d = t - t0, D = .9;
+    if (d > 0 && d < D) { const q = d / D; w += AL.meteor(sx + (tx - sx) * q, sy + (ty - sy) * q, .55 + h(i) * .35, 135); }
+    if (d >= D) { const e = d - D; if (e < .5) w += `<circle cx="${tx}" cy="${ty}" r="${20 + 140 * e}" fill="#FFE9A8" opacity="${.8 * (1 - e * 2)}"/>` + AL.parilti(tx, ty, 50 * (1 - e * 2), 1);
+      w += `<circle cx="${tx}" cy="${ty}" r="9" fill="${G.A}"/><circle cx="${tx}" cy="${ty}" r="${14 + 4 * Math.sin(t * 5 + i)}" fill="${G.AA}" opacity=".35"/>` + (i % 3 === 0 ? AU.Tm('Au', tx + Math.cos(an) * 34, ty + Math.sin(an) * 34, 24, G.AA) : ''); } });
+  // Gufi'nin göktaşı: sağ üstten süzülür, kürenin sol üstüne iner
+  const gq = E(A(t, .2, 4.2)), an0 = -2.45, lx = cx + Math.cos(an0) * r * .98, ly = cy + Math.sin(an0) * r * .98, mx = 1180 + (lx - 1180) * gq, my = 140 + (ly - 140) * gq;
+  if (t < 4.2) w += AL.meteor(mx, my, 1.25, 150) + gufi(t, { x: mx + 6, y: my - 26, boy: 120, duygu: 'korku', bakHedef: [cx, cy] }) + AL.astroKask(mx + 6, my - 26, 120);
+  else { const e = t - 4.2; w += (e < .5 ? `<circle cx="${lx}" cy="${ly}" r="${30 + 200 * e}" fill="#FFE9A8" opacity="${.85 * (1 - e * 2)}"/>` : '') + `<circle cx="${lx}" cy="${ly}" r="12" fill="${G.A}"/>` + gufi(t, { x: lx + 40, y: ly - 4 - 60 * Math.abs(Math.sin(Math.min(e, .6) * 5.2)) * Math.max(0, 1 - e), boy: 120, duygu: 'mutlu', bakHedef: 'kamera' }) + AL.astroKask(lx + 40, ly - 4 - 60 * Math.abs(Math.sin(Math.min(e, .6) * 5.2)) * Math.max(0, 1 - e), 120); }
+  const by = 1580 + 18 * Math.sin(t * 1.6);
+  w += gubi(t, { x: 820, y: by, boy: 170, duygu: 'sasir', ust: BILGE, bakHedef: [cx, cy] }) + AL.astroKask(820, by, 170);
+  let o = kam(w, { y: cy, k: 1.0 + .1 * E(A(t, 0, 5.36)) });
+  const c = pop(t, .4); if (c > 0 && t < 3.2) o += grp(AU.cip('MİLYARLARCA YIL ÖNCE', 0, 0, '#FFB45C', C.LAC, 32), 540, 420, c);
+  const c2 = pop(t, 3.2); if (c2 > 0) o += grp(AU.cip('GÖKTAŞLARI ALTIN GETİRDİ', 0, 0, G.A, C.LAC, 30), 540, 420, c2);
+  $('dinamik').innerHTML = o;
 };"""
 # 04 — PASLANMAZ + TEL: toprak kesiti, Gubi arkeolog kazar; demir paslanır, altın parlar; 5000 YIL; Gufi 1 gramdan km'lerce tel çeker (pan)
 S[4] = r"""
