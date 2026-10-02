@@ -3,3 +3,5 @@
 *.log
 kare_*.png
 _parcalar/
+node_modules/
+_parcalar/
