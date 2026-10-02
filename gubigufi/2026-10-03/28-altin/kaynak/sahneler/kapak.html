@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/au.js"></script><script src="../ortak/al.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const R = PR.R, h = HK.hash, C = AU.C, G = AL.G;
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  let o = AL.uzay(2) + AL.kilonova(560, 480, .9);
+  o += AL.yuzuk(540, 560, 190, 1.2);
+  const gx = 830, gy = 1060; o += M.canli('gufi', { t: 1, x: gx, y: gy, boy: 230, duygu: 'sasir', bakHedef: [540, 560], isaretHedef: [700, 820] }) + AL.astroKask(gx, gy, 230) + AL.kavanoz(gx - 140, gy - 170, 1.2, .7);
+  const bx = 230, by = 1020; o += M.canli('gubi', { t: 1, x: bx, y: by, boy: 190, duygu: 'mutlu', bakHedef: [540, 560], ust: KO.giy('gubi', ['gozluk']) }) + AL.astroKask(bx, by, 190);
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#140C06"/><rect x="0" y="1150" width="1080" height="18" fill="#F2B630"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#FFD978">ALTININ HİKÂYESİ</text>`;
+  o += txt("ALTIN DÜNYA'DAN", 540, 1362, 84) + txt('DAHA YAŞLI!', 540, 1458, 84, '#FFD978');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>
