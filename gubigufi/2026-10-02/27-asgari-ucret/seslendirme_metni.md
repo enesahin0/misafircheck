@@ -1,49 +1,51 @@
-# #27 — Asgari Ücretin Hikâyesi · "Paranın Dili"
-Kategori: EKONOMİ & PARA. Hedef ~50 sn. Anlatı: MERAK SIRASI. Ton: nötr, merak; siyasi taraf yok, kimse övülmez/suçlanmaz.
-Mekanizma cümlesi: "Asgari ücret kâğıtta 1923'te doğdu, uygulamaya 28 yıl sonra girdi, şehir şehir değişti; tek rakam olması 1974–1989'u buldu, sıfırlar atılınca milyonlar bire döndü."
+# #27 — Asgari Ücret: Dolar mı, Altın mı? · "Paranın Dili"  (v2 — alım gücü + karşılaştırma)
+Kategori: EKONOMİ & PARA. Hedef ~65 sn. Anlatı: MERAK SIRASI. Ton: nötr-merak; siyasi taraf yok, hükümet/parti adı yok.
+Mekanizma cümlesi: "Aynı maaş dolarla ölçülünce yükselmiş, altınla ölçülünce erimiş görünür; çünkü alım gücü neyle ölçtüğüne bağlıdır."
 
 ## 1) ElevenLabs'e YAPIŞTIRILACAK METİN
 
-İki bin dört yılında asgari ücretli, her ay eline üç yüz milyon lira alıyordu. Kâğıt üstünde herkes milyonerdi.
+Asgari ücretle dolar alırsan, son yirmi yılın en iyi dönemindesin. Altın alırsan, en kötüsündesin. İkisi aynı anda nasıl doğru olabilir?
 
-Bir yıl sonra aynı maaş üç yüz elli liraya düştü. Kimse para kaybetmedi. Sadece altı sıfır silindi.
+Önce kelimeye bakalım. Asgari, Arapça kökenli ve "en az" demek. Azami hızdaki "azami"nin tam tersi. Yani asgari ücret, bir işçiye ödenebilecek en düşük para.
 
-Peki bu rakamı kim, ne zamandan beri belirliyor?
+Dünyada bunu ilk deneyen ülke, bin sekiz yüz doksan dörtte Yeni Zelanda oldu. Türkiye'de ilk yönetmelik bin dokuz yüz elli birde çıktı, ama her şehrin rakamı ayrıydı.
 
-Fikir bin dokuz yüz yirmi üçte, İzmir İktisat Kongresi'nde kabul edildi. Ama uygulamaya girmesi tam yirmi sekiz yıl sürdü. İlk yönetmelik ancak bin dokuz yüz elli birde çıktı.
+İki bin dörtte asgari ücretli her ay üç yüz milyon lira alıyordu. Ertesi yıl altı sıfır silindi, maaş üç yüz elli lira oldu.
 
-Üstelik ortada tek bir asgari ücret yoktu. Her şehrin kendi rakamı vardı. Bin dokuz yüz altmış birde İzmir'de on sekiz yaşını geçen bir işçinin günlük asgari ücreti dokuz yüz kuruştu.
+O üç yüz elli lirayla yaklaşık on yedi gram altın alınabiliyordu. Bugünkü yirmi sekiz bin yetmiş beş lirayla, yılbaşı fiyatından, dört gram civarı.
 
-Tüm ülkede ortak bir rakama geçmek bin dokuz yüz yetmiş dördü buldu. Tarım ve sanayi işçisi için ayrı ücret ise bin dokuz yüz seksen dokuza kadar sürdü.
+Ama aynı maaşı dolara çevir. İki bin beşte iki yüz altmış dolar civarıydı. Bu yılbaşında altı yüz elli doları buldu.
 
-Bir detay daha var. Asgari ücretli yıllarca o maaştan gelir vergisi de ödedi. Bu, ancak iki bin yirmi ikide kalktı.
+Sır şurada: Maaş, dolardan daha hızlı arttı. Altın ise sadece burada değil, bütün dünyada rekor üstüne rekor kırdı. Yani alım gücü, neyle ölçtüğüne göre değişiyor.
 
-Bugün net asgari ücret yirmi sekiz bin yetmiş beş lira.
+Bir de görünmeyen kısım var. Asgari ücretli bir çalışanın patrona maliyeti kırk bin liranın üstünde. Cebe giren yirmi sekiz bin. Arası vergi ve sigorta primi.
 
-Eski parayla söylersek: yirmi sekiz milyar lira.
+Avrupa'yla kıyaslarsak, Türkiye otuz üç ülke arasında sondan beşinci. Almanya'da asgari ücret, bunun üç buçuk katından fazla.
 
-Yani bugün asgari ücretli, kâğıt üstünde milyarder.
+Sen maaşını neyle ölçüyorsun: dolar mı, altın mı, market fişi mi? Yorumlara yaz.
 
-Sen ilk maaşını hatırlıyor musun? Yorumlara yaz.
+## 2) Storyboard — grafik ağırlıklı, maskotlar oyunda
+1. KANCA (0–6 sn) — Ekran ikiye bölünür: solda yükselen yeşil DOLAR çubuğu (Gubi tepesinde sevinçle zıplar), sağda eriyen ALTIN yığını (Gufi altınları kucaklar, yığın erir, kucağında tek külçe kalır). Ortada dev "?" — iki taraf birbirine bakar.
+2. KELİME (6–14) — Sözlük kartı DETAY: "ASGARİ (Ar.) = EN AZ". Yanına trafik tabelası: "AZAMİ 50" tabelası Gufi'nin elinde döner, arkası "ASGARİ" çıkar (gag). Ok: "ödenebilecek EN DÜŞÜK ücret".
+3. DÜNYA + TÜRKİYE (14–22) — Dünya haritası, Yeni Zelanda'da pin "1894 · İLK" (Gubi pinin üstüne bayrak diker); Türkiye'ye zoom, 1951 damgası, illerde FARKLI fiyat etiketleri (zıplayan küçük etiketler).
+4. SIFIR SİLGİSİ (22–30) — 300.000.000 TL sayaç; dev silgi altı sıfırı siler, sıfırlar Gubi'nin kafasına "tık tık" düşer; 350 YTL.
+5. ALTIN GRAFİĞİ (30–38) — terazi: 2005 kefesinde 17 gram külçe dizisi, 2026 kefesinde 4 gram; Gufi küçük kefeye bakıp üzülür. Sayılar etiketli (renk tek kanal değil).
+6. DOLAR GRAFİĞİ (38–44) — çubuk grafik 2005 → 2026: ~260 $ → ~650 $; Gubi çubuğun tepesine tırmanır.
+7. SIR (44–52) — Yarış pisti: üç koşucu-ikon (MAAŞ, DOLAR, ALTIN) — maaş dolarla yarışır ve geçer, altın roketle (dünya küresi arkada, "DÜNYA REKORU") herkesi geçer. Etiket: "ALIM GÜCÜ = NEYLE ÖLÇTÜĞÜN". Pull-out.
+8. MALİYET (52–58) — Pasta grafik DETAY: 40.874 TL bütün → 28.075 cebe (Gufi'nin cüzdanı), kalan dilimler "VERGİ" + "SİGORTA PRİMİ" uçar (Gubi patron koltuğunda, hesap makinesi).
+9. AVRUPA (58–64) — Yatay çubuk sıralaması (brüt, euro): Almanya en üstte uzun çubuk, Türkiye sondan 5. — Gufi kısa çubuğun ucunda parmak ucunda durup uzun çubuğa bakar.
+10. KAPANIŞ — üç kart: $ / altın / market fişi; maskotlar her birini işaret eder; "SEN NEYLE ÖLÇÜYORSUN?" + logo çıkışı.
+Kamera çeşitliliği: 1 split sabit, 2 push-in (sözlük), 3 dünya→Türkiye zoom-in, 4 sabit (okunur), 5 tilt-down terazi, 6 tilt-up çubuk, 7 pan (pist) + pull-out, 8 push-in pasta, 9 pan aşağı sıralama, 10 sabit. Aynı hareket arka arkaya yok.
 
-## 2) Storyboard (kısa)
-1. Kanca — 2004: maaş zarfı açılır, banknot yığını tavana kadar; Gufi (vatandaş) kucağına sığdıramaz, Gubi (veznedar, papyon+gözlük) sayıyor; dev "300.000.000 TL" sayacı. "MİLYONER" rozeti Gufi'nin göğsünde.
-2. Silgi — dev silgi altı sıfırı tek tek siler (sıfırlar Gubi'nin kafasına düşer); 350 YTL. Gufi'nin rozeti söner; "KİMSE KAYBETMEDİ" teraziyle: iki kefe eşit.
-3. Soru — Gubi büyüteçle rakama bakar: "KİM BELİRLİYOR?" soru işaretleri.
-4. 1923 İzmir — dönem salonu (fes/şapka değil; 1923 kongre: koyu takım, kalpak bazıları; kişi canlandırma yok → salon + kürsü + boş sıralar, pankart "İZMİR İKTİSAT KONGRESİ 1923"); takvim 1923→1951 hızla akar, örümcek ağı; DETAY: 1951 yönetmelik kâğıdı, mühür.
-5. Şehir şehir — Türkiye haritası, illerde farklı fiyat etiketleri yanıp söner; DETAY: 1961 İzmir "GÜNLÜK 900 KURUŞ · 18 YAŞ ÜSTÜ" etiketi; Gufi işçi (kasket), Gubi elinde liste.
-6. Tek rakam — harita etiketleri tek etikette birleşir (1974); sonra tarla/fabrika iki ayrı kasa 1989'da tek kasaya döner (match cut).
-7. Vergi — maaş zarfından bir dilim "GELİR VERGİSİ" kesilip uçar; 2022 damgası "MUAF"; Gufi rahatlar.
-8. Bugün — 28.075 TL; sayaca sıfırlar geri eklenir: 28.075.000.000 → "28 MİLYAR". Gufi'nin rozeti "MİLYARDER" olur, Gubi kahkaha + omuz silker (ironi).
-9. Kapanış — "İLK MAAŞIN NE KADARDI?" kartı + yorum ikonu; logo çıkışı.
-Kamera: 1 push-in (zarf), 2 sabit (silgi okunur), 4 pan (takvim akışı), 5 harita pull-out, 6 match cut, 8 tilt-up (sayaç büyür). Aynı hareket arka arkaya yok.
-
-## 3) Doğrulama notları
-- 2004 net asgari ücret: 1 Ocak 2004 303.079.500 TL; 1 Temmuz 2004 318.233.475 TL → "üç yüz milyon" ✓. 1 Ocak 2005: 350,15 YTL ✓ (5083 sayılı kanun, 6 sıfır).
-- 1923 İzmir İktisat Kongresi'nde ilke kabulü; 1936 3008 sayılı İş Kanunu'nda hüküm; ilk uygulama 1951 (yönetmelik 13 Ocak 1951) → 28 yıl ✓.
-- 1961 İzmir: 18 yaş üstü günlük 900 kuruş ✓ (tekgida.org.tr tarihçe).
-- 1974'ten itibaren ulusal düzeyde (tarım/sanayi ayrı), 1989'dan itibaren tek asgari ücret ✓.
-- 2022: asgari ücret gelir + damga vergisinden istisna ✓.
-- 2026 net: 28.075,50 TL ✓ → eski parayla 28.075.500.000 = ~28 milyar ✓.
-- KAÇINILAN: yıllara göre "kaç ekmek alınırdı" (kaynaklar çelişiyor), hükümet/parti övgü-yergi.
-- Paylaşım önerisi (GÜNDEM): Şimdi atılabilir (her zaman ilgi görür); ayrıca Aralık'ta Asgari Ücret Tespit Komisyonu'nun ilk toplantısı günü yeniden gündeme gelir → o gün "Bölüm 2: Asgari ücret nasıl belirleniyor?" ile seri yapılabilir.
+## 3) Doğrulama notları (kaynaklar)
+- "Asgari" Ar. kökenli, "en az / en küçük" anlamı; zıttı "azami" ✓.
+- İlk asgari ücret: Yeni Zelanda 1894 (Industrial Conciliation and Arbitration Act), ikinci Victoria/Avustralya 1896 ✓ (ILO kısa tarih, LoC blog).
+- Türkiye ilk yönetmelik 1951, iller/bölgeler bazında ayrı tespit; ulusal tek rakam 1974 (tarım/sanayi ayrı), tek ücret 1989 ✓.
+- 2004 net 303.079.500 TL; 2005 net 350,15 YTL (6 sıfır, 5083 s. kanun) ✓ (Aile Bak. tablosu).
+- 2005 gram altın ~20 TL → ~17,5 gram; 2026 başı ~7.000 TL/gram → ~4–4,6 gram ✓ (doviz.com / cnbce derlemeleri). "civarı" ifadesi bilinçli.
+- Dolar: 2005 350,15 YTL ÷ ~1,34 ≈ 260 $; 2026 Ocak 28.075,50 ÷ ~43 ≈ 650 $ (açıklandığı gün ~656 $) ✓. Bakanlık tablosunda 2002: 184 TL = 126 $.
+- Altının dünya çapında rekor kırması (2024–2026 ons rekorları) ✓ — "sadece burada değil" ifadesi bunun için.
+- İşveren maliyeti 2026: 40.874,63 TL; net 28.075,50; brüt 33.030 ✓ (ÇSGB açıklaması).
+- Eurostat Ocak 2026 (brüt, euro): Türkiye 654 € ile 33 ülke içinde sondan 5.; Almanya 2.343 € → 3,58 kat ✓.
+- KAÇINILAN: "kaç ekmek alınırdı" (kaynaklar çelişkili), hükümet/parti övgü-yergisi, kesin günlük kur.
+- Paylaşım (GÜNDEM): şimdi atılabilir; Aralık'ta Asgari Ücret Tespit Komisyonu ilk toplantısı günü "Bölüm 2: Rakam nasıl belirleniyor?".
