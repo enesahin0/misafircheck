@@ -1,0 +1,6 @@
+@import url(fonts/fonts.css);
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #070709; }
+#kok { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; background: #070709; font-family: 'Outfit', sans-serif; color: #F4F1EA; }
+.ab { position: absolute; left: 0; top: 0; }
+.mono { font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+.c { position: absolute; left: 50%; top: 0; transform-origin: 50% 50%; white-space: nowrap; text-align: center; }
