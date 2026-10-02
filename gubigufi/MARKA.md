@@ -368,3 +368,12 @@ Paketin palet/font/stack önerileri ALINMADI (çizim stilimiz, renklerimiz, kitl
 
 - **CAM KASK KURALI (#28):** Maskot cam kask/fanus içindeyse kask gövdeyi TAMAMEN içine alır ve ortalıdır: Gubi'de y = gövde merkezi (r = .62·boy), Gufi'de gövde merkezi y − .52·boy (r = .8·boy). Kask boyu karakterin boyuna göre (Gufi > Gubi). `AL.astroKask(x, y, boy, kim)`.
 | 29 | Güvercin Kafası | Kafa sabitleme (tut-it), koşu bandı deneyi grafiği, 340° görüş konisi + kör nokta, dur-bak-ilerle polaroidleri, paralaks okları, tren göz takibi, UV, Monet/Picasso, kanser %85→%99 | gerçekçi güvercin kiti gv.js |
+
+## REFERANS VİDEO: #29 GÜVERCİN (kullanıcı: "şimdiye kadarkilerin en iyisi")
+Neden tuttu — sonraki videolarda bu formül varsayılan:
+1. **Herkesin bildiğini ters çeviren kanca** ("kafalarını sallamıyorlar") + hemen görsel kanıt (YANLIŞ! damgası + baş izi noktaları).
+2. **Her deney/iddia bir mini animasyonla GÖSTERİLİR**, sadece söylenmez: ağır çekim + ölçü ızgarası + etiketli oklar (GÖVDE →, BAŞ SABİT 🔒, ≈5 cm), karşılaştırma grafiği (PARKTA merdiven / BANTTA düz çizgi), görüş konisi diyagramı, katman hız okları, inset (göz takip vs kafa).
+3. **Tek gerçekçi ana kahraman nesne** (güvercin kiti) baştan sona aynı tasarımla; hareket modeli bilimsel olarak doğru (tutma %70 / itme %30).
+4. **Maskotlar deneyin içinde iş yapar** (kameraman, düğmeye basan, kör noktaya saklanan, yem veren, irkilen).
+5. **Gündelik benzetme** ("sen de tren camından bakarken…") ve sona doğru artan "vay be" bilgileri (UV → Picasso → kanser %99).
+6. Rakamlar/denemeler doğrulanır; çelişkili bilgi (saniyede kaç kare) dışarıda bırakılır.
