@@ -384,4 +384,12 @@ Kaynak: `marka/ortak/maskot.js` (yeni videoda ortak/ kopyalanırken maskot.js BU
 - **Yeni duygular (duygu:):** sinirli · uykulu · uyu · asik · utangac · aglamakli (+ merak, mutlu, saskin, korku, uzgun, kararli).
 - **Yeni hareketler (tepkiler):** dans · kos · titre · esne · uyu · tokezle · bayil · evet · hayir · sinir · utan · agla · ask · egil · takla · yorgun · saklan · kafaKasi · ayakTap (eskiler: sasir, zipla, mutlu, aha, korku, selam, uzgun, kararli, isaret, alkis, gozKapa, dusun, omuzSilk, kahkaha, goster, donus). Sesleri `ses_lib.maskot_ses` en yakın imza sesine eşler.
 - **Canlılık (varsayılan açık):** tepki yokken kendiliğinden etrafa bakma, minik zıplama, sallanma, derin nefes → maskotlar "stabil/aynı" görünmez. `canlilik: false` ile kapatılır.
-- **Kural:** Bir videoda aynı tepkiyi 3'ten fazla tekrar etme; her sahnede en az bir farklı hareket kullan (TEP tablosunu çeşitlendir).
+- **v3.1 ek hareketler:** yasasin · begen · gozle · sus · fisilda · carp · eri · sok · kucakla · gerin · zafer · say · gurur · endise · sicak · hapsir · hicik · selamDur · sinsice · dur · gel (toplam 56 tepki). Bastonlu yaşlı Gufi tek elli jestleri BOŞ eliyle yapar, baston yere basılı kalır.
+
+## RUH HALİ TUTARLILIĞI (kullanıcı kuralı)
+Maskotlar sürekli bir ruh halinden diğerine atlamaz; duruşları yerine ve duruma göre oturur.
+1. Her sahnede her karakterin anlatıya uygun bir TEMEL ruh hali vardır (`duygu:`); tepkiler bu ruh haliyle aynı yönde seçilir (olumlu sahnede dans/alkış/gurur; endişeli sahnede endise/titre/saklan).
+2. Bir sahnede ruh hali en fazla 1 kez yön değiştirir ve bunun EKRANDA bir sebebi olur (bir olay, bir bilgi, bir darbe). Zıt iki tepki arası ≥ 2,5 sn.
+3. Tepkiler olaylara bağlanır (bir şey olduğunda tepki); boşlukta rastgele tepki yok. İki tepki arası ≥ 1 sn. Aradaki boşlukları "canlılık" doldurur.
+4. Video boyunca aynı tepki en fazla 3 kez; çeşitlilik için v3/v3.1 hareketleri kullanılır.
+5. `uret.py` sonunda `from tepki_kontrol import kontrol; kontrol(TEP)` çalıştırılır (marka/tepki_kontrol.py) — uyarı varsa TEP düzeltilir.

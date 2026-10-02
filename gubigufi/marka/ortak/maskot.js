@@ -21,6 +21,9 @@
         bayil (yan devrilir + yıldızlar) · evet (baş sallar) · hayir · sinir (buhar + öfke işareti, ayak vurur) · utan (pembe yanak) ·
         agla (gözyaşı) · ask (kalp göz + kalpler) · egil (selam vererek eğilir) · takla (ters takla) · yorgun (ter, çöker) ·
         saklan (büzülür) · kafaKasi (? ile kafa kaşır) · ayakTap (sabırsızlık, kol kavuşturur)
+      v3.1 EK: yasasin (zıplayıp konfeti) · begen (başparmak) · gozle (eli alında ufka bakar) · sus (parmak dudakta) · fisilda · carp (elektrik çarpması) ·
+        eri (eriyip yayılır) · sok (uzar, !!) · kucakla · gerin · zafer (tek kol havada) · say (1-2-3) · gurur (eller belde, yıldızlar) · endise (volta + ter) ·
+        sicak (elle yelpaze, sıcak dalgası) · hapsir (ah-ahh-çu!) · hicik · selamDur (asker selamı) · sinsice (parmak ucunda) · dur (avuç ileri / Gubi: dur levhası) · gel (el ile çağırır)
       v3 YENİ DUYGULAR (duygu:): sinirli · uykulu · uyu · asik · utangac · aglamakli (+ eskiler: merak, mutlu, saskin, korku, uzgun, kararli)
       v3 YAŞLI: yasli: true → solgun renk, beyaz gür kaşlar (duyguya göre şekil alır), sarkık göz kapağı, göz altı/kaz ayağı çizgileri,
         pembe yanak; Gufi'de beyaz bıyık + BASTON (baston: false ile kapatılır), Gubi'de beyaz perçem + sakal tutamı; daha yavaş, hafif titrek idle.
@@ -129,11 +132,15 @@ const M = (() => {
   const SURE = { sasir: 1.2, zipla: .6, mutlu: 1.3, aha: 1.2, korku: 1.3, selam: 1.3, uzgun: 1.6, kararli: 1.2,
     isaret: 1.5, alkis: 1.3, gozKapa: 1.5, dusun: 1.9, omuzSilk: 1.2, kahkaha: 1.4, goster: 1.4, donus: .9,
     dans: 2.0, kos: 1.4, titre: 1.3, esne: 1.7, uyu: 2.4, tokezle: 1.1, bayil: 2.0, evet: .9, hayir: .9, sinir: 1.5, utan: 1.5,
-    agla: 2.0, ask: 1.8, egil: 1.3, takla: 1.0, yorgun: 1.8, saklan: 1.5, kafaKasi: 1.5, ayakTap: 1.8 };
+    agla: 2.0, ask: 1.8, egil: 1.3, takla: 1.0, yorgun: 1.8, saklan: 1.5, kafaKasi: 1.5, ayakTap: 1.8,
+    yasasin: 1.3, begen: 1.2, gozle: 1.7, sus: 1.3, fisilda: 1.5, carp: 1.0, eri: 2.0, sok: 1.2, kucakla: 1.6, gerin: 1.7, zafer: 1.4,
+    say: 1.9, gurur: 1.6, endise: 1.9, sicak: 1.7, hapsir: 1.5, hicik: 1.7, selamDur: 1.4, sinsice: 1.9, dur: 1.2, gel: 1.5 };
   const IFADE = { sasir: 'saskin', zipla: null, mutlu: 'mutlu', aha: 'saskin', korku: 'korku', selam: 'mutlu', uzgun: 'uzgun', kararli: 'kararli',
     isaret: 'merak', alkis: 'mutlu', gozKapa: 'korku', dusun: 'merak', omuzSilk: 'merak', kahkaha: 'mutlu', goster: 'mutlu', donus: 'mutlu',
     dans: 'mutlu', kos: 'kararli', titre: 'korku', esne: 'uykulu', uyu: 'uyu', tokezle: 'saskin', bayil: 'uyu', evet: 'mutlu', hayir: 'kararli',
-    sinir: 'sinirli', utan: 'utangac', agla: 'aglamakli', ask: 'asik', egil: 'merak', takla: 'mutlu', yorgun: 'uykulu', saklan: 'korku', kafaKasi: 'merak', ayakTap: 'sinirli' };
+    sinir: 'sinirli', utan: 'utangac', agla: 'aglamakli', ask: 'asik', egil: 'merak', takla: 'mutlu', yorgun: 'uykulu', saklan: 'korku', kafaKasi: 'merak', ayakTap: 'sinirli',
+    yasasin: 'mutlu', begen: 'mutlu', gozle: 'merak', sus: 'kararli', fisilda: 'merak', carp: 'saskin', eri: 'uzgun', sok: 'saskin', kucakla: 'mutlu', gerin: 'uykulu', zafer: 'kararli',
+    say: 'merak', gurur: 'mutlu', endise: 'korku', sicak: 'uykulu', hapsir: 'uykulu', hicik: 'saskin', selamDur: 'kararli', sinsice: 'merak', dur: 'kararli', gel: 'mutlu' };
   // doğal göz kırpma: seed'e göre düzensiz aralık (3–5.5 sn), 0.14 sn kapanma
   function acikGoz(t, seed) {
     let k = 1; for (let i = -1; i < 40; i++) { const bt = i * 4.1 + ((seed * 7.3 + i * 2.17) % 2.3) + seed * .9; const d = t - bt; if (d > 0 && d < .16) k = Math.min(k, Math.abs(d - .08) / .08); }
@@ -198,7 +205,9 @@ const M = (() => {
     let EL = [merkezEl(-1), merkezEl(1)], ELK = [0, 0], parmak = [null, null];
     if (baston && kim === 'gufi') { EL[1] = [1.08 * W, .42 * W]; ELK[1] = 1; }
     let ayakOzel = null;
-    const elHedef = (tipEl, k) => { EL = EL.map((e, i) => tipEl[i] ? [lerp(e[0], tipEl[i][0], k), lerp(e[1], tipEl[i][1], k)] : e); ELK = ELK.map((q, i) => tipEl[i] ? Math.max(q, k) : q); };
+    let elTers = false; // bastonlu Gufi: tek elli jestler BOŞ (sol) elle yapılır, baston sağ elde yere basılı kalır
+    const elHedef = (tipEl, k) => { if (baston && kim === 'gufi' && !tipEl[0] && tipEl[1]) { tipEl = [[-tipEl[1][0], tipEl[1][1]], null]; elTers = true; }
+      EL = EL.map((e, i) => tipEl[i] ? [lerp(e[0], tipEl[i][0], k), lerp(e[1], tipEl[i][1], k)] : e); ELK = ELK.map((q, i) => tipEl[i] ? Math.max(q, k) : q); };
     if (ak) {
       const { tip, p, d, S: SR } = ak; if (IFADE[tip]) ifade = IFADE[tip];
       const ke = Math.min(1, d / .18, (SR - d) / .22); // elin hedefe gidiş-dönüş zarfı
@@ -269,8 +278,46 @@ const M = (() => {
       if (tip === 'saklan') { const u = ke; sy *= 1 - .32 * u; sx *= 1 + .12 * u; if (kim === 'gubi') dy += boy * .18 * u; v = [Math.sin(d * 3) * .8, -.2]; elHedef([[-.6 * W, -.2 * W], [.6 * W, -.2 * W]], u); }
       if (tip === 'kafaKasi') { elHedef([null, [(.45 + .07 * Math.sin(d * 26)) * W, -1.28 * W]], ke); v = [.4, -.6]; rot -= 4 * ke;
         const q = (d * .9) % 1; efekt += `<text x="${x - W * 1.2}" y="${cy - W * (1.1 + q * .5)}" font-size="${40 * s}" font-weight="900" opacity="${(1 - q) * ke}" style="fill:#FFE27A">?</text>`; }
+      // ---------- v3.1 ek hareketler ----------
+      if (tip === 'yasasin') { const j = Math.sin(cl(d / .7) * Math.PI); dy -= j * 95 * s; if (d > .7 && d < .85) { sy *= .86; sx *= 1.1; } elHedef([[-.9 * W, -1.6 * W], [.9 * W, -1.6 * W]], ke);
+        for (let i = 0; i < 10; i++) { const q = cl((d - .15) / 1.0), a = i / 10 * 6.28, r0 = W * (.6 + 1.6 * q); if (q > 0 && q < 1) efekt += `<rect x="${x + Math.cos(a) * r0}" y="${cy - W * .8 + Math.sin(a) * r0 * .6 + q * q * 80 * s}" width="${10 * s}" height="${6 * s}" fill="${['#FFE27A', '#7CFFB2', '#FF8FA3', '#8AD8FF'][i % 4]}" transform="rotate(${i * 40 + d * 300} ${x + Math.cos(a) * r0} ${cy - W * .8 + Math.sin(a) * r0 * .6})" opacity="${1 - q}"/>`; } }
+      if (tip === 'begen') { elHedef([null, [1.15 * W, -.3 * W]], ke); parmak[1] = [0, -1]; rot += 4 * ke; dy -= 6 * s * Math.sin(cl(p) * Math.PI);
+        if (kim === 'gubi') efekt += yildizcik(x + W * 1.2, cy - W * .6, 18 * s * ke, '#FFE27A', ke); }
+      if (tip === 'gozle') { const sw = Math.sin(d * 3.2); elHedef([null, [.32 * W, -1.12 * W]], ke); rot += sw * 7; v = [sw, -.15]; dy -= 4 * s; }
+      if (tip === 'sus') { elHedef([null, [.05 * W, (kim === 'gufi' ? .42 : .55) * W]], ke); parmak[1] = [0, -1]; v = [0, 0];
+        efekt += `<text x="${x + W * 1.0}" y="${cy - W * .7}" font-size="${34 * s}" font-weight="900" opacity="${ke}" style="fill:#BFD8FF">şşş</text>`; }
+      if (tip === 'fisilda') { rot -= 11 * ke; dx -= 8 * s * ke; elHedef([[-.6 * W, .38 * W], null], ke); v = [-.8, .1];
+        for (let i = 0; i < 3; i++) { const q = cl((d - .2 - i * .2) / .8); if (q > 0 && q < 1) efekt += `<circle cx="${x - W * (1.1 + i * .3)}" cy="${cy + W * .3 - i * 6 * s}" r="${5 * s}" fill="#FFF3D6" opacity="${1 - q}"/>`; } }
+      if (tip === 'carp') { const f = Math.sin(d * 70) > 0; dx += (f ? 5 : -5) * s * (1 - p); sx *= f ? 1.05 : .96; sy *= f ? .96 : 1.05; glow = parla + (f ? 1.2 : .2);
+        for (let i = 0; i < 4; i++) { const a = i * 1.57 + .5 + d * 3, r0 = W * 1.25; const bx = x + Math.cos(a) * r0, by = cy + Math.sin(a) * r0; efekt += `<path d="M${bx} ${by} l${8 * s} ${-14 * s} l${-6 * s} ${2 * s} l${10 * s} ${-16 * s}" stroke="#FFE45C" stroke-width="${4 * s}" fill="none" opacity="${(f ? 1 : .4) * (1 - p * .5)}"/>`; } }
+      if (tip === 'eri') { const m = eio(cl(p / .45)) * (1 - eio(cl((p - .82) / .18))); sy *= 1 - .45 * m; sx *= 1 + .38 * m; if (kim === 'gubi') dy += boy * .22 * m; v = [0, .7];
+        efekt += `<ellipse cx="${x}" cy="${kim === 'gufi' ? y + 2 : y + W * .9}" rx="${W * 1.4 * m}" ry="${W * .2 * m}" fill="${(R[kim + (yasli ? 'Y' : '')] || R[kim]).govde}" opacity="${.85 * m}"/>`; }
+      if (tip === 'sok') { const u = back(ar(d, 0, .25)) * (1 - ar(p, .8, 1)); sy *= 1 + .25 * u; sx *= 1 - .15 * u; elHedef([[-.75 * W, -.25 * W], [.75 * W, -.25 * W]], ke);
+        efekt += `<text x="${x + W * 1.0}" y="${cy - W * 1.2}" font-size="${50 * s}" font-weight="900" opacity="${u}" style="fill:#FFB547">!!</text>`; }
+      if (tip === 'kucakla') { const ac = p < .45 ? 1 : 1 - eio(cl((p - .45) / .3)); elHedef([[(-1.55 * ac - .3 * (1 - ac)) * W, (-.35 + .25 * (1 - ac)) * W], [(1.55 * ac + .3 * (1 - ac)) * W, (-.35 + .25 * (1 - ac)) * W]], ke); rot += Math.sin(d * 5) * 4 * (1 - ac);
+        if (ac < .5) for (let i = 0; i < 2; i++) { const q = (d * .9 + i * .5) % 1; efekt += `<path transform="translate(${x + (i ? 1 : -1) * W * .7} ${cy - W * (1.0 + q)}) scale(${s})" d="M0 9 C-14 -1 -11 -11 -5 -11 C-2 -11 0 -9 0 -7 C0 -9 2 -11 5 -11 C11 -11 14 -1 0 9Z" fill="#FF5A86" opacity="${1 - q}"/>`; } }
+      if (tip === 'gerin') { const u = Math.sin(cl(p * 1.1) * Math.PI), yan = Math.sin(cl(p) * Math.PI * 2); rot += 14 * yan * u; sy *= 1 + .08 * u; elHedef([[-.35 * W, -1.5 * W], [.35 * W, -1.5 * W]], ke * u); }
+      if (tip === 'zafer') { elHedef([[-.9 * W, .3 * W], [.85 * W, -1.6 * W]], ke); sy *= 1 + .05 * ke; dy -= 10 * s * Math.sin(cl(p * 2) * Math.PI);
+        for (let i = 0; i < 3; i++) efekt += yildizcik(x + W * (.85 + (i - 1) * .35), cy - W * (1.9 + (i % 2) * .25), 12 * s * ke, '#FFE27A', ke); }
+      if (tip === 'say') { elHedef([null, [1.1 * W, -.95 * W]], ke); parmak[1] = [0, -1]; v = [.6, -.6];
+        for (let i = 0; i < 3; i++) { const q = cl((d - .25 - i * .45) / .45); if (q > 0) efekt += `<text x="${x + W * (1.1 + i * .5)}" y="${cy - W * (1.5 + .2 * q)}" font-size="${40 * s}" font-weight="900" opacity="${q < 1 ? q : 1 - cl((p - .85) / .15)}" style="fill:#FFE27A">${i + 1}</text>`; } }
+      if (tip === 'gurur') { sy *= 1 + .06 * ke; sx *= .97; v = [0, -.6]; rot -= 3 * ke; elHedef([[-1.05 * W, .3 * W], [1.05 * W, .3 * W]], ke); glow = parla + .3;
+        for (let i = 0; i < 4; i++) { const a = d * 2 + i * 1.57; efekt += yildizcik(x + Math.cos(a) * W * 1.3, cy - W * .2 + Math.sin(a) * W * .5, 10 * s * ke, '#FFE27A', .9 * ke); } }
+      if (tip === 'endise') { dx += Math.sin(d * 3.4) * 22 * s; rot += Math.sin(d * 3.4) * 4; elHedef([[-.18 * W, .35 * W], [.18 * W, .35 * W]], ke); v = [Math.sin(d * 3.4) * .6, .2];
+        const q = (d * 1.1) % 1; efekt += `<ellipse cx="${x + W * .95}" cy="${gy - W * .3 + q * 40 * s}" rx="${6 * s}" ry="${9 * s}" fill="#7AD0F2" opacity="${1 - q}"/>`; }
+      if (tip === 'sicak') { elHedef([null, [(1.05 + .18 * Math.sin(d * 18)) * W, -.55 * W]], ke); sy *= .97;
+        for (let i = 0; i < 3; i++) { const q = (d * .9 + i / 3) % 1; efekt += `<path d="M${x + W * (-.5 + i * .5)} ${cy - W * (1.2 + q * .8)} q${6 * s} ${-8 * s} 0 ${-16 * s} q${-6 * s} ${-8 * s} 0 ${-16 * s}" stroke="#FF9A5A" stroke-width="${4 * s}" fill="none" opacity="${1 - q}"/>`; } }
+      if (tip === 'hapsir') { if (p < .6) { const u = eio(p / .6); sy *= 1 + .08 * u; rot -= 9 * u; dy -= 6 * s * u; } else { const u = 1 - eio(cl((p - .6) / .4)); rot += 18 * u; dx += 18 * s * u; ifade = p < .75 ? 'uyu' : 'saskin';
+          for (let i = 0; i < 8; i++) { const q = cl((p - .6) / .35), a = -.5 + i * .14; efekt += `<circle cx="${x + Math.cos(a) * W * (1 + q * 1.4)}" cy="${cy + W * .2 + Math.sin(a) * W * (1 + q * 1.4)}" r="${4 * s}" fill="#BFE8FF" opacity="${1 - q}"/>`; } } }
+      if (tip === 'hicik') { for (const t1 of [.2, .75, 1.3]) { const e = d - t1; if (e > 0 && e < .22) { const j = Math.sin(e / .22 * Math.PI); dy -= j * 16 * s; sy *= 1 + .08 * j; sx *= 1 - .05 * j; } if (e > 0 && e < .6) efekt += `<text x="${x + W * 1.0}" y="${cy - W * (1.0 + e)}" font-size="${28 * s}" font-weight="900" opacity="${1 - e / .6}" style="fill:#FFF3D6">hık</text>`; } }
+      if (tip === 'selamDur') { const u = back(ar(d, 0, .22)); elHedef([null, [.48 * W, -1.08 * W]], ke * Math.min(1, u)); sy *= 1 + .04 * ke; rot += 0; v = [0, 0]; }
+      if (tip === 'sinsice') { sy *= .88; sx *= 1.04; dx += Math.sin(d * 4) * 10 * s; dy -= Math.abs(Math.sin(d * 4)) * 6 * s; elHedef([[-.65 * W, -.55 * W], [.65 * W, -.65 * W]], ke); v = [Math.sin(d * 2.2) * .9, 0]; ayakOzel = Math.sin(d * 8) * .5; }
+      if (tip === 'dur') { elHedef([null, [1.3 * W, -.35 * W]], ke); rot -= 5 * ke; v = [.2, 0];
+        if (kim === 'gubi') efekt += `<g opacity="${ke}"><circle cx="${x + W * 1.4}" cy="${cy - W * .2}" r="${26 * s}" fill="#E8323C"/><rect x="${x + W * 1.4 - 14 * s}" y="${cy - W * .2 - 4 * s}" width="${28 * s}" height="${8 * s}" fill="#FFFFFF"/></g>`; }
+      if (tip === 'gel') { const c = Math.sin(d * 9); elHedef([null, [(1.0 + .12 * c) * W, (-.35 - .12 * c) * W]], ke); rot += 3 * c * ke; v = [0, .1]; }
       if (tip === 'ayakTap') { elHedef([[.35 * W, .2 * W], [-.35 * W, .25 * W]], ke); ayakOzel = Math.max(0, Math.sin(d * 14)); rot += 3 * ke; if (kim === 'gubi') dy -= Math.max(0, Math.sin(d * 14)) * 6 * s; }
     }
+    if (elTers && parmak[1]) { parmak[0] = [-parmak[1][0], parmak[1][1]]; parmak[1] = null; }
     const acik = ifade === 'mutlu' ? 1 : (gubiGozKapa > .5 ? 0 : acikGoz(t, seed));
     const ayak = ayakOzel != null ? ayakOzel : kim === 'gufi' && ((ak && (ak.tip === 'zipla' || ak.tip === 'mutlu')) || (hr && hr.hiz > 0)) ? Math.sin((ak ? ak.d : t) * 20) : 0;
     const govde = kim === 'gubi' ? gubi({ x, y, boy, duygu: ifade, bak: v, parla: glow * (yasli ? .7 : 1), acik, agiz: ifade === 'mutlu', yasli }) : gufi({ x, y, boy, duygu: ifade, bak: v, acik, ayak, golge: false, agiz: ifade === 'mutlu', yasli });
