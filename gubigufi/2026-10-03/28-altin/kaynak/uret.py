@@ -26,6 +26,25 @@ const ARKEOLOG = KO.giy('gubi', [['hasir', { renk: '#E8C878', bant: '#6A4428' }]
 const SIMYACI = KO.giy('gubi', [['parti', { renk: '#5A3A9C', nokta: '#FFE45C' }]]);
 const TUCCAR = KO.giy('gubi', [['bere', { renk: '#7E2E3A', tuy: '#FFF3D6' }]]);
 const BILIMCI = KO.giy('gubi', ['gozluk', ['papyon', { renk: '#4A8AD8' }]]);
+// astronot: beyaz tulum + sırt çantası + kollar/bacaklar; maskot yuvarlak cam kaskın içinde ORTALI. y = ayak tabanı, r = kask yarıçapı
+function astro(kim, t, { x, y, r = 90, duygu = 'merak', bakHedef = null, kolSol = 200, kolSag = -20, renk = '#F4F6FA', serit = '#E8505B', tepkiler = true } = {}) {
+  const cy = y - 3.05 * r, ty = y - 2.25 * r, W = 1.7 * r, KOY = '#C8CED8';
+  const el = (a, s) => { const rad = a * Math.PI / 180, sx = x + s * W * .5, sy = ty + .25 * r, L = 1.05 * r; return [sx, sy, sx + Math.cos(rad) * L, sy + Math.sin(rad) * L]; };
+  const [l1, l2, l3, l4] = el(kolSol, -1), [r1, r2, r3, r4] = el(kolSag, 1);
+  let o = `<ellipse cx="${x}" cy="${y + 6}" rx="${r * 1.1}" ry="${r * .18}" fill="#000" opacity=".2"/>`;
+  o += R(x - W * .62, ty + .05 * r, W * 1.24, 1.25 * r, .3 * r, '#AEB6C4');
+  o += `<path d="M${l1} ${l2} L${l3} ${l4}" stroke="${KOY}" stroke-width="${.46 * r}" stroke-linecap="round"/><path d="M${l1} ${l2} L${l3} ${l4}" stroke="${renk}" stroke-width="${.36 * r}" stroke-linecap="round"/><circle cx="${l3}" cy="${l4}" r="${.24 * r}" fill="${serit}"/>`;
+  o += `<path d="M${r1} ${r2} L${r3} ${r4}" stroke="${KOY}" stroke-width="${.46 * r}" stroke-linecap="round"/><path d="M${r1} ${r2} L${r3} ${r4}" stroke="${renk}" stroke-width="${.36 * r}" stroke-linecap="round"/><circle cx="${r3}" cy="${r4}" r="${.24 * r}" fill="${serit}"/>`;
+  [-1, 1].forEach(k => { o += R(x + k * .42 * r - .3 * r, y - 1.0 * r, .6 * r, .95 * r, .25 * r, renk) + R(x + k * .42 * r - .36 * r, y - .28 * r, .72 * r, .3 * r, .14 * r, '#5A607E'); });
+  o += R(x - W / 2, ty, W, 1.45 * r, .5 * r, renk) + R(x + W / 2 - .3 * r, ty + .1 * r, .22 * r, 1.25 * r, .1 * r, KOY, .6) + R(x - .42 * r, ty + .35 * r, .84 * r, .5 * r, .1 * r, '#3A4466') + `<circle cx="${x - .2 * r}" cy="${ty + .6 * r}" r="${.08 * r}" fill="${serit}"/><circle cx="${x + .05 * r}" cy="${ty + .6 * r}" r="${.08 * r}" fill="#7CFFB2"/><circle cx="${x + .28 * r}" cy="${ty + .6 * r}" r="${.08 * r}" fill="#FFE45C"/>` + R(x - W / 2, ty + 1.05 * r, W, .14 * r, .07 * r, serit);
+  o += R(x - .55 * r, cy + .78 * r, 1.1 * r, .32 * r, .14 * r, KOY);
+  const cid = 'ak' + kim + Math.round(x) + Math.round(y);
+  o += `<defs><clipPath id="${cid}"><circle cx="${x}" cy="${cy}" r="${r * .96}"/></clipPath></defs><circle cx="${x}" cy="${cy}" r="${r}" fill="#1B2A55" opacity=".55"/>`;
+  const mb = r * (kim === 'gubi' ? 1.2 : 1.05);
+  o += `<g clip-path="url(#${cid})">` + M.canli(kim, { t, x, y: cy + mb * (kim === 'gubi' ? .3 : .5), boy: mb, duygu, bakHedef, parla: 0, eller: false, tepkiler: tepkiler ? TP[kim] : [] }) + '</g>';
+  o += `<circle cx="${x}" cy="${cy}" r="${r}" fill="#BFE8FF" opacity=".12"/><circle cx="${x}" cy="${cy}" r="${r}" fill="none" stroke="#E8F6FF" stroke-width="${r * .07}" opacity=".85"/><path d="M${x - r * .62} ${cy - r * .45} A${r * .78} ${r * .78} 0 0 1 ${x - r * .05} ${cy - r * .8}" stroke="#FFFFFF" stroke-width="${r * .08}" fill="none" opacity=".8" stroke-linecap="round"/>`;
+  return { svg: o, sol: [l3, l4], sag: [r3, r4] };
+}
 const kam = (s, { x = 540, y = 900, k = 1, dx = 0, dy = 0 } = {}) => `<g transform="translate(${dx} ${dy}) translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
 """
 exec(open('_head.py').read())

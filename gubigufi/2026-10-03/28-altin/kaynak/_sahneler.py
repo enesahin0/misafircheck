@@ -24,10 +24,10 @@ window.renderAt = t => {
   const s = pop(t, 6.25); if (s > 0) o += grp(AU.panel(-330, -70, 660, 140, C.LAC) + AU.yaz('2017 · İLK KEZ GÖZLENDİ', 0, 16, 44, C.ALTA), 540, 420, s);
   const dol = A(t, 5.0, 8.5);
   const gx = 800 + 30 * Math.sin(t * 1.2), gy = 1190 + 20 * Math.sin(t * 1.7), bx = 250 + 20 * Math.sin(t * 1.4 + 1), by = 1150 + 24 * Math.sin(t * 1.1);
-  o += gubi(t, { x: bx, y: by, boy: 180, duygu: t > tc ? 'sasir' : 'merak', ust: BILGE, bakHedef: [cx, cy] }) + AL.astroKask(bx, by, 180);
-  o += gufi(t, { x: gx, y: gy, boy: 200, duygu: t > 5 ? 'mutlu' : 'merak', isaretHedef: [gx - 120, gy - 230], bakHedef: [cx, cy] }) + AL.astroKask(gx, gy, 200);
-  o += AL.kavanoz(gx - 125, gy - 150, 1.1, dol);
-  if (t > tc + .6) for (let i = 0; i < 6; i++) { const p = ((t - tc) * .8 + i / 6) % 1; o += `<circle cx="${cx + (gx - 125 - cx) * p}" cy="${cy + (gy - 200 - cy) * p}" r="7" fill="${G.AA}" opacity="${1 - p * .5}"/>`; }
+  const AB = astro('gubi', t, { x: bx, y: by + 40, r: 82, duygu: t > tc ? 'sasir' : 'merak', bakHedef: [cx, cy], kolSol: 210, kolSag: -40 });
+  const AF = astro('gufi', t, { x: gx, y: gy + 40, r: 92, duygu: t > 5 ? 'mutlu' : 'merak', bakHedef: [cx, cy], kolSol: 225, kolSag: 20 });
+  o += AB.svg + AF.svg + AL.kavanoz(AF.sol[0], AF.sol[1] + 10, 1.0, dol);
+  if (t > tc + .6) for (let i = 0; i < 6; i++) { const p = ((t - tc) * .8 + i / 6) % 1; o += `<circle cx="${cx + (AF.sol[0] - cx) * p}" cy="${cy + (AF.sol[1] - 60 - cy) * p}" r="7" fill="${G.AA}" opacity="${1 - p * .5}"/>`; }
   $('dinamik').innerHTML = `<g transform="rotate(${-4 + 8 * A(t, 0, 9.9)} 540 900)">` + o + '</g>';
 };"""
 # 03 — GÖKTAŞI YAĞMURU: genç Dünya; altınlı göktaşları; Gufi şemsiyeyle koşar; kamera aşağı iner
@@ -38,9 +38,10 @@ window.renderAt = t => {
   w += AL.gencDunya(540, 2250, 1260, t);
   const c = pop(t, .4); if (c > 0) w += grp(AU.cip('MİLYARLARCA YIL ÖNCE', 0, 0, '#FFB45C', C.LAC, 32), 540, 420, c);
   const gx = 160 + 760 * E(A(t, .6, 5.0)), gy = 1000;
-  w += gufi(t, { x: gx, y: gy, boy: 170, duygu: 'korku', isaretHedef: [gx + 10, gy - 260] }) + AL.astroKask(gx, gy, 170) + AL.semsiye(gx + 10, gy - 200, .95, '#4A8AD8');
-  for (let i = 0; i < 4; i++) { const d = t - (1.2 + i * .9); if (d > 0 && d < .5) w += AL.parilti(gx + 10 + (i % 2 ? 50 : -50), gy - 320 + d * 60, 26, 1 - d * 2); }
-  w += gubi(t, { x: 820, y: 640 + 20 * Math.sin(t * 2), boy: 150, duygu: 'sasir', ust: BILGE, bakHedef: [gx, gy] }) + AL.astroKask(820, 640 + 20 * Math.sin(t * 2), 150);
+  const AF = astro('gufi', t, { x: gx, y: gy, r: 70, duygu: 'korku', kolSol: 210, kolSag: -80 });
+  w += AF.svg + AL.semsiye(AF.sag[0], AF.sag[1] - 110, .9, '#4A8AD8');
+  for (let i = 0; i < 4; i++) { const d = t - (1.2 + i * .9); if (d > 0 && d < .5) w += AL.parilti(AF.sag[0] + (i % 2 ? 50 : -50), AF.sag[1] - 220 + d * 60, 26, 1 - d * 2); }
+  w += astro('gubi', t, { x: 820, y: 760 + 20 * Math.sin(t * 2), r: 64, duygu: 'sasir', bakHedef: [gx, gy], kolSol: 160, kolSag: -30 }).svg;
   $('dinamik').innerHTML = kam(w, { dy: -260 * (1 - E(A(t, 0, 2.2))) });
 };"""
 # 04 — PASLANMAZ + TEL: toprak kesiti, Gubi arkeolog kazar; demir paslanır, altın parlar; 5000 YIL; Gufi 1 gramdan km'lerce tel çeker (pan)
