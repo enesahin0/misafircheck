@@ -1,5 +1,5 @@
 # #32 — Düğünde Takılan Altın Kimin? · "Kanun Böyle Diyor" × "İki Taraf"
-Kategori: HUKUK (#8C6CFF). Hedef ~50 sn. Format: #31 tartışma kalıbı + "fark" anı (aynı masada iki takı, iki farklı sahip).
+Kategori: HUKUK (#8C6CFF). Hedef ~38 sn (KISA, magazinsel ton). Format: #31 tartışma kalıbı + "fark" anı (aynı masada iki takı, iki farklı sahip).
 #31 DERSLERİ: soru 1. saniyede · tarih/tanım cümlesi kancaya girmez · ~50 sn · paylaşım çağrısı ortada (evlenecek arkadaş) · takip çipi ~20. sn.
 Yayın önerisi: 5 Ekim Pazartesi 08:30. (Enflasyon 17:00.)
 TARAFSIZLIK: gelin tarafı / damat tarafı eşit süre; kimse açgözlü gösterilmez; boşanma acısı dramatize edilmez; kişi/ünlü yok.
@@ -8,27 +8,24 @@ TARAFSIZLIK: gelin tarafı / damat tarafı eşit süre; kimse açgözlü göster
 
 Düğünde damada takılan çeyrek altınlar, boşanınca kimde kalır?
 
-Gelin tarafı diyor ki: "Takı, kadının güvencesidir. Hepsi gelinin."
+Gelin tarafı: "Hepsi gelinin, o onun güvencesi."
 
-Damat tarafı diyor ki: "O altını bizim akrabalarımız taktı. Neden gelinde kalsın?"
+Damat tarafı: "Bizim akrabalar taktı, niye onda kalsın?"
 
-Yıllarca Yargıtay'ın cevabı netti: Kim takarsa taksın, kime takılırsa takılsın, hepsi kadının.
+Yıllarca cevap belliydi: Kim takarsa taksın, hepsi gelinin.
 
-Ama iki bin yirmi dörtte bu değişti.
+Ama artık değişti. Anlaşma ya da yöre adeti yoksa, takı kime takıldıysa onun.
 
-Artık önce çiftin anlaşmasına bakılıyor. Anlaşma yoksa yörenin örf ve adetine. O da yoksa takı, kime takıldıysa onun.
+Ve işin en ilginç yanı: Damadın boynuna takılan bilezik yine geline gidiyor, çünkü kadına özgü sayılıyor. Çeyrek altın ise damatta kalıyor.
 
-İşin ilginç yanı şu: Aynı düğünde, damadın boynuna iki şey takıldığını düşün. Bir bilezik, bir de çeyrek altın. Bilezik kadına özgü sayıldığı için geline kalıyor. Çeyrek altın ise damada.
+Evlenecek arkadaşına gönder. Takı videosunu saklasın.
 
-Evlenecek bir arkadaşın varsa bu videoyu ona gönder.
-
-İki tarafın da avukatı aynı şeyi söylüyor: Takı töreninin videosunu sakla. Mahkemede en güçlü delil o.
-
-Sence düğün takısı kimin hakkı? Yorumlara yaz.
+Sence takı kimin hakkı? Yorumlara yaz.
 
 Her gün bir merak için gubigufi'yi takip et.
 
-## 2) Storyboard — maskotlar OYUNCU
+## 2) Storyboard
+KISA SÜRÜM (~38 sn): 1 kanca → 2+3 iki taraf (birleşik split, 6 sn) → 4 eski kural → 5 değişim (merdiven tek planda) → 6 fark anı → 7 paylaşım → 9 kapanış. Ortak nokta sahnesi (8) paylaşım cümlesine katıldı. Takip çipi ~15. sn. — maskotlar OYUNCU
 1. KANCA (0–4 sn) — Düğün salonu, kırmızı kurdele; damat rolünde Gufi (papyon) boynunda kurdeleye iğnelenmiş çeyrek altınlar parlıyor → BAM: altınlar havalanır, ekran ortasında "?" ve iki ok: GELİN ← / → DAMAT. Kamera: snap-zoom altınlara.
 2. GELİN TARAFI (4–9) — Sol yarı (mor-pembe): Gubi gelin tarafı rolünde (taç/duvak değil; sade çiçek broş), bilezikleri kalkan gibi tutar; çip "GÜVENCE". Balon: "HEPSİ GELİNİN".
 3. DAMAT TARAFI (9–14) — Sağ yarı (lacivert): Gufi damat tarafı; arkada akraba silüetleri (yüzsüz) altın takarken; balon "BİZİM AKRABALAR TAKTI". Çip "EMEK". Eşit boy/süre.
