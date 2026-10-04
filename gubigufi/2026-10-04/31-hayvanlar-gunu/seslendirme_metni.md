@@ -1,4 +1,4 @@
-# #31 — 4 Ekim Dünya Hayvanlar Günü · "Aynı Köpek, İki Türkiye"
+# #31 — 4 Ekim Dünya Hayvanları Koruma Günü · "Aynı Köpek, İki Türkiye"
 Kategori: TOPLUM (HASSAS · GÜNDEM TAKVİMİ 4 Ekim). Hedef ~55 sn. Ton: ritmik "bam bam" kesmeler, tarafsız.
 TARAFSIZLIK KURALI: İki tarafa eşit süre ve eşit sempati; hiçbir taraf kötü/aptal gösterilmez. Kan, ısırık detayı, ölü hayvan YOK. Parti/kişi adı YOK.
 
@@ -6,7 +6,7 @@ TARAFSIZLIK KURALI: İki tarafa eşit süre ve eşit sempati; hiçbir taraf köt
 
 Aynı köpek. Bir çocuk için kâbus. Bir başkası için aile.
 
-Bugün Dünya Hayvanlar Günü. Ve Türkiye bu soruda ikiye bölünmüş durumda: Sokaktaki köpekler kimin?
+Bugün Dünya Hayvanları Koruma Günü. Ve Türkiye bu soruda ikiye bölünmüş durumda: Sokaktaki köpekler kimin?
 
 Bir taraf diyor ki: "Çocuğum okula korkarak gidiyor." Isırılan çocuklar, saldırıya uğrayan yaşlılar. Onlar için mesele güvenlik.
 
@@ -26,7 +26,7 @@ Her gün bir merak için gubigufi'yi takip et.
 
 ## 2) Storyboard — "bam bam" ritim (her cümle bir kesme)
 1. KANCA — Siyah ekran, tek köpek silüeti ortada. "BAM": ekran ikiye yarılır — sol yarı soğuk mavi gölge, köpek büyük ve karanlık, okul çantalı küçük çocuk silüeti geri adım atar ("KÂBUS"); sağ yarı sıcak turuncu, aynı köpek kuyruk sallar, kucaklanır ("AİLE"). Aynı silüet, iki ışık. Kamera: sert snap-zoom.
-2. 4 EKİM — Takvim yaprağı damga gibi iner "4 EKİM · DÜNYA HAYVANLAR GÜNÜ"; harita üzerinde çatlak Türkiye'yi ikiye böler; ortada dev "?" "SOKAKTAKİ KÖPEKLER KİMİN?". Kamera: tilt-down.
+2. 4 EKİM — Takvim yaprağı damga gibi iner "4 EKİM · DÜNYA HAYVANLARI KORUMA GÜNÜ"; harita üzerinde çatlak Türkiye'yi ikiye böler; ortada dev "?" "SOKAKTAKİ KÖPEKLER KİMİN?". Kamera: tilt-down.
 3. GÜVENLİK TARAFI — Sabah okul yolu, Gufi veli rolünde çocuğun elini sıkı tutar, gözü köşedeki sürüde (endise); hızlı kesmeler: okul kapısı, park bankında yaşlı silüet, hastane tabelası (detay yok). Büyük etiket "MESELE: GÜVENLİK" kalkan ikonu. Kamera: el kamerası hissi, hafif shake.
 4. VİCDAN TARAFI — Aynı sokak, ışık değişir: Gubi sabah mama kabı koyar, kış karında tahta kulübe çakar (çekiç vuruşları ritimle), kucağında topal köpekle veteriner kapısı. Etiket "MESELE: VİCDAN" kalp ikonu. Kamera: yavaş takip dolly (3'ten farklı).
 5. YASA — Resmî gazete sayfası pat diye iner "2 AĞUSTOS 2024 · 7527 SAYILI KANUN"; üç madde kartı tek tek çakılır: "TOPLA → BARINAK", "SALDIRGAN / TEDAVİSİZ → ÖTANAZİ YOLU", "SON TARİH 2028" (geri sayım saati). Kamera: üstten (top-down) masaya düşen evraklar.
