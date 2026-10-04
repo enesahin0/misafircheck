@@ -394,3 +394,13 @@ Maskotlar sürekli bir ruh halinden diğerine atlamaz; duruşları yerine ve dur
 3. Tepkiler olaylara bağlanır (bir şey olduğunda tepki); boşlukta rastgele tepki yok. İki tepki arası ≥ 1 sn. Aradaki boşlukları "canlılık" doldurur.
 4. Video boyunca aynı tepki en fazla 3 kez; çeşitlilik için v3/v3.1 hareketleri kullanılır.
 5. `uret.py` sonunda `from tepki_kontrol import kontrol; kontrol(TEP)` çalıştırılır (marka/tepki_kontrol.py) — uyarı varsa TEP düzeltilir.
+
+## İSTATİSTİK DERSLERİ — #31 "Aynı Köpek, İki Türkiye" (4 saatte 1.373 görüntüleme, %98,7 takipçi olmayan)
+Veri: geçme oranı %35 (iyi), yorum/beğeni oranı tipikten yüksek; AMA izleyicinin yarısı 5,5–8,5 sn'de çıktı (kancadan sonra gelen "Bugün Dünya … Günü" takvim cümlesi), ortalama izlenme 16 sn / 76 sn, paylaşım 0, takip 2.
+KURALLAR (KALICI):
+1. **Kancadan sonraki ilk cümle = asıl çatışma/soru.** Tarih, özel gün, tanım cümleleri ilk 10 sn'ye GİRMEZ; özel gün sadece ekranda küçük çip olarak geçer.
+2. **Ana soru ilk 4 sn içinde** sorulur (bu videoda 11. sn'deydi).
+3. **Tartışma videoları 45–55 sn**; bilgi videoları da gereksiz uzamaz.
+4. **Paylaşım çağrısı**: tartışma videolarında ortalarda/yorum sorusundan önce "Bunu … arkadaşına gönder" tipi, tarafsız bir cümle.
+5. **Takip hatırlatması** sona bırakılmaz: ~20–25. sn'de kısa bir ekran çipi / tek cümle (+ sondaki takip cümlesi kalır).
+6. Tartışma formatı (iki taraf, eşit süre, ortak nokta, "sen hangi taraftasın?") yorum getiriyor → korunur.
