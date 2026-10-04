@@ -1,5 +1,5 @@
 # #33 — İlk Buluşmada Hesabı Kim Öder? · "İki Taraf" × "Psikoloji"
-Kategori: PSİKOLOJİ (#E056C1). Hedef ~50 sn. Format: #31 tartışma kalıbı + "fark" anı (söylenen vs istenen: teklif edip reddedilmesini ummak).
+Kategori: PSİKOLOJİ (#E056C1). Hedef ~50 sn. Ton: MAGAZİNSEL / esprili. "Türkiye usulü" skeci + #31 tartışma kalıbı + itiraf anı.
 #31 DERSLERİ: soru 1. saniyede · tanım cümlesi yok · ~50 sn · paylaşım çağrısı ortada · takip çipi ~20. sn.
 TARAFSIZLIK: iki taraf eşit süre; kadınlar/erkekler alay konusu yapılmaz, rakamlar iki cinsiyetin de çelişkisini gösterir.
 TEMSİL: Çift = yüzsüz sade silüetler (kadın/erkek); maskotlara cinsiyet atanmaz → Gufi garson, Gubi araştırmacı.
@@ -8,45 +8,56 @@ TEMSİL: Çift = yüzsüz sade silüetler (kadın/erkek); maskotlara cinsiyet at
 
 İlk buluşmada hesap geldi. Kim öder?
 
-Bir taraf diyor ki: "Davet eden erkek öder. Bu centilmenlik."
+Avrupa'da cevap basit: Herkes kendi yediğini. Biz buna "Alman usulü" diyoruz, İngilizler "Hollanda usulü". Kimse üstüne almıyor.
 
-Diğer taraf diyor ki: "Herkes kendi yediğini öder. Bu eşitlik."
+Ama bir de Türkiye usulü var.
 
-Amerika'da on yedi bin kişiyle yapılan bir araştırma, işin aslının çok daha karışık olduğunu gösteriyor.
+Hesap daha gelmeden biri "lavaboya gidiyorum" diye kalkar. Aslında kasaya gidiyordur.
 
-Kadınların yüzde elli yedisi hesaba ortak olmayı teklif ettiğini söylüyor. Ama kadınların yüzde otuz dokuzu, bu teklifin reddedilmesini umuyor.
+Garsona göz kırpılır: "Hesabı sakın ona getirme."
 
-Erkekler de kararsız. Yüzde altmış dördü kadının da katkı vermesi gerektiğini düşünüyor. Ama yüzde yetmiş altısı, kadından para alınca kendini suçlu hissediyor.
+Sonra masada küçük bir güreş başlar: "Yok ben!" "Olmaz, ayıp!" "Bir dahakine sen!"
+
+Ve o "bir dahaki", asla gelmez.
+
+Peki ilk buluşmada? Burada Türkiye ikiye bölünüyor.
+
+Bir taraf diyor ki: "İlk buluşmada erkek öder. Bu centilmenlik, nokta."
+
+Diğer taraf diyor ki: "Herkes kendi yediğini öder. Devir değişti."
+
+İşin en komik yanı şu: Kadınların yarısından fazlası hesabı bölüşmeyi teklif ediyor. Ama bir kısmı, teklifinin reddedilmesini umuyor. Erkeklerin çoğu da "o da katkı versin" diyor. Ama kadından para alınca kendini suçlu hissediyor.
 
 Yani masada iki kişi değil, iki beklenti oturuyor.
 
-Bu arada biz buna "Alman usulü" diyoruz. İngilizler ise "Hollanda usulü" diyor. Kimse üstüne almıyor.
+İlk buluşmaya gidecek bir arkadaşın varsa bunu ona gönder. Kartını hazırlasın.
 
-İlk buluşmaya gidecek bir arkadaşın varsa bu videoyu ona gönder.
-
-Araştırmanın net sonucu şu: İlişki ilerledikçe çiftlerin çoğu masrafı paylaşıyor. Yani asıl kavga, sadece ilk hesapta.
-
-Sence ilk buluşmada hesabı kim ödemeli? Yorumlara yaz.
+Sence hesabı kim ödemeli? Erkek mi, davet eden mi, yoksa Alman usulü mü? Yorumlara yaz.
 
 Her gün bir merak için gubigufi'yi takip et.
 
-## 2) Storyboard — maskotlar OYUNCU
-1. KANCA (0–3 sn) — Restoran masası, iki silüet karşılıklı; Gufi garson (papyon) hesap tepsisini masanın TAM ortasına koyar → BAM: tepsi döner gibi titrer, iki el aynı anda uzanır, kare donar. Çip "KİM ÖDER?". Kamera: tepsiye snap-zoom.
-2. İKİ TARAF (3–10) — Ekran ikiye: sol "CENTİLMENLİK" (eski tip papyon ikonu, tek el hesabı alır), sağ "EŞİTLİK" (terazi ikonu, hesap ikiye bölünür, makas efekti). Eşit boy/süre.
-3. ARAŞTIRMA (10–14) — Gubi araştırmacı (gözlük) panoyla girer; "17.000 KİŞİ · ABD · 2013" sayacı, kalabalık nokta bulutu.
-4. KADINLAR (14–21) — Silüet kadın cüzdanına uzanır: çubuk %57 "TEKLİF EDİYOR". Sonra düşünce balonu açılır: içinde "KABUL ETME 🙏" → çubuk %39 "REDDEDİLMESİNİ UMUYOR". ~20. sn köşede "+ TAKİP ET" çipi.
-5. ERKEKLER (21–28) — Silüet erkek: çubuk %64 "KATKI VERMELİ"; sonra kadının uzattığı parayı alınca üstüne ter damlası/kızarma → çubuk %76 "KENDİNİ SUÇLU HİSSEDİYOR". Kadınlar ve erkekler bölümü eşit süre.
-6. İKİ BEKLENTİ (28–31) — Masaya üstten bakış: iki sandalyede iki kişi, üstlerinde iki ayrı düşünce balonu çarpışır; çip "MASADA İKİ BEKLENTİ".
-7. ALMAN/HOLLANDA (31–36) — Gufi hesabı ikiye yırtar; bir yarıda Almanya bayrak renkli çip "ALMAN USULÜ (TR)", diğerinde Hollanda renkli "GOING DUTCH (EN)"; iki çip birbirini işaret eder, Gufi omuz silker.
-8. PAYLAŞIM (36–39) — Gubi telefondan mesaj gönderir; çip "BULUŞMAYA GİDECEK ARKADAŞINA GÖNDER".
-9. NET SONUÇ (39–45) — Takvim yaprakları akar "6 AY SONRA": masada iki el birlikte kartı uzatır; çubuklar erkek %74 / kadın %83 "İKİ TARAF DA KATKI VERİYOR". Çip "KAVGA SADECE İLK HESAPTA".
-10. KAPANIŞ (45–50) — "SENCE KİM ÖDEMELİ?" üç buton: ERKEK / BÖLÜŞÜLSÜN / DAVET EDEN + yorum balonu → TAKİP ET kartı → logo.
-Kamera: 1 snap-zoom · 2 split · 3 tilt-down kalabalık · 4 push-in düşünce balonuna · 5 yan dolly · 6 üstten (top-down) · 7 sabit+whip · 8 sabit · 9 zaman atlama pull-out · 10 sabit.
+## 2) Storyboard — maskotlar OYUNCU (magazinsel, hızlı kesmeler)
+1. KANCA (0–3 sn) — Restoran masası; Gufi garson hesap tepsisini masanın tam ortasına koyar → BAM, iki el aynı anda uzanır, kare donar. Çip "KİM ÖDER?".
+2. AVRUPA USULÜ (3–9) — Hesap fişi ikiye yırtılır; iki çip birbirini işaret eder: "ALMAN USULÜ 🇹🇷 der" / "GOING DUTCH 🇬🇧 der"; küçük Almanya ve Hollanda bayrak renkli hap çipleri omuz silker.
+3. TÜRKİYE USULÜ (9–24) — Damga "TÜRKİYE USULÜ" (kırmızı). Gubi ve Gufi İKİ ARKADAŞ olarak masada (cinsiyet yok, arkadaş skeci):
+   a) Gubi "LAVABO →" tabelasına süzülür, tabela döner "KASA" (gizli ok).
+   b) Gufi garsona göz kırpar (sus tepkisi + fısıltı balonu "SAKIN ONA GETİRME").
+   c) HESAP GÜREŞİ: fiş ikisinin arasında havada sallanır, balonlar art arda patlar "YOK BEN!" · "OLMAZ, AYIP!" · "BİR DAHAKİNE SEN!" (hızlı kesme, her biri ~0,7 sn), toz bulutu.
+   d) Takvim yaprakları uçar, "BİR DAHAKİ" etiketli boş sandalye — kimse gelmez (komik sessizlik + cırcır böceği).
+   ~20. sn köşede "+ TAKİP ET" çipi.
+4. İLK BULUŞMA (24–33) — Işık romantikleşir; masada yüzsüz silüet çift. Ekran ikiye: sol "CENTİLMENLİK" (tek el hesabı alır), sağ "DEVİR DEĞİŞTİ" (hesap ikiye bölünür). Eşit süre.
+5. İTİRAF ANI (33–41) — Silüet kadın cüzdana uzanır, düşünce balonu "KABUL ETME 🙏"; silüet erkek parayı alır, yanakları kızarır + ter damlası. Küçük kaynak çipi köşede: "ARAŞTIRMA · 17.000 KİŞİ".
+6. İKİ BEKLENTİ (41–43) — Üstten bakış; iki düşünce balonu masanın üstünde çarpışır.
+7. PAYLAŞIM (43–46) — Gufi kartı cebinden çıkarıp sallar; çip "BULUŞMAYA GİDECEK ARKADAŞINA GÖNDER".
+8. KAPANIŞ (46–52) — Üç buton: ERKEK · DAVET EDEN · ALMAN USULÜ + yorum balonu → TAKİP ET kartı → logo.
+Kamera: 1 snap-zoom · 2 whip-pan · 3 hızlı kesmeler + el kamerası · 4 split · 5 push-in balona · 6 top-down · 7 sabit · 8 sabit.
 
 ## 3) Doğrulama notları
 - Frederick vd. (Chapman Üniv., ASA 108. yıllık toplantı, 2013): 17.000+ katılımcı ✓.
+  · METİNDE SÖZEL RAKAM YOK (kullanıcı: magazinsel); "yarısından fazlası / bir kısmı / çoğu" ifadeleri bu rakamlara dayanıyor.
   · Kadınların %57'si ödemeye yardım teklif ettiğini söylüyor ✓; %39'u teklifin reddedilmesini umduğunu itiraf ediyor ✓; %44'ü erkeğin ödeme beklemesinden rahatsız (metne alınmadı).
   · Erkeklerin %64'ü kadının katkı vermesi gerektiğini düşünüyor ✓; %76'sı kadının parasını kabul ederken suçluluk hissediyor ✓; %44'ü hiç ödemeyen kadınla görüşmeyi bırakacağını söylüyor (alınmadı).
   · 6 ay+ flört edenlerde erkeklerin %74'ü, kadınların %83'ü iki tarafın da katkı verdiğini söylüyor ✓.
 - "Alman usulü" (TR) / "going Dutch" (EN) deyimleri ✓.
+- "Türkiye usulü" bölümü (lavabo bahanesiyle kasaya gitme, garsona işaret, hesap kapma) gözlem/skeç; istatistik iddiası değil.
 - KAÇINILAN: kaynağı belirsiz "Türkiye anketi" yüzdeleri (haber sitelerinde kaynaksız dolaşıyor); araştırmanın ABD'de yapıldığı metinde söylendi; yılı (2013) ekranda kaynak çipinde gösterilir.

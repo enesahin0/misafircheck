@@ -404,3 +404,9 @@ KURALLAR (KALICI):
 4. **Paylaşım çağrısı**: tartışma videolarında ortalarda/yorum sorusundan önce "Bunu … arkadaşına gönder" tipi, tarafsız bir cümle.
 5. **Takip hatırlatması** sona bırakılmaz: ~20–25. sn'de kısa bir ekran çipi / tek cümle (+ sondaki takip cümlesi kalır).
 6. Tartışma formatı (iki taraf, eşit süre, ortak nokta, "sen hangi taraftasın?") yorum getiriyor → korunur.
+
+## ANLATIM TONU — MAGAZİNSEL (kullanıcı: "hep kaynaklara bağlı yapınca konunun çekiciliğini öldürüyor", KALICI)
+- Seslendirmede kaynak/kurum/yıl/kişi sayısı SÖYLENMEZ (gerekmedikçe); kaynak ekranda küçük çip olarak durur, doğrulama notları md'de kalır.
+- Rakamlar sözlü olarak yumuşatılır: "yarısından fazlası", "çoğu", "bir kısmı" — ama yine de doğru veriye dayanır (uydurma yok).
+- Türkiye'ye özgü gözlem/skeç ("Türkiye usulü"), espri ve günlük hayat sahneleri öne çıkar; bilgi bunun içine serpiştirilir.
+- Gözlem ve skeç, istatistik gibi sunulmaz ("Türklerin %80'i…" gibi uydurma oran YOK).
