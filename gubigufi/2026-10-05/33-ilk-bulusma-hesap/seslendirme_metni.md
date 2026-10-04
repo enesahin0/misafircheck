@@ -33,7 +33,7 @@ Her gün bir merak için gubigufi'yi takip et.
 ## 2) Storyboard — maskotlar OYUNCU
 1. KANCA (0–3 sn) — Restoran masası, iki silüet karşılıklı; Gufi garson (papyon) hesap tepsisini masanın TAM ortasına koyar → BAM: tepsi döner gibi titrer, iki el aynı anda uzanır, kare donar. Çip "KİM ÖDER?". Kamera: tepsiye snap-zoom.
 2. İKİ TARAF (3–10) — Ekran ikiye: sol "CENTİLMENLİK" (eski tip papyon ikonu, tek el hesabı alır), sağ "EŞİTLİK" (terazi ikonu, hesap ikiye bölünür, makas efekti). Eşit boy/süre.
-3. ARAŞTIRMA (10–14) — Gubi araştırmacı (gözlük) panoyla girer; "17.000 KİŞİ · ABD" sayacı, kalabalık nokta bulutu.
+3. ARAŞTIRMA (10–14) — Gubi araştırmacı (gözlük) panoyla girer; "17.000 KİŞİ · ABD · 2013" sayacı, kalabalık nokta bulutu.
 4. KADINLAR (14–21) — Silüet kadın cüzdanına uzanır: çubuk %57 "TEKLİF EDİYOR". Sonra düşünce balonu açılır: içinde "KABUL ETME 🙏" → çubuk %39 "REDDEDİLMESİNİ UMUYOR". ~20. sn köşede "+ TAKİP ET" çipi.
 5. ERKEKLER (21–28) — Silüet erkek: çubuk %64 "KATKI VERMELİ"; sonra kadının uzattığı parayı alınca üstüne ter damlası/kızarma → çubuk %76 "KENDİNİ SUÇLU HİSSEDİYOR". Kadınlar ve erkekler bölümü eşit süre.
 6. İKİ BEKLENTİ (28–31) — Masaya üstten bakış: iki sandalyede iki kişi, üstlerinde iki ayrı düşünce balonu çarpışır; çip "MASADA İKİ BEKLENTİ".
@@ -49,4 +49,4 @@ Kamera: 1 snap-zoom · 2 split · 3 tilt-down kalabalık · 4 push-in düşünce
   · Erkeklerin %64'ü kadının katkı vermesi gerektiğini düşünüyor ✓; %76'sı kadının parasını kabul ederken suçluluk hissediyor ✓; %44'ü hiç ödemeyen kadınla görüşmeyi bırakacağını söylüyor (alınmadı).
   · 6 ay+ flört edenlerde erkeklerin %74'ü, kadınların %83'ü iki tarafın da katkı verdiğini söylüyor ✓.
 - "Alman usulü" (TR) / "going Dutch" (EN) deyimleri ✓.
-- KAÇINILAN: kaynağı belirsiz "Türkiye anketi" yüzdeleri (haber sitelerinde kaynaksız dolaşıyor); araştırmanın ABD ve 2013 olduğu metinde açıkça söylendi.
+- KAÇINILAN: kaynağı belirsiz "Türkiye anketi" yüzdeleri (haber sitelerinde kaynaksız dolaşıyor); araştırmanın ABD'de yapıldığı metinde söylendi; yılı (2013) ekranda kaynak çipinde gösterilir.
