@@ -22,6 +22,8 @@ Ama dikkat et: İki taraf da aslında aynı şeyi istiyor. Kimse ısırılmasın
 
 Sen hangi taraftasın? Yorumlara yaz. Ama önce, diğer tarafı bir kez dinle.
 
+Her gün bir merak için gubigufi'yi takip et.
+
 ## 2) Storyboard — "bam bam" ritim (her cümle bir kesme)
 1. KANCA — Siyah ekran, tek köpek silüeti ortada. "BAM": ekran ikiye yarılır — sol yarı soğuk mavi gölge, köpek büyük ve karanlık, okul çantalı küçük çocuk silüeti geri adım atar ("KÂBUS"); sağ yarı sıcak turuncu, aynı köpek kuyruk sallar, kucaklanır ("AİLE"). Aynı silüet, iki ışık. Kamera: sert snap-zoom.
 2. 4 EKİM — Takvim yaprağı damga gibi iner "4 EKİM · DÜNYA HAYVANLAR GÜNÜ"; harita üzerinde çatlak Türkiye'yi ikiye böler; ortada dev "?" "SOKAKTAKİ KÖPEKLER KİMİN?". Kamera: tilt-down.
@@ -32,6 +34,7 @@ Sen hangi taraftasın? Yorumlara yaz. Ama önce, diğer tarafı bir kez dinle.
 7. AYNI SOKAK — Split çizgisi kayar; tek köpek ortada, sol ve sağdan iki bakış oku: "TEHLİKE" / "DOST". Kamera: 360° yörünge (orbit) köpeğin etrafında.
 8. ORTAK NOKTA — Çatlak kapanır; iki taraftan iki etiket ortada birleşir: "KİMSE ISIRILMASIN" + "KİMSE ACI ÇEKMESİN" → tek kart. Gufi ve Gubi yan yana, birbirine bakar (düşünceli). Kamera: pull-out.
 9. KAPANIŞ — "SEN HANGİ TARAFTASIN?" iki kulak simgesi "ÖNCE DİNLE"; yorum balonu.
+10. TAKİP ET — TAKİP ET kartı (gubigufi, Gubi+Gufi yan yana el sallar) → logo çıkışı.
 Ruh hali: 1 gerilim → 3 endişe (Gufi) / 4 şefkat (Gubi) → 6 tek duygu değişimi (ekranda sebep: yasa) → 8 sakin-düşünceli. Maskotlar tarafların "rolünü" oynar; 8'de birlikte durarak tarafsızlık vurgulanır.
 Ses: her "BAM" kesmesinde derin davul vuruşu + sessizlik; 4'te çekiç sesleri ritme oturur.
 

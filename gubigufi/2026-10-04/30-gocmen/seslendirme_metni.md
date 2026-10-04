@@ -33,6 +33,8 @@ Ve bugün tablo yine değişiyor. Aralık iki bin yirmi dörtten beri altı yüz
 
 Sen başta kaç tahmin etmiştin? Yorumlara yaz.
 
+Her gün bir merak için gubigufi'yi takip et.
+
 ## 2) Storyboard — maskotlar OYUNCU
 1. KANCA — Boş beyaz ekran, ortada dev "?" ve tahmin kadranı (0 → 15 milyon). Gufi kadranı çevirir, ibre sağa kaçar; Gubi elini kadrana koyup durdurur → "Aklında bir rakam tut" (rakam gizli, kilit ikonu). Kamera: hızlı push-in.
 2. RESMİ RAKAM — Türkiye haritası; Gubi sayaç kulesine dev blokları dizer: turuncu blok 2.255.031 "GEÇİCİ KORUMA", mavi 1.276.758 "İKAMET İZNİ", yeşil 221.353 "ULUSLARARASI KORUMA" → toplam çubuk ≈3,75 MİLYON (sayaç yuvarlanır). Altta kesik çizgili hayalet blok + "KAYIT DIŞI: DAHİL DEĞİL" etiketi. Kaynak chip: "GÖÇ İDARESİ · 2026". Kamera: yukarı tilt (blok kulesi büyüdükçe).
@@ -49,6 +51,7 @@ Sen başta kaç tahmin etmiştin? Yorumlara yaz.
 8. SEBEP? — Gubi dedektif büyüteciyle grafikleri inceler; "GÖÇ" etiketli küçük dişli sadece küçük bir yerel saati döndürüyor, "KUR & ENFLASYON" dev saatini ise üç büyük dişli döndürüyor: "PARA POLİTİKASI", "ENERJİ FİYATLARI", "KÜRESEL GELİŞMELER". Chip: "ARAŞTIRMALAR: ETKİ YEREL & SINIRLI". Kamera: dişlilere zoom-in sonra zoom-out.
 9. BUGÜN — Grafik 2021 zirvesinden aşağı kıvrılır → 2.255.031; sınır kapısında ters yönde yürüyen silüetler, sayaç "650.000+" (Aralık 2024'ten beri). Etiket "ZİRVEDEN −%40". Gufi takvime yeni yaprak takar "2026". Kamera: pull-out.
 10. KAPANIŞ — 1. sahnedeki kilitli rakam açılır; Gufi kendi tahminine bakıp utanır (utan); Gubi kameraya döner: "SEN KAÇ TAHMİN ETMİŞTİN?" + yorum balonu.
+11. TAKİP ET — TAKİP ET kartı (gubigufi, Gubi+Gufi) → logo çıkışı.
 Kamera özeti: 1 push-in · 2 tilt-up · 3 yavaş pan · 4 yan dolly · 5 kesmeli kartlar · 6 sabit+shake · 7 dikey kaydırma · 8 zoom-in/out · 9 pull-out · 10 sabit (aynı hareket art arda yok).
 Ruh hali: 1 meraklı → 2 odaklı → 3 ciddi/şefkatli (gülme tepkisi YOK) → 4 yorgun-kararlı → 5–6 düşünceli → 7 şaşkın → 8 dedektif odak → 9 sakin → 10 hafif utangaç/gülümseme. Tepki kontrolü: `tepki_kontrol.kontrol(TEP)`.
 

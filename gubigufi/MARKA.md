@@ -19,6 +19,7 @@
 ### FRAGMAN / SERİ KANCASI YOK (kullanıcı kararı, KALICI)
 Videoların sonunda "Bölüm 2'de…" gibi bir sonraki videoya fragman VERİLMEZ. Her video kendi içinde kapanır:
 son 6–8 sn = konunun özünü bağlayan, akılda kalan bir kapanış cümlesi (+ gerekiyorsa ekranda kısa uyarı satırı).
+**TAKİP ÇAĞRISI (KALICI):** Her gubigufi metni son cümle olarak "Her gün bir merak için gubigufi'yi takip et." ile biter (yorum sorusundan SONRA); görselde TAKİP ET kartı (Gubi+Gufi) → logo çıkışı. (Haber bültenlerinin kendi kapanışı vardır; acı haber bültenlerinde çağrı yapılmaz.)
 (Seri adları — "Kanun Böyle Diyor", "Tıbbın Asileri" vb. — kategori kimliği olarak kullanılabilir ama "sonraki bölüm" sözü verilmez.)
 
 ### GERÇEKLİK KURALI — harita, kişi, yer (KALICI)
