@@ -1,5 +1,5 @@
 # #33 — İlk Buluşmada Hesabı Kim Öder? · "İki Taraf" × "Psikoloji"
-Kategori: PSİKOLOJİ (#E056C1). Hedef ~35 sn (KISA). Ton: MAGAZİNSEL / esprili. "Türkiye usulü" skeci + #31 tartışma kalıbı + itiraf anı.
+Kategori: PSİKOLOJİ (#E056C1). Hedef ~50–55 sn. Ton: MAGAZİNSEL / esprili. "Türkiye usulü" skeci + #31 tartışma kalıbı + itiraf anı.
 #31 DERSLERİ: soru 1. saniyede · tanım cümlesi yok · ~50 sn · paylaşım çağrısı ortada · takip çipi ~20. sn.
 TARAFSIZLIK: iki taraf eşit süre; kadınlar/erkekler alay konusu yapılmaz, rakamlar iki cinsiyetin de çelişkisini gösterir.
 TEMSİL: Çift = yüzsüz sade silüetler (kadın/erkek); maskotlara cinsiyet atanmaz → Gufi garson, Gubi araştırmacı.
@@ -10,20 +10,28 @@ TEMSİL: Çift = yüzsüz sade silüetler (kadın/erkek); maskotlara cinsiyet at
 
 Avrupa'da herkes kendi yediğini öder. Biz buna "Alman usulü" diyoruz.
 
-Bizde ise hesap güreşi başlar: "Yok ben!" "Olmaz, ayıp!" "Bir dahakine sen!" Ve o "bir dahaki" asla gelmez.
+Ama bir de Türkiye usulü var.
 
-İlk buluşmada ise Türkiye ikiye bölünüyor: "Erkek öder, centilmenlik" diyenler ve "Herkes kendi yediğini öder" diyenler.
+Hesap daha gelmeden biri "lavaboya gidiyorum" diye kalkar. Aslında kasaya gidiyordur.
+
+Garsona göz kırpılır: "Hesabı sakın ona getirme."
+
+Sonra masada güreş başlar: "Yok ben!" "Olmaz, ayıp!" "Bir dahakine sen!" Ve o "bir dahaki" asla gelmez.
+
+İlk buluşmada ise Türkiye ikiye bölünüyor: "Erkek öder, bu centilmenlik" diyenler ve "Herkes kendi yediğini öder, devir değişti" diyenler.
 
 En komiği şu: Kadınların yarısından fazlası hesabı bölüşmeyi teklif ediyor, ama bir kısmı reddedilmesini umuyor. Erkekler de "o da katkı versin" diyor, sonra parayı alınca utanıyor.
 
-Buluşmaya gidecek arkadaşına gönder.
+Yani masada iki kişi değil, iki beklenti oturuyor.
 
-Sence kim ödemeli? Yorumlara yaz.
+Buluşmaya gidecek arkadaşına gönder. Kartını hazırlasın.
+
+Sence kim ödemeli? Erkek mi, davet eden mi, Alman usulü mü? Yorumlara yaz.
 
 Her gün bir merak için gubigufi'yi takip et.
 
 ## 2) Storyboard
-KISA SÜRÜM (~35 sn): 1 kanca → 2 Alman usulü (3 sn) → 3 hesap güreşi (Gubi+Gufi, lavabo/göz kırpma ÇIKARILDI) → 4 ikiye bölünme → 5 itiraf anı → 7 paylaşım → 8 kapanış. Takip çipi ~15. sn. — maskotlar OYUNCU (magazinsel, hızlı kesmeler)
+SÜRÜM (~50–55 sn): 1 kanca → 2 Alman usulü → 3 Türkiye usulü (lavabo→kasa, göz kırpma, hesap güreşi, boş "bir dahaki" sandalyesi) → 4 ikiye bölünme → 5 itiraf anı → 6 iki beklenti → 7 paylaşım → 8 kapanış. Takip çipi ~20. sn.
 1. KANCA (0–3 sn) — Restoran masası; Gufi garson hesap tepsisini masanın tam ortasına koyar → BAM, iki el aynı anda uzanır, kare donar. Çip "KİM ÖDER?".
 2. AVRUPA USULÜ (3–9) — Hesap fişi ikiye yırtılır; iki çip birbirini işaret eder: "ALMAN USULÜ 🇹🇷 der" / "GOING DUTCH 🇬🇧 der"; küçük Almanya ve Hollanda bayrak renkli hap çipleri omuz silker.
 3. TÜRKİYE USULÜ (9–24) — Damga "TÜRKİYE USULÜ" (kırmızı). Gubi ve Gufi İKİ ARKADAŞ olarak masada (cinsiyet yok, arkadaş skeci):

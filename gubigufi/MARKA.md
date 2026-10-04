@@ -400,7 +400,7 @@ Veri: geçme oranı %35 (iyi), yorum/beğeni oranı tipikten yüksek; AMA izleyi
 KURALLAR (KALICI):
 1. **Kancadan sonraki ilk cümle = asıl çatışma/soru.** Tarih, özel gün, tanım cümleleri ilk 10 sn'ye GİRMEZ; özel gün sadece ekranda küçük çip olarak geçer.
 2. **Ana soru ilk 4 sn içinde** sorulur (bu videoda 11. sn'deydi).
-3. **VİDEOLAR KISA (kullanıcı kuralı): hedef 30–40 sn, en fazla 45 sn.** Metin ~80–100 kelime; her cümle tek bilgi/espri, dolgu cümle yok.
+3. **VİDEO SÜRESİ (kullanıcı kuralı): 50–60 sn yeterli, üstüne çıkılmaz.** Metin ~115–135 kelime; her cümle tek bilgi/espri, dolgu cümle yok.
 4. **Paylaşım çağrısı**: tartışma videolarında ortalarda/yorum sorusundan önce "Bunu … arkadaşına gönder" tipi, tarafsız bir cümle.
 5. **Takip hatırlatması** sona bırakılmaz: ~20–25. sn'de kısa bir ekran çipi / tek cümle (+ sondaki takip cümlesi kalır).
 6. Tartışma formatı (iki taraf, eşit süre, ortak nokta, "sen hangi taraftasın?") yorum getiriyor → korunur.
