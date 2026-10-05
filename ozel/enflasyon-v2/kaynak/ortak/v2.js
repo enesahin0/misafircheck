@@ -35,7 +35,7 @@ const MAT = (o) => new THREE.MeshStandardMaterial(o);
 // ---------------- NESNELER ----------------
 let NOT, URUNLER, SERIT, KULE, DOLAR, LIRALAR, ERI, ZEMIN, ERIBAZ, NOKTALAR;
 const URUN = [['EKMEK', '#E8A45A'], ['SÜT', '#F4F1EA'], ['PEYNİR', '#FFE08A'], ['YUMURTA', '#F2D7B0'], ['YAĞ', '#FFD23F'], ['DOMATES', '#FF4A3A'], ['ÇAY', '#3FA35A'], ['ŞEKER', '#FFFFFF'], ['MAKARNA', '#F2C46A'], ['PİRİNÇ', '#EDE6D6'], ['ZEYTİN', '#4A4A2A'], ['SABUN', '#8AD8FF']];
-const VERI = [[2020.95, 14.6], [2021.25, 16.2], [2021.5, 19.0], [2021.75, 21.3], [2021.95, 36.1], [2022.2, 61.1], [2022.45, 73.5], [2022.6, 79.6], [2022.8, 85.5], [2022.95, 64.3], [2023.25, 43.7], [2023.5, 38.2], [2023.75, 61.4], [2023.95, 64.8], [2024.2, 68.5], [2024.4, 75.5], [2024.7, 49.4], [2024.95, 44.4], [2025.3, 37.9], [2025.6, 33.3], [2025.95, 30.9], [2026.6, 31.5]];
+const VERI = [[2020.95, 14.6], [2021.25, 16.2], [2021.5, 19.0], [2021.75, 21.3], [2021.95, 36.1], [2022.2, 61.1], [2022.45, 73.5], [2022.6, 79.6], [2022.8, 85.5], [2022.95, 64.3], [2023.25, 43.7], [2023.5, 38.2], [2023.75, 61.4], [2023.95, 64.8], [2024.2, 68.5], [2024.4, 75.5], [2024.7, 49.4], [2024.95, 44.4], [2025.3, 37.9], [2025.6, 33.3], [2025.95, 30.9], [2026.7, 29.7]];
 const SX = y => (y - 2023.7) * 3.2, SY = v => v * .085;
 let EGRI;
 
@@ -61,7 +61,7 @@ function kur() {
   alan.position.z = -.225; SERIT.add(alan);
   EGRI = new THREE.CatmullRomCurve3(pts.map(p => new THREE.Vector3(p.x, p.y + .04, 0)), false, 'centripetal', .5);
   SERIT.add(new THREE.Mesh(new THREE.TubeGeometry(EGRI, 400, .09, 12, false), MAT({ color: 0xFFE6A0, emissive: 0xFF8A3A, emissiveIntensity: .9, metalness: .2, roughness: .3 })));
-  NOKTALAR = []; [[2022.8, 85.5], [2026.6, 31.5]].forEach(([y, v]) => { const s = new THREE.Mesh(new THREE.SphereGeometry(.22, 32, 16), MAT({ color: 0xFFFFFF, emissive: 0xFFD27A, emissiveIntensity: 1.4 })); s.position.set(SX(y), SY(v) + .05, 0); SERIT.add(s); NOKTALAR.push(s); });
+  NOKTALAR = []; [[2022.8, 85.5], [2026.7, 29.7]].forEach(([y, v]) => { const s = new THREE.Mesh(new THREE.SphereGeometry(.22, 32, 16), MAT({ color: 0xFFFFFF, emissive: 0xFFD27A, emissiveIntensity: 1.4 })); s.position.set(SX(y), SY(v) + .05, 0); SERIT.add(s); NOKTALAR.push(s); });
   for (let y = 2021; y <= 2026; y++) { const m = new THREE.Mesh(new THREE.BoxGeometry(.02, 8, .02), MAT({ color: 0x333340, emissive: 0x15151C })); m.position.set(SX(y), 4, -.5); SERIT.add(m); }
   sc.add(SERIT);
   // altın/para kuleleri (6 yıl)
@@ -202,17 +202,18 @@ function cerceve(T) {
   }
   // ===== H 50–56 BUGÜN =====
   else if (T < 56) {
-    goster(SERIT); bgRenk('#0A0A0D'); sagHud = 'AĞUSTOS 2026'; NOKTALAR[1].visible = true;
-    const q = io(A(T, 50, 55.8)), son = new THREE.Vector3(SX(2026.6), SY(31.5), 0);
+    goster(SERIT); bgRenk('#0A0A0D'); sagHud = 'EYLÜL 2026'; NOKTALAR[1].visible = true;
+    const q = io(A(T, 50, 55.8)), son = new THREE.Vector3(SX(2026.7), SY(29.7), 0);
     kamera([lerp(SX(2022.4), son.x + 1.2, q), lerp(9.5, 4.2, q), lerp(9, 6.5, q)], [lerp(SX(2023.5), son.x - .8, q), lerp(4, 2.6, q), 0], 38);
     const ama = T > 53.5 && T < 54 ? 1 : 0; rim.intensity = 30 + 300 * ama * (Math.floor(T * 30) % 2);
-    const v = 85.51 + (31.51 - 85.51) * io(A(T, 50.3, 52.2));
-    ui += slam(T, 50.0, 'AĞUSTOS 2026', 540, 380, 70, { f: F.mono, w: 700, ls: 4 });
+    const v = 85.51 + (29.73 - 85.51) * io(A(T, 50.3, 52.2));
+    ui += slam(T, 50.0, 'EYLÜL 2026', 540, 380, 70, { f: F.mono, w: 700, ls: 4 });
     ui += yaz('%' + fmt(v, 2), 540, 620, 330, { renk: v > 50 ? C.red : C.gold, derin: 16, dr: '#200', op: A(T, 50.3, 50.5) });
     ui += slam(T, 52.3, 'DÜŞÜYOR ↓', 540, 880, 120, { f: F.head, w: 800, renk: C.green, t1: 53.4 });
+    ui += yaz('57 ay sonra ilk kez %30\'un altında', 540, 1000, 40, { f: F.mono, w: 600, renk: C.green, op: A(T, 52.6, 52.8) * (1 - A(T, 53.3, 53.45)), gol: false });
     ui += slam(T, 53.5, 'AMA', 540, 900, 280, { derin: 14, dr: '#222', t1: 54.1 });
-    ui += harf(T, 54.2, 'PARAN HÂLÂ', 540, 1150, 120, { f: F.head, w: 800 }) + slam(T, 54.5, 'YILDA ~%24', 540, 1340, 220, { renk: C.red, derin: 12, dr: '#200' }) + slam(T, 54.8, 'ERİYOR', 540, 1540, 200, { renk: C.red, derin: 12, dr: '#200' });
-    ui += yaz('%31,51 fiyat artışı ≈ alım gücünde %24 kayıp', 540, 1760, 26, { f: F.mono, w: 500, renk: C.mute, op: A(T, 55, 55.3), gol: false });
+    ui += harf(T, 54.2, 'PARAN HÂLÂ', 540, 1150, 120, { f: F.head, w: 800 }) + slam(T, 54.5, 'YILDA ~%23', 540, 1340, 220, { renk: C.red, derin: 12, dr: '#200' }) + slam(T, 54.8, 'ERİYOR', 540, 1540, 200, { renk: C.red, derin: 12, dr: '#200' });
+    ui += yaz('%29,73 fiyat artışı ≈ alım gücünde %23 kayıp', 540, 1760, 26, { f: F.mono, w: 500, renk: C.mute, op: A(T, 55, 55.3), gol: false });
   }
   // ===== I 56–60 FİNAL =====
   else {
