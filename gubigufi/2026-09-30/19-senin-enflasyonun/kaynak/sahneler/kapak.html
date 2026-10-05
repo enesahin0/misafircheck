@@ -19,8 +19,8 @@ window.renderAt = t => {
   o += M.canli('gufi', { t: .5, x: 915, y: 1010, boy: 180, duygu: 'saskin', bakHedef: [690, 450], ust: KO.giy('gufi', ['gozluk', ['kasket', { renk: '#8A8A9A', siper: '#5A5A6A' }]]) });
   o += `<text x="540" y="200" font-size="170" font-weight="900" text-anchor="middle" style="fill:#2FBF71" transform="rotate(-6 540 200)">%?</text>`;
   o += `<rect x="0" y="1150" width="1080" height="770" fill="#2A3A5A"/><rect x="0" y="1150" width="1080" height="18" fill="#D8A032"/>`;
-  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#F2CE7A">PARANIN DİLİ</text>`;
-  o += txt('SENİN ENFLASYONUN', 540, 1362, 90) + txt('KAÇ?', 540, 1462, 92, '#F2CE7A');
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#F2CE7A">TÜİK EYLÜL ENFLASYONU</text>`;
+  o += txt('%29,73 MÜ?', 540, 1362, 100) + txt('BENİMKİ DEĞİL!', 540, 1470, 100, '#F2CE7A');
   const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
   for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
   document.getElementById('dinamik').innerHTML = o + l + '</g>';
