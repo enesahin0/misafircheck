@@ -16,7 +16,7 @@ const DT = (() => {
   function gelin(x, y, s = 1, { renk = '#FFF6F0', golge = '#E8D8D0' } = {}) {
     let o = `<g transform="translate(${x} ${y}) scale(${s})"><ellipse cx="0" cy="4" rx="150" ry="18" fill="#000" opacity=".25"/>`;
     o += `<path d="M-150 0 Q-120 -200 -50 -260 L50 -260 Q120 -200 150 0Z" fill="${renk}"/><path d="M-150 0 Q-120 -200 -50 -260 L-20 -260 Q-70 -150 -60 0Z" fill="${golge}" opacity=".7"/>`;
-    o += `<path d="M-56 -260 Q-60 -380 0 -390 Q60 -380 56 -260Z" fill="${renk}"/><circle cx="0" cy="-430" r="48" fill="#E8C8B0"/>`;
+    o += `<path d="M-56 -260 Q-60 -380 0 -390 Q60 -380 56 -260Z" fill="${renk}"/><circle cx="0" cy="-486" r="30" fill="#4A2A1A"/><path d="M-54 -420 Q-60 -470 -20 -480 L20 -480 Q60 -470 54 -420 Q50 -380 44 -372 L-44 -372 Q-50 -380 -54 -420Z" fill="#4A2A1A"/><circle cx="0" cy="-430" r="48" fill="#E8C8B0"/>` + `<path d="M-52 -418 Q-56 -484 -2 -482 Q-20 -462 -30 -446 Q-40 -428 -52 -418Z" fill="#5A3422"/><path d="M52 -418 Q56 -484 -2 -482 Q26 -470 34 -450 Q42 -430 52 -418Z" fill="#5A3422"/><path d="M-8 -478 Q18 -470 34 -452" stroke="#7A4A30" stroke-width="4" fill="none" opacity=".7"/>`;
     o += `<path d="M-40 -470 Q0 -500 40 -470 Q110 -300 90 -150 L-90 -150 Q-110 -300 -40 -470Z" fill="#FFFFFF" opacity=".45"/>`;
     o += `<path d="M-34 -472 Q0 -488 34 -472" stroke="#F2C230" stroke-width="8" fill="none"/>`;
     return o + '</g>';
