@@ -36,10 +36,10 @@ const EN = (() => {
       if (etiket && p > .95) { const am = (a0 + a1) / 2, s = `${ad} %${Math.round(pay * 100)}`; o += `<g transform="translate(${x + Math.cos(am) * r * .62} ${y + Math.sin(am) * r * .62})">` + cipO(s, 0, 0, '#FFFDF6', '#1B1640', pay > .2 ? 24 : 20) + '</g>'; } }
       a0 = a1; });
     return o + `<circle cx="${x}" cy="${y}" r="${r}" fill="none" stroke="#FFFDF6" stroke-width="6"/>`; }
-  function termometre(x, y, s, deger, max, renk, etk) { const H = 600, dol = H * cl(deger / max);
+  function termometre(x, y, s, deger, max, renk, etk, yazi = true) { const H = 600, dol = H * cl(deger / max);
     let o = `<g transform="translate(${x} ${y}) scale(${s})">` + R(-50, -H - 40, 100, H + 40, 50, '#FFFDF6') + R(-30, -dol, 60, dol, 30, renk) + `<circle cx="0" cy="40" r="80" fill="#FFFDF6"/><circle cx="0" cy="40" r="60" fill="${renk}"/>`;
     for (let i = 1; i < 6; i++) o += R(50, -H * i / 6, 30, 6, 3, '#9AA0B0');
-    o += T_(`%${Math.round(deger)}`, 0, -dol - 70, 90, renk) + (etk ? cipO(etk, 0, 180, renk, '#FFFFFF', 26) : '');
+    o += (yazi ? T_(`%${Math.round(deger)}`, 0, -dol - 70, 90, renk) : '') + (etk ? cipO(etk, 0, 180, renk, '#FFFFFF', 26) : '');
     return o + '</g>'; }
   function ogrenciOda(T) { let o = CV.oda(T, { zeminY: 1250, dolap: false, pencere: [700, 280, 260, 320] }) + CV.raf(60, 360, 420, T, 5) + CV.poster(560, 360, 110, 150, T, 6);
     o += R(80, 1040, 520, 30, 10, '#8E5A30') + R(110, 1070, 24, 180, 8, '#6A4020') + R(550, 1070, 24, 180, 8, '#6A4020') + CV.lamba(160, 1040, .5, T) + CV.yerdeKitap(420, 1040, .6, T) + CV.kupa(520, 1040, .9, T.vurgu);

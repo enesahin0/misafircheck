@@ -11,13 +11,14 @@ window.renderAt = t => {
   // iki termometre: ortada, karakterlerden bağımsız
   const ry = 880 - 570 * 29.73 / 60 * .95;
   o += `<path d="M280 ${ry} H800" stroke="#1B1640" stroke-width="8" stroke-dasharray="22 14"/>`;
-  o += EN.termometre(390, 880, .95, 47, 60, '#E8505B', '') + EN.termometre(690, 880, .95, 34, 60, '#2E9AD8', '');
+  o += EN.termometre(390, 880, .95, 47, 60, '#E8505B', '', false) + EN.termometre(690, 880, .95, 34, 60, '#2E9AD8', '', false);
+  o += txt('%47', 145, 520, 110, '#E8505B') + txt('%34', 925, 600, 110, '#2E9AD8');
   o += EN.cipO('RESMİ %29,73', 540, ry + 60, '#1B1640', '#FFE45C', 28);
   o += EN.cipO('ÖĞRENCİ', 390, 1080, '#E8505B', '#FFFFFF', 26) + EN.cipO('EMEKLİ', 690, 1080, '#2E9AD8', '#FFFFFF', 26);
   // karakterler dış kenarlarda, termometreye bakıyor
   o += M.canli('gubi', { t: 1.2, x: 150, y: 800, boy: 190, duygu: 'saskin', bakHedef: [390, 300], ust: KO.giy('gubi', [['kep', { renk: '#1B1640', puskul: '#FFB44C' }]]) });
   o += M.canli('gufi', { t: .5, x: 915, y: 1010, boy: 180, duygu: 'saskin', bakHedef: [690, 450], ust: KO.giy('gufi', ['gozluk', ['kasket', { renk: '#8A8A9A', siper: '#5A5A6A' }]]) });
-  o += `<text x="540" y="200" font-size="170" font-weight="900" text-anchor="middle" style="fill:#2FBF71" transform="rotate(-6 540 200)">%?</text>`;
+  o += `<text x="540" y="200" font-size="170" font-weight="900" text-anchor="middle" style="fill:#FFFFFF" transform="rotate(-6 540 200)">%?</text>`;
   o += `<rect x="0" y="1150" width="1080" height="770" fill="#2A3A5A"/><rect x="0" y="1150" width="1080" height="18" fill="#D8A032"/>`;
   o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#F2CE7A">TÜİK EYLÜL ENFLASYONU</text>`;
   o += txt('%29,73 MÜ?', 540, 1362, 100) + txt('BENİMKİ DEĞİL!', 540, 1470, 100, '#F2CE7A');
