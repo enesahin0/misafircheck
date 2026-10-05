@@ -1,0 +1,248 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 59.64,
+  "konusma_bloklari": [
+    [
+      0.0,
+      2.386
+    ],
+    [
+      2.681,
+      3.895
+    ],
+    [
+      4.484,
+      5.223
+    ],
+    [
+      5.629,
+      6.396
+    ],
+    [
+      6.698,
+      8.212
+    ],
+    [
+      8.759,
+      9.599
+    ],
+    [
+      10.081,
+      13.014
+    ],
+    [
+      13.583,
+      15.945
+    ],
+    [
+      16.348,
+      17.659
+    ],
+    [
+      18.091,
+      20.87
+    ],
+    [
+      21.2,
+      21.947
+    ],
+    [
+      22.567,
+      23.576
+    ],
+    [
+      23.872,
+      25.985
+    ],
+    [
+      26.235,
+      27.541
+    ],
+    [
+      28.077,
+      29.168
+    ],
+    [
+      29.48,
+      30.608
+    ],
+    [
+      30.973,
+      32.649
+    ],
+    [
+      33.075,
+      36.147
+    ],
+    [
+      36.593,
+      38.624
+    ],
+    [
+      39.148,
+      42.156
+    ],
+    [
+      42.717,
+      45.302
+    ],
+    [
+      45.728,
+      46.481
+    ],
+    [
+      47.018,
+      48.776
+    ],
+    [
+      49.149,
+      51.083
+    ],
+    [
+      51.681,
+      52.979
+    ],
+    [
+      53.404,
+      54.0
+    ],
+    [
+      54.279,
+      54.933
+    ],
+    [
+      55.317,
+      56.119
+    ],
+    [
+      56.378,
+      57.923
+    ],
+    [
+      58.205,
+      59.64
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 3.9,
+      "sure": 3.9,
+      "metin": "Düğünde damada takılan çeyrek altınlar, boşanınca kimde kalır?"
+    },
+    {
+      "no": 2,
+      "baslangic": 3.9,
+      "bitis": 6.4,
+      "sure": 2.5,
+      "metin": "Gelin tarafı: \"Hepsi gelinin."
+    },
+    {
+      "no": 3,
+      "baslangic": 6.4,
+      "bitis": 13.01,
+      "sure": 6.62,
+      "metin": "O altın, onun güvencesi.\" Damat tarafı: \"O altınları bizim akrabalar taktı."
+    },
+    {
+      "no": 4,
+      "baslangic": 13.01,
+      "bitis": 15.95,
+      "sure": 2.93,
+      "metin": "Niye onda kalsın?\" Bu kavga yıllarca mahkemelik oldu."
+    },
+    {
+      "no": 5,
+      "baslangic": 15.95,
+      "bitis": 21.95,
+      "sure": 6.0,
+      "metin": "Ve cevap hep aynıydı: Kim takarsa taksın, kime takılırsa takılsın, hepsi gelinin."
+    },
+    {
+      "no": 6,
+      "baslangic": 21.95,
+      "bitis": 23.58,
+      "sure": 1.63,
+      "metin": "Ama artık değişti."
+    },
+    {
+      "no": 7,
+      "baslangic": 23.58,
+      "bitis": 27.54,
+      "sure": 3.96,
+      "metin": "Önce çiftin anlaşmasına bakılıyor, sonra yörenin adetine."
+    },
+    {
+      "no": 8,
+      "baslangic": 27.54,
+      "bitis": 30.61,
+      "sure": 3.07,
+      "metin": "İkisi de yoksa takı, kime takıldıysa onun."
+    },
+    {
+      "no": 9,
+      "baslangic": 30.61,
+      "bitis": 38.62,
+      "sure": 8.02,
+      "metin": "Ve işin en ilginç yanı: Damadın boynuna takılan bilezik yine geline gidiyor, çünkü bilezik kadına özgü sayılıyor."
+    },
+    {
+      "no": 10,
+      "baslangic": 38.62,
+      "bitis": 42.16,
+      "sure": 3.53,
+      "metin": "Aynı kurdeledeki çeyrek altın ise damatta kalıyor."
+    },
+    {
+      "no": 11,
+      "baslangic": 42.16,
+      "bitis": 45.3,
+      "sure": 3.15,
+      "metin": "Evlenecek bir arkadaşın varsa bunu ona gönder."
+    },
+    {
+      "no": 12,
+      "baslangic": 45.3,
+      "bitis": 48.78,
+      "sure": 3.47,
+      "metin": "Ve bir tavsiye: Takı töreninin videosunu saklayın."
+    },
+    {
+      "no": 13,
+      "baslangic": 48.78,
+      "bitis": 51.08,
+      "sure": 2.31,
+      "metin": "Mahkemede en sağlam delil o."
+    },
+    {
+      "no": 14,
+      "baslangic": 51.08,
+      "bitis": 54.0,
+      "sure": 2.92,
+      "metin": "Sence takı kimin hakkı?"
+    },
+    {
+      "no": 15,
+      "baslangic": 54.0,
+      "bitis": 56.12,
+      "sure": 2.12,
+      "metin": "Gelinin mi, takılanın mı?"
+    },
+    {
+      "no": 16,
+      "baslangic": 56.12,
+      "bitis": 57.92,
+      "sure": 1.8,
+      "metin": "Yorumlara yaz."
+    },
+    {
+      "no": 17,
+      "baslangic": 57.92,
+      "bitis": 59.64,
+      "sure": 1.72,
+      "metin": "Her gün bir merak için gubigufi'yi takip et."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}
