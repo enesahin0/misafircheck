@@ -31,7 +31,7 @@ $('zemin').innerHTML = `<rect width="1080" height="1920" fill="#DFF6EC"/>` + `<r
 window.renderAt = t => {
   const p = FX.E.expo(A(t, .1, 1.2));
   let o = EN.termometre(250, 1100, .95, 47 * p, 60, '#E8505B', 'ÖĞRENCİ') + EN.termometre(830, 1100, .95, 34 * p, 60, '#2E9AD8', 'EMEKLİ');
-  const r = A(t, 1.2, 1.8); o += `<path d="M130 ${1100 - 570 * 40 / 60 * .95} H950" stroke="#1B1640" stroke-width="8" stroke-dasharray="24 16" opacity="${r}"/>` + (r > 0 ? grp(cip('RESMİ = ORTALAMA', 0, 0, '#1B1640', '#FFE45C', 26), 540, 1100 - 570 * 40 / 60 * .95 - 60, r) : '');
+  const RY = 1100 - 570 * 29.73 / 60 * .95, r = A(t, 1.2, 1.8); o += `<path d="M130 ${RY} H950" stroke="#1B1640" stroke-width="8" stroke-dasharray="24 16" opacity="${r}"/>` + (r > 0 ? grp(cip('RESMİ %29,73 = ORTALAMA', 0, 0, '#1B1640', '#FFE45C', 26), 540, RY - 60, r) : '');
   const c = pop(t, 2.6); if (c > 0) o += grp(cip('HERKESİNKİ FARKLI', 0, 0, YES, '#FFFFFF', 34), 540, 420, c);
   o += gubi(t, { x: 250, y: 1560, boy: 180, bakHedef: [830, 800], ust: OGR }) + gufi(t, { x: 830, y: 1780, boy: 230, bakHedef: [250, 800], ust: EMK });
   $('dinamik').innerHTML = o;
