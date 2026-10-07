@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/hb.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  let o = HB.studyo(1, `<rect width="820" height="470" fill="#0A2448"/>` + HB.pompa(250, 440, .85) + HB.pompa(570, 440, .85, { lpg: true }) + `<path d="M410 330 L410 120" stroke="#E8323C" stroke-width="34" stroke-linecap="round"/><path d="M350 180 L410 100 L470 180" stroke="#E8323C" stroke-width="34" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`);
+  o += M.canli('gubi', { t: 1.2, x: 300, y: 980, boy: 230, duygu: 'saskin', bakHedef: [540, 560], ust: KO.giy('gubi', [['papyon', { renk: '#E8323C' }]]) });
+  o += M.canli('gufi', { t: 1.2, x: 790, y: 1120, boy: 250, duygu: 'kararli', bakHedef: [540, 560], eller: false, ust: (x, y, boy) => HB.mikrofon(x, y, boy) });
+  o += `<rect x="62" y="336" width="250" height="44" rx="8" fill="#0B1433" opacity=".8"/><circle cx="88" cy="358" r="9" fill="#E8323C"/><text class="mono" x="106" y="368" font-size="24" style="fill:#FFF">CANLI</text><text class="mono" x="210" y="368" font-size="24" style="fill:#9FC0E8">20:00</text>`;
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#0B1433"/><rect x="0" y="1150" width="1080" height="18" fill="#E8323C"/>`;
+  o += `<rect x="330" y="1205" width="420" height="56" fill="#E8323C"/><text class="mono" x="540" y="1244" font-size="32" text-anchor="middle" letter-spacing="6" style="fill:#FFFFFF">SON DAKİKA</text>`;
+  o += txt('EŞEL MOBİL BİTTİ', 540, 1372, 92) + txt('BENZİNE 3 AY ZAM YOLDA', 540, 1460, 58, '#FFD23F');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>

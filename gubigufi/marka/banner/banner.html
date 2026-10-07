@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><style>html,body{margin:0;background:#FFFFFF}svg{display:block}</style></head><body>
+<svg id="s" viewBox="0 0 2048 1152" width="2048" height="1152" xmlns="http://www.w3.org/2000/svg"></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script>
+<script>
+const yildiz = (x, y, r, renk, op = 1, rot = 0) => { let d = ''; for (let i = 0; i < 4; i++) { const a = rot + i * Math.PI / 2, b = a + Math.PI / 4, n = a + Math.PI / 2; d += (i ? '' : `M${x + Math.cos(a) * r} ${y + Math.sin(a) * r}`) + ` Q${x + Math.cos(b) * r * .18} ${y + Math.sin(b) * r * .18} ${x + Math.cos(n) * r} ${y + Math.sin(n) * r}`; } return `<path d="${d}Z" fill="${renk}" opacity="${op}"/>`; };
+const kalp = (x, y, s, renk, op = 1, rot = 0) => `<g transform="translate(${x} ${y}) rotate(${rot}) scale(${s})" opacity="${op}"><path d="M0 18 C-30 -4 -26 -30 -10 -30 C-2 -30 0 -22 0 -18 C0 -22 2 -30 10 -30 C26 -30 30 -4 0 18Z" fill="${renk}"/></g>`;
+let o = `<rect width="2048" height="1152" fill="#FFFFFF"/>`;
+// zemin gölgeleri
+o += `<ellipse cx="1290" cy="880" rx="150" ry="22" fill="#000" opacity=".07"/>`;
+// Gufi: el sallıyor (selam), Gubi: mutlu, hafif süzülüyor
+o += M.canli('gufi', { t: .6, x: 770, y: 895, boy: 470, duygu: 'merak', bakHedef: [1290, 520] });
+{ const s = 470 / 140, h = 470, x = 770, y = 895; o += `<path d="M${x - 14 * s} ${y - h * .31} Q${x} ${y - h * .2} ${x + 14 * s} ${y - h * .31}" fill="${M.renk.gufi.golge}"/>`; }
+o += M.canli('gubi', { t: .35, x: 1290, y: 560, boy: 470, duygu: 'merak', parla: 0, bakHedef: [770, 560] });
+{ const s = 470 / 160, x = 1290, y = 560; o += `<path d="M${x - 11 * s} ${y + 27 * s} Q${x} ${y + 40 * s} ${x + 11 * s} ${y + 27 * s}" fill="${M.renk.gubi.golge}"/>`; }
+// süsler: pırıltılar ve minik kalpler
+[[1150, 215, 22, '#FFB547', .9], [520, 330, 26, '#FFB547', .9], [1560, 330, 30, '#FFB547', .9], [1600, 760, 20, '#FFB547', .7], [470, 760, 18, '#FFB547', .7]].forEach(([x, y, r, c, op]) => o += yildiz(x, y, r, c, op));
+o += kalp(1040, 225, 1.5, '#EE312E', .95, -12) + kalp(1100, 165, .9, '#FF7A8A', .85, 14);
+document.getElementById('s').innerHTML = o;
+</script></body></html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
+</svg>
+<script>window.SB = 47.45; const TP = {"gubi": [[3.9, "hayir"]], "gufi": [[0.6, "evet"]]};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script><script src="../ortak/au.js"></script><script src="../ortak/kp.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = q => q < .5 ? 4 * q * q * q : 1 - Math.pow(-2 * q + 2, 3) / 2;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = K.yaziGen(s, fs, { mono: true, ls: 3 }) + fs * 1.7; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+const R = PR.R, h = HK.hash, C = AU.C, KC = KP.C;
+const VELI = KO.giy('gufi', [['kasket', { renk: '#2A3A6A', siper: '#1B2440' }]]);
+const GONULLU = KO.giy('gubi', [['bere', { renk: '#C2551E', tuy: '#FFE6B8' }]]);
+const kam = (s, { x = 540, y = 900, k = 1, dx = 0, dy = 0 } = {}) => `<g transform="translate(${dx} ${dy}) translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const klip = (s, x, y, w, hh) => { const i = 'kl' + Math.round(x) + '_' + Math.round(y) + '_' + Math.round(w); return `<defs><clipPath id="${i}"><rect x="${x}" y="${y}" width="${w}" height="${hh}"/></clipPath></defs><g clip-path="url(#${i})">${s}</g>`; };
+const bam = (t, a, d = .35) => { const q = A(t, a, a + d); return q > 0 && q < 1 ? `<rect width="1080" height="1920" fill="#FFFFFF" opacity="${.55 * (1 - q)}"/>` : ''; };
+
+window.renderAt = t => {
+  const z = 1 + .06 * E(A(t, 0, 5.75));
+  let L = AU.zemin('#2A4A8E', '#14244A') + KP.kalkan(270, 1000, .5, '#5A86E8');
+  L += KP.balonYaz(270, 620, ['“GEÇ BİLE', 'KALINDI”'], { fs: 54, sc: pop(t, .2), kx: -40 });
+  L += gufi(t, { x: 270, y: 1260, boy: 240, ust: VELI, duygu: 'kararli', bakHedef: 'kamera' });
+  const on = t > 2.8;
+  let Rr = on ? AU.zemin('#E8843E', '#8A3A14') + KP.kalp(810, 1000, .4, '#FFB27A') : `<rect width="1080" height="1920" fill="#120A06"/>`;
+  if (on) Rr += KP.balonYaz(810, 620, ['“BU ONLARIN', 'SONU OLUR”'], { fs: 50, sc: pop(t, 3.8), kx: 40 }) + gubi(t, { x: 810, y: 1120, boy: 180, ust: GONULLU, duygu: 'aglamakli', bakHedef: 'kamera' });
+  let o = klip(olc(L, 270, 900, z), 0, 0, 540, 1920) + klip(olc(Rr, 810, 900, z), 540, 0, 540, 1920) + `<path d="M540 0 V1920" stroke="#FFFFFF" stroke-width="8"/>`;
+  o += grp(AU.cip('BİR TARAF', 0, 0, '#FFFFFF', KC.MAVIK, 30), 270, 400, pop(t, .1)) + (on ? grp(AU.cip('DİĞER TARAF', 0, 0, '#FFFFFF', KC.TURUK, 30), 810, 400, pop(t, 2.8)) : '');
+  o += bam(t, 0) + bam(t, 2.8);
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

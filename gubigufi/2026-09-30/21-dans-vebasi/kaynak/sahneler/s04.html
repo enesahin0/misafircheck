@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
+</svg>
+<script>window.SB = 15.6; const TP = {"gubi": [[8.5, "omuzSilk"]], "gufi": []};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script><script src="../ortak/dv.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = K.yaziGen(s, fs, { mono: true, ls: 3 }) + fs * 1.7; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+const MAV = '#E07A3F';
+const MUZ = KO.giy('gubi', [['bere', { renk: '#7E2E3A' }]]);
+const TARIHCI = KO.giy('gubi', ['gozluk']);
+// Gufi HEKİM: hekim başlığı + sağ elinde matula (idrar şişesi); eller:false ile kullan (üçüncü el çıkmasın)
+const HEKIM_G = (x, y, boy, ifade, t) => KO.giy('gufi', ['hekim'])(x, y, boy) + DV.matula(x + boy * .66, y - boy * .66, boy / 330, t) + `<circle cx="${x + boy * .64}" cy="${y - boy * .5}" r="${boy * .12}" fill="#8E1B3F"/><circle cx="${x + boy * .63}" cy="${y - boy * .51}" r="${boy * .12}" fill="#EE312E"/>`;
+
+$('zemin').innerHTML = DV.meydan({ y0: 1150 });
+window.renderAt = t => {
+  const T = t + 15.6;
+  let o = DV.kalabalik(T, { n: 13, y: 1195, boy: 210, seed: 1, bas: 10 }) + DV.kalabalik(T, { n: 10, y: 1260, boy: 280, x0: 20, x1: 1060, seed: 4, bas: 30 });
+  if (t > 8.0) for (let k = 0; k < 6; k++) { const p = pop(t, 8.1 + k * .15); if (p > 0) o += grp(txt('?', 0, 0, 64, '#FFF3D6'), 110 + k * 170, 880 + (k % 2) * 60 + Math.sin(T * 3 + k) * 10, p); }
+  o += DV.kalabalik(T, { n: 4, y: 1990, boy: 540, x0: 0, x1: 1080, seed: 9, bas: 50 });
+  const c = pop(t, .3); if (c > 0) o += grp(cip('AĞUSTOS 1518', 0, 0, '#1B1640', '#FFE45C', 34), 540, 380, c);
+  const y = pop(t, 2.4); if (y > 0) o += grp(cip('YÜZLERCE DANSÇI', 0, 0, '#E07A3F', '#FFFFFF', 34), 540, 470, y);
+  o += gubi(t, { x: 900, y: 1690, boy: 230, bakHedef: [540, 1000], ust: MUZ });
+  o += DP.sar(t, 5.4, 8.0, d => DVD.ayakkabi(d));
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

@@ -1,0 +1,39 @@
+/* Ortak stil — her sahne: <link rel="stylesheet" href="../ortak/stil.css"> */
+:root {
+  --sure: 6s;
+  /* DERİN UZAY paleti (varsayılan). Sahne başında başka paletle ezilebilir. */
+  --zemin1:#0B1433; --zemin2:#1E1B4B; --orta:#2E3A7A;
+  --v1:#FF4F8B; --v2:#3CD6F0; --v3:#FFB547; --isik:#FFF3D6; --golge:#1E1B4B; --rim:#FFE2A8;
+  --imza:#2EE6A8; /* kanalın imza rengi */
+}
+html, body { margin:0; width:1920px; height:1080px; overflow:hidden; background:var(--zemin1); }
+svg { display:block; }
+text { font-family:"Noto Sans CJK JP","DejaVu Sans",sans-serif; font-weight:900; fill:var(--isik); }
+.kamera { transform-origin:960px 540px; animation:pushIn var(--sure) cubic-bezier(.45,0,.55,1) both; }
+.kamera-sabit { animation:none; }
+@keyframes pushIn { from{transform:scale(1)} to{transform:scale(1.07)} }
+
+.float   { animation:float 5s cubic-bezier(.45,0,.55,1) -1.3s infinite alternate; }
+.twinkle { animation:twinkle 2.6s ease-in-out infinite alternate; }
+.pulse   { animation:pulse 3.5s ease-in-out -.8s infinite alternate; transform-box:fill-box; transform-origin:center; }
+.spin    { animation:spin 60s linear infinite; transform-box:fill-box; transform-origin:center; }
+.nefes   { animation:nefes 2.4s ease-in-out infinite alternate; transform-box:fill-box; transform-origin:center bottom; }
+@keyframes float   { from{transform:translateY(-8px)} to{transform:translateY(8px)} }
+@keyframes twinkle { from{opacity:.3} to{opacity:1} }
+@keyframes pulse   { from{opacity:.7;transform:scale(.97)} to{opacity:1;transform:scale(1.03)} }
+@keyframes spin    { to{transform:rotate(360deg)} }
+.kirp    { animation:kirp 4.3s linear infinite; transform-box:fill-box; transform-origin:center; }
+@keyframes kirp    { 0%,93%,100%{transform:scaleY(1)} 96%{transform:scaleY(.1)} }
+@keyframes nefes   { from{transform:scale(1,1)} to{transform:scale(1.03,.98)} }
+
+/* Olaylar: style="animation-delay:Xs" ile anlatımdaki anahtar kelimeye bağla */
+.popIn  { animation:popIn .55s cubic-bezier(.34,1.56,.64,1) both; transform-box:fill-box; transform-origin:center; }
+.fadeUp { animation:fadeUp .6s cubic-bezier(.22,1,.36,1) both; }
+.fadeIn { animation:fadeIn .5s ease both; }
+.popOut { animation:popOut .35s cubic-bezier(.55,0,1,.45) both; transform-box:fill-box; transform-origin:center; }
+.fadeOut{ animation:fadeOut .4s ease both; }
+@keyframes popIn  { from{transform:scale(0)} to{transform:scale(1)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:none} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes popOut { from{transform:scale(1)} to{transform:scale(0)} }
+@keyframes fadeOut{ from{opacity:1} to{opacity:0} }

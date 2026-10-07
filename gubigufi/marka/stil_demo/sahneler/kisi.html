@@ -1,0 +1,24 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="zemin"></g><g class="kamera"><g id="dinamik"></g></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/kisi.js"></script>
+<script>
+const $ = i => document.getElementById(i);
+const txt = (s, x, y, size, renk) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="900" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  let o = `<rect width="1080" height="1920" fill="#FFF1DC"/><rect x="0" y="0" width="540" height="960" fill="#FFE0B8"/><rect x="540" y="960" width="540" height="960" fill="#FFE0B8"/>`;
+  // Einstein: dağınık beyaz saç, kalın bıyık, yaşlı, ceket
+  o += KS.kisi({ x: 270, y: 860, boy: 520, ten: 'acik', sac: { tip: 'daginik', renk: '#EFEFEF' }, biyik: { renk: '#D9D9D9' }, kas: { renk: '#CFCFCF', kalin: true }, yas: 1, kiyafet: { renk: '#7A6A5A', yaka: 'ceket', gomlek: '#F4F1EA' } });
+  o += txt('Einstein', 270, 920, 40, '#1B1640');
+  // Marie Curie: koyu topuz saç, siyah elbise
+  o += KS.kisi({ x: 810, y: 860, boy: 520, ten: 'cokAcik', sac: { tip: 'topuz', renk: '#5A4A3E' }, yas: .6, kiyafet: { renk: '#2B2630', yaka: 'elbise' } });
+  o += txt('Marie Curie', 810, 920, 40, '#1B1640');
+  // Frida Kahlo: birleşik kaş, çiçek taç, topuz
+  o += KS.kisi({ x: 270, y: 1820, boy: 520, ten: 'bugday', sac: { tip: 'topuz', renk: '#1E1614' }, kas: { renk: '#1E1614', kalin: true, birlesik: true }, cicek: ['#EE312E', '#FF6B81', '#FFB547'], kupe: '#FFB547', kiyafet: { renk: '#E056C1', yaka: 'elbise' } });
+  o += txt('Frida Kahlo', 270, 1880, 40, '#1B1640');
+  // Edison: yandan ayrık gri saç, papyon, yaşlı
+  o += KS.kisi({ x: 810, y: 1820, boy: 520, ten: 'acik', sac: { tip: 'kisaYan', renk: '#B8B8B8' }, kas: { renk: '#9A9A9A' }, yas: .8, ifade: 'notr', papyon: '#1B1640', kiyafet: { renk: '#3A3A44', yaka: 'ceket' } });
+  o += txt('Edison', 810, 1880, 40, '#1B1640');
+  $('dinamik').innerHTML = o;
+};
+</script></body></html>

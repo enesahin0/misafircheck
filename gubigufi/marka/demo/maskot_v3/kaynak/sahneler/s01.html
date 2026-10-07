@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/au.js"></script>
+<script>
+const T_ = (s, x, y, fs, r = '#FFF3D6', w = 900) => `<text x="${x}" y="${y}" font-size="${fs}" font-weight="${w}" text-anchor="middle" style="fill:${r}">${s}</text>`;
+const Tm = (s, x, y, fs, r = '#FFF3D6') => `<text class="mono" x="${x}" y="${y}" font-size="${fs}" text-anchor="middle" letter-spacing="2" style="fill:${r}">${s}</text>`;
+
+const TIP = ['dans','kos','titre','esne','uyu','tokezle','bayil','evet','hayir','sinir','utan','agla','ask','egil','takla','yorgun','saklan','kafaKasi','ayakTap','(canlılık)'];
+window.renderAt = t => {
+  let o = `<rect width="1080" height="1920" fill="#1B2440"/>` + T_('YENİ HAREKETLER', 540, 150, 64) + Tm('GUBI & GUFI · v3', 540, 205, 28, '#FFD978');
+  TIP.forEach((tp, i) => { const c = i % 4, r = Math.floor(i / 4), cx = 135 + c * 270, cy = 260 + r * 325;
+    o += `<rect x="${cx - 128}" y="${cy}" width="256" height="310" rx="22" fill="#26305A"/>` + Tm(tp, cx, cy + 290, 24, '#FFD978');
+    const tps = tp[0] === '(' ? [] : [0, 2.6, 5.2, 7.8].map(a => [a + .2, tp]);
+    o += M.canli('gufi', { t, x: cx - 42, y: cy + 240, boy: 105, tepkiler: tps, seed: 2 + i, bakHedef: tp === '(canlılık)' ? null : 'kamera' });
+    o += M.canli('gubi', { t, x: cx + 62, y: cy + 150, boy: 78, tepkiler: tps.map(([a, b]) => [a + .3, b]), seed: 1 + i, eller: false });
+  });
+  document.getElementById('dinamik').innerHTML = o;
+};
+</script></body></html>

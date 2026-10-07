@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 29.5; const TP = {"gubi": [[3.7, "merak"], [7.2, "kararli"]], "gufi": [[1.4, "mutlu"], [9.6, "sasir"]]};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/bug.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = s.length * fs * .62 + 70; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+window.renderAt = t => {
+  let o = '';
+  const ga = E(A(t, 3.3, 4.1));
+  // A: defter yakın plan, "actual" kelimesi göz kırpar
+  if (ga < 1) {
+    let a = B.bg({ ust: '#1A2A2E', alt: '#10262C', neb: B.P.amber, no: .14 });
+    let ic = B.elYazi('First actual case of bug', -200, 90, 1, 44) + B.elYazi('being found.', -200, 146, 1, 44);
+    const hl = pop(t, .3); ic += `<rect x="-60" y="${90 - 36}" width="${150 * hl}" height="52" rx="12" fill="${B.P.amber}" opacity=".45"/>`;
+    a += `<g transform="translate(560 760) scale(1.5) rotate(-2)">` + B.defter(ic) + `</g>`;
+    const w = pop(t, 1.0); if (w > 0) a += grp(`<circle r="70" fill="${B.P.amber}"/><path d="M-30 -10 Q-18 -24 -6 -10" stroke="#0B2A31" stroke-width="9" fill="none" stroke-linecap="round"/><rect x="10" y="-16" width="26" height="9" rx="4.5" fill="#0B2A31"/><path d="M-26 18 Q0 40 26 18" stroke="#0B2A31" stroke-width="9" fill="none" stroke-linecap="round"/>`, 700, 520, w, 10 * Math.sin(t * 4));
+    const s = pop(t, 1.2); if (s > 0) a += grp(cip('BİR ŞAKA', 0, 0, B.P.krem, '#0B2A31', 34), 700, 380, s);
+    a += gufi(t, { x: 180, y: 1250, boy: 130, bakHedef: [700, 520] });
+    o += `<g opacity="${1 - ga}">${a}</g>`;
+  }
+  if (ga > 0) {
+    // B: zaman şeridi 1947 → 1878
+    const yil = Math.round(1947 - 69 * E(A(t, 3.6, 6.2)));
+    let b = B.bg({ ust: '#221A12', alt: '#2E2216', neb: B.P.amber, nx: 360, ny: 760, no: .2 }) + B.parca(9, 40, B.P.amber);
+    const kay = E(A(t, 3.6, 6.2));
+    for (let i = -2; i < 12; i++) { const x = 540 + (i * 160) - ((kay * 69 * 160 / 10) % 160); b += `<rect x="${x - 3}" y="${1180}" width="6" height="${i % 5 === 0 ? 40 : 22}" rx="3" fill="#FFF3D6" opacity=".4"/>`; }
+    b += `<rect x="60" y="1176" width="960" height="6" rx="3" fill="#FFF3D6" opacity=".3"/>`;
+    const son = A(t, 6.2, 6.6);
+    b += `<g opacity="${1 - son * .0}">` + txt(yil, 540 - 250 * E(A(t, 6.4, 7.0)), 520 - 80 * E(A(t, 6.4, 7.0)), 170 - 60 * E(A(t, 6.4, 7.0)), B.P.amber) + `</g>`;
+    if (t < 6.4) b += `<path d="M300 700 L200 700 M230 670 L200 700 L230 730" stroke="${B.P.krem}" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".6"/>`;
+    const ed = A(t, 6.5, 7.1);
+    if (ed > 0) {
+      b += olc(B.ampul(300, 760, .9, .5 + .5 * Math.sin(t * 2.3) * .3 + .2, t), 300, 760, back(ed));
+      b += B.mektup(720, 830, .72 * back(A(t, 6.8, 7.4)), 4, A(t, 8.6, 9.2), E(A(t, 9.3, 10.2)));
+      const ch = pop(t, 7.0); if (ch > 0) b += grp(cip('EDISON · 1878', 0, 0, B.P.amber, '#2E2216', 32), 300, 1080, ch);
+    }
+    b += gubi(t, { x: 150, y: 1270, boy: 100, bakHedef: ed > 0 ? [720, 830] : [540, 520] });
+    b += gufi(t, { x: 930, y: 1290, boy: 110, bakHedef: ed > 0 ? [720, 830] : [540, 520] });
+    o += `<g opacity="${ga}">${b}</g>`;
+  }
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

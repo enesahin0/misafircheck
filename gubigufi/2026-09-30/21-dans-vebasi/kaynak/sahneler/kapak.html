@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/dv.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  const T = 2.3;
+  let o = `<g style="filter:blur(6px)">${DV.meydan({ y0: 950 })}</g><rect width="1080" height="1150" fill="#2E1A20" opacity=".12"/>`;
+  o += DV.kalabalik(T, { n: 7, y: 1000, boy: 230, x0: 60, x1: 1020, seed: 5, bas: 80 });
+  for (let k = 0; k < 6; k++) o += DV.nota(120 + k * 170, 330 + (k % 2) * 90, 1.1, '#FFE45C', 1);
+  o += `<g transform="rotate(8 540 1120)">` + KS.karakter(Object.assign({ x: 540, y: 1120, boy: 620, t: 1.1, poz: 'dans', adim: 1.5, bak: [0, -.2], ifade: 'saskin' }, DV.TROFFEA)) + '</g>';
+  o += M.canli('gufi', { t: 1.2, x: 170, y: 1130, boy: 230, duygu: 'kararli', bakHedef: [540, 700], eller: false, ust: (x, y, boy, i, t) => KO.giy('gufi', ['hekim'])(x, y, boy) + DV.matula(x + boy * .66, y - boy * .66, boy / 330, t) + `<circle cx="${x + boy * .63}" cy="${y - boy * .51}" r="${boy * .12}" fill="#EE312E"/>` });
+  o += DV.davul(820, 1110, .85, 0.1, true) + M.canli('gubi', { t: 1.2, x: 930, y: 960, boy: 190, duygu: 'saskin', bakHedef: [540, 700], ust: KO.giy('gubi', [['bere', { renk: '#7E2E3A' }]]) });
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#2E1A20"/><rect x="0" y="1150" width="1080" height="18" fill="#E07A3F"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#F2B07A">TARİHİN TUHAF SAYFALARI</text>`;
+  o += txt('1518 DANS VEBASI', 540, 1362, 96) + txt('BİR ŞEHİR DURAMADI', 540, 1458, 66, '#F2B07A');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>

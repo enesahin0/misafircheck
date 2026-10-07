@@ -1,0 +1,224 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 67.32,
+  "konusma_bloklari": [
+    [
+      0.0,
+      1.879
+    ],
+    [
+      2.133,
+      5.154
+    ],
+    [
+      5.616,
+      6.574
+    ],
+    [
+      6.957,
+      9.069
+    ],
+    [
+      9.436,
+      11.69
+    ],
+    [
+      12.032,
+      17.46
+    ],
+    [
+      17.793,
+      18.963
+    ],
+    [
+      19.287,
+      21.894
+    ],
+    [
+      22.258,
+      24.666
+    ],
+    [
+      25.076,
+      26.398
+    ],
+    [
+      26.834,
+      30.979
+    ],
+    [
+      31.311,
+      35.102
+    ],
+    [
+      35.402,
+      38.343
+    ],
+    [
+      38.734,
+      41.421
+    ],
+    [
+      41.812,
+      45.202
+    ],
+    [
+      45.553,
+      46.092
+    ],
+    [
+      46.426,
+      49.351
+    ],
+    [
+      49.683,
+      51.905
+    ],
+    [
+      52.174,
+      53.943
+    ],
+    [
+      54.336,
+      57.614
+    ],
+    [
+      57.936,
+      58.991
+    ],
+    [
+      59.283,
+      62.342
+    ],
+    [
+      62.702,
+      64.407
+    ],
+    [
+      64.742,
+      67.32
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 6.57,
+      "sure": 6.57,
+      "metin": "Açıklanan enflasyonu duyunca \"bu rakam benim hayatımı anlatmıyor\" diyenlerden misin?"
+    },
+    {
+      "no": 2,
+      "baslangic": 6.57,
+      "bitis": 7.37,
+      "sure": 0.8,
+      "metin": "Haklı olabilirsin."
+    },
+    {
+      "no": 3,
+      "baslangic": 7.37,
+      "bitis": 11.69,
+      "sure": 4.32,
+      "metin": "Resmi enflasyon, yani TÜFE, bir alışveriş sepetinin fiyat değişimidir."
+    },
+    {
+      "no": 4,
+      "baslangic": 11.69,
+      "bitis": 17.46,
+      "sure": 5.77,
+      "metin": "Sepette gıda, kira, ulaşım, giyim, sağlık gibi yüzlerce ürün vardır."
+    },
+    {
+      "no": 5,
+      "baslangic": 17.46,
+      "bitis": 21.89,
+      "sure": 4.43,
+      "metin": "Her birinin ağırlığı, ortalama bir hanenin harcamasına göre belirlenir."
+    },
+    {
+      "no": 6,
+      "baslangic": 21.89,
+      "bitis": 24.67,
+      "sure": 2.77,
+      "metin": "Ama kimse tam olarak ortalama değildir."
+    },
+    {
+      "no": 7,
+      "baslangic": 24.67,
+      "bitis": 26.4,
+      "sure": 1.73,
+      "metin": "Örnek rakamlarla düşünelim."
+    },
+    {
+      "no": 8,
+      "baslangic": 26.4,
+      "bitis": 30.98,
+      "sure": 4.58,
+      "metin": "Kirada oturan bir öğrenci, harcamasının yüzde kırkını kiraya veriyor."
+    },
+    {
+      "no": 9,
+      "baslangic": 30.98,
+      "bitis": 38.34,
+      "sure": 7.36,
+      "metin": "Bir yılda kira yüzde altmış, gıda yüzde kırk beş arttıysa, onun kişisel enflasyonu yüzde kırk yediye çıkabilir."
+    },
+    {
+      "no": 10,
+      "baslangic": 38.34,
+      "bitis": 41.42,
+      "sure": 3.08,
+      "metin": "Evi kendine ait bir emeklinin ise kirası yok."
+    },
+    {
+      "no": 11,
+      "baslangic": 41.42,
+      "bitis": 45.2,
+      "sure": 3.78,
+      "metin": "Onun sepetinde gıda, fatura ve ilaç ağır basar."
+    },
+    {
+      "no": 12,
+      "baslangic": 45.2,
+      "bitis": 49.35,
+      "sure": 4.15,
+      "metin": "Aynı yıl, onun enflasyonu yüzde otuz dört civarında kalabilir."
+    },
+    {
+      "no": 13,
+      "baslangic": 49.35,
+      "bitis": 53.94,
+      "sure": 4.59,
+      "metin": "Yani aynı ülkede, aynı yılda, herkesin enflasyonu farklıdır."
+    },
+    {
+      "no": 14,
+      "baslangic": 53.94,
+      "bitis": 57.61,
+      "sure": 3.67,
+      "metin": "Kendi enflasyonunu bulmak için harcamalarını kalemlere ayır."
+    },
+    {
+      "no": 15,
+      "baslangic": 57.61,
+      "bitis": 62.34,
+      "sure": 4.73,
+      "metin": "Her kalemin payını, o kalemdeki fiyat artışıyla çarp ve hepsini topla."
+    },
+    {
+      "no": 16,
+      "baslangic": 62.34,
+      "bitis": 64.41,
+      "sure": 2.06,
+      "metin": "Resmi rakam bir ortalamadır."
+    },
+    {
+      "no": 17,
+      "baslangic": 64.41,
+      "bitis": 67.32,
+      "sure": 2.91,
+      "metin": "Senin cebin ise sadece seninkidir."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="d"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/cevre.js"></script>
+<script>
+window.renderAt = t => {
+  const sahne = 2; let o = '';
+  if (sahne === 1) { // şeftali mutfak — dolu
+    const T = CV.ton('seftali');
+    o += CV.oda(T, { pencere: [700, 420, 260, 340] }) + CV.raf(60, 560, 420, T, 3) + CV.raf(60, 760, 300, T, 9) + CV.saat(560, 520, 60, T, t);
+    o += `<rect x="0" y="960" width="660" height="40" rx="12" fill="${T.koyu}"/><rect x="0" y="1000" width="660" height="180" fill="${T.orta}"/>` + [0, 1, 2].map(i => `<rect x="${30 + i * 210}" y="1020" width="180" height="140" rx="14" fill="${T.fon2}"/><rect x="${100 + i * 210}" y="1080" width="40" height="12" rx="6" fill="${T.koyu}"/>`).join('');
+    o += CV.tencere(180, 960, .9, T) + CV.kupa(360, 960, 1.2, T.vurgu, 1, t) + CV.kupa(440, 960, 1, T.vurgu2) + CV.asmaBitki(900, 180, 1, T) + CV.cerceveResim(760, 820, 150, 120, T, 'dag');
+    o += CV.bitki(560, 960, .7, T) + CV.sandalye(880, 1500, 1.1, T);
+    o += KS.karakter({ x: 520, y: 1560, boy: 760, ten: T.ten, sac: { tip: 'kakul', renk: '#2A1E5E' }, ust: T.vurgu, alt: '#2A1E5E', poz: 'selam', t, ifade: 'gulumse' });
+    o += `<rect x="100" y="1280" width="880" height="60" rx="24" fill="${T.cokKoyu}"/><rect x="140" y="1340" width="800" height="360" fill="#6E2E2E"/><ellipse cx="520" cy="1270" rx="150" ry="36" fill="#FFFFFF"/><ellipse cx="520" cy="1262" rx="110" ry="24" fill="#FFC94C"/>`;
+    o += `<ellipse cx="250" cy="1262" rx="110" ry="40" fill="${T.vurgu}"/><circle cx="230" cy="1240" r="22" fill="#3FA35A"/><circle cx="270" cy="1245" r="16" fill="#E8505B"/>` + CV.kupa(760, 1275, 1, '#FFFFFF') + `<rect x="820" y="1180" width="36" height="96" rx="10" fill="#8A5A3C"/><circle cx="838" cy="1172" r="16" fill="#8A5A3C"/>`;
+    o += M.canli('gufi', { t, x: 700, y: 1278, boy: 110, bakHedef: [520, 900] }) + M.canli('gubi', { t, x: 170, y: 780, boy: 100, bakHedef: [520, 900] });
+  }
+  if (sahne === 2) { // lavanta salon — dolu
+    const T = CV.ton('lavanta');
+    o += CV.oda(T, { dolap: false, pencere: [650, 330, 300, 420] }) + CV.raf(60, 470, 380, T, 7) + CV.raf(60, 700, 300, T, 2) + CV.cerceveResim(420, 560, 170, 200, T, 'yuz') + CV.saat(560, 360, 50, T, t);
+    o += CV.lamba(130, 1400, 1.2, T) + CV.bitki(980, 1250, 1.1, T) + CV.asmaBitki(620, 150, .8, T);
+    o += CV.hali(540, 1420, 820, 190, T);
+    o += `<rect x="200" y="1080" width="620" height="200" rx="60" fill="${T.koyu}"/><rect x="180" y="980" width="660" height="140" rx="60" fill="${T.orta}"/><rect x="170" y="1060" width="120" height="220" rx="50" fill="${T.cokKoyu}"/><rect x="730" y="1060" width="120" height="220" rx="50" fill="${T.cokKoyu}"/><rect x="240" y="1020" width="140" height="80" rx="30" fill="${T.vurgu2}"/>`;
+    o += CV.sehpa(540, 1440, 1.2, T) + CV.yerdeKitap(240, 1560, 1, T) + CV.kupa(840, 1540, 1.1, T.vurgu, 1, t) + CV.kutuYigini(960, 1560, .9, T);
+    o += M.canli('gufi', { t, x: 500, y: 1090, boy: 150, duygu: 'mutlu' }) + M.canli('gubi', { t, x: 680, y: 900, boy: 110, bakHedef: [500, 1000] });
+  }
+  if (sahne === 3) { // orman — dolu, sarmaşıklı
+    const T = CV.ton('orman');
+    o += `<rect width="1080" height="1920" fill="${T.fon1}"/>` + K.glow({ x: 700, y: 520, r: 720, renk: '#FFFBD0', guc: .75 });
+    for (let i = 0; i < 7; i++) o += CV.agacGovde(80 + i * 160, 1350, 50 + (i % 3) * 22, 1350, { cokKoyu: i % 2 ? '#9CCF6A' : '#B5DF78', koyu: '#D4EE9A' });
+    o += CV.huzme(420, 0, T, 4, 14);
+    o += `<path d="M0 1200 Q300 1130 600 1190 T1080 1170 V1920 H0Z" fill="#8CCB5C"/><path d="M0 1330 Q300 1270 600 1320 T1080 1300 V1920 H0Z" fill="${T.orta}"/><path d="M0 1450 Q350 1400 700 1440 T1080 1430 V1920 H0Z" fill="${T.koyu}"/>`;
+    o += CV.agacGovde(150, 1520, 150, 1520, T) + CV.agacGovde(940, 1520, 180, 1520, T) + CV.sarmasik(210, 0, 700, T, t) + CV.sarmasik(870, 0, 900, T, t + 2) + CV.sarmasik(560, 0, 380, T, t + 1);
+    o += CV.kaya(420, 1400, 1.1, T) + CV.kaya(720, 1440, .9, T) + CV.kaya(560, 1560, 1.3, T);
+    for (let i = 0; i < 12; i++) o += CV.otTutami(40 + i * 95, 1470 + (i % 3) * 30, 1.4, T.orta) + CV.cicek(70 + i * 95, 1450 + (i % 2) * 40, 1.2, i % 2 ? '#FF9A3C' : '#FF6F8E');
+    o += CV.kelebek(640 + Math.sin(t) * 40, 760 + Math.cos(t * 1.3) * 30, 1.2, '#7FE3FF', t) + CV.kelebek(300, 980, .9, '#FFB44C', t + 1);
+    o += M.canli('gufi', { t, x: 420, y: 1310, boy: 140, bakHedef: [640, 760] }) + M.canli('gubi', { t, x: 720, y: 1240, boy: 110, bakHedef: [640, 760] });
+    o += CV.onYaprak(T, 'ust', 5) + CV.onYaprak(T, 'alt', 8) + CV.onYaprak(T, 'yan', 11);
+  }
+  document.getElementById('d').innerHTML = o;
+};
+</script></body></html>

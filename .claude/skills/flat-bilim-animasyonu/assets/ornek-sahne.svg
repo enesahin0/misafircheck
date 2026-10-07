@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <!--
+    ÖRNEK SAHNE ŞABLONU — "Derin Uzay" paleti
+    Katman sırası: FAR (gök) → parçacık/yıldız → BG → MG (odak) → FG → vignette
+    Işık yönü: sağ üst (güneş). Tüm rim light'lar sağ üstte, gölgeler sol altta.
+  -->
+  <defs>
+    <!-- Gök gradyanı -->
+    <linearGradient id="gok" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0B1433"/>
+      <stop offset="1" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <!-- Glow: radyal gradyan (blur filtresinden daha hafif ve temiz) -->
+    <radialGradient id="gunesGlow">
+      <stop offset="0" stop-color="#FFB547" stop-opacity=".85"/>
+      <stop offset=".35" stop-color="#FF8A3D" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#FF8A3D" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nebula">
+      <stop offset="0" stop-color="#FF4F8B" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#FF4F8B" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="atmosfer">
+      <stop offset=".78" stop-color="#3CD6F0" stop-opacity="0"/>
+      <stop offset=".86" stop-color="#3CD6F0" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#3CD6F0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vignette" cx=".5" cy=".5" r=".75">
+      <stop offset=".6" stop-color="#050A1C" stop-opacity="0"/>
+      <stop offset="1" stop-color="#050A1C" stop-opacity=".55"/>
+    </radialGradient>
+    <!-- Gezegen gövdesi için hafif gradyan (üst-sağ açık) -->
+    <linearGradient id="gezegenGovde" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3FA6E8"/>
+      <stop offset="1" stop-color="#2A5FB8"/>
+    </linearGradient>
+    <clipPath id="gezegenKes"><circle cx="760" cy="600" r="300"/></clipPath>
+
+    <style>
+      .float  { animation: float 5s cubic-bezier(.45,0,.55,1) infinite alternate; transform-box: fill-box; }
+      .twinkle{ animation: twinkle 3s ease-in-out infinite alternate; }
+      .pulse  { animation: pulse 4s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: center; }
+      .spin   { animation: spin 90s linear infinite; transform-origin: 760px 600px; }
+      .orbit  { animation: spin 24s linear infinite; transform-origin: 760px 600px; }
+      .drift  { animation: drift 14s linear infinite; }
+      .popIn  { animation: popIn .6s cubic-bezier(.34,1.56,.64,1) both; transform-box: fill-box; transform-origin: center; }
+      @keyframes float  { from { transform: translateY(-8px) } to { transform: translateY(8px) } }
+      @keyframes twinkle{ from { opacity: .35 } to { opacity: 1 } }
+      @keyframes pulse  { from { opacity: .7; transform: scale(.97) } to { opacity: 1; transform: scale(1.03) } }
+      @keyframes spin   { to { transform: rotate(360deg) } }
+      @keyframes drift  { from { transform: translateY(40px); opacity: 0 } 20% { opacity: .8 } to { transform: translateY(-120px); opacity: 0 } }
+      @keyframes popIn  { 0% { transform: scale(0) } 100% { transform: scale(1) } }
+      @media (prefers-reduced-motion: reduce) { * { animation: none !important } }
+    </style>
+  </defs>
+
+  <!-- FAR: gök -->
+  <rect width="1920" height="1080" fill="url(#gok)"/>
+  <circle cx="420" cy="220" r="520" fill="url(#nebula)"/>
+
+  <!-- Yıldızlar: üç boy, farklı fazlar -->
+  <g fill="#FFF3D6">
+    <circle class="twinkle" cx="140" cy="120" r="2" style="animation-delay:-.4s"/>
+    <circle class="twinkle" cx="310" cy="410" r="1.5" style="animation-delay:-1.2s"/>
+    <circle class="twinkle" cx="520" cy="90" r="2.5" style="animation-delay:-2s"/>
+    <circle class="twinkle" cx="1180" cy="160" r="1.5" style="animation-delay:-.8s"/>
+    <circle class="twinkle" cx="1320" cy="380" r="2" style="animation-delay:-1.6s"/>
+    <circle class="twinkle" cx="1760" cy="840" r="2" style="animation-delay:-2.4s"/>
+    <circle class="twinkle" cx="1500" cy="980" r="1.5" style="animation-delay:-.2s"/>
+    <circle class="twinkle" cx="90" cy="760" r="2" style="animation-delay:-1.9s"/>
+    <circle class="twinkle" cx="1120" cy="960" r="1.5" style="animation-delay:-1s"/>
+    <circle class="twinkle" cx="240" cy="990" r="2.5" style="animation-delay:-2.7s"/>
+    <circle class="twinkle" cx="1880" cy="120" r="1.5" style="animation-delay:-1.4s"/>
+    <circle class="twinkle" cx="960" cy="60" r="2" style="animation-delay:-.6s"/>
+  </g>
+  <!-- Birkaç glow'lu yıldız -->
+  <g class="pulse">
+    <circle cx="1240" cy="260" r="16" fill="#FFF3D6" opacity=".15"/>
+    <circle cx="1240" cy="260" r="4" fill="#FFF3D6"/>
+  </g>
+  <g class="pulse" style="animation-delay:-2s">
+    <circle cx="220" cy="560" r="14" fill="#3CD6F0" opacity=".18"/>
+    <circle cx="220" cy="560" r="3.5" fill="#E8FBFF"/>
+  </g>
+
+  <!-- BG: güneş (sağ üst, ışık kaynağı) -->
+  <circle cx="1620" cy="230" r="360" fill="url(#gunesGlow)" class="pulse"/>
+  <circle cx="1620" cy="230" r="110" fill="#FFB547"/>
+  <circle cx="1620" cy="230" r="80" fill="#FFD98A"/>
+
+  <!-- MG: gezegen (odak)
+       RIM LIGHT TEKNİĞİ: kırpma dairesinin içine önce tam daire rim rengi,
+       sonra gövdeyi ışığın tersine (sol-alt) birkaç px kaydırarak koy.
+       Açıkta kalan ince hilal = rim light. Gölge için aynı hile daha büyük kaydırmayla. -->
+  <g class="float">
+    <circle cx="760" cy="600" r="345" fill="url(#atmosfer)"/>
+    <g clip-path="url(#gezegenKes)">
+      <circle cx="760" cy="600" r="300" fill="#FFE2A8"/>
+      <circle cx="746" cy="614" r="300" fill="url(#gezegenGovde)"/>
+      <!-- Kıtalar: yuvarlak, basit; yavaş döner -->
+      <g class="spin">
+        <path d="M560 470 q60 -70 150 -30 q70 30 40 100 q-30 70 -120 50 q-90 -20 -70 -120z" fill="#5BC98B"/>
+        <path d="M830 640 q70 -40 130 10 q50 50 0 110 q-60 60 -130 20 q-60 -40 0 -140z" fill="#5BC98B"/>
+        <ellipse cx="700" cy="760" rx="70" ry="34" fill="#5BC98B"/>
+        <ellipse cx="930" cy="430" rx="50" ry="26" fill="#4DB57C"/>
+      </g>
+      <!-- Bulut bantları -->
+      <rect x="440" y="560" width="200" height="22" rx="11" fill="#E8FBFF" opacity=".5"/>
+      <rect x="900" y="520" width="160" height="18" rx="9" fill="#E8FBFF" opacity=".6"/>
+      <!-- Gövde gölgesi: ışığın tersi (sol alt), gri değil mor-lacivert -->
+      <circle cx="560" cy="800" r="330" fill="#1E1B4B" opacity=".55"/>
+    </g>
+    <!-- Speküler parlama -->
+    <ellipse cx="920" cy="420" rx="28" ry="14" fill="#FFFFFF" opacity=".35" transform="rotate(-40 920 420)"/>
+  </g>
+
+  <!-- MG: yörüngede küçük ay (aynı rim/gölge tekniği) -->
+  <g class="orbit">
+    <g transform="translate(1180 600)">
+      <clipPath id="ayKes"><circle r="46"/></clipPath>
+      <g clip-path="url(#ayKes)">
+        <circle r="46" fill="#FFE2A8"/>
+        <circle cx="-5" cy="5" r="46" fill="#8D93C8"/>
+        <circle cx="-10" cy="6" r="9" fill="#6E72A8"/>
+        <circle cx="14" cy="-16" r="6" fill="#6E72A8"/>
+        <circle cx="-30" cy="30" r="50" fill="#4B3A8C" opacity=".6"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Parçacıklar (yukarı süzülen) -->
+  <g fill="#FFF3D6">
+    <circle class="drift" cx="1300" cy="820" r="3" style="animation-delay:-2s"/>
+    <circle class="drift" cx="1420" cy="700" r="2" style="animation-delay:-6s"/>
+    <circle class="drift" cx="380" cy="880" r="2.5" style="animation-delay:-9s"/>
+    <circle class="drift" cx="1650" cy="640" r="2" style="animation-delay:-4s"/>
+  </g>
+
+  <!-- FG: koyu siluet asteroitler (sol alt köşe, kadrajı çerçeveler) -->
+  <g class="float" style="animation-duration:7s">
+    <path d="M-40 1100 q30 -170 190 -190 q150 -10 210 110 q30 90 -20 180z" fill="#0A0F26"/>
+    <path d="M1720 1100 q40 -120 150 -120 q90 10 110 120z" fill="#0A0F26"/>
+  </g>
+
+  <!-- Vignette -->
+  <rect width="1920" height="1080" fill="url(#vignette)"/>
+</svg>

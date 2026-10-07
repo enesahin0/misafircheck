@@ -1,0 +1,412 @@
+# gubigufi — Marka ve Üretim Kuralları
+
+## İş akışı (her video)
+1. Kullanıcı konu numarasını seçer.
+2. `gubigufi/<YYYY-AA-GG>/<NN>-<konu-adi>/` klasörü açılır.
+3. Claude `seslendirme_metni.md` dosyasını yazar (ElevenLabs'e yapıştırmaya hazır).
+4. Kullanıcı ElevenLabs'te seslendirir, ses dosyasını gönderir → `ses.mp3` olarak klasöre konur.
+5. Claude videoyu sese göre kurar → `video.mp4` aynı klasöre, kullanıcıya gönderilir.
+
+## Format
+- 1080×1920 (9:16), 30 fps, H.264 + AAC, ~60 sn.
+- Safe alan (Instagram + YouTube kesişimi): üst 250 px, alt 480 px, sağ 190 px, sol 60 px.
+  Okunması gereken hiçbir şey bu bölgelere girmez; arka plan tüm kareyi kullanır.
+
+## Görsel prensipler
+
+### Kategori girişi denemesi İPTAL edildi (kullanıcı kararı): video başında ayrı kategori girişi YOK; kategori etiketi eskisi gibi sol üstte sade şekilde belirir.
+
+### FRAGMAN / SERİ KANCASI YOK (kullanıcı kararı, KALICI)
+Videoların sonunda "Bölüm 2'de…" gibi bir sonraki videoya fragman VERİLMEZ. Her video kendi içinde kapanır:
+son 6–8 sn = konunun özünü bağlayan, akılda kalan bir kapanış cümlesi (+ gerekiyorsa ekranda kısa uyarı satırı).
+**TAKİP ÇAĞRISI (KALICI):** Her gubigufi metni son cümle olarak "Her gün bir merak için gubigufi'yi takip et." ile biter (yorum sorusundan SONRA); görselde TAKİP ET kartı (Gubi+Gufi) → logo çıkışı. (Haber bültenlerinin kendi kapanışı vardır; acı haber bültenlerinde çağrı yapılmaz.)
+(Seri adları — "Kanun Böyle Diyor", "Tıbbın Asileri" vb. — kategori kimliği olarak kullanılabilir ama "sonraki bölüm" sözü verilmez.)
+
+### GERÇEKLİK KURALI — harita, kişi, yer (KALICI)
+Tarzımız çizgi/flat kalır ama anlatılan şey GERÇEK şekline benzer:
+- **Harita:** "benzer şekil" yok; gerçek coğrafya kullanılır → `marka/harita/harita.js` (Natural Earth verisi, Türkiye 10m detay).
+  `H.ciz({ ulkeler: H.kita('AF') | H.ulke('Türkiye','Mısır') | H.dunya(), vurgu:{ 'Mısır':'#FF9F1C' }, kutu:[x,y,w,h], proj:'mercator'|'equalEarth'|'orthographic' })`,
+  `H.kure({ x, y, r, donus:[-boylam,-enlem], vurgu })` gerçek kıtalı küre, `H.igne(x, y, renk, ölçek, 'Sivas')`, konum için `h.p([boylam, enlem])`.
+  Ülke adları Türkçe veya İngilizce yazılabilir. Kıta kodları: AF, EU, AS, NA, SA, OC. Dosyalar sahne klasörüne `ortak/harita/` olarak kopyalanır.
+- **Kişiler:** gerçek bir kişiden bahsediliyorsa, o kişiye BENZEYEN flat portre → `marka/ortak/kisi.js` (`KS.kisi({...})`):
+  saç tipi/rengi, sakal-bıyık, kaş, gözlük, ten, yaş çizgileri, dönemine uygun kıyafet (önlük, ceket, papyon…). Referans fotoğraf varsa kullanıcıdan istenir ya da kullanıcı gönderir.
+  Anonim/genel insanlar için yüzsüz siluet kullanılabilir. Atatürk gibi hassas figürler yalnızca saygılı, sade portre ile ve kullanıcı onayıyla.
+- **Yerler ve nesneler:** ünlü yapılar, cihazlar, belgeler gerçek silüet ve oranlarıyla (ör. Galata Kulesi'nin gerçek konik külahı, Mark II'nin gerçek dolap dizilimi).
+- **Ölçek ve sayı:** karşılaştırmalarda oranlar gerçek (ör. 12'ye karşı 62 sütunu gerçekten 5 kat).
+- Örnek sayfa: `marka/stil_ornek.png` (Afrika/Mısır, küre, Türkiye + Sivas, Akdeniz; Einstein, Curie, Kahlo, Edison benzeri portreler).
+
+### YERE BASMA KURALI (KALICI)
+Yere basan hiçbir şey havada durmaz: ağaç, bina, direk, masa, karakter… zemin/tepe çizgisi FONKSİYONLA tanımlanır ve nesne o çizgiye oturtulur
+(`marka/ortak/zemin.js` → `const tepe = Z.tepe({...}); tepe.yol(renk); Z.agac(x, tepe.yer(x))`). Taban çizginin birkaç px altına gömülür, temas noktasına küçük gölge elipsi konur.
+Önde duran tepe arkadaki nesnenin tabanını örtebilir ama tabanın ALTINDA boşluk kalamaz. Kontak sayfası kontrolünde her sahnede "yere basma" ayrıca kontrol edilir.
+(Gubi uçan bir pırıltı olduğu için havada süzülebilir; Gufi her zaman yere basar ya da zıplama yayındadır.)
+
+### REELS KAPAK KURALI (KALICI — kullanıcı kararı)
+- **LOGO YERİ SABİT:** kapakta logo GÖRSEL olarak y≈1570–1640 aralığında durur (referans: #4 Turkey kapağı). SVG kapaklarda bu `translate(540 1576) scale(150/233)` demek; #13'teki güncel logo_paths ile `1600` aynı yere düşer. Her kapakta logo piksel aralığı ölçülüp kontrol edilir. Instagram ızgarası 3:4 kırpar (y≈240–1680 görünür), bu yüzden logo daha aşağı inmemeli.
+- Kart şablonu (marka/kapak, v2) İPTAL. Kapaklar HER ZAMANKİ düzende: üstte tam genişlik illüstrasyon (video sahnesinden), altta düz renk yazı paneli (üst etiket · büyük başlık · vurgu satırı · logo).
+- Alt panel BEYAZ/açık OLMAZ; her videoda farklı OLGUN renk: petrol #1F6F78, bordo #7A2E3A, orman #1F4D3A, terrakota #A8452B, çivit #33429A, mürdüm #56264F, zeytin #58642C, kahve #5B3A29, okyanus #0F6A80…
+  Izgarada ardışık kapaklar aynı rengi almaz. Panel üstünde ince vurgu şeridi; başlık krem, alt satır + etiket vurgu renginde.
+
+### GÖRSEL TARZ REHBERİ v3 (KALICI — kullanıcının referansları: marka/referans/stil_ref_1..5.png)
+Referans: sahil yolu + kırmızı araba, yağmur ormanı, teal mutfak, sarı salon, mavi/mor ikili sahne. Referanslar ÇİZİM DİLİ ve RENK TONU KALİTESİ içindir — mekân ↔ renk eşleşmesi DEĞİL (mutfak hep teal, salon hep sarı olmayacak). Her videoda/sahnede ton konuya ve duyguya göre özgürce seçilir, videolar arasında çeşitlenir; CV.ton listesi sadece başlangıç paletidir, yeni tonlar türetilebilir. Hedef bu tarz:
+1. **Sahne başına TEK RENK AİLESİ (monokrom/analog):** bütün sahne bir tonla boyanır (teal mutfak, sarı salon, yeşil orman, mavi-mor gece, gül, lavanta, kum, güneşli sahil). Doygun olabilir ama UYUMLU; üstüne 1–2 tamamlayıcı vurgu (kırmızı/pembe araba, tişört, turuncu çiçek). Rastgele "şeker renkleri" yan yana konmaz — "çocuk renkleri yok" kuralı budur.
+   Hazır tonlar: `marka/ortak/cevre.js` → `CV.ton('teal'|'sari'|'orman'|'gece'|'gunes'|'gul'|'lavanta'|'kum')` (fon1, fon2, orta, koyu, cokKoyu, acik, vurgu, vurgu2, isik, ten).
+2. **Dolu, yaşanmış mekân:** her mekân sahnesinde en az 8–12 eşya/detay (raf+kitap+vazo, lamba, saksı ve asma bitki, poster/çerçeveli resim, duvar saati, halı, sehpa, kupa (buharlı), sandalye, kutu yığını, yerde kitaplar; dışarıda sarmaşık, kelebek, çiçek, ot, kaya). Sahne asla boş fon + tek nesne değildir. Kit: `CV.oda, raf, bitki, asmaBitki, lamba, poster, cerceveResim, saat, hali, sehpa, kupa, sandalye, kutuYigini, yerdeKitap, tencere, sarmasik, kelebek`. Örnek: `marka/stil_ref_ornek2.png` (şeftali mutfak · lavanta salon · orman).
+3. **Derinlik katmanı:** ÖNDE koyu-doygun yaprak/çalı silüetleri kenarları çerçeveler (`CV.onYaprak(T, 'alt'|'ust'|'yan')`), ortada aksiyon, ARKADA açık-ışıklı fon + ışık hüzmesi (`CV.huzme`), pus.
+4. **Organik formlar:** yuvarlak, hafif dalgalı; ot tutamı, küçük çiçek, kabarık bulut, palmiye, kaya (`CV.otTutami`, `CV.cicek`, `CV.bulut`, `CV.palmiye`, `CV.kaya`). Kontur yok.
+5. **İnsan karakterler:** büyük yuvarlak baş, kakül/atkuyruğu/uzun saç, parlamasız koyu mor NOKTA göz, pembe yanak, küçük burun, sade tişört-pantolon, kapsül kollar-bacaklar (`KS.karakter({... poz:'dur'|'selam'|'goster'})`). Gerçek kişi portreleri (`KS.kisi`) de aynı yüz diline geçti (nokta göz + yanak). Ten, sahnenin ışığına göre tonlanabilir (`T.ten`).
+6. Maskotlar (Gubi amber, Gufi kırmızı) her tonda vurgu rengi gibi öne çıkar.
+Örnek: `marka/stil_ref_ornek.png` (teal mutfak · sarı salon · yeşil orman).
+
+### KATEGORİ ETİKETİ: hap şekli yazının GERÇEK çizilen genişliğine göre ölçülür (kanal.js svgGenislik), her kategoride tam oturur.
+
+### ÇIKIŞ (LOGO) KONTROLÜ (KALICI)
+- Her videonun sonunda logo sahnesi (Gubi pırıltıya, Gufi kırmızı kareye dönüşür) ZORUNLU. Teslimden önce son 1 sn'den kare alınıp logonun göründüğü kontrol edilir.
+- render.py artık sahne JS hatasında durur (#12'de logo sahnesi değişken çakışması yüzünden boş çıkmıştı; logo kodu `LOGO_C` adını kullanır).
+
+### HAREKET / MOTION EFEKTLERİ — ft-motion'dan uyarlandı (KALICI)
+Kaynak: github.com/imserhatdemir/ft-motion (MIT). Motoru Canvas tabanlı; biz SVG + flat tarzımızda kaldık, yalnızca TEKNİKLERİ aldık:
+- **Hareket bulanıklığı:** `plan.json` → `"hareket_bulanikligi": 3` (ya da sahne bazında `"alt_kare": 4`). Her kare, 180° obtüratörle N alt karenin ortalaması; hızlı hareketler doğal akar. Render süresi N katına çıkar → yalnız hızlı sahnelerde (zıplama, uçuş, kamera yaklaşması, geçiş) kullan. Önizlemede kapalı.
+- **Easing sözlüğü** (`marka/ortak/hareket.js` → `FX`): girişler `FX.E.expo`, pop/beliriş `FX.yay(t - t0)` (back yerine), darbe/squash `FX.sallan`, büyük çıkış öncesi hazırlık `FX.E.inBack`, emilme `FX.E.inExpo`.
+- **Geçişler:** `FX.gecis(t, { orta, renk, serit, kapat:{tur:'egik'|'serit'|'daire', merkez}, ac:{...} })` — ekran `orta` anında tam kapalı, sahne orada değişir. Komşu geçişlerde tür/yön/renk değiştir; renkler olgun paletten. "A, B'ye dönüşür": daireyi önceki sahnenin bir nesnesinden (ör. soru işaretinin noktası) büyüt.
+- **Darbeler (idareli):** `FX.flas`, `FX.sokHalkasi`, `FX.sarsinti(t, [[zaman, px]])` kamera sarsıntısı.
+- **Kinetik yazı:** `FX.harfHarf` (harfler sırayla yaylanır), `FX.maskeliYazi` (kutudan yükselir; Türkçe aksanlara pay bırakır), `FX.ustunuCiz`, `FX.sayac` (expo ile yavaşlayan sayma), `FX.dalgaNoktalar`, `FX.sogan` (soğan kabuğu izi).
+- **Ses (ses_lib):** `reverb()` (pad/çanlara), `sidechain()` (vuruşlarda müziği kıs), `sayac_tiklari()` (FX.sayac ile eşli), `damga()` (büyük başlık çarpması), `riser_hedefli()` (tam patlama anında biten yükseliş). Her görsel olayın aynı zaman çizelgesinde bir sesi olur.
+- ALINMAYANLAR (tarzımıza uymaz): glitch, kromatik sapma, HUD/editör çerçevesi, film greni, neon/teknoloji reklamı estetiği.
+- Yeni video klasörüne `ortak/hareket.js` kopyalanır ve HEAD'de maskot.js'ten sonra yüklenir.
+
+### ARKA PLAN / ATMOSFER KURALI (güncelleme, #10'dan itibaren geçerli)
+- Skill'den aldığımız şey ÇİZİM TARZIDIR (flat vektör, konturyok, rim light, glow, yuvarlak formlar). Skill'in "koyu lacivert/uzay" atmosferi varsayılan DEĞİL.
+- Videolar mavi-derin tonlara bürünmeyecek. Varsayılan: renkli, aydınlık, konuya ait doğal ortam/çevre arka planları (gündüz gökyüzü, orman, sahil, mutfak, mahkeme salonu, stadyum, atölye, pazar yeri, sokak…) + sıcak ve canlı palet.
+- Koyu zemin yalnızca konu gerçekten gerektiriyorsa (uzay, gece, karanlık oda) ve o sahneyle sınırlı. Bir videoda koyu sahne oranı en fazla ~1/3; arka arkaya iki videonun baskın tonu aynı olamaz.
+- Her videoda en az 2 farklı ortam/renk dünyası olsun (ör. sıcak mutfak → serin laboratuvar). #8'deki gündüz banka sahnesi doğru yönün örneği.
+
+- Görsel her şeydir. Slayt yok. "Kesme, dönüştür": her sahne bir öncekinin içinden doğar.
+- Geçişler her videoda konuya özel tasarlanır — maksimum yaratıcılık.
+- Yazı yalnızca vurgu: büyük rakam, kilit kelime, kaynak damgası. Yazı sahnenin parçası olur.
+- Her kategorinin kendi vurgu rengi var (logo gelince palet netleşecek).
+- Sabit markalar: renk sistemi, font çifti, 60 sn sayacı, kaynak damgası, EFSANE/GERÇEK mührü,
+  "BİLİM HÂLÂ TARTIŞIYOR" rozeti, sondaki ses logosu.
+
+## Anlatı kalıbı
+0–3 kanca · 3–10 soru · 10–40 üç adım (her biri mini kancayla biter) · 40–52 ters köşe ·
+52–57 kapanış + kaynak · 57–60 döngü (son kare ilk cümleye bağlanır).
+Anlatıcı: "sen" diye hitap eden, merakını paylaşan arkadaş.
+
+## Ses
+- Seslendirme: ElevenLabs (her videoda aynı ses ve aynı ayarlar).
+- Müzik: özgün, sade, yormayan; anlatının altında kalır (konuşma sırasında kısılır).
+- Efektler anlatıyı destekler, bastırmaz.
+
+## Logo ve renkler (logo: `marka/logo.svg`, parçalar: `marka/logo_paths.json`)
+- Logo: "gubi / gufi" iki satır, geometrik yuvarlak harfler (#231F20).
+  "gubi"deki i'nin noktası iki amber pırıltı (#FBAC39), "gufi"deki i'nin noktası kırmızı kare (#EE312E).
+- Koyu zeminde harfler krem (#F6F1E7) kullanılır.
+- Marka renkleri: Gece #141112 (zemin) · Krem #F6F1E7 (yazı) · Pırıltı #FBAC39 · Kırmızı kare #EE312E
+- Motifler: pırıltı ✦ = merak/aha anı ve geçiş; kırmızı kare ■ = dikkat/zaman (60 sn sayacının ucu).
+- Ses logosu: pırıltılar "ting-ting", kırmızı kare "pıt".
+
+## Kategori renkleri
+Türkiye & Anadolu #E07A3F · Osmanlı & Türk Tarihi #16A39A · Kelimelerin Hikâyesi #3D8BFD ·
+Uzay #7B61FF · İnsan Vücudu #FF6B81 · Doğa & Hayvanlar #6CC04A · Psikoloji & Beyin #E056C1 ·
+Yanlış Bilinen #EE312E · Gündelik Şeyler #FFD23F · Bilim & Teknoloji #00C2E0 · Sinema & Perde Arkası #E8E2D6
+
+## Tipografi (`marka/fonts/`)
+Outfit (Black: başlık/rakam, Light: altyazı) · JetBrains Mono (kaynak damgası, tarih, veri)
+
+## Yapılanlar kaydı (tekrar etme!)
+Her yeni videoda konu, kategori, açılış ve görsel teknikler bu listeyle karşılaştırılır; aynı fikir iki kez kullanılmaz.
+
+| # | Konu | Kategori | Kullanılan başlıca görsel teknikler |
+|---|---|---|---|
+| 1 | Göbeklitepe | Türkiye & Anadolu | Parçacıklarla zaman geri sarma (Stonehenge dağılır), halatla dikilen sütun, freeze + gri + kırmızı parantez odak, nesnelerin kırmızı çizgiyle parçalanması, kıvılcımdan beyaz flaş, kuşbakışı topoğrafik harita, dikey zaman şeridi, hayalet insan silueti taraması, oymaların ışıkla çizilmesi, oymadan canlanan hayvanlar, sepya polaroid → renkli gerçeklik, kazma + ışık çatlakları, ders kitabı kart yer değişimi, tarama çizgisiyle gömülü halkalar, toprak katmanlarına iniş |
+| 2 | Derinkuyu | Türkiye & Anadolu | Balyozla ön cephe duvar yıkımı (taşlar kameraya uçar), kemerli tünel içinde uçuş, zeminden kat kat düşüş (▼ KAT sayacı), kesitte karınca yuvası şehir + derinlik cetveli, odaların tek tek ışıklanması, nokta-insan akışı, yüzeyde atlı akını/ok yağmuru, yuvarlanan sürgü taş, taş deliğinden açılış, yatay tünel pan'ı ile ikinci şehir, gün-gece hızlandırma, duvarın geri örülmesi, çatlaktan ışık |
+| 3 | Vombat küp kaka | Doğa & Hayvanlar | Esprili/tatlı ton; sevimli karakter (vombat, gözlü küp), 3B dönen küp, iğneli harita çizimi, pikselli SANSÜR bandı şakası, koku çizgileri, yürürken arkada küp bırakma + sayaç, büyüteçle röntgen, mavi laboratuvar şeması (blueprint), bağırsakta balon şişirme + manometre, ısı haritası bantları, çubuk grafik 1×→2×/4×, uçtan kesitte süperelips (daire→kare) dönüşümü, 'ÇIT!' patlaması, eğimli kayada top vs küp, kürsü + madalya + konfeti, fabrika bandı + VOMBAT-3000 makinesi, sahneler arası yana kayan geçiş; müzik: neşeli marimba/F pentatonik |
+| 4 | Turkey = Hindi (Kelimenin Hikâyesi #1) | Kelimelerin Hikâyesi | Pasaport + eski harita teması; kuşta dönen bavul etiketi (TURKEY→HİNDİ→?), dil konuşma balonları, düşen kovboy şapkası/bere, pasaport kapağından sahneye açılış, parşömen haritada kesikli rota + yürüyen beç tavuğu, mürekkep damgaları (dokulu, çarpma), okyanusta gemiyle gelen hindi, etiketin uçup yapışması, Kolomb'un haritasında üstü çizilen HİNDİSTAN, sayfa çevirme, renkli rotaların yumağa dönmesi, başı dönen kuş, BM isim plakası değişimi; sahneler arası iris (daire) açılışı; müzik: pizzicato + akordeon 3/4 vals |
+| 5 | Dünyayı Kurtaran Adam (Türk Star Wars) | Sinema & Perde Arkası | Sinema salonu teması; klaket açılışı, spot ışığı, storyboard eskizi, BÜTÇE yazılı cam kavanoz (içinde tek altın para), kavanozun devrilip paranın düşmesi, karton uzay gemisi, projektör huzmesi + süzülen makara, İZİNSİZ damgası, perde + önde sallanan karton kokpit (arka projeksiyon kesiti), pikapta plakların makasla kesilip bantlanması, köpük kaya POFF + trambolin BOİNG, EŞİ YOK rozeti, yağan TURKISH STAR WARS biletleri + gülen seyirci, neon KÜLT tabelası, el fenerli arşiv araması, emekli makinist silueti, perdeye dönen klaket; geçiş: film şeridi gibi yukarı kayma (makara delikli); müzik: özgün 80'ler retro synth (La minör, 112 bpm) |
+| 6 | Venüs'te bir gün > bir yıl | Uzay | İLK SKILL VİDEOSU (flat-bilim-animasyonu): Derin Uzay + Güneş Sistemi Sıcak paletleri; rim light'lı Venüs (kayan bulut bantları), Gubi & Gufi ilk görünüm (parti şapkası + mumlu pasta, konfeti), GÜN>YIL kartları, Güneş etrafında yörünge + iz + sayaç, dönüş oku + iki ilerleme çubuğu (225/243), YIL-GÜN yarışı, Dünya-Venüs zıt dönüş okları, Venüs yüzeyinde batıdan doğan Güneş (BATI/DOĞU tabelaları), kopan takvim yaprakları (117), Venüs'te kahvaltı + termometre 460°C + terleyen Gufi, terazi (pastalar vs tek sabah), maskotların logoya dönüşmesi; müzik: ambient synth pad + kristal arpej (D, 90 bpm) |
+| 7 | Şu an ışık saçıyorsun | İnsan Vücudu | Skill hattı; parlayan yüzsüz insan silüeti + üstü çizili göz, karanlık oda kesiti (5 gönüllü, ışık söner), buz kristalli soğutmalı kamera + deklanşör flaşı + GÜN sayacı, kamera ekranında REC + parlayan silüet, 1000× çubuk karşılaştırma, ölçek dalışı yüz→hücre (Mikro Dünya paleti) + moleküller + foton kaçışları, yüz parıltı haritası, saat kadranı 08→16 + parıltı çubuğu, Gufi'nin Gubi'ye iltifatı ve kendisinin de parlaması; müzik: havadar ambient + camsı arpej + mikro sahnede nabız (La minör, 80 bpm) |
+| 8 | Limon suyuyla görünmez olacağını sanan soyguncu (Dunning-Kruger) | Psikoloji | İLK CANLI MASKOT VİDEOSU (M.canli: göz takibi + tepkiler + imza sesleri, tepkiler.json ile ses senkronu); Gufi 'soyguncu' rolünde yüzüne limon sürer (limon cilası aksesuarı), GÜNDÜZ sahnesi (açık gökyüzü, iki banka, üstü çizili maske), limonla görünmez mürekkep + mum ısısıyla belirme, yarı saydam 'görünmez' Gufi + güvenlik kamerası, Polaroid banyo olur → fotoğrafta tavan lambası, görüş konisiyle açıklama, TV haberi (CCTV yeşili, SON DAKİKA bandı), kapı vuruşu + polis ışıkları, konuşma balonu, gazete + gözlük, baloncuklardan oluşan dev '?', gerçek-tahmin sütunları + ortalama çizgisi (Gufi sütunun tepesinde yükselir), terazi, ayna yansıması + 'EMİN OLMAK ≠ BİLMEK'; müzik: pizzicato yürüyen bas + fırça tıkırtısı (Re minör 104 bpm) → bilim kısmında pad + marimba (Fa majör) |
+| 9 | İlk bilgisayar "bug"ı gerçek bir böcekti | Bilim & Teknoloji | Hata veren ekrandan uçan güve → deftere bantlanır; oda büyüklüğünde Mark II (zoom-out ölçek + lambaların sırayla kırmızıya dönmesi + ekran sarsıntısı); KARANLIKTA EL FENERİ (SVG maske ile ışık konisi gizli sahneyi açar) ile röle taraması, Röle 70'e zoom; cımbız + bant + kendini yazan el yazısı (clip reveal); 'actual' vurgusu + göz kırpan yüz; zaman şeridi + geri sayan yıl sayacı (1947→1878); Edison ampulü + mektupta daire içine alınan "bugs"; dünyayı saran konuşma balonları; müze vitrini + spot + camda buğu; D-E-B-U-G tuşları, ekran yeşile döner, güve dışarı uçar; müzik: röle groove (sinüs bas + filtreli kare arpej + tık, Mi minör 96 bpm), 1878'de müzik kutusu |
+| 11 | Kendine mikrop içen doktor (Marshall & Warren, H. pylori) | Sağlık & Vücut | YENİ ATMOSFER KURALIYLA İLK VİDEO (aydınlık: güneşli laboratuvar kreması, 80'ler hastane mint'i, mide içi pembe, Nobel altın-bordo; vinyet .18); GERÇEK HARİTA ile Avustralya + Perth iğnesi; GERÇEK KİŞİYE BENZEYEN portreler (Warren: beyaz yanlar + gözlük; Marshall: kahverengi saç, önlük); içinde spiral bakteriler yüzen bardak, ders kitabı ÜLSER = STRES + ACI, mide kesitinde asitte eriyen bakteri, mikroskop görüş dairesi, çarpı damgalı silüetler + mutlu domuz yavrusu, bardağın eğilip boşalması (gulp), takvim GÜN sayacı, mide içi dünya + endoskop hortumu + flaş, reçetenin üstünü çizme + kapsüllerin bakterileri kovalaması, dönen Nobel madalyası; ekranda 'Tıbbi tavsiye değildir'; müzik: akustik tel vuruşları + shaker (Re majör 92 bpm), içme anında gerilim nabzı |
+| 12 | Çapa etkisi (Tversky & Kahneman çarkı, hâkimler ve zar) | Psikoloji & Beyin | ETKİLEŞİM v2 İLK VİDEO: Gubi süzülerek girip çarkı işaret eder, Gufi zıplayarak kürsüye çıkar, düşünme balonu, kayıkta kürek çeken Gufi, sonda kameraya yaklaşıp izleyiciyi işaret eder (arka plan bulanık); aydınlık yarışma stüdyosu (ışık hüzmeleri, ampul şeridi), yavaşlayarak duran şans çarkı (tık sesleri), ikiye bölünmüş ekranda 10/65 çarkları, GERÇEK dünya haritasında Afrika ülkelerinin tek tek yanması, gerçek oranlı %25/%45 sütunları + ipli çark rozetleri, '10'un çapaya dönüşüp denize batması + ipe bağlı TAHMİN kayığı, GERÇEK Almanya haritası, ahşap mahkeme + cübbeli hâkim + yuvarlanan zar + 5/8 ay ceza çubukları, üstü çizili fiyat etiketi + asılı çapa, pazar tezgâhı; müzik: yarışma programı funk (slap bas + brass + el çırpma, Fa majör 110 bpm), denizde pad + dalga |
+| 13 | Mona Lisa'yı ünlü yapan hırsızlık (1911, Peruggia) | Sanat & Tasarım | ft-motion teknikleriyle İLK VİDEO: hareket bulanıklığı (hırsızlık yürüyüşü, kuyruk, kameraya yaklaşma), sahneler arası eğik silme + daire geçişleri, gazete manşetlerinde harf harf yaylanan yazı, sayaç ('2 YIL'), damga sesi, flaş; bordo Louvre salonu + altın çerçeveler, flat ama tanınır Mona Lisa (kaşsız, orta ayrık saç, kavuşturulmuş eller, puslu manzara), çerçevenin boşalması + 4 demir çivi, duvar dolusu tablo içinde köşedeki küçük Mona Lisa, benzeyen Peruggia portresi (bıyık + kasket) + cam vitrin, beyaz önlüklü yüzsüz hırsız silüeti tabloyu önlüğe saklar, takvim 21→22, sepya 'Le Petit Journal' manşetleri, boş duvar önünde uzayan kuyruk (Gufi zıplayarak katılır), çatı katında sandık, GERÇEK harita Paris→Floransa kesikli yol + kelepçe, ışık huzmeli 'yıldız' dönüşü + foto flaşları; müzik: Paris akordeon valsi (3/4, Re minör 132 bpm), hırsızlıkta pizzicato gerilim, Floransa'da mandolin tremolosu · **v2 (tarz rehberi v3 ile yeniden yapıldı):** dolu mekânlar ve farklı tonlar (Louvre gül-bordo, lavanta tablo duvarı, kum atölye/çatı katı, şafak moru kapalı müze, şeftali bekçi odası, adaçayı Paris sokağı + büfe, sarı ışıklı 'yıldız' salonu), KS.karakter ziyaretçiler (yürüyüş adımı), bıyıklı beyaz önlüklü hırsız tabloyu taşır, kadife bariyer + heykel + bank + perde ön çerçeve, masadaki gerçek harita kartı; kapak paneli mürdüm |
+| 14 | Altı Sıfır (2005, 1.000.000 TL = 1 YTL) | Ekonomi & Para | MASKOTLAR ÖNDE / ROL (MARKA v4) ilk video: yeni kostum.js (KO.giy: silindir, monokl, papyon, simitçi başlığı, kasket, kravat, gözlük, parti şapkası; M.canli ust fonksiyon olarak kabul eder) — Gufi 'milyoner' (silindir+monokl) tomarla tek simit alır, Gubi simitçi → döviz memuru → market kasiyeri (sıfır sayar, '9. sıfır?' balonu) → sunucu (papyon+mikrofon) → Merkez Bankası memuru (kravat+gözlük, makasla 6 sıfır keser, Gufi sıfırları kovalar); sarı İstanbul sokağı + simit arabası, lavanta oturma odası + cüzdan + döviz tabelası, şeftali market + uzayan fiş + hesap makinesi 'E', kırmızı perdeli sahnede Rekorlar Kitabı + REKOR damgası, gece şehir havai fişek + 1.000.000→1 YTL uçan sıfırlar + dönen banknot, çayır terazisi (maaş/simit birlikte küçülür, sıfırlar çöpe), 'YENİ' tabeladan düşer, sıfır kulesi patlar Gufi'nin şapkası uçar, çekmeceden eski milyonluk; müzik: retro Türk pop grubu 104 bpm Sol majör, rekor sahnesinde ironik minör marş; kapak paneli koyu çam yeşili |
+| 15 | Maymunlar Gerçekten Muz Sever mi? (Paignton Zoo 2014) | Doğa & Uzay | ilk kendi maymun karakterimiz (MY.maymun: mutlu/şaşkın/üzgün/AĞLAMA gözyaşı akıntısı + hıçkırık, el pozları, muz/yaprak/salata tutar, parlak tüy yıldızları); gerçek dünya haritası (primat ülkeleri yeşil, yabani muz yurdu sarı); Gubi çiftçi (hasır şapka, yeni KO parçası) → kaptan → sirk sunucusu → bakıcı; Gubi maymuna muz verir, Gufi muzu kapıp kaçar, maymun ağlar, Gufi salatayla döner; detay planlar: yabani muz kesiti (çekirdekler tek tek, 'SERT'/'İRİ ÇEKİRDEK') → sonraki sahneye kesme, eski TV'de çizgi film → kesme, mutlu maymun yüzü (geniş→detay→geniş), Paignton tabelası + 'MUZ YOK' levhası (detay→geniş); müzik: marimba + bongo 112 bpm Fa majör, liman ragtime, sirk kaliyope, ağlamada minör; kapak paneli koyu kakao |
+| 16 | Soğan Neden Ağlatır? (Imai vd. 2002, Nature) | Mutfak Laboratuvarı | ilk --inceleme turlu video (kaynak/inceleme.md: Gufi tezgâh arkasında kayboluyordu → büyütüldü); Gubi şef (aşçı başlığı), Gufi ağlayan çırak (SG.gufiYas), finalde yüzücü gözlüğü (yeni KO parçası 'yuzucu'); detay planlar: hücre bölmeleri (kükürtlü madde damlacıkları + enzim 'makasları') → yırtılma/karışma → göz-sinir-beyin alarmı-gözyaşı (7 sn aşamalı), 2002 deney defteri + YENİ ENZİM damgası, kör/keskin bıçak kesit kıyası; molekül rozeti 'agir' yayla; 2002 Japon laboratuvarı önlüklü bilim insanları (dönem kuralı: günümüz); müzik: pizzicato + ksilofon 118 bpm Sol majör, hücre/göz sahnelerinde mikroskobik ambiyans; kapak paneli koyu şarap |
+| 17 | Orta Çağ Köylüsü Gerçekten Gri Lapa mı Yerdi? (Dyer 1988; Woolgar 2016) | Tarih | açılış GRİ köy (zemin grayscale), günümüzden gelen renkli Gufi (turist kasketi) zaman kapısından düşer; 'POTTAJ' anında dünya renklenir (flaş + şok halkası + 'agir' yay); DÖNEM KURALI ilk uygulama: KS.donem(<1500) → tunik, kukuleta, başörtüsü, uzun elbise; Gubi kukuletalı köylü (yeni KO 'kukuleta'); detay planlar: kazanın içi (malzemeler tek tek düşer, ~7,6 sn), tuzlu ringa fıçısı → kesme, hasat hesap defteri 1300/1400 + KARA ÖLÜM SONRASI damgası; mevsim kâseleri, domuz/pastırma/sosis + kış karı, perhiz takvimi + kilise çanı, bahçe otları vs pahalı biber; müzik: lavta + flüt + dem + tabor, Re Dor 100 bpm, finalde 6/8 jig; kapak yarı gri/yarı renkli, panel koyu toprak |
+| 18 | 1000 Yıl Önceki Kral Seni Kıskanırdı | Tarih | dikey BÖLÜNMÜŞ EKRAN karşılaştırma dili: üst yarı taş saray (1000 yıl önce, meşale, flamalar) · alt yarı bugünün evi (kitaplık, kanepe); Gubi KRAL (yeni KO 'tac'; diş sahnesinde 'disBandaj'), Gufi günümüz insanı (gözlük, 'kulaklik'); finalde kral tacını Gufi'ye verir; detay planlar: antibiyotik kutusu '1928 · PENİSİLİN' → kesme, ışık düğmesine basan parmak (karanlık → aydınlık), gerçek dünya haritası Amerika→Avrupa besinleri '1492 SONRASI'; atlı ulak + gün sayacı vs görüntülü telefon; lavtacı (dönem giysisi) vs kulaklıklı Gufi; müzik: saray lavta + boru fanfarı / bugün pop, sahne içinde yarı yarıya geçiş; kapak paneli kraliyet moru |
+| 19 | Senin Enflasyonun Kaç? | Ekonomi & Para | Gubi kiracı öğrenci (kep), Gufi ev sahibi emekli (gözlük + gri kasket); TV'de SON DAKİKA bandı + 'BENİ ANLATMIYOR!' balonu; dev TÜFE sepeti iner; detay planlar: sepetin içi (gıda/kira/ulaşım/giyim/sağlık düşer + AĞIRLIK etiketleri) → 'ORTALAMA HANE' karton aile (üstü çizilir), öğrencinin hesap tablosu pay × artış = katkı ≈ %47 → kesme, Σ(pay × artış) formül kartı; harcama pastaları (ölçülü dilim etiketleri), iki termometre %47 / %34 + ortada kesik çizgi RESMİ = ORTALAMA; 'ÖRNEK' etiketi her örnek sahnede; müzik: hafif funk 100 bpm La minör→Do majör, hesap anlarında tik-tak; kapak paneli arduvaz lacivert |
+| 20 | Sarı & Kırmızı Kart | Spor | Gubi hakem (siyah kasket + düdük), Gufi kaptan (C bandı) → Ken Aston (melon + bıyık); 1966 stadyumu dönem kalabalığıyla, çok dilli balonlar + "KART YOK" çarpısı; detay planlar: dakikalarca saat, THE DAILY gazetesi (Charlton kardeşler), trafik ışığı sarı→kırmızı (ışıklar karta dönüşür), ilk sarı kart; Londra sokağı + Aston arabada; Meksika 1970 sombrero tribün, skorbord 1970/1974; müzik: 1966 twist 132 bpm Mi majör + Meksika mariachi trompet; kapak paneli #23262E |
+| 21 | 1518 Dans Vebası | Tarih | Gufi Rönesans hekimi (siyah hekim başlığı + elinde matula), Gubi belediye müzisyeni (tüylü bere + tabor davul) → tarihçi (gözlük); 1518 Strazburg: yarı ahşap evler, pembe kumtaşı tek kuleli katedral, arnavut kaldırımı, halk tunik+bere / uzun etek+önlük+başörtüsü; 'Müzik yok' kısmında gerçekten müzik yok (drone + ayak sesi); detay planlar: kapıya tebeşir çentikleri, inek ağzı deri ayakkabılar, hekim reçetesi (ÇARE ?), ferman MÜZİK VE DANS YASAKTIR, kırmızı ayakkabı + haç, çavdar mahmuzu; harita üstünde salgın yayılır; güçlü adamlar dansçıyı kolundan tutar; müzik: Re dorian flüt + tabor (saltarello), yasakta kesilir, türbede org, bilimde lavta; kapak paneli bordo #2E1A20 |
+| 23 | Kapıdaki Çarpı (Alevilerin kapısına neden çarpı atılıyordu?) | Tarih (HASSAS) | Hassas şablon: şiddet çizilmez, maskotlar ciddi komşu, imza sesi yok, takip çağrısı yok; ilk kare kanca: kapıya kırmızı boya çarpı fırçayla atılır; detaylar: çarpı + alıntı, 1978 kapı tokmağı, mumlar (iddianame 111 · 559 ev), beyaz boya fırçası; 1978 Maraş kış sokağı (paltolu/kasketli, başörtülü yetişkinler, soba dumanı, kar), gece silueti + uzak turuncu ışık, Türkiye haritası iğneleri (2012'den bu yana), 1978·1933·2014 kapı kartları; final: Gufi çarpıyı boyar, komşular kapının yanında; müzik: Re minör piyano 66 bpm → Fa majör; kapak paneli #1E2430 |
+| 24 | Fırlayan Kitapçık (2001 krizi) | Ekonomi & Para | MERAK SIRASI anlatısının ilk videosu (kitapçık fırlatıldı → iki gün sonra %7500); gerçek kişiler çizilmez (MGK = yüzsüz siluet); Gubi bankacı (papyon + gözlük), Gufi vatandaş (kasket); detaylar: düşen kitapçık, 20 Şubat 2001 manşeti, 100→120 para yığınları, LED döviz tabelası 685.000→940.000; terazi (söz > kitapçık), borsa çizgisi, uçan dolarlar, alım gücü ≈%73; müzik: Mi minör gerilim nabzı (hızlanır) → belirsizlikte sis; kapak paneli #10261F |
+| 25 | Türkiye Saatleri Neden Geri Almıyor? | Bilim & Zaman | MERAK SIRASI; Gubi saat ustası (kırmızı papyon + gözlük), Gufi okullu (kasket); ilk kare: İstanbul ocak sabahı 08:29 + okul yoluna çıkan çocuklar; detaylar: Resmî Gazete 8 Eylül 2016 'KALICI' damgası, haritanın doğu ucu 45° çizgisine varmıyor (~0,2° kala), 13:00 kadranı; 07:29↔08:29 / 16:50↔17:50 gün çubuğu (takas), Almanya 03→02 / Türkiye 04 saat kadranları; paylaşım 24–25 Ekim (Avrupa saat geri alır); müzik: Re majör merak arpeji + saat tik-takı; kapak paneli #14224A |
+| 10 | Bulduğun Cüzdan Kimin? (TMK 769–771, TCK 160) | Hukuk | maskotlar rolde: Gufi cüzdanı bulan vatandaş (önde, büyük), Gubi trafik polisi (lacivert kasket + düdük, SAHİBİ/POLİS tabelasını gösterir) → hakim (gözlük + papyon, tokmak, 'ADALET MÜLKÜN TEMELİDİR' duvarlı mahkeme, TCK 160 levhası) → cüzdan sahibi (melon şapka, No:7 apartman kapısı, hediye kutusu) → danışma görevlisi (bordo kasket); sonbahar sokağı + uçuşan yapraklar, cüzdan açılır (banknot + kimlik yelpazesi), Medeni Kanun kitabında 'BİLDİRMEK ZORUNLU' harf harf, duvara düşen parmaklık gölgesi, taştan '%10' → EFSANE damgası → çatlayıp parçalanır, bölünmüş ekran sokak ✓ / kamu binası ✗, bankta 5 yıl bekleyiş (mevsimler akar, kar yağar, takvim 2026→2031) + 'SENİN' kurdelesi; uyarı satırı 'Genel bilgilendirmedir, hukuki tavsiye değildir.'; müzik: akustik pena + ksilofon 96 bpm Do majör, mahkemede minör gerilim; kapak paneli koyu mürdüm-lacivert |
+
+İptal edilen / listeden ÇIKARILAN konular (bir daha önerme): Divriği'nin Kapısında Beliren Adam (PDF #5).
+
+Sonraki videolarda kaçınılacaklar: aynı kategoriyi arka arkaya kullanmak, "geri çekilip kesit/kuşbakışı gösterme" açılımını 3. kez yapmak, sepya/eski fotoğraf, kırma-parçalama geçişi, toprağa iniş, büyüteç/röntgen, sansür şakası, kürsü-konfeti, pasaport/damga, iris geçişi, film şeridi geçişi, klaket, projektör.
+
+## Instagram açıklama kuralları
+- En fazla **5 hashtag**. Sıra: 1 konuya özel, 1 kategori/seri, 1-2 genel keşif, en sonda her zaman #gubigufi.
+- İlk satır = kanca (akışta sadece o görünür). Sonda yorum sorusu + kaynak + "gubigufi ✦ 1 dakikada bir merak".
+
+## #6'dan itibaren: `flat-bilim-animasyonu` skill'i
+Bundan sonraki bütün videolar `.claude/skills/flat-bilim-animasyonu/` skill'ine göre üretilir.
+Skill'in stil kuralları (kontur yok, yuvarlak geometri, koyu desatüre zemin + 2-3 parlak vurgu, rim light,
+glow, parçacık, katmanlı derinlik/paralaks, her sahnede idle hareket, tek sahne = tek fikir) esastır.
+
+Kanala özel uyarlamalar (skill'le çelişmez, üstüne eklenir):
+- Format: dikey 1080×1920 (skill'in Shorts yönergesi). Odak üst-orta; alt %25 altyazıya ayrılır.
+- Güvenli alan, kinetik altyazı, kategori etiketi, 60 sn sayacı ve gubigufi logo kapanışı korunur.
+- Kanal imza renkleri: pırıltı amber #FBAC39 + kırmızı kare #EE312E (skill'in "imza rengi" kuralı).
+- Paletler skill'in `paletler.md` dosyasından seçilir; kategori renkleri etiket rengi olarak kalır.
+- Müzik: skill'e uygun ambient / sinematik synth (her videoya özgün), anlatımın altında alçak.
+- Üretim hattı: skill'in `ses_analiz.py` → sahne planı → `sahneler/sNN.html` → `render.py` → birleştirme.
+- Maskot: skill kuralı gereği özgün olmalı (kuş/ördek/köpek yok); seçim kullanıcı onayıyla yapılır.
+
+## Maskotlar: Gubi & Gufi (çizim: `marka/ortak/maskot.js`, kart: `marka/maskot_karti.png`)
+
+```
+MASKOT KARTI — GUBİ
+Ad: Gubi
+Şekil: uçları yuvarlatılmış, tombul 4 köşeli yıldız (logodaki pırıltıdan doğar); arkasında yumuşak glow
+Renkler: gövde #FBAC39, gölge #B4532A, rim light #FFE9B8, glow #FFD27A, göz bebeği #1B1640
+Ayırt edici detay: sürekli hafif parlar; heyecanlanınca glow büyür
+Kişilik: meraklı, soru soran, "aha!" anlarının sahibi — izleyicinin merakı
+İngilizce prompt tarifi: "a small chubby four-pointed star character with rounded tips, warm amber #FBAC39 body, soft golden glow, big white oval eyes with navy pupils, no mouth, no outline, flat vector"
+
+MASKOT KARTI — GUFİ
+Ad: Gufi
+Şekil: yuvarlak köşeli kırmızı kare gövde + iki minik yuvarlak ayak (logodaki kırmızı kareden doğar)
+Renkler: gövde #EE312E, gölge #8E1B3F, rim light #FFC7BD, göz bebeği #1B1640
+Ayırt edici detay: zıplayarak hareket eder, şaşırınca gözleri kocaman olur
+Kişilik: tepkici, şaşıran, bazen yanılan — izleyicinin şaşkınlığı
+İngilizce prompt tarifi: "a small rounded-square character, bright red #EE312E body, two tiny round feet, big white oval eyes with navy pupils, no mouth, no outline, flat vector"
+```
+
+### Canlı animasyon (KALICI — her videoda `M.canli` kullan, statik maskot koyma)
+`M.canli('gubi'|'gufi', { t, x, y, boy, bakHedef:[x,y], tepkiler:[[t0,'tip'],...] })` her karede çağrılır:
+- **Göz kırpma:** deterministik, karakterlere göre farklı ritim (seed); **nefes/idle:** Gubi süzülür + hafif sallanır, Gufi nefesle esner.
+- **Göz takibi:** `bakHedef` ile göz bebekleri bir noktaya bakar → birbirlerine, anlatılan nesneye, izleyiciye (aşağı-ön) baktır. Sahne içinde bakışı ANLATIYA göre yönlendir (kim konuşuyorsa/ne gösteriliyorsa oraya).
+- **Tepkiler:** `sasir` (sıçrama + turuncu ünlem + ter), `zipla` (squash/stretch, iniş basması), `mutlu` (^^ gözler + minik gülümseme + zıplama), `aha` (Gubi: glow patlaması + pırıltı halkası), `korku` (titreme + geri bakış + ter), `selam` (sallanma), `uzgun` (kaşlar + çökme), `kararli` (çatık kaş).
+
+### Etkileşim kuralı v2 (KALICI) — maskotlar kenarda bekleyen süs değil, sahnenin oyuncusu
+- **Eller:** YALNIZCA GUFİ'NİN yüzen yuvarlak elleri var (kolsuz; Gubi elsiz — işaret ederken eğilip hedefe pırıltı izi saçar, göz kapatırken gözlerini yumar) ve NORMALDE GÖRÜNMEZ; el gerektiren harekette gövdenin ARKASINDAN çıkar, bitince geri saklanır. Göz kapatmada iki karakter de EL KULLANMAZ, gözlerini sıkıca yumar. Tepkiler: `isaret` (isaretHedef'i gösterir), `alkis`, `gozKapa` (gözlerini yumar, el yok), `dusun` (el çenede + düşünce baloncukları), `omuzSilk`, `kahkaha`, `goster` ("ta-da"), `donus`, `selam` (el sallar) + eskiler.
+- **Sahnede dolaşma:** `yol: [[t, x, y, boy], ...]` → Gufi zıplayarak, Gubi süzülerek (pırıltı izi) yer değiştirir; sahneye giriş/çıkışlar böyle.
+- **Kameraya yaklaşma:** `M.yakinlas(t, t0, t1)` zarfıyla karakter ekranın ortasına büyür, `M.bulanik(k)` + `M.bulanikSar()` ile arka plan bulanıklaşır, karakter net kalır; `bakHedef: 'kamera'` ile izleyiciye bakar ve el sallar/konuşur. Ses: `maskot_ses(kim, 'yaklas')`.
+- **Konuya dokunma:** karakterler anlatılan nesneyi eliyle gösterir, taşır, üstüne çıkar, düşünce balonunda konuyu hayal eder (`M.balon`).
+- Her videoda EN AZ: 1 kameraya yaklaşma anı (kanca ya da kapanışta), 2+ el hareketi (işaret/gösterme), 1 sahneye giriş (yol) — konuya uygun seçilir.
+
+### İmza sesler (KALICI — `marka/ses_lib.py` → `maskot_ses(kim, tip)`)
+Her tepki, aynı anda kendi imza sesiyle çalınır: `M.add('sfx', maskot_ses('gubi','aha'), t, .5)`. Bu sesler değiştirilmez; kanalın "sesli logosu" gibidir.
+- **Gubi:** kristal/cam "ting" ailesi — Mi majör pentatonik, hep yukarı kıvrılır (merak = yükselen soru); `aha` = parlak arpej.
+- **Gufi:** lastik "bup/boing" ailesi — tombul, alçak (Sol3), perde düşüşü + yay titreşimi; `korku` = titrek "brrr", `mutlu` = "bup-bup-bup".
+- Anlatıcı konuşurken tepki sesini −6 dB kısık kullan; seslendirmeyi asla örtmesin. Demo: `marka/maskot_demo/`.
+Kullanım: her videoda 3–6 kısa rol. Gubi soruyu sorar / aha anında parlar, Gufi şaşırır / tepki verir; kapanışta ikisi logoya dönüşür.
+
+## Logo kapanışı
+Kapanıştaki gubigufi logosu ekranın TAM ORTASINDA durur (x 540, y ~940, genişlik ~660). Kapanışta altyazı/etiket olmadığı için
+safe alan kaydırması uygulanmaz (kullanıcı geri bildirimi, #6 sonrası).
+
+## Üst köşe yerleşimi (#7'den itibaren)
+- Kategori etiketi sol üstte (x 62'den başlar, y ≈ 292).
+- 60 sn sayaç halkası SAĞA YASLI: merkez x 974, y 300 (dış kenar 1018 = 1080 − 62, sol etiketle simetrik). Kullanıcı geri bildirimi.
+- Güncel kanal katmanı: `marka/ortak/kanal.js` + `kanal.css` — her yeni videoda bunlar kopyalanır.
+
+## MASKOTLAR ÖNDE — ROL VERME KURALI (v4)
+Gubi ve Gufi arka planda köşede bekleyen süs DEĞİL; hikâyenin OYUNCULARI.
+- Her videoda en az 3–4 sahnede maskotlara **rol** verilir: anlatılan kişiyi/nesneyi canlandırır (dedektif, hırsız, bekçi, doktor, hakem, müşteri…), deneyi kendileri yapar, kavramı kendi üzerlerinde gösterir.
+- Kostüm/aksesuar ile rol: şapka, gözlük, bıyık, önlük, düdük, büyüteç vb. maskotun üstüne giydirilir (M.canli `ust` katmanı).
+- Boyut: rol aldıkları sahnede büyük (boy 180–320), kadrajın ön/orta planında; en az bir sahnede kameraya yaklaşma.
+- Aralarında diyalog/etkileşim: biri yapar diğeri tepki verir (şaşırır, güler, itiraz eder), birbirine nesne uzatır, kovalar, çarpışır.
+- Konuşma balonları (M.balon) ile kısa laf/ünlem; altyazıyla çakışmayacak yerde.
+- Sahne başına en az bir görünür tepki; hiçbir sahnede sadece köşede "duran" maskot olmaz.
+
+## TESLİM LİSTESİ (her video)
+video.mp4 · reels_kapak.jpg · Instagram açıklaması (en fazla 5 hashtag, "gubigufi ✦ 1 dakikada bir merak", kaynak) · YouTube Shorts başlığı · **YouTube etiketleri** (virgülle ayrılmış 12–20 anahtar kelime, sonda "gubigufi, shorts")
+
+## ŞEKİLLİ YAZI KURALI (çip, etiket, damga, balon, tabela)
+Arkasında şekil (hap/çip, kutu, damga çerçevesi, balon) olan HER yazı şeklin içine **düzgünce, iki yanda eşit boşlukla** sığmalı.
+- Genişlik ASLA harf sayısından tahmin edilmez; `K.yaziGen(metin, fs, { mono, agirlik, ls })` ile gerçek ölçülür (SVG getComputedTextLength; mono yazı tipi + letter-spacing dahil).
+- `cip()` artık ölçerek çizer (genişlik = ölçülen + 1.7×fs). Sabit genişlikli kutularda (balon, tabela, etiket kartı) yazı uzunsa kutu büyütülür ya da font küçültülür; kontak föyünde her şekilli yazı taşma için kontrol edilir.
+
+## YAKIN ÇEKİM / DETAY PLAN (insert shot) — yerine göre
+Sahneyi büyütmek (amatör zoom) YASAK. Detay plan, anlatıda önemli olan nesnenin ya da konunun AYRI ÇİZİLMİŞ yakın plan kompozisyonudur. Nesne merkezde ve büyük durur, kendi zemini ve dokusu vardır (kaldırım taşı, kâğıt, ahşap, taş), alan derinliği vardır (bulanık ön ve arka plan objeleri, vinyet), kendi mini animasyonu vardır (fosforlu kalem geçer, tokmak iner, çatlak ilerler, damga basılır, kurdele sallanır).
+- RİTİM: **geniş plan → detay plan → geniş plan**. Detay plan KISA tutulur (0,5–1,1 sn), önünde ve arkasında mutlaka aynı sahnenin geniş planı olur; bağlamı kurar, vurguyu yapar, sahneye geri döner. Maskot tepkileri detay plana değil, dönüşteki geniş plana denk getirilir.
+- Kesme ile girer (kısa beyaz parıltı + hafif 'oturma'), yavaş push-in ile sürer, kesme ile çıkar. Video başına 5–8 tane.
+- OKUNURLUK: Detay plan anlaşılacak kadar ekranda KALIR. Yazı veya olay içeriyorsa en az 1,5–2,5 sn sürer; sadece görsel vurguysa en az 1,2 sn. Aynı sahneye hemen geri dönmek zorunlu değil: detay planı uzun tutup doğrudan SONRAKİ sahneye kesmek de bir seçenek (geniş → detay → yeni sahne).
+- ANLATI PLANLAMASI: Metin yazılırken detay planlar baştan düşünülür. Detay plana denk gelen cümle, o nesneyi anlatan tek ve kısa bir cümle olur ki görüntü ile ses birlikte otursun. Storyboard'da her detay plan saniye aralığıyla işaretlenir.
+- Kütüphane: `ortak/detay.js` → `DP.sar(t, t0, t1, d => DP.xxx(d))`. #10'daki örnekler: kaldirim, kanun, tokmak, teslim, catlak, tutanak, kurdele. Her video için konuya özel yeni detay planlar çizilir.
+- Nesne ve önemli yazılar altyazı bandının (y≈1280–1430) dışında kalır. Detay plandaki yazılar da şekillerine ölçülerek sığdırılır.
+
+## HAREKET STÜDYOSU DİSİPLİNİ (axertha-motion-studio'dan alınanlar — çizim stili DEĞİŞMEDİ)
+Bu başlıktaki maddeler üretim disiplini; görsel dil, renk ve karakter tarzı aynen korunur.
+1. **Zamanın saf fonksiyonu:** `renderAt(t)`, `t` anındaki kareyi önceki karelere bakmadan tam çizer. `Math.random` kullanılmaz (tohumlu `HK.hash` / `FX.hash` kullanılır). CSS geçişi, timer veya rAF ile zamanlama yapılmaz.
+2. **Amaca göre yay:** `FX.yayTip(t - t0, tip)`:
+   - `cabuk`: küçük geri bildirim (çip, tık).
+   - `normal`: kart, panel, kamera.
+   - `agir`: büyük başlık, kahraman nesne, logo.
+   - `oyuncu`: maskot, çıkartma (görünür taşma).
+   Bir özelliğin hedefi birden çok kez değişiyorsa her değişim zamana bağlı ayrı bir parça olarak hesaplanır.
+3. **Tempo:**
+   - İlk 2 saniye net bir "izlemeye devam et" sebebi (kanca) verir.
+   - Her 2–4 saniyede anlamlı bir görsel gelişme olur; bilinçli bir gerilim beklemesi varsa istisna.
+   - Duraklamalar vurgu için kullanılır, ekranı sadece "dolu" tutmak için hareket eklenmez.
+4. **Geçiş mantığı:** Mümkünse uzamsal süreklilik korunur: nesne devamlılığı, eşleşen kesme, kamera devamı, açılma. Kesme, süslü bir geçişten güçlüyse kesme kullanılır.
+5. **Kaçınılacak varsayılanlar:**
+   - Her şeyin aynı şekilde fade-in olması.
+   - Rastgele parçacık patlamaları.
+   - Anlamsız parıltı veya glow.
+   - Gradyan üstüne ortalanmış tek başlık.
+   - Süs amaçlı köşe etiketleri.
+6. **İnceleme turu (her video, tam render'dan ÖNCE):**
+   - `python render.py plan.json --inceleme` kontak föyü üretir (her sahneden 2 kare) ve determinizm kontrolü yapar (aynı kare iki kez → aynı hash).
+   - Föy "yönetmen gözüyle" 8 kritere göre 1–10 puanlanır: Kanca · Okunurluk (telefon boyu) · Kompozisyon · Hareket · Çeşitlilik · Marka uyumu · Ses hizası · Bitiş (kırpılma, taşma, boş kare).
+   - En zayıf 3 sorun düzeltilir, sonra tekrar incelenir.
+   - Sonuç `kaynak/inceleme.md`'ye yazılır. Hedef: hiçbir kriter 8'in altında kalmaz; kalırsa istisna açıkça not edilir.
+
+## DÖNEM GİYSİSİ KURALI
+Tarihli bir olay anlatılırken o sahnelerin ön ve arka planındaki insanlar anlatılan döneme göre giyinir. Kullanım: `KS.karakter(Object.assign({ x, y, boy, t }, KS.donem(yıl, i)))`. `i` her kişi için farklı verilir, böylece çeşitlilik olur.
+- **1925 öncesi:** Erkeklerde melon, kasket veya fes; ceket, kravat, ara sıra bıyık. Kadınlarda uzun etek; fötr ya da 1920'lerin çan şapkası.
+- **1925–1959:** Erkeklerde fötr, takım elbise ve kravat. Kadınlarda diz boyu elbise.
+- **1960–1979:** Renkli gömlekler; kadınlarda kısa etek.
+- **1980–1999:** Canlı süveterler, atkuyruğu, arada takım elbise.
+- **2000 sonrası:** Günümüz kıyafeti (varsayılan).
+- Yeni bir dönem ya da coğrafya gerekirse (ör. Osmanlı çarşısı, Viktorya dönemi Londra) `kisi.js` `kiyafet` seçenekleriyle özel kıyafet çizilir. Maskotların kostümleri de döneme uydurulabilir: `KO.giy`.
+
+> ⚠️ **GUBİGUFİ ve GUFİBU HABER TAMAMEN AYRI PROJELERDİR** (kullanıcı kuralı). Haber kuralları/kodu (`haber/`, `haber/ortak/`) gubigufi videolarına uygulanmaz; gubigufi kuralları/kodu (`marka/ortak/`) haber için değiştirilmez. Ortak olan yalnızca Gubi & Gufi karakterleri.
+
+## GUFİBU HABER FORMATI (`haber/` klasörü; kanal adı: **Gufibu Haber**, logo GUFİBU|HABER, mikrofon küpü 'GB')
+- Haber dili: tarafsız, yorumsuz, yalnızca doğrulanmış rakamlar; siyasi/hukuki/afet haberleri seçilmez. Kaynaklar metin dosyasına yazılır.
+- Akış: JENERİK (2 sn, ses 2,0 sn gecikmeli) → STÜDYO (haber merkezi, İNSAN YOK: derinlik katmanları — uzak: panoramik gece şehri penceresi; orta: monitör sırası, perspektif zemin/tavan çizgileri, derinlikte küçülen boş masalar (yanık monitörler), ışık şeritli sütunlar; yakın: tripod kameralar; tavan spotları + ışık hüzmeleri; keskin ana video duvarı; Gubi sunucu masada, papyon; ön planda bulanık kamera + prompter) → arka ekranda Gufi yayını → ekran tam kadraja büyür + parazit → SAHA (Gufi muhabir, mikrofon; şebeke/sinyal işareti YOK) ↔ HABER GRAFİKLERİ (lacivert ızgara) → parazitle STÜDYOYA dönüş + "TAKİP ET" kartı → logo.
+- Kanal katmanı (`haber/ortak/kanal.js`, haber projesine özel): sol üstte büyük kırmızı **SON DAKİKA** rozeti (nabız noktası, y 196–256; video duvarının köşelerini kapatmaz); kategori etiketi ve süre çemberi YOK. **CANLI + saat** sağ üstte (y 196–256), yer etiketi onun altında (y 266). Alt bandın beyaz kutusu ince lacivert kontur + gölgeli (stüdyo masasıyla karışmasın). Kayan şeritteki SON DAKİKA etiketi ölçülen genişlikte kırmızı kutuya tam sığar.
+- TV katmanı (`hb.js` HB.ekran): ● CANLI + saat, alt bant (y 1060–1184, kırmızı üst etiket), SON DAKİKA kayan şeridi (y 1196–1244), yer etiketi. Altyazı bandı 1280–1430 boş kalır; Gufi sahada y≈1830 (yüz bandın altında).
+- Pompa vb. ekranlarda gerçek fiyat uydurulmaz (yalnızca ↑ / sayaç).
+- **DUDAK SENKRONU + KONUŞMA JESTLERİ — YALNIZCA HABER PROJESİ (kullanıcı kuralı; gubigufi kanalında maskotlar konuşmaz, bu kod orada kullanılmaz):** Konuşan maskot göründüğü her sahnede konuşur: `M.canli(..., { soyler: true })` → ağız ses zarfına göre hece hece açılır (`konusAgiz`), baş hafif sallanır, Gubi'nin parıltısı sesle atar, Gufi boştaki SOL eliyle jest yapar (`eller: 'sol'`; sağ elde mikrofon). İz: `haber/ortak/agiz_lib.py` → `agiz_izi(ses, toplam, bas=parçanın başlangıcı)` → `agiz_js_yaz('ortak/agiz.js', {'gubi': [...1+3 sesleri], 'gufi': [...2 sesi]})`, sahnelere `agiz.js` eklenir. Görünmediği sahnede (grafik/detay) gerek yok. Mikrofon ağız hizasında, göz/yüzü kapatmaz. Haber şablonu ve haber sürümü maskot/kostüm: `haber/ortak/` (hb.js, maskot.js, kostum.js, agiz_lib.py) — her bültende `kaynak/ortak/` içine bunlar kopyalanır; `marka/ortak/` (gubigufi) DEĞİŞMEZ.
+- **ÇOK SESLİ KURGU (kullanıcı kuralı):** Metin her zaman 3 parça yazılır ve ayrı ayrı seslendirilir: **1 = STÜDYO AÇILIŞ** (sunucu sesi, "…sahadaki muhabirimize bağlanıyoruz" ile biter) · **2 = SAHA** (farklı ses, saha muhabiri; olay yeri + grafikler bu seste) · **3 = STÜDYO KAPANIŞ** (1 ile aynı sunucu sesi; özet/veda + takip çağrısı). Kullanıcı mp3'leri 1-2-3 diye adlandırıp gönderir; parçalar arası boşluğa bağlantı geçişi (parazit/sinyal, ~0,8 sn) ve stüdyoya dönüş geçişi yerleştirilir, altyazı/sahne zamanları birleşik zaman çizelgesine göre kurulur.
+
+## GUFİBU HABER — YAYIN İLKELERİ (kullanıcı: "amacımız haberleri anlaşılır ve düzgünce anlatmak")
+**Haber seçimi** (her gün 3 bülten; gündem taranır, aday haberler puanlanır):
+1. Etki: kaç kişiyi doğrudan ilgilendiriyor (cebi, işi, okulu, sağlığı, yolu)?
+2. Önem/sıcaklık: bugün konuşulan, bugün değişen bir şey mi?
+3. Anlaşılırlık: grafikle/animasyonla "ne oldu, ne anlama geliyor" anlatılabiliyor mu?
+4. Güvenilirlik: resmî kaynak (Resmî Gazete, bakanlık, TÜİK, AFAD, valilik…) ya da en az iki büyük kuruluşta doğrulanmış mı?
+- Günlük karışım: 1 "cebimi ilgilendiren" (ekonomi/yaşam) + 1 Türkiye'nin ana gelişmesi (siyaset/toplum dahil) + 1 dengeleyici (bilim, spor, kültür, başarı, teknoloji).
+**Siyaset: girilir ama TARAFSIZ.** Ne oldu, kim ne dedi (atıfla: "… açıklamasına göre"), ne anlama geliyor. Yorum, sıfat, taraf tutma, tahmin YOK. Karşıt görüş varsa ikisi de aynı ağırlıkla verilir. Gerçek kişiler karikatürize edilmez/maskotla canlandırılmaz; kurumlar (Meclis, bakanlık binası, mahkeme) simgeyle gösterilir. Hakaret içeren alıntı aktarılmaz.
+**Hukuk:** Soruşturmada kişiler "şüpheli", iddialar "iddia" olarak verilir; suçlu ilan edilmez. Mahkeme kararı yoksa hüküm cümlesi kurulmaz. Yayın yasağı (RTÜK/mahkeme) varsa o haber YAPILMAZ — her afet/saldırı haberinde kontrol edilir.
+**Ölümlü / kötü haber protokolü (HASSAS ŞABLON):**
+- Görsel: kan, yaralı, ceset, yıkım detayı, kurban yüzü YOK. Sembolik anlatım: harita iğnesi, ekip simgeleri (AFAD/112/itfaiye genel çizim), yağmur/sel çizgisi, mum.
+- Maskotlar: ciddi ve sakin ifade; zıplama, şaka, kostüm, komik tepki YOK. Gufi sahada mikrofonla ağır başlı durur.
+- Renk & ses: soluk palet, siyah kurdele köşe ikonu; müzik altlığı yok ya da çok alçak ve hüzünlü; pop/tik/parazit efektleri kısılır; geçişler yavaş (parazit yerine yumuşak karartma).
+- Dil: "hayatını kaybetti", "yaralandı"; sansasyon kelimesi yok ("dehşet", "kan donduran", "vahşet"…). Sayılar yalnızca resmî kaynaktan, saatle: "valilikten yapılan son açıklamaya göre". Kurban adı verilmez (resmî açıklamada yoksa), çocuk kimliği asla.
+- Kapanış: başsağlığı/geçmiş olsun cümlesi; varsa faydalı bilgi (AFAD/112 hattı, Kızılay kan bağışı, yol kapanışları). "Takip edin" çağrısı bu bültenlerde YAPILMAZ.
+**Doğruluk:** Doğrulanamayan rakam/iddia kullanılmaz; haber o gün çıkmazsa çıkmaz. Hata olursa düzeltme bülteni/açıklaması yapılır.
+**TON EŞLEMESİ (maskot duygusu + ses efekti haberin içeriğine uyar; absürt durmaz):** Her bültende önce ton seçilir, tüm tepki/efekt/müzik ona göre kurulur.
+| Ton | Haber örneği | Maskot (Gubi sunucu · Gufi muhabir) | Ses efektleri & müzik |
+|---|---|---|---|
+| OLUMLU | başarı, rekor, iyi gelişme, tatil müjdesi | gülümser, 'mutlu'/'alkis'/'aha' serbest | parlak çan, pop, alkış; tempolu altlık |
+| NÖTR / BİLGİ | düzenleme, açıklama, takvim, siyasi gelişme | sakin, profesyonel; yalnızca 'dusun'/'isaret'/'goster' | yumuşak whoosh, veri tikleri; nötr altlık |
+| ENDİŞE | zam, kriz, olumsuz veri | **REFERANS: Haber #1 eşel mobil (kullanıcı onaylı)** — 'sasir', 'kararli', 'isaret', 'selam' uygun; kahkaha/sevinç/dans YOK | veri açılışlarında pop/çan/whoosh ve tik uygun (eşel bülteni seviyesinde); tempolu haber altlığı |
+| HASSAS | ölüm, afet, kaza, şiddet | ağır başlı, hareketsiz; yalnızca yavaş göz kırpma/hafif 'uzgun'; tepki sesi YOK | maskot imza sesleri KAPALI; pop/parazit/whoosh YOK; yalnızca çok alçak hüzünlü pad ya da sessizlik |
+| SPOR / KUTLAMA | maç sonucu, şampiyonluk | enerjik, 'zipla'/'mutlu' | tribün uğultusu, düdük, tempolu altlık |
+- Maskot imza sesleri (bip/tını): OLUMLU, SPOR, NÖTR ve ENDİŞE'de (eşel bülteni seviyesinde) kullanılır; yalnızca HASSAS'ta hiç kullanılmaz.
+- Aynı bültende ton değişirse (ör. kötü haber + yardım bilgisi) geçiş yavaş yapılır; kapanış tonu haberin genel tonunu korur.
+
+## MASKOTLAR ANLATININ İÇİNDE (kullanıcı kuralı: "kenarda boş boş beklemesinler, gerekirse oyuncu yap")
+- Her sahnede Gubi/Gufi **olayın bir parçasıdır**: hikâyeyi taşıyan bir rolleri/eylemleri olur (makara takar, kâğıt çeker, kapı açar, sayacı çevirir, kanıt gösterir, tanık/izleyici olarak tepki verir). Köşede durup bakmak YASAK.
+- Konuya göre **oyuncu/rol** verilir (futbolcu, bankacı, projeksiyoncu, gönüllü, öğrenci…); kostüm KO.giy ile.
+- **İstisna:** gerçek kişiler (yaşayan ya da tarihî, özellikle siyasi/sanat/spor figürleri) maskotla canlandırılmaz, karikatürize edilmez. Onların yerine simge kullanılır (boş koltuk, silüet, makara, kürsü, imza) ve maskotlar *anlatıcı/arşivci/projeksiyoncu/seyirci* rolünde olayı sahneler.
+- **Güncel kişi çekişmeleri:** yalnızca belgeli, atıflı (kim, nerede, ne zaman) ve iki tarafı eşit aktaran anlatım; hakaret/küfür aktarılmaz; iddia ile gerçek ayrı tutulur; hüküm cümlesi kurulmaz.
+
+## ANLATI YAPISI — MERAK SIRASI (kullanıcı kuralı, gubigufi metinlerinde VARSAYILAN)
+Konu seçimi, bilgi doğruluğu ve tarz aynı kalır; değişen yalnızca bilginin veriliş sırasıdır.
+- Akış: **merak → kısmi cevap → yeni soru → daha ilginç detay → yeni merak → ana cevap/payoff.** Her bilgi verildiği anda yeni bir devam sebebi açılır.
+- **İlk cümle (ilk 1–3 sn):** doğrudan olayın içine gir; giriş, tanıtım, hazırlık cümlesi YOK. "Nasıl yani? / Neden? / Sonra ne oldu?" hissi yaratır ama en önemli bilgiyi tamamen açıklamaz. Örnek: "Venüs'te bir gün bir yıldan uzundur." değil → "Venüs'te bugün doğsan, bir sonraki güne ulaşmadan doğum günün gelebilirdi."
+- **10–30. saniye:** düz bilgi sıralaması YASAK; her yeni detay olayı daha ilginç yapmalı.
+- Ana cevap gereksiz saklanmaz ama ilk 10 sn'de "tamam anladım" denmemeli; en tatmin edici bilgi mümkünse ikinci yarıda.
+- Kısa cümle, konuşma dili, arkadaşa anlatır gibi; yapay heyecan, abartılı clickbait, art arda soru cümlesi YOK. Klişeler YOK: "Biliyor muydunuz?", "Hiç düşündünüz mü?", "Bugün size anlatacağım…", "Peki bunun sebebi ne?".
+- Anlatıcı açıklama yapan biri değil; hikâyenin içinden izleyiciyi bir sonraki bilgiye çeken biri.
+- Mümkünse "arkadaşına gönderilecek" bir detay: absürt, şaşırtıcı, komik ya da "bunu bilmiyordum" dedirten. **Yeni bilgi UYDURULMAZ**, mevcut gerçekler daha iyi sıralanır.
+- **Yazdıktan sonra test:** her cümlenin sonunda "burada durdursam izleyici sonrakini merak eder mi?" Hayırsa yeniden yaz. İlk cümle en sert değerlendirilir; zayıfsa geri kalanı yazmadan önce o değişir.
+
+## GÜNDEM TAKVİMİ KURALI (kullanıcı: "şu videoyu şu tarihte atalım gibi öneriler ver")
+- Her konu önerisinde ve teslimde **önümüzdeki 2–3 haftanın Türkiye gündemine** bakılır; uyan konu varsa "bunu şu tarihte, şu saatte at" diye önerilir.
+- Sabit/yinelenen kancalar: TÜİK enflasyonu (her ayın 3'ü 10:00; hafta sonuysa ilk iş günü), asgari ücret açıklaması (Aralık), yılbaşı, bayramlar ve resmî günler (29 Ekim, 10 Kasım, 23 Nisan, 19 Mayıs, 30 Ağustos), dini bayramlar/Ramazan, sınav dönemleri (YKS, LGS), okul açılışı/karne, Efsane Cuma (Kasım), Avrupa'nın saat değişimi (Mart/Ekim son pazar — Türkiye sabit), dünya günleri (4 Ekim Hayvanlar, 16 Ekim Gıda…), Nobel haftası (Ekim başı), büyük maçlar/turnuvalar.
+- Gündem videosu, olaydan **önce** hazır bekler; olay günü (açıklamadan 1–2 saat sonra ya da akşam 20–21) atılır.
+- Paylaşım düzeni: **gubigufi günde 2 video** (aralarında 5–6 saat; en güçlü video akşam 20:00–21:00). **Haber hesabı günde 4–5 bülten** (ör. 08:30 · 12:30 · 17:30 · 20:00 · 22:30), her bülten tek haber, ~30–45 sn; stüdyo/jenerik/TV katmanı şablon olarak sabit, her seferinde yalnızca saha + grafikler değişir.
+
+## KOSTÜM OTURMA KURALI (kullanıcı: "karakterlerin giydiği taktığı şeyler saçma sapan olmamalı")
+- Maskotun taktığı/giydiği her parça **gerçek hayatta nasıl duruyorsa öyle** oturur: şapka kafada, kulaklık kulak hizasında, düdük ipi boyna asılı gibi ağzın ALTINDA sarkar, pazıbant gövde kenarını SARAR (yüzeye yapışık rozet/etiket gibi değil).
+- **Hiçbir aksesuar gözü, ağzı ya da yüzü kesmez/örtmez** (ip, kordon, bant, şerit dahil). Monokl/gözlük gibi göz aksesuarları hariç.
+- Yeni parça eklerken ya da mevcut parçayı kullanırken `--kare` ile maskotun **yakın kırpımına** bakılır (en az iki farklı boyda). Tuhaf duruyorsa düzeltilmeden render yok.
+- `--inceleme` rubriğine her videoda **"Kostüm oturuşu"** maddesi eklenir.
+
+## TEMSİL + DÖNEM GERÇEKÇİLİĞİ KURALI (kullanıcı: "bunu her seferinde söylemeyeyim")
+- Her kişi **neyi temsil ediyorsa öyle görünür ve öyle davranır**: futbolcu futbolcu gibi, aşçı aşçı gibi, asker asker gibi… Sokak kıyafetiyle "rol" verilmez.
+- **Futbolcular:** asla pantolon yok. Her zaman `KS.futbolcu('TAKIMYIL', i)` (kisi.js TAKIM tablosu) kullanılır. Kısa şort, konç, krampon, **takımın o yılki forma renkleri/çizgileri** (ör. Arjantin 1966 açık mavi-beyaz dikey çizgi + siyah şort). Tabloda olmayan takım → önce TAKIM'a eklenir (renkler kaynağa bakılarak).
+- **Dönemin toplumsal gerçekliği:** o yıl/olayda olmayan şey çizilmez. Ör. 1966–1974 erkek Dünya Kupası sahnesinde kadın futbolcu yok. Kalabalık/seyirci sahada durmaz, tribünde olur.
+- Bir olay anlatılırken **çevresel koşullar** o olaya göre kurulur: yıl, ülke, şehir görüntüsü (bina tipi, araçlar, tabelalar), iklim/ışık, kültür (şapkalar, yiyecekler, müzik), giyim. Genel/"modern" varsayılan çizim kullanılmaz.
+- Gerçek kişiler (ör. Charlton kardeşler) cinsiyet/yaş/rol olarak doğru çizilir. `KS.donem(yıl, i)` rastgele kadın/erkek döndürebilir → belirli kişi için kullanılmaz.
+- `--inceleme` rubriğine her videoda **"Temsil & dönem"** maddesi eklenir: her kişi rolüne ve yılına uygun mu?
+| 26 | İki Yönetmen (Ceylan–Demirkubuz) | Sinema salonu dünyası, boş yönetmen koltukları (gerçek kişi canlandırılmaz), atıflı alıntı kartları, mısır/klaket, maskotlar projeksiyoncu/arşivci/dedektif rolünde | magazin tonu, 'iddia' kelimesi korunur |
+
+## HAREKET & ANLATIM REHBERİ (enes-motion-design paketinden alınanlar)
+Paketin palet/font/stack önerileri ALINMADI (çizim stilimiz, renklerimiz, kitlerimiz ve HTML→PNG→ffmpeg hattımız aynen kalır). Yalnızca yöntem kuralları:
+1. **Mekanizma cümlesi:** her yeni videoda önce tek cümle: "Ne neye yol açıyor?" Sahne dekoru buradan türer; konuyla ilgisiz süs (rastgele yıldız, dişli, neon) konmaz. Her sahne = tek ana düşünce + o düşünceyi gösteren gerçek bir eylem (sadece cümleyi ekranda tekrar etmek yetmez).
+2. **Eylem sırası:** ana eylem → ilişkili tepki → sonucun okunması. Hazırlık (anticipation) → hareket → oturma. Sonuç kartı/sayı en az ~0,8–2 sn sabit kalır; sayı ve yazılar zıplatılmaz (spring sadece maskot/oyuncu nesnelerde).
+3. **Hareket reçeteleri:** sebep-sonuç (A başlar → ok/sinyal ilerler → B tepki verir → dur), birikme (sabit aralıkla ekle, çakışma yok), akış (dar boğazda yoğunluk değişir), karşılaştırma (aynı başlangıç ve eksenle yan yana/sırayla), geri besleme (sonuç kaynağa döner), çoğalma (önce tek örnek, sonra aynı kuralla ölçek).
+4. **Süre başlangıçları:** küçük etiket 0,18–0,30 sn; ana nesne girişi 0,35–0,65; ok/ilişki 0,40–0,90; kamera ölçek değişimi 0,8–1,5; sahne geçişi 0,35–0,8. Easing: giriş hızlı açılıp yumuşak oturur, çıkış hızlanır, sürekli akış linear, kamera iki uçta yumuşak.
+5. **Geçiş seçimi:** aynı nesne yeni ortam → match cut (silüet/konum/renk sürekliliği); makro→mikro → içe ölçek geçişi (yeni ölçeği etiketle); süreç sonraki aşamaya → yönlü wipe; zaman değişimi → temiz cut + tarih etiketi; yeni bölüm → kısa başlık + cut. Her kesmeye whoosh/efekt ŞART DEĞİL; glitch/flash/shake yalnız olayla ilgiliyse.
+6. **Kamera:** zoom/shake anlam taşımalı (ilişki veya ölçek değişimi açığa çıkarmalı); sürekli anlamsız zoom yok. Ön/orta/arka plan katmanı ayrı; ana nesnenin silüeti küçük ekranda okunur; sahnede tek belirgin odak, arka plan ana eylemle yarışmaz.
+7. **Renk rolü:** aynı kavram video boyunca aynı renkte kalır; renk tek bilgi kanalı olmaz (etiket/şekil/yön de eklenir). Aynı anda 3–5 aktif renk ailesi; zemin vurgu renginden sakin.
+8. **Altyazı:** en fazla 2 satır, kelime/özel isim/sayı-birim bölünmez, vurgulu kelime satırı oynatmaz, kısa cue'lar ~0,8 sn altına düşmez (doğal cümle bölünmesi öncelikli).
+9. **Kalite kapısına eklenenler (`--inceleme` bakışı):** ilk kare, son kare, geçiş ortası, en yoğun kare ve en uzun altyazı karesi ayrıca bakılır; kare rastgele sırada (örn. 200→20→200) aynı çıkmalı (determinizm); temsili/örnek veriler "örnek/temsili" diye etiketlenir; test edilemeyen şey başarılı diye raporlanmaz.
+| 27 | Asgari Ücret: Dolar mı, Altın mı? | Grafik ağırlıklı karşılaştırma (dolar/altın, kelime anlamı, maliyet pastası, Avrupa sıralaması); Gubi veznedar, Gufi vatandaş; kamera her sahnede farklı | metinde 'vergi' ifadesi hatalı — grafikte düzeltildi |
+| 28 | Altın: Uzaydan Gelen Servet | Kilonova → göktaşı → paslanmazlık → Mısır → Lidya/Midas → simya → Mansa Musa → küp kıyasları → yastık altı → CERN; maskotlar her sahnede oyuncu; kask içinde şapka yok kuralı | 114 sn (uzun) |
+
+
+- **CAM KASK KURALI (#28):** Maskot cam kask/fanus içindeyse kask gövdeyi TAMAMEN içine alır ve ortalıdır: Gubi'de y = gövde merkezi (r = .62·boy), Gufi'de gövde merkezi y − .52·boy (r = .8·boy). Kask boyu karakterin boyuna göre (Gufi > Gubi). `AL.astroKask(x, y, boy, kim)`.
+| 29 | Güvercin Kafası | Kafa sabitleme (tut-it), koşu bandı deneyi grafiği, 340° görüş konisi + kör nokta, dur-bak-ilerle polaroidleri, paralaks okları, tren göz takibi, UV, Monet/Picasso, kanser %85→%99 | gerçekçi güvercin kiti gv.js |
+
+## REFERANS VİDEO: #29 GÜVERCİN (kullanıcı: "şimdiye kadarkilerin en iyisi")
+Neden tuttu — sonraki videolarda bu formül varsayılan:
+1. **Herkesin bildiğini ters çeviren kanca** ("kafalarını sallamıyorlar") + hemen görsel kanıt (YANLIŞ! damgası + baş izi noktaları).
+2. **Her deney/iddia bir mini animasyonla GÖSTERİLİR**, sadece söylenmez: ağır çekim + ölçü ızgarası + etiketli oklar (GÖVDE →, BAŞ SABİT 🔒, ≈5 cm), karşılaştırma grafiği (PARKTA merdiven / BANTTA düz çizgi), görüş konisi diyagramı, katman hız okları, inset (göz takip vs kafa).
+3. **Tek gerçekçi ana kahraman nesne** (güvercin kiti) baştan sona aynı tasarımla; hareket modeli bilimsel olarak doğru (tutma %70 / itme %30).
+4. **Maskotlar deneyin içinde iş yapar** (kameraman, düğmeye basan, kör noktaya saklanan, yem veren, irkilen).
+5. **Gündelik benzetme** ("sen de tren camından bakarken…") ve sona doğru artan "vay be" bilgileri (UV → Picasso → kanser %99).
+6. Rakamlar/denemeler doğrulanır; çelişkili bilgi (saniyede kaç kare) dışarıda bırakılır.
+
+## MASKOT v3 (yaşlı haller · yeni duygular · yeni hareketler · canlılık)
+Kaynak: `marka/ortak/maskot.js` (yeni videoda ortak/ kopyalanırken maskot.js BURADAN alınır). Önizleme: `marka/demo/maskot_v3/maskot_v3_ozet.png` (+ demo mp4).
+- **Yaşlı:** `gubi(t, { yasli: true, ... })` / `gufi(t, { yasli: true })` → solgun renk, beyaz gür kaş (duyguya göre şekil alır), sarkık göz kapağı, göz altı + kaz ayağı çizgileri, pembe yanak; Gufi: beyaz bıyık + BASTON (`baston: false` kapatır); Gubi: beyaz perçem + sakal tutamı; daha yavaş, hafif titrek. Tüm duygu/hareketlerle çalışır. Gerektiğinde (geçmiş/gelecek, "yaşlanınca", nostalji, emeklilik, dede-nine rolü) kullan.
+- **Yeni duygular (duygu:):** sinirli · uykulu · uyu · asik · utangac · aglamakli (+ merak, mutlu, saskin, korku, uzgun, kararli).
+- **Yeni hareketler (tepkiler):** dans · kos · titre · esne · uyu · tokezle · bayil · evet · hayir · sinir · utan · agla · ask · egil · takla · yorgun · saklan · kafaKasi · ayakTap (eskiler: sasir, zipla, mutlu, aha, korku, selam, uzgun, kararli, isaret, alkis, gozKapa, dusun, omuzSilk, kahkaha, goster, donus). Sesleri `ses_lib.maskot_ses` en yakın imza sesine eşler.
+- **Canlılık (varsayılan açık):** tepki yokken kendiliğinden etrafa bakma, minik zıplama, sallanma, derin nefes → maskotlar "stabil/aynı" görünmez. `canlilik: false` ile kapatılır.
+- **v3.1 ek hareketler:** yasasin · begen · gozle · sus · fisilda · carp · eri · sok · kucakla · gerin · zafer · say · gurur · endise · sicak · hapsir · hicik · selamDur · sinsice · dur · gel (toplam 56 tepki). Bastonlu yaşlı Gufi tek elli jestleri BOŞ eliyle yapar, baston yere basılı kalır.
+
+## RUH HALİ TUTARLILIĞI (kullanıcı kuralı)
+Maskotlar sürekli bir ruh halinden diğerine atlamaz; duruşları yerine ve duruma göre oturur.
+1. Her sahnede her karakterin anlatıya uygun bir TEMEL ruh hali vardır (`duygu:`); tepkiler bu ruh haliyle aynı yönde seçilir (olumlu sahnede dans/alkış/gurur; endişeli sahnede endise/titre/saklan).
+2. Bir sahnede ruh hali en fazla 1 kez yön değiştirir ve bunun EKRANDA bir sebebi olur (bir olay, bir bilgi, bir darbe). Zıt iki tepki arası ≥ 2,5 sn.
+3. Tepkiler olaylara bağlanır (bir şey olduğunda tepki); boşlukta rastgele tepki yok. İki tepki arası ≥ 1 sn. Aradaki boşlukları "canlılık" doldurur.
+4. Video boyunca aynı tepki en fazla 3 kez; çeşitlilik için v3/v3.1 hareketleri kullanılır.
+5. `uret.py` sonunda `from tepki_kontrol import kontrol; kontrol(TEP)` çalıştırılır (marka/tepki_kontrol.py) — uyarı varsa TEP düzeltilir.
+
+## İSTATİSTİK DERSLERİ — #31 "Aynı Köpek, İki Türkiye" (4 saatte 1.373 görüntüleme, %98,7 takipçi olmayan)
+Veri: geçme oranı %35 (iyi), yorum/beğeni oranı tipikten yüksek; AMA izleyicinin yarısı 5,5–8,5 sn'de çıktı (kancadan sonra gelen "Bugün Dünya … Günü" takvim cümlesi), ortalama izlenme 16 sn / 76 sn, paylaşım 0, takip 2.
+KURALLAR (KALICI):
+1. **Kancadan sonraki ilk cümle = asıl çatışma/soru.** Tarih, özel gün, tanım cümleleri ilk 10 sn'ye GİRMEZ; özel gün sadece ekranda küçük çip olarak geçer.
+2. **Ana soru ilk 4 sn içinde** sorulur (bu videoda 11. sn'deydi).
+3. **VİDEO SÜRESİ (kullanıcı kuralı): 50–60 sn yeterli, üstüne çıkılmaz.** Metin ~115–135 kelime; her cümle tek bilgi/espri, dolgu cümle yok.
+4. **Paylaşım çağrısı**: tartışma videolarında ortalarda/yorum sorusundan önce "Bunu … arkadaşına gönder" tipi, tarafsız bir cümle.
+5. **Takip hatırlatması** sona bırakılmaz: ~20–25. sn'de kısa bir ekran çipi / tek cümle (+ sondaki takip cümlesi kalır).
+6. Tartışma formatı (iki taraf, eşit süre, ortak nokta, "sen hangi taraftasın?") yorum getiriyor → korunur.
+
+## ANLATIM TONU — MAGAZİNSEL (kullanıcı: "hep kaynaklara bağlı yapınca konunun çekiciliğini öldürüyor", KALICI)
+- Seslendirmede kaynak/kurum/yıl/kişi sayısı SÖYLENMEZ (gerekmedikçe); kaynak ekranda küçük çip olarak durur, doğrulama notları md'de kalır.
+- Rakamlar sözlü olarak yumuşatılır: "yarısından fazlası", "çoğu", "bir kısmı" — ama yine de doğru veriye dayanır (uydurma yok).
+- Türkiye'ye özgü gözlem/skeç ("Türkiye usulü"), espri ve günlük hayat sahneleri öne çıkar; bilgi bunun içine serpiştirilir.
+- Gözlem ve skeç, istatistik gibi sunulmaz ("Türklerin %80'i…" gibi uydurma oran YOK).

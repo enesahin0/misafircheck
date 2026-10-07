@@ -1,0 +1,63 @@
+{
+ "fps": 30,
+ "genislik": 1080,
+ "yukseklik": 1920,
+ "cikti": "x.mp4",
+ "sahneler": [
+  {
+   "dosya": "sayfalar/01-gobeklitepe.html",
+   "baslangic": 0,
+   "bitis": 1
+  },
+  {
+   "dosya": "sayfalar/02-derinkuyu.html",
+   "baslangic": 1,
+   "bitis": 2
+  },
+  {
+   "dosya": "sayfalar/03-vombat.html",
+   "baslangic": 2,
+   "bitis": 3
+  },
+  {
+   "dosya": "sayfalar/04-turkey-hindi.html",
+   "baslangic": 3,
+   "bitis": 4
+  },
+  {
+   "dosya": "sayfalar/05-dunyayi-kurtaran-adam.html",
+   "baslangic": 4,
+   "bitis": 5
+  },
+  {
+   "dosya": "sayfalar/06-venus.html",
+   "baslangic": 5,
+   "bitis": 6
+  },
+  {
+   "dosya": "sayfalar/07-isik-saciyorsun.html",
+   "baslangic": 6,
+   "bitis": 7
+  },
+  {
+   "dosya": "sayfalar/08-limon-soyguncu.html",
+   "baslangic": 7,
+   "bitis": 8
+  },
+  {
+   "dosya": "sayfalar/09-ilk-bug.html",
+   "baslangic": 8,
+   "bitis": 9
+  },
+  {
+   "dosya": "sayfalar/11-mikrop-icen-doktor.html",
+   "baslangic": 9,
+   "bitis": 10
+  },
+  {
+   "dosya": "sayfalar/12-capa-etkisi.html",
+   "baslangic": 10,
+   "bitis": 11
+  }
+ ]
+}

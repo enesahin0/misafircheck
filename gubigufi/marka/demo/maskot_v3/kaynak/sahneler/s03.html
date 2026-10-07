@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/au.js"></script>
+<script>
+const T_ = (s, x, y, fs, r = '#FFF3D6', w = 900) => `<text x="${x}" y="${y}" font-size="${fs}" font-weight="${w}" text-anchor="middle" style="fill:${r}">${s}</text>`;
+const Tm = (s, x, y, fs, r = '#FFF3D6') => `<text class="mono" x="${x}" y="${y}" font-size="${fs}" text-anchor="middle" letter-spacing="2" style="fill:${r}">${s}</text>`;
+
+const TIP = ['dans','titre','esne','uyu','bayil','sinir','utan','agla','ask','egil','yorgun','kafaKasi'];
+window.renderAt = t => {
+  let o = `<rect width="1080" height="1920" fill="#2A2238"/>` + T_('YAŞLI HALLER · HAREKET', 540, 150, 60) + Tm('baston + beyaz kaş + bıyık', 540, 205, 26, '#FFD978');
+  TIP.forEach((tp, i) => { const c = i % 3, r = Math.floor(i / 3), cx = 180 + c * 360, cy = 250 + r * 300;
+    o += `<rect x="${cx - 170}" y="${cy}" width="340" height="285" rx="22" fill="#3A3050"/>` + Tm(tp, cx, cy + 268, 24, '#FFD978');
+    const tps = [0, 2.6, 5.2].map(a => [a + .2, tp]);
+    o += M.canli('gufi', { t, x: cx - 62, y: cy + 215, boy: 125, yasli: true, tepkiler: tps, seed: 2 + i, bakHedef: 'kamera' });
+    o += M.canli('gubi', { t, x: cx + 92, y: cy + 120, boy: 100, yasli: true, tepkiler: tps.map(([a, b]) => [a + .3, b]), seed: 1 + i, eller: false });
+  });
+  document.getElementById('dinamik').innerHTML = o;
+};
+</script></body></html>

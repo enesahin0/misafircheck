@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 39.5; const TP = {"gubi": [[0.5, "omuzSilk"]], "gufi": [[7.8, "gozKapa"]]};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/capa.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = s.length * fs * .62 + 70; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+window.renderAt = t => {
+  let o = '';
+  const g = E(A(t, 2.2, 2.7));
+  if (g < 1) {
+    let a = C.zemin('#FFF3D6', '#FFE3B0');
+    const h = H.ciz({ ulkeler: H.kita('EU'), sigdir: H.ulke('Almanya'), kenar: 80, vurgu: { 'Almanya': '#D98B3A' }, kutu: [60, 380, 960, 760], renk: '#E9DDC2', rim: '#FFF6E0', sinirOp: .6 });
+    a += `<defs><clipPath id="alc"><rect x="60" y="380" width="960" height="760" rx="48"/></clipPath></defs><rect x="60" y="380" width="960" height="760" rx="48" fill="#BFE6F2"/><g clip-path="url(#alc)">${h.svg}</g>`;
+    const ch = pop(t, .4); if (ch > 0) a += grp(cip('ALMANYA', 0, 0, '#FFFFFF', '#1B1640', 36), 540, 1210, ch);
+    a += gubi(t, { x: 900, y: 1210, boy: 100, bakHedef: [540, 760] });
+    o += `<g opacity="${1 - g}">${a}</g>`;
+  }
+  if (g > 0) {
+    let b = C.mahkeme() + C.hakim(540, 780, 1.1);
+    b += `<rect x="140" y="760" width="800" height="340" rx="26" fill="${C.P.ahsap}"/><rect x="140" y="760" width="800" height="50" rx="24" fill="${C.P.ahsapA}"/>`;
+    const r = E(A(t, 3.9, 5.1)), zd = t < 5.1 ? [1, 6, 3, 9][Math.floor(t * 8) % 4] : 9;
+    b += C.zar(120 + 190 * r, 706 - Math.abs(Math.sin(r * Math.PI * 3)) * 80 * (1 - r), .9, zd, (1 - r) * 540);
+    // karşılaştırma: zar 3 → 5 ay, zar 9 → 8 ay
+    const k1 = pop(t, 6.0), k2 = pop(t, 7.6);
+    if (k1 > 0) b += grp(C.zar(0, 0, .55, 3) + `<rect x="60" y="-26" width="${5 * 70 * E(A(t, 6.1, 6.9))}" height="52" rx="26" fill="#1F6F78"/>` + `<text x="${80 + 5 * 70 * E(A(t, 6.1, 6.9))}" y="16" font-size="40" font-weight="900" style="fill:#FFF3D6">5 AY</text>`, 220, 880, k1);
+    if (k2 > 0) b += grp(C.zar(0, 0, .55, 9) + `<rect x="60" y="-26" width="${8 * 70 * E(A(t, 7.7, 8.7))}" height="52" rx="26" fill="#EE312E"/>` + `<text x="${80 + 8 * 70 * E(A(t, 7.7, 8.7))}" y="16" font-size="40" font-weight="900" style="fill:#FFF3D6">8 AY</text>`, 220, 990, k2);
+    b += gufi(t, { x: 150, y: 1245, boy: 120, bakHedef: [540, 700] });
+    o += `<g opacity="${g}">${b}</g>`;
+  }
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

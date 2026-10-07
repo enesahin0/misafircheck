@@ -1,0 +1,263 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 73.09,
+  "konusma_bloklari": [
+    [
+      0.0,
+      3.265
+    ],
+    [
+      3.75,
+      6.353
+    ],
+    [
+      6.834,
+      7.612
+    ],
+    [
+      7.909,
+      11.199
+    ],
+    [
+      11.793,
+      12.603
+    ],
+    [
+      12.995,
+      16.18
+    ],
+    [
+      16.59,
+      19.57
+    ],
+    [
+      20.108,
+      20.854
+    ],
+    [
+      21.248,
+      22.012
+    ],
+    [
+      22.272,
+      24.414
+    ],
+    [
+      24.772,
+      25.832
+    ],
+    [
+      26.205,
+      28.842
+    ],
+    [
+      29.344,
+      32.062
+    ],
+    [
+      32.383,
+      33.75
+    ],
+    [
+      34.074,
+      37.763
+    ],
+    [
+      38.298,
+      42.664
+    ],
+    [
+      42.994,
+      45.306
+    ],
+    [
+      45.664,
+      47.874
+    ],
+    [
+      48.345,
+      52.103
+    ],
+    [
+      52.444,
+      56.11
+    ],
+    [
+      56.594,
+      59.319
+    ],
+    [
+      59.634,
+      62.006
+    ],
+    [
+      62.495,
+      65.384
+    ],
+    [
+      65.688,
+      69.719
+    ],
+    [
+      70.204,
+      73.09
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 3.27,
+      "sure": 3.27,
+      "metin": "Bin yıl önce Avrupa'da yaşamış zengin bir kralı düşün."
+    },
+    {
+      "no": 2,
+      "baslangic": 3.27,
+      "bitis": 6.35,
+      "sure": 3.09,
+      "metin": "Sarayı, hizmetkârları, altınları var."
+    },
+    {
+      "no": 3,
+      "baslangic": 6.35,
+      "bitis": 11.2,
+      "sure": 4.85,
+      "metin": "Peki bu kral, bugünkü sıradan bir insanı görseydi, neleri kıskanırdı?"
+    },
+    {
+      "no": 4,
+      "baslangic": 11.2,
+      "bitis": 12.6,
+      "sure": 1.4,
+      "metin": "Önce ilaç."
+    },
+    {
+      "no": 5,
+      "baslangic": 12.6,
+      "bitis": 16.18,
+      "sure": 3.58,
+      "metin": "Kralın küçük bir yarası bile mikrop kapıp onu öldürebilirdi."
+    },
+    {
+      "no": 6,
+      "baslangic": 16.18,
+      "bitis": 20.85,
+      "sure": 4.67,
+      "metin": "Antibiyotik ancak dokuz yüz yıl sonra bulunacaktı."
+    },
+    {
+      "no": 7,
+      "baslangic": 20.85,
+      "bitis": 22.01,
+      "sure": 1.16,
+      "metin": "Diş ağrısı mı?"
+    },
+    {
+      "no": 8,
+      "baslangic": 22.01,
+      "bitis": 25.83,
+      "sure": 3.82,
+      "metin": "Kralın dişi, modern bir uyuşturma olmadan çekilirdi."
+    },
+    {
+      "no": 9,
+      "baslangic": 25.83,
+      "bitis": 27.08,
+      "sure": 1.25,
+      "metin": "Gözlüğü bile yoktu."
+    },
+    {
+      "no": 10,
+      "baslangic": 27.08,
+      "bitis": 28.84,
+      "sure": 1.76,
+      "metin": "Gözlük, iki yüz elli yıl sonra icat edildi."
+    },
+    {
+      "no": 11,
+      "baslangic": 28.84,
+      "bitis": 33.75,
+      "sure": 4.91,
+      "metin": "Kış gecelerinde saray karanlık ve soğuktu."
+    },
+    {
+      "no": 12,
+      "baslangic": 33.75,
+      "bitis": 34.83,
+      "sure": 1.08,
+      "metin": "Mum ve odun pahalıydı."
+    },
+    {
+      "no": 13,
+      "baslangic": 34.83,
+      "bitis": 37.76,
+      "sure": 2.94,
+      "metin": "Sen ise bir düğmeyle ışık yakıp sıcak suyla duş alabiliyorsun."
+    },
+    {
+      "no": 14,
+      "baslangic": 37.76,
+      "bitis": 42.66,
+      "sure": 4.9,
+      "metin": "Sofrasında domates, patates, mısır, çikolata ve kahve yoktu."
+    },
+    {
+      "no": 15,
+      "baslangic": 42.66,
+      "bitis": 45.31,
+      "sure": 2.64,
+      "metin": "Çünkü bunlar henüz Avrupa'ya ulaşmamıştı."
+    },
+    {
+      "no": 16,
+      "baslangic": 45.31,
+      "bitis": 47.87,
+      "sure": 2.57,
+      "metin": "Karabiber ise çok pahalı bir lükstü."
+    },
+    {
+      "no": 17,
+      "baslangic": 47.87,
+      "bitis": 52.1,
+      "sure": 4.23,
+      "metin": "Bir mektubu, haftalarca yol alan atlı bir ulakla gönderirdi."
+    },
+    {
+      "no": 18,
+      "baslangic": 52.1,
+      "bitis": 56.11,
+      "sure": 4.01,
+      "metin": "Sen dünyanın öbür ucundakiyle anında görüntülü konuşuyorsun."
+    },
+    {
+      "no": 19,
+      "baslangic": 56.11,
+      "bitis": 59.32,
+      "sure": 3.21,
+      "metin": "Müzik dinlemek için müzisyen çağırması gerekirdi."
+    },
+    {
+      "no": 20,
+      "baslangic": 59.32,
+      "bitis": 62.01,
+      "sure": 2.69,
+      "metin": "Senin cebinde milyonlarca şarkı var."
+    },
+    {
+      "no": 21,
+      "baslangic": 62.01,
+      "bitis": 69.72,
+      "sure": 7.71,
+      "metin": "Yani bin yıl önceki en zengin kral bile, cebinde telefon, dolabında ilaç olan sıradan bir insanı kıskanırdı."
+    },
+    {
+      "no": 22,
+      "baslangic": 69.72,
+      "bitis": 73.09,
+      "sure": 3.37,
+      "metin": "Belki de sandığımızdan çok daha şanslıyız."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

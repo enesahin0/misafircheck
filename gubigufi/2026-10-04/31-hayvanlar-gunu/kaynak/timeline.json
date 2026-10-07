@@ -1,0 +1,324 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 74.11,
+  "konusma_bloklari": [
+    [
+      0.0,
+      0.902
+    ],
+    [
+      1.348,
+      2.823
+    ],
+    [
+      3.234,
+      4.866
+    ],
+    [
+      5.323,
+      7.897
+    ],
+    [
+      8.303,
+      10.877
+    ],
+    [
+      11.289,
+      12.895
+    ],
+    [
+      13.389,
+      14.323
+    ],
+    [
+      14.604,
+      16.339
+    ],
+    [
+      16.749,
+      19.709
+    ],
+    [
+      20.11,
+      21.765
+    ],
+    [
+      22.19,
+      23.312
+    ],
+    [
+      23.641,
+      24.396
+    ],
+    [
+      24.818,
+      26.054
+    ],
+    [
+      26.353,
+      30.594
+    ],
+    [
+      30.992,
+      32.591
+    ],
+    [
+      33.069,
+      35.285
+    ],
+    [
+      35.632,
+      39.286
+    ],
+    [
+      39.646,
+      43.968
+    ],
+    [
+      44.382,
+      47.254
+    ],
+    [
+      47.661,
+      49.841
+    ],
+    [
+      50.251,
+      50.935
+    ],
+    [
+      51.236,
+      52.967
+    ],
+    [
+      53.466,
+      54.22
+    ],
+    [
+      54.668,
+      55.431
+    ],
+    [
+      55.851,
+      57.06
+    ],
+    [
+      57.321,
+      57.949
+    ],
+    [
+      58.351,
+      59.087
+    ],
+    [
+      59.425,
+      61.782
+    ],
+    [
+      62.178,
+      63.263
+    ],
+    [
+      63.675,
+      64.972
+    ],
+    [
+      65.442,
+      66.572
+    ],
+    [
+      66.981,
+      67.77
+    ],
+    [
+      68.097,
+      68.759
+    ],
+    [
+      69.088,
+      70.636
+    ],
+    [
+      71.057,
+      74.11
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 0.9,
+      "sure": 0.9,
+      "metin": "Aynı köpek."
+    },
+    {
+      "no": 2,
+      "baslangic": 0.9,
+      "bitis": 2.82,
+      "sure": 1.92,
+      "metin": "Bir çocuk için kâbus."
+    },
+    {
+      "no": 3,
+      "baslangic": 2.82,
+      "bitis": 4.87,
+      "sure": 2.04,
+      "metin": "Bir başkası için aile."
+    },
+    {
+      "no": 4,
+      "baslangic": 4.87,
+      "bitis": 7.9,
+      "sure": 3.03,
+      "metin": "Bugün Dünya Hayvanları Koruma Günü."
+    },
+    {
+      "no": 5,
+      "baslangic": 7.9,
+      "bitis": 10.88,
+      "sure": 2.98,
+      "metin": "Ve Türkiye bu soruda ikiye bölünmüş durumda: Sokaktaki köpekler kimin?"
+    },
+    {
+      "no": 6,
+      "baslangic": 10.88,
+      "bitis": 19.71,
+      "sure": 8.83,
+      "metin": "Bir taraf diyor ki: \"Çocuğum okula korkarak gidiyor.\" Isırılan çocuklar, saldırıya uğrayan yaşlılar."
+    },
+    {
+      "no": 7,
+      "baslangic": 19.71,
+      "bitis": 21.77,
+      "sure": 2.06,
+      "metin": "Onlar için mesele güvenlik."
+    },
+    {
+      "no": 8,
+      "baslangic": 21.77,
+      "bitis": 30.59,
+      "sure": 8.83,
+      "metin": "Diğer taraf diyor ki: \"Onlar da can.\" Her sabah mama koyan, kışın kulübe çakan, hasta köpeği kucağında veterinere taşıyan insanlar."
+    },
+    {
+      "no": 9,
+      "baslangic": 30.59,
+      "bitis": 32.59,
+      "sure": 2.0,
+      "metin": "Onlar için mesele vicdan."
+    },
+    {
+      "no": 10,
+      "baslangic": 32.59,
+      "bitis": 35.28,
+      "sure": 2.69,
+      "metin": "İki bin yirmi dört yazında yasa değişti."
+    },
+    {
+      "no": 11,
+      "baslangic": 35.28,
+      "bitis": 39.29,
+      "sure": 4.0,
+      "metin": "Belediyeler sahipsiz hayvanları toplayıp barınağa almakla görevli."
+    },
+    {
+      "no": 12,
+      "baslangic": 39.29,
+      "bitis": 43.97,
+      "sure": 4.68,
+      "metin": "Saldırgan ya da tedavisi mümkün olmayan hayvanlara ötanazi yolu açıldı."
+    },
+    {
+      "no": 13,
+      "baslangic": 43.97,
+      "bitis": 47.25,
+      "sure": 3.29,
+      "metin": "Barınaklar için son tarih: iki bin yirmi sekiz."
+    },
+    {
+      "no": 14,
+      "baslangic": 47.25,
+      "bitis": 50.94,
+      "sure": 3.68,
+      "metin": "Bir taraf \"Geç bile kalındı\" dedi."
+    },
+    {
+      "no": 15,
+      "baslangic": 50.94,
+      "bitis": 54.22,
+      "sure": 3.28,
+      "metin": "Diğer taraf \"Bu onların sonu olur\" dedi."
+    },
+    {
+      "no": 16,
+      "baslangic": 54.22,
+      "bitis": 55.43,
+      "sure": 1.21,
+      "metin": "Aynı sokak."
+    },
+    {
+      "no": 17,
+      "baslangic": 55.43,
+      "bitis": 57.06,
+      "sure": 1.63,
+      "metin": "Aynı köpek."
+    },
+    {
+      "no": 18,
+      "baslangic": 57.06,
+      "bitis": 57.95,
+      "sure": 0.89,
+      "metin": "Biri tehlike görüyor, biri dost."
+    },
+    {
+      "no": 19,
+      "baslangic": 57.95,
+      "bitis": 61.78,
+      "sure": 3.83,
+      "metin": "Ama dikkat et: İki taraf da aslında aynı şeyi istiyor."
+    },
+    {
+      "no": 20,
+      "baslangic": 61.78,
+      "bitis": 63.26,
+      "sure": 1.48,
+      "metin": "Kimse ısırılmasın."
+    },
+    {
+      "no": 21,
+      "baslangic": 63.26,
+      "bitis": 64.97,
+      "sure": 1.71,
+      "metin": "Kimse acı çekmesin."
+    },
+    {
+      "no": 22,
+      "baslangic": 64.97,
+      "bitis": 67.77,
+      "sure": 2.8,
+      "metin": "Sen hangi taraftasın?"
+    },
+    {
+      "no": 23,
+      "baslangic": 67.77,
+      "bitis": 68.76,
+      "sure": 0.99,
+      "metin": "Yorumlara yaz."
+    },
+    {
+      "no": 24,
+      "baslangic": 68.76,
+      "bitis": 70.64,
+      "sure": 1.88,
+      "metin": "Ama önce, diğer tarafı bir kez dinle."
+    },
+    {
+      "no": 25,
+      "baslangic": 70.64,
+      "bitis": 74.11,
+      "sure": 3.47,
+      "metin": "Her gün bir merak için gubigufi'yi takip et."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

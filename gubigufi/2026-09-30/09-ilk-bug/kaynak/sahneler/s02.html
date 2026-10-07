@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 7.2; const TP = {"gubi": [[2.6, "sasir"], [6.0, "korku"]], "gufi": []};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/bug.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = s.length * fs * .62 + 70; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+$('zemin').innerHTML = B.bg({ ust: '#06151A', alt: '#0B242B', nx: 540, ny: 800, no: .12 }) + B.parca(5, 30);
+window.renderAt = t => {
+  let o = '';
+  const alarm = E(A(t, 5.6, 6.8)), sars = alarm > 0 ? Math.sin(t * 60) * 3 * alarm : 0;
+  let m = B.makine(t, alarm, 60, 570, 960, 600);
+  m += `<rect x="370" y="470" width="340" height="70" rx="35" fill="#0B2A31"/>` + `<text class="mono" x="540" y="518" font-size="40" text-anchor="middle" letter-spacing="8" style="fill:${B.P.cyan}">MARK II</text>`;
+  if (alarm > 0) m += K.glow({ x: 540, y: 800, r: 700, renk: B.P.kirmizi, guc: .3 * alarm * (.6 + .4 * Math.sin(t * 8)) });
+  m += gubi(t, { x: 540, y: 1120, boy: 70, bakHedef: alarm > 0 ? [540, 700] : [300 + t * 60, 600] });
+  const z = 2.4 - 1.4 * E(A(t, .3, 2.8));
+  o += `<g transform="translate(${sars} 0) translate(540 900) scale(${z}) translate(-540 ${-900 + (z - 1) * 60})">${m}</g>`;
+  const c = pop(t, .2); if (c > 0) o += grp(cip('9 EYLÜL 1947 · HARVARD', 0, 0, B.P.krem, '#0B2A31', 32), 540, 395, c);
+  const oda = pop(t, 3.0) * (1 - A(t, 5.3, 5.6)); if (oda > 0) o += grp(cip('ODA BÜYÜKLÜĞÜNDE', 0, 0, B.P.cyan, '#0B2A31', 30), 540, 1235, oda);
+  if (alarm > 0) { const e = pop(t, 5.7); o += grp(cip('HATA · HATA · HATA', 0, 0, B.P.kirmizi, '#FFF3D6', 30), 540, 1235, e); }
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>
