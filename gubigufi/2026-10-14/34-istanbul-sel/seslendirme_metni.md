@@ -17,8 +17,6 @@ On dört saatte iki bin beş yüzü aşkın ihbar geldi. Bin iki yüzü aşkın 
 
 Peki şehir neden bu kadar çabuk doldu? Uzmanlara göre toprak betonla kaplanınca su emilemiyor, doğrudan yollara akıyor. Üstü kapatılan dereler eski yatağını arıyor. Kanallar da böyle bir yağışı taşıyamıyor.
 
-Ve en acı haber: Fatih'te on dört yaşında bir çocuk, su birikintisinde elektrik akımına kapılarak hayatını kaybetti. Başımız sağ olsun.
-
 Yağış yarın da sürecek. Su birikintilerinden ve elektrik direklerinden uzak durun, alt geçitlere ve bodrum katlara girmeyin. Acil durumda yüz on ikiyi arayın.
 
 ## 2) Storyboard — maskotlar SAKİN, yardımcı rolde (yağmurluk + şemsiye)
@@ -28,7 +26,7 @@ Yağış yarın da sürecek. Su birikintilerinden ve elektrik direklerinden uzak
 4. KIYAS (16–24) — İki silindir/ölçü kabı: "MARMARA · EKİM AYI ORTALAMASI 72 L" ve "BEYKOZ · TEK GÜN 193,84 L" (2,7×). İkinci kap taşar.
 5. BİLANÇO (24–31) — Sayaçlar: 2.518 İHBAR · 1.277 SU BASKINI · 15 HEYELAN; ikonlar: metro girişi, alt geçit su altında (kesit).
 6. NEDEN ÇABUK DOLDU? (31–41) — Şehir kesiti, üç panel sırayla: (a) toprak vs beton: toprakta su emilir (oklar aşağı), betonda yüzeyden akar; (b) üstü kapatılmış dere, su kapak açıp eski yatağa taşar; (c) kanal kesiti: boru dolar, fazlası yola çıkar. Çip: "UZMANLARA GÖRE".
-7. ACI HABER (41–47) — Sade koyu ekran, tek bir yanan mum/çiçek ikonu; yazı "FATİH · 14 YAŞINDA BİR ÇOCUK" · "BAŞIMIZ SAĞ OLSUN". İsim/fotoğraf/olay yeri çizimi YOK.
+7. (ÇIKARILDI — kullanıcı can kaybı cümlesini metinden çıkardı; videoda can kaybına değinilmez.)
 8. GÜVENLİK (47–55) — Üç büyük kural kartı: ⚡ "SU BİRİKİNTİSİ + ELEKTRİK DİREĞİ = UZAK DUR" · 🚇 "ALT GEÇİT / BODRUM KATA GİRME" · ☎ "ACİL: 112". Gubi ve Gufi yağmurlukla kartları gösterir (isaret), ciddi ifade.
 Kapanış: logo (takip kartı YOK).
 Kamera: 1 tilt-down yağmurla · 2 uydu zoom-in · 3 harita → kesit kesmesi · 4 yan kaydırma · 5 sayaç push-in · 6 dikey kesit kaydırma · 7 sabit, yavaş · 8 sabit.
