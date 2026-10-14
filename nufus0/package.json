@@ -1,0 +1,46 @@
+{
+  "name": "nufus0",
+  "version": "0.1.0",
+  "private": true,
+  "description": "NÜFUS_0 — karanlık izometrik low-poly bürokratik korku serisi (Remotion + Three.js)",
+  "scripts": {
+    "audio": "tsx scripts/make-audio.ts",
+    "predev": "npm run audio --silent",
+    "dev": "remotion studio src/index.ts",
+    "validate": "tsx scripts/validate-episode.ts",
+    "test:webgl": "tsx scripts/check-webgl.ts",
+    "render:test": "tsx scripts/render-episode.ts --test",
+    "render:001": "tsx scripts/render-episode.ts 001",
+    "render:001:draft": "tsx scripts/render-episode.ts 001 --draft",
+    "stills": "tsx scripts/render-episode.ts 001 --stills",
+    "tally": "tsx scripts/tally-votes.ts",
+    "typecheck": "tsc --noEmit",
+    "check": "tsc --noEmit && tsx scripts/validate-episode.ts 001"
+  },
+  "dependencies": {
+    "@fontsource/barlow-condensed": "5.3.0",
+    "@fontsource/ibm-plex-mono": "5.3.0",
+    "@react-three/fiber": "9.4.0",
+    "@remotion/bundler": "4.0.535",
+    "@remotion/cli": "4.0.535",
+    "@remotion/media-utils": "4.0.535",
+    "@remotion/renderer": "4.0.535",
+    "@remotion/three": "4.0.535",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "4.0.535",
+    "three": "0.180.0",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/three": "0.180.0",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

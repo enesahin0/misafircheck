@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "lastEpisode": "001",
+    "note": "DOSYA 001 yayınlandıktan SONRAKİ durum. Oylama sonucu gelene kadar karar etkileri uygulanmaz."
+  },
+  "populationOfficial": 0,
+  "populationBelieved": 18407,
+  "streets": {
+    "14": { "name": "14. Sokak", "status": "ERASED", "erasedAtEpisode": "001", "restoredAtEpisode": null, "peopleInside": 62 },
+    "9": { "name": "9. Sokak", "status": "PRESENT", "erasedAtEpisode": null, "restoredAtEpisode": null, "peopleInside": 0 },
+    "belediye-cad": { "name": "Belediye Cad.", "status": "PRESENT", "erasedAtEpisode": null, "restoredAtEpisode": null, "peopleInside": 0 },
+    "merkez-sk": { "name": "Merkez Sk.", "status": "PRESENT", "erasedAtEpisode": null, "restoredAtEpisode": null, "peopleInside": 0 }
+  },
+  "buildings": {
+    "S14-W1": { "status": "ERASED", "erasedAtEpisode": "001", "restoredAtEpisode": null, "lightOn": false },
+    "S14-W2": { "status": "ERASED", "erasedAtEpisode": "001", "restoredAtEpisode": null, "lightOn": true, "note": "Havada kalan pencere: 2 silüet" },
+    "S14-W3": { "status": "ERASED", "erasedAtEpisode": "001", "restoredAtEpisode": null, "lightOn": true, "note": "Havada kalan pencere: 1 silüet" },
+    "S14-E1": { "status": "ERASED", "erasedAtEpisode": "001", "restoredAtEpisode": null, "lightOn": true, "note": "Havada kalan pencere: 3 silüet" },
+    "S14-E2": { "status": "ERASED", "erasedAtEpisode": "001", "restoredAtEpisode": null, "lightOn": false },
+    "S14-E3": { "status": "ERASED", "erasedAtEpisode": "001", "restoredAtEpisode": null, "lightOn": true, "note": "Havada kalan pencere: 2 silüet" },
+    "MUNI": { "status": "PRESENT", "erasedAtEpisode": null, "restoredAtEpisode": null, "lightOn": true, "note": "3. katta tek amber pencere (AMBER_WINDOW_3F). Zemin kat: Arşiv." }
+  },
+  "props": {
+    "redCar": { "route": "merkez", "t": 0.99, "lastSeenEpisode": "001" },
+    "brokenLamp": { "id": "LAMP_BELEDIYE_1", "broken": true, "brokenSinceEpisode": "001", "repairedAtEpisode": null },
+    "streetSign14": { "present": false },
+    "clockStuckAt0317": true,
+    "cat": { "location": "bus-stop-belediye" }
+  },
+  "characters": {
+    "leyla": { "status": "ALIVE_IN_ARCHIVE", "location": "Belediye / Arşiv", "knownSecrets": ["Silinen sokak listesinde 63. kişi olarak yazıyor"] },
+    "mahir": { "status": "UNSEEN", "location": "Belediye teknik servis", "knownSecrets": [] },
+    "mufettis0": { "status": "UNSEEN", "location": "?", "knownSecrets": [] }
+  },
+  "clues": [
+    { "id": "STREET_SIGN_14", "firstSeenEpisode": "001", "where": "14. Sokak girişi", "explained": false },
+    { "id": "BROKEN_LAMP_14", "firstSeenEpisode": "001", "where": "Belediye Cad., hoparlör direğinin yanı", "explained": false },
+    { "id": "RED_CAR", "firstSeenEpisode": "001", "where": "Merkez Sk.", "explained": false },
+    { "id": "AMBER_WINDOW_3F", "firstSeenEpisode": "001", "where": "Belediye 3. kat", "explained": false },
+    { "id": "CLOCK_0317", "firstSeenEpisode": "001", "where": "Arşiv duvar saati", "explained": false },
+    { "id": "DOOR_ZERO", "firstSeenEpisode": "001", "where": "Arşiv kuzey duvarı, 0 etiketli kapı", "explained": false },
+    { "id": "LEYLA_PERSON_63", "firstSeenEpisode": "001", "where": "Arşiv terminali", "explained": false },
+    { "id": "LEYLA_PRESENT", "firstSeenEpisode": "001", "where": "Arşiv odası (Leyla listede silinmiş ama odada)", "explained": false }
+  ],
+  "decisionHistory": [],
+  "pendingDecision": { "id": "street14_decision", "episodeId": "001", "status": "OPEN" },
+  "timeline": [
+    { "episode": "001", "title": "14. Sokak", "branchesFrom": null, "resolvedBy": null }
+  ]
+}

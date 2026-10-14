@@ -1,0 +1,33 @@
+{
+  "street14_decision": {
+    "episodeId": "001",
+    "status": "OPEN",
+    "options": {
+      "A": { "label": "Sokağı geri getir", "cost": "Başka bir sokak kaybolur" },
+      "B": { "label": "62 kişiyi kurtar", "cost": "Kimlikleri silinir" }
+    },
+    "voteRules": {
+      "oneVotePerUser": true,
+      "multipleComments": "İlk geçerli oy sayılır",
+      "tie": "Eşitlikte ilk geçerli oy veren taraf kazanır (önceden ilan edilmiş kural; seçimden sonra değiştirilemez)",
+      "noVotes": "Dış Hat'tan karar gelmedi; Leyla protokolü uyguladı"
+    },
+    "result": null,
+    "draftEffects": {
+      "_note": "TASLAK — oy sonucu gelene kadar kesinleşmez ve worldState'e uygulanmaz.",
+      "A": {
+        "streets": { "14": "PRESENT", "9": "ERASED" },
+        "restoredAtEpisode": "002",
+        "price": "9. Sokak kaybolur; 14. Sokak'taki 62 kişi geri döner ama 9. Sokak'ın sakinleri içeride kalır."
+      },
+      "B": {
+        "streets": { "14": "ERASED" },
+        "price": "62 kişi kurtulur ama kimlikleri kayıtlardan silinir; Leyla'nın 63. kayıt çelişkisi derinleşir."
+      },
+      "NO_VOTES": {
+        "streets": { "14": "ERASED" },
+        "price": "Leyla protokolü uygular: 62 kişi arşive alınır, sokak geri gelmez."
+      }
+    }
+  }
+}

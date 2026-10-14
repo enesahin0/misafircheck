@@ -1,0 +1,9 @@
+# ÖRNEK VERİ — GERÇEK OY DEĞİLDİR. Yalnızca `npm run tally -- --allow-sample` ile betiği denemek içindir.
+# Gerçek oylar için `votes.csv` oluşturun. Sütunlar: user_id,option,timestamp  (user_id hash / takma ID olabilir)
+user_id,option,timestamp
+u_sample_01,A,2026-01-01T20:05:00+03:00
+u_sample_02,B,2026-01-01T20:07:00+03:00
+u_sample_01,B,2026-01-01T20:09:00+03:00
+u_sample_03,a ,2026-01-01T20:11:00+03:00
+u_sample_04,C,2026-01-01T20:12:00+03:00
+u_sample_05,B,2026-01-01T20:15:00+03:00
