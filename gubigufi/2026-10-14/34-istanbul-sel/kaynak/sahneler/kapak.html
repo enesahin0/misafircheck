@@ -22,8 +22,8 @@ window.renderAt = t => {
   o += `<g transform="translate(940 650) scale(.8)"><path d="M-110 0 Q-110 -110 0 -110 Q110 -110 110 0 Q82 -22 55 0 Q27 -22 0 0 Q-27 -22 -55 0 Q-82 -22 -110 0Z" fill="#3E8EDE"/><path d="M0 0 V110" stroke="#2A2E40" stroke-width="7"/></g>`;
   o += `<g transform="rotate(-6 540 500)"><rect x="300" y="400" width="480" height="170" rx="30" fill="#FFE45C"/>` + txt('193 L', 540, 515, 120, '#1B2440') + `</g>` + `<text class="mono" x="540" y="620" font-size="30" text-anchor="middle" letter-spacing="4" style="fill:#FFFFFF">METREKAREYE · TEK GÜNDE</text>`;
   o += `<rect x="0" y="1150" width="1080" height="770" fill="#121A30"/><rect x="0" y="1150" width="1080" height="18" fill="#3E8EDE"/>`;
-  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#8CC8F4">14 EKİM · İSTANBUL</text>`;
-  o += txt('SEL NEDEN', 540, 1362, 100) + txt('BU KADAR VURDU?', 540, 1470, 92, '#FFE45C');
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#8CC8F4">14 EKİM 2026</text>`;
+  o += txt('İSTANBUL’DA YAĞMUR', 540, 1362, 86) + txt('NASIL SELE DÖNÜŞTÜ?', 540, 1466, 86, '#FFE45C');
   const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
   for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
   document.getElementById('dinamik').innerHTML = o + l + '</g>';
