@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/au.js"></script><script src="../ortak/kp.js"></script><script src="../ortak/sl.js"></script><script src="../ortak/se.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const R = PR.R, h = HK.hash;
+let _id = 0; const gid = p => p + (++_id);
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const golgeTxt = (s, x, y, size, renk) => txt(s, x + 6, y + 8, size, '#000', 900, 'opacity=".45"') + txt(s, x, y, size, renk);
+const lin = (id, a, b, x2 = 0, y2 = 1) => `<linearGradient id="${id}" x1="0" y1="0" x2="${x2}" y2="${y2}"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient>`;
+const rad = (id, renk, op = 1) => `<radialGradient id="${id}"><stop offset="0" stop-color="${renk}" stop-opacity="${op}"/><stop offset="1" stop-color="${renk}" stop-opacity="0"/></radialGradient>`;
+const isik = (x, y, r, renk, op = .8) => { const i = gid('r'); return `<defs>${rad(i, renk, op)}</defs><circle cx="${x}" cy="${y}" r="${r}" fill="url(#${i})"/>`; };
+const koni = (x, y, x1, y1, x2, y2, renk, op = .55) => { const i = gid('k'); return `<defs><linearGradient id="${i}" gradientUnits="userSpaceOnUse" x1="${x}" y1="${y}" x2="${(x1 + x2) / 2}" y2="${(y1 + y2) / 2}"><stop offset="0" stop-color="${renk}" stop-opacity="${op}"/><stop offset="1" stop-color="${renk}" stop-opacity="0"/></linearGradient></defs><path d="M${x} ${y} L${x1} ${y1} L${x2} ${y2}Z" fill="url(#${i})"/>`; };
+const yagmur = (n, y0, y1, op = .45, renk = '#CFE6FF') => { let o = ''; for (let i = 0; i < n; i++) { const x = h(i) * 1120 - 20, y = y0 + h(i + 9) * (y1 - y0), L = 40 + 50 * h(i + 3); o += `<path d="M${x} ${y} l${-L * .15} ${L}" stroke="${renk}" stroke-width="${2 + 2 * h(i + 7)}" stroke-linecap="round" opacity="${op * (.5 + .5 * h(i + 2))}"/>`; } return o; };
+const simsek = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M0 0 L-40 140 L10 130 L-30 300 L60 100 L10 110 L40 0Z" fill="#FFFBE0"/></g>` + isik(x, y + 150, 260 * s, '#BFD8FF', .45);
+const vinyet = () => { const i = gid('v'); return `<defs><radialGradient id="${i}" cx=".5" cy=".42" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".65"/></radialGradient></defs><rect width="1080" height="1920" fill="url(#${i})"/>`; };
+const altBant = (renk, ust, l1, l2, r2) => { const i = gid('f'); return `<defs>${lin(i, 'rgba(8,10,24,0)', '#080A18')}</defs><rect x="0" y="1020" width="1080" height="320" fill="url(#${i})"/><rect x="0" y="1338" width="1080" height="582" fill="#080A18"/>` +
+  `<rect x="${540 - (ust.length * 21 + 70) / 2}" y="1190" width="${ust.length * 21 + 70}" height="56" rx="28" fill="${renk}"/><text class="mono" x="540" y="1228" font-size="28" text-anchor="middle" letter-spacing="4" style="fill:#080A18">${ust}</text>` +
+  golgeTxt(l1, 540, 1372, 104, '#FFF6E6') + golgeTxt(l2, 540, 1484, 104, r2); };
+const logo = () => { const S = 140 / 233; let l = `<g transform="translate(540 1650) scale(${S}) translate(-141.5 -141.5)">`; for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`; return l + '</g>'; };
+const su = (y, renk1 = '#2E78C8', renk2 = '#0E2E5A') => { const i = gid('s'); return `<defs>${lin(i, renk1, renk2)}</defs><rect x="0" y="${y}" width="1080" height="${1920 - y}" fill="url(#${i})"/>` + SE.dalga(y, .7, '#9ED2FF', 7, 12); };
+window.renderAt = t => {
+  const g = gid('g');
+  let o = `<defs>${lin(g, '#0A1028', '#1E2E5A')}</defs><rect width="1080" height="1920" fill="url(#${g})"/>`;
+  o += simsek(820, 60, 1.1);
+  for (let i = 0; i < 12; i++) { const x = i * 95 - 30, hh = 260 + h(i) * 340; o += R(x, 820 - hh, 88, hh, 4, '#141E3C'); for (let r = 0; r < 6; r++) for (let c = 0; c < 2; c++) o += R(x + 14 + c * 36, 820 - hh + 30 + r * 52, 20, 26, 3, '#FFD27A', h(i * 11 + r * 3 + c) > .62 ? .7 : .07); }
+  o += R(120, 520, 14, 300, 6, '#2A3456') + R(120, 520, 90, 12, 6, '#2A3456') + isik(205, 540, 160, '#FFD27A', .7) + koni(205, 540, 120, 820, 300, 820, '#FFD27A', .35);
+  o += su(800);
+  o += `<g opacity=".35" transform="translate(0 1600) scale(1 -1)">${R(120, 520, 14, 300, 6, '#FFD27A')}</g>`;
+  for (let i = 0; i < 12; i++) o += R(i * 95 - 30, 820, 88, 140, 0, '#FFD27A', h(i) > .6 ? .05 : 0);
+  // yarı batık araba + farlar
+  o += koni(640, 840, 1100, 700, 1100, 1000, '#FFF4C0', .5) + SE.araba(470, 900, 1.6, { rot: -5, renk: '#F2F4F8' }) + isik(660, 838, 60, '#FFF4C0', .9);
+  o += su(870, 'rgba(46,120,200,.75)', 'rgba(14,46,90,.95)');
+  for (let i = 0; i < 8; i++) o += `<path d="M${60 + i * 140} ${930 + (i % 3) * 40} q30 -14 60 0" stroke="#9ED2FF" stroke-width="5" fill="none" opacity=".6"/>`;
+  o += M.canli('gufi', { t: 1, x: 420, y: 740, boy: 150, duygu: 'korku', bakHedef: [700, 900] }) + `<g transform="translate(420 585) scale(.8)"><path d="M-110 0 Q-110 -110 0 -110 Q110 -110 110 0 Q82 -22 55 0 Q27 -22 0 0 Q-27 -22 -55 0 Q-82 -22 -110 0Z" fill="#E8323C"/><path d="M0 0 V120" stroke="#2A2E40" stroke-width="7"/></g>`;
+  o += M.canli('gubi', { t: 1, x: 900, y: 560, boy: 110, duygu: 'saskin', bakHedef: [470, 880] }) + yagmur(150, 0, 1300, .5);
+  o += `<g transform="rotate(-5 540 300)"><rect x="250" y="230" width="580" height="150" rx="28" fill="#FFD23F"/>` + txt('30 cm SU', 540, 335, 100, '#0A1028') + `</g>` + R(290, 412, 500, 54, 27, '#0A1028', .85) + txt('BİR ARABAYI YÜZDÜRÜR', 540, 450, 34, '#FFFFFF', 800, 'letter-spacing="3"');
+  o += vinyet() + altBant('#FFD23F', 'SOKAK · BODRUM · ARABA', 'SEL ANINDA', 'NE YAPMALISIN?', '#FFD23F') + logo();
+  document.getElementById('dinamik').innerHTML = o;
+};
+</script></body></html>
