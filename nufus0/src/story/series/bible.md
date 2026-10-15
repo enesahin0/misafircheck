@@ -49,6 +49,6 @@ Birikim → ürün yerleştirme (30 hazır yuva: çay, modem, kargo, kahve…) �
 
 ## 10. Açık kararlar (kullanıcıya ait)
 - Seri adı: KOMŞULAR mı, daha çarpıcı bir ad mı? (marka/kullanıcı adı müsaitliği kontrol edilmedi)
-- Görsel stil: low-poly mı, piksel mi? Palet: gece + amber pencereler önerilir.
-- Pilot bölüm: `SAKSI` (önerilen) mı, `EMRE` mi?
+- ~~Görsel stil~~ **KARAR: low-poly izometrik** (palet: gece + sıcak amber pencereler).
+- Pilot bölüm: `SAKSI` taslağı hazır (`episodes/ep001-saksi.json`); onay bekliyor.
 - Sezon sonu: fail oylamayla mı belirlenecek, yazarla mı?

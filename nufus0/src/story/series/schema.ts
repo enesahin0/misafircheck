@@ -124,3 +124,30 @@ export const episodeSeedsSchema = z.object({
     }),
   ),
 });
+
+/* ------------------------------------------------------------------ bölüm senaryosu (episodes/*.json) */
+export const episodeScriptSchema = z.object({
+  version: z.number(),
+  id: z.string(),
+  seed: z.string(),
+  title: z.string(),
+  status: z.enum(["DRAFT", "APPROVED", "VOICED", "RENDERED", "PUBLISHED"]),
+  cast: z.array(z.string()),
+  flats: z.array(z.string()),
+  premise: z.string(),
+  fairness: z.string(),
+  reveal: z.object({ nextDay: z.string(), note: z.string() }),
+  durationFrames: z.literal(1800),
+  beats: z.array(z.object({ n: z.number(), name: z.string(), from: z.number(), to: z.number(), visual: z.string(), onScreen: z.array(z.string()).max(3) })).length(6),
+  narration: z.array(z.object({ id: z.string(), beat: z.number().int(), text: z.string(), note: z.string().optional() })).min(5),
+  hookVariants: z.array(z.object({ id: z.string(), pattern: z.string(), text: z.string(), onScreen: z.array(z.string()) })).length(3),
+  decision: z.object({ question: z.string(), A: z.object({ label: z.string(), cost: z.string() }), B: z.object({ label: z.string(), cost: z.string() }), closes: z.string() }),
+  cliffhanger: z.string(),
+  caption: z.string(),
+  pinnedComment: z.string(),
+  placementSlot: z.string().nullable(),
+  clue: z.string().nullable(),
+  soundPlan: z.object({ ambience: z.array(z.string()), events: z.array(z.string()), search: z.array(z.string()), note: z.string() }),
+  assetNeeds: z.array(z.string()),
+  risks: z.array(z.string()),
+});

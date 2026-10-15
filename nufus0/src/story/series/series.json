@@ -11,12 +11,22 @@
   ],
   "audience": "Türkçe konuşan, dizi/dedikodu/'kim haklı' tartışmalarını seven geniş kitle; 18–45. Ses kapalı da izlenir (altyazı).",
   "tone": {
-    "do": ["Sıcak ve ince mizahlı", "İnsan hâlleri: kıskançlık, utanç, gurur, merhamet", "Küçük ama gerçek bedeller", "Gerilim: sır ve yanlış anlaşılma"],
-    "dont": ["Şiddet / istismar / ölüm göstermek", "Siyaset, din, etnik kimlik üzerinden tartışma", "Gerçek kişi, kurum, adres", "Fotogerçekçi yüz / dudak senkronu"]
+    "do": [
+      "Sıcak ve ince mizahlı",
+      "İnsan hâlleri: kıskançlık, utanç, gurur, merhamet",
+      "Küçük ama gerçek bedeller",
+      "Gerilim: sır ve yanlış anlaşılma"
+    ],
+    "dont": [
+      "Şiddet / istismar / ölüm göstermek",
+      "Siyaset, din, etnik kimlik üzerinden tartışma",
+      "Gerçek kişi, kurum, adres",
+      "Fotogerçekçi yüz / dudak senkronu"
+    ]
   },
   "visualIdentity": {
     "core": "Gece. Cutaway bina: her dairenin penceresi sıcak amber yanar; bölümün dairesi parlak, diğerleri loş. Kapak karesi hep: bina kesiti + öne çıkan daire.",
-    "note": "Palet NÜFUS_0 ile ortak (deepNight, slate, concrete, bone, amber); kırmızı yalnızca çatışma/sır anında. Stil (low-poly / piksel) ayrıca seçilecek.",
+    "note": "KARAR (kullanıcı): low-poly izometrik. Palet NÜFUS_0 ile ortak (deepNight, slate, concrete, bone, amber); kırmızı yalnızca çatışma/sır anında. Piksel modu (--pixel) kodda durur ama kullanılmaz.",
     "characters": "Yüzsüz low-poly gövdeler; her karakter TEK baskın renk + bir imza nesne (kimliği silüetten okunur). Duygu: ses, jest, kamera ritmi."
   },
   "brandSafety": "Aile dostu. Marka ürünü asla kötü bir sonucun sebebi olmaz (bkz. monetization.json).",

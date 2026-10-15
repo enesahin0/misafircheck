@@ -1,0 +1,226 @@
+{
+  "version": 3,
+  "id": "KS-001",
+  "seed": "SAKSI",
+  "title": "Her Sabah Düşen Saksı",
+  "status": "DRAFT",
+  "cast": [
+    "hacer",
+    "kerem",
+    "pasa"
+  ],
+  "flats": [
+    "D1",
+    "D9"
+  ],
+  "premise": "Hacer Hanım'ın balkonundan her sabah 07.10'da bir saksı düşüyor. O, üst kattaki DJ Kerem'i suçluyor (bas sesi binayı titretiyor). Kerem 'ben o saatte uyuyorum' diyor. Kanıtlar iki tarafı da destekliyor; izleyici karar veriyor.",
+  "fairness": "A: bas titreşimi saksıyı oynatıyor (görsel: saksı bas vuruşunda titrer). B: saksı toprağında kedi tüyü ve boş mama kabı var, Kerem o saatte yatakta (görsel: saat 07.10, perde kapalı). İki taraf da savunulabilir; gerçek ertesi gün açıklanır.",
+  "reveal": {
+    "nextDay": "Paşa saksıyı iter, ama yalnızca bas titreşimi saksıyı kenara kaydırdığı sabahlar. İki taraf da kısmen haklı; asıl çözüm: Hacer ve Kerem birlikte saksıları sabitler.",
+    "note": "Sonuç, gerçek oy dağılımı gelmeden uydurulmaz; ertesi gün gerçek yüzdeyle açılır."
+  },
+  "durationFrames": 1800,
+  "beats": [
+    {
+      "n": 1,
+      "name": "HOOK",
+      "from": 0,
+      "to": 5,
+      "visual": "Bina kesiti, D1 penceresi parlıyor; kare 0'da saksı düşüp parçalanıyor. Saat 07.10.",
+      "onScreen": [
+        "07.10",
+        "SAKSI DÜŞTÜ"
+      ]
+    },
+    {
+      "n": 2,
+      "name": "KİM / NE",
+      "from": 5,
+      "to": 16,
+      "visual": "Kamera D1 balkonuna: Hacer (mor) 12 saksıyı sulayıp sıralıyor; saat sayacı 07.09→07.10. Arka planda bir kuyruk kıpırtısı (ipucu).",
+      "onScreen": [
+        "HACER HANIM",
+        "1. KAT"
+      ]
+    },
+    {
+      "n": 3,
+      "name": "ÇATIŞMA",
+      "from": 16,
+      "to": 26,
+      "visual": "Kamera yukarı D9: Kerem DJ masasında; bas vuruşunda bina halka dalgalarıyla titreşir, D1 saksısı kenara kayar. Hacer kapıyı çalıyor, Kerem açmıyor.",
+      "onScreen": [
+        "KEREM · 5. KAT",
+        "SUÇLU KİM?"
+      ]
+    },
+    {
+      "n": 4,
+      "name": "BÜKÜM",
+      "from": 26,
+      "to": 37,
+      "visual": "Kerem'in tarafı: saat 07.10'da yatağında uyuyor, perde kapalı, hoparlör kapalı. Yakın plan: saksı toprağında bir tutam tüy; D1 mutfağında boş mama kabı (söylenmez, sadece görünür).",
+      "onScreen": [
+        "SAAT 07.10"
+      ]
+    },
+    {
+      "n": 5,
+      "name": "KARAR",
+      "from": 37,
+      "to": 52,
+      "visual": "İki kart: A/B. Altında 'Yarın 14.00'te kapanır'. Bina kesiti köşede.",
+      "onScreen": [
+        "KİM HAKLI?",
+        "A  veya  B"
+      ]
+    },
+    {
+      "n": 6,
+      "name": "CLIFFHANGER + CTA",
+      "from": 52,
+      "to": 60,
+      "visual": "D1 kapısı çalınıyor; kapıda Kerem, elinde kırık saksının parçası. Siyah kesme; son kart.",
+      "onScreen": [
+        "YARIN 20.00"
+      ]
+    }
+  ],
+  "narration": [
+    {
+      "id": "L01",
+      "beat": 1,
+      "text": "Her sabah 07.10'da bir saksı düşüyor.",
+      "note": "Sakin ama merak uyandıran; ilk kelime 0,3 sn içinde"
+    },
+    {
+      "id": "L02",
+      "beat": 1,
+      "text": "Ama kimse saksıyı atmıyor.",
+      "note": "'kimse' vurgulu, kısa duraklama öncesi"
+    },
+    {
+      "id": "L03",
+      "beat": 2,
+      "text": "Yıldız Apartmanı, birinci kat. Hacer Hanım, emekli öğretmen, balkonunda on iki saksı büyütüyor."
+    },
+    {
+      "id": "L04",
+      "beat": 2,
+      "text": "Dört gündür her sabah, tam yedi on'da, bir tanesi sokağa düşüp parçalanıyor."
+    },
+    {
+      "id": "L05",
+      "beat": 3,
+      "text": "Hacer Hanım'a göre suçlu belli: beşinci kattaki Kerem. Sabahları bas çalışıyor, bütün bina titriyor."
+    },
+    {
+      "id": "L06",
+      "beat": 4,
+      "text": "Kerem ise yemin ediyor: o saatte uyuyor. Gece dörde kadar sahnedeymiş."
+    },
+    {
+      "id": "L07",
+      "beat": 4,
+      "text": "Maket yalan söylemez. İyi bak.",
+      "note": "Fısıltıya yakın; kameranın toprağa inmesiyle"
+    },
+    {
+      "id": "L08",
+      "beat": 5,
+      "text": "Şimdi sen karar ver. Kim haklı?"
+    },
+    {
+      "id": "L09",
+      "beat": 5,
+      "text": "A: Hacer Hanım haklı, Kerem'in bası düşürüyor. B: Kerem haklı, saksıyı başka biri düşürüyor."
+    },
+    {
+      "id": "L10",
+      "beat": 5,
+      "text": "Yoruma A ya da B yaz. Çoğunluğun kararı yarın."
+    },
+    {
+      "id": "L11",
+      "beat": 6,
+      "text": "Ama tam o sırada, Hacer Hanım'ın kapısı çalındı."
+    }
+  ],
+  "hookVariants": [
+    {
+      "id": "V1",
+      "pattern": "H1",
+      "text": "Her sabah 07.10'da bir saksı düşüyor. Ama kimse saksıyı atmıyor.",
+      "onScreen": [
+        "07.10",
+        "SAKSI DÜŞTÜ"
+      ]
+    },
+    {
+      "id": "V2",
+      "pattern": "H3",
+      "text": "Hacer Hanım'ın on iki saksısı var. Her sabah biri eksiliyor.",
+      "onScreen": [
+        "12 SAKSI",
+        "HER SABAH BİRİ EKSİK"
+      ]
+    },
+    {
+      "id": "V3",
+      "pattern": "H5",
+      "text": "Üst kattaki komşun seni her sabah uyandırıyor. Ama saksıyı o mu düşürüyor?",
+      "onScreen": [
+        "KOMŞUN SUÇLU MU?"
+      ]
+    }
+  ],
+  "decision": {
+    "question": "Kim haklı?",
+    "A": {
+      "label": "Hacer Hanım haklı",
+      "cost": "Kerem'e yaptırım: partileri biter, Pelin'in ilgisi kırılır"
+    },
+    "B": {
+      "label": "Kerem haklı",
+      "cost": "Hacer yalnız ve kırgın kalır"
+    },
+    "closes": "ertesi gün 14:00 (Europe/Istanbul)"
+  },
+  "cliffhanger": "Hacer Hanım'ın kapısı çalınıyor; Kerem elinde kırık saksının parçasıyla duruyor.",
+  "caption": "Her sabah 07.10'da Hacer Hanım'ın balkonundan bir saksı düşüyor. Kimse atmıyor. Sence kim haklı?\n\nA: Hacer Hanım haklı (Kerem'in bası).\nB: Kerem haklı (saksıyı başka biri düşürüyor).\n\nYoruma A ya da B yaz. Oylama yarın 14.00'te kapanır, cevap 20.00'de.\n\nKOMŞULAR kurgusal, animasyonla üretilmiş bir dizidir; gerçek kişi ve kurum yoktur.",
+  "pinnedComment": "A: Hacer haklı · B: Kerem haklı. Yarın 14.00'te kapanır.",
+  "placementSlot": "balcony-planter",
+  "clue": null,
+  "soundPlan": {
+    "ambience": [
+      "sabah kuş sesi (dış)",
+      "sessiz oda (iç)"
+    ],
+    "events": [
+      "seramik kırılma (saksı)",
+      "bas vuruşu (düşük frekans darbe)",
+      "kapı vuruşu",
+      "kedi (uzaktan, isteğe bağlı)"
+    ],
+    "search": [
+      "impact glass",
+      "heartbeat",
+      "door knock",
+      "bird",
+      "quiet room"
+    ],
+    "note": "Konuşma altında ortam/müzik otomatik kısılır (duck)."
+  },
+  "assetNeeds": [
+    "Bina kesiti (11 daire)",
+    "D1 balkonu + 12 saksı + Hacer",
+    "D9 DJ masası + Kerem",
+    "Paşa (kedi)",
+    "Saat göstergesi",
+    "Bas dalgası efekti (halkalar)"
+  ],
+  "risks": [
+    "Kedi ipucunu çok erken söyleme (L07 yalnızca 'iyi bak')",
+    "A/B adil kalmalı: iki tarafın görsel kanıtı eşit süre"
+  ]
+}
