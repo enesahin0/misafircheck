@@ -85,15 +85,20 @@ Tüm ses ve görsel kaynakların envanteri, lisansları ve durumu: [`docs/KAYNAK
 | `layout.ts` | Hücre→dünya koordinatı, mekân yerleşimi (`PLACES`), karakter istasyonları (`STATIONS`), kamera planları (`shotFor`), dolgu hücreleri (`FILLERS`) |
 | `venues.tsx` | Bakkal, Çay Ocağı, Dönerci, Kuaför, Fırın, Yıldız/Gül Apt., Pasaj Han, **TERAS 7** (çatı), Park, Durak, Meydan |
 | `People.tsx` | `Person` (Humanoid + aksesuar), `Pet`, `Ambient` |
-| `Mahalle.tsx` | `<Mahalle frame light highlight cast market />`, `MahalleScene` |
+| `Mahalle.tsx` | `<Mahalle frame light season highlight cast market solo />`, `MahalleScene` |
+| `tex.tsx` | Prosedürel yüzey dokuları: tuğla, sıva, taş, kiremit, ahşap, zemin karosu, beton panel (`TBox`/`TBase`) |
+| `seasons.ts` | Mevsim verisi (`seasons.json`) + `lightFor(saat, mevsim)` |
 
 Kamera planları (hepsi **kutuya sığdırılır**, kareden taşmaz): `genel` (tüm ada), `<mekân>:genis|orta|yakin`, `<mekân>:kart` (yalnız o hücre, yüzen küçük ada — referans "mekân kartı"), `teras7:ust`. Kontrol kareleri (video değil):
 ```bash
 npm run mahalle:stills -- --shots=genel,bakkal:orta --light=ogle,gece            # out/mahalle/*.png
+npm run mahalle:stills -- --shots=genel --light=ogle --season=ilkbahar,yaz,sonbahar,kis   # 4 mevsim
 npm run mahalle:stills -- --shots=hepsi --light=aksam --highlight=doner            # tüm mekânlar, vurgulu
 npm run mahalle:stills -- --shots=kartlar --light=ogle                              # 12 mekân kartı
 npm run mahalle:stills -- --shots=meydan:genis --light=ogle --market               # çarşamba pazarı
 ```
+**Mevsimler** (`src/story/series/seasons.json`): ilkbahar (çiçekli ağaçlar, çiçek yaprağı), yaz (parasollar), sonbahar (turuncu yapraklar, yaprak yağmuru, kabaklar, baca dumanı), kış (kar, çıplak ağaçlar, çatı karı, kardan adam, bere ve atkı). Her mevsimin hikâye tarafı da aynı dosyada: hava, mahalle yaşamı, olay fikirleri, festival. Bölüm senaryosunda `season` ve `timeOfDay` yazılır. Mevsim bir bölüm içinde değişmez.
+
 `MahalleDebug` kompozisyonu Remotion Studio'da (`npm run dev`) de açılır. `npm run validate:universe` her hücrenin dolu, her mekânın yerleşimi ve kamera planı olduğunu denetler.
 
 ## Mimari (kısa)

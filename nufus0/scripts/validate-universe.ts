@@ -4,6 +4,7 @@ import path from "node:path";
 import { ROOT } from "./lib/audio";
 import * as S from "../src/story/series/schema";
 import { COLS, FILLERS, PLACES, ROWS, STATIONS, VENUES, shotFor } from "../src/world/mahalle/layout";
+import { SEASON_IDS as KIT_SEASONS, SEASONS as KIT_SEASON_DATA } from "../src/world/mahalle/seasons";
 
 const dir = path.join(ROOT, "src", "story", "series");
 const read = (f: string) => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
@@ -153,11 +154,24 @@ try {
   for (const [id] of Object.entries(STATIONS)) if (!charById.has(id)) errors.push(`3D kit: istasyon karakteri '${id}' yok`);
   for (const c of C) if (c.tier === "CORE" && !STATIONS[c.id] && !["suleyman", "cemal", "pasa"].includes(c.id)) warns.push(`3D kit: CORE karakter '${c.id}' için varsayılan istasyon yok`);
 
+  // mevsimler: 4 mevsim, 12 ay eşlenmiş, kit verisiyle aynı
+  const seasonData = S.seasonsSchema.parse(read("seasons.json"));
+  for (let m = 1; m <= 12; m++) if (!seasonData.monthMap[String(m)]) errors.push(`mevsimler: ${m}. ay eşlenmemiş`);
+  for (const id of S.SEASON_IDS) {
+    const sd = seasonData.seasons.find((x) => x.id === id);
+    if (!sd) { errors.push(`mevsimler: '${id}' yok`); continue; }
+    if (!KIT_SEASON_DATA[id]) errors.push(`mevsimler: 3D kit '${id}' verisini okuyamadı`);
+    for (const m of sd.months) if (seasonData.monthMap[String(m)] !== id) errors.push(`mevsimler: ${id} ayları monthMap ile çelişiyor (${m})`);
+    if (sd.visual.snow && !sd.visual.bare) warns.push(`mevsimler: ${id} karlı ama ağaçlar çıplak değil`);
+  }
+  if (KIT_SEASONS.length !== seasonData.seasons.length) errors.push("mevsimler: kit ve veri sayısı farklı");
+
   const core = C.filter((c) => c.tier === "CORE").length;
   console.log(`\nMAHALLE EVRENİ · ${nh.name}`);
   console.log(`  · ${nh.venues.length} mekân (${nh.grid.cols}×${nh.grid.rows} harita), ${building.flats.length} apartman dairesi`);
   console.log(`  · ${C.length} karakter (${core} CORE, ${C.length - core} REGULAR), ${rel.edges.length} yönlü ilişki (nefret≤-2: ${hates}, sevgi≥4: ${loves})`);
   console.log(`  · ${ev.types.length} olay türü (30 bölümde ${sum.toFixed(1)}), ${arcs.arcs.length} yay, ${arcs.guestSystem.examples.length} konuk örneği, gündem: ${gundem.adaptationExamples.length} uyarlama örneği`);
+  console.log(`  · mevsimler: ${seasonData.seasons.map((x) => x.name).join(", ")} · ${seasonData.seasons.reduce((a, x) => a + x.eventIdeas.length, 0)} mevsimlik olay fikri`);
   console.log(`  · 3D kit: ${VENUES.length} mekân + ${FILLERS.length} dolgu = ${COLS * ROWS} hücre, ${Object.keys(STATIONS).length} karakter istasyonu`);
   console.log(`  · Sezon gizemi "${season.title}": ${season.suspects.length} şüpheli, ${ledger.clues.length} ipucu · ${seeds.seeds.length} bölüm tohumu · ${mon.placementSlots.length} marka yuvası`);
 } catch (e) {

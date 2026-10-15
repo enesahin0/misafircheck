@@ -4,11 +4,12 @@ import { Humanoid, Outfit } from "../Characters";
 import { Box, Cyl, Shadow, V3 } from "../primitives";
 import { mat } from "../materials";
 import { M } from "./palette";
+import { useSeason } from "./kit";
 import { CHAR_COLORS, STATIONS } from "./layout";
 import type { ActorSample } from "../../utils/actors";
 import { hash } from "../../utils/deterministic";
 
-type Acc = "cap" | "apron" | "chef" | "headband" | "glasses" | "scarf";
+type Acc = "cap" | "apron" | "chef" | "headband" | "glasses" | "scarf" | "beanie" | "scarfS";
 type Look = { skin: string; hair: string; trousers: string; scale: number; acc?: Acc[]; jacket?: string };
 
 // Yaş/boy/aksesuar: izometrik okunurluk için silüet farkı (boy, şapka, önlük).
@@ -55,6 +56,13 @@ const Accessories: React.FC<{ acc: Acc[]; sit: number }> = ({ acc, sit }) => {
         </mesh>
       )}
       {acc.includes("glasses") && <Box size={[0.26, 0.05, 0.05]} pos={[0, 1.92, 0.15]} color={M.ink} />}
+      {acc.includes("beanie") && (
+        <>
+          <Box size={[0.36, 0.16, 0.36]} pos={[0, 2.02, -0.02]} color={M.red} />
+          <Box size={[0.1, 0.1, 0.1]} pos={[0, 2.13, -0.02]} color={M.white} />
+        </>
+      )}
+      {acc.includes("scarfS") && <Box size={[0.34, 0.1, 0.34]} pos={[0, 1.74, 0]} color={M.orange} />}
     </group>
   );
 };
@@ -83,14 +91,17 @@ export const Person: React.FC<{ entry: CastEntry; frame: number }> = ({ entry, f
   const z = entry.pos?.[1] ?? st?.z ?? 0;
   const y = (entry.y ?? st?.y ?? 0) + 0.15;
   const rot = entry.rot ?? st?.rot ?? 0;
+  const S = useSeason();
   const o = outfitFor(entry.id);
+  const seasonal: Acc[] = S.cloth === "kalın" ? ["beanie", "scarfS"] : S.cloth === "ceketli" && seed % 2 === 0 ? ["scarfS"] : [];
+  const accAll = [...(look.acc ?? []), ...seasonal.filter((a) => !(look.acc ?? []).includes("cap") || a !== "beanie")];
   const pose: ActorSample = { x: 0, z: 0, rot: 0, ...p };
   return (
     <group position={[x, y, z]} rotation={[0, rot, 0]}>
       <Humanoid outfit={o} pose={pose} frame={frame} />
-      {look.acc && (
+      {accAll.length > 0 && (
         <group scale={[o.scale ?? 1, o.scale ?? 1, o.scale ?? 1]}>
-          <Accessories acc={look.acc} sit={p.sit} />
+          <Accessories acc={accAll} sit={p.sit} />
         </group>
       )}
     </group>

@@ -5,9 +5,10 @@ import * as THREE from "three";
 import { IsoCam, IsoCamera } from "../camera";
 import { BaseBox, Box, Cyl, Glow } from "../primitives";
 import { mat } from "../materials";
-import { Bench, LightCtx, MCar, MLamp, MTree, Paving } from "./kit";
+import { Bench, LightCtx, MCar, MLamp, MTree, Paving, useSeason } from "./kit";
 import { CELL, COLS, FILLERS, ROWS, SIDEWALK, VENUES, WORLD_D, WORLD_W, cellCenter, venue } from "./layout";
-import { LIGHTS, LightId, M } from "./palette";
+import { LightId, M } from "./palette";
+import { SEASONS, SeasonId, lightFor } from "./seasons";
 import { Ambient, CastEntry, Person, Pet } from "./People";
 import { Bakkal, CayOcagi, Doner, Durak, FillerBlock, Firin, GulApt, Kuafor, Meydan, PasajHan, Park, Teras7, YildizApt } from "./venues";
 import { STATIONS } from "./layout";
@@ -21,7 +22,7 @@ const COMPONENTS: Record<string, React.FC<{ frame: number; market?: boolean }>> 
 export const DEFAULT_CAST: CastEntry[] = Object.keys(STATIONS).filter((id) => id !== "karabas").map((id) => ({ id }));
 
 const SLAB_TOP = 0.15;
-const SLAB_COLORS: Record<string, string> = { meydan: M.plaza, park: M.grass, durak: M.pave };
+const SLAB_COLORS: Record<string, string> = { meydan: "plaza", park: "grass", durak: "pave" };
 
 /** Kayalık yüzen ada: üstte toprak, aşağı doğru daralan katmanlar + kenarlarda taş kayalar. */
 const IslandBase: React.FC = () => {
@@ -53,13 +54,15 @@ const IslandBase: React.FC = () => {
 };
 
 const Ground: React.FC = () => {
+  const S = useSeason();
+  const slabColor = (k: string) => (k === "plaza" ? (S.snow ? S.pave : M.plaza) : k === "grass" ? S.grass : S.pave);
   const cells: React.ReactNode[] = [];
   for (let c = 0; c < COLS; c++) {
     for (let r = 0; r < ROWS; r++) {
       const [cx, cz] = cellCenter(c, r);
       const own = VENUES.find((v) => v.cell[0] === c && v.cell[1] === r && SLAB_COLORS[v.id]);
-      cells.push(<BaseBox key={`${c}-${r}`} size={[SIDEWALK, SLAB_TOP, SIDEWALK]} pos={[cx, 0, cz]} color={own ? SLAB_COLORS[own.id] : M.pave} />);
-      cells.push(<BaseBox key={`k${c}-${r}`} size={[SIDEWALK + 0.3, 0.1, SIDEWALK + 0.3]} pos={[cx, 0, cz]} color={M.curb} />);
+      cells.push(<BaseBox key={`${c}-${r}`} size={[SIDEWALK, SLAB_TOP, SIDEWALK]} pos={[cx, 0, cz]} color={own ? slabColor(SLAB_COLORS[own.id]) : S.pave} />);
+      cells.push(<BaseBox key={`k${c}-${r}`} size={[SIDEWALK + 0.3, 0.1, SIDEWALK + 0.3]} pos={[cx, 0, cz]} color={S.curb} />);
       if (!own || own.id === "durak") cells.push(
         <group key={`p${c}-${r}`} position={[cx, SLAB_TOP, cz]}><Paving size={SIDEWALK - 0.1} y={0.006} /></group>,
       );
@@ -77,7 +80,7 @@ const Ground: React.FC = () => {
   return (
     <group>
       <IslandBase />
-      <BaseBox size={[WORLD_W + 6, 0.04, WORLD_D + 6]} pos={[0, -0.04, 0]} color={M.asphalt} />
+      <BaseBox size={[WORLD_W + 6, 0.04, WORLD_D + 6]} pos={[0, -0.04, 0]} color={S.asphalt} />
       {dashes}
       {cells}
     </group>
@@ -86,6 +89,7 @@ const Ground: React.FC = () => {
 
 /** Sokak donanımı: ağaçlar, lambalar, park halindeki arabalar (deterministik yerleşim). */
 const StreetFurniture: React.FC = () => {
+  const S = useSeason();
   const out: React.ReactNode[] = [];
   let n = 0;
   for (let c = 0; c < COLS; c++) {
@@ -106,8 +110,50 @@ const StreetFurniture: React.FC = () => {
     { p: [10, zLine(3) - 0.6], rot: -Math.PI / 2, color: M.mint }, { p: [xLine(5) - 0.6, -6], rot: 0, color: M.orange },
     { p: [30, zLine(4) - 0.6], rot: Math.PI / 2, taxi: true },
   ];
+  if (S.fallenLeaves) {
+    for (let i = 0; i < 120; i++) {
+      const cc = Math.floor(rand(31, i) * COLS), rr = Math.floor(rand(32, i) * ROWS);
+      const [cx, cz] = cellCenter(cc, rr);
+      const plaza = i % 4 === 0;
+      const [px, pz] = plaza ? cellCenter(2, 1) : [cx, cz];
+      out.push(
+        <mesh key={`lf${i}`} position={[px + (rand(33, i) - 0.5) * 9.6, SLAB_TOP + 0.03, pz + (rand(34, i) - 0.5) * 9.6]} rotation={[0, rand(35, i) * 6, 0]} material={mat(S.leaves[i % 3])}>
+          <boxGeometry args={[0.28, 0.02, 0.2]} />
+        </mesh>,
+      );
+    }
+  }
   cars.forEach((c, i) => out.push(<MCar key={`car${i}`} pos={[c.p[0], 0, c.p[1]]} rotY={c.rot} color={c.color} taxi={c.taxi} />));
   return <>{out}</>;
+};
+
+/** Hava durumu parçacıkları: kar, yaprak, çiçek yaprağı. Konumlar yalnızca kareden türetilir (deterministik). */
+const Particles: React.FC<{ frame: number; kind: "kar" | "yaprak" | "cicek"; leaves: string[] }> = ({ frame, kind, leaves }) => {
+  const H = 34;
+  const groups = kind === "kar" ? [{ n: 280, color: "#FFFFFF", size: 4.5 }] : kind === "cicek" ? [{ n: 110, color: "#F7C6D6", size: 5 }] : leaves.map((c) => ({ n: 34, color: c, size: 7 }));
+  return (
+    <>
+      {groups.map((g, gi) => {
+        const arr = new Float32Array(g.n * 3);
+        for (let i = 0; i < g.n; i++) {
+          const k = i + gi * 1000;
+          const spd = kind === "kar" ? 0.06 + 0.05 * rand(14, k) : 0.035 + 0.035 * rand(14, k);
+          const y = (((rand(13, k) * H - frame * spd) % H) + H) % H;
+          arr[i * 3] = (rand(11, k) - 0.5) * (WORLD_W + 8) + Math.sin(frame / 28 + k) * 1.0;
+          arr[i * 3 + 1] = y + 0.3;
+          arr[i * 3 + 2] = (rand(12, k) - 0.5) * (WORLD_D + 8) + Math.cos(frame / 33 + k * 1.7) * 1.0;
+        }
+        return (
+          <points key={gi} frustumCulled={false}>
+            <bufferGeometry>
+              <bufferAttribute attach="attributes-position" args={[arr, 3]} />
+            </bufferGeometry>
+            <pointsMaterial color={g.color} size={g.size} sizeAttenuation={false} toneMapped={false} />
+          </points>
+        );
+      })}
+    </>
+  );
 };
 
 /** "Olay burada" vurgusu: ışık sütunu + yer halkası (establishing). */
@@ -132,12 +178,15 @@ export type MahalleParams = {
   pets?: boolean;
   ambient?: boolean;
   market?: boolean;
+  /** Mevsim (seasons.json). Varsayılan: yaz. */
+  season?: SeasonId;
   /** Yalnız bu mekânın hücresini yüzen ada olarak göster ("mekân kartı"). */
   solo?: string | null;
 };
 
 /** Tek hücrelik yüzen ada (kayalık taban + döşeme). */
 const SoloBase: React.FC<{ cell: [number, number] }> = ({ cell }) => {
+  const S = useSeason();
   const [cx, cz] = cellCenter(cell[0], cell[1]);
   const W = SIDEWALK + 1.2;
   return (
@@ -156,15 +205,16 @@ const SoloBase: React.FC<{ cell: [number, number] }> = ({ cell }) => {
           </mesh>
         );
       })}
-      <BaseBox size={[SIDEWALK + 0.6, SLAB_TOP + 0.05, SIDEWALK + 0.6]} pos={[0, -0.05, 0]} color={M.curb} />
-      <BaseBox size={[SIDEWALK, SLAB_TOP, SIDEWALK]} pos={[0, 0, 0]} color={M.pave} />
+      <BaseBox size={[SIDEWALK + 0.6, SLAB_TOP + 0.05, SIDEWALK + 0.6]} pos={[0, -0.05, 0]} color={S.curb} />
+      <BaseBox size={[SIDEWALK, SLAB_TOP, SIDEWALK]} pos={[0, 0, 0]} color={S.pave} />
       <group position={[0, SLAB_TOP, 0]}><Paving size={SIDEWALK - 0.1} y={0.006} /></group>
     </group>
   );
 };
 
-export const Mahalle: React.FC<{ frame: number } & MahalleParams> = ({ frame, light, highlight, cast = "default", pets = true, ambient = true, market, solo }) => {
-  const lp = LIGHTS[light];
+export const Mahalle: React.FC<{ frame: number } & MahalleParams> = ({ frame, light, highlight, cast = "default", pets = true, ambient = true, market, solo, season = "yaz" }) => {
+  const lp = lightFor(light, season);
+  const sv = SEASONS[season].visual;
   let people = cast === "none" ? [] : cast === "default" ? DEFAULT_CAST : cast;
   const soloCell = solo ? venue(solo).cell : null;
   const inSolo = (x: number, z: number) => {
@@ -176,7 +226,7 @@ export const Mahalle: React.FC<{ frame: number } & MahalleParams> = ({ frame, li
   const centers: Record<string, [number, number]> = {};
   for (let c = 0; c < COLS; c++) for (let r = 0; r < ROWS; r++) centers[`${c},${r}`] = cellCenter(c, r);
   return (
-    <LightCtx.Provider value={{ light: lp, frame }}>
+    <LightCtx.Provider value={{ light: lp, frame, season }}>
       <color attach="background" args={[lp.bg]} />
       <fog attach="fog" args={[lp.bg, lp.fogNear, lp.fogFar]} />
       <hemisphereLight args={[lp.hemiSky, lp.hemiGround, lp.hemiI]} />
@@ -212,6 +262,7 @@ export const Mahalle: React.FC<{ frame: number } & MahalleParams> = ({ frame, li
       )}
       {ambient && cast !== "none" && !soloCell && <Ambient frame={frame} centers={centers} />}
       {highlight && <Beacon id={highlight} frame={frame} />}
+      {sv.particles && <Particles frame={frame} kind={sv.particles} leaves={sv.leaves} />}
     </LightCtx.Provider>
   );
 };

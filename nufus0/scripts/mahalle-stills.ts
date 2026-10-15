@@ -16,6 +16,7 @@ const allShots = ["genel", ...VENUES.flatMap((v) => [`${v.id}:orta`])];
 const allCards = VENUES.map((v) => `${v.id}:kart`);
 const shots = (opt("shots") ?? "genel").split(",").flatMap((s) => (s === "hepsi" ? allShots : s === "kartlar" ? allCards : [s]));
 const lights = (opt("light") ?? "ogle").split(",");
+const seasons = (opt("season") ?? "yaz").split(",");
 const frame = Number(opt("frame") ?? 0);
 const highlight = opt("highlight") ?? null;
 
@@ -28,12 +29,12 @@ const highlight = opt("highlight") ?? null;
   const chromiumOptions = { gl: glMode() } as const;
   const browser = await openBrowser("chrome", { browserExecutable, chromiumOptions, chromeMode: "headless-shell" });
   for (const shot of shots) {
-    for (const light of lights) {
-      const inputProps = { shot, frame, params: { light, highlight, market: flag("market"), cast: flag("empty") ? "none" : "default", solo: shot.endsWith(":kart") ? shot.split(":")[0] : null } };
+    for (const light of lights) for (const season of seasons) {
+      const inputProps = { shot, frame, params: { light, highlight, market: flag("market"), cast: flag("empty") ? "none" : "default", solo: shot.endsWith(":kart") ? shot.split(":")[0] : null, season } };
       const composition = await selectComposition({ serveUrl, id: "MahalleDebug", inputProps, browserExecutable, chromiumOptions, logLevel: "error" });
-      const out = path.join(dir, `${shot.replace(":", "_")}__${light}.png`);
+      const out = path.join(dir, `${shot.replace(":", "_")}__${light}${seasons.length > 1 || seasons[0] !== "yaz" ? `__${season}` : ""}.png`);
       await renderStill({ composition, serveUrl, inputProps, frame: 0, output: out, puppeteerInstance: browser, chromiumOptions, browserExecutable, logLevel: "error", timeoutInMilliseconds: 240000 });
-      console.log(`  ${shot} · ${light} → ${path.relative(ROOT, out)}`);
+      console.log(`  ${shot} · ${light} · ${season} → ${path.relative(ROOT, out)}`);
     }
   }
   await browser.close({ silent: true });

@@ -4,6 +4,8 @@
   "seed": "ILK_GUN",
   "title": "Bir Cümle, Altı Kişi",
   "status": "DRAFT",
+  "season": "sonbahar",
+  "timeOfDay": "sabah",
   "cast": [
     "nil",
     "nuri",

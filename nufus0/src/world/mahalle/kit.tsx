@@ -6,16 +6,20 @@ import { BaseBox, Box, Cone, Cyl, Glow, Shadow, V3 } from "../primitives";
 import { textTexture } from "../textTexture";
 import { rand } from "../../utils/deterministic";
 import { LIGHTS, LightPreset, M } from "./palette";
+import { SEASONS, SNOW, SeasonId, SeasonVisual } from "./seasons";
+import { TBase, roofCoilMaterial } from "./tex";
 
-export const LightCtx = createContext<{ light: LightPreset; frame: number }>({ light: LIGHTS.ogle, frame: 0 });
+export const LightCtx = createContext<{ light: LightPreset; frame: number; season: SeasonId }>({ light: LIGHTS.ogle, frame: 0, season: "yaz" });
 export const useLight = () => useContext(LightCtx);
+export const useSeason = (): SeasonVisual => SEASONS[useContext(LightCtx).season].visual;
+export const useSeasonId = (): SeasonId => useContext(LightCtx).season;
 
 /* ------------------------------------------------------------------ cephe: pencereler */
 /** Bir cephe (z+ veya x+) üzerine pencere ızgarası. `face`: "z" → +z yüzü, "x" → +x yüzü. */
 export const Facade: React.FC<{
   w: number; d: number; floors: number; floorH?: number; y0?: number; face: "z" | "x"; seed: number;
-  cols?: number; winW?: number; winH?: number; skipGround?: boolean; frameColor?: string; litBias?: number;
-}> = ({ w, d, floors, floorH = 3, y0 = 0, face, seed, cols, winW = 1.0, winH = 1.3, skipGround, frameColor = M.white, litBias = 0 }) => {
+  cols?: number; winW?: number; winH?: number; skipGround?: boolean; frameColor?: string; litBias?: number; shutters?: string;
+}> = ({ w, d, floors, floorH = 3, y0 = 0, face, seed, cols, winW = 1.0, winH = 1.3, skipGround, frameColor = M.white, litBias = 0, shutters }) => {
   const { light } = useLight();
   const span = face === "z" ? w : d;
   const n = cols ?? Math.max(1, Math.floor(span / 2.2));
@@ -34,6 +38,13 @@ export const Facade: React.FC<{
           <mesh position={pos} material={lit ? basic(M.warm) : mat(M.glass, { rough: 0.35 })}>
             <boxGeometry args={size} />
           </mesh>
+          {/* denizlik */}
+          <Box size={face === "z" ? [winW + 0.4, 0.09, 0.22] : [0.22, 0.09, winW + 0.4]} pos={[pos[0] + (face === "x" ? 0.06 : 0), pos[1] - winH / 2 - 0.12, pos[2] + (face === "z" ? 0.06 : 0)]} color={M.cream} />
+          {shutters &&
+            [-1, 1].map((sd) => (
+              <Box key={sd} size={face === "z" ? [0.34, winH + 0.1, 0.06] : [0.06, winH + 0.1, 0.34]}
+                pos={face === "z" ? [pos[0] + sd * (winW / 2 + 0.28), pos[1], pos[2] + 0.02] : [pos[0] + 0.02, pos[1], pos[2] + sd * (winW / 2 + 0.28)]} color={shutters} />
+            ))}
         </group>,
       );
     }
@@ -100,8 +111,28 @@ export const WallText: React.FC<{ text: string; pos: V3; w: number; h?: number; 
 
 /* ------------------------------------------------------------------ ağaç / lamba / araç / bank */
 export const MTree: React.FC<{ pos: V3; seed?: number; scale?: number; tone?: 0 | 1 | 2 }> = ({ pos, seed = 1, scale = 1, tone = 0 }) => {
+  const S = useSeason();
   const k = scale * (0.88 + 0.24 * rand(seed, 1));
-  const cols = [M.leaf, M.leaf2, M.leaf3];
+  const cols = S.leaves;
+  if (S.bare) {
+    return (
+      <group position={pos} scale={[k, k, k]} rotation={[0, rand(seed, 2) * 6, 0]}>
+        <Cyl r={0.2} rTop={0.12} h={2.5} color={M.woodDark} seg={5} />
+        {[0, 1, 2, 3, 4].map((i) => (
+          <group key={i} position={[0, 1.7 + i * 0.28, 0]} rotation={[0, i * 1.3 + rand(seed, i), 0]}>
+            <Box size={[0.1, 1.5 - i * 0.12, 0.1]} pos={[0.45, 0.55, 0]} rot={[0, 0, -0.75 + i * 0.05]} color={M.woodDark} />
+            <mesh position={[0.95 - i * 0.05, 1.1 - i * 0.04, 0]} material={mat(SNOW)}>
+              <icosahedronGeometry args={[0.2, 0]} />
+            </mesh>
+          </group>
+        ))}
+        <mesh position={[0, 3.0, 0]} material={mat(SNOW)}>
+          <icosahedronGeometry args={[0.32, 0]} />
+        </mesh>
+        <Shadow pos={[0, 0, 0]} size={[2.2, 2.2]} opacity={0.16} />
+      </group>
+    );
+  }
   return (
     <group position={pos} scale={[k, k, k]} rotation={[0, rand(seed, 2) * 6, 0]}>
       <Cyl r={0.2} rTop={0.14} h={1.5} color={M.woodDark} seg={5} />
@@ -111,6 +142,12 @@ export const MTree: React.FC<{ pos: V3; seed?: number; scale?: number; tone?: 0 
       <mesh position={[0.45, 3.1, -0.2]} material={mat(cols[(tone + 1) % 3])}>
         <icosahedronGeometry args={[0.85, 0]} />
       </mesh>
+      {S.blossom &&
+        [[-0.9, 2.9, 0.4], [0.8, 2.4, 0.8], [0.1, 3.5, 0.5], [-0.4, 2.2, -1.0]].map((p, i) => (
+          <mesh key={i} position={p as V3} material={mat("#F4B6C9")}>
+            <icosahedronGeometry args={[0.42, 0]} />
+          </mesh>
+        ))}
       <Shadow pos={[0, 0, 0]} size={[2.6, 2.6]} opacity={0.22} />
     </group>
   );
@@ -219,13 +256,25 @@ export const StringLights: React.FC<{ from: V3; to: V3; n?: number; frame: numbe
   );
 };
 
-/** Tek/çift eğimli düşük çatı veya düz parapet ile kapalı bina gövdesi. */
-export const Block: React.FC<{ w: number; d: number; h: number; y0?: number; color: string; trim?: string; parapet?: boolean }> = ({ w, d, h, y0 = 0, color, trim = M.white, parapet = true }) => (
-  <group>
-    <BaseBox size={[w, h, d]} pos={[0, y0, 0]} color={color} />
-    {parapet && <BaseBox size={[w + 0.3, 0.35, d + 0.3]} pos={[0, y0 + h, 0]} color={trim} />}
-  </group>
-);
+/** Kapalı bina gövdesi: dokulu duvar + taş kaide + parapet + (kışın) kar + iniş borusu. */
+export const Block: React.FC<{ w: number; d: number; h: number; y0?: number; color: string; trim?: string; parapet?: boolean; tex?: import("./tex").TexKind; ac?: number }> = ({ w, d, h, y0 = 0, color, trim = M.white, parapet = true, tex = "plaster", ac = 0 }) => {
+  const S = useSeason();
+  return (
+    <group>
+      <TBase size={[w, h, d]} pos={[0, y0, 0]} color={color} tex={tex} />
+      <TBase size={[w + 0.14, 1.0, d + 0.14]} pos={[0, y0, 0]} color="#CFC4AE" tex="stone" />
+      {parapet && <BaseBox size={[w + 0.3, 0.35, d + 0.3]} pos={[0, y0 + h, 0]} color={trim} />}
+      {S.snow && <BaseBox size={[w + 0.1, 0.18, d + 0.1]} pos={[0, y0 + h + 0.35, 0]} color={SNOW} />}
+      <BaseBox size={[0.13, h, 0.13]} pos={[w / 2 + 0.09, y0, d / 2 + 0.09]} color={M.grey} />
+      {Array.from({ length: ac }, (_, i) => (
+        <group key={i} position={[w / 2 + 0.28, y0 + 4.4 + i * 3, -d / 4 + (i % 2) * 1.2]}>
+          <Box size={[0.5, 0.45, 0.8]} color={M.white} />
+          <Box size={[0.04, 0.3, 0.55]} pos={[0.26, 0, 0]} color={M.greyDark} />
+        </group>
+      ))}
+    </group>
+  );
+};
 
 export const WaterTank: React.FC<{ pos: V3 }> = ({ pos }) => (
   <group position={pos}>
@@ -251,18 +300,25 @@ export const Cypress: React.FC<{ pos: V3; seed?: number; scale?: number }> = ({ 
       <Cone r={0.75} h={2.2} pos={[0, 0.5, 0]} color={M.greenDark} seg={6} />
       <Cone r={0.6} h={1.9} pos={[0, 1.9, 0]} color={M.green} seg={6} />
       <Cone r={0.4} h={1.2} pos={[0, 3.2, 0]} color={M.greenDark} seg={6} />
+      {useSeason().snow && <Cone r={0.34} h={0.9} pos={[0, 3.4, 0]} color={SNOW} seg={6} />}
     </group>
   );
 };
 
-/** Dört yüzlü (kırma) kiremit çatı. Taban merkezi pos, ayak izi w×d, yükseklik h. */
+/** Dört yüzlü (kırma) kiremit çatı. Taban merkezi pos, ayak izi w×d, yükseklik h. Kışın kar örtüsü. */
 export const HipRoof: React.FC<{ pos: V3; w: number; d: number; h: number; color?: string; overhang?: number }> = ({ pos, w, d, h, color = M.roofTile, overhang = 0.45 }) => {
+  const S = useSeason();
   const sx = (w + overhang * 2) / Math.SQRT2, sz = (d + overhang * 2) / Math.SQRT2;
   return (
     <group position={pos} scale={[sx, 1, sz]}>
-      <mesh position={[0, h / 2, 0]} rotation={[0, Math.PI / 4, 0]} material={mat(color)}>
+      <mesh position={[0, h / 2, 0]} rotation={[0, Math.PI / 4, 0]} material={roofCoilMaterial(color)}>
         <coneGeometry args={[1, h, 4]} />
       </mesh>
+      {S.snow && (
+        <mesh position={[0, h * 0.18 + (h * 0.84) / 2, 0]} rotation={[0, Math.PI / 4, 0]} material={mat(SNOW)}>
+          <coneGeometry args={[0.8, h * 0.84, 4]} />
+        </mesh>
+      )}
     </group>
   );
 };
@@ -328,6 +384,14 @@ export const Fence: React.FC<{ from: V3; to: V3; color?: string; h?: number }> =
 /** Taş döşeme dokusu (kare plaka üstüne). */
 let pavingMat: THREE.Material | null = null;
 export const Paving: React.FC<{ size: number; y?: number; plaza?: boolean }> = ({ size, y = 0.01, plaza }) => {
+  const snow = useSeason().snow;
+  if (snow) {
+    return (
+      <mesh position={[0, y, 0]} rotation={[-Math.PI / 2, 0, 0]} material={mat("#E9F0F6")}>
+        <planeGeometry args={[size, size]} />
+      </mesh>
+    );
+  }
   if (!pavingMat || plaza) {
     const tex = textTexture(plaza ? "paving-plaza" : "paving", 512, 512, (g, w, h) => {
       const n = 10;

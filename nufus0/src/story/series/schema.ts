@@ -187,6 +187,9 @@ export const episodeSeedsSchema = z.object({
   ),
 });
 
+export const SEASON_IDS = ["ilkbahar", "yaz", "sonbahar", "kis"] as const;
+export const seasonIdSchema = z.enum(SEASON_IDS);
+
 /* ------------------------------------------------------------------ bölüm senaryosu (episodes/*.json) */
 export const episodeScriptSchema = z.object({
   version: z.number(),
@@ -194,6 +197,8 @@ export const episodeScriptSchema = z.object({
   seed: z.string(),
   title: z.string(),
   status: z.enum(["DRAFT", "APPROVED", "VOICED", "RENDERED", "PUBLISHED"]),
+  season: seasonIdSchema.optional(),
+  timeOfDay: z.enum(["sabah", "ogle", "aksam", "gece"]).optional(),
   cast: z.array(z.string()),
   flats: z.array(z.string()),
   premise: z.string(),
@@ -212,4 +217,26 @@ export const episodeScriptSchema = z.object({
   soundPlan: z.object({ ambience: z.array(z.string()), events: z.array(z.string()), search: z.array(z.string()), note: z.string() }),
   assetNeeds: z.array(z.string()),
   risks: z.array(z.string()),
+});
+
+/* ------------------------------------------------------------------ mevsimler (seasons.json) */
+export const TIME_OF_DAY = ["sabah", "ogle", "aksam", "gece"] as const;
+export const seasonVisualSchema = z.object({
+  grass: z.string(), grassDark: z.string(), leaves: z.array(z.string()).length(3), blossom: z.boolean(), bare: z.boolean(), snow: z.boolean(),
+  pave: z.string(), asphalt: z.string(), curb: z.string(), dirt: z.string(),
+  bgSabah: z.string(), bgOgle: z.string(), sunMul: z.number(), sunColor: z.string(),
+  particles: z.enum(["kar", "yaprak", "cicek"]).nullable(), fallenLeaves: z.boolean(), parasols: z.boolean(), pumpkins: z.boolean(), chimneySmoke: z.boolean(),
+  cloth: z.enum(["hafif", "yazlık", "ceketli", "kalın"]),
+});
+export const seasonsSchema = z.object({
+  version: z.number(),
+  note: z.string(),
+  monthMap: z.record(z.string(), seasonIdSchema),
+  rules: z.array(z.string()),
+  seasons: z.array(
+    z.object({
+      id: seasonIdSchema, name: z.string(), months: z.array(z.number().int().min(1).max(12)), mood: z.string(), weather: z.array(z.string()),
+      visual: seasonVisualSchema, mahalleLife: z.array(z.string()), eventIdeas: z.array(z.string()).min(3), festivals: z.array(z.string()),
+    }),
+  ).length(4),
 });

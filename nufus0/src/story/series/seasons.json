@@ -1,0 +1,77 @@
+{
+  "version": 4,
+  "note": "Mevsim sistemi. Mahalle gerçek takvimle aynı mevsimde yaşar; her bölümün senaryosunda `season` ve `timeOfDay` belirtilir. `visual` blokları 3D kit tarafından okunur (src/world/mahalle). Hassas konu yok: hava, doğa, mahalle yaşamı.",
+  "monthMap": { "1": "kis", "2": "kis", "3": "ilkbahar", "4": "ilkbahar", "5": "ilkbahar", "6": "yaz", "7": "yaz", "8": "yaz", "9": "sonbahar", "10": "sonbahar", "11": "sonbahar", "12": "kis" },
+  "rules": [
+    "Bir bölüm içinde mevsim değişmez; mevsim geçişi en az 3 bölümlük 'geçiş' yayıyla anlatılır (ilk kar, ilk yaprak vb.).",
+    "Mevsim sahneler arası tutarlıdır: kışın çınar çıplak, yazın çay ocağı masaları parasollu, sonbaharda kaldırımda yaprak vardır.",
+    "Hava olayları kararı belirleyen sebep olmaz; yalnızca olayın ortamı ve komedisidir.",
+    "Mevsimlik etkinlikler mahalle ölçeğinde ve nötrdür; dinî/siyasi bayram işlenmez."
+  ],
+  "seasons": [
+    {
+      "id": "ilkbahar",
+      "name": "İlkbahar",
+      "months": [3, 4, 5],
+      "mood": "Uyanış, ev temizliği, balkon çiçekleri, taşınma mevsimi.",
+      "weather": ["güneşli", "hafif yağmur", "rüzgârlı"],
+      "visual": {
+        "grass": "#8FCB5F", "grassDark": "#79B84F", "leaves": ["#8CCB5E", "#A6D96A", "#76BC52"], "blossom": true, "bare": false, "snow": false,
+        "pave": "#CDBF9F", "asphalt": "#59606A", "curb": "#B8B2A6", "dirt": "#A18462",
+        "bgSabah": "#9FD0F2", "bgOgle": "#5BB0F5", "sunMul": 1.0, "sunColor": "#FFE9C0",
+        "particles": "cicek", "fallenLeaves": false, "parasols": false, "pumpkins": false, "chimneySmoke": false, "cloth": "hafif"
+      },
+      "mahalleLife": ["Balkonlar çiçek açar", "Meydanda semt pazarı kalabalıklaşır", "Çocuklar parkta oynar", "Taşınma kolileri kapı önünde"],
+      "eventIdeas": ["Balkon çiçeği yarışı (Hacer Hanım jüri olmak ister)", "Kapı önü bahçe kavgası", "İlk taşınma günü: yeni kiracı", "Kedi yavrularının mahalleye dağılması", "Bahar temizliği: halı silkeleme saati kavgası"],
+      "festivals": ["Çınar Bahar Şenliği (meydan, çiçek ve fidan takası)"]
+    },
+    {
+      "id": "yaz",
+      "name": "Yaz",
+      "months": [6, 7, 8],
+      "mood": "Sıcak, buzlu çay, uzun akşamlar, TERAS 7 sezonu.",
+      "weather": ["güneşli", "bunaltıcı sıcak", "serin akşam"],
+      "visual": {
+        "grass": "#7FA164", "grassDark": "#6A8C54", "leaves": ["#5F9B4F", "#4C8742", "#7DB45A"], "blossom": false, "bare": false, "snow": false,
+        "pave": "#CDBF9F", "asphalt": "#59606A", "curb": "#B8B2A6", "dirt": "#A18462",
+        "bgSabah": "#8FC3EA", "bgOgle": "#53A9F2", "sunMul": 1.15, "sunColor": "#FFE6B8",
+        "particles": null, "fallenLeaves": false, "parasols": true, "pumpkins": false, "chimneySmoke": false, "cloth": "yazlık"
+      },
+      "mahalleLife": ["Çay ocağında parasol ve buzlu çay", "Kaldırıma çıkarılan sandalyeler", "TERAS 7 hafta sonu geceleri uzar", "Çocuklar çeşmede serinler"],
+      "eventIdeas": ["Buzlu çay krizi (sıcak rekoru)", "Elektrik kesintisi: dondurma erir", "TERAS 7 gürültü şikâyeti", "Yaz tatili dönüşü: kayıp anahtarlar", "Kuaförde klima arızası"],
+      "festivals": ["Çınar Yaz Gecesi (açık hava sineması, meydan)"]
+    },
+    {
+      "id": "sonbahar",
+      "name": "Sonbahar",
+      "months": [9, 10, 11],
+      "mood": "Yaprak, ilk yağmur, kışlık hazırlık, okul açılışı.",
+      "weather": ["bulutlu", "ilk yağmur", "rüzgârlı"],
+      "visual": {
+        "grass": "#93A55E", "grassDark": "#7E9050", "leaves": ["#E08A3C", "#C8452F", "#EBC24B"], "blossom": false, "bare": false, "snow": false,
+        "pave": "#CFC2A4", "asphalt": "#565D66", "curb": "#B8B2A6", "dirt": "#A58A68",
+        "bgSabah": "#B9C8D6", "bgOgle": "#7DB4E6", "sunMul": 0.95, "sunColor": "#FFD8A0",
+        "particles": "yaprak", "fallenLeaves": true, "parasols": false, "pumpkins": true, "chimneySmoke": true, "cloth": "ceketli"
+      },
+      "mahalleLife": ["Kaldırımlarda yaprak yığınları", "Bakkalda kış hazırlığı: salça, turşu, kavanoz", "Okul servisi saatleri", "Fırın bacası tüter"],
+      "eventIdeas": ["Yaprak süpürme kavgası (kimin kapı önü?)", "Salça günü: komşular bir araya", "İlk yağmur: çatı akıtması, Cemal Bey'in yönetim toplantısı", "Okul servisi karışıklığı", "Kış hazırlığı: soba mı kalorifer mi?"],
+      "festivals": ["Çınar Hasat Pazarı (meydan, kavanoz ve turşu tezgâhları)"]
+    },
+    {
+      "id": "kis",
+      "name": "Kış",
+      "months": [12, 1, 2],
+      "mood": "Kar, soba kokusu, sıcak çorba, kapanan günler ve yakınlık.",
+      "weather": ["kar", "ayaz", "puslu"],
+      "visual": {
+        "grass": "#EAF1F7", "grassDark": "#DDE7F0", "leaves": ["#DDE7F0", "#EAF1F7", "#CFDCE8"], "blossom": false, "bare": true, "snow": true,
+        "pave": "#DDE5EC", "asphalt": "#69727C", "curb": "#F1F4F8", "dirt": "#E6ECF2",
+        "bgSabah": "#C9D6E4", "bgOgle": "#9FC4E8", "sunMul": 0.85, "sunColor": "#E8F0FF",
+        "particles": "kar", "fallenLeaves": false, "parasols": false, "pumpkins": false, "chimneySmoke": true, "cloth": "kalın"
+      },
+      "mahalleLife": ["Çatılar ve ağaçlar karla kaplı", "Çay ocağında sıcak çay ve soba", "Parkta kardan adam", "Bacalardan duman"],
+      "eventIdeas": ["Kar küreme sırası kavgası", "Kalorifer arızası: Cemal Bey ve Yıldız Apartmanı", "Kaygan kaldırım: bakkal kumu tükendi", "Kartopu düellosu (Efe ve arkadaşları)", "Kar tatili: mahalle çorba günü"],
+      "festivals": ["Çınar Kış Pazarı (sıcak içecek ve çorba tezgâhları)"]
+    }
+  ]
+}

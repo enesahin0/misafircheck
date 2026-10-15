@@ -45,7 +45,8 @@ try {
   if (Math.abs(cur - 60) > 0.01) errors.push(`vuruşlar ${cur} sn'de bitiyor; 60 sn olmalı`);
 
   // süre tahmini: vuruş başına anlatım sığıyor mu?
-  console.log(`\nSENARYO: ${ep.id} · ${ep.title}  [${ep.status}]`);
+  console.log(`\nSENARYO: ${ep.id} · ${ep.title}  [${ep.status}] · ${ep.season ?? "mevsim?"}/${ep.timeOfDay ?? "saat?"}`);
+  if (!ep.season || !ep.timeOfDay) warns.push("senaryoda `season` ve `timeOfDay` belirtilmeli (3D sahne bunlarla kurulur)");
   let total = 0;
   for (const b of ep.beats) {
     const lines = ep.narration.filter((l) => l.beat === b.n);
