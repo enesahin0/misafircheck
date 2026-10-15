@@ -1,0 +1,11 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body style="margin:0;background:#FFFFFF">
+<svg viewBox="0 0 1080 1080" width="1080" height="1080" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script>
+<script>
+window.renderAt = t => {
+  let o = `<rect width="1080" height="1080" fill="#FFFFFF"/>`;
+  o += M.canli('gufi', { t: 0.3, x: 540, y: 790, boy: 470, duygu: 'merak', bakHedef: 'kamera', canlilik: false, parla: 0 });
+  document.getElementById('dinamik').innerHTML = o;
+};
+</script></body></html>
