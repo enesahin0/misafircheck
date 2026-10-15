@@ -1,0 +1,11 @@
+{
+  "note": "Ses kütüphanesi lisans defteri. Buraya yalnızca ticari kullanıma açık (CC0 veya eşdeğeri) paketler girer. Yeni paket eklerken kaynak, lisans ve indirme tarihi zorunludur.",
+  "packs": {
+    "kenney/impact-sounds": { "source": "https://kenney.nl/assets/impact-sounds", "license": "CC0-1.0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/", "author": "Kenney (www.kenney.nl)", "retrieved": "2026-10-15", "attribution": "isteğe bağlı" },
+    "kenney/interface-sounds": { "source": "https://kenney.nl/assets/interface-sounds", "license": "CC0-1.0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/", "author": "Kenney (www.kenney.nl)", "retrieved": "2026-10-15", "attribution": "isteğe bağlı" },
+    "kenney/ui-audio": { "source": "https://kenney.nl/assets/ui-audio", "license": "CC0-1.0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/", "author": "Kenney (www.kenney.nl)", "retrieved": "2026-10-15", "attribution": "isteğe bağlı" },
+    "kenney/digital-audio": { "source": "https://kenney.nl/assets/digital-audio", "license": "CC0-1.0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/", "author": "Kenney (www.kenney.nl)", "retrieved": "2026-10-15", "attribution": "isteğe bağlı" },
+    "kenney/sci-fi-sounds": { "source": "https://kenney.nl/assets/sci-fi-sounds", "license": "CC0-1.0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/", "author": "Kenney (www.kenney.nl)", "retrieved": "2026-10-15", "attribution": "isteğe bağlı" },
+    "kenney/rpg-audio": { "source": "https://kenney.nl/assets/rpg-audio", "license": "CC0-1.0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/", "author": "Kenney (www.kenney.nl)", "retrieved": "2026-10-15", "attribution": "isteğe bağlı" }
+  }
+}

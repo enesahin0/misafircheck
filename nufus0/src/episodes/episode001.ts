@@ -214,6 +214,10 @@ const raw = {
       { id: "reveal-hit", src: "sfx/_generated/hit_low.wav", from: 1650, volume: 0.9 },
       { id: "alarm", src: "sfx/_generated/alarm.wav", from: 1712, volume: 0.55 },
       { id: "cut", src: "sfx/_generated/cut.wav", from: 1766, volume: 1 },
+      // Kütüphane (CC0, Kenney): Leyla'nın yürüyüşü, çekmece, dosya sesi
+      ...Array.from({ length: 15 }, (_, i) => ({ id: `step-${i}`, tag: "footstep carpet", pick: i % 5, from: 1438 + i * 5, volume: 0.22 })),
+      { id: "drawer", tag: "door close", pick: 1, from: 1512, volume: 0.35 },
+      { id: "file-pull", tag: "book flip", pick: 0, from: 1548, volume: 0.45 },
     ],
     music: { src: "music/_generated/drone.wav", volume: 0.42 },
   },

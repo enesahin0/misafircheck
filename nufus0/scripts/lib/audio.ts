@@ -21,7 +21,38 @@ const walk = (dir: string, out: string[] = []): string[] => {
   return out;
 };
 
+/** "impactMetal_heavy_002.ogg" → ["impact","metal","heavy"] (+ paket adı parçaları) */
+const tagsFor = (file: string, pack: string): string[] => {
+  const base = path.basename(file, path.extname(file));
+  const parts = base
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/[_\-.]+/g, " ")
+    .replace(/\d+/g, " ")
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(Boolean);
+  return [...new Set([...parts, ...pack.replace(/^kenney\//, "").split("-")])];
+};
+
+export const writeLibraryIndex = () => {
+  const lib = path.join(AUDIO_DIR, "library");
+  const entries = walk(lib).map((p) => {
+    const rel = path.relative(path.join(ROOT, "public"), p).split(path.sep).join("/");
+    const pack = path.relative(lib, path.dirname(p)).split(path.sep).join("/");
+    return { id: `${pack}/${path.basename(p, path.extname(p))}`, path: rel, pack, tags: tagsFor(p, pack) };
+  });
+  entries.sort((a, b) => a.id.localeCompare(b.id));
+  fs.mkdirSync(path.dirname(MANIFEST), { recursive: true });
+  fs.writeFileSync(path.join(path.dirname(MANIFEST), "audioLibrary.json"), JSON.stringify({ entries }, null, 1) + "\n");
+  // lisans defteri ile karşılaştır: defterde olmayan paket = HATA (lisanssız ses kullanılamaz)
+  const ledgerPath = path.join(lib, "ledger.json");
+  const ledger = fs.existsSync(ledgerPath) ? JSON.parse(fs.readFileSync(ledgerPath, "utf8")).packs : {};
+  const unlicensed = [...new Set(entries.map((e) => e.pack))].filter((p) => !ledger[p]);
+  return { count: entries.length, unlicensed };
+};
+
 export const writeManifest = (): string[] => {
+  writeLibraryIndex();
   const files = walk(AUDIO_DIR)
     .map((p) => path.relative(path.join(ROOT, "public"), p).split(path.sep).join("/"))
     .sort();

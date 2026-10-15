@@ -49,8 +49,12 @@ const actorKeySchema = z.object({
 export const audioSchema = z.object({
   /** public/audio/narration/<file>.(mp3|wav|m4a) — dosya yoksa o satır sessiz geçilir */
   narration: z.array(z.object({ id: z.string(), file: z.string(), from: frame, volume: z.number().default(1) })),
-  /** public/audio/<src> */
-  sfx: z.array(z.object({ id: z.string(), src: z.string(), from: frame, volume: z.number().default(0.7) })),
+  /** `src`: public/audio/<src> yolu  —YA DA—  `tag`: kütüphane etiketleri ("door close"), `pick`: sonuç sırası */
+  sfx: z.array(
+    z
+      .object({ id: z.string(), src: z.string().optional(), tag: z.string().optional(), pick: z.number().int().min(0).optional(), from: frame, volume: z.number().default(0.7) })
+      .refine((s) => !!s.src !== !!s.tag, { message: "sfx: src veya tag'den TAM biri verilmeli" }),
+  ),
   music: z.object({ src: z.string(), volume: z.number().default(0.35) }).optional(),
 });
 

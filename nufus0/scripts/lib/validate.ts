@@ -4,6 +4,7 @@ import path from "node:path";
 import { ROOT } from "./audio";
 import { OVERLAY_KEYS } from "../../src/scenes/keys";
 import type { Episode, WorldState } from "../../src/episodes/schema";
+import { pickFromLibrary, type LibEntry } from "../../src/utils/audioLibrary";
 
 export type Report = { errors: string[]; warnings: string[]; info: string[] };
 
@@ -83,9 +84,19 @@ export const validateEpisode = (ep: Episode, ws: WorldState): Report => {
     const hit = ["mp3", "wav", "m4a", "aac", "ogg"].some((e) => have.has(`audio/narration/${n.file}.${e}`));
     if (!hit) missing.push(`public/audio/narration/${n.file}.mp3`);
   });
+  let library: LibEntry[] = [];
+  try {
+    library = JSON.parse(fs.readFileSync(path.join(ROOT, "src", "generated", "audioLibrary.json"), "utf8")).entries;
+  } catch {
+    /* kütüphane dizini yok: etiketli sesler eksik sayılır */
+  }
   ep.audio.sfx.forEach((s) => {
     if (s.from >= D) err(`SFX ${s.id}: bölüm dışında.`);
-    if (!have.has(`audio/${s.src}`)) missing.push(`public/audio/${s.src}`);
+    if (s.src) {
+      if (!have.has(`audio/${s.src}`)) missing.push(`public/audio/${s.src}`);
+    } else if (s.tag && !pickFromLibrary(library, s.tag, s.pick ?? 0)) {
+      err(`SFX ${s.id}: kütüphanede '${s.tag}' etiketiyle ses bulunamadı (npm run sfx -- ${s.tag}).`);
+    }
   });
   if (ep.audio.music && !have.has(`audio/${ep.audio.music.src}`)) missing.push(`public/audio/${ep.audio.music.src}`);
   const missNarr = missing.filter((m) => m.includes("/narration/"));

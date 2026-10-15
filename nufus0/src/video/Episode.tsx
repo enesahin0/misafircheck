@@ -15,6 +15,8 @@ import type { OverlayKey } from "../scenes/keys";
 import { useFontsReady } from "../utils/fonts";
 import { C } from "../world/palette";
 import audioManifest from "../generated/audioManifest.json";
+import audioLibrary from "../generated/audioLibrary.json";
+import { pickFromLibrary, type LibEntry } from "../utils/audioLibrary";
 
 /** "lowpoly" = keskin diorama (varsayılan). "pixel" = 3D katman düşük çözünürlükte render edilip keskin büyütülür; yazılar net kalır. */
 export type RenderStyle = "lowpoly" | "pixel";
@@ -33,6 +35,10 @@ export const findNarration = (file: string): string | null => {
   return null;
 };
 export const findAudio = (src: string): string | null => (have.has(`audio/${src}`) ? `audio/${src}` : null);
+const library = audioLibrary.entries as LibEntry[];
+/** sfx girdisi → dosya yolu (src ya da kütüphane etiketi). Bulunamazsa null (o ses atlanır). */
+export const resolveSfx = (s: { src?: string; tag?: string; pick?: number }): string | null =>
+  s.src ? findAudio(s.src) : s.tag ? pickFromLibrary(library, s.tag, s.pick ?? 0)?.path ?? null : null;
 
 const AudioTracks: React.FC<{ ep: Episode }> = ({ ep }) => {
   const music = ep.audio.music && findAudio(ep.audio.music.src);
@@ -46,7 +52,7 @@ const AudioTracks: React.FC<{ ep: Episode }> = ({ ep }) => {
         />
       )}
       {ep.audio.sfx.map((s) => {
-        const p = findAudio(s.src);
+        const p = resolveSfx(s);
         return p ? (
           <Sequence key={s.id} from={s.from} layout="none">
             <Html5Audio src={staticFile(p)} volume={s.volume} />

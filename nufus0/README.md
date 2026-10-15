@@ -30,6 +30,7 @@ npm run render:001         # DOSYA 001, tam 1080x1920, 30 fps, 60.00 sn → out/
 | `npm run validate` | Bölüm verisi + süreklilik denetimi (süre, altyazı, ses, dünya durumu). |
 | `npm run audio` | Yer tutucu SFX/müziği üretir ve ses manifestini yeniler. |
 | `npm run tally` | A/B oylarını manuel CSV'den sayar (aşağıya bakın). |
+| `npm run sfx -- <etiket>` | Ses kütüphanesinde ara (ör. `npm run sfx -- door close`). Etiketsiz çalıştırırsan paketleri listeler. |
 | `npm run test:webgl` | Bu makinede tarayıcı WebGL'i çalışıyor mu? |
 | `npm run validate:universe` | Evren İncili tutarlılık denetimi (kapı numaraları, referanslar, tohumlar). |
 | `npm run render:001:pixel` | Piksel stili (3D katman 1/4 çözünürlük). `npm run stills:pixel` ile kareler. |
@@ -56,6 +57,11 @@ public/audio/narration/001_s8.mp3   ← sahne 8
 
 mp3 / wav / m4a / ogg olur. Dosya yoksa o satır sessiz geçilir (preview ve render yine çalışır). Eksik olanlar `npm run validate` ve render başında raporlanır.
 Başlangıç kareleri `src/episodes/episode001.ts` → `audio.narration[].from` içindedir. Kayıt süresi sahneden uzun/kısaysa orada kaydırın veya altyazı kareleri `captions`'ta ayarlayın. **Çıkış süresi hep tam 60.00 sn kalır.**
+
+### Ses kütüphanesi (CC0, 470 ses)
+`public/audio/library/` altında **Kenney CC0 paketleri** var (impact, interface, ui, digital, sci-fi, rpg). Tüm paketler `ledger.json` lisans defterinde kayıtlıdır (kaynak, lisans, indirme tarihi); **defterde olmayan paket varsa `npm run audio` hata verir.**
+Bölüm verisinde dosya yolu yerine **etiketle** çağrılır: `{ id: "adim", tag: "footstep carpet", pick: 2, from: 1440, volume: 0.25 }`. Aynı etiket + aynı kütüphane her zaman aynı dosyayı seçer (deterministik).
+Yeni paket eklemek: dosyaları `public/audio/library/<kaynak>/<paket>/` altına koy, `ledger.json`'a satırını yaz, `npm run audio` çalıştır.
 
 Şu an `public/audio/sfx/_generated` ve `public/audio/music/_generated` içindeki sesler **bu depodaki script ile sentezlenmiş yer tutuculardır** (telif sorunu yok).
 Kendi SFX/müziğinizi koymak için `episode001.ts` içindeki `audio.sfx` / `audio.music` yollarını değiştirin. Üçüncü taraf ses kullanırsanız lisansını `public/audio/LICENSES.md` içine yazın.
