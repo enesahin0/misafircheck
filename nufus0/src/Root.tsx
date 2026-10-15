@@ -7,6 +7,7 @@ import { worldStateSchema } from "./episodes/schema";
 import worldStateJson from "./story/worldState.json";
 import { room } from "./world/layout";
 import { ModelTest } from "./video/ModelTest";
+import { MahalleDebug, MahalleDebugProps } from "./video/MahalleDebug";
 
 const worldState = worldStateSchema.parse(worldStateJson);
 
@@ -30,6 +31,15 @@ export const RemotionRoot: React.FC = () => (
       fps={30}
       durationInFrames={1800}
       defaultProps={{ episode: episode001, worldState, style: "pixel" } satisfies EpisodeProps}
+    />
+    <Composition
+      id="MahalleDebug"
+      component={MahalleDebug}
+      width={1080}
+      height={1920}
+      fps={30}
+      durationInFrames={300}
+      defaultProps={{ shot: "genel", params: { light: "ogle" } } satisfies MahalleDebugProps}
     />
     <Composition id="Nufus0ModelTest" component={ModelTest} width={1080} height={1920} fps={30} durationInFrames={1} />
     <Composition id="Nufus0Test5s" component={CityTest5s} width={1080} height={1920} fps={30} durationInFrames={150} />

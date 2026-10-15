@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { ROOT } from "./lib/audio";
 import * as S from "../src/story/series/schema";
+import { COLS, FILLERS, PLACES, ROWS, STATIONS, VENUES, shotFor } from "../src/world/mahalle/layout";
 
 const dir = path.join(ROOT, "src", "story", "series");
 const read = (f: string) => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
@@ -134,11 +135,30 @@ try {
   const unused = nh.venues.filter((v) => !placeUse.has(v.id)).map((v) => v.id);
   if (unused.length) warns.push(`hiçbir tohumda kullanılmayan mekân: ${unused.join(", ")}`);
 
+  // 3D kit: her hücre mekân ya da dolgu; her mekânın yerleşimi, kamera planı ve istasyonları var
+  const covered = new Set<string>();
+  for (const v of VENUES) covered.add(v.cell.join(","));
+  for (const f of FILLERS) {
+    const k = f.cell.join(",");
+    if (covered.has(k)) errors.push(`3D kit: dolgu hücresi ${k} zaten bir mekâna ait`);
+    covered.add(k);
+  }
+  for (let c = 0; c < COLS; c++) for (let r = 0; r < ROWS; r++) if (!covered.has(`${c},${r}`)) errors.push(`3D kit: hücre ${c},${r} boş (mekân veya dolgu ekle)`);
+  for (const v of nh.venues) {
+    if (!PLACES[v.id]) errors.push(`3D kit: mekân '${v.id}' için yerleşim (PLACES) yok`);
+    for (const k of ["genis", "orta", "yakin"]) {
+      try { shotFor(`${v.id}:${k}`); } catch (e) { errors.push(`3D kit: ${v.id}:${k} planı kurulamadı (${(e as Error).message})`); }
+    }
+  }
+  for (const [id] of Object.entries(STATIONS)) if (!charById.has(id)) errors.push(`3D kit: istasyon karakteri '${id}' yok`);
+  for (const c of C) if (c.tier === "CORE" && !STATIONS[c.id] && !["suleyman", "cemal", "pasa"].includes(c.id)) warns.push(`3D kit: CORE karakter '${c.id}' için varsayılan istasyon yok`);
+
   const core = C.filter((c) => c.tier === "CORE").length;
   console.log(`\nMAHALLE EVRENİ · ${nh.name}`);
   console.log(`  · ${nh.venues.length} mekân (${nh.grid.cols}×${nh.grid.rows} harita), ${building.flats.length} apartman dairesi`);
   console.log(`  · ${C.length} karakter (${core} CORE, ${C.length - core} REGULAR), ${rel.edges.length} yönlü ilişki (nefret≤-2: ${hates}, sevgi≥4: ${loves})`);
   console.log(`  · ${ev.types.length} olay türü (30 bölümde ${sum.toFixed(1)}), ${arcs.arcs.length} yay, ${arcs.guestSystem.examples.length} konuk örneği, gündem: ${gundem.adaptationExamples.length} uyarlama örneği`);
+  console.log(`  · 3D kit: ${VENUES.length} mekân + ${FILLERS.length} dolgu = ${COLS * ROWS} hücre, ${Object.keys(STATIONS).length} karakter istasyonu`);
   console.log(`  · Sezon gizemi "${season.title}": ${season.suspects.length} şüpheli, ${ledger.clues.length} ipucu · ${seeds.seeds.length} bölüm tohumu · ${mon.placementSlots.length} marka yuvası`);
 } catch (e) {
   errors.push(`Şema hatası: ${(e as Error).message}`);

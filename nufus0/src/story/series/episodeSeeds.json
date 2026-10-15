@@ -3,6 +3,55 @@
   "note": "Bunlar TOHUMDUR (IDEA); kesinleşmiş bölüm değildir. Sıra önerilir ama izleyici oylarına göre değişebilir. A/B'nin iki tarafı da savunulabilir olmalıdır.",
   "seeds": [
     {
+      "id": "ILK_GUN",
+      "title": "Bir Cümle, Altı Kişi",
+      "suggestedOrder": 0,
+      "chars": [
+        "nil",
+        "nuri",
+        "hatice",
+        "ferhat",
+        "nermin",
+        "hacer",
+        "recep",
+        "efe"
+      ],
+      "flats": [
+        "D1"
+      ],
+      "places": [
+        "teras7",
+        "bakkal",
+        "cay-ocagi",
+        "doner",
+        "kuafor",
+        "yildiz-apt",
+        "durak",
+        "meydan"
+      ],
+      "eventType": "DEDIKODU",
+      "hook": "Bu mahallede bir cümle, akşama kadar altı kere değişti.",
+      "hookPattern": "H1",
+      "conflict": "Nil Hanım'ın 'cuma gecesi müzik gece yarısına kadar' cümlesi, esnaftan esnafa geçerken 'bütün gece', 'sabaha kadar', 'mahalle taşınıyor', 'Pasaj Han yıkılıyor' oluyor. Hacer Hanım dilekçe topluyor.",
+      "evidenceObject": "Bekçi Recep'in defteri (asıl cümle + silik satır)",
+      "decision": {
+        "question": "Cuma gecesi TERAS 7 ne kadar açık kalsın?",
+        "A": {
+          "label": "Gece yarısına kadar açık kalsın",
+          "cost": "Hacer ve Hatice'nin geceleri kısalır; Nil'in ilk gecesi kurtulur"
+        },
+        "B": {
+          "label": "23.00'te kapansın",
+          "cost": "Mahalle uyur; Nil'in açılışı yarım kalır, kira baskısı artar"
+        }
+      },
+      "cliffhanger": "Hacer Hanım imzalı dilekçeyle Pasaj Han merdivenine çıkıyor; tam o anda Nil Hanım kapıyı açıyor.",
+      "placementSlot": "tea-set",
+      "clue": null,
+      "status": "IDEA",
+      "notes": "Mahalleyi tanıtan ilk bölüm: her kısa durakta bir mekân ve bir karakter özelliği tanıtılır (Hatice: dedikodu; Ferhat: gösteriş; Nermin: abartı; Hacer: dilekçe; Recep: kayıt; Efe: 'Ben gördüm!'). ARC_TERAS ve ARC_OCAK'ı tohumlar."
+    },
+    {
       "id": "SAKSI",
       "title": "Her Sabah Düşen Saksı",
       "suggestedOrder": 1,

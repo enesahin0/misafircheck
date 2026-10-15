@@ -17,7 +17,7 @@
     "render:001:pixel": "tsx scripts/render-episode.ts 001 --pixel",
     "tally": "tsx scripts/tally-votes.ts",
     "typecheck": "tsc --noEmit",
-    "check": "tsc --noEmit && tsx scripts/validate-universe.ts && tsx scripts/validate-script.ts saksi && tsx scripts/models.ts && tsx scripts/validate-episode.ts 001",
+    "check": "tsc --noEmit && tsx scripts/validate-universe.ts && tsx scripts/validate-script.ts saksi && tsx scripts/validate-script.ts mahalle && tsx scripts/models.ts && tsx scripts/validate-episode.ts 001",
     "validate:universe": "tsx scripts/validate-universe.ts",
     "sfx": "tsx scripts/sfx.ts",
     "models": "tsx scripts/models.ts",
@@ -25,7 +25,8 @@
     "library:fetch": "python3 scripts/acquire/fetch_library.py all",
     "postinstall": "tsx scripts/make-audio.ts",
     "script:check": "tsx scripts/validate-script.ts",
-    "gundem": "tsx scripts/gundem.ts"
+    "gundem": "tsx scripts/gundem.ts",
+    "mahalle:stills": "tsx scripts/mahalle-stills.ts"
   },
   "dependencies": {
     "@fontsource/barlow-condensed": "5.3.0",

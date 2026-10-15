@@ -76,6 +76,25 @@ Tüm ses ve görsel kaynakların envanteri, lisansları ve durumu: [`docs/KAYNAK
 ## Evren (MAHALLE)
 İzometrik low-poly **Çınar Mahallesi**: 12 mekân (bakkal, dönerci, çay ocağı, kuaför, iki apartman, Pasaj Han + çatıda TERAS 7 gece kulübü, park, fırın, durak), 27 karakter, 48 yönlü ilişki, olay kataloğu, yaylar ve konuk sistemi, gündem hattı. Tek doğruluk kaynağı `src/story/series/` (özet `bible.md`). `npm run validate:universe` denetler; `npm run gundem` bugünün haberlerinden **güvenli** aday listesi çıkarır (karar insanda). Önceki evrenler `src/story/_arsiv_nufus0/` içinde.
 
+## 3D Mahalle kiti (`src/world/mahalle/`)
+`neighborhood.json` (hücreler) → `layout.ts` → sahne. **12 mekân + 14 dolgu bloğu = 24 hücre**, 4 ışık ön ayarı (sabah/öğle/akşam/gece), karakterler (renk/boy/aksesuar ile ayrışır), köpek Karabaş + kedi Paşa, ambiyans yayalar, "olay burada" ışık sütunu. Esnaf dükkânları açık maket: karakterler her planda görünür.
+
+| Dosya | İş |
+|---|---|
+| `palette.ts` | Sıcak low-poly paleti + `LIGHTS` (sabah/ogle/aksam/gece) |
+| `layout.ts` | Hücre→dünya koordinatı, mekân yerleşimi (`PLACES`), karakter istasyonları (`STATIONS`), kamera planları (`shotFor`), dolgu hücreleri (`FILLERS`) |
+| `venues.tsx` | Bakkal, Çay Ocağı, Dönerci, Kuaför, Fırın, Yıldız/Gül Apt., Pasaj Han, **TERAS 7** (çatı), Park, Durak, Meydan |
+| `People.tsx` | `Person` (Humanoid + aksesuar), `Pet`, `Ambient` |
+| `Mahalle.tsx` | `<Mahalle frame light highlight cast market />`, `MahalleScene` |
+
+Kamera planları: `genel`, `<mekân>:genis|orta|yakin` (örn. `teras7:orta`). Kontrol kareleri (video değil):
+```bash
+npm run mahalle:stills -- --shots=genel,bakkal:orta --light=ogle,gece            # out/mahalle/*.png
+npm run mahalle:stills -- --shots=hepsi --light=aksam --highlight=doner            # tüm mekânlar, vurgulu
+npm run mahalle:stills -- --shots=meydan:genis --light=ogle --market               # çarşamba pazarı
+```
+`MahalleDebug` kompozisyonu Remotion Studio'da (`npm run dev`) de açılır. `npm run validate:universe` her hücrenin dolu, her mekânın yerleşimi ve kamera planı olduğunu denetler.
+
 ## Mimari (kısa)
 
 ```

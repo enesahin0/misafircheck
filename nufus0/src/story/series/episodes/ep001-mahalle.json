@@ -1,0 +1,241 @@
+{
+  "version": 4,
+  "id": "MH-001",
+  "seed": "ILK_GUN",
+  "title": "Bir Cümle, Altı Kişi",
+  "status": "DRAFT",
+  "cast": [
+    "nil",
+    "nuri",
+    "hatice",
+    "ferhat",
+    "nermin",
+    "hacer",
+    "recep",
+    "efe"
+  ],
+  "flats": [
+    "D1"
+  ],
+  "premise": "Sabah 08.00. TERAS 7'nin sahibi Nil Hanım bakkal Nuri Amca'ya tek bir cümle söylüyor: 'Cuma gecesi müzik gece yarısına kadar sürecek.' Cümle çay ocağından dönerciye, kuaföre, oradan Hacer Hanım'a geçerken büyüyor: 'bütün gece', 'sabaha kadar', 'mahalle taşınıyor', 'Pasaj Han yıkılıyor'. Hacer Hanım dilekçe yazıp imza topluyor. Bekçi Recep'in defterinde asıl cümle duruyor, ama 'bir kez mi, her cuma mı' satırı silik. Mahalle kararı izleyiciye soruyor.",
+  "fairness": "A: Nil'in asıl cümlesi masum, gece yarısı sınırı yasal ve ilk gece tek seferlik olabilir; mahalle abartmış, Nil'e şans verilmeli. B: 'Her cuma mı?' satırı silik; gürültü Hacer ve Hatice'yi gerçekten rahatsız edebilir, 23.00 makul bir uzlaşma. Her iki tarafın görsel kanıtı eşit süre gösterilir.",
+  "reveal": {
+    "nextDay": "Nil Hanım'ın afişinin tamamı gösterilir: 'Cuma, ilk gece' yazıyor, ama 'sonraki cumalar' kısmı kararsız. Kazanan seçenek yürürlüğe girer; Hacer ve Nil ilk kez yüz yüze konuşur.",
+    "note": "Sonuç, gerçek oy dağılımı gelmeden uydurulmaz; ertesi gün gerçek yüzdeyle açılır."
+  },
+  "durationFrames": 1800,
+  "beats": [
+    {
+      "n": 1,
+      "name": "HOOK",
+      "from": 0,
+      "to": 5,
+      "visual": "Geniş izometrik Çınar Mahallesi, sabah ışığı. Kare 0'da TERAS 7'nin çatısından bir ses halkası yayılır; halka mahalleyi dolaşırken sokak sokak rengi değişir (sarı→turuncu→kırmızı).",
+      "onScreen": [
+        "1 CÜMLE",
+        "6 KERE DEĞİŞTİ"
+      ]
+    },
+    {
+      "n": 2,
+      "name": "KİM / NE",
+      "from": 5,
+      "to": 16,
+      "visual": "Orta plan Bakkal: Nuri Amca (radyoya cevap veriyor) ve Nil Hanım (mor eşarp). Nil konuşurken kamera çatıdaki TERAS 7'ye, sonra geri bakkala. Ekranda cümle kutusu: 'CUMA GECESİ MÜZİK GECE YARISINA KADAR'.",
+      "onScreen": [
+        "TERAS 7 · NİL HANIM",
+        "BAKKAL · NURİ AMCA"
+      ]
+    },
+    {
+      "n": 3,
+      "name": "ÇATIŞMA",
+      "from": 16,
+      "to": 34,
+      "visual": "Cümle haritada turluyor: Bakkal→Çay Ocağı (Hatice bardak yıkıyor, kulak kabartıyor)→Döner (Ferhat gösterişli bıçak)→Kuaför (Nermin makasla havayı kesiyor)→Yıldız Apt. D1 (Hacer perdeyi aralıyor). Her durakta cümle kutusu büyür: 'BÜTÜN GECE' → 'SABAHA KADAR' → 'MAHALLE TAŞINIYOR' → 'PASAJ HAN YIKILIYOR'. Karabaş çay ocağı kapısında havlar.",
+      "onScreen": [
+        "BÜTÜN GECE",
+        "SABAHA KADAR",
+        "PASAJ HAN YIKILIYOR"
+      ]
+    },
+    {
+      "n": 4,
+      "name": "BÜKÜM",
+      "from": 34,
+      "to": 44,
+      "visual": "Hacer dilekçe yazıp kapı kapı imza topluyor. Efe fener ışığıyla Bekçi Recep'in defterine bakıyor: asıl cümle görünür, altında silik bir satır ('bir kez mi, her cuma mı?').",
+      "onScreen": [
+        "DİLEKÇE · 14 İMZA",
+        "BEKÇİ DEFTERİ"
+      ]
+    },
+    {
+      "n": 5,
+      "name": "KARAR",
+      "from": 44,
+      "to": 54,
+      "visual": "İki kart: A / B. Arkada TERAS 7 gece (A) ve uyuyan mahalle (B) yan yana. Altında 'Yarın 14.00'te kapanır'.",
+      "onScreen": [
+        "CUMA GECESİ?",
+        "A  veya  B"
+      ]
+    },
+    {
+      "n": 6,
+      "name": "CLIFFHANGER + CTA",
+      "from": 54,
+      "to": 60,
+      "visual": "Pasaj Han merdiveni: Hacer imzalı dilekçeyle çıkıyor, çatı kapısı açılıyor, Nil eşikte. Siyah kesme; son kart.",
+      "onScreen": [
+        "YARIN 20.00"
+      ]
+    }
+  ],
+  "narration": [
+    {
+      "id": "L01",
+      "beat": 1,
+      "text": "Bu mahallede bir cümle akşama kadar altı kere değişti.",
+      "note": "Sakin, merak uyandıran; ilk kelime 0,3 sn içinde"
+    },
+    {
+      "id": "L02",
+      "beat": 2,
+      "text": "Çınar Mahallesi. Sabah sekiz. Çatıdaki TERAS 7'nin sahibi Nil Hanım, bakkal Nuri Amca'ya tek cümle söylüyor:"
+    },
+    {
+      "id": "L03",
+      "beat": 2,
+      "text": "Cuma gecesi müzik gece yarısına kadar sürecek.",
+      "note": "Nil'in sesi: zarif, hafif aksanlı; kısa duraklama sonrası"
+    },
+    {
+      "id": "L04",
+      "beat": 3,
+      "text": "Nuri Amca çay ocağına yetiştiriyor. Hatice Abla'ya göre artık bütün gece çalacaklar."
+    },
+    {
+      "id": "L05",
+      "beat": 3,
+      "text": "Ferhat Usta'ya ulaşınca sabaha kadar. Nermin'in kuaförüne gelince, mahalle taşınıyor."
+    },
+    {
+      "id": "L06",
+      "beat": 3,
+      "text": "Öğlene doğru cümle Hacer Hanım'a varıyor: Pasaj Han'ı yıkıp kulüp yapacaklar.",
+      "note": "Abartı büyüdükçe tempo hızlanır"
+    },
+    {
+      "id": "L07",
+      "beat": 4,
+      "text": "Hacer Hanım dilekçe yazıp imza topluyor."
+    },
+    {
+      "id": "L08",
+      "beat": 4,
+      "text": "Bekçi Recep'in defterinde asıl cümle duruyor. Bir kez mi, her cuma mı? O satır silik.",
+      "note": "'silik' sonrası kısa sessizlik"
+    },
+    {
+      "id": "L09",
+      "beat": 5,
+      "text": "Karar sizde. A: gece yarısına kadar açık kalsın. B: yirmi üçte kapansın."
+    },
+    {
+      "id": "L10",
+      "beat": 5,
+      "text": "Yoruma A ya da B yaz."
+    },
+    {
+      "id": "L11",
+      "beat": 6,
+      "text": "Hacer Hanım merdivende. Nil Hanım tam kapıyı açıyor. Yarın akşam sekiz."
+    }
+  ],
+  "hookVariants": [
+    {
+      "id": "V1",
+      "pattern": "H1",
+      "text": "Bu mahallede bir cümle akşama kadar altı kere değişti.",
+      "onScreen": [
+        "1 CÜMLE",
+        "6 KERE DEĞİŞTİ"
+      ]
+    },
+    {
+      "id": "V2",
+      "pattern": "H3",
+      "text": "Nil Hanım gece yarısı dedi. Mahalle sabaha kadar duydu.",
+      "onScreen": [
+        "GECE YARISI",
+        "SABAHA KADAR"
+      ]
+    },
+    {
+      "id": "V3",
+      "pattern": "H7",
+      "text": "Bir cümle, altı kişi, tek gün. Sonunda bir bina yıkılıyor.",
+      "onScreen": [
+        "6 KİŞİ",
+        "1 CÜMLE"
+      ]
+    }
+  ],
+  "decision": {
+    "question": "Cuma gecesi TERAS 7 ne kadar açık kalsın?",
+    "A": {
+      "label": "Gece yarısına kadar açık kalsın",
+      "cost": "Hacer ve Hatice'nin geceleri kısalır; Nil'in ilk gecesi kurtulur"
+    },
+    "B": {
+      "label": "23.00'te kapansın",
+      "cost": "Mahalle uyur; Nil'in açılışı yarım kalır, kira baskısı artar"
+    },
+    "closes": "ertesi gün 14:00 (Europe/Istanbul)"
+  },
+  "cliffhanger": "Hacer Hanım imzalı dilekçeyle Pasaj Han merdivenine çıkıyor; tam o anda Nil Hanım çatı kapısını açıyor.",
+  "caption": "Nil Hanım bir cümle söyledi: 'Cuma gecesi müzik gece yarısına kadar sürecek.' Akşama kadar o cümle altı kere değişti. Sence cuma gecesi TERAS 7 ne kadar açık kalsın?\n\nA: Gece yarısına kadar.\nB: 23.00'te kapansın.\n\nYoruma A ya da B yaz. Oylama yarın 14.00'te kapanır, cevap 20.00'de.\n\nÇınar Mahallesi kurgusal, animasyonla üretilmiş bir dizidir; gerçek kişi ve kurum yoktur.",
+  "pinnedComment": "A: gece yarısına kadar · B: 23.00'te kapansın. Yarın 14.00'te kapanır.",
+  "placementSlot": "tea-set",
+  "clue": null,
+  "soundPlan": {
+    "ambience": [
+      "sabah sokak ortamı (kuş, uzak trafik)",
+      "çay ocağı mırıltısı",
+      "kuaför fön sesi",
+      "gece kulübü bas (uzaktan, çatıdan)"
+    ],
+    "events": [
+      "cümle halkası (yumuşak vızıltı)",
+      "bardak şıkırtısı",
+      "bıçak sesi (döner)",
+      "makas sesi",
+      "defter sayfası",
+      "kapı açılma"
+    ],
+    "search": [
+      "bird",
+      "cafe ambience",
+      "glass clink",
+      "scissors",
+      "page turn",
+      "door open",
+      "bass hit"
+    ],
+    "note": "Konuşma altında ortam/müzik otomatik kısılır (duck). Her durağın kendi mikro ortamı vardır."
+  },
+  "assetNeeds": [
+    "Çınar Mahallesi izometrik kit (12 mekân, gündüz/gece ışığı)",
+    "Karakterler: Nil, Nuri, Hatice, Ferhat, Nermin, Hacer, Recep, Efe (okunur boyutta)",
+    "Cümle kutusu overlay'i (büyüyen metin)",
+    "Ses halkası efekti",
+    "Karabaş (köpek)",
+    "Dilekçe + defter yakın plan nesneleri"
+  ],
+  "risks": [
+    "Altı karakteri tek bölümde tanıtmak yoğun: her birine yalnız tek özellik + tek hareket",
+    "A/B adil kalmalı: Nil'in lehine ve aleyhine kanıt eşit süre",
+    "Çatı kulübü gösterimi alkol içermemeli (içecek yuvası: tea-set/bar-drink yok bu bölümde)"
+  ]
+}
