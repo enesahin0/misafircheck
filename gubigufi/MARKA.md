@@ -206,6 +206,15 @@ Her tepki, aynı anda kendi imza sesiyle çalınır: `M.add('sfx', maskot_ses('g
 - Anlatıcı konuşurken tepki sesini −6 dB kısık kullan; seslendirmeyi asla örtmesin. Demo: `marka/maskot_demo/`.
 Kullanım: her videoda 3–6 kısa rol. Gubi soruyu sorar / aha anında parlar, Gufi şaşırır / tepki verir; kapanışta ikisi logoya dönüşür.
 
+### ANLATICI ↔ MASKOT DİYALOĞU (KALICI — kullanıcı kararı, #36'dan itibaren)
+Maskotların sesi yok; anlatıcı onlara ARA ARA seslenir, onlar hareket/ifadeyle cevap verir, anlatıcı cevabı kendisi tamamlayıp devam eder. Amaç: izleyici karakterlerle bağ kursun, video sohbet gibi aksın.
+- **Sıklık:** videoda 2–3 an; her cümlede DEĞİL. Hook'un ilk cümlesine konmaz (ilk saniye konunun kendisi), en erken 2. cümleden sonra.
+- **Biçimler:** (1) soru → kısa duraklama → cevabı anlatıcı söyler: "Gubi, sence kim karar vermeli? … Aynen, sen." (2) seslenme/komut: "Gufi, sıkı tutun." (3) durum söyleme: "Gufi umutlu. Ya sen?" → izleyiciye soruya köprü.
+- **Seste:** sorudan sonra `[short pause]` (Eleven v4), maskotun tepki süresi ~0,6–1 sn. Seslenilen kelime kısa; toplam süreye ~3 sn ekler, metin buna göre kısaltılır.
+- **Görselde:** seslenilen maskot o an kameraya yaklaşır ya da öne çıkar, `bakHedef: 'kamera'`; cevap tepkiyle verilir (`dusun`→`aha`, `sasir`, `omuzSilk`, `mutlu`, `goster`), gerekirse 1–2 kelimelik minik balon ("BEN!", "?!"). Tepki imza sesiyle (−6 dB).
+- **Roller:** Gubi meraklı/akıllı → fikir soruları ona; Gufi duygusal/tepkisel → şaşırma, korku, umut anları ona.
+- **Ton:** acı haber/ölüm içeren videolarda şakacı seslenme yapılmaz; ciddi konularda seslenme sakin ve kısa olur.
+
 ## Logo kapanışı
 Kapanıştaki gubigufi logosu ekranın TAM ORTASINDA durur (x 540, y ~940, genişlik ~660). Kapanışta altyazı/etiket olmadığı için
 safe alan kaydırması uygulanmaz (kullanıcı geri bildirimi, #6 sonrası).

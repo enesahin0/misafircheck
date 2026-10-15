@@ -1,23 +1,34 @@
 # #36 — Azerbaycan'la aramızda ne oluyor?
 
-**Hedef süre:** ~57 sn · **Ton:** magazinsel, hızlı · **Çerçeve:** başörtüsü = kıyafet / inanç / kişisel özgürlük; silah çıkışı; Ankara'nın cevabı
-**Formül:** soru hook → okul kapısı → özgürlük → Aliyev'in çıkışı → silah bombası → Ankara → soru + paylaş → takip
+**Hedef süre:** ~58 sn · **Ton:** magazinsel, hızlı · **Çerçeve:** başörtüsü = kıyafet / inanç / kişisel özgürlük; silah çıkışı; Ankara'nın cevabı
+**Formül:** soru hook → okul kapısı → Gubi'ye soru / özgürlük → Aliyev'in çıkışı → Gufi "sıkı tutun" → silah bombası → Ankara → soru + paylaş → takip
 
 ## Seslendirme (düz metin)
 
-Azerbaycan'la aramızda ne oluyor? "Tek millet iki devlet" dediğimiz kardeşimizle, birkaç haftada ipler nasıl bu kadar gerildi?
+Azerbaycan'la aramızda ne oluyor? "Tek millet iki devlet" dediğimiz kardeşimizle ipler nasıl bu kadar gerildi?
 
-Her şey bir okul kapısında başladı. Azerbaycan okullara yeni bir kıyafet kuralı getirdi. Kararda başörtüsü geçmiyor ama başörtülü öğrenciler derse alınmadı. Aslında mesele din değil: İnsanın ne giyeceğine, neye inanacağına kim karar verir? Yani kişisel özgürlük. Tepki gösterenlerden otuz yedi kişi gözaltına alındı, sosyal medya kısıtlandı.
+Her şey bir okul kapısında başladı. Azerbaycan okullara yeni bir kıyafet kuralı getirdi. Kararda başörtüsü geçmiyor ama başörtülü öğrenciler derse alınmadı.
+
+Gubi, sence ne giyeceğine kim karar vermeli? Aynen, sen. Mesele din değil; kıyafet, inanç, kişisel özgürlük. Otuz yedi kişi gözaltına alındı, sosyal medya kısıtlandı.
 
 Türkiye'den eleştiri gelince Aliyev'den sert çıkış: "Herkes yerini bilsin, yaşam tarzımıza burnunu sokmasın."
 
-Asıl bomba ise silahlar: "Bize kimse yardım etmedi. Bütün silahları son mermisine kadar kendi paramızla aldık. Hatta bazıları bize birkaç katı fiyatına sattı." Adres vermedi. Azerbaycan basını Rusya'yı işaret etti, ama Türkiye'de herkes Karabağ'daki SİHA'ları hatırladı.
+Gufi, sıkı tutun. Asıl bomba silahlar: "Bize kimse yardım etmedi. Bütün silahları son mermisine kadar kendi paramızla aldık. Hatta bazıları bize birkaç katı fiyatına sattı." Adres vermedi. Azerbaycan basını Rusya'yı işaret etti, ama Türkiye'de herkes Karabağ'daki SİHA'ları hatırladı.
 
 Ankara ise sakin: "Yanlış anlaşılma" dedi ve cevap vermedi.
 
-Bunu konuşan birine gönder. Sence bu kardeşlik krizi geçer mi? Yorumlara yaz.
+Gufi umutlu. Ya sen? Sence bu kardeşlik krizi geçer mi? Yorumlara yaz, konuşan birine gönder.
 
 Her gün bir merak için gubigufi'yi takip et.
+
+## Maskot anları (seste soru → ekranda cevap)
+
+| Seste | Ekranda |
+|---|---|
+| "Gubi, sence ne giyeceğine kim karar vermeli?" (kısa duraklama) | Gubi kameraya yaklaşır, düşünür (`dusun`), sonra kendini gösterir: üstünde küçük "BEN!" balonu, `aha` parıltısı. |
+| "Aynen, sen." | Gubi `mutlu` zıplar. |
+| "Gufi, sıkı tutun." | Gufi bir masanın kenarına tutunur, gözlerini açar (`sasir`) — ardından "BOMBA" kartı düşer. |
+| "Gufi umutlu." | Gufi iki bayrağı yan yana getirmeye çalışır (`goster`), umutla izleyiciye bakar; "Ya sen?" ile `bakHedef: kamera`. |
 
 ## Storyboard (taslak) — gerçek görsel + bizim çizim
 
