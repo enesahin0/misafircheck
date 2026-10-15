@@ -70,10 +70,10 @@ export const neighborhoodSchema = z.object({
   note: z.string(),
   scale: z.string(),
   streets: z.array(z.object({ id: z.string(), name: z.string(), axis: z.string(), role: z.string() })),
-  grid: z.object({ cols: z.number().int(), rows: z.number().int(), cellSize: z.string() }),
+  grid: z.object({ note: z.string() }),
   venues: z.array(
     z.object({
-      id: z.string(), name: z.string(), type: z.enum(["public", "venue", "residential", "commercial"]), cell: z.tuple([z.number().int(), z.number().int()]), floors: z.number().int(),
+      id: z.string(), name: z.string(), type: z.enum(["public", "venue", "residential", "commercial"]), floors: z.number().int(),
       owner: z.string().optional(), staff: z.array(z.string()).default([]), ref: z.string().optional(), elevation: z.string().optional(),
       description: z.string(), eventAffordances: z.array(z.string()).min(1), placementSlots: z.array(z.string()), props: z.array(z.string()),
     }),

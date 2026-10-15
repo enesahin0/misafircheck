@@ -3,7 +3,7 @@
   "id": "CINAR_MAHALLESI",
   "name": "Çınar Mahallesi",
   "note": "Kurgusal mahalle. Gerçek ilçe/mahalle/adres/işletme adı yok. Meydandaki yaşlı çınar ağacı mahallenin simgesidir.",
-  "scale": "Küçük mahalle: ~6×4 blok. Kamera karakterleri okunur tutar (bkz. cameraGuidelines).",
+  "scale": "~80×56 birim; düzensiz parseller, çift/tek şerit yollar, patikalar. Kamera karakterleri okunur tutar (bkz. cameraGuidelines).",
   "streets": [
     {
       "id": "cinar-sk",
@@ -25,19 +25,13 @@
     }
   ],
   "grid": {
-    "cols": 6,
-    "rows": 4,
-    "cellSize": "1 blok ≈ 12 birim (mevcut 3D dünya ölçeği)"
+    "note": "Düzensiz parsel ve yol ağı: src/story/series/map.json (3D harita planı). Eski 6×4 blok ızgarası kaldırıldı."
   },
   "venues": [
     {
       "id": "meydan",
       "name": "Çınar Meydanı",
       "type": "public",
-      "cell": [
-        2,
-        1
-      ],
       "floors": 0,
       "description": "Yaşlı çınar, çeşme, banklar. Semt pazarı (çarşamba) ve festivaller burada.",
       "eventAffordances": [
@@ -67,10 +61,6 @@
       "id": "cay-ocagi",
       "name": "Çay Ocağı",
       "type": "venue",
-      "cell": [
-        2,
-        1
-      ],
       "floors": 1,
       "owner": "hatice",
       "description": "Meydanın köşesinde küçük ocak: semaver, plastik taburelere dizili masalar. Mahallenin haber ajansı.",
@@ -99,10 +89,6 @@
       "id": "bakkal",
       "name": "Nuri'nin Bakkalı",
       "type": "venue",
-      "cell": [
-        1,
-        1
-      ],
       "floors": 1,
       "owner": "nuri",
       "description": "Veresiye defteri, tezgâhta radyo, kapıda ekmek kasası. Her şeyin hesabı burada tutulur.",
@@ -135,10 +121,6 @@
       "id": "doner",
       "name": "Ferhat Usta Döner",
       "type": "venue",
-      "cell": [
-        3,
-        1
-      ],
       "floors": 1,
       "owner": "ferhat",
       "description": "Dönüş mili, sac, ayran buzdolabı; akşamları kuyruk. Rakip yok: mahallede tek dönerci.",
@@ -169,10 +151,6 @@
       "id": "kuafor",
       "name": "Nermin Güzellik",
       "type": "venue",
-      "cell": [
-        3,
-        2
-      ],
       "floors": 1,
       "owner": "nermin",
       "description": "Üç koltuklu kuaför: sır deposu. Gelin saçından cenaze hazırlığına kadar herkes uğrar.",
@@ -198,10 +176,6 @@
       "id": "yildiz-apt",
       "name": "Yıldız Apartmanı",
       "type": "residential",
-      "cell": [
-        1,
-        0
-      ],
       "floors": 6,
       "ref": "building.json",
       "description": "5 katlı klasik apartman (cutaway detayı building.json'da). Hacer, Cemal, Kerem ve diğerleri burada.",
@@ -228,10 +202,6 @@
       "id": "gul-apt",
       "name": "Gül Apartmanı",
       "type": "residential",
-      "cell": [
-        5,
-        2
-      ],
       "floors": 4,
       "description": "Daha küçük, öğrenci ve genç kiracı apartmanı. Yeni taşınanlar çoğunlukla burada.",
       "eventAffordances": [
@@ -255,10 +225,6 @@
       "id": "pasaj-han",
       "name": "Pasaj Han",
       "type": "commercial",
-      "cell": [
-        4,
-        0
-      ],
       "floors": 4,
       "description": "Eski iş hanı: terzi, bir noter ofisi, depolar. Çatısında TERAS 7. Merdivenleri dar, asansörü bozuk.",
       "eventAffordances": [
@@ -281,10 +247,6 @@
       "id": "teras7",
       "name": "TERAS 7",
       "type": "venue",
-      "cell": [
-        4,
-        0
-      ],
       "floors": 1,
       "elevation": "Pasaj Han çatısı",
       "owner": "nil",
@@ -318,10 +280,6 @@
       "id": "park",
       "name": "Çınar Parkı & Oyun Alanı",
       "type": "public",
-      "cell": [
-        0,
-        3
-      ],
       "floors": 0,
       "description": "Salıncak, kum havuzu, iki satranç masası. Emekliler ve çocuklar.",
       "eventAffordances": [
@@ -344,10 +302,6 @@
       "id": "firin",
       "name": "Sönmez Fırın",
       "type": "venue",
-      "cell": [
-        5,
-        1
-      ],
       "floors": 1,
       "description": "Sabah 05.00'te yanan tek ışık; simit, poğaça, ekmek. İsteğe bağlı mekân.",
       "eventAffordances": [
@@ -369,10 +323,6 @@
       "id": "durak",
       "name": "Dolmuş Durağı & Bekçi Kulübesi",
       "type": "public",
-      "cell": [
-        5,
-        3
-      ],
       "floors": 0,
       "description": "Küçük durak; yanında bekçi kulübesi. Kemal'in taksisi ve dolmuşlar burada bekler.",
       "eventAffordances": [

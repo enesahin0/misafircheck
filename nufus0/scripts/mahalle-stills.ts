@@ -30,7 +30,7 @@ const highlight = opt("highlight") ?? null;
   const browser = await openBrowser("chrome", { browserExecutable, chromiumOptions, chromeMode: "headless-shell" });
   for (const shot of shots) {
     for (const light of lights) for (const season of seasons) {
-      const inputProps = { shot, frame, params: { light, highlight, market: flag("market"), cast: flag("empty") ? "none" : "default", solo: shot.endsWith(":kart") ? shot.split(":")[0] : null, season } };
+      const inputProps = { shot, frame, params: { light, highlight, market: flag("market"), cast: flag("empty") ? "none" : "default", solo: shot.endsWith(":kart") ? shot.split(":")[0] : shot.startsWith("parsel:") ? shot.slice(7) : null, season } };
       const composition = await selectComposition({ serveUrl, id: "MahalleDebug", inputProps, browserExecutable, chromiumOptions, logLevel: "error" });
       const out = path.join(dir, `${shot.replace(":", "_")}__${light}${seasons.length > 1 || seasons[0] !== "yaz" ? `__${season}` : ""}.png`);
       await renderStill({ composition, serveUrl, inputProps, frame: 0, output: out, puppeteerInstance: browser, chromiumOptions, browserExecutable, logLevel: "error", timeoutInMilliseconds: 240000 });

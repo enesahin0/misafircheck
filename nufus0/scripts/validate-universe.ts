@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { ROOT } from "./lib/audio";
 import * as S from "../src/story/series/schema";
-import { COLS, FILLERS, PLACES, ROWS, STATIONS, VENUES, shotFor } from "../src/world/mahalle/layout";
+import { BOUNDS, MAP, PLACES, STATIONS, VENUES, WORLD_D, WORLD_W, shotFor } from "../src/world/mahalle/layout";
 import { SEASON_IDS as KIT_SEASONS, SEASONS as KIT_SEASON_DATA } from "../src/world/mahalle/seasons";
 
 const dir = path.join(ROOT, "src", "story", "series");
@@ -44,7 +44,6 @@ try {
   dup("karakter", C.map((c) => c.id));
   dup("karakter rengi", C.map((c) => c.color.toLowerCase()));
   dup("mekân", nh.venues.map((v) => v.id));
-  dup("mekân hücresi", nh.venues.filter((v) => v.type !== "public" && !v.elevation).map((v) => `${v.cell}`));
   dup("daire", building.flats.map((f) => f.id));
   dup("ipucu", ledger.clues.map((c) => c.id));
   dup("tohum", seeds.seeds.map((s) => s.id));
@@ -56,7 +55,6 @@ try {
 
   // harita: hücreler sınır içinde
   for (const v of nh.venues) {
-    if (v.cell[0] < 0 || v.cell[0] >= nh.grid.cols || v.cell[1] < 0 || v.cell[1] >= nh.grid.rows) errors.push(`mekân ${v.id}: hücre ${v.cell} harita dışında`);
     if (v.owner && !charById.has(v.owner)) errors.push(`mekân ${v.id}: bilinmeyen sahip '${v.owner}'`);
     for (const s of v.staff) if (!charById.has(s)) errors.push(`mekân ${v.id}: bilinmeyen personel '${s}'`);
     for (const s of v.placementSlots) if (!slotIds.has(s)) errors.push(`mekân ${v.id}: bilinmeyen yuva '${s}'`);
@@ -136,15 +134,41 @@ try {
   const unused = nh.venues.filter((v) => !placeUse.has(v.id)).map((v) => v.id);
   if (unused.length) warns.push(`hiçbir tohumda kullanılmayan mekân: ${unused.join(", ")}`);
 
-  // 3D kit: her hücre mekân ya da dolgu; her mekânın yerleşimi, kamera planı ve istasyonları var
-  const covered = new Set<string>();
-  for (const v of VENUES) covered.add(v.cell.join(","));
-  for (const f of FILLERS) {
-    const k = f.cell.join(",");
-    if (covered.has(k)) errors.push(`3D kit: dolgu hücresi ${k} zaten bir mekâna ait`);
-    covered.add(k);
+  // 3D harita planı (map.json): yollar + parseller bütün alanı boşluksuz ve çakışmasız bölüşür
+  const rects = [...MAP.roads.map((r) => ({ ...r, id: `yol:${r.id}` })), ...MAP.parcels.map((p) => ({ ...p, id: `parsel:${p.id}` }))];
+  let area = 0;
+  for (let i = 0; i < rects.length; i++) {
+    const a = rects[i];
+    if (a.x0 < BOUNDS.x0 - 1e-6 || a.x1 > BOUNDS.x1 + 1e-6 || a.z0 < BOUNDS.z0 - 1e-6 || a.z1 > BOUNDS.z1 + 1e-6) errors.push(`harita: ${a.id} sınır dışında`);
+    if (a.x1 <= a.x0 || a.z1 <= a.z0) errors.push(`harita: ${a.id} geçersiz boyut`);
+    area += (a.x1 - a.x0) * (a.z1 - a.z0);
+    for (let j = i + 1; j < rects.length; j++) {
+      const b = rects[j];
+      if (Math.min(a.x1, b.x1) - Math.max(a.x0, b.x0) > 1e-6 && Math.min(a.z1, b.z1) - Math.max(a.z0, b.z0) > 1e-6) errors.push(`harita: ${a.id} ile ${b.id} çakışıyor`);
+    }
   }
-  for (let c = 0; c < COLS; c++) for (let r = 0; r < ROWS; r++) if (!covered.has(`${c},${r}`)) errors.push(`3D kit: hücre ${c},${r} boş (mekân veya dolgu ekle)`);
+  if (Math.abs(area - WORLD_W * WORLD_D) > 1e-3) errors.push(`harita: yollar+parseller ${area.toFixed(1)} birim², dünya ${WORLD_W * WORLD_D} — boşluk var`);
+  const roadTypes = new Set(MAP.roads.map((r) => r.type));
+  for (const t of ["ana", "tek", "patika"] as const) if (!roadTypes.has(t)) errors.push(`harita: '${t}' tipinde yol yok (çeşitlilik)`);
+  for (const r of MAP.roads) {
+    const w = Math.min(r.x1 - r.x0, r.z1 - r.z0);
+    const want = MAP.roadTypes[r.type]?.width ?? 0;
+    if (Math.abs(w - want) > 0.01) errors.push(`harita: yol ${r.id} genişliği ${w}, '${r.type}' tipi ${want} olmalı`);
+  }
+  // çeşitlilik: parsel boyutları birbirine benzememeli
+  const sizes = new Set(MAP.parcels.map((p) => `${Math.round(p.x1 - p.x0)}x${Math.round(p.z1 - p.z0)}`));
+  if (sizes.size < MAP.parcels.length * 0.7) warns.push(`harita: parsel boyutları çok benzer (${sizes.size}/${MAP.parcels.length} farklı)`);
+  // her mekân bir parselde, konumu parsel içinde
+  for (const p of MAP.parcels) {
+    for (const it of p.items ?? []) {
+      if (!nh.venues.some((v) => v.id === it.venue)) errors.push(`harita: parsel ${p.id} bilinmeyen mekân '${it.venue}'`);
+      if (it.pos[0] < p.x0 || it.pos[0] > p.x1 || it.pos[1] < p.z0 || it.pos[1] > p.z1) errors.push(`harita: ${it.venue} konumu ${p.id} parselinin dışında`);
+    }
+    if (!p.items?.length && !p.filler) warns.push(`harita: parsel ${p.id} boş (mekân/dolgu yok)`);
+  }
+  for (const v of nh.venues) if (!MAP.parcels.some((p) => p.items?.some((i) => i.venue === v.id))) errors.push(`harita: mekân '${v.id}' hiçbir parselde yok`);
+  for (const [x1, z1, x2, z2] of MAP.walkRoutes) if (![x1, x2].every((x) => x >= BOUNDS.x0 && x <= BOUNDS.x1) || ![z1, z2].every((z) => z >= BOUNDS.z0 && z <= BOUNDS.z1)) errors.push("harita: yürüyüş rotası sınır dışında");
+
   for (const v of nh.venues) {
     if (!PLACES[v.id]) errors.push(`3D kit: mekân '${v.id}' için yerleşim (PLACES) yok`);
     for (const k of ["genis", "orta", "yakin", "kart"]) {
@@ -168,11 +192,11 @@ try {
 
   const core = C.filter((c) => c.tier === "CORE").length;
   console.log(`\nMAHALLE EVRENİ · ${nh.name}`);
-  console.log(`  · ${nh.venues.length} mekân (${nh.grid.cols}×${nh.grid.rows} harita), ${building.flats.length} apartman dairesi`);
+  console.log(`  · ${nh.venues.length} mekân (düzensiz harita), ${building.flats.length} apartman dairesi`);
   console.log(`  · ${C.length} karakter (${core} CORE, ${C.length - core} REGULAR), ${rel.edges.length} yönlü ilişki (nefret≤-2: ${hates}, sevgi≥4: ${loves})`);
   console.log(`  · ${ev.types.length} olay türü (30 bölümde ${sum.toFixed(1)}), ${arcs.arcs.length} yay, ${arcs.guestSystem.examples.length} konuk örneği, gündem: ${gundem.adaptationExamples.length} uyarlama örneği`);
   console.log(`  · mevsimler: ${seasonData.seasons.map((x) => x.name).join(", ")} · ${seasonData.seasons.reduce((a, x) => a + x.eventIdeas.length, 0)} mevsimlik olay fikri`);
-  console.log(`  · 3D kit: ${VENUES.length} mekân + ${FILLERS.length} dolgu = ${COLS * ROWS} hücre, ${Object.keys(STATIONS).length} karakter istasyonu`);
+  console.log(`  · 3D harita: ${WORLD_W}×${WORLD_D} birim · ${MAP.parcels.length} düzensiz parsel · ${MAP.roads.length} yol (${MAP.roads.filter((r) => r.type === "ana").length} çift şerit, ${MAP.roads.filter((r) => r.type === "tek").length} tek şerit, ${MAP.roads.filter((r) => r.type === "patika").length} patika) · ${VENUES.length} mekân · ${Object.keys(STATIONS).length} karakter istasyonu`);
   console.log(`  · Sezon gizemi "${season.title}": ${season.suspects.length} şüpheli, ${ledger.clues.length} ipucu · ${seeds.seeds.length} bölüm tohumu · ${mon.placementSlots.length} marka yuvası`);
 } catch (e) {
   errors.push(`Şema hatası: ${(e as Error).message}`);

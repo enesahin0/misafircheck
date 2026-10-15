@@ -77,19 +77,19 @@ Tüm ses ve görsel kaynakların envanteri, lisansları ve durumu: [`docs/KAYNAK
 İzometrik low-poly **Çınar Mahallesi**: 12 mekân (bakkal, dönerci, çay ocağı, kuaför, iki apartman, Pasaj Han + çatıda TERAS 7 gece kulübü, park, fırın, durak), 27 karakter, 48 yönlü ilişki, olay kataloğu, yaylar ve konuk sistemi, gündem hattı. Tek doğruluk kaynağı `src/story/series/` (özet `bible.md`). `npm run validate:universe` denetler; `npm run gundem` bugünün haberlerinden **güvenli** aday listesi çıkarır (karar insanda). Önceki evrenler `src/story/_arsiv_nufus0/` içinde.
 
 ## 3D Mahalle kiti (`src/world/mahalle/`)
-`neighborhood.json` (hücreler) → `layout.ts` → sahne. **12 mekân + 14 dolgu bloğu = 24 hücre**, 4 ışık ön ayarı (sabah/öğle/akşam/gece), karakterler (renk/boy/aksesuar ile ayrışır), köpek Karabaş + kedi Paşa, ambiyans yayalar, "olay burada" ışık sütunu. Esnaf dükkânları açık maket: karakterler her planda görünür.
+`map.json` (düzensiz parseller + yol ağı) + `neighborhood.json` (mekânlar) → `layout.ts` → sahne. **21 düzensiz parsel, 9 yol (çift şerit, tek şerit, patika), 12 mekân; büyük ağaçlıklı park, yıkık virane ev**, 4 ışık ön ayarı (sabah/öğle/akşam/gece), karakterler (renk/boy/aksesuar ile ayrışır), köpek Karabaş + kedi Paşa, ambiyans yayalar, "olay burada" ışık sütunu. Esnaf dükkânları açık maket: karakterler her planda görünür.
 
 | Dosya | İş |
 |---|---|
 | `palette.ts` | Sıcak low-poly paleti + `LIGHTS` (sabah/ogle/aksam/gece) |
-| `layout.ts` | Hücre→dünya koordinatı, mekân yerleşimi (`PLACES`), karakter istasyonları (`STATIONS`), kamera planları (`shotFor`), dolgu hücreleri (`FILLERS`) |
+| `layout.ts` | Harita (`MAP`), mekân konumları (`VENUES`), karakter istasyonları (`STATIONS`), kamera planları (`shotFor`) |
 | `venues.tsx` | Bakkal, Çay Ocağı, Dönerci, Kuaför, Fırın, Yıldız/Gül Apt., Pasaj Han, **TERAS 7** (çatı), Park, Durak, Meydan |
 | `People.tsx` | `Person` (Humanoid + aksesuar), `Pet`, `Ambient` |
 | `Mahalle.tsx` | `<Mahalle frame light season highlight cast market solo />`, `MahalleScene` |
 | `tex.tsx` | Prosedürel yüzey dokuları: tuğla, sıva, taş, kiremit, ahşap, zemin karosu, beton panel (`TBox`/`TBase`) |
 | `seasons.ts` | Mevsim verisi (`seasons.json`) + `lightFor(saat, mevsim)` |
 
-Kamera planları (hepsi **kutuya sığdırılır**, kareden taşmaz): `genel` (tüm ada), `<mekân>:genis|orta|yakin`, `<mekân>:kart` (yalnız o hücre, yüzen küçük ada — referans "mekân kartı"), `teras7:ust`. Kontrol kareleri (video değil):
+Kamera planları (hepsi **kutuya sığdırılır**, kareden taşmaz): `genel` (tüm ada), `<mekân>:genis|orta|yakin`, `<mekân>:kart` (yalnız o parsel, yüzen küçük ada — referans "mekân kartı"), `parsel:<id>` (örn. `parsel:virane`), `teras7:ust`. Kontrol kareleri (video değil):
 ```bash
 npm run mahalle:stills -- --shots=genel,bakkal:orta --light=ogle,gece            # out/mahalle/*.png
 npm run mahalle:stills -- --shots=genel --light=ogle --season=ilkbahar,yaz,sonbahar,kis   # 4 mevsim

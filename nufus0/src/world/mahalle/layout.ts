@@ -1,48 +1,57 @@
-// MAHALLE düzeni. React'siz: doğrulayıcı da kullanır. Kaynak: src/story/series/neighborhood.json (hücre/mekân).
-// Dünya: x doğu, z güney, y yukarı; kamera güneydoğudan bakar (+x ve +z yüzleri görünür). 1 birim ≈ 1 m, 1 blok = CELL.
+// MAHALLE düzeni. React'siz: doğrulayıcı da kullanır.
+// Kaynak: src/story/series/map.json (düzensiz parseller + yol ağı) ve neighborhood.json (mekân listesi).
+// Dünya: x doğu, z güney, y yukarı; kamera güneydoğudan bakar (+x ve +z yüzleri görünür). 1 birim ≈ 1 m.
 import hood from "../../story/series/neighborhood.json";
+import mapJson from "../../story/series/map.json";
 import chars from "../../story/series/characters.json";
+import { mapSchema } from "../../story/series/mapSchema";
 
-export const CELL = 12;
-export const COLS = hood.grid.cols;
-export const ROWS = hood.grid.rows;
-export const WORLD_W = COLS * CELL;
-export const WORLD_D = ROWS * CELL;
-export const SIDEWALK = 10; // blok içindeki kaldırım plakası (kenarlarda 1'er birim yol)
+export const MAP = mapSchema.parse(mapJson);
+export const BOUNDS = MAP.bounds;
+export const WORLD_W = BOUNDS.x1 - BOUNDS.x0;
+export const WORLD_D = BOUNDS.z1 - BOUNDS.z0;
+export const WORLD_CX = (BOUNDS.x0 + BOUNDS.x1) / 2;
+export const WORLD_CZ = (BOUNDS.z0 + BOUNDS.z1) / 2;
+export const SIDEWALK_W = 1.4;
 
-/** Hücre merkezi (dünya x,z). Harita (0,0) merkezde. */
-export const cellCenter = (col: number, row: number): [number, number] => [(col - (COLS - 1) / 2) * CELL, (row - (ROWS - 1) / 2) * CELL];
+export type Rect = { x0: number; x1: number; z0: number; z1: number };
+export type Road = (typeof MAP.roads)[number];
+export type Parcel = (typeof MAP.parcels)[number];
+export const rectCenter = (r: Rect): [number, number] => [(r.x0 + r.x1) / 2, (r.z0 + r.z1) / 2];
+export const rectSize = (r: Rect): [number, number] => [r.x1 - r.x0, r.z1 - r.z0];
+export const parcelOf = (venueId: string): Parcel => {
+  const p = MAP.parcels.find((x) => x.items?.some((i) => i.venue === venueId));
+  if (!p) throw new Error(`mahalle: '${venueId}' hiçbir parselde yok`);
+  return p;
+};
+/** Parselin zemin üst yüksekliği: kaldırım/plaza 0.15, çim/toprak 0.06. */
+export const parcelTop = (p: Parcel): number => (p.ground === "grass" || p.ground === "dirt" ? 0.06 : 0.15);
 
-export type VenueKind =
-  | "meydan" | "cay-ocagi" | "bakkal" | "doner" | "kuafor" | "yildiz-apt" | "gul-apt" | "pasaj-han" | "teras7" | "park" | "firin" | "durak";
-
-/** Mekânın hücre içindeki yerleşimi: yerel merkez (dx,dz), ayak izi (w x d). Ön yüz +z. */
-export type Place = { dx: number; dz: number; w: number; d: number; h: number };
-
+/** Mekânın yerleşimi: ayak izi (w x d) ve yükseklik. Ön yüz +z. */
+export type Place = { w: number; d: number; h: number };
 export const PLACES: Record<string, Place> = {
-  meydan: { dx: 0, dz: 0, w: 10, d: 10, h: 0 },
-  "cay-ocagi": { dx: 2.6, dz: -2.6, w: 4.6, d: 3.4, h: 3 },
-  bakkal: { dx: 0, dz: -1.5, w: 8, d: 6, h: 3.4 },
-  doner: { dx: 0, dz: -1.5, w: 8, d: 6, h: 3.4 },
-  kuafor: { dx: 0, dz: -1.5, w: 7, d: 6, h: 3.4 },
-  "yildiz-apt": { dx: 0, dz: -0.5, w: 8, d: 8, h: 18 },
-  "gul-apt": { dx: 0, dz: -1, w: 7, d: 6, h: 12 },
-  "pasaj-han": { dx: 0, dz: -0.5, w: 9, d: 8, h: 12 },
-  teras7: { dx: 0, dz: -0.5, w: 9, d: 8, h: 12 },
-  park: { dx: 0, dz: 0, w: 10, d: 10, h: 0 },
-  firin: { dx: 0, dz: -1.5, w: 7, d: 6, h: 3.4 },
-  durak: { dx: 0, dz: 0, w: 10, d: 10, h: 0 },
+  meydan: { w: 10, d: 10, h: 0 },
+  "cay-ocagi": { w: 4.6, d: 3.4, h: 3 },
+  bakkal: { w: 8, d: 6, h: 3.4 },
+  doner: { w: 8, d: 6, h: 3.4 },
+  kuafor: { w: 7, d: 6, h: 3.4 },
+  "yildiz-apt": { w: 8, d: 8, h: 18 },
+  "gul-apt": { w: 7, d: 6, h: 12 },
+  "pasaj-han": { w: 9, d: 8, h: 12 },
+  teras7: { w: 9, d: 8, h: 12 },
+  park: { w: 10, d: 10, h: 0 },
+  firin: { w: 7, d: 6, h: 3.4 },
+  durak: { w: 10, d: 10, h: 0 },
 };
 
-export type VenueSpec = { id: string; name: string; type: string; cell: [number, number]; origin: [number, number]; place: Place; top: number };
+export type VenueSpec = { id: string; name: string; type: string; origin: [number, number]; place: Place; top: number; parcel: string };
 
-const venues = hood.venues as unknown as { id: string; name: string; type: string; cell: [number, number]; elevation?: string }[];
+const venues = hood.venues as unknown as { id: string; name: string; type: string; elevation?: string }[];
 export const VENUES: VenueSpec[] = venues.map((v) => {
-  const [cx, cz] = cellCenter(v.cell[0], v.cell[1]);
-  const place = PLACES[v.id] ?? { dx: 0, dz: 0, w: 8, d: 6, h: 3 };
-  const origin: [number, number] = [cx + place.dx, cz + place.dz];
-  // teras7: Pasaj Han çatısı (y = 12)
-  return { id: v.id, name: v.name, type: v.type, cell: v.cell, origin, place, top: v.id === "teras7" ? PLACES["pasaj-han"].h + 0.35 : 0 };
+  const par = parcelOf(v.id);
+  const item = par.items!.find((i) => i.venue === v.id)!;
+  const place = PLACES[v.id] ?? { w: 8, d: 6, h: 3 };
+  return { id: v.id, name: v.name, type: v.type, origin: item.pos, place, top: v.id === "teras7" ? PLACES["pasaj-han"].h + 0.35 : 0, parcel: par.id };
 });
 export const venue = (id: string): VenueSpec => {
   const v = VENUES.find((x) => x.id === id);
@@ -94,22 +103,35 @@ export const fitBox = (c: [number, number, number], size: [number, number, numbe
 
 const TALL = new Set(["yildiz-apt", "gul-apt", "pasaj-han", "teras7"]);
 
+export const parcelById = (id: string): Parcel => {
+  const p = MAP.parcels.find((x) => x.id === id) ?? parcelOf(id);
+  return p;
+};
+
 export const shotFor = (name: string): Shot => {
-  if (name === "genel") return fitBox([0, 8.5, 0], [WORLD_W + 8, 27, WORLD_D + 8], 0.03);
-  if (name === "genel-yakin") return fitBox([0, 4, 0], [WORLD_W * 0.62, 20, WORLD_D * 0.62], 0.04);
+  if (name.startsWith("parsel:")) {
+    // herhangi bir parseli (mekân olmasa da) yüzen ada kartı olarak göster
+    const par = parcelById(name.slice(7));
+    const [pcx, pcz] = rectCenter(par);
+    const [pw, pd] = rectSize(par);
+    return fitBox([pcx, 3, pcz], [pw + 2, 14, pd + 2], 0.06);
+  }
+  if (name === "genel") return fitBox([WORLD_CX, 8.5, WORLD_CZ], [WORLD_W + 4, 27, WORLD_D + 4], 0.03);
+  if (name === "genel-yakin") return fitBox([WORLD_CX, 4, WORLD_CZ], [WORLD_W * 0.62, 20, WORLD_D * 0.62], 0.04);
   const [id, kind] = name.split(":");
   const v = venue(id);
   const { w, d, h } = v.place;
   const [ox, oz] = v.origin;
   if (kind === "yakin") return { target: [ox, v.top + 1.4, oz + 0.5], zoom: 130 };
   if (kind === "kart") {
-    // yalnız bu hücre, yüzen küçük ada olarak (referans "mekân kartı" görünümü)
-    const [cx, cz] = cellCenter(v.cell[0], v.cell[1]);
-    const top = v.id === "teras7" || v.id === "pasaj-han" ? PLACES["pasaj-han"].h + 0.35 + 4.5 : v.id === "yildiz-apt" ? 18 + 3.5 : v.id === "gul-apt" ? 12 + 3 : Math.max(h, 4) + 4;
-    return fitBox([cx, (top - 4.5) / 2, cz], [SIDEWALK + 2, top + 4.5, SIDEWALK + 2], 0.06);
+    // yalnız bu parsel, yüzen küçük ada olarak (referans "mekân kartı" görünümü)
+    const par = parcelOf(id);
+    const [pcx, pcz] = rectCenter(par);
+    const [pw, pd] = rectSize(par);
+    const top = id === "teras7" || id === "pasaj-han" ? PLACES["pasaj-han"].h + 0.35 + 4.5 : id === "yildiz-apt" ? 18 + 3.5 : id === "gul-apt" ? 12 + 3 : Math.max(h, 4) + 4;
+    return fitBox([pcx, (top - 4.5) / 2, pcz], [pw + 2, top + 4.5, pd + 2], 0.06);
   }
   if (id === "teras7" && kind === "ust") return fitBox([ox, v.top + 1.6, oz], [w + 1, 4, d + 1], 0.06);
-  // yüksek yapılar: tüm bina; alçak mekânlar: mekân + biraz çevre
   const whole = TALL.has(id);
   const tallH = id === "teras7" ? PLACES["pasaj-han"].h + 0.35 + 4.5 : h + 1.5;
   if (kind === "orta") {
@@ -122,22 +144,3 @@ export const shotFor = (name: string): Shot => {
 };
 
 export const CHAR_COLORS: Record<string, string> = Object.fromEntries((chars.characters as { id: string; color: string }[]).map((c) => [c.id, c.color]));
-
-/** Boş hücreler (mekân olmayan bloklar): sahneyi dolduran sade dolgu. Her hücre ya mekân ya dolgudur (doğrulayıcı denetler). */
-export type Filler = { cell: [number, number]; type: "block" | "house" | "garden" | "veg" | "parking" | "grove"; floors?: number; color?: string; seed: number };
-export const FILLERS: Filler[] = [
-  { cell: [0, 0], type: "house", color: "mustard", seed: 101 },
-  { cell: [2, 0], type: "house", color: "cream", seed: 102 },
-  { cell: [3, 0], type: "house", color: "mint", seed: 103 },
-  { cell: [5, 0], type: "block", floors: 4, color: "sky", seed: 104 },
-  { cell: [0, 1], type: "house", color: "cream", seed: 105 },
-  { cell: [0, 2], type: "house", color: "sky", seed: 106 },
-  { cell: [4, 1], type: "garden", seed: 107 },
-  { cell: [1, 2], type: "veg", seed: 108 },
-  { cell: [2, 2], type: "garden", seed: 109 },
-  { cell: [4, 2], type: "grove", seed: 110 },
-  { cell: [1, 3], type: "house", color: "mustard", seed: 112 },
-  { cell: [2, 3], type: "grove", seed: 113 },
-  { cell: [3, 3], type: "veg", seed: 114 },
-  { cell: [4, 3], type: "parking", seed: 115 },
-];

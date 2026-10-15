@@ -1,0 +1,690 @@
+{
+ "version": 1,
+ "note": "3D mahalle planı: düzensiz parseller + farklı yol tipleri. Tek doğruluk kaynağı. x doğu, z güney. Yollar ile parseller boşluksuz ve çakışmasız bölüşür (npm run validate:universe denetler).",
+ "bounds": {
+  "x0": -40,
+  "x1": 40,
+  "z0": -28,
+  "z1": 28
+ },
+ "roadTypes": {
+  "ana": {
+   "width": 6,
+   "lanes": 2,
+   "note": "çift şerit: iki araba yan yana geçer, ortada sarı kesik çizgi"
+  },
+  "tek": {
+   "width": 3,
+   "lanes": 1,
+   "note": "tek şerit: tek araç geçer"
+  },
+  "patika": {
+   "width": 1.4,
+   "lanes": 0,
+   "note": "yaya patikası"
+  }
+ },
+ "roads": [
+  {
+   "id": "ana1",
+   "type": "ana",
+   "name": "Çınar Sokak (ana cadde)",
+   "x0": -40,
+   "x1": 40,
+   "z0": -4,
+   "z1": 2
+  },
+  {
+   "id": "ana2",
+   "type": "ana",
+   "name": "Gül Sokak",
+   "x0": 16,
+   "x1": 22,
+   "z0": -28,
+   "z1": -4
+  },
+  {
+   "id": "tek-w",
+   "type": "tek",
+   "name": "Dut Sokak",
+   "x0": -24.5,
+   "x1": -21.5,
+   "z0": -28,
+   "z1": -4
+  },
+  {
+   "id": "tek-mid",
+   "type": "tek",
+   "name": "Fırın Sokağı",
+   "x0": -10.5,
+   "x1": -7.5,
+   "z0": 2,
+   "z1": 28
+  },
+  {
+   "id": "tek-h",
+   "type": "tek",
+   "name": "Çarşı Arkası",
+   "x0": -7.5,
+   "x1": 17.5,
+   "z0": 15,
+   "z1": 18
+  },
+  {
+   "id": "tek-s",
+   "type": "tek",
+   "name": "Park Sokak",
+   "x0": 17.5,
+   "x1": 20.5,
+   "z0": 2,
+   "z1": 28
+  },
+  {
+   "id": "tek-e",
+   "type": "tek",
+   "name": "Virane Çıkmazı",
+   "x0": 22,
+   "x1": 36,
+   "z0": -16,
+   "z1": -13
+  },
+  {
+   "id": "tek-se",
+   "type": "tek",
+   "name": "Kavak Sokak",
+   "x0": 20.5,
+   "x1": 40,
+   "z0": 10,
+   "z1": 13
+  },
+  {
+   "id": "patika-arka",
+   "type": "patika",
+   "name": "Arka patika",
+   "x0": -21.5,
+   "x1": 16,
+   "z0": -14.4,
+   "z1": -13
+  }
+ ],
+ "parcels": [
+  {
+   "id": "yildiz",
+   "x0": -40,
+   "x1": -24.5,
+   "z0": -28,
+   "z1": -14,
+   "ground": "grass",
+   "walks": [
+    "e"
+   ],
+   "items": [
+    {
+     "venue": "yildiz-apt",
+     "pos": [
+      -33.5,
+      -21.5
+     ]
+    }
+   ],
+   "deco": [
+    [
+     "cypress",
+     -38.5,
+     -14.8
+    ],
+    [
+     "tree",
+     -27,
+     -16
+    ],
+    [
+     "tree",
+     -26,
+     -26.5
+    ],
+    [
+     "pot",
+     -31.5,
+     -16.2
+    ],
+    [
+     "bench",
+     -30,
+     -15.2,
+     0
+    ]
+   ]
+  },
+  {
+   "id": "nw-ev",
+   "x0": -40,
+   "x1": -24.5,
+   "z0": -14,
+   "z1": -4,
+   "ground": "grass",
+   "walks": [
+    "s",
+    "e"
+   ],
+   "filler": {
+    "type": "house",
+    "color": "cream",
+    "seed": 105
+   }
+  },
+  {
+   "id": "bakkal",
+   "x0": -21.5,
+   "x1": -10.5,
+   "z0": -13,
+   "z1": -4,
+   "ground": "pave",
+   "walks": [
+    "s"
+   ],
+   "items": [
+    {
+     "venue": "bakkal",
+     "pos": [
+      -16,
+      -9.6
+     ]
+    }
+   ],
+   "deco": [
+    [
+     "tree",
+     -21.0,
+     -5.0,
+     3
+    ],
+    [
+     "cypress",
+     -11.2,
+     -12,
+     4
+    ]
+   ]
+  },
+  {
+   "id": "kuafor",
+   "x0": -10.5,
+   "x1": -2.5,
+   "z0": -13,
+   "z1": -4,
+   "ground": "pave",
+   "walks": [
+    "s"
+   ],
+   "items": [
+    {
+     "venue": "kuafor",
+     "pos": [
+      -6.5,
+      -9.6
+     ]
+    }
+   ],
+   "deco": [
+    [
+     "tree",
+     -10.0,
+     -5.0,
+     5
+    ]
+   ]
+  },
+  {
+   "id": "doner",
+   "x0": -2.5,
+   "x1": 10,
+   "z0": -13,
+   "z1": -4,
+   "ground": "pave",
+   "walks": [
+    "s"
+   ],
+   "items": [
+    {
+     "venue": "doner",
+     "pos": [
+      3.5,
+      -9.6
+     ]
+    }
+   ],
+   "deco": [
+    [
+     "pot",
+     8.6,
+     -5.3
+    ],
+    [
+     "tree",
+     9.3,
+     -5.0,
+     7
+    ]
+   ]
+  },
+  {
+   "id": "kucuk-bahce",
+   "x0": 10,
+   "x1": 16,
+   "z0": -13,
+   "z1": -4,
+   "ground": "grass",
+   "walks": [
+    "s",
+    "e"
+   ],
+   "filler": {
+    "type": "garden",
+    "seed": 107
+   }
+  },
+  {
+   "id": "arka-ev1",
+   "x0": -21.5,
+   "x1": -8,
+   "z0": -28,
+   "z1": -14.4,
+   "ground": "grass",
+   "walks": [
+    "w"
+   ],
+   "filler": {
+    "type": "house",
+    "color": "mustard",
+    "seed": 101
+   }
+  },
+  {
+   "id": "arka-blok",
+   "x0": -8,
+   "x1": 5,
+   "z0": -28,
+   "z1": -14.4,
+   "ground": "pave",
+   "filler": {
+    "type": "block",
+    "floors": 5,
+    "color": "sky",
+    "seed": 104
+   }
+  },
+  {
+   "id": "arka-ev2",
+   "x0": 5,
+   "x1": 16,
+   "z0": -28,
+   "z1": -14.4,
+   "ground": "grass",
+   "walks": [
+    "e"
+   ],
+   "filler": {
+    "type": "house",
+    "color": "mint",
+    "seed": 103
+   }
+  },
+  {
+   "id": "pasaj",
+   "x0": 22,
+   "x1": 40,
+   "z0": -13,
+   "z1": -4,
+   "ground": "pave",
+   "walks": [
+    "s",
+    "n"
+   ],
+   "items": [
+    {
+     "venue": "pasaj-han",
+     "pos": [
+      30,
+      -8.9
+     ]
+    },
+    {
+     "venue": "teras7",
+     "pos": [
+      30,
+      -8.9
+     ]
+    }
+   ],
+   "deco": [
+    [
+     "tree",
+     24.2,
+     -5.0,
+     8
+    ],
+    [
+     "cypress",
+     38.3,
+     -6,
+     9
+    ]
+   ]
+  },
+  {
+   "id": "virane",
+   "x0": 22,
+   "x1": 40,
+   "z0": -28,
+   "z1": -16,
+   "ground": "dirt",
+   "walks": [
+    "s"
+   ],
+   "filler": {
+    "type": "virane",
+    "seed": 120
+   },
+   "note": "Yıkık, terk edilmiş ev: çatısı çökmüş, pencereleri tahta çivili, ot basmış."
+  },
+  {
+   "id": "cikmaz-ucu",
+   "x0": 36,
+   "x1": 40,
+   "z0": -16,
+   "z1": -13,
+   "ground": "grass",
+   "walks": [
+    "w"
+   ],
+   "filler": {
+    "type": "grove",
+    "seed": 121
+   }
+  },
+  {
+   "id": "meydan",
+   "x0": -7.5,
+   "x1": 8,
+   "z0": 2,
+   "z1": 15,
+   "ground": "plaza",
+   "walks": [
+    "n",
+    "w",
+    "s"
+   ],
+   "items": [
+    {
+     "venue": "meydan",
+     "pos": [
+      0,
+      9
+     ]
+    },
+    {
+     "venue": "cay-ocagi",
+     "pos": [
+      2.6,
+      6.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "firin",
+   "x0": 8,
+   "x1": 17.5,
+   "z0": 2,
+   "z1": 15,
+   "ground": "pave",
+   "walks": [
+    "n",
+    "e",
+    "s"
+   ],
+   "items": [
+    {
+     "venue": "firin",
+     "pos": [
+      13,
+      6.5
+     ]
+    }
+   ],
+   "deco": [
+    [
+     "bench",
+     13,
+     12.6,
+     0
+    ],
+    [
+     "tree",
+     10,
+     13.6,
+     10
+    ],
+    [
+     "tree",
+     16,
+     13.8,
+     11
+    ],
+    [
+     "pot",
+     9.4,
+     10.5
+    ]
+   ]
+  },
+  {
+   "id": "durak",
+   "x0": -7.5,
+   "x1": 6,
+   "z0": 18,
+   "z1": 28,
+   "ground": "pave",
+   "walks": [
+    "n",
+    "w"
+   ],
+   "items": [
+    {
+     "venue": "durak",
+     "pos": [
+      -0.75,
+      23
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sebze",
+   "x0": 6,
+   "x1": 17.5,
+   "z0": 18,
+   "z1": 28,
+   "ground": "dirt",
+   "walks": [
+    "n",
+    "e"
+   ],
+   "filler": {
+    "type": "veg",
+    "seed": 114
+   }
+  },
+  {
+   "id": "gul",
+   "x0": 20.5,
+   "x1": 40,
+   "z0": 2,
+   "z1": 10,
+   "ground": "pave",
+   "walks": [
+    "n",
+    "s"
+   ],
+   "items": [
+    {
+     "venue": "gul-apt",
+     "pos": [
+      28.5,
+      5.6
+     ]
+    }
+   ],
+   "deco": [
+    [
+     "tree",
+     35.5,
+     4.2,
+     12
+    ],
+    [
+     "tree",
+     37.5,
+     8.6,
+     13
+    ],
+    [
+     "cypress",
+     33.6,
+     3.6,
+     14
+    ],
+    [
+     "bench",
+     35,
+     8.8,
+     0
+    ],
+    [
+     "pot",
+     24.2,
+     9.1
+    ]
+   ]
+  },
+  {
+   "id": "se-ev",
+   "x0": 20.5,
+   "x1": 32,
+   "z0": 13,
+   "z1": 22,
+   "ground": "grass",
+   "walks": [
+    "n",
+    "w"
+   ],
+   "filler": {
+    "type": "house",
+    "color": "mustard",
+    "seed": 112
+   }
+  },
+  {
+   "id": "otopark",
+   "x0": 20.5,
+   "x1": 32,
+   "z0": 22,
+   "z1": 28,
+   "ground": "pave",
+   "walks": [
+    "w"
+   ],
+   "filler": {
+    "type": "parking",
+    "seed": 115
+   }
+  },
+  {
+   "id": "se-orman",
+   "x0": 32,
+   "x1": 40,
+   "z0": 13,
+   "z1": 28,
+   "ground": "grass",
+   "walks": [
+    "n"
+   ],
+   "filler": {
+    "type": "forest",
+    "seed": 110
+   }
+  },
+  {
+   "id": "park",
+   "x0": -40,
+   "x1": -10.5,
+   "z0": 2,
+   "z1": 28,
+   "ground": "grass",
+   "walks": [
+    "e"
+   ],
+   "items": [
+    {
+     "venue": "park",
+     "pos": [
+      -25,
+      15
+     ]
+    }
+   ],
+   "note": "Büyük ağaçlık park: patikalar, gölet, salıncak, satranç masası."
+  }
+ ],
+ "walkRoutes": [
+  [
+   -38,
+   -4.7,
+   38,
+   -4.7
+  ],
+  [
+   -38,
+   2.75,
+   38,
+   2.75
+  ],
+  [
+   -20,
+   -12.7,
+   14,
+   -12.7
+  ],
+  [
+   -9,
+   3,
+   -9,
+   26
+  ],
+  [
+   19,
+   3,
+   19,
+   26
+  ],
+  [
+   -6,
+   16.5,
+   16,
+   16.5
+  ],
+  [
+   23,
+   -14.5,
+   35,
+   -14.5
+  ],
+  [
+   -23,
+   -26,
+   -23,
+   -6
+  ]
+ ]
+}

@@ -130,31 +130,24 @@ export const Pet: React.FC<{ kind: "cat" | "dog"; pos: V3; rot?: number; frame: 
   );
 };
 
-/** Ambiyans: kaldırım çevresinde yürüyen anonim yayalar (hayat hissi; kadroyla karışmaz). */
-const AMBIENT: { cell: [number, number]; seed: number; color: string }[] = [
-  { cell: [1, 1], seed: 3, color: M.rose }, { cell: [3, 1], seed: 7, color: M.mustard }, { cell: [2, 2], seed: 11, color: M.sky },
-  { cell: [3, 2], seed: 19, color: M.mint }, { cell: [4, 2], seed: 23, color: M.terracotta }, { cell: [2, 0], seed: 29, color: M.lilac },
-  { cell: [4, 1], seed: 31, color: M.orange }, { cell: [1, 2], seed: 37, color: M.blue }, { cell: [2, 3], seed: 41, color: M.rose },
-  { cell: [3, 3], seed: 43, color: M.mint }, { cell: [5, 1], seed: 47, color: M.mustard }, { cell: [1, 3], seed: 53, color: M.sky },
-  { cell: [0, 2], seed: 59, color: M.lilac }, { cell: [2, 1], seed: 61, color: M.terracotta },
-];
-export const Ambient: React.FC<{ frame: number; centers: Record<string, [number, number]> }> = ({ frame, centers }) => (
+/** Ambiyans: kaldırım rotalarında (map.json walkRoutes) gidip gelen anonim yayalar. Kadroyla karışmaz. */
+const AMB_COLORS = [M.rose, M.mustard, M.sky, M.mint, M.terracotta, M.lilac, M.orange, M.blue];
+export const Ambient: React.FC<{ frame: number; routes: [number, number, number, number][] }> = ({ frame, routes }) => (
   <>
-    {AMBIENT.map((a, i) => {
-      const [cx, cz] = centers[`${a.cell[0]},${a.cell[1]}`] ?? [0, 0];
-      const R = 5.5;
-      const per = 8 * R;
-      const s = (frame * 0.045 + a.seed * 4.3) % per;
-      let x: number, z: number, rot: number;
-      if (s < 2 * R) { x = -R + s; z = R; rot = Math.PI / 2; }
-      else if (s < 4 * R) { x = R; z = R - (s - 2 * R); rot = Math.PI; }
-      else if (s < 6 * R) { x = R - (s - 4 * R); z = -R; rot = -Math.PI / 2; }
-      else { x = -R; z = -R + (s - 6 * R); rot = 0; }
-      return (
-        <Person key={i} entry={{ id: `amb${i}`, pos: [cx + x, cz + z], y: 0, rot, state: "walk", seed: a.seed }} frame={frame} />
-      );
-    })}
+    {routes.flatMap((r, ri) =>
+      [0, 1].map((k) => {
+        const [x1, z1, x2, z2] = r;
+        const L = Math.hypot(x2 - x1, z2 - z1);
+        const seed = 7 + ri * 13 + k * 29;
+        const s = (frame * 0.05 + seed * 4.3) % (2 * L);
+        const fwd = s < L;
+        const t = (fwd ? s : 2 * L - s) / L;
+        const rot = Math.atan2(x2 - x1, z2 - z1) + (fwd ? 0 : Math.PI);
+        const i = ri * 2 + k;
+        return <Person key={`a${i}`} entry={{ id: `amb${i % AMB_COLORS.length}`, pos: [x1 + (x2 - x1) * t, z1 + (z2 - z1) * t], y: 0, rot, state: "walk", seed }} frame={frame} />;
+      }),
+    )}
   </>
 );
 
-export const ambientOutfit = (i: number): Outfit => ({ jacket: AMBIENT[i % AMBIENT.length].color, trousers: M.greyDark, skin: M.skin1, hair: "#2B221C", scale: 0.88 });
+export const ambientOutfit = (i: number): Outfit => ({ jacket: AMB_COLORS[i % AMB_COLORS.length], trousers: M.greyDark, skin: M.skin1, hair: "#2B221C", scale: 0.88 });

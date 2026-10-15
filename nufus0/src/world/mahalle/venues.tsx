@@ -9,7 +9,7 @@ import { SNOW } from "./seasons";
 import { M } from "./palette";
 import { rand } from "../../utils/deterministic";
 
-type VP = { frame: number };
+type VP = { frame: number; w?: number; d?: number };
 
 /** Baca dumanı (sonbahar/kış): yükselen, büyüyen, solan beyaz tütmeler. */
 const Smoke: React.FC<{ pos: V3; frame: number }> = ({ pos, frame }) => {
@@ -455,18 +455,79 @@ export const Teras7: React.FC<VP> = ({ frame }) => {
   );
 };
 
-/* ------------------------------------------------------------------ PARK */
-export const Park: React.FC<VP> = ({ frame }) => {
+/* ------------------------------------------------------------------ yardımcı: deterministik serpme */
+type Pt = { x: number; z: number };
+const scatter = (seed: number, w: number, d: number, n: number, minDist: number, margin: number, blocked: (x: number, z: number) => boolean = () => false): Pt[] => {
+  const pts: Pt[] = [];
+  for (let t = 0; t < n * 60 && pts.length < n; t++) {
+    const x = (rand(seed, t * 2) - 0.5) * (w - 2 * margin);
+    const z = (rand(seed, t * 2 + 1) - 0.5) * (d - 2 * margin);
+    if (blocked(x, z)) continue;
+    if (pts.some((p) => Math.hypot(p.x - x, p.z - z) < minDist)) continue;
+    pts.push({ x, z });
+  }
+  return pts;
+};
+const distSeg = (px: number, pz: number, ax: number, az: number, bx: number, bz: number) => {
+  const dx = bx - ax, dz = bz - az;
+  const t = Math.max(0, Math.min(1, ((px - ax) * dx + (pz - az) * dz) / (dx * dx + dz * dz || 1)));
+  return Math.hypot(px - (ax + t * dx), pz - (az + t * dz));
+};
+const Bush: React.FC<{ pos: V3; s?: number }> = ({ pos, s = 1 }) => {
+  const S = useSeason();
+  return (
+    <mesh position={[pos[0], pos[1] + 0.35 * s, pos[2]]} material={mat(S.bare ? M.woodDark : S.leaves[1])} scale={[s, 0.75 * s, s]}>
+      <icosahedronGeometry args={[0.5, 0]} />
+    </mesh>
+  );
+};
+
+/* ------------------------------------------------------------------ BÜYÜK PARK (ağaçlık, gölet, patikalar) */
+export const Park: React.FC<VP> = ({ frame, w = 29.5, d = 26 }) => {
   const S = useSeason();
   const sway = Math.sin(frame / 22) * 0.18;
+  // patika: parselin doğu kenarından (yol) girer, gölet çevresinde dolanır, güneye de bir kol verir
+  const f = (u: number, v: number): [number, number] => [u * w, v * d];
+  const path: [[number, number], [number, number]][] = [
+    [f(0.5, 0.08), f(0.12, 0.08)], [f(0.12, 0.08), f(0.12, -0.26)], [f(0.12, -0.26), f(-0.28, -0.26)], [f(-0.28, -0.26), f(-0.28, 0.1)], [f(-0.28, 0.1), f(-0.5, 0.1)],
+    [f(0.12, 0.08), f(0.12, 0.5)],
+  ];
+  const pond: Pt = { x: f(-0.12, 0.28)[0], z: f(-0.12, 0.28)[1] };
+  const PR = 4.4;
+  const near = (x: number, z: number) =>
+    path.some(([[ax, az], [bx, bz]]) => distSeg(x, z, ax, az, bx, bz) < 1.9) || Math.hypot(x - pond.x, z - pond.z) < PR + 1.4 ||
+    Math.hypot(x - f(0.3, -0.2)[0], z - f(0.3, -0.2)[1]) < 4 || Math.hypot(x - f(0.28, 0.2)[0], z - f(0.28, 0.2)[1]) < 3.2 || Math.hypot(x + 1.6, z - 2) < 2.2;
+  const trees = scatter(41, w, d, Math.floor((w * d) / 12), 2.1, 1.2, near);
+  const bushes = scatter(43, w, d, 26, 1.4, 1, (x, z) => near(x, z) || trees.some((t) => Math.hypot(t.x - x, t.z - z) < 1.5));
   return (
     <group>
-      <BaseBox size={[SIDEWALK_OVERRIDE, 0.04, SIDEWALK_OVERRIDE]} pos={[0, 0, 0]} color={S.grass} />
-      {/* patika */}
-      <BaseBox size={[1.4, 0.05, SIDEWALK_OVERRIDE]} pos={[1.5, 0, 0]} color={M.paveDark} />
-      <BaseBox size={[SIDEWALK_OVERRIDE, 0.05, 1.4]} pos={[0, 0, 1.5]} color={M.paveDark} />
+      {/* patikalar */}
+      {path.map(([[ax, az], [bx, bz]], i) => {
+        const horiz = Math.abs(bx - ax) > Math.abs(bz - az);
+        const len = Math.hypot(bx - ax, bz - az);
+        return <BaseBox key={i} size={horiz ? [len + 1.6, 0.04, 1.7] : [1.7, 0.04, len + 1.6]} pos={[(ax + bx) / 2, 0.005, (az + bz) / 2]} color={S.snow ? "#E3EAF1" : "#D9C9A3"} />;
+      })}
+      {/* gölet */}
+      <group position={[pond.x, 0, pond.z]}>
+        <Cyl r={PR + 0.5} h={0.14} color={M.paveDark} seg={14} />
+        <Cyl r={PR} h={0.2} color={S.snow ? "#DDE9F3" : "#4F9BDD"} seg={14} />
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
+          <mesh key={i} position={[Math.cos(i * 0.628) * (PR + 0.5), 0.2, Math.sin(i * 0.628) * (PR + 0.5)]} material={mat(i % 2 ? M.grey : M.greyDark)} scale={[1, 0.7, 1]}>
+            <icosahedronGeometry args={[0.38 + rand(9, i) * 0.2, 0]} />
+          </mesh>
+        ))}
+        {!S.snow && [[-1.2, 0.8], [1.6, -1.1], [0.4, 1.9]].map(([x, z], i) => <Cyl key={i} r={0.45} h={0.04} pos={[x, 0.2, z]} color={M.leaf} seg={7} />)}
+        {!S.snow && [[0.4, -0.4], [-1.6, -1.2]].map(([x, z], i) => (
+          <group key={i} position={[x + Math.sin(frame / 40 + i) * 0.6, 0.28, z + Math.cos(frame / 47 + i) * 0.5]}>
+            <mesh material={mat(M.white)} scale={[1, 0.7, 1.4]}><icosahedronGeometry args={[0.2, 0]} /></mesh>
+            <mesh position={[0, 0.16, 0.2]} material={mat(M.white)}><icosahedronGeometry args={[0.1, 0]} /></mesh>
+            <Box size={[0.08, 0.04, 0.12]} pos={[0, 0.16, 0.32]} color={M.orange} />
+          </group>
+        ))}
+        <Bench pos={[PR + 1.6, 0.05, 0]} rotY={-Math.PI / 2} />
+      </group>
       {/* salıncak */}
-      <group position={[-2.6, 0, -2.2]}>
+      <group position={[f(0.3, -0.2)[0], 0, f(0.3, -0.2)[1]]}>
         {[-1.2, 1.2].map((x) => (
           <React.Fragment key={x}>
             <Box size={[0.12, 2.6, 0.12]} pos={[x, 1.3, 0.5]} rot={[0.3, 0, 0]} color={M.red} />
@@ -481,24 +542,44 @@ export const Park: React.FC<VP> = ({ frame }) => {
             <Box size={[0.55, 0.07, 0.3]} pos={[0, -1.8, 0]} color={M.yellow} />
           </group>
         ))}
+        <BaseBox size={[3.2, 0.12, 3.2]} pos={[0, 0, 2.6]} color={S.snow ? "#E3EAF1" : M.sand} />
+        {/* kaydırak */}
+        <BaseBox size={[1.0, 1.6, 0.8]} pos={[-1.2, 0, 2.6]} color={M.blue} />
+        <Box size={[0.9, 0.08, 2.0]} pos={[-1.2, 0.8, 3.4]} rot={[0.55, 0, 0]} color={M.yellow} />
       </group>
-      {/* satranç masası */}
-      <group position={[2.8, 0, -2.4]}>
+      {/* satranç masası + piknik masaları */}
+      <group position={[f(0.28, 0.2)[0], 0, f(0.28, 0.2)[1]]}>
         <BaseBox size={[1.1, 0.07, 1.1]} pos={[0, 0.75, 0]} color={M.cream} />
         <BaseBox size={[0.2, 0.75, 0.2]} pos={[0, 0, 0]} color={M.ink} />
         <Stool pos={[-0.9, 0, 0]} color={M.wood} />
         <Stool pos={[0.9, 0, 0]} color={M.wood} />
       </group>
-      <Bench pos={[-2.6, 0, 3.2]} />
-      <MTree pos={[-3.8, 0, 0.4]} seed={11} scale={1.2} tone={1} />
-      <MTree pos={[3.6, 0, 3.4]} seed={12} tone={2} />
-      <MTree pos={[0.2, 0, -4.0]} seed={13} scale={1.1} />
-      {S.snow && <Snowman pos={[1.0, 0.05, -1.0]} />}
-      <WallText text="ÇINAR PARKI" pos={[-3.6, 1.2, 4.6]} w={2.6} h={0.5} bg={M.greenDark} fg={M.white} />
+      {[[-4.6, -3.8], [-6.4, -4.4]].map(([x, z], i) => (
+        <group key={i} position={[f(0.12, -0.26)[0] + x, 0, f(0.12, -0.26)[1] + z + 3]}>
+          <BaseBox size={[1.8, 0.08, 0.8]} pos={[0, 0.75, 0]} color={M.wood} />
+          <BaseBox size={[1.8, 0.06, 0.3]} pos={[0, 0.45, -0.7]} color={M.wood} />
+          <BaseBox size={[1.8, 0.06, 0.3]} pos={[0, 0.45, 0.7]} color={M.wood} />
+          <BaseBox size={[0.1, 0.75, 0.6]} pos={[-0.7, 0, 0]} color={M.ink} />
+          <BaseBox size={[0.1, 0.75, 0.6]} pos={[0.7, 0, 0]} color={M.ink} />
+        </group>
+      ))}
+      {path.slice(0, 5).map(([[ax, az]], i) => (
+        <Bench key={`b${i}`} pos={[ax + 1.5, 0.05, az + 1.6]} rotY={i % 2 ? 0 : Math.PI} />
+      ))}
+      {/* çiçek tarhı (girişte) */}
+      {[0, 1, 2, 3, 4, 5].map((i) => (
+        <mesh key={i} position={[w / 2 - 3.2 + (i % 3) * 0.7, 0.2, f(0, 0.08)[1] - 2.6 - Math.floor(i / 3) * 0.6]} material={mat([M.rose, M.yellow, M.red, M.lilac, M.orange, M.white][i])}>
+          <icosahedronGeometry args={[0.22, 0]} />
+        </mesh>
+      ))}
+      {/* ağaçlık */}
+      {trees.map((t, i) => (i % 4 === 3 ? <Cypress key={`t${i}`} pos={[t.x, 0, t.z]} seed={i + 7} /> : <MTree key={`t${i}`} pos={[t.x, 0, t.z]} seed={i + 5} tone={(i % 3) as 0 | 1 | 2} scale={1 + (i % 5) * 0.06} />))}
+      {bushes.map((b, i) => <Bush key={`bu${i}`} pos={[b.x, 0, b.z]} s={0.8 + rand(5, i) * 0.7} />)}
+      {[[0.5, 0.08], [0.12, -0.26], [-0.28, 0.1]].map(([u, v], i) => <MLamp key={`l${i}`} pos={[u * w - 1.2, 0, v * d - 1.4]} rotY={i} />)}
+      <WallText text="ÇINAR PARKI" pos={[w / 2 - 2.0, 1.3, -d / 2 + 0.2]} w={2.8} h={0.55} bg={M.greenDark} fg={M.white} />
     </group>
   );
 };
-const SIDEWALK_OVERRIDE = 10;
 
 /* ------------------------------------------------------------------ DURAK + BEKÇİ KULÜBESİ */
 export const Durak: React.FC<VP> = () => (
@@ -534,7 +615,6 @@ export const Meydan: React.FC<VP & { market?: boolean }> = ({ frame, market }) =
   const sway = Math.sin(frame / 40) * 0.03;
   return (
     <group>
-      <BaseBox size={[9.6, 0.05, 9.6]} pos={[0, 0, 0]} color={S.snow ? S.pave : M.plaza} />
       {/* desenli halka */}
       <Cyl r={4.2} h={0.03} pos={[0, 0.05, 0.6]} color={S.snow ? "#CBD6E0" : M.paveDark} seg={14} />
       {/* çınar */}
@@ -593,124 +673,227 @@ export const Meydan: React.FC<VP & { market?: boolean }> = ({ frame, market }) =
   );
 };
 
-/* ------------------------------------------------------------------ DOLGU BLOKLARI */
+/* ------------------------------------------------------------------ PARSEL DOLGULARI */
 const FILL_COLORS: Record<string, string> = { cream: M.cream, lilac: M.lilac, mint: "#B9D8A8", sky: M.sky, mustard: M.mustard, rose: M.rose };
 
-const House: React.FC<{ seed: number; color: string }> = ({ seed, color }) => {
+const House: React.FC<{ w: number; d: number; seed: number; color: string }> = ({ w, d, seed, color }) => {
   const S = useSeason();
   const { frame } = useLight();
   const shut = [M.green, M.blue, M.woodDark][seed % 3];
-  const w = 6.2, d = 5.4, floors = 2, fh = 2.7, h = floors * fh;
+  const hw = 6.2, hd = 5.4, floors = 2, fh = 2.7, h = floors * fh;
   const wall = FILL_COLORS[color] ?? M.cream;
+  const hx = Math.max(-(w - hw) / 2 + 0.8, Math.min((w - hw) / 2 - 0.8, (rand(seed, 1) - 0.5) * (w - hw)));
+  const hz = -d / 2 + hd / 2 + 1.5;
+  const trees = scatter(seed, w, d, Math.floor((w * d) / 34), 2.8, 1.4, (x, z) => Math.abs(x - hx) < hw / 2 + 1.4 && Math.abs(z - hz) < hd / 2 + 1.4);
   return (
     <group>
-      <BaseBox size={[10, 0.05, 10]} pos={[0, 0, 0]} color={S.grass} />
-      <group position={[-0.6, 0, -1.6]}>
-        <TBase size={[w + 0.2, 0.4, d + 0.2]} pos={[0, 0, 0]} color="#CFC4AE" tex="stone" />
-        <TBase size={[w, h, d]} pos={[0, 0.4, 0]} color={wall} tex={rand(seed, 8) > 0.6 ? "brick" : "plaster"} />
+      <group position={[hx, 0, hz]}>
+        <TBase size={[hw + 0.2, 0.4, hd + 0.2]} pos={[0, 0, 0]} color="#CFC4AE" tex="stone" />
+        <TBase size={[hw, h, hd]} pos={[0, 0.4, 0]} color={wall} tex={rand(seed, 8) > 0.6 ? "brick" : "plaster"} />
         <group position={[0, 0.4, 0]}>
-          <Facade w={w} d={d} floors={floors} floorH={fh} face="z" seed={seed} cols={2} winW={0.9} winH={1.2} skipGround frameColor={M.white} shutters={shut} />
-          <Facade w={w} d={d} floors={floors} floorH={fh} face="x" seed={seed + 1} cols={2} winW={0.9} winH={1.2} frameColor={M.white} shutters={shut} />
+          <Facade w={hw} d={hd} floors={floors} floorH={fh} face="z" seed={seed} cols={2} winW={0.9} winH={1.2} skipGround frameColor={M.white} shutters={shut} />
+          <Facade w={hw} d={hd} floors={floors} floorH={fh} face="x" seed={seed + 1} cols={2} winW={0.9} winH={1.2} frameColor={M.white} shutters={shut} />
         </group>
-        <BaseBox size={[1.0, 1.9, 0.12]} pos={[-1.3, 0.4, d / 2 + 0.02]} color={M.woodDark} />
-        <BaseBox size={[1.6, 0.14, 0.9]} pos={[-1.3, 2.4, d / 2 + 0.4]} color={M.roofTile} />
-        <Box size={[0.9, 0.08, 0.5]} pos={[1.6, 1.3, d / 2 + 0.3]} color={M.white} />
-        <HipRoof pos={[0, h + 0.4, 0]} w={w} d={d} h={2.3} color={rand(seed, 3) > 0.5 ? M.roofTile : M.terracotta} />
+        <BaseBox size={[1.0, 1.9, 0.12]} pos={[-1.3, 0.4, hd / 2 + 0.02]} color={M.woodDark} />
+        <BaseBox size={[1.6, 0.14, 0.9]} pos={[-1.3, 2.4, hd / 2 + 0.4]} color={M.roofTile} />
+        <Box size={[0.9, 0.08, 0.5]} pos={[1.6, 1.3, hd / 2 + 0.3]} color={M.white} />
+        <HipRoof pos={[0, h + 0.4, 0]} w={hw} d={hd} h={2.3} color={rand(seed, 3) > 0.5 ? M.roofTile : M.terracotta} />
         <TBase size={[0.6, 1.4, 0.6]} pos={[1.4, h + 0.9, -0.8]} color={M.brickDark} tex="brick" tile={1.0} />
         <Smoke pos={[1.4, h + 2.3, -0.8]} frame={frame} />
+        <Pot pos={[-2.4, 0.4, hd / 2 + 0.6]} flower={M.red} />
+        <Pot pos={[0.1, 0.4, hd / 2 + 0.7]} flower={M.yellow} />
       </group>
-      <Fence from={[-4.6, 0.05, 4.6]} to={[4.6, 0.05, 4.6]} />
-      <Fence from={[4.6, 0.05, 4.6]} to={[4.6, 0.05, -2.0]} />
-      <Cypress pos={[3.8, 0.05, -3.8]} seed={seed} />
-      <Cypress pos={[-4.0, 0.05, 3.0]} seed={seed + 1} scale={0.9} />
-      <MTree pos={[3.6, 0.05, 2.6]} seed={seed + 2} scale={0.85} tone={1} />
-      <Pot pos={[-3.2, 0.05, 3.7]} flower={M.red} />
-      <Pot pos={[0.6, 0.05, 3.9]} flower={M.yellow} />
+      <Fence from={[-w / 2 + 0.7, 0, d / 2 - 0.9]} to={[w / 2 - 0.7, 0, d / 2 - 0.9]} />
+      {w > 9 && <Fence from={[w / 2 - 0.7, 0, d / 2 - 0.9]} to={[w / 2 - 0.7, 0, hz]} />}
+      {trees.map((t, i) => (i % 3 === 2 ? <Cypress key={i} pos={[t.x, 0, t.z]} seed={seed + i} /> : <MTree key={i} pos={[t.x, 0, t.z]} seed={seed + i} scale={0.85} tone={(i % 3) as 0 | 1 | 2} />))}
+      {S.snow && null}
     </group>
   );
 };
 
-export const FillerBlock: React.FC<{ type: "block" | "house" | "garden" | "veg" | "parking" | "grove"; floors?: number; color?: string; seed: number }> = ({ type, floors = 3, color = "cream", seed }) => {
+const Virane: React.FC<{ w: number; d: number; seed: number }> = ({ w, d, seed }) => {
   const S = useSeason();
-  if (type === "house") return <House seed={seed} color={color} />;
-  if (type === "block") {
-    const w = 7.5, d = 7;
-    const col = FILL_COLORS[color] ?? M.cream;
-    return (
-      <group position={[0, 0, -0.3]}>
-        <Block w={w} d={d} h={floors * 3} color={col} trim={M.white} />
-        <Facade w={w} d={d} floors={floors} face="z" seed={seed} cols={3} frameColor={M.white} />
-        <Facade w={w} d={d} floors={floors} face="x" seed={seed + 1} cols={3} frameColor={M.white} />
-        <BaseBox size={[1.4, 2.2, 0.1]} pos={[1.2, 0, d / 2 + 0.02]} color={M.woodDark} />
-        {[-1.6, 0, 1.6].map((x, i) => (
-          <Box key={i} size={[1.3, 0.1, 0.5]} pos={[x, floors * 3 + 0.5, d / 2 - 0.4]} color={M.grey} />
+  const hw = 7.2, hd = 6, wallC = "#BDAE92";
+  const hx = 0, hz = -d / 2 + hd / 2 + 2;
+  const wh = 4.6;
+  const weeds = scatter(seed, w, d, 70, 1.0, 0.8, (x, z) => Math.abs(x - hx) < hw / 2 + 0.3 && Math.abs(z - hz) < hd / 2 + 0.3);
+  const rubble = scatter(seed + 3, w, d, 22, 1.0, 1.0, (x, z) => Math.abs(x - hx) < hw / 2 - 0.5 && Math.abs(z - hz) < hd / 2 - 0.5);
+  const dryGrass = S.snow ? SNOW : S.bare ? "#A59468" : "#8FA24E";
+  const plank = (key: string, p: V3, rz: number, len = 1.5) => <Box key={key} size={[len, 0.16, 0.06]} pos={p} rot={[0, 0, rz]} color={M.woodDark} />;
+  return (
+    <group>
+      {/* çürümüş duvarlar: arka duvar delikli, sol duvar yarım ve basamaklı, sağ duvar tek parça yırtık, ön duvar alçak parçalar */}
+      <group position={[hx, 0, hz]}>
+        <TBase size={[hw, 0.35, hd]} pos={[0, 0, 0]} color="#8A7E6A" tex="stone" />
+        <TBase size={[2.8, wh, 0.35]} pos={[-hw / 2 + 1.4, 0.3, -hd / 2 + 0.17]} color={wallC} tex="plaster" />
+        <TBase size={[2.2, wh * 0.55, 0.35]} pos={[hw / 2 - 1.1, 0.3, -hd / 2 + 0.17]} color={wallC} tex="plaster" />
+        <TBase size={[1.8, 1.2, 0.35]} pos={[0.1, 0.3, -hd / 2 + 0.17]} color={wallC} tex="plaster" />
+        <TBase size={[0.35, wh * 0.9, 2.6]} pos={[-hw / 2 + 0.17, 0.3, -hd / 2 + 1.6]} color={wallC} tex="plaster" />
+        <TBase size={[0.35, wh * 0.42, 2.4]} pos={[-hw / 2 + 0.17, 0.3, hd / 2 - 1.4]} color={wallC} tex="plaster" />
+        <TBase size={[0.35, wh * 0.7, 3.2]} pos={[hw / 2 - 0.17, 0.3, 0.3]} color={wallC} tex="plaster" />
+        <TBase size={[2.6, 1.0, 0.35]} pos={[-hw / 2 + 1.5, 0.3, hd / 2 - 0.17]} color={wallC} tex="plaster" />
+        <TBase size={[1.6, 1.6, 0.35]} pos={[hw / 2 - 1.0, 0.3, hd / 2 - 0.17]} color={wallC} tex="plaster" />
+        {/* sıvası dökülmüş yerlerde çıplak tuğla */}
+        <TBase size={[1.4, 1.5, 0.38]} pos={[-hw / 2 + 1.4, 1.8, -hd / 2 + 0.18]} color={M.brickDark} tex="brick" tile={1.0} />
+        <TBase size={[0.38, 1.3, 1.2]} pos={[hw / 2 - 0.17, 1.4, 0.8]} color={M.brickDark} tex="brick" tile={1.0} />
+        {/* tahta çivili pencereler */}
+        <Box size={[1.0, 1.3, 0.1]} pos={[-hw / 2 + 1.4, 2.6, -hd / 2 + 0.38]} color="#1C1F24" />
+        {plank("p1", [-hw / 2 + 1.4, 2.6, -hd / 2 + 0.46], 0.5)}
+        {plank("p2", [-hw / 2 + 1.4, 2.6, -hd / 2 + 0.47], -0.4)}
+        <Box size={[0.1, 1.2, 0.9]} pos={[-hw / 2 + 0.38, 2.4, -hd / 2 + 1.7]} color="#1C1F24" />
+        <Box size={[0.06, 0.16, 1.5]} pos={[-hw / 2 + 0.47, 2.4, -hd / 2 + 1.7]} rot={[0.5, 0, 0]} color={M.woodDark} />
+        {/* çöken çatı: kırık kirişler ve içeri yığılmış kiremit */}
+        {[[-1.6, 3.7, -0.8, 0.5], [0.4, 3.2, 0.4, -0.35], [1.9, 2.6, -0.2, 0.7]].map(([x, y, z, r], i) => (
+          <Box key={i} size={[0.22, 0.22, 4.4]} pos={[x, y, z]} rot={[r, 0.12 * i, 0.1]} color={M.woodDark} />
         ))}
-        <WaterTank pos={[-1.8, floors * 3 + 0.35, -1.5]} />
-        <Antenna pos={[2.0, floors * 3 + 0.35, -1.8]} />
-      </group>
-    );
-  }
-  if (type === "garden") {
-    return (
-      <group>
-        <BaseBox size={[9.4, 0.05, 9.4]} pos={[0, 0, 0]} color={S.grassDark} />
-        <BaseBox size={[1.2, 0.07, 9.4]} pos={[0.6, 0, 0]} color={M.paveDark} />
-        <MTree pos={[-3.2, 0, -3]} seed={seed} tone={1} scale={1.1} />
-        <MTree pos={[3.4, 0, -3.4]} seed={seed + 1} tone={0} />
-        <Cypress pos={[-3.4, 0, 3.0]} seed={seed + 2} />
-        <Cypress pos={[-2.2, 0, -0.6]} seed={seed + 3} scale={0.8} />
-        <Bench pos={[3.2, 0, 2.4]} rotY={Math.PI / 2} />
-        <Pot pos={[2.2, 0, 3.8]} flower={M.rose} />
-        <Fence from={[-4.6, 0, 4.6]} to={[4.6, 0, 4.6]} />
-      </group>
-    );
-  }
-  if (type === "veg") {
-    return (
-      <group>
-        <BaseBox size={[9.4, 0.05, 9.4]} pos={[0, 0, 0]} color={S.dirt} />
-        {[-2.8, -0.6, 1.6].map((z, i) => (
+        {[[-1.4, 0.7, 0.3, 0.3], [0.8, 0.9, -0.8, -0.25], [1.8, 0.55, 1.2, 0.2]].map(([x, y, z, r], i) => (
+          <TBase key={i} size={[2.2, 0.2, 1.6]} pos={[x, y - 0.3, z]} rot={[r, i * 0.7, r * 0.6]} color={M.roofTile} tex="roof" tile={1.0} />
+        ))}
+        {S.snow && <BaseBox size={[3.2, 0.14, 2.4]} pos={[-1.0, 1.1, 0.0]} color={SNOW} />}
+        {/* sarmaşık */}
+        {[[-hw / 2 + 0.5, -hd / 2 + 0.5], [hw / 2 - 0.4, 1.6], [-0.4, -hd / 2 + 0.45]].map(([x, z], i) => (
           <group key={i}>
-            <BaseBox size={[6.4, 0.35, 1.4]} pos={[-0.6, 0.05, z - 0.8]} color={M.woodDark} />
-            {Array.from({ length: 10 }, (_, k) => (
-              <mesh key={k} position={[-3.4 + k * 0.62, 0.55, z - 0.8 + (k % 2 ? 0.25 : -0.25)]} material={mat([M.leaf, M.red, M.leaf3, M.orange][(i + k) % 4])}>
+            <Box size={[0.2, 2.4, 0.2]} pos={[x, 1.6, z]} color={M.greenDark} />
+            <mesh position={[x, 2.9, z]} material={mat(M.leaf2)} scale={[1, 0.8, 1]}><icosahedronGeometry args={[0.5, 0]} /></mesh>
+            <mesh position={[x + 0.2, 1.5, z]} material={mat(M.leaf3)}><icosahedronGeometry args={[0.35, 0]} /></mesh>
+          </group>
+        ))}
+        {/* kargalar */}
+        {[[-hw / 2 + 1.4, wh + 0.45, -hd / 2 + 0.2], [hw / 2 - 1.1, wh * 0.55 + 0.75, -hd / 2 + 0.2]].map(([x, y, z], i) => (
+          <group key={i} position={[x, y, z]}>
+            <Box size={[0.22, 0.2, 0.34]} color={M.ink} />
+            <Box size={[0.12, 0.12, 0.12]} pos={[0, 0.16, 0.18]} color={M.ink} />
+            <Box size={[0.04, 0.04, 0.1]} pos={[0, 0.15, 0.28]} color={M.orange} />
+          </group>
+        ))}
+      </group>
+      {/* moloz, ot, kırık çit */}
+      {rubble.map((r, i) => (
+        <Box key={`r${i}`} size={[0.4 + rand(seed, i) * 0.5, 0.25 + rand(seed + 1, i) * 0.3, 0.35 + rand(seed + 2, i) * 0.4]} pos={[r.x, 0.2, r.z]} rot={[0, rand(seed + 3, i) * 3, rand(seed + 4, i) * 0.4]} color={["#9A8F7C", "#8A5A47", "#B5A98F", "#6F675B"][i % 4]} />
+      ))}
+      {weeds.map((t, i) => (
+        <group key={`w${i}`} position={[t.x, 0, t.z]}>
+          <mesh position={[0, 0.25, 0]} material={mat(i % 3 === 0 ? dryGrass : S.snow ? SNOW : M.leaf2)} scale={[1, 0.8 + rand(seed, i) * 0.8, 1]}>
+            <icosahedronGeometry args={[0.28 + rand(seed + 5, i) * 0.22, 0]} />
+          </mesh>
+        </group>
+      ))}
+      {/* devrik fenerler / çit direkleri */}
+      {[-1, 1, 2, 3, 4, 5, 6].map((k, i) => (
+        <Box key={`f${i}`} size={[0.1, 1.1, 0.1]} pos={[-w / 2 + 1 + k * 2.3, 0.55, d / 2 - 0.8]} rot={[0.1 * (i % 3), 0, i % 2 ? 0.35 : -0.15]} color={M.woodDark} />
+      ))}
+      <Box size={[6, 0.07, 0.07]} pos={[-w / 2 + 6.5, 0.8, d / 2 - 0.8]} rot={[0, 0, 0.15]} color={M.woodDark} />
+      <Box size={[4, 0.07, 0.07]} pos={[w / 2 - 6.5, 0.6, d / 2 - 0.8]} rot={[0, 0, -0.2]} color={M.woodDark} />
+      <group position={[w / 2 - 2.5, 0, d / 2 - 1.4]}>
+        <Sign text="TEHLİKE" pos={[0, 1.6, 0]} w={1.6} h={0.5} bg={M.red} fg={M.white} sub="GİRİLMEZ" />
+        <Box size={[0.08, 1.6, 0.08]} pos={[0, 0.8, -0.05]} color={M.ink} />
+      </group>
+      {/* ölü ağaç */}
+      <MTree pos={[w / 2 - 3.5, 0, -d / 2 + 3.5]} seed={seed + 9} scale={1.2} />
+    </group>
+  );
+};
+
+const Garden: React.FC<{ w: number; d: number; seed: number }> = ({ w, d, seed }) => {
+  const trees = scatter(seed, w, d, Math.max(3, Math.floor((w * d) / 17)), 2.5, 1.2);
+  return (
+    <group>
+      {trees.map((t, i) => (i % 3 === 2 ? <Cypress key={i} pos={[t.x, 0, t.z]} seed={seed + i} /> : <MTree key={i} pos={[t.x, 0, t.z]} seed={seed + i} scale={1} tone={(i % 3) as 0 | 1 | 2} />))}
+      <Bench pos={[0, 0, d / 2 - 1.4]} />
+      <Pot pos={[-w / 2 + 1.2, 0, d / 2 - 1.2]} flower={M.rose} />
+      <Fence from={[-w / 2 + 0.4, 0, d / 2 - 0.5]} to={[w / 2 - 0.4, 0, d / 2 - 0.5]} />
+    </group>
+  );
+};
+
+const Grove: React.FC<{ w: number; d: number; seed: number; dense?: boolean }> = ({ w, d, seed, dense }) => {
+  const trees = scatter(seed, w, d, Math.floor((w * d) / (dense ? 8 : 13)), dense ? 1.7 : 2.0, 0.8);
+  const bushes = scatter(seed + 9, w, d, Math.floor((w * d) / 20), 1.2, 0.6, (x, z) => trees.some((t) => Math.hypot(t.x - x, t.z - z) < 1.3));
+  return (
+    <group>
+      {trees.map((t, i) => (i % 3 === 2 ? <Cypress key={i} pos={[t.x, 0, t.z]} seed={seed + i} scale={1.1} /> : <MTree key={i} pos={[t.x, 0, t.z]} seed={seed + i} scale={1.05 + (i % 4) * 0.07} tone={(i % 3) as 0 | 1 | 2} />))}
+      {bushes.map((b, i) => <Bush key={`b${i}`} pos={[b.x, 0, b.z]} s={0.8 + rand(seed, i) * 0.6} />)}
+    </group>
+  );
+};
+
+const Veg: React.FC<{ w: number; d: number; seed: number }> = ({ w, d, seed }) => {
+  const S = useSeason();
+  const rows = Math.max(2, Math.floor((d - 4.5) / 2.3));
+  return (
+    <group>
+      {Array.from({ length: rows }, (_, i) => {
+        const z = -d / 2 + 1.8 + i * 2.3;
+        const len = w - 5.5;
+        return (
+          <group key={i}>
+            <BaseBox size={[len, 0.35, 1.4]} pos={[-1.2, 0, z]} color={M.woodDark} />
+            {Array.from({ length: Math.floor(len / 0.62) }, (_, k) => (
+              <mesh key={k} position={[-1.2 - len / 2 + 0.4 + k * 0.62, 0.55, z + (k % 2 ? 0.25 : -0.25)]} material={mat(S.snow ? SNOW : [M.leaf, M.red, M.leaf3, M.orange][(i + k) % 4])}>
                 <icosahedronGeometry args={[0.24, 0]} />
               </mesh>
             ))}
           </group>
-        ))}
-        <BaseBox size={[2.0, 1.8, 2.0]} pos={[3.2, 0.05, 2.6]} color={M.sand} />
-        <HipRoof pos={[3.2, 1.85, 2.6]} w={2.0} d={2.0} h={1.1} />
-        <Cypress pos={[-3.8, 0, 3.6]} seed={seed} />
-        <MTree pos={[3.6, 0, -3.4]} seed={seed + 1} scale={0.9} />
-        <Fence from={[-4.6, 0, 4.6]} to={[4.6, 0, 4.6]} />
-      </group>
-    );
-  }
-  if (type === "parking") {
-    const cols = [M.sky, M.rose, M.mint, M.orange, M.lilac, M.sand];
-    return (
-      <group>
-        <BaseBox size={[9.6, 0.04, 9.6]} pos={[0, 0, 0]} color={M.asphaltDark} />
-        {[-3.2, -1.1, 1.0, 3.1].map((x, i) =>
-          rand(seed, i) > 0.2 ? <MCar key={i} pos={[x, 0.04, -2.6]} rotY={0} color={cols[Math.floor(rand(seed, i + 9) * cols.length)]} /> : null,
-        )}
-        {[-3.2, -1.1, 1.0, 3.1].map((x, i) =>
-          rand(seed, i + 20) > 0.3 ? <MCar key={`b${i}`} pos={[x, 0.04, 2.4]} rotY={Math.PI} color={cols[Math.floor(rand(seed, i + 40) * cols.length)]} /> : null,
-        )}
-        {[-3.2, -1.1, 1.0, 3.1].map((x) => (
-          <BaseBox key={x} size={[0.08, 0.02, 3.2]} pos={[x + 1.05, 0.05, -2.6]} color={M.white} />
-        ))}
-        <MTree pos={[3.8, 0.04, 3.8]} seed={seed} scale={0.9} />
-      </group>
-    );
-  }
-  return (
-    <group>
-      <BaseBox size={[9.4, 0.05, 9.4]} pos={[0, 0, 0]} color={S.grass} />
-      {[[-3, -3], [0.8, -3.4], [3.4, -1.6], [-2.6, 1.0], [1.2, 1.6], [-0.4, 3.6], [3.4, 3.4]].map(([x, z], i) =>
-        i % 2 ? <Cypress key={i} pos={[x, 0, z]} seed={seed + i} /> : <MTree key={i} pos={[x, 0, z]} seed={seed + i} tone={(i % 3) as 0 | 1 | 2} scale={0.95} />,
-      )}
+        );
+      })}
+      <BaseBox size={[2.0, 1.8, 2.0]} pos={[w / 2 - 1.8, 0, d / 2 - 1.8]} color={M.sand} />
+      <HipRoof pos={[w / 2 - 1.8, 1.8, d / 2 - 1.8]} w={2.0} d={2.0} h={1.1} />
+      <Cypress pos={[-w / 2 + 0.9, 0, d / 2 - 1]} seed={seed} />
+      <MTree pos={[w / 2 - 1.4, 0, -d / 2 + 1.4]} seed={seed + 1} scale={0.9} />
+      <Fence from={[-w / 2 + 0.4, 0, d / 2 - 0.5]} to={[w / 2 - 0.4, 0, d / 2 - 0.5]} />
     </group>
   );
+};
+
+const Parking: React.FC<{ w: number; d: number; seed: number }> = ({ w, d, seed }) => {
+  const cols = [M.sky, M.rose, M.mint, M.orange, M.lilac, M.sand];
+  const n = Math.max(2, Math.floor((w - 1.4) / 2.3));
+  const x0 = -((n - 1) * 2.3) / 2;
+  return (
+    <group>
+      <BaseBox size={[w - 0.6, 0.03, d - 0.6]} pos={[0, 0, 0]} color={M.asphaltDark} />
+      {Array.from({ length: n }, (_, i) => (
+        <group key={i}>
+          {rand(seed, i) > 0.25 && <MCar pos={[x0 + i * 2.3, 0.03, -d / 2 + 2.6]} rotY={0} color={cols[Math.floor(rand(seed, i + 9) * cols.length)]} />}
+          {d > 7 && rand(seed, i + 20) > 0.35 && <MCar pos={[x0 + i * 2.3, 0.03, d / 2 - 2.6]} rotY={Math.PI} color={cols[Math.floor(rand(seed, i + 40) * cols.length)]} />}
+          <BaseBox size={[0.08, 0.02, 3.0]} pos={[x0 + i * 2.3 + 1.15, 0.04, -d / 2 + 2.6]} color={M.white} />
+        </group>
+      ))}
+      <MTree pos={[w / 2 - 0.9, 0.03, d / 2 - 0.9]} seed={seed} scale={0.85} />
+    </group>
+  );
+};
+
+const ApartmentBlock: React.FC<{ w: number; d: number; floors: number; color: string; seed: number }> = ({ w, d, floors, color, seed }) => {
+  const bw = 7.5, bd = 7;
+  const col = FILL_COLORS[color] ?? M.cream;
+  return (
+    <group>
+      <group position={[0, 0, -d / 2 + bd / 2 + 1.2]}>
+        <Block w={bw} d={bd} h={floors * 3} color={col} trim={M.white} ac={2} />
+        <Facade w={bw} d={bd} floors={floors} face="z" seed={seed} cols={3} frameColor={M.white} />
+        <Facade w={bw} d={bd} floors={floors} face="x" seed={seed + 1} cols={3} frameColor={M.white} />
+        <BaseBox size={[1.4, 2.2, 0.1]} pos={[1.2, 0, bd / 2 + 0.02]} color={M.woodDark} />
+        {[-1.6, 0, 1.6].map((x, i) => <Box key={i} size={[1.3, 0.1, 0.5]} pos={[x, floors * 3 + 0.5, bd / 2 - 0.4]} color={M.grey} />)}
+        <WaterTank pos={[-1.8, floors * 3 + 0.35, -1.5]} />
+        <Antenna pos={[2.0, floors * 3 + 0.35, -1.8]} />
+      </group>
+      <MTree pos={[-w / 2 + 1.5, 0, d / 2 - 1.5]} seed={seed + 2} scale={0.9} />
+      <MTree pos={[w / 2 - 1.5, 0, -d / 2 + 1.5]} seed={seed + 3} scale={0.9} />
+    </group>
+  );
+};
+
+export const ParcelFiller: React.FC<{ type: string; w: number; d: number; color?: string; floors?: number; seed: number }> = ({ type, w, d, color = "cream", floors = 3, seed }) => {
+  switch (type) {
+    case "house": return <House w={w} d={d} seed={seed} color={color} />;
+    case "block": return <ApartmentBlock w={w} d={d} floors={floors} color={color} seed={seed} />;
+    case "garden": return <Garden w={w} d={d} seed={seed} />;
+    case "veg": return <Veg w={w} d={d} seed={seed} />;
+    case "parking": return <Parking w={w} d={d} seed={seed} />;
+    case "grove": return <Grove w={w} d={d} seed={seed} />;
+    case "forest": return <Grove w={w} d={d} seed={seed} dense />;
+    case "virane": return <Virane w={w} d={d} seed={seed} />;
+    default: return null;
+  }
 };

@@ -13,18 +13,17 @@
 3. **Misafir:** tek bölümlük ve 3–5 bölümlük konuklar; kalıcı olma kararını izleyici verir.
 4. **Nadir anlar:** düğün (~40 bölümde 1), cenaze/yas (~60'ta 1, saygılı, ölüm gösterilmez), yeni taşınan, festival.
 
-## 3. Mahalle haritası (6×4 blok)
-```
-        0           1            2             3            4              5
- 0  .            Yıldız Apt.   .             .          PASAJ HAN        .
-                 (5 kat)                                 └ TERAS 7 (çatı kulübü)
- 1  .            BAKKAL     MEYDAN+ÇINAR   FERHAT USTA   .             FIRIN
-                  (Nuri)    + ÇAY OCAĞI     DÖNER                        (Sönmez)
- 2  .             .          .            NERMİN KUAFÖR   .              .
- 3  PARK &        .          .              .          GÜL APT.        DURAK &
-    OYUN ALANI                                           (yeni kiracılar) BEKÇİ KULÜBESİ
-```
-Kamera: karakterler hep okunur (geniş ≥70px, orta ≥140px, yakın = el/nesne/ekran). Işık: sabah/öğle/akşam/gece.
+## 3. Mahalle haritası (düzensiz parseller + çeşitli yollar)
+Tek doğruluk kaynağı: `map.json` (80×56 birim). Izgara yok: 21 farklı boyutta parsel, 9 yol.
+- **Çift şerit (iki araba yan yana):** Çınar Sokak (ana cadde, doğu-batı) ve Gül Sokak.
+- **Tek şerit:** Dut Sokak, Fırın Sokağı, Çarşı Arkası, Park Sokak, Kavak Sokak, Virane Çıkmazı (çıkmaz).
+- **Patika:** esnafın arkasından geçen yaya yolu.
+- **Büyük ağaçlık park (güneybatı):** gölet, patikalar, salıncak, satranç masası, piknik masaları. Doğu kenarından tek yol geçer.
+- **Çarşı şeridi (ana caddenin kuzeyi):** bakkal – kuaför – dönerci yan yana, önlerinde kaldırım, arkalarında patika ve evler.
+- **Meydan (ana caddenin güneyi):** çınar, çeşme, çay ocağı; üç yanından yol geçer.
+- **Yıldız Apartmanı** kuzeybatıda tek yoldan beslenir; **Pasaj Han + TERAS 7** kuzeydoğuda; **Gül Apartmanı** güneydoğuda.
+- **Virane (kuzeydoğu, çıkmazın ucu):** yıkık, çatısı çökmüş, pencereleri tahtayla kapatılmış terk edilmiş ev; ot basmış, karga konmuş, "TEHLİKE" levhası. Hikâye aracı: gizemli sesler, saklanma yeri, çocukların merakı, emlak/yıkım tartışması (güvenlik: çocuklar için tehlikeli yer olarak işlenir, korku değil merak).
+- Bazı parsellere tek yol (virane, park), bazılarına bir yandan (esnaf şeridi), bazılarına iki-üç yandan (meydan, fırın) yol temas eder; kaldırım yalnızca yola bakan kenarda vardır.
 
 ## 4. Kadro (27: 13 CORE, 14 REGULAR)
 **Esnaf/mekân:** Hatice Abla (çaycı, 52) · Nuri Amca (bakkal, 63) + yeğeni Bülent (24) · Ferhat Usta (dönerci, 47) + çırağı Mert (19) · Nermin (kuaför, 41) · Nil Hanım (TERAS 7 sahibi, 38) + Koray (güvenlik) + Kerem (DJ).

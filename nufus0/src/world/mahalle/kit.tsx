@@ -422,3 +422,46 @@ export const Paving: React.FC<{ size: number; y?: number; plaza?: boolean }> = (
     </mesh>
   );
 };
+
+/** Boyuta göre döşeme (dikdörtgen parsel). Doku dünya birimine göre tekrarlanır. */
+const pavRectMats = new Map<string, THREE.MeshStandardMaterial>();
+export const PavingRect: React.FC<{ w: number; d: number; y?: number; plaza?: boolean }> = ({ w, d, y = 0.006, plaza }) => {
+  const snow = useSeason().snow;
+  if (snow) {
+    return (
+      <mesh position={[0, y, 0]} rotation={[-Math.PI / 2, 0, 0]} material={mat("#E9F0F6")}>
+        <planeGeometry args={[w, d]} />
+      </mesh>
+    );
+  }
+  const key = `${plaza ? "pz" : "pv"}|${Math.round(w * 10)}|${Math.round(d * 10)}`;
+  let m = pavRectMats.get(key);
+  if (!m) {
+    const base = textTexture(plaza ? "paving-plaza" : "paving", 512, 512, (g, cw, ch) => {
+      const n = 10;
+      for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) {
+        const v = 0.5 + 0.5 * rand(i * 7 + (plaza ? 40 : 0), j);
+        const b = plaza ? [226, 214, 186] : [214, 200, 172];
+        g.fillStyle = `rgb(${b[0] - v * 14},${b[1] - v * 14},${b[2] - v * 16})`;
+        g.fillRect((i * cw) / n, (j * ch) / n, cw / n, ch / n);
+      }
+      g.strokeStyle = "rgba(120,104,80,0.28)";
+      g.lineWidth = 2;
+      for (let i = 0; i <= n; i++) {
+        g.beginPath(); g.moveTo((i * cw) / n, 0); g.lineTo((i * cw) / n, ch); g.stroke();
+        g.beginPath(); g.moveTo(0, (i * ch) / n); g.lineTo(cw, (i * ch) / n); g.stroke();
+      }
+    });
+    const tex = base.clone();
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+    tex.repeat.set(Math.max(1, w / 10), Math.max(1, d / 10));
+    tex.needsUpdate = true;
+    m = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.95 });
+    pavRectMats.set(key, m);
+  }
+  return (
+    <mesh position={[0, y, 0]} rotation={[-Math.PI / 2, 0, 0]} material={m}>
+      <planeGeometry args={[w, d]} />
+    </mesh>
+  );
+};
