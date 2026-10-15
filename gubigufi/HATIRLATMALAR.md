@@ -10,3 +10,5 @@
 - [ ] **5 Ekim enflasyon videosu (ozel/enflasyon-v2):** Sadece SON SAHNE (s06, 50–60 sn) veri içeriyor: "AĞUSTOS 2026", "%31,51 fiyat artışı ≈ alım gücünde %24 kayıp", "YILDA ~%24 ERİYOR" (v2.js satır 205–215). TÜİK 10:00'da eylülü açıklayınca bu satırları güncelle → yalnızca `render.py plan.json --sahne 6` + `--birlestir` (~1 saat) → gönder. Yarın hazır tek video bu; yayın önerisi 12:30–13:00 (aynı gün haber dalgası + öğle yoğunluğu).
 
 - **Para kazanmaya başlayınca:** ses efektlerinde ticari olmayan kaynakları (BBC `bb:`) bırak → `gubigufi/marka/sfx_kutuphane/KAYNAKLAR.md`. Kullanıcı söyleyecek.
+
+- **15.10.2026:** Ağ izinleri açıldı → Agent-Reach ile Exa web araması + YouTube arama/altyazı çalışıyor. Twitter hâlâ bekliyor (ikincil hesap + TWITTER_AUTH_TOKEN / TWITTER_CT0 ortam değişkenleri). Reddit için de cookie gerekiyor.
