@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body style="margin:0">
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const h = HK.hash;
+const txt = (s, x, y, size, renk, w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const yildiz = (x, y, r, renk, op) => `<path d="M${x} ${y - r} Q${x + r * .18} ${y - r * .18} ${x + r} ${y} Q${x + r * .18} ${y + r * .18} ${x} ${y + r} Q${x - r * .18} ${y + r * .18} ${x - r} ${y} Q${x - r * .18} ${y - r * .18} ${x} ${y - r}Z" fill="${renk}" opacity="${op}"/>`;
+window.renderAt = t => {
+  let o = `<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#101A44"/><stop offset=".55" stop-color="#1B1640"/><stop offset="1" stop-color="#2A1838"/></linearGradient>
+    <radialGradient id="g1"><stop offset="0" stop-color="#FBAC39" stop-opacity=".22"/><stop offset="1" stop-color="#FBAC39" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g2"><stop offset="0" stop-color="#EE312E" stop-opacity=".2"/><stop offset="1" stop-color="#EE312E" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g3"><stop offset="0" stop-color="#7FA8FF" stop-opacity=".16"/><stop offset="1" stop-color="#7FA8FF" stop-opacity="0"/></radialGradient></defs>
+    <rect width="1080" height="1920" fill="url(#bg)"/><circle cx="540" cy="980" r="560" fill="url(#g3)"/><circle cx="300" cy="1600" r="420" fill="url(#g1)"/><circle cx="800" cy="1620" r="420" fill="url(#g2)"/>`;
+  for (let i = 0; i < 70; i++) { const x = h(i) * 1080, y = h(i + 7) * 1920; if (y > 700 && y < 1300 && x > 140 && x < 940) continue; o += yildiz(x, y, 4 + 10 * h(i + 3), i % 3 ? '#FFF3D6' : '#FBAC39', .25 + .45 * h(i + 5)); }
+  // LOGO (üst)
+  const S = 250 / 233; let l = `<g transform="translate(540 400) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  o += l + '</g>';
+  // başlık
+  o += txt('MERAK ETTİĞİNİ SOR', 540, 610, 66, '#FFF3E0') + txt('BİZ ANLATALIM!', 540, 690, 66, '#FBAC39');
+  // orta boşluk (soru çıkartması buraya) — sadece hafif ışık, boş
+  // alt: Gubi + Gufi büyük, yukarıya (soru alanına) bakıyor
+  o += `<ellipse cx="540" cy="1712" rx="420" ry="26" fill="#000" opacity=".25"/>`;
+  o += M.canli('gufi', { t: .3, x: 720, y: 1700, boy: 330, duygu: 'merak', bakHedef: [540, 950], canlilik: false });
+  o += M.canli('gubi', { t: .3, x: 330, y: 1450, boy: 300, duygu: 'merak', bakHedef: [540, 950], canlilik: false, parla: .5 });
+
+  document.getElementById('dinamik').innerHTML = o;
+};
+</script></body></html>
