@@ -459,3 +459,6 @@ KURALLAR (KALICI):
 5. **#34 oranları (tipiğe göre):** paylaşım %0,7 ↑ · beğeni %0,4 ↓ · kaydetme %0,1 ↓ · yorum %0,0 ↓. Gündem videosu beğeniden çok PAYLAŞILIYOR; yorum neredeyse sıfır → yorum için taraf seçtiren soru + sabit yorumda 🅰/🅱 şart.
 6. **İzlenme eğrisi (#34, 1:05):** kayıp ilk 2–3 sn'de yoğun, orta bölüm düz (~%1), sonda yükseliş (sona kadar izleyen + tekrar izleyen) → videonun ortası sağlam; asıl savaş ilk 3 saniye.
 7. **Kitle (#34):** takipçi %51,6 / takipçi olmayan %48,4 · yaş 25–34 %39,7 + 35–44 %32,7 = **%72'si 25–44** (önceki gözlem doğrulandı) · 18–24 yalnız %9,9 → dil/espri yetişkine göre, "genç argo" gerekmez.
+8. **#35 izleyici eğrisi (1:02):** ilk 3 sn'de %100→~%60, ~12. sn'de ~%50, sonra **~%45'te düz** (çok iyi), ~55–57. sn'de **%40→%10 uçurum** = paylaş/yorum/takip çağrısı + takip kartı + logo bloğu (son ~7 sn). → **Kapanış bloğu en fazla ~4 sn:** son bilgi cümlesinden sonra tek çağrı + takip cümlesi; "gönder" çağrısı videonun ORTASINA taşınır; logo kuyruğu kısa (~1,2 sn).
+9. **#35 dağıtım:** Reels sekmesi %75,1 · Keşfet %16,2 · Hikâye %3 · Akış %3 · Profil %1,2; **takipçi olmayan %97,4** → algoritma yeni kitleye itiyor. Bu kitle daha genç: 18–24 %34,8 + 25–34 %38,9 (13–17 %7,5). Gündem videosu (#34) 25–44'e, pratik bilgi videosu (#35) 18–34'e gitti.
+10. Seçilen #35 kapağı: harita kapak "SEL ANINDA NERDESİN?" (kapak2_5).
