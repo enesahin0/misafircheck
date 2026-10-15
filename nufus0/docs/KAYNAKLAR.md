@@ -13,7 +13,7 @@
 | BBC Sound Effects | 217 SFX (oda sesi, kapı, adım, saat, rüzgâr...) | RemArc | **✗ yalnız ticari olmayan** | zorunlu | ✗ indirilir |
 
 İndirme: `npm run library:fetch` (internet gerekir; betik `scripts/acquire/fetch_library.py`). Arama: `npm run sfx -- <etiket>`.
-**Uyarı (BBC):** ticari olmayan lisans. Herkese açık bir hesapta kullanmak kişisel kullanımın ötesine geçebilir; reklam alınmadan önce mutlaka değiştirilir.
+**Karar (2026-10-15):** kullanıcı BBC seslerini kullanma sorumluluğunu üstlendi; DOSYA 001'de kullanılıyor. **Uyarı (BBC):** ticari olmayan lisans. Herkese açık bir hesapta kullanmak kişisel kullanımın ötesine geçebilir; reklam alınmadan önce mutlaka değiştirilir.
 **Uyarı (Incompetech):** Kevin MacLeod müziği platformlarda otomatik telif (Content ID) işaretine takılabilir; itiraz adımları kaynak sitede.
 
 ## SES — erişilemedi / elenen

@@ -218,6 +218,13 @@ const raw = {
       ...Array.from({ length: 15 }, (_, i) => ({ id: `step-${i}`, lib: `kenney/impact-sounds/footstep_carpet_00${i % 5}`, from: 1438 + i * 5, volume: 0.22 })),
       { id: "drawer", lib: "kenney/rpg-audio/doorClose_2", from: 1512, volume: 0.35 },
       { id: "file-pull", lib: "kenney/rpg-audio/bookFlip1", from: 1548, volume: 0.45 },
+      // BBC Sound Effects (ticari olmayan lisans — kullanıcı sorumluluğu üstlendi, reklam öncesi değiştirilecek)
+      { id: "wind-city", lib: "bbc-sfx/wind-blowing-in-leaves-branches-of-tree-n-b-this-is-the-worl-NHU05008150", from: 0, to: 840, loop: true, volume: 0.14, fadeIn: 20, fadeOut: 45 },
+      { id: "room-tone", lib: "bbc-sfx/quiet-room-00008087", from: 850, to: 1766, loop: true, volume: 0.4, fadeIn: 30, fadeOut: 6 },
+      { id: "light-switch", lib: "bbc-sfx/household-light-switch-wall-mounted-electric-operated-07027125", from: 862, volume: 0.5 },
+      { id: "typewriter", lib: "bbc-sfx/electric-typewriter-close-perspective-loading-unloading-pape-07029100", from: 890, to: 1140, loop: true, volume: 0.16, fadeIn: 25, fadeOut: 25 },
+      { id: "radio-static", lib: "bbc-sfx/radio-interference-07041174", from: 1596, to: 1650, volume: 0.22, fadeOut: 12 },
+      { id: "alarm-signal", lib: "bbc-sfx/electronic-alarm-signal-07012108", from: 1712, to: 1766, volume: 0.2, fadeIn: 8 },
     ],
     music: { src: "music/_generated/drone.wav", volume: 0.42 },
   },

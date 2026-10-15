@@ -98,7 +98,8 @@
       "commercialOk": false,
       "attributionRequired": true,
       "redistributable": false,
-      "notes": "Yalnızca kişisel/eğitim/araştırma amaçlı kullanım. REKLAM/MONETİZASYON ÖNCESİ BU SESLER DEĞİŞTİRİLMELİ (npm run audio:audit -- --commercial). Atıf: 'BBC Sound Effects, © copyright BBC'."
+      "notes": "Yalnızca kişisel/eğitim/araştırma amaçlı kullanım. REKLAM/MONETİZASYON ÖNCESİ BU SESLER DEĞİŞTİRİLMELİ (npm run audio:audit -- --commercial). Atıf: 'BBC Sound Effects, © copyright BBC'.",
+      "userNote": "Kullanıcı, ticari olmayan lisansın sorumluluğunu kendisi üstlendi (2026-10-15). Reklam/monetizasyon öncesi bu sesler değiştirilecek: npm run audio:audit -- <bölüm> --commercial"
     }
   }
 }

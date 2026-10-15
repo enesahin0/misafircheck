@@ -60,8 +60,17 @@ const AudioTracks: React.FC<{ ep: Episode }> = ({ ep }) => {
       {ep.audio.sfx.map((s) => {
         const p = resolveSfx(s);
         return p ? (
-          <Sequence key={s.id} from={s.from} layout="none">
-            <Html5Audio src={staticFile(p)} volume={s.volume} />
+          <Sequence key={s.id} from={s.from} durationInFrames={s.to ? s.to - s.from : undefined} layout="none">
+            <Html5Audio
+              src={staticFile(p)}
+              loop={s.loop}
+              volume={(f) => {
+                const len = s.to ? s.to - s.from : Infinity;
+                const a = s.fadeIn ? Math.min(1, f / s.fadeIn) : 1;
+                const b = s.fadeOut && s.to ? Math.min(1, (len - f) / s.fadeOut) : 1;
+                return s.volume * Math.max(0, Math.min(a, b));
+              }}
+            />
           </Sequence>
         ) : null;
       })}

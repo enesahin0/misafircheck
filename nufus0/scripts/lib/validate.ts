@@ -92,6 +92,8 @@ export const validateEpisode = (ep: Episode, ws: WorldState): Report => {
   }
   ep.audio.sfx.forEach((s) => {
     if (s.from >= D) err(`SFX ${s.id}: bölüm dışında.`);
+    if (s.to !== undefined && (s.to <= s.from || s.to > D)) err(`SFX ${s.id}: to (${s.to}) from'dan büyük ve ${D}'i aşmayan bir kare olmalı.`);
+    if (s.loop && s.to === undefined) err(`SFX ${s.id}: loop için to (bitiş karesi) gerekli.`);
     if (s.src) {
       if (!have.has(`audio/${s.src}`)) missing.push(`public/audio/${s.src}`);
     } else if (s.lib) {
