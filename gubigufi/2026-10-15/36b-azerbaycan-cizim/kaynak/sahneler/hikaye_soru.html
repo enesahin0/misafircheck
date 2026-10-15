@@ -12,18 +12,20 @@ window.renderAt = t => {
     <radialGradient id="g2"><stop offset="0" stop-color="#EE312E" stop-opacity=".2"/><stop offset="1" stop-color="#EE312E" stop-opacity="0"/></radialGradient>
     <radialGradient id="g3"><stop offset="0" stop-color="#7FA8FF" stop-opacity=".16"/><stop offset="1" stop-color="#7FA8FF" stop-opacity="0"/></radialGradient></defs>
     <rect width="1080" height="1920" fill="url(#bg)"/><circle cx="540" cy="980" r="560" fill="url(#g3)"/><circle cx="300" cy="1600" r="420" fill="url(#g1)"/><circle cx="800" cy="1620" r="420" fill="url(#g2)"/>`;
-  for (let i = 0; i < 70; i++) { const x = h(i) * 1080, y = h(i + 7) * 1920; if (y > 700 && y < 1300 && x > 140 && x < 940) continue; o += yildiz(x, y, 4 + 10 * h(i + 3), i % 3 ? '#FFF3D6' : '#FBAC39', .25 + .45 * h(i + 5)); }
+  for (let i = 0; i < 70; i++) { const x = h(i) * 1080, y = h(i + 7) * 1920; if (y > 860 && y < 1390 && x > 90 && x < 990) continue; o += yildiz(x, y, 4 + 10 * h(i + 3), i % 3 ? '#FFF3D6' : '#FBAC39', .25 + .45 * h(i + 5)); }
   // LOGO (üst)
-  const S = 940 / 233; let l = `<g transform="translate(540 560) scale(${S}) translate(-141.5 -141.5)">`;
+  const S = 700 / 233; let l = `<g transform="translate(540 420) scale(${S}) translate(-141.5 -141.5)">`;
   for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
   o += l + '</g>';
   // başlık
-  o += txt("MERAK ETTİĞİNİ SOR", 540, 1000, 66, '#FFF3E0') + txt("BİZ ANLATALIM!", 540, 1080, 66, '#FBAC39');
-  // orta boşluk (soru çıkartması buraya) — sadece hafif ışık, boş
+  o += txt("MERAK ETTİĞİNİ SOR", 540, 740, 62, '#FFF3E0') + txt("BİZ ANLATALIM!", 540, 815, 62, '#FBAC39');
+  // ORTA: soru çıkartması paneli (çıkartma bu panelin içine konur)
+  o += `<rect x="110" y="890" width="860" height="470" rx="48" fill="#FFFFFF" opacity=".06"/><rect x="110" y="890" width="860" height="470" rx="48" fill="none" stroke="#FFF3D6" stroke-opacity=".35" stroke-width="4" stroke-dasharray="18 16"/>`;
+  o += `<text class="mono" x="540" y="1135" font-size="26" text-anchor="middle" letter-spacing="4" style="fill:#FFF3D6;opacity:.35">SORU KUTUSU</text>`;
   // alt: Gubi + Gufi büyük, yukarıya (soru alanına) bakıyor
-  o += `<ellipse cx="540" cy="1712" rx="420" ry="26" fill="#000" opacity=".25"/>`;
-  o += M.canli('gufi', { t: .3, x: 720, y: 1700, boy: 330, duygu: 'merak', bakHedef: [540, 950], canlilik: false });
-  o += M.canli('gubi', { t: .3, x: 330, y: 1450, boy: 300, duygu: 'merak', bakHedef: [540, 950], canlilik: false, parla: .5 });
+  o += `<ellipse cx="540" cy="1712" rx="330" ry="22" fill="#000" opacity=".25"/>`;
+  o += M.canli('gufi', { t: .3, x: 680, y: 1700, boy: 250, duygu: 'merak', bakHedef: [540, 1120], canlilik: false });
+  o += M.canli('gubi', { t: .3, x: 390, y: 1555, boy: 230, duygu: 'merak', bakHedef: [540, 1120], canlilik: false, parla: .5 });
 
   document.getElementById('dinamik').innerHTML = o;
 };
