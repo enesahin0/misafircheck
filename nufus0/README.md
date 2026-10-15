@@ -99,6 +99,8 @@ npm run mahalle:stills -- --shots=meydan:genis --light=ogle --market            
 ```
 **Mevsimler** (`src/story/series/seasons.json`): ilkbahar (çiçekli ağaçlar, çiçek yaprağı), yaz (parasollar), sonbahar (turuncu yapraklar, yaprak yağmuru, kabaklar, baca dumanı), kış (kar, çıplak ağaçlar, çatı karı, kardan adam, bere ve atkı). Her mevsimin hikâye tarafı da aynı dosyada: hava, mahalle yaşamı, olay fikirleri, festival. Bölüm senaryosunda `season` ve `timeOfDay` yazılır. Mevsim bir bölüm içinde değişmez.
 
+**Çınar İstasyonu ve tren** (`station.tsx`, `rail.ts`): haritanın üst köşesinde. Buharlı lokomotif + kömürlük + vagon; tren kuzey kenardaki tünelden çıkar, istasyonda 6 sn durur, batıdaki tünelde kaybolur (30 sn çevrim, tamamen kare-tabanlı). Bölüm senaryosu treni istediği ana `trainFrame` parametresiyle oturtur. Kontrol: `npm run mahalle:stills -- --shots=istasyon:kart --frame=450` (200 gelişi, 450 durağı, 650 kalkışı gösterir).
+
 `MahalleDebug` kompozisyonu Remotion Studio'da (`npm run dev`) de açılır. `npm run validate:universe` her hücrenin dolu, her mekânın yerleşimi ve kamera planı olduğunu denetler.
 
 ## Mimari (kısa)

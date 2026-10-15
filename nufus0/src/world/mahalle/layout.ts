@@ -42,6 +42,7 @@ export const PLACES: Record<string, Place> = {
   park: { w: 10, d: 10, h: 0 },
   firin: { w: 7, d: 6, h: 3.4 },
   durak: { w: 10, d: 10, h: 0 },
+  istasyon: { w: 16, d: 12, h: 5 },
 };
 
 export type VenueSpec = { id: string; name: string; type: string; origin: [number, number]; place: Place; top: number; parcel: string };

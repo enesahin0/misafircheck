@@ -870,6 +870,44 @@
       "clue": null,
       "status": "IDEA",
       "notes": ""
+    },
+    {
+      "id": "TREN_17_42",
+      "title": "17.42 Treni",
+      "suggestedOrder": 24,
+      "chars": [
+        "hatice",
+        "nuri",
+        "efe",
+        "hacer"
+      ],
+      "flats": [],
+      "places": [
+        "istasyon",
+        "cay-ocagi",
+        "meydan"
+      ],
+      "eventType": "YENI_GELEN",
+      "hook": "Her gün 17.42'de gelen trenden bugün biri iniyor. Çay ocağı sustu.",
+      "hookPattern": "H2",
+      "conflict": "Trenden inen yabancı mahallenin adını doğru söylüyor ama kimseyi tanımadığını söylüyor. Hatice Abla 'bu adam buraya ilk kez gelmiyor' diyor; Nuri Amca emin değil.",
+      "evidenceObject": "Bavulun üstündeki eski bir mahalle etiketi",
+      "decision": {
+        "question": "Yabancı bu mahallede kalsın mı?",
+        "A": {
+          "label": "Kalsın: misafir odası verilsin",
+          "cost": "Yeni karakter mahalleye karışır, eski düzen bozulur"
+        },
+        "B": {
+          "label": "Akşam trenine geri binsin",
+          "cost": "Sır çözülmez, hikâye yarım kalır"
+        }
+      },
+      "cliffhanger": "Yabancı çay ocağının önünde durup tam Hacer Hanım'ın balkonuna bakıyor.",
+      "placementSlot": null,
+      "clue": null,
+      "status": "IDEA",
+      "notes": "İstasyon + tünel girişi ilk gösterim bölümü. Tren saati: 17.42. Sonbahar/akşam ışığı uygun."
     }
   ]
 }

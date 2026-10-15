@@ -473,7 +473,7 @@ const distSeg = (px: number, pz: number, ax: number, az: number, bx: number, bz:
   const t = Math.max(0, Math.min(1, ((px - ax) * dx + (pz - az) * dz) / (dx * dx + dz * dz || 1)));
   return Math.hypot(px - (ax + t * dx), pz - (az + t * dz));
 };
-const Bush: React.FC<{ pos: V3; s?: number }> = ({ pos, s = 1 }) => {
+export const Bush: React.FC<{ pos: V3; s?: number }> = ({ pos, s = 1 }) => {
   const S = useSeason();
   return (
     <mesh position={[pos[0], pos[1] + 0.35 * s, pos[2]]} material={mat(S.bare ? M.woodDark : S.leaves[1])} scale={[s, 0.75 * s, s]}>

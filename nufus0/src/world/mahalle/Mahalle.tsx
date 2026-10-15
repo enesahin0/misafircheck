@@ -10,13 +10,14 @@ import { MAP, Parcel, Road, STATIONS, WORLD_CX, WORLD_CZ, WORLD_D, WORLD_W, parc
 import { LightId, M } from "./palette";
 import { SEASONS, SeasonId, lightFor } from "./seasons";
 import { Ambient, CastEntry, Person, Pet } from "./People";
-import { Bakkal, CayOcagi, Doner, Durak, Firin, GulApt, Kuafor, Meydan, ParcelFiller, PasajHan, Park, Teras7, YildizApt } from "./venues";
+import { Bakkal, Bush, CayOcagi, Doner, Durak, Firin, GulApt, Kuafor, Meydan, ParcelFiller, PasajHan, Park, Teras7, YildizApt } from "./venues";
+import { Istasyon } from "./station";
 import { pulse, rand } from "../../utils/deterministic";
 
 type VComp = React.FC<{ frame: number; market?: boolean; w: number; d: number }>;
 const COMPONENTS: Record<string, VComp> = {
   meydan: Meydan, "cay-ocagi": CayOcagi, bakkal: Bakkal, doner: Doner, kuafor: Kuafor, "yildiz-apt": YildizApt, "gul-apt": GulApt,
-  "pasaj-han": PasajHan, teras7: Teras7, park: Park, firin: Firin, durak: Durak,
+  "pasaj-han": PasajHan, teras7: Teras7, park: Park, firin: Firin, durak: Durak, istasyon: Istasyon,
 };
 
 export const DEFAULT_CAST: CastEntry[] = Object.keys(STATIONS).filter((id) => id !== "karabas").map((id) => ({ id }));
@@ -159,6 +160,7 @@ const Deco: React.FC<{ p: Parcel }> = ({ p }) => {
           case "cypress": return <Cypress key={i} pos={pos} seed={(a as number) ?? i + 1} />;
           case "pot": return <Pot key={i} pos={pos} flower={[M.rose, M.yellow, M.red][i % 3]} />;
           case "bench": return <Bench key={i} pos={pos} rotY={(a as number) ?? 0} />;
+          case "bush": return <Bush key={i} pos={pos} s={1.1} />;
           default: return null;
         }
       })}
@@ -265,6 +267,8 @@ export type MahalleParams = {
   pets?: boolean;
   ambient?: boolean;
   market?: boolean;
+  /** Tren saati: bölüm karesinden bağımsız çevrim kaydırma (varsayılan: kare). Senaryo "tren şu anda gelsin" derse buradan seçilir. */
+  trainFrame?: number;
   /** Mevsim (seasons.json). Varsayılan: yaz. */
   season?: SeasonId;
   /** Yalnız bu mekânın parselini yüzen ada olarak göster ("mekân kartı"). */
@@ -297,7 +301,7 @@ const ParcelContent: React.FC<{ p: Parcel; frame: number; market?: boolean }> = 
   );
 };
 
-export const Mahalle: React.FC<{ frame: number } & MahalleParams> = ({ frame, light, highlight, cast = "default", pets = true, ambient = true, market, solo, season = "yaz" }) => {
+export const Mahalle: React.FC<{ frame: number } & MahalleParams> = ({ frame, light, highlight, cast = "default", pets = true, ambient = true, market, solo, season = "yaz", trainFrame }) => {
   const lp = lightFor(light, season);
   const sv = SEASONS[season].visual;
   const soloParcel = solo ? parcelById(solo) : null;
@@ -309,7 +313,7 @@ export const Mahalle: React.FC<{ frame: number } & MahalleParams> = ({ frame, li
   const [scx, scz] = soloParcel ? rectCenter(soloParcel) : [WORLD_CX, WORLD_CZ];
   const [sw, sd] = soloParcel ? rectSize(soloParcel) : [WORLD_W, WORLD_D];
   return (
-    <LightCtx.Provider value={{ light: lp, frame, season }}>
+    <LightCtx.Provider value={{ light: lp, frame, season, trainFrame }}>
       <color attach="background" args={[lp.bg]} />
       <fog attach="fog" args={[lp.bg, lp.fogNear, lp.fogFar]} />
       <hemisphereLight args={[lp.hemiSky, lp.hemiGround, lp.hemiI]} />

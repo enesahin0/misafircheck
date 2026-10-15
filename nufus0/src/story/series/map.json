@@ -46,10 +46,10 @@
   {
    "id": "tek-w",
    "type": "tek",
-   "name": "Dut Sokak",
+   "name": "Dut Sokak (istasyon yolu)",
    "x0": -24.5,
    "x1": -21.5,
-   "z0": -28,
+   "z0": -14,
    "z1": -4
   },
   {
@@ -109,52 +109,52 @@
  ],
  "parcels": [
   {
-   "id": "yildiz",
+   "id": "istasyon",
    "x0": -40,
-   "x1": -24.5,
+   "x1": -21.5,
    "z0": -28,
    "z1": -14,
    "ground": "grass",
-   "walks": [
-    "e"
-   ],
+   "walks": [],
    "items": [
     {
-     "venue": "yildiz-apt",
+     "venue": "istasyon",
      "pos": [
-      -33.5,
-      -21.5
+      -31.5,
+      -20
      ]
     }
    ],
    "deco": [
     [
+     "tree",
+     -22.8,
+     -16.6,
+     5
+    ],
+    [
+     "bush",
+     -24.6,
+     -15.0
+    ],
+    [
      "cypress",
-     -38.5,
-     -14.8
+     -22.6,
+     -20,
+     8
     ],
     [
-     "tree",
-     -27,
-     -16
+     "bush",
+     -39.2,
+     -14.6
     ],
     [
-     "tree",
-     -26,
-     -26.5
-    ],
-    [
-     "pot",
-     -31.5,
-     -16.2
-    ],
-    [
-     "bench",
-     -30,
-     -15.2,
-     0
+     "bush",
+     -35.5,
+     -14.6
     ]
-   ]
+   ],
+   "note": "Eski tarz küçük yerel istasyon. İki kenarında tünel: tren kuzey kenardaki tünelden gelir, durur, batı kenardaki tünelden çıkar."
   },
   {
    "id": "nw-ev",
@@ -168,10 +168,10 @@
     "e"
    ],
    "filler": {
-    "type": "house",
-    "color": "cream",
-    "seed": 105
-   }
+    "type": "veg",
+    "seed": 131
+   },
+   "note": "Alçak sebze bahçesi: istasyonun peronunu ve trenini kapatmasın diye yüksek yapı yok."
   },
   {
    "id": "bakkal",
@@ -301,18 +301,59 @@
    }
   },
   {
-   "id": "arka-blok",
+   "id": "yildiz",
    "x0": -8,
    "x1": 5,
    "z0": -28,
    "z1": -14.4,
-   "ground": "pave",
-   "filler": {
-    "type": "block",
-    "floors": 5,
-    "color": "sky",
-    "seed": 104
-   }
+   "ground": "grass",
+   "walks": [],
+   "items": [
+    {
+     "venue": "yildiz-apt",
+     "pos": [
+      -1.5,
+      -21.5
+     ]
+    }
+   ],
+   "deco": [
+    [
+     "cypress",
+     -6.6,
+     -16.4,
+     3
+    ],
+    [
+     "tree",
+     3.2,
+     -16,
+     4
+    ],
+    [
+     "tree",
+     -6.4,
+     -26,
+     5
+    ],
+    [
+     "tree",
+     3.4,
+     -26.4,
+     6
+    ],
+    [
+     "bench",
+     -1.5,
+     -15.4,
+     0
+    ],
+    [
+     "pot",
+     -3.6,
+     -16.6
+    ]
+   ]
   },
   {
    "id": "arka-ev2",

@@ -343,6 +343,31 @@
         "recep",
         "kemal"
       ]
+    },
+    {
+      "id": "istasyon",
+      "name": "Çınar İstasyonu",
+      "type": "public",
+      "floors": 1,
+      "description": "Eski tarz küçük yerel istasyon: tuğla bina, tahta peron saçağı, saat, su kulesi. Tren iki tünelden birinden gelip diğerinden çıkar; mahalleye yeni gelenlerin ilk durağı.",
+      "eventAffordances": [
+        "yeni gelen (trenle)",
+        "veda",
+        "kayıp bavul",
+        "geç kalan yolcu",
+        "tren saati dedikodusu",
+        "misafir karakter gelişi"
+      ],
+      "placementSlots": [],
+      "props": [
+        "peron",
+        "saat",
+        "su kulesi",
+        "bank",
+        "bavul arabası",
+        "tünel (iki ucu)"
+      ],
+      "staff": []
     }
   ],
   "cameraGuidelines": {
@@ -363,7 +388,8 @@
     "weekly": {
       "çarşamba": "Semt pazarı (meydan)",
       "cumartesi": "60 SANİYE ÖNCE (haftalık özel)",
-      "cuma": "TERAS 7 gecesi"
+      "cuma": "TERAS 7 gecesi",
+      "tren": "Yerel tren günde 3 sefer: 07.40, 12.15, 17.42 (17.42 en çok yolcu getirir)"
     },
     "rhythm": "Gün içinde mekân akışı: 05.00 fırın → 07.00 çay ocağı → 09.00 bakkal/kuaför → 12.00 döner → akşam meydan → gece TERAS 7."
   }

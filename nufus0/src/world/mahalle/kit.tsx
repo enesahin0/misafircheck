@@ -9,7 +9,7 @@ import { LIGHTS, LightPreset, M } from "./palette";
 import { SEASONS, SNOW, SeasonId, SeasonVisual } from "./seasons";
 import { TBase, roofCoilMaterial } from "./tex";
 
-export const LightCtx = createContext<{ light: LightPreset; frame: number; season: SeasonId }>({ light: LIGHTS.ogle, frame: 0, season: "yaz" });
+export const LightCtx = createContext<{ light: LightPreset; frame: number; season: SeasonId; trainFrame?: number }>({ light: LIGHTS.ogle, frame: 0, season: "yaz" });
 export const useLight = () => useContext(LightCtx);
 export const useSeason = (): SeasonVisual => SEASONS[useContext(LightCtx).season].visual;
 export const useSeasonId = (): SeasonId => useContext(LightCtx).season;

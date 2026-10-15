@@ -21,7 +21,8 @@ Tek doğruluk kaynağı: `map.json` (80×56 birim). Izgara yok: 21 farklı boyut
 - **Büyük ağaçlık park (güneybatı):** gölet, patikalar, salıncak, satranç masası, piknik masaları. Doğu kenarından tek yol geçer.
 - **Çarşı şeridi (ana caddenin kuzeyi):** bakkal – kuaför – dönerci yan yana, önlerinde kaldırım, arkalarında patika ve evler.
 - **Meydan (ana caddenin güneyi):** çınar, çeşme, çay ocağı; üç yanından yol geçer.
-- **Yıldız Apartmanı** kuzeybatıda tek yoldan beslenir; **Pasaj Han + TERAS 7** kuzeydoğuda; **Gül Apartmanı** güneydoğuda.
+- **Çınar İstasyonu (kuzeybatı köşe, haritanın en üst köşesi):** eski tarz küçük yerel istasyon: tuğla bina, tahta peron saçağı, saat, su kulesi, hemzemin geçit. İki kenarında tünel var: tren kuzey kenardaki tünelden gelir, istasyonda durur, batı kenardaki tünelden çıkar; böylece tren harita dışından gelip dışına gider. Günde 3 sefer (07.40, 12.15, 17.42). Hikâye: yeni gelenler, misafir karakterler, veda, kayıp bavul.
+- **Yıldız Apartmanı** artık ana caddenin arkasında, haritanın kuzey ortasında; **Pasaj Han + TERAS 7** kuzeydoğuda; **Gül Apartmanı** güneydoğuda.
 - **Virane (kuzeydoğu, çıkmazın ucu):** yıkık, çatısı çökmüş, pencereleri tahtayla kapatılmış terk edilmiş ev; ot basmış, karga konmuş, "TEHLİKE" levhası. Hikâye aracı: gizemli sesler, saklanma yeri, çocukların merakı, emlak/yıkım tartışması (güvenlik: çocuklar için tehlikeli yer olarak işlenir, korku değil merak).
 - Bazı parsellere tek yol (virane, park), bazılarına bir yandan (esnaf şeridi), bazılarına iki-üç yandan (meydan, fırın) yol temas eder; kaldırım yalnızca yola bakan kenarda vardır.
 
