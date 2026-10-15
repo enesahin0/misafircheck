@@ -17,6 +17,7 @@ const id = args.find((a) => !a.startsWith("-")) ?? "001";
 const isTest = flag("test");
 const draft = flag("draft");
 const stills = flag("stills");
+const pixel = flag("pixel"); // piksel stili: Nufus0Episode001Pixel
 
 const STILL_FRAMES = [0, 45, 100, 200, 300, 450, 530, 640, 700, 780, 840, 900, 1040, 1200, 1400, 1500, 1580, 1650, 1700, 1745, 1780, 1799];
 
@@ -37,7 +38,7 @@ const STILL_FRAMES = [0, 45, 100, 200, 300, 450, 530, 640, 700, 780, 840, 900, 1
   }
 
   // 3) bundle
-  const compositionId = isTest ? "Nufus0Test5s" : `Nufus0Episode${id}`;
+  const compositionId = isTest ? "Nufus0Test5s" : `Nufus0Episode${id}${pixel ? "Pixel" : ""}`;
   console.log(`\nPaketleniyor (${compositionId})...`);
   let lastPct = -1;
   const serveUrl = await bundle({
@@ -68,7 +69,7 @@ const STILL_FRAMES = [0, 45, 100, 200, 300, 450, 530, 640, 700, 780, 840, 900, 1
     const frames = only ?? STILL_FRAMES;
     const browser = await openBrowser("chrome", { browserExecutable, chromiumOptions, chromeMode: "headless-shell" });
     for (const f of frames) {
-      const out = path.join(dir, `f${String(f).padStart(4, "0")}.png`);
+      const out = path.join(dir, `${pixel ? "px_" : ""}f${String(f).padStart(4, "0")}.png`);
       await renderStill({ composition, serveUrl, frame: f, output: out, puppeteerInstance: browser, chromiumOptions, browserExecutable, logLevel: "error", timeoutInMilliseconds: 240000 });
       console.log(`  kare ${f} → ${path.relative(ROOT, out)}`);
     }
@@ -77,7 +78,7 @@ const STILL_FRAMES = [0, 45, 100, 200, 300, 450, 530, 640, 700, 780, 840, 900, 1
   }
 
   // 4b) video
-  const base = isTest ? "NUFUS0_test_5sn" : `DOSYA${id}${draft ? "_draft" : ""}`;
+  const base = isTest ? "NUFUS0_test_5sn" : `DOSYA${id}${pixel ? "_pixel" : ""}${draft ? "_draft" : ""}`;
   const output = path.join(ROOT, "out", `${base}.mp4`);
   const frameRange = opt("frames")?.split("-").map(Number) as [number, number] | undefined;
   console.log(`\nRender başlıyor → ${path.relative(ROOT, output)}${draft ? "  (TASLAK: yarı çözünürlük)" : ""}`);

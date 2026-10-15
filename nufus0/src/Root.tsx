@@ -21,6 +21,15 @@ export const RemotionRoot: React.FC = () => (
       durationInFrames={1800}
       defaultProps={{ episode: episode001, worldState } satisfies EpisodeProps}
     />
+    <Composition
+      id="Nufus0Episode001Pixel"
+      component={EpisodeComposition}
+      width={1080}
+      height={1920}
+      fps={30}
+      durationInFrames={1800}
+      defaultProps={{ episode: episode001, worldState, style: "pixel" } satisfies EpisodeProps}
+    />
     <Composition id="Nufus0Test5s" component={CityTest5s} width={1080} height={1920} fps={30} durationInFrames={150} />
     <Composition
       id="Nufus0Debug"

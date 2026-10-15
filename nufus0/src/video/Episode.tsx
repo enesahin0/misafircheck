@@ -16,7 +16,10 @@ import { useFontsReady } from "../utils/fonts";
 import { C } from "../world/palette";
 import audioManifest from "../generated/audioManifest.json";
 
-export type EpisodeProps = { episode: Episode; worldState: WorldState };
+/** "lowpoly" = keskin diorama (varsayılan). "pixel" = 3D katman düşük çözünürlükte render edilip keskin büyütülür; yazılar net kalır. */
+export type RenderStyle = "lowpoly" | "pixel";
+export const PIXEL_SCALE = 4;
+export type EpisodeProps = { episode: Episode; worldState: WorldState; style?: RenderStyle };
 
 const AUDIO_EXT = ["mp3", "wav", "m4a", "aac", "ogg"];
 const have = new Set<string>(audioManifest.files);
@@ -62,7 +65,8 @@ const AudioTracks: React.FC<{ ep: Episode }> = ({ ep }) => {
   );
 };
 
-export const EpisodeComposition: React.FC<EpisodeProps> = ({ episode: ep, worldState }) => {
+export const EpisodeComposition: React.FC<EpisodeProps> = ({ episode: ep, worldState, style = "lowpoly" }) => {
+  const px = style === "pixel" ? PIXEL_SCALE : 1;
   const frame = useCurrentFrame();
   const fontsReady = useFontsReady();
   const chains = useMemo(() => buildCameraChains(ep), [ep]);
@@ -81,9 +85,20 @@ export const EpisodeComposition: React.FC<EpisodeProps> = ({ episode: ep, worldS
         }}
       >
         {fontsReady && (
-          <ThreeCanvas orthographic width={ep.width} height={ep.height} flat dpr={1} camera={{ zoom: 30, position: [100, 80, 100], near: 1, far: 420 }}>
-            <WorldScene frame={frame} params={params} camera={camera} />
-          </ThreeCanvas>
+          <div style={{ width: ep.width / px, height: ep.height / px, transform: px > 1 ? `scale(${px})` : undefined, transformOrigin: "0 0", imageRendering: px > 1 ? "pixelated" : undefined }}>
+            <ThreeCanvas
+              orthographic
+              width={ep.width / px}
+              height={ep.height / px}
+              flat
+              dpr={1}
+              gl={{ antialias: px === 1 }}
+              style={{ imageRendering: px > 1 ? "pixelated" : undefined }}
+              camera={{ zoom: 30, position: [100, 80, 100], near: 1, far: 420 }}
+            >
+              <WorldScene frame={frame} params={params} camera={{ ...camera, zoom: camera.zoom / px }} />
+            </ThreeCanvas>
+          </div>
         )}
       </AbsoluteFill>
       {g.bars.map((b, i) => (

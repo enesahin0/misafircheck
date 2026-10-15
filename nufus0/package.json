@@ -13,6 +13,8 @@
     "render:001": "tsx scripts/render-episode.ts 001",
     "render:001:draft": "tsx scripts/render-episode.ts 001 --draft",
     "stills": "tsx scripts/render-episode.ts 001 --stills",
+    "stills:pixel": "tsx scripts/render-episode.ts 001 --stills --pixel",
+    "render:001:pixel": "tsx scripts/render-episode.ts 001 --pixel",
     "tally": "tsx scripts/tally-votes.ts",
     "typecheck": "tsc --noEmit",
     "check": "tsc --noEmit && tsx scripts/validate-episode.ts 001"
