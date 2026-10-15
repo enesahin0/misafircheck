@@ -199,6 +199,14 @@ Kişilik: tepkici, şaşıran, bazen yanılan — izleyicinin şaşkınlığı
 - **Konuya dokunma:** karakterler anlatılan nesneyi eliyle gösterir, taşır, üstüne çıkar, düşünce balonunda konuyu hayal eder (`M.balon`).
 - Her videoda EN AZ: 1 kameraya yaklaşma anı (kanca ya da kapanışta), 2+ el hareketi (işaret/gösterme), 1 sahneye giriş (yol) — konuya uygun seçilir.
 
+### SES EFEKTLERİ = GERÇEK KAYIT (KALICI — kullanıcı kararı, #36'dan itibaren)
+Sentezlenmiş whoosh/pop/darbe (ses_lib.whoosh, pop, hit, boom…) efekt olarak KULLANILMAZ; "çok kötü" bulundu. Efektler `marka/sfx_lib.py` → `Y('rol:gecis')`, `Y('mk:darbe_epik', sure=2)`, `Y('kn:impact-sounds/impactMetal_light_000')` ile kayıtlı kütüphaneden gelir:
+- `marka/sfx_kutuphane/kenney/` — Kenney CC0 (538 dosya: arayüz, darbe, dijital, kumarhane, RPG, jingle). Repoda.
+- `marka/sfx_kutuphane/mixkit/` — Mixkit seçkisi (88 dosya, `mixkit_secki.json`; Sound Effects Free License, ham dosya dağıtılamaz → repoda YOK). Yeni oturumda: `cd gubigufi/marka/sfx_kutuphane && python3 mixkit_indir.py`. Tüm katalog: `mixkit_katalog.json` (907 efekt; yeni efekt gerekirse id'yi seçkiye ekle).
+- `mb:` motion-bang-bang skill efektleri (damga, kâğıt, foto, tık, drone).
+- `ROL` sözlüğü kanalın sabit sesleridir (gecis, kart_pop, cip_pop, etiket_vur, darbe, bomba, damga, kagit, tik, uyari, yanlis, catlak, pirilti…) → videolar arası tutarlılık için önce rol kullan.
+- Müzik yatağı (pad/pluck) ve maskot imza sesleri şimdilik sentez kalır.
+
 ### İmza sesler (KALICI — `marka/ses_lib.py` → `maskot_ses(kim, tip)`)
 Her tepki, aynı anda kendi imza sesiyle çalınır: `M.add('sfx', maskot_ses('gubi','aha'), t, .5)`. Bu sesler değiştirilmez; kanalın "sesli logosu" gibidir.
 - **Gubi:** kristal/cam "ting" ailesi — Mi majör pentatonik, hep yukarı kıvrılır (merak = yükselen soru); `aha` = parlak arpej.
