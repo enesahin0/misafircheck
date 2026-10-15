@@ -200,11 +200,11 @@ Kişilik: tepkici, şaşıran, bazen yanılan — izleyicinin şaşkınlığı
 - Her videoda EN AZ: 1 kameraya yaklaşma anı (kanca ya da kapanışta), 2+ el hareketi (işaret/gösterme), 1 sahneye giriş (yol) — konuya uygun seçilir.
 
 ### SES EFEKTLERİ = GERÇEK KAYIT (KALICI — kullanıcı kararı, #36'dan itibaren)
-Sentezlenmiş whoosh/pop/darbe (ses_lib.whoosh, pop, hit, boom…) efekt olarak KULLANILMAZ; "çok kötü" bulundu. Efektler `marka/sfx_lib.py` → `Y('rol:gecis')`, `Y('mk:darbe_epik', sure=2)`, `Y('kn:impact-sounds/impactMetal_light_000')` ile kayıtlı kütüphaneden gelir:
-- `marka/sfx_kutuphane/kenney/` — Kenney CC0 (538 dosya: arayüz, darbe, dijital, kumarhane, RPG, jingle). Repoda.
-- `marka/sfx_kutuphane/mixkit/` — Mixkit seçkisi (88 dosya, `mixkit_secki.json`; Sound Effects Free License, ham dosya dağıtılamaz → repoda YOK). Yeni oturumda: `cd gubigufi/marka/sfx_kutuphane && python3 mixkit_indir.py`. Tüm katalog: `mixkit_katalog.json` (907 efekt; yeni efekt gerekirse id'yi seçkiye ekle).
-- `mb:` motion-bang-bang skill efektleri (damga, kâğıt, foto, tık, drone).
-- `ROL` sözlüğü kanalın sabit sesleridir (gecis, kart_pop, cip_pop, etiket_vur, darbe, bomba, damga, kagit, tik, uyari, yanlis, catlak, pirilti…) → videolar arası tutarlılık için önce rol kullan.
+Sentezlenmiş whoosh/pop/darbe (ses_lib.whoosh, pop, hit, boom…) efekt olarak KULLANILMAZ ("çok kötü" bulundu). Efektler `marka/sfx_lib.py` → `Y('rol:gecis')`, `Y('ve:cinematic-boom', sure=2)`, `Y('sn:Federico Soler - Effective Trailer Booms Vol. 2/EffectiveTrailer_Booms_Vol2_011')` ile kayıtlı kütüphaneden gelir.
+Kaynaklar ve lisanslar: `marka/sfx_kutuphane/KAYNAKLAR.md` (kn Kenney CC0 · ui uisfx CC0 · ve videoeditingsfx CC0 · sx soundfx · mb skill · mk Mixkit · sn Sonniss GDC 2015–2026 · bb BBC).
+- **Yeni oturumda** repoda olmayanları indir: `cd gubigufi/marka/sfx_kutuphane && python3 mixkit_indir.py && python3 sonniss_indir.py` (BBC isteğe göre: `python3 bbc_ara.py "sorgu" --n 5 --max 6`).
+- **TİCARİ OLMAYAN kaynak (bb: BBC RemArc) şimdilik serbest** — kullanıcı para kazanmaya başladığını söyleyince yeni videolarda kullanılmaz (kullanıcı kararı 15.10.2026).
+- `ROL` sözlüğü kanalın sabit sesleridir; kullanıcı `dinleme.mp4` kataloğundan seçtikçe güncellenir (`dinleme_secim.json`: "GEÇİŞ 3" → efekt adı).
 - Müzik yatağı (pad/pluck) ve maskot imza sesleri şimdilik sentez kalır.
 
 ### İmza sesler (KALICI — `marka/ses_lib.py` → `maskot_ses(kim, tip)`)

@@ -3,6 +3,12 @@ Kaynaklar (marka/sfx_kutuphane/):
   mk:<ad>   Mixkit seçkisi (mixkit_secki.json; Sound Effects Free License — dosyalar repoda YOK, `python3 mixkit_indir.py` ile indirilir)
   kn:<paket>/<dosya>   Kenney paketleri (CC0) — örn. kn:impact-sounds/impactPlate_heavy_000
   mb:<klasör>/<dosya>  motion-bang-bang skill kütüphanesi (.claude/skills/motion-bang-bang/assets/sfx; ElevenLabs, ticari kullanım açık)
+  ve:<ad>              videoeditingsfx.com (CC0) — 100 video kurgu efekti: cinematic hit/boom/reverse/riser, whoosh, kamera, UI
+  ui:<tema>/<ad>       uisfx (CC0) — 12 tema × 78 arayüz sesi (cinematic, glass, rubber, soft, studio, arcade, organic, minimal, mechanical, scifi, dreamy, zen)
+  sx:<ad>              rse/soundfx (CC0 / CC-BY-3.0 — dosyanın .txt'sine bak)
+  sn:<paket>/<dosya>   Sonniss GDC 2026 seçkisi (ticari serbest, atıfsız; repoda YOK → python3 sonniss_indir.py). Dosya adının başı yeterli.
+  bb:<id>              BBC Sound Effects (RemArc — SADECE TİCARİ OLMAYAN; para kazanılınca çıkarılacak). python3 bbc_ara.py "sorgu" ile indir.
+Lisans özeti: sfx_kutuphane/KAYNAKLAR.md
 Kullanım (ses.py içinde):
   from sfx_lib import Y
   S(Y('mk:whoosh_sinematik'), 6.3, .5)          # dosya → mono 48 kHz, tepe 1.0'a normalize, baştaki sessizlik kırpılmış
@@ -43,7 +49,22 @@ def _yol(ad):
                 if os.path.exists(y): return y
         raise FileNotFoundError(ad)
     if tur == 'mb': return os.path.join(MBB, ad2 + '.wav')
+    if tur == 've': return os.path.join(KOK, 'vesfx', ad2 + '.mp3')
+    if tur == 'ui': return os.path.join(KOK, 'uisfx', ad2 + '.mp3')
+    if tur == 'sx': return os.path.join(KOK, 'soundfx', ad2 + '.mp3')
+    if tur == 'bb': return os.path.join(KOK, 'bbc', ad2 + '.mp3')
+    if tur == 'sn':
+        p, f = ad2.split('/', 1); kl = os.path.join(KOK, 'sonniss', p)
+        if not os.path.isdir(kl):
+            adaylar = [d for d in os.listdir(os.path.join(KOK, 'sonniss')) if d.lower().startswith(p.lower()) or p.lower() in d.lower()]
+            if not adaylar: raise FileNotFoundError(ad)
+            kl = os.path.join(KOK, 'sonniss', adaylar[0])
+        for g in sorted(os.listdir(kl)):
+            if g == f or g.lower().startswith(f.lower()) or f.lower() in g.lower(): return os.path.join(kl, g)
+        raise FileNotFoundError(ad)
     raise ValueError(ad)
+
+TICARI_DEGIL = ('bb:',)  # para kazanılınca bu önekler videolardan çıkarılır
 
 def _oku(yol):
     if yol not in _onbellek:
@@ -69,6 +90,18 @@ def listele():
     for p in sorted(os.listdir(os.path.join(KOK, 'kenney'))):
         for kok, _, fs in os.walk(os.path.join(KOK, 'kenney', p)):
             out += [f'kn:{p}/{os.path.splitext(f)[0]}' for f in sorted(fs) if f.endswith(('.ogg', '.wav'))]
+    for t in sorted(os.listdir(os.path.join(KOK, 'uisfx'))):
+        d = os.path.join(KOK, 'uisfx', t)
+        if os.path.isdir(d): out += [f'ui:{t}/{os.path.splitext(f)[0]}' for f in sorted(os.listdir(d)) if f.endswith('.mp3')]
+    out += ['ve:' + os.path.splitext(f)[0] for f in sorted(os.listdir(os.path.join(KOK, 'vesfx'))) if f.endswith('.mp3')]
+    out += ['sx:' + os.path.splitext(f)[0] for f in sorted(os.listdir(os.path.join(KOK, 'soundfx'))) if f.endswith('.mp3')]
+    for kl in ('sonniss', 'bbc'):
+        k = os.path.join(KOK, kl)
+        if not os.path.isdir(k): continue
+        for kok2, _, fs in os.walk(k):
+            for f in sorted(fs):
+                if not f.lower().endswith(('.wav', '.mp3', '.flac')): continue
+                out.append(('sn:' + os.path.relpath(os.path.join(kok2, f), k)) if kl == 'sonniss' else 'bb:' + os.path.splitext(f)[0])
     for kok, _, fs in os.walk(MBB):
         if '_originals' in kok: continue
         out += ['mb:' + os.path.relpath(os.path.join(kok, os.path.splitext(f)[0]), MBB) for f in sorted(fs) if f.endswith('.wav') and not f.startswith('_')]
