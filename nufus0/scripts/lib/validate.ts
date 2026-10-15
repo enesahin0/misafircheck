@@ -102,7 +102,9 @@ export const validateEpisode = (ep: Episode, ws: WorldState): Report => {
       err(`SFX ${s.id}: kütüphanede '${s.tag}' etiketiyle ses bulunamadı (npm run sfx -- ${s.tag}).`);
     }
   });
-  if (ep.audio.music && !have.has(`audio/${ep.audio.music.src}`)) missing.push(`public/audio/${ep.audio.music.src}`);
+  const mu = ep.audio.music;
+  if (mu?.src && !have.has(`audio/${mu.src}`)) missing.push(`public/audio/${mu.src}`);
+  if (mu?.lib && !library.some((e) => e.id === mu.lib)) err(`Müzik: kütüphanede '${mu.lib}' kimliği yok.`);
   const missNarr = missing.filter((m) => m.includes("/narration/"));
   if (missNarr.length) warn(`Seslendirme dosyası yok (sessiz render edilir): ${missNarr.map((m) => path.basename(m)).join(", ")}`);
   const missOther = missing.filter((m) => !m.includes("/narration/"));

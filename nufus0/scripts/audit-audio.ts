@@ -16,7 +16,7 @@ import { pickFromLibrary, type LibEntry } from "../src/utils/audioLibrary";
   const used = new Map<string, LibEntry>();
   const add = (e?: LibEntry | null) => e && used.set(e.id, e);
   for (const s of ep.audio.sfx) add(s.lib ? lib.find((e) => e.id === s.lib) : s.tag ? pickFromLibrary(lib, s.tag, s.pick ?? 0) : byPath.get(`audio/${s.src}`));
-  if (ep.audio.music) add(byPath.get(`audio/${ep.audio.music.src}`));
+  if (ep.audio.music) add(ep.audio.music.lib ? lib.find((e) => e.id === ep.audio.music!.lib) : byPath.get(`audio/${ep.audio.music.src}`));
 
   const list = [...used.values()];
   console.log(`\nDOSYA ${id} — kütüphaneden ${list.length} ses kullanılıyor (üretilen yer tutucular hariç)\n`);

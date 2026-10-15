@@ -46,15 +46,27 @@ export const resolveSfx = (s: { src?: string; lib?: string; tag?: string; pick?:
         ? pickFromLibrary(library, s.tag, s.pick ?? 0)?.path ?? null
         : null;
 
+/** Konuşma seviyesi 0..1 (altyazı aralıklarına göre, kenarlarda yumuşak geçiş). Seslendirme dosyaları gelince aynı aralıklar kullanılır. */
+const speechLevel = (ep: Episode, abs: number): number => {
+  let lvl = 0;
+  for (const c of ep.captions) {
+    const a = Math.min(1, Math.max(0, (abs - (c.from - 4)) / 6));
+    const b = Math.min(1, Math.max(0, (c.to + 8 - abs) / 10));
+    lvl = Math.max(lvl, Math.min(a, b));
+  }
+  return lvl;
+};
+
 const AudioTracks: React.FC<{ ep: Episode }> = ({ ep }) => {
-  const music = ep.audio.music && findAudio(ep.audio.music.src);
+  const m = ep.audio.music;
+  const music = m ? (m.lib ? library.find((e) => e.id === m.lib)?.path ?? null : m.src ? findAudio(m.src) : null) : null;
   const dur = ep.durationFrames;
   return (
     <>
       {music && (
         <Html5Audio
           src={staticFile(music)}
-          volume={(f) => ep.audio.music!.volume * interpolate(f, [0, 45, dur - 45, dur], [0, 1, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })}
+          volume={(f) => ep.audio.music!.volume * (1 - (ep.audio.music!.duck ?? 0) * speechLevel(ep, f)) * interpolate(f, [0, 45, dur - 45, dur], [0, 1, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })}
         />
       )}
       {ep.audio.sfx.map((s) => {
@@ -68,7 +80,7 @@ const AudioTracks: React.FC<{ ep: Episode }> = ({ ep }) => {
                 const len = s.to ? s.to - s.from : Infinity;
                 const a = s.fadeIn ? Math.min(1, f / s.fadeIn) : 1;
                 const b = s.fadeOut && s.to ? Math.min(1, (len - f) / s.fadeOut) : 1;
-                return s.volume * Math.max(0, Math.min(a, b));
+                return s.volume * (1 - (s.duck ?? 0) * speechLevel(ep, s.from + f)) * Math.max(0, Math.min(a, b));
               }}
             />
           </Sequence>

@@ -55,10 +55,10 @@ export const audioSchema = z.object({
    */
   sfx: z.array(
     z
-      .object({ id: z.string(), src: z.string().optional(), lib: z.string().optional(), tag: z.string().optional(), pick: z.number().int().min(0).optional(), from: frame, volume: z.number().default(0.7), /** sesin biteceği kare (verilmezse dosya sonuna kadar) */ to: frame.optional(), /** `to` ile birlikte kullanılır: dosya bitince başa sarar (ortam sesi) */ loop: z.boolean().optional(), fadeIn: z.number().int().min(0).optional(), fadeOut: z.number().int().min(0).optional() })
+      .object({ id: z.string(), src: z.string().optional(), lib: z.string().optional(), tag: z.string().optional(), pick: z.number().int().min(0).optional(), from: frame, volume: z.number().default(0.7), /** sesin biteceği kare (verilmezse dosya sonuna kadar) */ to: frame.optional(), /** `to` ile birlikte kullanılır: dosya bitince başa sarar (ortam sesi) */ loop: z.boolean().optional(), fadeIn: z.number().int().min(0).optional(), fadeOut: z.number().int().min(0).optional(), /** 0..1: konuşma (altyazı aralıkları) sırasında ses bu oranda kısılır (ortam/müzik için) */ duck: z.number().min(0).max(1).optional() })
       .refine((s) => [s.src, s.lib, s.tag].filter(Boolean).length === 1, { message: "sfx: src, lib veya tag'den TAM biri verilmeli" }),
   ),
-  music: z.object({ src: z.string(), volume: z.number().default(0.35) }).optional(),
+  music: z.object({ src: z.string().optional(), lib: z.string().optional(), volume: z.number().default(0.35), duck: z.number().min(0).max(1).optional() }).refine((m) => !!m.src !== !!m.lib, { message: "music: src veya lib'den TAM biri" }).optional(),
 });
 
 export const decisionSchema = z.object({
