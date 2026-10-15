@@ -12,7 +12,10 @@ window.renderAt = t => {
     <radialGradient id="g2"><stop offset="0" stop-color="#EE312E" stop-opacity=".2"/><stop offset="1" stop-color="#EE312E" stop-opacity="0"/></radialGradient>
     <radialGradient id="g3"><stop offset="0" stop-color="#7FA8FF" stop-opacity=".16"/><stop offset="1" stop-color="#7FA8FF" stop-opacity="0"/></radialGradient></defs>
     <rect width="1080" height="1920" fill="url(#bg)"/><circle cx="540" cy="980" r="560" fill="url(#g3)"/><circle cx="300" cy="1600" r="420" fill="url(#g1)"/><circle cx="800" cy="1620" r="420" fill="url(#g2)"/>`;
-  for (let i = 0; i < 70; i++) { const x = h(i) * 1080, y = h(i + 7) * 1920; if (y > 780 && y < 1390 && x > 90 && x < 990) continue; o += yildiz(x, y, 4 + 10 * h(i + 3), i % 3 ? '#FFF3D6' : '#FBAC39', .25 + .45 * h(i + 5)); }
+  for (let i = 0; i < 90; i++) { const x = h(i) * 1080, y = h(i + 7) * 1920;  // sade yuvarlak noktalar (logodaki pırıltıyla karışmasın)
+    if (y > 100 && y < 760 && x > 120 && x < 960) continue;  // logo + başlık alanı temiz
+    if (y > 780 && y < 1390 && x > 90 && x < 990) continue;  // soru alanı temiz
+    o += `<circle cx="${x}" cy="${y}" r="${1.5 + 3 * h(i + 3)}" fill="#FFF3D6" opacity="${.15 + .35 * h(i + 5)}"/>`; }
   // LOGO (üst)
   const S = 700 / 233; let l = `<g transform="translate(540 330) scale(${S}) translate(-141.5 -141.5)">`;
   for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
