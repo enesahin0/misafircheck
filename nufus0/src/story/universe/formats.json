@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "episodeTemplate": {
+    "name": "KAPI bölümü (60.00 sn / 1800 kare / 8 vuruş)",
+    "beats": [
+      { "n": 1, "t": "00:00–00:04", "name": "Kapı açılıyor", "rule": "İlk karede anormallik. Logo/intro yok. 2 satırlık okunur başlık: ne oldu + kaç kişi/ne kaybı." },
+      { "n": 2, "t": "00:04–00:11", "name": "Kimlik", "rule": "Kat + kapı numarası + sakin. Bina kesiti üzerinde daire vurgulanır (dünya haritası: hep aynı bina)." },
+      { "n": 3, "t": "00:11–00:19", "name": "İçeri", "rule": "Cutaway daire. Normal detaylar önce; anormallik normalin içinde." },
+      { "n": 4, "t": "00:19–00:27", "name": "Kural / bedel", "rule": "Bu dairenin kuralı tek cümleyle (R1–R8'e bağlanır). Bedel görünür." },
+      { "n": 5, "t": "00:27–00:38", "name": "İnsani yüz", "rule": "Sakinin bir jesti/nesnesi (yemek, çocuk ayakkabısı, defter). Duygu ses ve ritimle." },
+      { "n": 6, "t": "00:38–00:49", "name": "A / B kararı", "rule": "İki seçenek, her birinin bedeli tek bakışta. CTA: yorumla." },
+      { "n": 7, "t": "00:49–00:57", "name": "Büküm + ipucu", "rule": "Bir bilgi: yeni soru ya da mevcut gizemle bağ (Leyla 63, 0 kapısı, kapıcı defteri...)." },
+      { "n": 8, "t": "00:57–01:00", "name": "Kesilme + KAPI seçimi", "rule": "Siyah kesme; son kartta 3 mühürlü kapı: KAPI xx / xx / xx + 'YARIN 20.00'." }
+    ],
+    "checklist": ["Tek ana anormallik (R8)", "Bir insani bedel", "Bir yeni soru", "Bir küçük ipucu (veri modelinde)", "Bir izleyici kararı (A/B)", "Bir KAPI seçimi", "Süreklilik kontrolü geçti (npm run validate)"]
+  },
+  "otherFormats": [
+    { "id": "KORIDOR", "name": "Koridor özeti (haftalık)", "idea": "7 bölümün sonucunu bina kesitinde gösteren 30 sn özet: kaybolan/kapanan daireler, yeni kiracı isimlikleri. Bağlılık + tekrar izleme." },
+    { "id": "KAPICI_DEFTERI", "name": "Kapıcı defteri (kısa)", "idea": "15 sn: defterden bir satır. Gizemi besler, düşük üretim maliyeti." },
+    { "id": "IHBAR_DOSYASI", "name": "İhbar dosyası", "idea": "İzleyici İHBAR'ından doğan yan bölüm; ana oylamayı değiştirmez." }
+  ]
+}

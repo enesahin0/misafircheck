@@ -31,7 +31,9 @@ npm run render:001         # DOSYA 001, tam 1080x1920, 30 fps, 60.00 sn → out/
 | `npm run audio` | Yer tutucu SFX/müziği üretir ve ses manifestini yeniler. |
 | `npm run tally` | A/B oylarını manuel CSV'den sayar (aşağıya bakın). |
 | `npm run test:webgl` | Bu makinede tarayıcı WebGL'i çalışıyor mu? |
-| `npm run check` | Tip denetimi + doğrulama. |
+| `npm run validate:universe` | Evren İncili tutarlılık denetimi (kapı numaraları, referanslar, tohumlar). |
+| `npm run render:001:pixel` | Piksel stili (3D katman 1/4 çözünürlük). `npm run stills:pixel` ile kareler. |
+| `npm run check` | Tip + evren + bölüm doğrulaması. **Render öncesi geçmeli.** |
 
 ### Render ortamı
 - Render, Chromium + WebGL kullanır. **Ekran kartı yoksa** (sunucu/konteyner) yazılım WebGL (`swangle`) otomatik seçilir; yavaştır (≈2–3 kare/sn) ama çalışır.
@@ -57,6 +59,9 @@ Başlangıç kareleri `src/episodes/episode001.ts` → `audio.narration[].from` 
 
 Şu an `public/audio/sfx/_generated` ve `public/audio/music/_generated` içindeki sesler **bu depodaki script ile sentezlenmiş yer tutuculardır** (telif sorunu yok).
 Kendi SFX/müziğinizi koymak için `episode001.ts` içindeki `audio.sfx` / `audio.music` yollarını değiştirin. Üçüncü taraf ses kullanırsanız lisansını `public/audio/LICENSES.md` içine yazın.
+
+## Evren (KAPI)
+Evrenin tek doğruluk kaynağı `src/story/universe/` (özet: `bible.md`): Sıfır Apartmanı (45 birim), kurallar, karakterler, etkileşim döngüleri (A/B, KAPI, İHBAR, KİRACI, İZ), bölüm kalıbı ve 16 anomali tohumu.
 
 ## Mimari (kısa)
 

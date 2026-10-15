@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "note": "3D mekân kitleri. 'built' = kodda var, 'planned' = yazılacak. Hepsi aynı palet, aynı kamera, aynı ışık dili; yeni kit = yeni dosya değil, mevcut parçaların yeniden birleşimi.",
+  "kits": [
+    { "id": "bodrum-arsiv", "name": "Bodrum Arşivi", "status": "built", "file": "src/world/MunicipalArchive.tsx", "props": ["dolap", "masa", "terminal", "0-kapı", "floresan", "uyarı ışığı", "harita panosu", "saat"] },
+    { "id": "bina-dis", "name": "Bina dış kabuğu (cutaway)", "status": "planned", "file": "src/world/SifirApartmani.tsx", "props": ["7 kat x 6 pencere", "çatı", "zemin giriş", "kat/daire vurgusu"] },
+    { "id": "daire-standart", "name": "Standart daire", "status": "planned", "file": "src/world/Daire.tsx", "props": ["salon", "mutfak", "yemek masası", "koltuk", "TV", "kapı", "pencere", "askı"] },
+    { "id": "zemin-hol", "name": "Zemin hol", "status": "planned", "file": "src/world/ZeminHol.tsx", "props": ["posta kutuları", "kapıcı masası", "asansör kapısı", "nüfus tabelası (0)"] },
+    { "id": "merdiven-kati", "name": "Kat koridoru / merdiven boşluğu", "status": "planned", "file": "src/world/Koridor.tsx", "props": ["kapılar", "kat tabelası", "asansör", "merdiven", "sensörlü lamba"] },
+    { "id": "cati", "name": "Çatı", "status": "planned", "file": "src/world/Cati.tsx", "props": ["anten", "su deposu", "çamaşır ipi", "kedi"] }
+  ]
+}

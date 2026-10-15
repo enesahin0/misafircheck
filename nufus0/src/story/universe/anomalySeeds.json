@@ -1,0 +1,374 @@
+{
+  "version": 2,
+  "note": "Bunlar TOHUMDUR (IDEA), kesinleşmiş bölüm değildir. Yeni tohumlar İHBAR'dan ve ekipten gelir. Bir tohum bölüme dönüştüğünde status 'USED' olur ve ilgili dairenin anomalySeed alanına bağlanır.",
+  "seeds": [
+    {
+      "id": "AYNI_AKSAM",
+      "title": "Aynı Akşam Yemeği",
+      "suggestedDoor": 23,
+      "status": "IDEA",
+      "logline": "23 numarada her akşam 19.40'ta aynı yemek masası kurulur; aile 11 yıldır aynı akşamı yaşıyor.",
+      "anomaly": "Zaman bu dairede bir akşama kilitli. Takvim sayfası hiç dönmüyor.",
+      "humanCost": "Akşamı bozarsan en küçük çocuk o akşamla birlikte 'yarına' geçemeyebilir.",
+      "decision": {
+        "A": {
+          "label": "Masayı bozma",
+          "cost": "Aile aynı akşamda kalır, mutlu ama donuk"
+        },
+        "B": {
+          "label": "Akşamı bitir",
+          "cost": "Yarın gelir; biri masaya dönmez"
+        }
+      },
+      "clue": "Mutfak duvar saati 19.40; sofrada hep aynı tabak sayısı",
+      "roomKit": "daire-standart",
+      "hookImage": "Kapı açılır, yemek buharı yükseliyor; saat 19.40; tabaklar zaten dolu",
+      "followUpQuestion": "Çocuk neden 'yarın' kelimesini bilmiyor?"
+    },
+    {
+      "id": "FAZLA_ODA",
+      "title": "Fazla Oda",
+      "suggestedDoor": 41,
+      "status": "IDEA",
+      "logline": "41'in planı 2+1; içeride dördüncü bir oda var ve kapısı komşunun salonuna açılıyor.",
+      "anomaly": "Bir odanın iki dairesi var.",
+      "humanCost": "Odayı kapatırsan komşunun salonu da küçülür; sakin o odada büyümüş.",
+      "decision": {
+        "A": {
+          "label": "Odayı komşuya bırak",
+          "cost": "41 bir oda kaybeder"
+        },
+        "B": {
+          "label": "Odayı kapat",
+          "cost": "Komşunun salonu çöker"
+        }
+      },
+      "clue": "Oda duvarında iki farklı kapı numarası",
+      "roomKit": "daire-standart",
+      "hookImage": "İki kapı aynı odaya açılıyor, ikisinin de zili aynı anda çalıyor",
+      "followUpQuestion": "Dördüncü oda kayıtlarda hangi daireye ait?"
+    },
+    {
+      "id": "ZIL_0317",
+      "title": "03.17'de Çalan Zil",
+      "suggestedDoor": null,
+      "status": "IDEA",
+      "logline": "Her gece 03.17'de bir daire zili çalar. Zil binadaki hiçbir daireden gelmiyor.",
+      "anomaly": "Zil hattı bir dairesi olmayan bir daireye bağlı.",
+      "humanCost": "Zili cevaplayan sakin sabah o dairenin kiracısı olarak kayıtlara geçer.",
+      "decision": {
+        "A": {
+          "label": "Zili cevapla",
+          "cost": "Biri kayıtlara 'kiracı' olarak yazılır"
+        },
+        "B": {
+          "label": "Zili sustur",
+          "cost": "Bina o geceyi atlar, bir kat kayar"
+        }
+      },
+      "clue": "Zil panosunda numarası olmayan bir düğme",
+      "roomKit": "zemin-hol",
+      "hookImage": "Zil panosu: bir düğme kendi kendine yanıp sönüyor, saat 03.17",
+      "followUpQuestion": "Zil hangi kapıya çalıyor?"
+    },
+    {
+      "id": "TERS_KAT",
+      "title": "Ters Kat",
+      "suggestedDoor": null,
+      "status": "IDEA",
+      "logline": "5. katın merdiveni 3. kata çıkıyor. Sakinler 'bu normal' diyor.",
+      "anomaly": "Kat sırası bir kez değiştirildi; sakinlerin anıları buna göre güncellendi (R4).",
+      "humanCost": "Düzeltilirse bir kat sakinlerinin tamamı 'yeni' olur, eski anılarını kaybeder.",
+      "decision": {
+        "A": {
+          "label": "Katı olduğu gibi bırak",
+          "cost": "Bina yanlış bilinir"
+        },
+        "B": {
+          "label": "Katı düzelt",
+          "cost": "Bir kat sakini unutulur"
+        }
+      },
+      "clue": "Merdivende 5 yazan ama 3. katta biten basamak",
+      "roomKit": "merdiven-kati",
+      "hookImage": "Merdiven yukarı çıkıyor, çıkış katı tabelası 3",
+      "followUpQuestion": "Kim ve neden katı değiştirdi? (03.17 gizemi)"
+    },
+    {
+      "id": "MISAFIR_CAYI",
+      "title": "Misafir Çayı",
+      "suggestedDoor": 62,
+      "status": "IDEA",
+      "logline": "62'de kimse yok ama çay hep demli ve iki bardak çıkarılmış.",
+      "anomaly": "Sakin eşini hatırlamıyor; çay masada eşin yeri hep dolu.",
+      "humanCost": "Bardağı kaldırırsan sakin sabahları uyanamaz; bırakırsan bir şey bekliyor.",
+      "decision": {
+        "A": {
+          "label": "Bardağı kaldır",
+          "cost": "Bekleyen kimse kalmaz"
+        },
+        "B": {
+          "label": "Çayı demli tut",
+          "cost": "Birisi gelir"
+        }
+      },
+      "clue": "İki bardağın buharı farklı yönlere gidiyor",
+      "roomKit": "daire-standart",
+      "hookImage": "Masada iki bardak, biri boş sandalyenin önünde buharı tütüyor",
+      "followUpQuestion": "Gelen kim olacak?"
+    },
+    {
+      "id": "KAPICI_DEFTERI",
+      "title": "Kapıcı Defteri",
+      "suggestedDoor": null,
+      "status": "IDEA",
+      "logline": "Kapıcının defterinde her daire için ileri tarihli not var; bir notta tarih bugün.",
+      "anomaly": "Defter yarını yazıyor.",
+      "humanCost": "Notu okuyan sakin notun gerçekleşmesini engellemeye çalıştıkça gerçekleştirir.",
+      "decision": {
+        "A": {
+          "label": "Notu oku",
+          "cost": "Not gerçek olur"
+        },
+        "B": {
+          "label": "Defteri yak",
+          "cost": "Binanın hafızası kalmaz"
+        }
+      },
+      "clue": "Defterde 14. Sokak'ın silinme tarihi",
+      "roomKit": "zemin-hol",
+      "hookImage": "Defter açılıyor, mürekkep kendi kendine yazıyor",
+      "followUpQuestion": "Defteri kim yazıyor?"
+    },
+    {
+      "id": "ASANSOR_35",
+      "title": "Asansör 3,5",
+      "suggestedDoor": null,
+      "status": "IDEA",
+      "logline": "Asansör 3. ve 4. kat arasında bir kat gösteriyor. Sakinler ona '3,5' diyor.",
+      "anomaly": "Binada kayıtlarda olmayan bir kat var.",
+      "humanCost": "Oraya inen biri düz koridorda 03.17'de durur; çıkmak için bir anısını bırakmak zorunda.",
+      "decision": {
+        "A": {
+          "label": "3,5'e in",
+          "cost": "Bir anı"
+        },
+        "B": {
+          "label": "Düğmeyi söktür",
+          "cost": "3,5 yok olur; içindekiler"
+        }
+      },
+      "clue": "Asansör panelinde yarım bir düğme",
+      "roomKit": "merdiven-kati",
+      "hookImage": "Asansör kapısı açılıyor: sarı ışıklı, kapıları olmayan koridor",
+      "followUpQuestion": "3,5. katta kim yaşıyor?"
+    },
+    {
+      "id": "AYNI_KIRACI",
+      "title": "Aynı Kiracı",
+      "suggestedDoor": null,
+      "status": "IDEA",
+      "logline": "İki ayrı katta aynı adam kiracı; ikisi de yirmi yıldır aynı yaşta.",
+      "anomaly": "Aynı kişi iki dairede, ikisi de yaşlanmıyor.",
+      "humanCost": "Biri 'gerçek' ise diğeri silinir; ikisi de kendini gerçek sanıyor.",
+      "decision": {
+        "A": {
+          "label": "Birincisini koru",
+          "cost": "İkinci daire boşalır"
+        },
+        "B": {
+          "label": "İkincisini koru",
+          "cost": "Birinci daire boşalır"
+        }
+      },
+      "clue": "İki dairede aynı fotoğraf, aynı eksik yüz",
+      "roomKit": "daire-standart",
+      "hookImage": "İki kapıdan aynı adam çıkıp birbirinin gözüne bakmıyor",
+      "followUpQuestion": "Fotoğraftaki üçüncü kişi kim?"
+    },
+    {
+      "id": "YEDEK_ANAHTAR",
+      "title": "Yedek Anahtar",
+      "suggestedDoor": null,
+      "status": "IDEA",
+      "logline": "Kapıcıdaki yedek anahtar panosunda bir anahtar hiçbir kapıya uymuyor.",
+      "anomaly": "Binada bir kapı eksik.",
+      "humanCost": "Kapıyı bulan kişi kapının ardındakini 'kiracı' yapar.",
+      "decision": {
+        "A": {
+          "label": "Kapıyı ara",
+          "cost": "Bir kat kaybolur"
+        },
+        "B": {
+          "label": "Anahtarı sakla",
+          "cost": "Kapı seni bulur"
+        }
+      },
+      "clue": "Anahtar halkası bir ağırlık gibi sallanıyor",
+      "roomKit": "zemin-hol",
+      "hookImage": "Anahtar panosu, bir kanca boş, altındaki numara silinmiş",
+      "followUpQuestion": "Anahtar hangi daireyi açıyor?"
+    },
+    {
+      "id": "BALKON_SOKAK",
+      "title": "Balkondan Görünen Sokak",
+      "suggestedDoor": null,
+      "status": "IDEA",
+      "logline": "Bir balkon silinen 14. Sokak'a bakıyor; sokağın ışıkları hâlâ yanıyor.",
+      "anomaly": "Balkon başka bir gerçekliğe açılıyor (DOSYA 001 bağlantısı).",
+      "humanCost": "Balkona çıkan biri sokağa 'dahil' olur.",
+      "decision": {
+        "A": {
+          "label": "Balkona çık",
+          "cost": "Sokağa dahil olursun"
+        },
+        "B": {
+          "label": "Perdeyi kapat",
+          "cost": "Sokak görünmez olur"
+        }
+      },
+      "clue": "Balkonda yeni bir lamba direği",
+      "roomKit": "daire-standart",
+      "hookImage": "Balkon kapısı açılıyor, aşağıda sokak, lambalar yanıyor",
+      "followUpQuestion": "62 kişi bu binada mı yaşıyor?"
+    },
+    {
+      "id": "TERS_SAAT",
+      "title": "Tek İlerleyen Saat",
+      "suggestedDoor": null,
+      "status": "IDEA",
+      "logline": "Her dairede saat 03.17'de takılı; yalnızca bir dairede saat ilerliyor.",
+      "anomaly": "Zaman yalnız bir yerde akıyor.",
+      "humanCost": "Saat ilerleyen dairede sakin yaşlanıyor; diğerleri değil.",
+      "decision": {
+        "A": {
+          "label": "Saati durdur",
+          "cost": "Sakin yaşlanmayı bırakır ama konuşmaz"
+        },
+        "B": {
+          "label": "Saat aksın",
+          "cost": "Sakin hızla yaşlanır"
+        }
+      },
+      "clue": "Saniye ibresinin tıkırtısı",
+      "roomKit": "daire-standart",
+      "hookImage": "Saniye ibresi tıkırtıyla ilerliyor; diğer saatler donuk",
+      "followUpQuestion": "Neden bu daire?"
+    },
+    {
+      "id": "DUGUN_SESI",
+      "title": "Komşudan Gelen Düğün",
+      "suggestedDoor": 31,
+      "status": "IDEA",
+      "logline": "31'den 12 yıl önce yapılmış bir düğünün sesi geliyor. Daire boş.",
+      "anomaly": "Ses geçmişten sızıyor.",
+      "humanCost": "Kapıyı açarsan düğün 'şimdi' olur ve gelin/damat tanınmaz.",
+      "decision": {
+        "A": {
+          "label": "Kapıyı aç",
+          "cost": "Düğün bugün olur"
+        },
+        "B": {
+          "label": "Sesi duy, açma",
+          "cost": "Ses her gece büyür"
+        }
+      },
+      "clue": "Kapının altından ışık ve alkış",
+      "roomKit": "merdiven-kati",
+      "hookImage": "Kapının altından konfeti geçiyor",
+      "followUpQuestion": "Düğün kimin?"
+    },
+    {
+      "id": "YARININ_CAMASIRI",
+      "title": "Yarının Çamaşırı",
+      "suggestedDoor": null,
+      "status": "IDEA",
+      "logline": "Çatıdaki çamaşır ipinde sakinlerin yarın giyeceği kıyafetler asılı.",
+      "anomaly": "Çatı yarını gösteriyor.",
+      "humanCost": "Kıyafeti değiştiren sakin yarını değiştirir; bir başkası bedelini öder.",
+      "decision": {
+        "A": {
+          "label": "Çamaşırı değiştir",
+          "cost": "Birinin yarını bozulur"
+        },
+        "B": {
+          "label": "Olduğu gibi bırak",
+          "cost": "Biri yarın gelmez"
+        }
+      },
+      "clue": "İpte rüzgâra rağmen kıpırdamayan bir gömlek",
+      "roomKit": "cati",
+      "hookImage": "Çatı: ipte onlarca çamaşır, hepsi aynı yöne dönük",
+      "followUpQuestion": "İpe kim asıyor?"
+    },
+    {
+      "id": "POSTA_GAZETE",
+      "title": "Yarının Gazetesi",
+      "suggestedDoor": null,
+      "status": "IDEA",
+      "logline": "Posta kutusuna her sabah ertesi günün gazetesi geliyor; manşet izleyici kararı.",
+      "anomaly": "Gazete Dış Hat'ın kararını biliyor.",
+      "humanCost": "Manşeti değiştirmek için bir kayıt 'silinmeli'.",
+      "decision": {
+        "A": {
+          "label": "Manşeti kabul et",
+          "cost": "Dış Hat'a bağlanırsın"
+        },
+        "B": {
+          "label": "Gazeteyi yak",
+          "cost": "Binanın dış hattı kopar"
+        }
+      },
+      "clue": "Posta kutusunda gazetenin üstünde ıslak mürekkep",
+      "roomKit": "zemin-hol",
+      "hookImage": "Posta kutusu açılıyor, gazete dışarı fırlıyor, tarih yarın",
+      "followUpQuestion": "Dış Hat nasıl bağlı?"
+    },
+    {
+      "id": "KIRALIK",
+      "title": "Kiralık Daire",
+      "suggestedDoor": 13,
+      "status": "IDEA",
+      "logline": "13 numaraya 'kiralık' ilanı asılmış; telefonu kapıcıya bağlı.",
+      "anomaly": "Daire izleyiciye kiralanıyor (KİRACI döngüsü).",
+      "humanCost": "Kiracı kabul edilince bir başka sakin binadan 'taşınır'.",
+      "decision": {
+        "A": {
+          "label": "Kiracıyı kabul et",
+          "cost": "Bir komşu taşınır"
+        },
+        "B": {
+          "label": "İlanı indir",
+          "cost": "Daire boş kalır"
+        }
+      },
+      "clue": "İlanın üstünde telefon numarası yerine 0",
+      "roomKit": "zemin-hol",
+      "hookImage": "İlan kendi kendine yırtılıp yeniden asılıyor",
+      "followUpQuestion": "Taşınan komşu nereye gidiyor?"
+    },
+    {
+      "id": "SU_SAYACI",
+      "title": "Ters Dönen Sayaç",
+      "suggestedDoor": null,
+      "status": "IDEA",
+      "logline": "Bir dairenin su sayacı ters dönüyor; fatura eksi.",
+      "anomaly": "Bina bir borcu geri ödüyor.",
+      "humanCost": "Sayaç sıfıra ulaşırsa borcun sahibi görünür.",
+      "decision": {
+        "A": {
+          "label": "Sayacı izle",
+          "cost": "Sayaç sıfırı bulur"
+        },
+        "B": {
+          "label": "Vanayı kapat",
+          "cost": "Borç faizle büyür"
+        }
+      },
+      "clue": "Sayaç göstergesi yavaşça geriye sarıyor",
+      "roomKit": "daire-standart",
+      "hookImage": "Su sayacı yakın plan: rakamlar geri dönüyor",
+      "followUpQuestion": "Borç kimin?"
+    }
+  ]
+}

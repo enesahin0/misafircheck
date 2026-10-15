@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "framing": "ŞEHİR_0 haritada olmayan bir şehirdir. Şehrin tek kalıcı yapısı Sıfır Apartmanı'dır; her bölüm bir kapıyı açar.",
+  "rules": [
+    { "id": "R1_KAPI", "name": "Kapı Kuralı", "text": "Her kapı yalnızca BİR kez açılır. Açılan daire 'kayıtlı' olur ve kalıcıdır; ikinci kez aynı daireye 'ilk gün' gibi girilemez, yalnızca değişimi gösterilir." },
+    { "id": "R2_DENGE", "name": "Denge Kuralı", "text": "Bina bir şeyi geri verirse başka bir şeyi alır. Bedelsiz mucize yok; her bölümde somut bir insani bedel görünür." },
+    { "id": "R3_0317", "name": "03.17 Kuralı", "text": "Binadaki düzeltmeler (kat değişimi, kaybolan daire, değişen kayıt) yalnızca 03.17'de uygulanır. Öncesinde bina içi anons / zil gelir." },
+    { "id": "R4_HAFIZA", "name": "Hafıza Kuralı", "text": "Gerçeklik değişince sakinlerin anıları güncellenir. Eski gerçeği yalnızca analog arşiv (bodrum) ve kapıcı defteri korur." },
+    { "id": "R5_DIS_HAT", "name": "Dış Hat Kuralı", "text": "Bina dışarıya mesaj gönderemez; arşiv terminali dışarıdan (izleyiciden) talimat alabilir. İzleyici = Dış Hat." },
+    { "id": "R6_SUREKLILIK", "name": "Süreklilik Kuralı", "text": "Kararlar kalıcıdır. Yazılmış bir sonraki bölüm gelen oyla çelişemez. Kapanan daire, değişen kat, kırılan lamba geri gelmez; gelirse 'restoredAtEpisode' gerekçesi şart." },
+    { "id": "R7_SIFIR", "name": "Sıfır Kuralı", "text": "Zemin katın tabelasındaki sakin sayısı normalde 0'dır. Bir gün 1 olursa dış dünya ile ilgili büyük bir eşik aşılmıştır." },
+    { "id": "R8_TEK_ANOMALI", "name": "Tek Anomali Kuralı", "text": "Bir bölümde TEK ana anormallik olur. Gerisi sıradan, hatta sıkıcı olmalı: anormallik normalin içinde çarpıcı durur." }
+  ],
+  "seasonMystery": "03.17 düzeltmelerini kim yapıyor: kapıcı mı, bina mı, 0 numaralı kapının ardındaki mi, yoksa izleyiciler (Dış Hat) mi? İlk sezonda katman katman açılır; ilk bölümlerde çözülmez.",
+  "toneDo": ["Gizli resmî evrak dili", "Sakin anlatıcı", "Küçük insani bedeller (bir yemek, bir anı, bir isim)", "Normal detayın anormal sonuçla çarpışması"],
+  "toneDont": ["Konuşan fotogerçekçi yüz / dudak senkronu", "Gore / şiddet göstermek", "Gerçek kişi veya gerçek kurum taklidi", "Gerçek kamu duyurusu gibi görünmek (kurgusal olduğu belirtilir)"]
+}

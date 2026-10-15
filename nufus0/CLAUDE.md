@@ -2,6 +2,8 @@
 
 > **Proje aktarım ve uygulama talimatı.** Bu dosyayı Claude Code ile çalışılacak deponun köküne `CLAUDE.md` adıyla koy. Claude'u bu dosyanın ürün sahibi / teknik uygulayıcısı olarak düşün. Bu dosya hem yaratıcı evrenin kanonu hem de ilk MVP için uygulama brifidir.
 
+> **SÜRÜM NOTU (v2 — KAPI evreni).** Evren çerçevesi kullanıcı kararıyla **KAPI: tek bina (Sıfır Apartmanı), sonsuz daire** olarak genişletildi. Evrenin tek doğruluk kaynağı artık `src/story/universe/` altındaki JSON dosyalarıdır (okunabilir özet: `src/story/universe/bible.md`). §2'deki kanon korunur, kurallar `rules.json` içinde v2 olarak genişletildi. §5'teki DOSYA 001 (14. Sokak) **ilk çalışan örnek / prolog adayı**dır; kanondaki yeri kullanıcı kararı bekler. §7'deki "ilk 10 dosya" artık kilitli değil: bölümler `anomalySeeds.json` tohumlarından ve izleyici KAPI/İHBAR yorumlarından seçilir. Piksel render modu eklendi (`--pixel`); stil kararı kullanıcıya aittir. Yeni çalışma kuralı: **`npm run check` geçmeden render yok.**
+
 ## 0. Projenin tek cümlelik tanımı
 
 **NÜFUS_0**, tamamı **karanlık, izometrik low-poly 3D** estetiğinde üretilen, Instagram Reels'te **her gün tam 60 saniyelik** bölümler hâlinde yayımlanan ve izleyicinin yorumlarla aldığı kararların ertesi gün hikâyeyi değiştirdiği interaktif bir gizem / bürokratik korku serisidir.
@@ -298,7 +300,7 @@ Her bölüm kodda tek tek sabit yazılmasın. Yeni bölüm yaratmak için veri d
 
 ---
 
-## 7. İlk 10 dosyanın çekirdeği (kilitlenmiş final değil)
+## 7. İlk 10 dosyanın çekirdeği (ESKİ taslak — v2'de anomali tohum bankası kullanılır)
 
 Bu fikirler kullanıcı kararlarına göre yeniden yazılabilir; önceki oy sonuçlarıyla çelişmemelidir.
 

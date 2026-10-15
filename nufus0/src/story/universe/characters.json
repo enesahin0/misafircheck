@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "note": "Karakter sayısı bilinçli olarak az. Yüzler detaysız; ifade ses, kamera ve ritimle gelir. Giysi/ölçek bölümler arası DEĞİŞMEZ.",
+  "characters": [
+    { "id": "leyla", "name": "Leyla", "age": 32, "role": "Bodrum arşivi memuru", "silhouette": "Amber ceket, bone atkı, topuz", "location": "B1", "secrets": ["Silinen sokak listesinde 63. kişi olarak yazıyor ama hayatta (DOSYA 001)"], "outfit": "OUTFITS.leyla" },
+    { "id": "mahir", "name": "Mahir", "age": 28, "role": "Bina teknik servisi (asansör, tesisat, hoparlör)", "silhouette": "Gri-konkret tulum, omuzda kablo", "location": "Z / K?", "secrets": [], "outfit": "OUTFITS.mahir" },
+    { "id": "kapici", "name": "Kapıcı", "age": null, "role": "Anahtar ve defter sahibi. Her dairenin yedek anahtarı onda.", "silhouette": "Uzun önlük, halka anahtarlık, şapka", "location": "Z", "secrets": ["Defteri ileri tarihli notlar içeriyor (açık soru)"], "outfit": "planned" },
+    { "id": "mufettis0", "name": "Müfettiş 0", "age": null, "role": "Yüzü görülmez yönetici figürü; 0 numaralı kapının ardı?", "silhouette": "Koyu uzun palto, yüzsüz", "location": "?", "secrets": [], "outfit": "OUTFITS.inspector0" }
+  ],
+  "residentRule": "Daire sakinleri bölüm başına 1–3 kişiyi geçmez; tek renkli/az renkli siluetler. Yeni sakin = bir kayıt (kimlik, daire, giysi rengi) eklenir ve kalıcıdır."
+}

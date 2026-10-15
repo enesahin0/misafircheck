@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "goal": "Yorum, paylaşım ve kaydetme için AYRI sebepler üret. Her bölümün sonunda izleyiciye yapacak somut bir şey ver.",
+  "loops": [
+    { "id": "KARAR", "syntax": "A  veya  B", "for": "yorum", "what": "Bölümün ana A/B kararı. Çoğunluk ertesi bölümü belirler.", "rule": "Kullanıcı başına ilk geçerli oy." },
+    { "id": "KAPI", "syntax": "KAPI 34", "for": "yorum", "what": "Sıradaki bölümde hangi daire açılsın? Bölüm sonunda 3 mühürlü kapı teaser'ı gösterilir; en çok yazılan numara açılır.", "rule": "Yalnızca SEALED daireler seçilebilir. Geçersiz numara sayılmaz." },
+    { "id": "IHBAR", "syntax": "İHBAR: ...", "for": "yorum + içerik", "what": "İzleyici bir dairede olabilecek tuhaf olayı yazar; uygun öneriler anomali tohum bankasına girer (izinle, takma adla).", "rule": "Gerçek kişi/kurum/adres içermez. Birebir kullanım için izin istenir." },
+    { "id": "KIRACI", "syntax": "KİRACI: takma ad", "for": "paylaşım + aidiyet", "what": "Seçilen takma ad bir posta kutusu / kapı isimliği olarak binada KALICI görünür.", "rule": "Yalnızca izinle, yalnızca takma ad. Küfür/kişisel veri yok. Aylık sınırlı sayı." },
+    { "id": "IZ", "syntax": "(yorumda 'buldum')", "for": "kaydetme + tekrar izleme", "what": "Her bölümde 1 arka plan ipucu. Sonraki bölümlerde anlam kazanır.", "rule": "İpucu veri modelinde sabit; yanlışlıkla değişmez." }
+  ],
+  "shareHooks": [
+    "Hangi kapıyı sen açardın? (arkadaşını etiketle)",
+    "Senin dairen kaç olurdu? (doğum günü / ev numarası tuzağı yok: rastgele kat+sıra)",
+    "A mı B mi? Seninle aynı seçen kaç kişi var?"
+  ],
+  "ctaTemplates": [
+    "Yorumlara A ya da B yaz. Çoğunluğun kararı yarın uygulanacak.",
+    "Sıradaki kapıyı sen seç: KAPI 23, KAPI 41 ya da KAPI 62.",
+    "Bu binada senin gördüğün tuhaf bir şey var mı? İHBAR: yaz."
+  ],
+  "cadence": { "post": "her gün 20:00 (Europe/Istanbul)", "voteCloses": "ertesi gün 14:00", "note": "Kapanış saati önceden duyurulur, sonradan değiştirilmez." },
+  "metricsToTrack": ["3 sn izlenme / tamamlama oranı", "Kaydetme ve paylaşım sayısı", "Yorum başına izlenme (A/B ve KAPI katılımı)", "Hangi anomali tohumu türü daha çok yorum aldı"],
+  "honesty": "Gerçek veri gelmeden sayım veya galip uydurulmaz. Hiç oy yoksa 'Dış Hat'tan karar gelmedi; Leyla protokolü uyguladı' kullanılır."
+}
