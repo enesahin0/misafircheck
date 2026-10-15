@@ -440,3 +440,18 @@ KURALLAR (KALICI):
 3. **Gündem videolarında da tek bir soru** sorulur (ör. "Senin mahallende durum nasıldı?") → yorum %0 olmasın; acı haberde soru saygılı ve deneyim odaklı olur.
 4. **İlk kare = olayın kendisi** (su basmış sokak, somut görüntü); soyut grafik/ızgara 2. saniyeden sonra. İlk 5 sn'de izleyicinin yarısı gitti.
 5. Gündem videosu kitlesi daha olgun (25–44): dil sade, rakamlar az ama net.
+
+
+## İSTATİSTİK DERSLERİ — #34 ve #35 karşılaştırma (15.10.2026, 16:38)
+| | #34 İstanbul sel (≈1 gün) | #35 Sel anında ne yapmalısın (≈4 sa) |
+|---|---|---|
+| Görüntüleme / kişi | 1.542.018 / 1.219.098 | 20.017 / 16.325 |
+| Ort. izlenme | 14 sn | **22 sn** |
+| Gönderim (paylaşım) / görüntüleme | 8,3 B → %0,54 | 679 → **%3,4** |
+| Kaydetme / görüntüleme | 972 → %0,06 | 124 → **%0,62** |
+| Takip / kişi | 405 → %0,03 | 16 → **%0,10** |
+| Yorum | 64 (çok düşük) | 4 |
+| Geçme oranı | — | %42,5 |
+1. **Pratik/hayat kurtaran bilgi = kayıt + paylaşım makinesi:** #35'te görüntüleme başına paylaşım 6×, kayıt 10×, takip 3× daha yüksek, izleyici 8 sn daha uzun kalıyor. Gündem videosu (#34) erişimi getirir, "ne yapmalısın" videosu (#35) kanalı büyütür → **ikisi ARDIŞIK yapılır (gündem → pratik devamı).**
+2. **Patlama gecikmeli gelebilir:** #34 ilk ~8 saat düz gitti, sonra dikleşti (1,5 milyon). İlk saatlerdeki düşük sayıya bakıp video silinmez/yeniden atılmaz.
+3. **Yorum en zayıf halka:** 1,5 milyonda 64 yorum. Soru "bilgi" sorusu olunca yazılmıyor; **taraf seçtiren / kişisel deneyim soran** soru + sabitlenmiş yorumda iki seçenek (ör. "🅰 geçer / 🅱 geçmez") denenecek.
