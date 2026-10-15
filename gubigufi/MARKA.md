@@ -410,3 +410,12 @@ KURALLAR (KALICI):
 - Rakamlar sözlü olarak yumuşatılır: "yarısından fazlası", "çoğu", "bir kısmı" — ama yine de doğru veriye dayanır (uydurma yok).
 - Türkiye'ye özgü gözlem/skeç ("Türkiye usulü"), espri ve günlük hayat sahneleri öne çıkar; bilgi bunun içine serpiştirilir.
 - Gözlem ve skeç, istatistik gibi sunulmaz ("Türklerin %80'i…" gibi uydurma oran YOK).
+
+## İSTATİSTİK DERSLERİ — #34 "İstanbul'da yağmur nasıl sele dönüştü?" (712 bin görüntüleme, 490 bin kişi, 1,7 bin gönderim, 263 takip)
+Veri: kanalın rekoru (#31: 1,4 bin). Kaynak %77 HİKAYELER → insanlar videoyu hikâyelerinde "bilgilendirme" olarak paylaştı. Paylaşım oranı %0,8 (tipikten yüksek), geçme oranı %46,5 (iyi), ort. izlenme 18 sn / 65 sn. Yorum oranı %0,0 (soru sorulmadı), beğeni %0,5. Kitle 25–44 yaş %73. Profil ziyaretinden takibe dönüş %36.
+KURALLAR (KALICI):
+1. **GÜNDEM + NEDEN + PRATİK BİLGİ** formülü en güçlü büyüme yolu: aynı gün, birkaç saat içinde; "ne oldu / neden oldu / ne yapmalı".
+2. **Hikâyede paylaşılabilir bitiş:** son 8–10 sn ekran görüntüsü alınabilir tek kart (kurallar / rakamlar / acil numara); cümle: "Sevdiklerinle paylaş" türü çağrı (acı haberde bile uygun, takip çağrısı yerine).
+3. **Gündem videolarında da tek bir soru** sorulur (ör. "Senin mahallende durum nasıldı?") → yorum %0 olmasın; acı haberde soru saygılı ve deneyim odaklı olur.
+4. **İlk kare = olayın kendisi** (su basmış sokak, somut görüntü); soyut grafik/ızgara 2. saniyeden sonra. İlk 5 sn'de izleyicinin yarısı gitti.
+5. Gündem videosu kitlesi daha olgun (25–44): dil sade, rakamlar az ama net.
