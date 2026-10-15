@@ -23,22 +23,35 @@ MBB = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '
 FF_YOL = '/tmp/claude-0/-home-user-misafircheck/0cc9dfb7-332d-5180-bd04-65c7568bfc09/scratchpad/ffpath'
 FF = open(FF_YOL).read().strip() if os.path.exists(FF_YOL) else 'ffmpeg'
 
-# Sahne rolleri → varsayılan efekt (videolar arasında tutarlı "kanal sesi")
+# KANAL SESLERİ — kullanıcının dinleme kataloğundan seçtikleri (15.10.2026). Y('rol:gecis') ilk varyant, Y('rol:gecis#2') 3. varyant (mod).
+# Art arda aynı sesi tekrarlamamak için sahnelerde #0, #1, #2… diye döndür.
 ROL = {
-    'gecis': 'mk:whoosh_sinematik', 'gecis_yumusak': 'mk:whoosh_hava', 'gecis_hizli': 'mk:swoosh_hizli', 'ucus': 'mk:sweep_kisa',
-    'kart_pop': 'mk:pop_kuru', 'cip_pop': 'mk:tik_balon', 'balon_pop': 'mk:pop_balon', 'etiket_vur': 'mk:darbe_hafif',
-    'darbe': 'mk:darbe_zoom', 'darbe_agir': 'mk:darbe_buyuk', 'bomba': 'mk:darbe_epik', 'bas': 'mk:bas_vurus',
-    'damga': 'mb:stamp/stamp-rubber-01', 'kagit': 'mk:kagit_kay', 'sayfa': 'mk:sayfa_cevir', 'foto': 'mb:paper/photo-cardboard-place-03',
-    'deklansor': 'mk:deklansor', 'tik': 'mb:accent/counter-tick-mech-01', 'saat': 'mk:saat_tiktak',
-    'dogru': 'mk:ton_dogru', 'yanlis': 'mk:ton_yanlis', 'uyari': 'mk:bip_cift', 'ding': 'mk:zil_dikkat',
-    'riser': 'mk:riser_drama', 'gerilim': 'mk:gerilim_kabarma', 'kalp': 'mk:kalp_darbe', 'catlak': 'mk:cam_kir',
-    'pirilti': 'mk:pirilti_dokun', 'sihir': 'mk:sihir_gecis', 'kazanc': 'mk:bildirim_kazan', 'boing': 'mk:boing',
-    'metal_kapi': 'mk:metal_izgara', 'mandal': 'mk:kapi_mandal', 'para': 'kn:casino-audio/chips-collide-1',
+    'gecis': ['mk:whoosh_sinematik', 'mk:whoosh_hava', 've:deep-whoosh-1', 've:fast-whoosh'],           # GEÇİŞ 1-2-4-6
+    'gecis_yumusak': ['mk:whoosh_hava', 've:deep-whoosh-1'], 'gecis_hizli': ['ve:fast-whoosh', 'mk:whoosh_sinematik'],
+    'pop': ['sn:Cinematic Sound Design - Interface & Infographics/Interface Percussion Snap', 'mb:ui/ui-pop-sticker-02'],  # POP 6, 12
+    'darbe': ['ve:deep-hit', 've:deep-hit-2', 've:swoosh-sharp-hit', 'mb:impact/impact-medium-02'],      # DARBE 3-4-7-10
+    'boom': ['mk:darbe_buyuk', 've:cinematic-boom', 've:cinematic-bang', 've:dramatic-impact'],          # BÜYÜK DARBE 2-3-4-5
+    'riser': ['mk:riser_drama', 've:cinematic-riser-wildfire', 'mb:transition/riser-soft-01'],          # RISER 1-3-6
+    'damga': ['mb:stamp/stamp-rubber-01', 'kn:impact-sounds/impactWood_medium_000'],                     # DAMGA/KÂĞIT 1, 6
+    'kagit': ['mk:kagit_kay', 'sn:Cinematic Sound Design - Paper Foley/A4 Printing Paper'],             # DAMGA/KÂĞIT 2, 4
+    'dogru': ['mk:ton_dogru'], 'yanlis': ['mk:ton_yanlis'],                                              # DOĞRU-YANLIŞ 1-2
+    'cizgi': ['mk:cizgi_olumlu'],                                                                        # ÇİZGİ FİLM 4
+    # eşanlamlılar (eski ses.py'ler için)
+    'kart_pop': 'pop', 'cip_pop': 'pop#1', 'balon_pop': 'pop', 'etiket_vur': 'darbe#3', 'bomba': 'boom', 'darbe_agir': 'boom#1', 'bas': 'boom#3',
+    'gerilim': 'riser#2', 'foto': 'kagit#1', 'sayfa': 'kagit#1', 'ding': 'dogru', 'kazanc': 'cizgi', 'boing': 'cizgi', 'ucus': 'gecis#3',
+    # katalogda sorulmamış, şimdilik kalanlar
+    'tik': ['mb:accent/counter-tick-mech-01'], 'saat': ['mk:saat_tiktak'], 'uyari': ['mk:bip_cift'], 'catlak': ['mk:cam_kir'], 'kalp': ['mk:kalp_darbe'],
+    'pirilti': ['mk:pirilti_dokun'], 'sihir': ['mk:sihir_gecis'], 'metal_kapi': ['mk:metal_izgara'], 'mandal': ['mk:kapi_mandal'], 'deklansor': ['mk:deklansor'],
+    'para': ['kn:casino-audio/chips-collide-1'],
 }
+def _rol(ad):
+    r, _, i = ad.partition('#'); i = int(i or 0); v = ROL[r]
+    if isinstance(v, str): return _rol(v if '#' in v or not i else f"{v.partition('#')[0]}#{int(v.partition('#')[2] or 0) + i}")
+    return v[i % len(v)]
 _onbellek = {}
 
 def _yol(ad):
-    if ad.startswith('rol:'): ad = ROL[ad[4:]]
+    if ad.startswith('rol:'): ad = _rol(ad[4:])
     tur, ad2 = ad.split(':', 1)
     if tur == 'mk': return os.path.join(KOK, 'mixkit', ad2 + '.mp3')
     if tur == 'kn':
@@ -108,4 +121,4 @@ def listele():
     return out
 
 if __name__ == '__main__':
-    L = listele(); print(len(L), 'efekt'); eksik = [r for r, a in ROL.items() if not os.path.exists(_yol(a))]; print('eksik roller:', eksik or 'yok')
+    L = listele(); print(len(L), 'efekt'); eksik = [r for r in ROL if not os.path.exists(_yol('rol:' + r))]; print('eksik roller:', eksik or 'yok')

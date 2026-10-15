@@ -204,7 +204,9 @@ Sentezlenmiş whoosh/pop/darbe (ses_lib.whoosh, pop, hit, boom…) efekt olarak 
 Kaynaklar ve lisanslar: `marka/sfx_kutuphane/KAYNAKLAR.md` (kn Kenney CC0 · ui uisfx CC0 · ve videoeditingsfx CC0 · sx soundfx · mb skill · mk Mixkit · sn Sonniss GDC 2015–2026 · bb BBC).
 - **Yeni oturumda** repoda olmayanları indir: `cd gubigufi/marka/sfx_kutuphane && python3 mixkit_indir.py && python3 sonniss_indir.py` (BBC isteğe göre: `python3 bbc_ara.py "sorgu" --n 5 --max 6`).
 - **TİCARİ OLMAYAN kaynak (bb: BBC RemArc) şimdilik serbest** — kullanıcı para kazanmaya başladığını söyleyince yeni videolarda kullanılmaz (kullanıcı kararı 15.10.2026).
-- `ROL` sözlüğü kanalın sabit sesleridir; kullanıcı `dinleme.mp4` kataloğundan seçtikçe güncellenir (`dinleme_secim.json`: "GEÇİŞ 3" → efekt adı).
+- **KANAL SESLERİ (kullanıcı seçimi, 15.10.2026 — `dinleme.mp4` kataloğundan):** GEÇİŞ 1-2-4-6 · POP/ÇİP 6, 12 · DARBE 3-4-7-10 · BÜYÜK DARBE 2-3-4-5 · RISER 1-3-6 · DAMGA/KÂĞIT 1-2-4-6 · DOĞRU/YANLIŞ 1-2 · ÇİZGİ FİLM 4.
+  Bunlar `sfx_lib.ROL`'da: `rol:gecis`, `rol:pop`, `rol:darbe`, `rol:boom`, `rol:riser`, `rol:damga`, `rol:kagit`, `rol:dogru`, `rol:yanlis`, `rol:cizgi`; varyant için `#n` (`rol:gecis#2`). Art arda aynı varyant kullanılmaz, döndürülür.
+  Seçilmeyenler (eski pop_kuru/pop_balon/tik_balon, boing, zil_dikkat…) kanal sesi olarak KULLANILMAZ. Yeni bir ses türü gerekirse önce dinleme kataloğuna eklenip kullanıcıya sorulur.
 - Müzik yatağı (pad/pluck) ve maskot imza sesleri şimdilik sentez kalır.
 
 ### İmza sesler (KALICI — `marka/ses_lib.py` → `maskot_ses(kim, tip)`)
