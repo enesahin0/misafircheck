@@ -94,6 +94,8 @@ export const validateEpisode = (ep: Episode, ws: WorldState): Report => {
     if (s.from >= D) err(`SFX ${s.id}: bölüm dışında.`);
     if (s.src) {
       if (!have.has(`audio/${s.src}`)) missing.push(`public/audio/${s.src}`);
+    } else if (s.lib) {
+      if (!library.some((e) => e.id === s.lib)) err(`SFX ${s.id}: kütüphanede '${s.lib}' kimliği yok (npm run sfx).`);
     } else if (s.tag && !pickFromLibrary(library, s.tag, s.pick ?? 0)) {
       err(`SFX ${s.id}: kütüphanede '${s.tag}' etiketiyle ses bulunamadı (npm run sfx -- ${s.tag}).`);
     }

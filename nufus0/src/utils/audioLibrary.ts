@@ -1,6 +1,17 @@
 // Etiketli ses kütüphanesi araması. Hem Node (doğrulama/CLI) hem tarayıcı (render) tarafından kullanılır.
 // Aynı sorgu + aynı kütüphane = HER ZAMAN aynı dosya (deterministik): sonuçlar kimliğe göre sıralanır.
-export type LibEntry = { id: string; path: string; pack: string; tags: string[] };
+export type LibEntry = {
+  id: string;
+  path: string;
+  pack: string;
+  tags: string[];
+  title?: string;
+  durationSec?: number;
+  /** SPDX/lisans adı (ledger.json) */
+  license?: string;
+  commercialOk?: boolean;
+  attribution?: string | null;
+};
 
 const norm = (s: string) => s.toLowerCase().replace(/ı/g, "i");
 

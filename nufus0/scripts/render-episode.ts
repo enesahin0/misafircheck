@@ -8,6 +8,7 @@ import { openBrowser, renderMedia, renderStill, selectComposition } from "@remot
 import { findBrowserExecutable, glMode } from "./browser";
 import { generatePlaceholderAudio, ROOT, writeManifest } from "./lib/audio";
 import { loadEpisode, loadWorldState } from "./lib/load";
+import { writeModelIndex } from "./lib/models";
 import { printReport, validateEpisode } from "./lib/validate";
 
 const args = process.argv.slice(2);
@@ -28,6 +29,7 @@ const STILL_FRAMES = [0, 45, 100, 200, 300, 450, 530, 640, 700, 780, 840, 900, 1
   // 1) sesler + manifest
   generatePlaceholderAudio();
   writeManifest();
+  writeModelIndex();
 
   // 2) doğrulama (test render'ı hariç)
   if (!isTest) {

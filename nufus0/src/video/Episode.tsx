@@ -37,8 +37,14 @@ export const findNarration = (file: string): string | null => {
 export const findAudio = (src: string): string | null => (have.has(`audio/${src}`) ? `audio/${src}` : null);
 const library = audioLibrary.entries as LibEntry[];
 /** sfx girdisi → dosya yolu (src ya da kütüphane etiketi). Bulunamazsa null (o ses atlanır). */
-export const resolveSfx = (s: { src?: string; tag?: string; pick?: number }): string | null =>
-  s.src ? findAudio(s.src) : s.tag ? pickFromLibrary(library, s.tag, s.pick ?? 0)?.path ?? null : null;
+export const resolveSfx = (s: { src?: string; lib?: string; tag?: string; pick?: number }): string | null =>
+  s.src
+    ? findAudio(s.src)
+    : s.lib
+      ? library.find((e) => e.id === s.lib)?.path ?? null
+      : s.tag
+        ? pickFromLibrary(library, s.tag, s.pick ?? 0)?.path ?? null
+        : null;
 
 const AudioTracks: React.FC<{ ep: Episode }> = ({ ep }) => {
   const music = ep.audio.music && findAudio(ep.audio.music.src);

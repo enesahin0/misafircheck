@@ -30,6 +30,9 @@ npm run render:001         # DOSYA 001, tam 1080x1920, 30 fps, 60.00 sn → out/
 | `npm run validate` | Bölüm verisi + süreklilik denetimi (süre, altyazı, ses, dünya durumu). |
 | `npm run audio` | Yer tutucu SFX/müziği üretir ve ses manifestini yeniler. |
 | `npm run tally` | A/B oylarını manuel CSV'den sayar (aşağıya bakın). |
+| `npm run audio:audit -- 001` | Bölümde kullanılan kütüphane seslerinin lisans dökümü + atıf metni. `-- --commercial` ile ticari olmayan ses varsa hata verir (**reklam öncesi çalıştır**). |
+| `npm run library:fetch` | Ağdan ses paketlerini indirir (Incompetech müzik, Mixkit, BBC). |
+| `npm run models -- <etiket>` | 3D model ara (1.603 CC0 model). |
 | `npm run sfx -- <etiket>` | Ses kütüphanesinde ara (ör. `npm run sfx -- door close`). Etiketsiz çalıştırırsan paketleri listeler. |
 | `npm run test:webgl` | Bu makinede tarayıcı WebGL'i çalışıyor mu? |
 | `npm run validate:universe` | Evren İncili tutarlılık denetimi (kapı numaraları, referanslar, tohumlar). |
@@ -65,6 +68,9 @@ Yeni paket eklemek: dosyaları `public/audio/library/<kaynak>/<paket>/` altına 
 
 Şu an `public/audio/sfx/_generated` ve `public/audio/music/_generated` içindeki sesler **bu depodaki script ile sentezlenmiş yer tutuculardır** (telif sorunu yok).
 Kendi SFX/müziğinizi koymak için `episode001.ts` içindeki `audio.sfx` / `audio.music` yollarını değiştirin. Üçüncü taraf ses kullanırsanız lisansını `public/audio/LICENSES.md` içine yazın.
+
+## Kaynak kütüphaneleri
+Tüm ses ve görsel kaynakların envanteri, lisansları ve durumu: [`docs/KAYNAKLAR.md`](docs/KAYNAKLAR.md). Ağdan indirilen paketler (Mixkit, BBC, Incompetech) repoya girmez; `npm run library:fetch` ile edinilir.
 
 ## Evren (KAPI)
 Evrenin tek doğruluk kaynağı `src/story/universe/` (özet: `bible.md`): Sıfır Apartmanı (45 birim), kurallar, karakterler, etkileşim döngüleri (A/B, KAPI, İHBAR, KİRACI, İZ), bölüm kalıbı ve 16 anomali tohumu.

@@ -1,11 +1,104 @@
 {
   "note": "Ses kütüphanesi lisans defteri. Buraya yalnızca ticari kullanıma açık (CC0 veya eşdeğeri) paketler girer. Yeni paket eklerken kaynak, lisans ve indirme tarihi zorunludur.",
   "packs": {
-    "kenney/impact-sounds": { "source": "https://kenney.nl/assets/impact-sounds", "license": "CC0-1.0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/", "author": "Kenney (www.kenney.nl)", "retrieved": "2026-10-15", "attribution": "isteğe bağlı" },
-    "kenney/interface-sounds": { "source": "https://kenney.nl/assets/interface-sounds", "license": "CC0-1.0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/", "author": "Kenney (www.kenney.nl)", "retrieved": "2026-10-15", "attribution": "isteğe bağlı" },
-    "kenney/ui-audio": { "source": "https://kenney.nl/assets/ui-audio", "license": "CC0-1.0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/", "author": "Kenney (www.kenney.nl)", "retrieved": "2026-10-15", "attribution": "isteğe bağlı" },
-    "kenney/digital-audio": { "source": "https://kenney.nl/assets/digital-audio", "license": "CC0-1.0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/", "author": "Kenney (www.kenney.nl)", "retrieved": "2026-10-15", "attribution": "isteğe bağlı" },
-    "kenney/sci-fi-sounds": { "source": "https://kenney.nl/assets/sci-fi-sounds", "license": "CC0-1.0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/", "author": "Kenney (www.kenney.nl)", "retrieved": "2026-10-15", "attribution": "isteğe bağlı" },
-    "kenney/rpg-audio": { "source": "https://kenney.nl/assets/rpg-audio", "license": "CC0-1.0", "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/", "author": "Kenney (www.kenney.nl)", "retrieved": "2026-10-15", "attribution": "isteğe bağlı" }
+    "kenney/impact-sounds": {
+      "source": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "attribution": "isteğe bağlı",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true
+    },
+    "kenney/interface-sounds": {
+      "source": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "attribution": "isteğe bağlı",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true
+    },
+    "kenney/ui-audio": {
+      "source": "https://kenney.nl/assets/ui-audio",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "attribution": "isteğe bağlı",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true
+    },
+    "kenney/digital-audio": {
+      "source": "https://kenney.nl/assets/digital-audio",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "attribution": "isteğe bağlı",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true
+    },
+    "kenney/sci-fi-sounds": {
+      "source": "https://kenney.nl/assets/sci-fi-sounds",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "attribution": "isteğe bağlı",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true
+    },
+    "kenney/rpg-audio": {
+      "source": "https://kenney.nl/assets/rpg-audio",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "attribution": "isteğe bağlı",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true
+    },
+    "incompetech": {
+      "source": "https://incompetech.com/music/royalty-free/",
+      "license": "CC-BY-4.0",
+      "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
+      "author": "Kevin MacLeod (incompetech.com)",
+      "retrieved": "2026-10-15",
+      "commercialOk": true,
+      "attributionRequired": true,
+      "redistributable": false,
+      "notes": "Atıf zorunlu (npm run audio:audit ile üretilir, açıklamaya eklenir). Kevin MacLeod müziği platformlarda Content ID ile işaretlenebilir; itiraz yolu: incompetech.com/music/royalty-free/youtube-contentid.html"
+    },
+    "mixkit": {
+      "source": "https://mixkit.co/free-sound-effects/",
+      "license": "Mixkit Sound Effects Free License",
+      "licenseUrl": "https://mixkit.co/license/#sfxFree",
+      "author": "Mixkit / çeşitli",
+      "retrieved": "2026-10-15",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": false,
+      "notes": "Projelerde ticari dahil serbest; seslerin tek başına yeniden dağıtımı yasak → dosyalar repoya girmez (.gitignore). Lisans metnini yayın öncesi site üzerinde tekrar kontrol et."
+    },
+    "bbc-sfx": {
+      "source": "https://sound-effects.bbcrewind.co.uk/",
+      "license": "RemArc (BBC)",
+      "licenseUrl": "https://sound-effects.bbcrewind.co.uk/licensing",
+      "author": "BBC",
+      "retrieved": "2026-10-15",
+      "commercialOk": false,
+      "attributionRequired": true,
+      "redistributable": false,
+      "notes": "Yalnızca kişisel/eğitim/araştırma amaçlı kullanım. REKLAM/MONETİZASYON ÖNCESİ BU SESLER DEĞİŞTİRİLMELİ (npm run audio:audit -- --commercial). Atıf: 'BBC Sound Effects, © copyright BBC'."
+    }
   }
 }

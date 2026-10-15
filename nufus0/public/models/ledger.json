@@ -1,0 +1,181 @@
+{
+  "note": "3D model kütüphanesi lisans defteri. Yalnızca lisansı bilinen paketler. Reklam öncesi `commercialOk:false` olanlar değiştirilir.",
+  "packs": {
+    "kenney/blocky-characters": {
+      "source": "https://kenney.nl/assets/blocky-characters",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true,
+      "models": 18
+    },
+    "kenney/building-kit": {
+      "source": "https://kenney.nl/assets/building-kit",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true,
+      "models": 79
+    },
+    "kenney/car-kit": {
+      "source": "https://kenney.nl/assets/car-kit",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true,
+      "models": 50
+    },
+    "kenney/city-kit-commercial": {
+      "source": "https://kenney.nl/assets/city-kit-commercial",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true,
+      "models": 41
+    },
+    "kenney/city-kit-industrial": {
+      "source": "https://kenney.nl/assets/city-kit-industrial",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true,
+      "models": 37
+    },
+    "kenney/city-kit-roads": {
+      "source": "https://kenney.nl/assets/city-kit-roads",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true,
+      "models": 95
+    },
+    "kenney/city-kit-suburban": {
+      "source": "https://kenney.nl/assets/city-kit-suburban",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true,
+      "models": 40
+    },
+    "kenney/food-kit": {
+      "source": "https://kenney.nl/assets/food-kit",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true,
+      "models": 200
+    },
+    "kenney/furniture-kit": {
+      "source": "https://kenney.nl/assets/furniture-kit",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true,
+      "models": 140
+    },
+    "kenney/graveyard-kit": {
+      "source": "https://kenney.nl/assets/graveyard-kit",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true,
+      "models": 91
+    },
+    "kenney/mini-characters": {
+      "source": "https://kenney.nl/assets/mini-characters",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true,
+      "models": 26
+    },
+    "kenney/modular-buildings": {
+      "source": "https://kenney.nl/assets/modular-buildings",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true,
+      "models": 108
+    },
+    "kenney/nature-kit": {
+      "source": "https://kenney.nl/assets/nature-kit",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true,
+      "models": 329
+    },
+    "kenney/prototype-kit": {
+      "source": "https://kenney.nl/assets/prototype-kit",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true,
+      "models": 145
+    },
+    "kenney/retro-urban-kit": {
+      "source": "https://kenney.nl/assets/retro-urban-kit",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true,
+      "models": 124
+    },
+    "kenney/survival-kit": {
+      "source": "https://kenney.nl/assets/survival-kit",
+      "license": "CC0-1.0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "author": "Kenney (www.kenney.nl)",
+      "retrieved": "2026-10-15",
+      "commercialOk": true,
+      "attributionRequired": false,
+      "redistributable": true,
+      "models": 80
+    }
+  }
+}

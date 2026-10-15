@@ -36,17 +36,40 @@ const tagsFor = (file: string, pack: string): string[] => {
 
 export const writeLibraryIndex = () => {
   const lib = path.join(AUDIO_DIR, "library");
+  const ledgerPath = path.join(lib, "ledger.json");
+  const ledger: Record<string, { license: string; commercialOk?: boolean; attributionRequired?: boolean }> = fs.existsSync(ledgerPath) ? JSON.parse(fs.readFileSync(ledgerPath, "utf8")).packs : {};
+  type Meta = { file: string; title?: string; tags?: string[]; durationSec?: number; attribution?: string };
+  const metaCache = new Map<string, Record<string, Meta>>();
+  const metaFor = (dir: string) => {
+    if (!metaCache.has(dir)) {
+      const mp = path.join(dir, "_meta.json");
+      const files = fs.existsSync(mp) ? (JSON.parse(fs.readFileSync(mp, "utf8")).files as Meta[]) : [];
+      metaCache.set(dir, Object.fromEntries(files.map((f) => [f.file, f])));
+    }
+    return metaCache.get(dir)!;
+  };
   const entries = walk(lib).map((p) => {
     const rel = path.relative(path.join(ROOT, "public"), p).split(path.sep).join("/");
     const pack = path.relative(lib, path.dirname(p)).split(path.sep).join("/");
-    return { id: `${pack}/${path.basename(p, path.extname(p))}`, path: rel, pack, tags: tagsFor(p, pack) };
+    const m = metaFor(path.dirname(p))[path.basename(p)];
+    const led = ledger[pack];
+    const tags = m?.tags ? [...new Set([...m.tags, ...pack.replace(/^kenney\//, "").split("-")])] : tagsFor(p, pack);
+    return {
+      id: `${pack}/${path.basename(p, path.extname(p))}`,
+      path: rel,
+      pack,
+      tags,
+      title: m?.title,
+      durationSec: m?.durationSec,
+      license: led?.license,
+      commercialOk: led?.commercialOk,
+      attribution: m?.attribution ?? null,
+    };
   });
   entries.sort((a, b) => a.id.localeCompare(b.id));
   fs.mkdirSync(path.dirname(MANIFEST), { recursive: true });
-  fs.writeFileSync(path.join(path.dirname(MANIFEST), "audioLibrary.json"), JSON.stringify({ entries }, null, 1) + "\n");
+  fs.writeFileSync(path.join(path.dirname(MANIFEST), "audioLibrary.json"), JSON.stringify({ entries }) + "\n");
   // lisans defteri ile karşılaştır: defterde olmayan paket = HATA (lisanssız ses kullanılamaz)
-  const ledgerPath = path.join(lib, "ledger.json");
-  const ledger = fs.existsSync(ledgerPath) ? JSON.parse(fs.readFileSync(ledgerPath, "utf8")).packs : {};
   const unlicensed = [...new Set(entries.map((e) => e.pack))].filter((p) => !ledger[p]);
   return { count: entries.length, unlicensed };
 };

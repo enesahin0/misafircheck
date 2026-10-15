@@ -49,11 +49,14 @@ const actorKeySchema = z.object({
 export const audioSchema = z.object({
   /** public/audio/narration/<file>.(mp3|wav|m4a) — dosya yoksa o satır sessiz geçilir */
   narration: z.array(z.object({ id: z.string(), file: z.string(), from: frame, volume: z.number().default(1) })),
-  /** `src`: public/audio/<src> yolu  —YA DA—  `tag`: kütüphane etiketleri ("door close"), `pick`: sonuç sırası */
+  /**
+   * Üç yoldan TAM biri: `src` (public/audio/<src> yolu), `lib` (kütüphane kimliği, ör. "kenney/rpg-audio/doorClose_2" — BİTMİŞ bölümlerde bunu kullan, kütüphane büyüse de ses değişmez)
+   * ya da `tag` (keşif için etiket araması; kütüphane büyüdükçe seçilen ses KAYABİLİR). `pick`: etiket sonuç sırası.
+   */
   sfx: z.array(
     z
-      .object({ id: z.string(), src: z.string().optional(), tag: z.string().optional(), pick: z.number().int().min(0).optional(), from: frame, volume: z.number().default(0.7) })
-      .refine((s) => !!s.src !== !!s.tag, { message: "sfx: src veya tag'den TAM biri verilmeli" }),
+      .object({ id: z.string(), src: z.string().optional(), lib: z.string().optional(), tag: z.string().optional(), pick: z.number().int().min(0).optional(), from: frame, volume: z.number().default(0.7) })
+      .refine((s) => [s.src, s.lib, s.tag].filter(Boolean).length === 1, { message: "sfx: src, lib veya tag'den TAM biri verilmeli" }),
   ),
   music: z.object({ src: z.string(), volume: z.number().default(0.35) }).optional(),
 });

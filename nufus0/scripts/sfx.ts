@@ -21,6 +21,7 @@ if (!q) {
 }
 const hits = findInLibrary(entries, q);
 console.log(`'${q}' → ${hits.length} sonuç`);
-hits.slice(0, 40).forEach((h, i) => console.log(`  [${i}] ${h.id}   (${h.tags.join(", ")})`));
+hits.slice(0, 40).forEach((h, i) => console.log(`  [${i}] ${h.id}${h.title ? "  «" + h.title + "»" : ""}  [${h.license ?? "?"}${h.commercialOk === false ? " · TİCARİ DEĞİL" : ""}]`));
 if (hits.length > 40) console.log(`  ... +${hits.length - 40} daha`);
-console.log('\nBölüm verisinde kullanım: { id: "...", tag: "' + q + '", pick: 0, from: <kare>, volume: 0.5 }');
+console.log('\nKeşif: { id: "...", tag: "' + q + '", pick: 0, from: <kare>, volume: 0.5 }');
+console.log('Bitmiş bölümde SABİTLE: { id: "...", lib: "<yukarıdaki kimlik>", from: <kare>, volume: 0.5 }  (kütüphane büyüse de ses değişmez)');

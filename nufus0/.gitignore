@@ -6,3 +6,8 @@ dist/
 # otomatik üretilen dosyalar
 src/generated/
 public/audio/*/_generated/
+
+# Ağdan indirilen kütüphane paketleri (yeniden dağıtım şartları): scripts/acquire/fetch_library.py ile yeniden indirilir
+public/audio/library/incompetech/
+public/audio/library/mixkit/
+public/audio/library/bbc-sfx/
