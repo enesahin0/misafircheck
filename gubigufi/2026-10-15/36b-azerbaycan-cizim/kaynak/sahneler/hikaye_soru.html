@@ -21,9 +21,9 @@ window.renderAt = t => {
   o += txt("MERAK ETTİĞİNİ SOR", 540, 640, 62, '#FFF3E0') + txt("BİZ ANLATALIM!", 540, 715, 62, '#FBAC39');
   // ORTA: boş — Instagram soru çıkartması buraya
   // alt: Gubi + Gufi büyük, yukarıya (soru alanına) bakıyor
-  o += `<ellipse cx="540" cy="1712" rx="330" ry="22" fill="#000" opacity=".25"/>`;
-  o += M.canli('gufi', { t: .3, x: 680, y: 1700, boy: 250, duygu: 'merak', bakHedef: [540, 1120], canlilik: false });
-  o += M.canli('gubi', { t: .3, x: 390, y: 1555, boy: 230, duygu: 'merak', bakHedef: [540, 1120], canlilik: false, parla: .5 });
+  o += `<ellipse cx="540" cy="1712" rx="400" ry="24" fill="#000" opacity=".25"/>`;
+  o += M.canli('gufi', { t: .3, x: 705, y: 1700, boy: 320, duygu: 'merak', bakHedef: [540, 1120], canlilik: false });
+  o += M.canli('gubi', { t: .3, x: 350, y: 1510, boy: 300, duygu: 'merak', bakHedef: [540, 1120], canlilik: false, parla: .5 });
 
   document.getElementById('dinamik').innerHTML = o;
 };
