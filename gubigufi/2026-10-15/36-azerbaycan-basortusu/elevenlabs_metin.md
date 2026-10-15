@@ -1,13 +1,13 @@
-[serious] Bu görüntüler 28 Şubat Türkiye'si değil. [short pause] Bugünün Azerbaycan'ı. [slowly] Başörtülü kızlar... okul kapısından geri çevriliyor. [urgent] Ve bu kriz, "tek millet iki devlet" dediğimiz iki ülkeyi karşı karşıya getirdi.
+[curious] Azerbaycan'la aramızda ne oluyor? [short pause] [serious] "Tek millet iki devlet" dediğimiz kardeşimizle, birkaç haftada ipler nasıl bu kadar gerildi?
 
-[curious] Eylülde okullara yeni bir kıyafet kuralı geldi. Kararda "başörtüsü" kelimesi hiç geçmiyor. [short pause] Ama uygulamada başörtülü öğrenciler derse alınmadı. Öğretmenlere "ya çıkar, ya işe gelme" dendi. [sad] Öğrenciler kaldırımda ders çalıştı. [serious] Otuz yedi kişi gözaltına alındı; Instagram ve TikTok kısıtlandı.
+[calm] Her şey bir okul kapısında başladı. Azerbaycan okullara yeni bir kıyafet kuralı getirdi. Kararda başörtüsü geçmiyor... ama başörtülü öğrenciler derse alınmadı. [thoughtful] Aslında mesele din değil: İnsanın ne giyeceğine, neye inanacağına kim karar verir? [short pause] Yani kişisel özgürlük. [serious] Tepki gösterenlerden otuz yedi kişi gözaltına alındı, sosyal medya kısıtlandı.
 
-[curious] Neden? Nüfusun neredeyse tamamı Müslüman. Ama devlet, Sovyetlerden kalma katı bir laiklik savunuyor. [calm] Hükümete göre bu yasak değil, sadece okul forması.
+[urgent] Türkiye'den eleştiri gelince Aliyev'den sert çıkış: [serious] "Herkes yerini bilsin, yaşam tarzımıza burnunu sokmasın."
 
-[urgent] Kriz Türkiye'ye sıçradı. Erdoğan'ın başdanışmanı "kabul edilemez" dedi. [short pause] Bakü'den sert cevap geldi: [serious] "Tek millet iki devlet, iç işlerimize karışmak demek değil."
+[dramatic] Asıl bomba ise silahlar: [serious] "Bize kimse yardım etmedi. Bütün silahları son mermisine kadar kendi paramızla aldık. Hatta bazıları bize birkaç katı fiyatına sattı." [short pause] [calm] Adres vermedi. Azerbaycan basını Rusya'yı işaret etti, ama Türkiye'de herkes Karabağ'daki SİHA'ları hatırladı.
 
-[thoughtful] İşin ironik yanı... Türkiye bu yasağı yıllarca yaşadı. Liselerde başörtüsü ancak 2014'te serbest kaldı.
+[calm] Ankara ise sakin: "Yanlış anlaşılma" dedi ve cevap vermedi.
 
-[warm] Bunu konuşan birine gönder. [curious] Sence bu Azerbaycan'ın iç meselesi mi, yoksa Türkiye susmamalı mı? Yorumlara yaz.
+[warm] Bunu konuşan birine gönder. [curious] Sence bu kardeşlik krizi geçer mi? Yorumlara yaz.
 
 [warm] Her gün bir merak için gubigufi'yi takip et.

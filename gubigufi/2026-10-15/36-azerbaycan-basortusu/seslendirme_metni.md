@@ -1,39 +1,38 @@
-# #36 — Azerbaycan'da başörtüsü krizi: "Bu görüntüler 28 Şubat değil"
+# #36 — Azerbaycan'la aramızda ne oluyor?
 
-**Hedef süre:** ~55 sn · **Ton:** magazinsel, hızlı, merak ettiren · **Kitle:** 25–44
-**Formül:** ilk kare = olayın kendisi → ne oldu → neden → Türkiye'ye nasıl sıçradı → ironik kıvrım → soru + paylaş → takip
+**Hedef süre:** ~57 sn · **Ton:** magazinsel, hızlı · **Çerçeve:** başörtüsü = kıyafet / inanç / kişisel özgürlük; silah çıkışı; Ankara'nın cevabı
+**Formül:** soru hook → okul kapısı → özgürlük → Aliyev'in çıkışı → silah bombası → Ankara → soru + paylaş → takip
 
 ## Seslendirme (düz metin)
 
-Bu görüntüler 28 Şubat Türkiye'si değil. Bugünün Azerbaycan'ı. Başörtülü kızlar okul kapısından geri çevriliyor. Ve bu kriz, "tek millet iki devlet" dediğimiz iki ülkeyi karşı karşıya getirdi.
+Azerbaycan'la aramızda ne oluyor? "Tek millet iki devlet" dediğimiz kardeşimizle, birkaç haftada ipler nasıl bu kadar gerildi?
 
-Eylülde okullara yeni bir kıyafet kuralı geldi. Kararda "başörtüsü" kelimesi hiç geçmiyor. Ama uygulamada başörtülü öğrenciler derse alınmadı. Öğretmenlere "ya çıkar, ya işe gelme" dendi. Öğrenciler kaldırımda ders çalıştı. Otuz yedi kişi gözaltına alındı; Instagram ve TikTok kısıtlandı.
+Her şey bir okul kapısında başladı. Azerbaycan okullara yeni bir kıyafet kuralı getirdi. Kararda başörtüsü geçmiyor ama başörtülü öğrenciler derse alınmadı. Aslında mesele din değil: İnsanın ne giyeceğine, neye inanacağına kim karar verir? Yani kişisel özgürlük. Tepki gösterenlerden otuz yedi kişi gözaltına alındı, sosyal medya kısıtlandı.
 
-Neden? Nüfusun neredeyse tamamı Müslüman. Ama devlet, Sovyetlerden kalma katı bir laiklik savunuyor. Hükümete göre bu yasak değil, sadece okul forması.
+Türkiye'den eleştiri gelince Aliyev'den sert çıkış: "Herkes yerini bilsin, yaşam tarzımıza burnunu sokmasın."
 
-Kriz Türkiye'ye sıçradı. Erdoğan'ın başdanışmanı "kabul edilemez" dedi. Bakü'den sert cevap geldi: "Tek millet iki devlet, iç işlerimize karışmak demek değil."
+Asıl bomba ise silahlar: "Bize kimse yardım etmedi. Bütün silahları son mermisine kadar kendi paramızla aldık. Hatta bazıları bize birkaç katı fiyatına sattı." Adres vermedi. Azerbaycan basını Rusya'yı işaret etti, ama Türkiye'de herkes Karabağ'daki SİHA'ları hatırladı.
 
-İşin ironik yanı: Türkiye bu yasağı yıllarca yaşadı. Liselerde başörtüsü ancak 2014'te serbest kaldı.
+Ankara ise sakin: "Yanlış anlaşılma" dedi ve cevap vermedi.
 
-Bunu konuşan birine gönder. Sence bu Azerbaycan'ın iç meselesi mi, yoksa Türkiye susmamalı mı? Yorumlara yaz.
+Bunu konuşan birine gönder. Sence bu kardeşlik krizi geçer mi? Yorumlara yaz.
 
 Her gün bir merak için gubigufi'yi takip et.
 
-## Storyboard (taslak)
+## Storyboard (taslak) — gerçek görsel + bizim çizim
 
-| # | Bölüm | Görsel | Ekran yazısı / çip |
+| # | Bölüm | Görsel | Ekran yazısı |
 |---|---|---|---|
-| 1 | Hook (0–7 sn) | İlk kare: okul kapısı, demir parmaklık; başörtülü kız çantasıyla kapı önünde, görevli eliyle "dur" yapıyor. Üstte eski fotoğraf filtresiyle "1998?" yazısı, ardından çizilip "2026 · BAKÜ" damgası. Sonra iki bayrak yan yana, aralarında çatlak. | "28 ŞUBAT DEĞİL" → "BUGÜNÜN AZERBAYCAN'I" |
-| 2 | Ne oldu (7–22 sn) | Resmî karar kâğıdı büyüteçle taranıyor, "başörtüsü" kelimesi aranıyor → bulunamadı (boş sonuç). Kapıda geri çevrilen öğrenciler; öğretmen masasına "ya çıkar ya gelme" notu. Kaldırımda defterle ders çalışan öğrenciler. Gözaltı sayacı 37; telefonda Instagram/TikTok ikonları gri, "bağlantı yok". | "21 EYLÜL · OKUL KIYAFETİ KARARI" · "37 GÖZALTI" |
-| 3 | Neden (22–30 sn) | Harita: Azerbaycan, Müslüman nüfus çubuğu neredeyse dolu. Yanında Sovyet dönemi binası / orak-çekiç silüeti silinip yerine "LAİKLİK" tabelası. Okul forması askıda. | "HÜKÜMET: YASAK DEĞİL, FORMA" |
-| 4 | Türkiye'ye sıçradı (30–40 sn) | Ankara → Bakü arası ok; konuşma balonları: "KABUL EDİLEMEZ" (Türkiye tarafı) ↔ "İÇ İŞLERİMİZE KARIŞMAYIN" (Bakü). Ortadaki "TEK MİLLET İKİ DEVLET" pankartı ikiye ayrılıyor. Takip çipi ~20. sn. | "BAKÜ: YAPAY GERİLİM" |
-| 5 | İronik kıvrım (40–46 sn) | Zaman çizelgesi: Türkiye 2010 üniversite · 2013 kamu · 2014 lise; ok 2026 Azerbaycan'a dönüyor. Gufi şaşkın, Gubi omuz silkiyor. | "TÜRKİYE: LİSEDE SERBEST 2014" |
-| 6 | Soru + paylaş (46–53 sn) | İki kutu: "İÇ MESELE" / "TÜRKİYE SUSMAMALI" anket görünümü; Gubi ve Gufi farklı kutuların yanında. | "SENCE?" · paylaş çipi |
-| 7 | Takip + logo | Logo sahnesi. | — |
+| 1 | Hook (0–6 sn) | Gerçek foto: Bakü'de yan yana Türkiye–Azerbaycan bayrakları → fotoğrafın ortasından çatlak geçiyor, iki yarı ayrılıyor. | "AZERBAYCAN'LA ARAMIZDA NE OLUYOR?" |
+| 2 | Okul kapısı (6–14 sn) | Çizim: okul kapısı, başörtülü öğrenci geri çevriliyor. Karar kâğıdında büyüteç → "başörtüsü" bulunamadı. | "21 EYLÜL · KIYAFET KURALI" |
+| 3 | Özgürlük (14–22 sn) | Askıda farklı kıyafetler (başörtüsü, şapka, forma); üstünde "KİM KARAR VERİR?" Ardından 37 gözaltı sayacı + gri sosyal medya ikonları. Takip çipi ~20. sn. | "KIYAFET · İNANÇ · DÜŞÜNCE ÖZGÜRLÜĞÜ" |
+| 4 | Aliyev çıkışı (22–30 sn) | Gerçek foto: Aliyev (Commons, president.az). Konuşma balonu. | "YAŞAM TARZIMIZA BURNUNU SOKMASIN" |
+| 5 | Silah bombası (30–45 sn) | Gerçek foto: Bayraktar TB2 (Commons). Fiyat etiketi "ÖDENDİ ✓", mermi sayacı; "birkaç katı" → harita okları Rusya'ya / Türkiye'ye soru işareti. | "SON MERMİSİNE KADAR PARAYLA" |
+| 6 | Ankara (45–50 sn) | Gerçek foto: Erdoğan–Aliyev (Commons). "YANLIŞ ANLAŞILMA" damgası. | "ANKARA: CEVAP YOK" |
+| 7 | Soru + paylaş + takip | Bayrak yarıları yeniden yaklaşıyor ama tam birleşmiyor; "?" | "SENCE GEÇER Mİ?" |
 
-## Kaynaklar (ekranda küçük çip, seslendirmede okunmaz)
-- Medyascope, 12.10.2026 — kronoloji, 21 Eylül & 6 Ekim kararları, 37 gözaltı, erişim kısıtlaması
-- Middle East Eye, 13.10.2026 — Oktay Saral açıklaması, Yeni Azerbaycan Partisi'nin "yapay gerilim" ve "tek millet iki devlet" cevabı
-- OC Media — Şeyhülislam Paşazade: "Kararda başörtüsü geçmiyor"
-- T24, 14.10.2026 — Fidan'ın 15 Ekim CICA zirvesi için Bakü'ye gidişi
-- Sabah, 14.10.2026 — Bahçeli: "nifak tohumu ekilmesine müsaade etmeden"
+## Kaynaklar (ekranda küçük çip)
+- Medyascope 12.10.2026 — 21 Eylül kararı, 37 gözaltı, erişim kısıtlaması
+- Middle East Eye — Aliyev'in 2 Ekim YAP kurultayı konuşması ("herkes yerini bilsin", "son mermisine kadar", "tek manat indirim yok"); Ankara: "yanlış anlaşılma", cevap verilmeyecek
+- Cumhuriyet 04.10.2026 — "birkaç katı fiyatına sattılar"; Azerbaycan basınına göre Rusya'ya mesaj
+- Görseller: Wikimedia Commons (lisans bilgileri kaynak/gorsel_lisans.md)
