@@ -1,0 +1,269 @@
+{
+ "ses": "../ses_orijinal.mp3",
+ "toplam_sure": 59.796,
+ "konusma_bloklari": [
+  [
+   0.022,
+   1.841
+  ],
+  [
+   2.015,
+   6.133
+  ],
+  [
+   6.437,
+   8.168
+  ],
+  [
+   8.342,
+   10.946
+  ],
+  [
+   11.12,
+   12.638
+  ],
+  [
+   12.812,
+   14.997
+  ],
+  [
+   15.171,
+   17.57
+  ],
+  [
+   18.265,
+   19.2
+  ],
+  [
+   19.374,
+   20.213
+  ],
+  [
+   20.387,
+   22.494
+  ],
+  [
+   22.668,
+   25.626
+  ],
+  [
+   25.913,
+   28.543
+  ],
+  [
+   28.717,
+   29.757
+  ],
+  [
+   29.931,
+   31.554
+  ],
+  [
+   31.728,
+   32.88
+  ],
+  [
+   33.315,
+   34.526
+  ],
+  [
+   34.7,
+   35.964
+  ],
+  [
+   36.138,
+   38.859
+  ],
+  [
+   39.033,
+   39.856
+  ],
+  [
+   40.03,
+   41.561
+  ],
+  [
+   41.735,
+   42.536
+  ],
+  [
+   42.71,
+   45.861
+  ],
+  [
+   46.009,
+   47.858
+  ],
+  [
+   48.032,
+   48.957
+  ],
+  [
+   49.131,
+   51.347
+  ],
+  [
+   51.634,
+   52.355
+  ],
+  [
+   52.659,
+   53.006
+  ],
+  [
+   53.18,
+   54.82
+  ],
+  [
+   54.994,
+   56.896
+  ],
+  [
+   57.2,
+   59.774
+  ]
+ ],
+ "cumleler": [
+  {
+   "no": 1,
+   "baslangic": 0.0,
+   "bitis": 2.12,
+   "sure": 2.12,
+   "metin": "Azerbaycan'la aramızda ne oluyor?"
+  },
+  {
+   "no": 2,
+   "baslangic": 2.12,
+   "bitis": 7.47,
+   "sure": 5.35,
+   "metin": "\"Tek millet iki devlet\" dediğimiz kardeşimizle ipler nasıl bu kadar gerildi?"
+  },
+  {
+   "no": 3,
+   "baslangic": 7.47,
+   "bitis": 10.02,
+   "sure": 2.55,
+   "metin": "Her şey bir okul kapısında başladı."
+  },
+  {
+   "no": 4,
+   "baslangic": 10.02,
+   "bitis": 13.46,
+   "sure": 3.44,
+   "metin": "Azerbaycan okullara yeni bir kıyafet kuralı getirdi."
+  },
+  {
+   "no": 5,
+   "baslangic": 13.46,
+   "bitis": 18.39,
+   "sure": 4.93,
+   "metin": "Kararda başörtüsü geçmiyor ama başörtülü öğrenciler derse alınmadı."
+  },
+  {
+   "no": 6,
+   "baslangic": 18.39,
+   "bitis": 21.57,
+   "sure": 3.18,
+   "metin": "Gubi, sence ne giyeceğine kim karar vermeli?"
+  },
+  {
+   "no": 7,
+   "baslangic": 21.57,
+   "bitis": 23.04,
+   "sure": 1.47,
+   "metin": "Aynen, sen."
+  },
+  {
+   "no": 8,
+   "baslangic": 23.04,
+   "bitis": 27.24,
+   "sure": 4.2,
+   "metin": "Mesele din değil; kıyafet, inanç, kişisel özgürlük."
+  },
+  {
+   "no": 9,
+   "baslangic": 27.24,
+   "bitis": 31.04,
+   "sure": 3.8,
+   "metin": "Otuz yedi kişi gözaltına alındı, sosyal medya kısıtlandı."
+  },
+  {
+   "no": 10,
+   "baslangic": 31.04,
+   "bitis": 39.92,
+   "sure": 8.88,
+   "metin": "Türkiye'den eleştiri gelince Aliyev'den sert çıkış: \"Herkes yerini bilsin, yaşam tarzımıza burnunu sokmasın.\" Gufi, sıkı tutun."
+  },
+  {
+   "no": 11,
+   "baslangic": 39.92,
+   "bitis": 43.47,
+   "sure": 3.55,
+   "metin": "Asıl bomba silahlar: \"Bize kimse yardım etmedi."
+  },
+  {
+   "no": 12,
+   "baslangic": 43.47,
+   "bitis": 46.97,
+   "sure": 3.5,
+   "metin": "Bütün silahları son mermisine kadar kendi paramızla aldık."
+  },
+  {
+   "no": 13,
+   "baslangic": 46.97,
+   "bitis": 51.76,
+   "sure": 4.79,
+   "metin": "Hatta bazıları bize birkaç katı fiyatına sattı.\" Adres vermedi."
+  },
+  {
+   "no": 14,
+   "baslangic": 51.76,
+   "bitis": 58.19,
+   "sure": 6.43,
+   "metin": "Azerbaycan basını Rusya'yı işaret etti, ama Türkiye'de herkes Karabağ'daki SİHA'ları hatırladı."
+  },
+  {
+   "no": 15,
+   "baslangic": 58.19,
+   "bitis": 62.6,
+   "sure": 4.4,
+   "metin": "Ankara ise sakin: \"Yanlış anlaşılma\" dedi ve cevap vermedi."
+  },
+  {
+   "no": 16,
+   "baslangic": 62.6,
+   "bitis": 64.58,
+   "sure": 1.98,
+   "metin": "Gufi umutlu."
+  },
+  {
+   "no": 17,
+   "baslangic": 64.58,
+   "bitis": 64.88,
+   "sure": 0.3,
+   "metin": "Ya sen?"
+  },
+  {
+   "no": 18,
+   "baslangic": 64.88,
+   "bitis": 66.88,
+   "sure": 1.99,
+   "metin": "Sence bu kardeşlik krizi geçer mi?"
+  },
+  {
+   "no": 19,
+   "baslangic": 66.88,
+   "bitis": 69.44,
+   "sure": 2.56,
+   "metin": "Yorumlara yaz, konuşan birine gönder."
+  },
+  {
+   "no": 20,
+   "baslangic": 69.44,
+   "bitis": 72.83,
+   "sure": 3.39,
+   "metin": "Her gün bir merak için gubigufi'yi takip et."
+  }
+ ],
+ "not": "Bloklar orijinal sesten; boşluklar sıkıştırıldı + atempo 1.15 (analitik hesap)."
+}
