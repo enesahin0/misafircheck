@@ -209,7 +209,7 @@ Kaynaklar ve lisanslar: `marka/sfx_kutuphane/KAYNAKLAR.md` (kn Kenney CC0 · ui 
   Seçilmeyenler (eski pop_kuru/pop_balon/tik_balon, boing, zil_dikkat…) kanal sesi olarak KULLANILMAZ. Yeni bir ses türü gerekirse önce dinleme kataloğuna eklenip kullanıcıya sorulur.
 - Müzik yatağı (pad/pluck) ve maskot imza sesleri şimdilik sentez kalır.
 - **CİDDİ GÜNDEM / SİYASET videolarında ses "çocuk şeyi gibi" OLMAZ (kullanıcı, #36):** maskot imza sesleri (bup/ting) kapalı, pluck melodi yok → kayıtlı gerilim drone'u (`mb:ambience/tension-drone-sub-03`) + koyu pad + gerekirse ağır kick; `rol:cizgi` kullanılmaz.
-- **Başörtüsü çizimi (KS.karakter `sapka:'basortu'`):** saç/kulak/boyun tamamen örtülü, yüz ovali açık, kumaş omuzlara dökülür, iç bone kenarı + kıvrım gölgesi + iğne (kisi.js, #36'da düzeltildi).
+- **Başörtüsü çizimi (KS.karakter `sapka:'basortu'`):** saç/kulak/boyun tamamen örtülü, yüz ovali açık, kumaş omuzlara dökülür, iç bone kenarı + kıvrım gölgesi + iğne; BAŞA OTURUR, abartılı büyük/pelerin gibi OLMAZ (kullanıcı). Başörtülü karakter uzun kollu giyer: `kiyafet: { sapka:'basortu', sapkaRenk, uzunKol: true }` (kisi.js, #36).
 
 ### İmza sesler (KALICI — `marka/ses_lib.py` → `maskot_ses(kim, tip)`)
 Her tepki, aynı anda kendi imza sesiyle çalınır: `M.add('sfx', maskot_ses('gubi','aha'), t, .5)`. Bu sesler değiştirilmez; kanalın "sesli logosu" gibidir.

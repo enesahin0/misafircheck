@@ -44,7 +44,7 @@ const okul = (t, kap) => {
   if (kap > 0) { o += R(360, 870, 360 * kap, 14, 4, '#2A2E40') + R(360, 1080, 360 * kap, 14, 4, '#2A2E40'); for (let i = 0; i < 8; i++) { const bx = 368 + i * 45 * kap; o += R(bx, 860, 10, 260, 4, '#2A2E40'); } }
   return o;
 };
-const kiz = (t, x, adim, ifade) => KS.karakter({ x, y: 1190, boy: 430, ten: '#F2C9A6', sac: { tip: 'kakul', renk: '#3A2A20' }, ust: '#FFFFFF', alt: '#2A3A5A', ayakkabi: '#1B1B22', poz: 'dur', t, adim, ifade, bak: [1, 0], kiyafet: { etek: '#2A3A5A', etekBoy: 'diz', sapka: 'basortu', sapkaRenk: '#5E7290' } });
+const kiz = (t, x, adim, ifade) => KS.karakter({ x, y: 1190, boy: 430, ten: '#F2C9A6', sac: { tip: 'kakul', renk: '#3A2A20' }, ust: '#FFFFFF', alt: '#2A3A5A', ayakkabi: '#1B1B22', poz: 'dur', t, adim, ifade, bak: [1, 0], kiyafet: { etek: '#2A3A5A', etekBoy: 'diz', sapka: 'basortu', sapkaRenk: '#9C4F62', uzunKol: true } });
 const belge = (t, p) => {
   let k = R(-380, -360, 760, 720, 24, '#000', .3) + R(-390, -370, 760, 720, 24, '#FFFDF6') + R(-390, -370, 760, 100, 24, '#2E5A8C') + R(-390, -300, 760, 30, 0, '#2E5A8C');
   k += txt('KARAR · 21 EYLÜL', -10, -302, 44, '#FFFFFF');

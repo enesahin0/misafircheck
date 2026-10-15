@@ -140,6 +140,8 @@ const KS = (() => {
     if (KY.ceket) { const kc = KY.ceket, ara = (a, b, k) => [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k];
       o += kap(omz[0][0], omz[0][1], ...ara(omz[0], solEl2, .8), 42 * s, kc) + kap(omz[1][0], omz[1][1], ...ara(omz[1], sagEl, .8), 42 * s, kc) + `<circle cx="${solEl2[0]}" cy="${solEl2[1]}" r="${20 * s}" fill="${ten}"/><circle cx="${sagEl[0]}" cy="${sagEl[1]}" r="${20 * s}" fill="${ten}"/>`; }
     else o += kap(omz[0][0], omz[0][1], solEl2[0], solEl2[1], 38 * s, ten) + kap(omz[1][0], omz[1][1], sagEl[0], sagEl[1], 38 * s, ten);
+    if (KY.uzunKol && !KY.ceket) { const ara = (a, b, k) => [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k], kr = KY.uzunKol === true ? ust : KY.uzunKol;  // uzun kollu üst (bilekte biter)
+      o += kap(omz[0][0], omz[0][1], ...ara(omz[0], solEl2, .84), 42 * s, kr) + kap(omz[1][0], omz[1][1], ...ara(omz[1], sagEl, .84), 42 * s, kr); }
     if (FR) { const ara = (a, b, k) => [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k], kk = FR.uzunKol ? .92 : .45, kr = FR.kol || ust;
       o += kap(omz[0][0], omz[0][1], ...ara(omz[0], solEl2, kk), 44 * s, kr) + kap(omz[1][0], omz[1][1], ...ara(omz[1], sagEl, kk), 44 * s, kr); }
 
