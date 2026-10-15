@@ -1,75 +1,91 @@
-// `npm run validate:universe` — Evren İncili tutarlılık denetimi (id'ler, referanslar, kapı numaraları).
+// `npm run validate:universe` — KOMŞULAR evreni tutarlılık denetimi (id'ler, referanslar, ipucu kuralları).
 import fs from "node:fs";
 import path from "node:path";
 import { ROOT } from "./lib/audio";
-import * as S from "../src/story/universe/schema";
+import * as S from "../src/story/series/schema";
 
-const dir = path.join(ROOT, "src", "story", "universe");
+const dir = path.join(ROOT, "src", "story", "series");
 const read = (f: string) => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
 const errors: string[] = [];
 const warns: string[] = [];
-const dup = (name: string, ids: (string | number | null)[]) => {
+const dup = (name: string, ids: (string | number)[]) => {
   const seen = new Set<string | number>();
   for (const i of ids) {
-    if (i === null) continue;
-    if (seen.has(i)) errors.push(`${name}: yinelenen id/numara '${i}'`);
+    if (seen.has(i)) errors.push(`${name}: yinelenen id '${i}'`);
     seen.add(i);
   }
 };
 
 try {
+  S.seriesSchema.parse(read("series.json"));
   const building = S.buildingSchema.parse(read("building.json"));
-  const rules = S.rulesSchema.parse(read("rules.json"));
   const chars = S.charactersSchema.parse(read("characters.json"));
+  const rel = S.relationshipsSchema.parse(read("relationships.json"));
+  const arc = S.seasonArcSchema.parse(read("seasonArc.json"));
+  const ledger = S.clueLedgerSchema.parse(read("clueLedger.json"));
+  const fmt = S.formatSchema.parse(read("format.json"));
   const eng = S.engagementSchema.parse(read("engagement.json"));
-  S.formatsSchema.parse(read("formats.json"));
-  const kits = S.roomKitsSchema.parse(read("roomKits.json"));
-  const seeds = S.seedsSchema.parse(read("anomalySeeds.json"));
+  const mon = S.monetizationSchema.parse(read("monetization.json"));
+  const seeds = S.episodeSeedsSchema.parse(read("episodeSeeds.json"));
 
-  dup("kural", rules.rules.map((r) => r.id));
-  dup("karakter", chars.characters.map((c) => c.id));
-  dup("etkileşim", eng.loops.map((l) => l.id));
-  dup("kit", kits.kits.map((k) => k.id));
-  dup("daire id", building.units.map((u) => u.id));
-  dup("kapı numarası", building.units.map((u) => u.door));
-  dup("tohum", seeds.seeds.map((s) => s.id));
-
-  const kitIds = new Set(kits.kits.map((k) => k.id));
   const charIds = new Set(chars.characters.map((c) => c.id));
-  const floorLevels = new Set(building.floors.map((f) => f.level));
-  const unitById = new Map(building.units.map((u) => [u.id, u]));
-  const unitByDoor = new Map(building.units.filter((u) => u.door !== null).map((u) => [u.door as number, u]));
-  const seedIds = new Set(seeds.seeds.map((s) => s.id));
+  const flatIds = new Set(building.flats.map((f) => f.id));
+  const slotIds = new Set(mon.placementSlots.map((s) => s.id));
+  const suspectIds = new Set(arc.suspects.map((s) => s.id));
+  dup("karakter", chars.characters.map((c) => c.id));
+  dup("daire", building.flats.map((f) => f.id));
+  dup("kat", building.floors.map((f) => f.id));
+  dup("ipucu", ledger.clues.map((c) => c.id));
+  dup("tohum", seeds.seeds.map((s) => s.id));
+  dup("döngü", eng.loops.map((l) => l.id));
+  dup("yuva", mon.placementSlots.map((s) => s.id));
+  dup("hook kalıbı", fmt.hookPatterns.map((x) => x.id));
+  dup("karakter rengi", chars.characters.map((c) => c.color.toLowerCase()));
 
-  for (const u of building.units) {
-    if (!floorLevels.has(u.floor)) errors.push(`${u.id}: bilinmeyen kat ${u.floor}`);
-    if (!kitIds.has(u.roomKit)) errors.push(`${u.id}: bilinmeyen roomKit '${u.roomKit}'`);
-    if (u.door !== null && u.door > 0 && u.door !== u.floor * 10 + u.slot) errors.push(`${u.id}: kapı numarası kat*10+sıra olmalı (${u.floor * 10 + u.slot}), ${u.door} yazılı`);
-    for (const r of u.residents) if (!charIds.has(r)) errors.push(`${u.id}: bilinmeyen sakin '${r}'`);
-    if (u.anomalySeed && !seedIds.has(u.anomalySeed)) errors.push(`${u.id}: bilinmeyen anomalySeed '${u.anomalySeed}'`);
-    if (u.status === "OPENED" && !u.openedAtEpisode) errors.push(`${u.id}: OPENED ama openedAtEpisode yok (süreklilik)`);
-    if (u.status === "SEALED" && u.openedAtEpisode) errors.push(`${u.id}: SEALED ama openedAtEpisode dolu`);
+  // karakter ↔ daire tutarlılığı (çift yönlü)
+  for (const c of chars.characters) {
+    const f = building.flats.find((x) => x.id === c.flat);
+    if (!f) { errors.push(`${c.id}: bilinmeyen daire '${c.flat}'`); continue; }
+    const listed = f.residents.includes(c.id) || f.pets?.includes(c.id);
+    if (!listed) errors.push(`${c.id}: ${c.flat} dairesinin sakin listesinde yok`);
   }
-  const doorsUsed = new Map<number, string>();
+  for (const f of building.flats) {
+    for (const r of [...f.residents, ...(f.pets ?? [])]) if (!charIds.has(r)) errors.push(`${f.id}: bilinmeyen sakin '${r}'`);
+    for (const s of f.placementSlots) if (!slotIds.has(s)) errors.push(`${f.id}: bilinmeyen yerleştirme yuvası '${s}'`);
+    if (f.status === "VACANT" && f.residents.length) errors.push(`${f.id}: VACANT ama sakin var`);
+    if (!building.floors.some((fl) => fl.level === f.floor)) errors.push(`${f.id}: bilinmeyen kat ${f.floor}`);
+  }
+  for (const e of rel.edges) for (const k of [e.a, e.b]) if (!charIds.has(k)) errors.push(`ilişki: bilinmeyen karakter '${k}'`);
+  for (const s of arc.suspects) if (!charIds.has(s.id)) errors.push(`şüpheli: bilinmeyen karakter '${s.id}'`);
+  for (const sp of arc.subplots) for (const c of sp.chars) if (!charIds.has(c) && !flatIds.has(c)) errors.push(`alt hikâye ${sp.id}: bilinmeyen '${c}'`);
+
+  // ipucu kuralı: her ipucu ≥2 şüpheli, hepsi geçerli
+  for (const c of ledger.clues) {
+    if (c.supports.length < 2) errors.push(`ipucu ${c.id}: kilit bölümüne kadar en az 2 şüpheyle uyumlu olmalı`);
+    for (const s of c.supports) if (!suspectIds.has(s)) errors.push(`ipucu ${c.id}: '${s}' şüpheli listesinde değil`);
+    if (c.episodeHint >= arc.culpritPolicy.lockEpisode && c.supports.length < 2) errors.push(`ipucu ${c.id}: kilit bölümünden önce tek şüpheyi gösteremez`);
+  }
+  // her şüpheli en az 2 ipucuyla desteklenmeli (adil oyun)
+  for (const s of arc.suspects) {
+    const n = ledger.clues.filter((c) => c.supports.includes(s.id)).length;
+    if (n < 2) warns.push(`şüpheli ${s.id}: yalnızca ${n} ipucuyla destekleniyor (adil oyun için ≥2)`);
+  }
+  // tohumlar
+  const firstSentenceWords = (t: string) => t.split(/[.!?]/)[0].trim().split(/\s+/).length;
   for (const s of seeds.seeds) {
-    if (!kitIds.has(s.roomKit)) errors.push(`tohum ${s.id}: bilinmeyen roomKit '${s.roomKit}'`);
-    if (s.suggestedDoor !== null) {
-      const u = unitByDoor.get(s.suggestedDoor);
-      if (!u) errors.push(`tohum ${s.id}: önerilen kapı ${s.suggestedDoor} binada yok`);
-      else if (s.status === "IDEA" && u.status !== "SEALED") errors.push(`tohum ${s.id}: önerilen kapı ${s.suggestedDoor} SEALED değil (${u.status})`);
-      if (doorsUsed.has(s.suggestedDoor)) errors.push(`tohum ${s.id} ve ${doorsUsed.get(s.suggestedDoor)} aynı kapıyı (${s.suggestedDoor}) istiyor`);
-      doorsUsed.set(s.suggestedDoor, s.id);
-    }
+    for (const c of s.chars) if (!charIds.has(c)) errors.push(`tohum ${s.id}: bilinmeyen karakter '${c}'`);
+    for (const f of s.flats) if (!flatIds.has(f)) errors.push(`tohum ${s.id}: bilinmeyen daire '${f}'`);
+    if (s.clue && !ledger.clues.some((c) => c.id === s.clue)) errors.push(`tohum ${s.id}: bilinmeyen ipucu '${s.clue}'`);
+    if (s.placementSlot && !slotIds.has(s.placementSlot)) errors.push(`tohum ${s.id}: bilinmeyen yuva '${s.placementSlot}'`);
+    if (!fmt.hookPatterns.some((h) => h.id === s.hookPattern)) errors.push(`tohum ${s.id}: bilinmeyen hook kalıbı '${s.hookPattern}'`);
+    if (!s.decision.A.label || !s.decision.B.label || !s.decision.A.cost || !s.decision.B.cost) errors.push(`tohum ${s.id}: A/B seçenekleri ve bedelleri dolu olmalı`);
+    if (firstSentenceWords(s.hook) > 14) warns.push(`tohum ${s.id}: hook'un ilk cümlesi ${firstSentenceWords(s.hook)} kelime (≤ 12 önerilir)`);
   }
-  for (const k of kits.kits) if (k.status === "built" && !fs.existsSync(path.join(ROOT, k.file))) errors.push(`kit ${k.id}: 'built' ama dosya yok: ${k.file}`);
 
-  const sealed = building.units.filter((u) => u.status === "SEALED").length;
-  const planned = kits.kits.filter((k) => k.status === "planned").length;
-  console.log(`\nEVREN İNCİLİ · ${building.name}`);
-  console.log(`  · ${building.units.length} birim (${sealed} mühürlü), ${rules.rules.length} kural, ${chars.characters.length} karakter, ${eng.loops.length} etkileşim döngüsü`);
-  console.log(`  · ${seeds.seeds.length} anomali tohumu (${seeds.seeds.filter((s) => s.suggestedDoor === null).length} tanesi kapı atanmamış)`);
-  if (planned) warns.push(`${planned} mekân kiti henüz 'planned' (3D olarak yazılacak).`);
-  void unitById;
+  console.log(`\nKOMŞULAR EVRENİ · ${building.name}`);
+  console.log(`  · ${building.flats.length} daire (${building.flats.filter((f) => f.status === "VACANT").length} boş), ${chars.characters.length} karakter, ${rel.edges.length} ilişki`);
+  console.log(`  · Sezon gizemi: "${arc.title}" (${arc.suspects.length} şüpheli, ${ledger.clues.length} ipucu, kilit: ${arc.culpritPolicy.lockEpisode}. bölüm)`);
+  console.log(`  · ${seeds.seeds.length} bölüm tohumu · ${fmt.hookPatterns.length} hook kalıbı · ${eng.loops.length} etkileşim döngüsü · ${mon.placementSlots.length} marka yuvası`);
 } catch (e) {
   errors.push(`Şema hatası: ${(e as Error).message}`);
 }

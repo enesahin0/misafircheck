@@ -1,0 +1,131 @@
+{
+  "version": 3,
+  "note": "Sezon gizemi ipuçları. Her ipucu, kilit bölümüne (seasonArc.culpritPolicy.lockEpisode) kadar EN AZ İKİ şüpheyle uyumludur. Bir ipucu bölümde gösterildiyse status 'SHOWN' olur ve DEĞİŞTİRİLEMEZ.",
+  "clues": [
+    {
+      "id": "C01_DEFTER_SILINTI",
+      "text": "Yönetici defterinde bir sayfada silinti var.",
+      "supports": [
+        "cemal",
+        "suleyman"
+      ],
+      "status": "PLANNED",
+      "episodeHint": 3
+    },
+    {
+      "id": "C02_GECE_ISIK",
+      "text": "Bodrum penceresinde gece ışık yanıyor.",
+      "supports": [
+        "suleyman",
+        "baris"
+      ],
+      "status": "PLANNED",
+      "episodeHint": 4
+    },
+    {
+      "id": "C03_PARK_BANKI",
+      "text": "Parktaki bankta yarım kalmış takım elbise ceketi.",
+      "supports": [
+        "emre",
+        "baris"
+      ],
+      "status": "PLANNED",
+      "episodeHint": 6
+    },
+    {
+      "id": "C04_KOLI",
+      "text": "Gece 02.00'de merdivende koli sürüklenme sesi.",
+      "supports": [
+        "baris",
+        "kerem",
+        "kemal"
+      ],
+      "status": "PLANNED",
+      "episodeHint": 7
+    },
+    {
+      "id": "C05_ANAHTAR",
+      "text": "Kasa anahtarının ikincisi eksik.",
+      "supports": [
+        "cemal",
+        "guler"
+      ],
+      "status": "PLANNED",
+      "episodeHint": 5
+    },
+    {
+      "id": "C06_PARTI",
+      "text": "Parti gecesi kasa odasının kapısı açık görüldü.",
+      "supports": [
+        "kerem",
+        "suleyman"
+      ],
+      "status": "PLANNED",
+      "episodeHint": 11
+    },
+    {
+      "id": "C07_BORC",
+      "text": "Cemal Bey'in defterinde Kemal'in adının yanında '+'.",
+      "supports": [
+        "cemal",
+        "kemal"
+      ],
+      "status": "PLANNED",
+      "episodeHint": 9
+    },
+    {
+      "id": "C08_KEDI_PATIKA",
+      "text": "Paşa'nın merdiven boşluğundaki gizli patikası bodruma çıkıyor.",
+      "supports": [
+        "suleyman",
+        "baris",
+        "kerem"
+      ],
+      "status": "PLANNED",
+      "episodeHint": 10
+    },
+    {
+      "id": "C09_EFE_FENER",
+      "text": "Efe merdivende fener ışığında birini gördü (yüz yok, ayak ucu).",
+      "supports": [
+        "cemal",
+        "baris",
+        "emre"
+      ],
+      "status": "PLANNED",
+      "episodeHint": 12
+    },
+    {
+      "id": "C10_CEREN_VIDEO",
+      "text": "Ceren'in kaydında sabaha karşı merdivenden inen bir gölge.",
+      "supports": [
+        "emre",
+        "suleyman",
+        "cemal",
+        "guler"
+      ],
+      "status": "PLANNED",
+      "episodeHint": 14
+    },
+    {
+      "id": "C11_KARGO",
+      "text": "Barış'ın kargosunda tipik olmayan ağır bir paket.",
+      "supports": [
+        "baris",
+        "kerem"
+      ],
+      "status": "PLANNED",
+      "episodeHint": 16
+    },
+    {
+      "id": "C12_MAAS",
+      "text": "Süleyman'ın üç aylık maaşı ödenmemiş.",
+      "supports": [
+        "suleyman",
+        "cemal"
+      ],
+      "status": "PLANNED",
+      "episodeHint": 17
+    }
+  ]
+}

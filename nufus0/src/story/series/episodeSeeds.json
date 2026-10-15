@@ -1,0 +1,410 @@
+{
+  "version": 3,
+  "note": "Bunlar TOHUMDUR (IDEA); kesinleşmiş bölüm değildir. Sıra önerilir ama izleyici oylarına göre değişebilir. A/B'nin iki tarafı da savunulabilir olmalıdır.",
+  "seeds": [
+    {
+      "id": "SAKSI",
+      "title": "Her Sabah Düşen Saksı",
+      "suggestedOrder": 1,
+      "chars": [
+        "hacer",
+        "kerem",
+        "ceren",
+        "pasa"
+      ],
+      "flats": [
+        "D1",
+        "D9"
+      ],
+      "hook": "Her sabah 07.10'da Hacer Hanım'ın balkonuna bir saksı düşüyor. Ama kimse saksıyı atmıyor.",
+      "hookPattern": "H1",
+      "conflict": "Hacer Hanım üst kattaki Kerem'i suçluyor; Kerem 'ben uyuyorum' diyor.",
+      "evidenceObject": "Balkonda iz: tüy ve pati",
+      "decision": {
+        "question": "Kim haklı?",
+        "A": {
+          "label": "Hacer haklı: Kerem'e yaptırım",
+          "cost": "Kerem'in partileri biter, Pelin'in ilgisi kırılır"
+        },
+        "B": {
+          "label": "Kerem haklı: Hacer özür dilesin",
+          "cost": "Hacer yalnız ve kırgın kalır"
+        }
+      },
+      "cliffhanger": "Paşa'nın patisi saksıya değiyor… ama saksı o gün hiç düşmedi.",
+      "placementSlot": "balcony-planter",
+      "clue": null,
+      "status": "IDEA",
+      "notes": "Pilot: apartmanı ve 4 karakteri tanıtır. Gerçek fail kedi Paşa; ama A/B'de suçlamanın bedeli vardır."
+    },
+    {
+      "id": "KIRALIK",
+      "title": "Kiralık Daire",
+      "suggestedOrder": 2,
+      "chars": [
+        "cemal",
+        "guler",
+        "hacer"
+      ],
+      "flats": [
+        "D10"
+      ],
+      "hook": "Beşinci kattaki boş daireye bu sabah biri taşındı. Kimse onu görmedi.",
+      "hookPattern": "H2",
+      "conflict": "Cemal Bey kiracıyı onaylamadı; Hacer 'ben duydum' diyor.",
+      "evidenceObject": "D10 kapısında yeni kilit",
+      "decision": {
+        "question": "Kiracı ne olsun?",
+        "A": {
+          "label": "Kiracıyı kabul et",
+          "cost": "Cemal'in otoritesi sarsılır"
+        },
+        "B": {
+          "label": "İlanı geri al",
+          "cost": "Daire boş kalır, ilk gizem uzar"
+        }
+      },
+      "cliffhanger": "Bir koli… adresi apartmanda olmayan biri adına.",
+      "placementSlot": "moving-boxes",
+      "clue": null,
+      "status": "IDEA",
+      "notes": "KİRACI döngüsünü başlatır (A/B/C profil seçimi)."
+    },
+    {
+      "id": "AIDAT",
+      "title": "İki Kat Aidat",
+      "suggestedOrder": 3,
+      "chars": [
+        "cemal",
+        "kemal",
+        "nermin",
+        "hacer"
+      ],
+      "flats": [
+        "D5",
+        "D3"
+      ],
+      "hook": "Cemal Bey aidatı iki katına çıkardı. Gerekçesi: asansör. Binada asansör yok.",
+      "hookPattern": "H3",
+      "conflict": "Herkes itiraz ediyor, Cemal 'ileride yapacağız' diyor.",
+      "evidenceObject": "Yönetici defteri",
+      "decision": {
+        "question": "Ne yapalım?",
+        "A": {
+          "label": "İtiraz et",
+          "cost": "Cemal küsüp işleri bırakır"
+        },
+        "B": {
+          "label": "Öde",
+          "cost": "Kemal borca battıkça batar"
+        }
+      },
+      "cliffhanger": "Defterde bir sayfa silinti.",
+      "placementSlot": "notice-board",
+      "clue": "C01_DEFTER_SILINTI",
+      "status": "IDEA",
+      "notes": "Sezon gizemi hazırlığı."
+    },
+    {
+      "id": "KARGO",
+      "title": "Kargo Kutuları",
+      "suggestedOrder": 4,
+      "chars": [
+        "baris",
+        "hacer",
+        "suleyman"
+      ],
+      "flats": [
+        "D4",
+        "ZK"
+      ],
+      "hook": "Barış'a bu hafta on dört paket geldi. Kimse içinde ne olduğunu bilmiyor.",
+      "hookPattern": "H1",
+      "conflict": "Hacer şüpheleniyor, Süleyman paketleri taşımaktan yorgun.",
+      "evidenceObject": "Paket etiketi",
+      "decision": {
+        "question": "Ne yapsın?",
+        "A": {
+          "label": "Barış'a sor",
+          "cost": "Barış kapanır, ilişki bozulur"
+        },
+        "B": {
+          "label": "Polise haber ver",
+          "cost": "Yanlış çıkarsa apartmanda güven biter"
+        }
+      },
+      "cliffhanger": "Gece, bodrum penceresinde ışık.",
+      "placementSlot": "parcel-box",
+      "clue": "C02_GECE_ISIK",
+      "status": "IDEA",
+      "notes": ""
+    },
+    {
+      "id": "KASA",
+      "title": "Kasa Yok",
+      "suggestedOrder": 5,
+      "chars": [
+        "cemal",
+        "guler",
+        "suleyman"
+      ],
+      "flats": [
+        "D5",
+        "ZK"
+      ],
+      "hook": "Apartmanın yıllardır biriktirdiği aidat kasası bu sabah yerinde yok.",
+      "hookPattern": "H1",
+      "conflict": "Cemal suçlanıyor, Süleyman 'ben anahtarı vermedim' diyor.",
+      "evidenceObject": "Boş kasa",
+      "decision": {
+        "question": "Önce kimi sorgulayalım?",
+        "A": {
+          "label": "Cemal Bey'i sorgula",
+          "cost": "Yönetici küser; Güler Hanım araya girer"
+        },
+        "B": {
+          "label": "Süleyman Abi'yi sorgula",
+          "cost": "Süleyman çıkarılma korkusuyla kaçabilir"
+        }
+      },
+      "cliffhanger": "Herkes ağzını açıyor ama kimse anahtarı kimin aldığını bilmiyor.",
+      "placementSlot": "safe-box",
+      "clue": "C05_ANAHTAR",
+      "status": "IDEA",
+      "notes": "SEZON GİZEMİNİN BAŞLANGICI (1. cliffhanger). A/B: kimi sorgulayalım (SORGU döngüsünü açar)."
+    },
+    {
+      "id": "EMRE",
+      "title": "Takım Elbiseli Adam",
+      "suggestedOrder": 6,
+      "chars": [
+        "emre",
+        "selin",
+        "hacer"
+      ],
+      "flats": [
+        "D2"
+      ],
+      "hook": "Emre her sabah takım elbiseyle çıkıyor. Ama işi yok.",
+      "hookPattern": "H2",
+      "conflict": "Hacer parkta onu gördü; Selin'e söylensin mi?",
+      "evidenceObject": "Parktaki bankta ceket",
+      "decision": {
+        "question": "Selin'e söylensin mi?",
+        "A": {
+          "label": "Selin'e söyle",
+          "cost": "Evlilik sarsılır; Emre kendini toparlayamaz"
+        },
+        "B": {
+          "label": "Sus",
+          "cost": "Hacer dayanamayıp başkasına anlatır"
+        }
+      },
+      "cliffhanger": "Selin'in telefonuna bir mesaj: 'Mülakat sonucu hakkında'.",
+      "placementSlot": "laptop",
+      "clue": "C03_PARK_BANKI",
+      "status": "IDEA",
+      "notes": ""
+    },
+    {
+      "id": "ZIL",
+      "title": "Gece Zili",
+      "suggestedOrder": 7,
+      "chars": [
+        "dilara",
+        "pelin",
+        "efe"
+      ],
+      "flats": [
+        "D6",
+        "D3"
+      ],
+      "hook": "Dilara gece dört buçukta eve geldi. Kapısı aralıktı.",
+      "hookPattern": "H4",
+      "conflict": "Pelin 'kimse girmedi' diyor, ayak izleri başka diyor.",
+      "evidenceObject": "Kapı kilidi",
+      "decision": {
+        "question": "Ne yapsınlar?",
+        "A": {
+          "label": "Polise bildir",
+          "cost": "Pelin'in sırrı ortaya çıkar"
+        },
+        "B": {
+          "label": "Kendileri çözsün",
+          "cost": "Dilara geceleri korkuyla yaşar"
+        }
+      },
+      "cliffhanger": "Efe merdivende bir fener ışığı gördüğünü söylüyor.",
+      "placementSlot": "coffee",
+      "clue": "C04_KOLI",
+      "status": "IDEA",
+      "notes": ""
+    },
+    {
+      "id": "MEKTUP",
+      "title": "Rıza Amca'nın Mektubu",
+      "suggestedOrder": 8,
+      "chars": [
+        "riza",
+        "efe"
+      ],
+      "flats": [
+        "D7",
+        "D3"
+      ],
+      "hook": "Rıza Amca otuz yıldır aynı mektubu yazıyor. Bugün posta kutusuna attı.",
+      "hookPattern": "H4",
+      "conflict": "Efe mektubu kutudan çıkardı.",
+      "evidenceObject": "Mektup zarfı",
+      "decision": {
+        "question": "Mektup ne olsun?",
+        "A": {
+          "label": "Mektubu yolla",
+          "cost": "Rıza Amca cevabı beklerken kırılabilir"
+        },
+        "B": {
+          "label": "Mektubu sakla",
+          "cost": "Efe'nin vicdanı yara alır"
+        }
+      },
+      "cliffhanger": "Zarfın içinde bir resim: Rıza Amca'nın bilmediği biri.",
+      "placementSlot": "radio",
+      "clue": null,
+      "status": "IDEA",
+      "notes": "Duygusal bölüm; marka güvenli."
+    },
+    {
+      "id": "PARTI",
+      "title": "Üst Kat Partisi",
+      "suggestedOrder": 9,
+      "chars": [
+        "kerem",
+        "ceren",
+        "pelin",
+        "dilara"
+      ],
+      "flats": [
+        "D9",
+        "D6"
+      ],
+      "hook": "Kerem'in partisine tam 63 kişi geldi. Apartmanda 17 kişi yaşıyor.",
+      "hookPattern": "H3",
+      "conflict": "Dilara uyumak istiyor, Pelin partiye gitmek istiyor.",
+      "evidenceObject": "Hoparlör",
+      "decision": {
+        "question": "Ne olsun?",
+        "A": {
+          "label": "Parti devam etsin",
+          "cost": "Dilara'nın vardiyası bozulur"
+        },
+        "B": {
+          "label": "Müziği kapat",
+          "cost": "Pelin ve Kerem arasındaki bağ kopar"
+        }
+      },
+      "cliffhanger": "Parti sırasında kasa odasının kapısı açık.",
+      "placementSlot": "speaker",
+      "clue": "C06_PARTI",
+      "status": "IDEA",
+      "notes": ""
+    },
+    {
+      "id": "ANNEKIZ",
+      "title": "Defne'nin Telefonu",
+      "suggestedOrder": 10,
+      "chars": [
+        "aylin",
+        "defne"
+      ],
+      "flats": [
+        "D8"
+      ],
+      "hook": "Aylin kızının telefonunda bir mesaj gördü: 'Bu gece 22.00'de buluşalım.'",
+      "hookPattern": "H4",
+      "conflict": "Aylin avukat gibi sorguluyor, Defne savunuyor.",
+      "evidenceObject": "Telefon ekranı",
+      "decision": {
+        "question": "Aylin ne yapsın?",
+        "A": {
+          "label": "Defne'ye güven",
+          "cost": "Aylin'in korkusu büyür"
+        },
+        "B": {
+          "label": "Takip et",
+          "cost": "Güven kırılır"
+        }
+      },
+      "cliffhanger": "Defne'nin çantasında bir önlük: bir hastane önlüğü.",
+      "placementSlot": "phone",
+      "clue": null,
+      "status": "IDEA",
+      "notes": "Gençlik alt hikâyesi (Defne gönüllü)."
+    },
+    {
+      "id": "ANAHTARLAR",
+      "title": "Süleyman'ın Anahtarları",
+      "suggestedOrder": 11,
+      "chars": [
+        "suleyman",
+        "cemal"
+      ],
+      "flats": [
+        "ZK"
+      ],
+      "hook": "Süleyman Abi'nin anahtar panosunda bir anahtar eksik. Kimse hangi kapının olduğunu bilmiyor.",
+      "hookPattern": "H1",
+      "conflict": "Süleyman maaşını almadığını söylüyor.",
+      "evidenceObject": "Anahtar panosu",
+      "decision": {
+        "question": "Ne olsun?",
+        "A": {
+          "label": "Süleyman'a güven",
+          "cost": "Cemal'in otoritesi zayıflar"
+        },
+        "B": {
+          "label": "Panoyu kilitle",
+          "cost": "Süleyman çıkarılır"
+        }
+      },
+      "cliffhanger": "Paşa anahtarla bodruma iniyor.",
+      "placementSlot": "key-board",
+      "clue": "C08_KEDI_PATIKA",
+      "status": "IDEA",
+      "notes": ""
+    },
+    {
+      "id": "MERDIVEN",
+      "title": "Aydınlık Merdiven",
+      "suggestedOrder": 12,
+      "chars": [
+        "efe",
+        "hacer",
+        "cemal"
+      ],
+      "flats": [
+        "D1",
+        "D5"
+      ],
+      "hook": "Efe merdivende bir şey gördü. Hacer 'çocuk hayal kuruyor' diyor.",
+      "hookPattern": "H4",
+      "conflict": "Efe fener ışığıyla ayak ucu gördü.",
+      "evidenceObject": "El feneri",
+      "decision": {
+        "question": "Efe'ye inanalım mı?",
+        "A": {
+          "label": "Efe'ye inan",
+          "cost": "Apartmanda panik"
+        },
+        "B": {
+          "label": "Efe'yi sakinleştir",
+          "cost": "Gerçek ortaya çıkmaz"
+        }
+      },
+      "cliffhanger": "Merdivende bir ayak sesi — gece yarısı.",
+      "placementSlot": "cleaning-product",
+      "clue": "C09_EFE_FENER",
+      "status": "IDEA",
+      "notes": ""
+    }
+  ]
+}

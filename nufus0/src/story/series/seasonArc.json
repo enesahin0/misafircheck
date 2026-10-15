@@ -1,0 +1,116 @@
+{
+  "version": 3,
+  "season": 1,
+  "title": "Kayıp Aidat Kasası",
+  "premise": "Apartmanın ortak aidat kasası (yıllarca biriktirilen yedek para) bir sabah yerinde yok. Şüpheli çok, kanıt yarım. İzleyici ipuçlarını birlikte çözer.",
+  "episodesPlanned": 24,
+  "acts": [
+    {
+      "act": 1,
+      "episodes": "1–8",
+      "goal": "Kadroyu tanıt, küçük kavgalar, 5. bölümde kasa kayıp (ilk cliffhanger).",
+      "reveal": "Kasa ev halkından birinin eliyle gitti."
+    },
+    {
+      "act": 2,
+      "episodes": "9–18",
+      "goal": "Şüphelilerin sırları açılır; her sır bir şüpheliyi aklar ya da güçlendirir. İzleyici kimi sorgulayacağını seçer.",
+      "reveal": "İki sır 'masum' çıkar; biri kayıp parayı bilmeden etkilemiştir."
+    },
+    {
+      "act": 3,
+      "episodes": "19–24",
+      "goal": "Kilit anı (19. bölüm sonu) → fail kesinleşir; 20–24 çözüm ve bedeller.",
+      "reveal": "Fail ve motivasyon. Kimse 'kötü karakter' değil: insani bir nedeni var."
+    }
+  ],
+  "suspects": [
+    {
+      "id": "cemal",
+      "motive": "Gizli borç, saygı kaybı korkusu",
+      "alibi": "Kasa anahtarı onda",
+      "weakness": "Defterde silinti"
+    },
+    {
+      "id": "suleyman",
+      "motive": "Maaşını alamıyor",
+      "alibi": "Bodrum anahtarı onda",
+      "weakness": "Bodrumdan kasaya bakmış"
+    },
+    {
+      "id": "baris",
+      "motive": "Nakit ihtiyacı",
+      "alibi": "Kimse onu görmüyor",
+      "weakness": "Gece kargo hareketi"
+    },
+    {
+      "id": "emre",
+      "motive": "İşsiz, borçlu",
+      "alibi": "Gün boyu 'ofiste'",
+      "weakness": "Parktaki yalanı"
+    },
+    {
+      "id": "kerem",
+      "motive": "Kira borcu",
+      "alibi": "Gece partisi: herkes gördü",
+      "weakness": "Parti sırasında kaybolması"
+    },
+    {
+      "id": "guler",
+      "motive": "Cemal'i ve ailenin itibarını korumak",
+      "alibi": "İkinci kasa anahtarı onda",
+      "weakness": "Börek tepsisinin altındaki zarf"
+    },
+    {
+      "id": "kemal",
+      "motive": "Cemal'e olan borcu",
+      "alibi": "Gece taksi vardiyası",
+      "weakness": "Defterde adının yanındaki '+'"
+    }
+  ],
+  "culpritPolicy": {
+    "lockEpisode": 19,
+    "rule": "19. bölüme kadar her ipucu EN AZ İKİ şüpheyle uyumlu kalır. İzleyici sorgu/yön oyları son şüpheli listesini şekillendirir; fail 19. bölümde, o güne kadar yazılmış ipuçlarıyla çelişmeyecek biçimde kilitlenir.",
+    "honesty": "İzleyici oylarının sonucu dürüstçe gösterilir; fail seçimi oylamayla belirlenirse bu açıkça söylenir, gizlice kurgulanmaz."
+  },
+  "subplots": [
+    {
+      "id": "emre-isizlik",
+      "chars": [
+        "selin",
+        "emre"
+      ],
+      "payoff": "Selin öğrenir; karar: evlilik ne yapar?"
+    },
+    {
+      "id": "riza-mektup",
+      "chars": [
+        "riza",
+        "efe"
+      ],
+      "payoff": "Mektup gönderilir; cevap gelir mi? (izleyici kararı)"
+    },
+    {
+      "id": "kiralik-daire",
+      "chars": [
+        "D10"
+      ],
+      "payoff": "Yeni kiracı; her kiracı farklı sezon yönü açar."
+    },
+    {
+      "id": "defne-gonullu",
+      "chars": [
+        "defne",
+        "aylin"
+      ],
+      "payoff": "Anne-kız yüzleşmesi"
+    },
+    {
+      "id": "ceren-kamera",
+      "chars": [
+        "ceren"
+      ],
+      "payoff": "Çekimler ipucu verir ve gizlilik tartışmasını açar."
+    }
+  ]
+}

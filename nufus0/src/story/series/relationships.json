@@ -1,0 +1,19 @@
+{
+  "version": 3,
+  "note": "tension: 0 (sakin) – 5 (patlama noktası). Karar sonuçları bu değerleri günceller; süreklilik denetimi tensiyonun bir bölümde >2 sıçramasını gerekçesiz bulursa uyarır.",
+  "edges": [
+    { "a": "hacer", "b": "kerem", "type": "komşu kavgası", "tension": 3, "about": "Üst kat gürültüsü / saksı" },
+    { "a": "hacer", "b": "baris", "type": "şüphe", "tension": 2, "about": "Çok koli, perde hep kapalı" },
+    { "a": "hacer", "b": "cemal", "type": "saygı-rekabet", "tension": 2, "about": "Apartmanın gerçek yöneticisi kim?" },
+    { "a": "selin", "b": "emre", "type": "evlilik", "tension": 1, "about": "Emre'nin işsizlik sırrı" },
+    { "a": "nermin", "b": "kemal", "type": "evlilik", "tension": 3, "about": "Para ve borç" },
+    { "a": "kemal", "b": "cemal", "type": "borç", "tension": 3, "about": "Kemal'in Cemal'e borcu" },
+    { "a": "cemal", "b": "guler", "type": "evlilik", "tension": 1, "about": "Kasa anahtarının ikincisi" },
+    { "a": "cemal", "b": "suleyman", "type": "işveren-çalışan", "tension": 2, "about": "Maaş ve anahtar" },
+    { "a": "aylin", "b": "defne", "type": "anne-kız", "tension": 2, "about": "Gizlilik ve güven" },
+    { "a": "dilara", "b": "pelin", "type": "ev arkadaşı", "tension": 1, "about": "Gece sesleri, borç" },
+    { "a": "pelin", "b": "kerem", "type": "gizli ilgi", "tension": 1, "about": "Pelin'in sırrı" },
+    { "a": "riza", "b": "efe", "type": "dostluk", "tension": 0, "about": "Efe Rıza Amca'dan denizci hikâyeleri dinler" },
+    { "a": "ceren", "b": "baris", "type": "gizlilik", "tension": 2, "about": "Ceren'in çekimleri" }
+  ]
+}

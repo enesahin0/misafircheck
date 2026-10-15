@@ -1,0 +1,189 @@
+{
+  "version": 3,
+  "stage": "BİRİKİM (şu an reklam yok)",
+  "plan": [
+    {
+      "stage": "0 · Birikim",
+      "when": "İlk 30–60 gün",
+      "do": "Düzenli yayın, ölçüm; marka alma yok."
+    },
+    {
+      "stage": "1 · Ürün yerleştirme",
+      "when": "Düzenli izlenme/yorum görünce",
+      "do": "Bölüm içi doğal yerleştirme (dizi tarzı): placementSlots.",
+      "price": "Sayfa metrikleri gelince belirlenir (rakam uydurulmaz)."
+    },
+    {
+      "stage": "2 · Sponsorlu daire / bölüm",
+      "when": "Marka ilişkisi oturunca",
+      "do": "'Bu bölümün çayı ... sundu' gibi hafif sponsor; haftalık özel (60 SANİYE ÖNCE) sponsoru."
+    },
+    {
+      "stage": "3 · Ek gelir",
+      "when": "Kitle büyüyünce",
+      "do": "Çapraz yayın (platform ortaklık programları şartlarını o zaman kontrol et), abonelik/kiracı kulübü, poster ve maket ürünleri."
+    }
+  ],
+  "placementSlots": [
+    {
+      "id": "tea-set",
+      "where": "D1/D7 masası",
+      "category": "gıda/içecek",
+      "note": "Çay: dizi kültürüne en doğal yerleştirme"
+    },
+    {
+      "id": "cat-food",
+      "where": "D1 mutfağı",
+      "category": "evcil hayvan"
+    },
+    {
+      "id": "modem",
+      "where": "D2 salonu",
+      "category": "telekom/internet"
+    },
+    {
+      "id": "coffee-machine",
+      "where": "D2/D6 mutfağı",
+      "category": "gıda/kahve/küçük ev aleti"
+    },
+    {
+      "id": "dish-soap",
+      "where": "D2 mutfağı",
+      "category": "ev bakım"
+    },
+    {
+      "id": "snacks",
+      "where": "D3 masası",
+      "category": "gıda atıştırmalık"
+    },
+    {
+      "id": "taxi-brand",
+      "where": "Kemal'in taksisi",
+      "category": "otomotiv/akaryakıt"
+    },
+    {
+      "id": "tv",
+      "where": "D3 salonu",
+      "category": "elektronik"
+    },
+    {
+      "id": "parcel-box",
+      "where": "D4 koridoru",
+      "category": "kargo/e-ticaret"
+    },
+    {
+      "id": "laptop",
+      "where": "D4/D2 masası",
+      "category": "elektronik/yazılım"
+    },
+    {
+      "id": "energy-drink",
+      "where": "D4/D9",
+      "category": "içecek"
+    },
+    {
+      "id": "notice-board",
+      "where": "D5/zemin duyuru panosu",
+      "category": "yerel hizmet/emlak"
+    },
+    {
+      "id": "cleaning-product",
+      "where": "D5 balkonu/merdiven",
+      "category": "ev bakım"
+    },
+    {
+      "id": "thermos",
+      "where": "D6",
+      "category": "mutfak/ev eşyası"
+    },
+    {
+      "id": "grocery-bag",
+      "where": "Zemin/Süleyman",
+      "category": "market/perakende"
+    },
+    {
+      "id": "radio",
+      "where": "D7",
+      "category": "elektronik"
+    },
+    {
+      "id": "phone",
+      "where": "D8",
+      "category": "telekom/cihaz"
+    },
+    {
+      "id": "subscription-app",
+      "where": "D8 ekranı",
+      "category": "uygulama/abonelik"
+    },
+    {
+      "id": "speaker",
+      "where": "D9",
+      "category": "ses/elektronik"
+    },
+    {
+      "id": "furniture",
+      "where": "D10 boş daire",
+      "category": "mobilya/ev (Kenney mobilya kiti ile kodda üretilir)"
+    },
+    {
+      "id": "moving-boxes",
+      "where": "D10",
+      "category": "taşımacılık/emlak"
+    },
+    {
+      "id": "balcony-planter",
+      "where": "D1 balkonu",
+      "category": "bahçe/ev bitkileri"
+    },
+    {
+      "id": "safe-box",
+      "where": "D5 odası (kasa)",
+      "category": "güvenlik/ev ürünleri — sezon gizemiyle çakışabilir, dikkat"
+    },
+    {
+      "id": "coffee",
+      "where": "D6 mutfağı",
+      "category": "gıda/kahve"
+    },
+    {
+      "id": "framed-photo",
+      "where": "D7 rafı",
+      "category": "fotoğraf/baskı hizmeti"
+    },
+    {
+      "id": "headphones",
+      "where": "D8/D9",
+      "category": "ses/elektronik"
+    },
+    {
+      "id": "snack-party",
+      "where": "D9 masası",
+      "category": "gıda/içecek"
+    },
+    {
+      "id": "real-estate",
+      "where": "D10 ilanı",
+      "category": "emlak"
+    },
+    {
+      "id": "key-board",
+      "where": "Zemin anahtar panosu",
+      "category": "anahtar/kilit/güvenlik"
+    },
+    {
+      "id": "mail-boxes",
+      "where": "Zemin posta kutuları",
+      "category": "posta/kargo"
+    }
+  ],
+  "rules": [
+    "Marka ürünü ASLA kötü bir sonucun, suçun veya sırrın sebebi olmaz.",
+    "Sezon gizemi para hırsızlığı üzerine: banka/fintech/sigorta gibi finans markaları için çakışma riski → o markalar finans temalı olmayan bölümlerde yer alır; sponsor seçimi gizemle çakışmaz.",
+    "Reklam/iş birliği etiketi platformun ve ilgili mevzuatın gerektirdiği biçimde YAYIN ANINDA konur (güncel kural o zaman kontrol edilir).",
+    "Sponsor, oyun sonucunu veya kimin haklı çıkacağını belirleyemez; oylama dürüst kalır.",
+    "Yerleştirme hikâyeyi bozmaz: ürün dekorun doğal parçası; ekranda en fazla birkaç saniye net görünür.",
+    "Ürün yerleştirme için gerçek marka logosu 3D'de doğru lisansla kullanılır (marka onayı); o zamana kadar jenerik ambalaj."
+  ],
+  "audioLicenseGate": "Reklam öncesi: npm run audio:audit -- <bölüm> --commercial hata vermeden geçmeli (BBC sesleri değiştirilmeli)."
+}

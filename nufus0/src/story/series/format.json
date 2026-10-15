@@ -1,0 +1,41 @@
+{
+  "version": 3,
+  "daily": {
+    "name": "KOMŞULAR günlük bölüm (60.00 sn / 1800 kare)",
+    "beats": [
+      { "n": 1, "t": "00:00–00:03", "name": "HOOK", "rule": "İlk karede bina kesiti + parlayan daire. İddia/sır cümlesi ≤ 9 kelime. Ekranda ≤ 6 kelime." },
+      { "n": 2, "t": "00:03–00:12", "name": "KİM / NE", "rule": "Kim, hangi daire, neyi saklıyor/yaşıyor. Tek cümlede stake." },
+      { "n": 3, "t": "00:12–00:28", "name": "ÇATIŞMA", "rule": "Maket sahneyi canlandırır; anlatıcı iki tarafı da seslendirir. Kanıt nesnesi görünür." },
+      { "n": 4, "t": "00:28–00:40", "name": "BÜKÜM", "rule": "Yeni bir bilgi her şeyi sallar (ya da yarım kalır). Mikro ipucu bu vuruşta." },
+      { "n": 5, "t": "00:40–00:52", "name": "KARAR", "rule": "KİM HAKLI? veya NE YAPSIN? Tek tuşluk (A/B). Her iki seçeneğin bedeli tek bakışta okunur." },
+      { "n": 6, "t": "00:52–01:00", "name": "CLIFFHANGER + CTA", "rule": "Bir kapı açılır/bir ses gelir. Son kart: 'Yarın 20.00' + oylama kuralı." }
+    ],
+    "checklist": ["Tek ana çatışma", "Bir kanıt nesnesi (ve marka yuvası uygunsa)", "Bir mikro ipucu (sezon gizemi: clueLedger)", "A/B bedelleri adil (iki taraf da savunulabilir)", "Cliffhanger", "Süreklilik denetimi geçti (npm run check)", "Hook varyantları (3)"],
+    "nextDayOpener": "Her bölüm ilk 3–10 sn içinde dünkü oylamanın GERÇEK sonucunu ve etkisini söyler ('Dün %61'iniz Hacer Hanım'ı haklı buldu.'). Gerçek veri gelmeden sayı uydurulmaz."
+  },
+  "weekly": {
+    "name": "60 SANİYE ÖNCE (haftalık özel)",
+    "when": "Haftada bir (öneri: cumartesi 20:00)",
+    "idea": "Apartmanda tek bir küçük olay (ör. 'su kesilmeden önceki son 60 saniye', 'zil çaldığında') her sefer aynen tekrar oynar. İzleyici bu sefer TEK bir ayrıntının değişmesine oy verir (A/B/C). Küçük değişiklik başka bir sonuç doğurur.",
+    "hook": "Bu 60 saniye 12. kez tekrarlanıyor. Bu sefer neyi değiştirelim?",
+    "rules": ["Her döngüde yalnız 1 değişken", "Önceki döngülerin sonucu ekranın köşesinde sayaç olarak durur", "Döngü sonucu ana seriyi ETKİLEMEZ (yan kanon) — istisna: sezon gizemine ipucu verirse 'kanon' damgalı bölüm olur", "Aynı sahne verisi + parametre farkı = ucuz üretim"],
+    "why": "Karşılaştırarak yeniden izletir (watch time), tek tuşla yorum, kolay üretim."
+  },
+  "hookPatterns": [
+    { "id": "H1", "name": "İddia", "example": "Altıncı daireden her gece aynı saatte ağlama sesi geliyor. Ama o daire boş." },
+    { "id": "H2", "name": "Sır", "example": "Emre her sabah takım elbiseyle çıkıyor. Ama işi yok." },
+    { "id": "H3", "name": "Çelişki", "example": "Cemal Bey aidatı iki katına çıkardı. Gerekçesi: asansör. Binada asansör yok." },
+    { "id": "H4", "name": "Sonuçtan başla", "example": "İşte Hacer Hanım'ın kapısı. 10 dakika önce bu kapıya biri not bıraktı." },
+    { "id": "H5", "name": "Kişiselleştirme", "example": "Komşunun mektubunu yanlışlıkla sen açsan, okur muydun?" },
+    { "id": "H6", "name": "Yarım bilgi", "example": "Dün %61'iniz yanıldı." },
+    { "id": "H7", "name": "Sayı/geri sayım", "example": "Kapıyı çalmasına 47 saniye var." },
+    { "id": "H8", "name": "Kural kırma", "example": "Bu apartmanda kimse kapı çalmaz. Bugün biri çaldı." }
+  ],
+  "cliffhangerTypes": ["Kapı çalar", "Bir mektup/kâğıt bulunur", "Işık söner", "Yanlış kişi görülür", "Bir ses/telefon", "Bir eşya yerinde yok", "Biri dönüyor/gidiyor"],
+  "hookRules": {
+    "frame0": "Hareket veya anormallik",
+    "firstWord": "≤ 0,3 sn",
+    "onScreenText": "≤ 6 kelime, ≤ 2 satır",
+    "variants": "Her bölüm için 3 hook varyantı yazılır; yayına biri girer, kalanlar sonraki bölümlerde test edilir."
+  }
+}
