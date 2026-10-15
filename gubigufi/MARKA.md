@@ -208,6 +208,8 @@ Kaynaklar ve lisanslar: `marka/sfx_kutuphane/KAYNAKLAR.md` (kn Kenney CC0 · ui 
   Bunlar `sfx_lib.ROL`'da: `rol:gecis`, `rol:pop`, `rol:darbe`, `rol:boom`, `rol:riser`, `rol:damga`, `rol:kagit`, `rol:dogru`, `rol:yanlis`, `rol:cizgi`; varyant için `#n` (`rol:gecis#2`). Art arda aynı varyant kullanılmaz, döndürülür.
   Seçilmeyenler (eski pop_kuru/pop_balon/tik_balon, boing, zil_dikkat…) kanal sesi olarak KULLANILMAZ. Yeni bir ses türü gerekirse önce dinleme kataloğuna eklenip kullanıcıya sorulur.
 - Müzik yatağı (pad/pluck) ve maskot imza sesleri şimdilik sentez kalır.
+- **CİDDİ GÜNDEM / SİYASET videolarında ses "çocuk şeyi gibi" OLMAZ (kullanıcı, #36):** maskot imza sesleri (bup/ting) kapalı, pluck melodi yok → kayıtlı gerilim drone'u (`mb:ambience/tension-drone-sub-03`) + koyu pad + gerekirse ağır kick; `rol:cizgi` kullanılmaz.
+- **Başörtüsü çizimi (KS.karakter `sapka:'basortu'`):** saç/kulak/boyun tamamen örtülü, yüz ovali açık, kumaş omuzlara dökülür, iç bone kenarı + kıvrım gölgesi + iğne (kisi.js, #36'da düzeltildi).
 
 ### İmza sesler (KALICI — `marka/ses_lib.py` → `maskot_ses(kim, tip)`)
 Her tepki, aynı anda kendi imza sesiyle çalınır: `M.add('sfx', maskot_ses('gubi','aha'), t, .5)`. Bu sesler değiştirilmez; kanalın "sesli logosu" gibidir.

@@ -35,7 +35,7 @@ const okul = (t, kap) => {
   if (kap > 0) { o += R(360, 870, 360 * kap, 14, 4, '#2A2E40') + R(360, 1080, 360 * kap, 14, 4, '#2A2E40'); for (let i = 0; i < 8; i++) { const bx = 368 + i * 45 * kap; o += R(bx, 860, 10, 260, 4, '#2A2E40'); } }
   return o;
 };
-const kiz = (t, x, adim, ifade) => KS.karakter({ x, y: 1190, boy: 430, ten: '#F2C9A6', sac: { tip: 'kakul', renk: '#3A2A20' }, ust: '#FFFFFF', alt: '#2A3A5A', ayakkabi: '#1B1B22', poz: 'dur', t, adim, ifade, bak: [1, 0], kiyafet: { etek: '#2A3A5A', etekBoy: 'diz', sapka: 'basortu', sapkaRenk: '#C8A8D8' } });
+const kiz = (t, x, adim, ifade) => KS.karakter({ x, y: 1190, boy: 430, ten: '#F2C9A6', sac: { tip: 'kakul', renk: '#3A2A20' }, ust: '#FFFFFF', alt: '#2A3A5A', ayakkabi: '#1B1B22', poz: 'dur', t, adim, ifade, bak: [1, 0], kiyafet: { etek: '#2A3A5A', etekBoy: 'diz', sapka: 'basortu', sapkaRenk: '#5E7290' } });
 const belge = (t, p) => {
   let k = R(-380, -360, 760, 720, 24, '#000', .3) + R(-390, -370, 760, 720, 24, '#FFFDF6') + R(-390, -370, 760, 100, 24, '#2E5A8C') + R(-390, -300, 760, 30, 0, '#2E5A8C');
   k += txt('KARAR · 21 EYLÜL', -10, -302, 44, '#FFFFFF');
@@ -158,11 +158,15 @@ window.renderAt = t => {
 S[6] = r"""
 $('zemin').innerHTML = zeminK('#1A2340', '#0B1022');
 window.renderAt = t => {
-  let o = foto('erdogan_aliyev2', 60, 480, 960, 608, { k: 1.12 - .06 * A(t, 0, 3.55), ox: -40, r: 28, op: Math.min(1, t / .25) });
-  o += grp(AU.cip('ANKARA SAKİN', 0, 0, '#FFFFFF', '#1B2440', 32), 540, 420, pop(t, .1));
-  o += etiket('"YANLIŞ ANLAŞILMA"', 540, 800, '#FFD23F', '#1B2440', 58, -6, pop(t, 1.2));
-  o += grp(AU.cip('CEVAP YOK', 0, 0, '#0B1433', '#FFF3D6', 32), 540, 1180, pop(t, 2.4));
-  o += kredi('Foto: Azerbaycan Cumhurbaşkanlığı · CC BY 4.0', 80, 1070);
+  let o = foto('erdogan_aliyev2', 60, 470, 960, 600, { k: 1.1 - .05 * A(t, 0, 3.55), ox: -40, oy: 20, r: 28, op: Math.min(1, t / .25) });
+  o += grp(AU.cip('ANKARA SAKİN', 0, 0, '#FFFFFF', '#1B2440', 32), 540, 410, pop(t, .1));
+  o += kredi('Foto: Azerbaycan Cumhurbaşkanlığı · CC BY 4.0', 80, 1052);
+  // alıntı fotoğrafın ALTINDA (yüzleri örtmez): sarı alıntı kartı + küçük "CEVAP YOK" damgası
+  const p = pop(t, 1.2);
+  if (p > 0) o += grp(R(-300, -46, 600, 92, 22, '#000', .35) + R(-308, -54, 600, 92, 22, '#FFD23F') + txt('"YANLIŞ ANLAŞILMA"', -8, 6, 42, '#1B2440') +
+    `<text class="mono" x="-8" y="-62" font-size="22" text-anchor="middle" letter-spacing="3" style="fill:#FFD23F">ANKARA'NIN AÇIKLAMASI</text>`, 540, 1170, p, -1.5);
+  const d = pop(t, 2.4);
+  if (d > 0) o += grp(`<rect x="-120" y="-34" width="240" height="68" rx="10" fill="none" stroke="#E8323C" stroke-width="6"/>` + `<text class="mono" x="0" y="11" font-size="30" text-anchor="middle" letter-spacing="3" style="fill:#E8323C">CEVAP YOK</text>`, 870, 545, d * (1 + .25 * (1 - Math.min(1, (t - 2.4) / .25))), -8);
   o += gubi(t, { x: 880, y: 1600, boy: 120, duygu: 'merak', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1780, boy: 170, duygu: 'merak', bakHedef: [540, 800] });
   $('dinamik').innerHTML = o + bam(t, 1.2, .25);
 };"""

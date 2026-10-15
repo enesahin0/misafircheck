@@ -35,11 +35,15 @@ const takipCip = (t, a, b) => { const p = pop(t, a) * (1 - A(t, b - .3, b)); ret
 
 $('zemin').innerHTML = zeminK('#1A2340', '#0B1022');
 window.renderAt = t => {
-  let o = foto('erdogan_aliyev2', 60, 480, 960, 608, { k: 1.12 - .06 * A(t, 0, 3.55), ox: -40, r: 28, op: Math.min(1, t / .25) });
-  o += grp(AU.cip('ANKARA SAKİN', 0, 0, '#FFFFFF', '#1B2440', 32), 540, 420, pop(t, .1));
-  o += etiket('"YANLIŞ ANLAŞILMA"', 540, 800, '#FFD23F', '#1B2440', 58, -6, pop(t, 1.2));
-  o += grp(AU.cip('CEVAP YOK', 0, 0, '#0B1433', '#FFF3D6', 32), 540, 1180, pop(t, 2.4));
-  o += kredi('Foto: Azerbaycan Cumhurbaşkanlığı · CC BY 4.0', 80, 1070);
+  let o = foto('erdogan_aliyev2', 60, 470, 960, 600, { k: 1.1 - .05 * A(t, 0, 3.55), ox: -40, oy: 20, r: 28, op: Math.min(1, t / .25) });
+  o += grp(AU.cip('ANKARA SAKİN', 0, 0, '#FFFFFF', '#1B2440', 32), 540, 410, pop(t, .1));
+  o += kredi('Foto: Azerbaycan Cumhurbaşkanlığı · CC BY 4.0', 80, 1052);
+  // alıntı fotoğrafın ALTINDA (yüzleri örtmez): sarı alıntı kartı + küçük "CEVAP YOK" damgası
+  const p = pop(t, 1.2);
+  if (p > 0) o += grp(R(-300, -46, 600, 92, 22, '#000', .35) + R(-308, -54, 600, 92, 22, '#FFD23F') + txt('"YANLIŞ ANLAŞILMA"', -8, 6, 42, '#1B2440') +
+    `<text class="mono" x="-8" y="-62" font-size="22" text-anchor="middle" letter-spacing="3" style="fill:#FFD23F">ANKARA'NIN AÇIKLAMASI</text>`, 540, 1170, p, -1.5);
+  const d = pop(t, 2.4);
+  if (d > 0) o += grp(`<rect x="-120" y="-34" width="240" height="68" rx="10" fill="none" stroke="#E8323C" stroke-width="6"/>` + `<text class="mono" x="0" y="11" font-size="30" text-anchor="middle" letter-spacing="3" style="fill:#E8323C">CEVAP YOK</text>`, 870, 545, d * (1 + .25 * (1 - Math.min(1, (t - 2.4) / .25))), -8);
   o += gubi(t, { x: 880, y: 1600, boy: 120, duygu: 'merak', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1780, boy: 170, duygu: 'merak', bakHedef: [540, 800] });
   $('dinamik').innerHTML = o + bam(t, 1.2, .25);
 };
