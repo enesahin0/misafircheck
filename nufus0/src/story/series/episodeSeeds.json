@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "note": "Bunlar TOHUMDUR (IDEA); kesinleşmiş bölüm değildir. Sıra önerilir ama izleyici oylarına göre değişebilir. A/B'nin iki tarafı da savunulabilir olmalıdır.",
   "seeds": [
     {
@@ -35,7 +35,11 @@
       "placementSlot": "balcony-planter",
       "clue": null,
       "status": "IDEA",
-      "notes": "Pilot: apartmanı ve 4 karakteri tanıtır. Gerçek fail kedi Paşa; ama A/B'de suçlamanın bedeli vardır."
+      "notes": "Pilot: apartmanı ve 4 karakteri tanıtır. Gerçek fail kedi Paşa; ama A/B'de suçlamanın bedeli vardır.",
+      "places": [
+        "yildiz-apt"
+      ],
+      "eventType": "MISTERI"
     },
     {
       "id": "KIRALIK",
@@ -68,7 +72,11 @@
       "placementSlot": "moving-boxes",
       "clue": null,
       "status": "IDEA",
-      "notes": "KİRACI döngüsünü başlatır (A/B/C profil seçimi)."
+      "notes": "KİRACI döngüsünü başlatır (A/B/C profil seçimi).",
+      "places": [
+        "yildiz-apt"
+      ],
+      "eventType": "MAHALLE_GERILIMI"
     },
     {
       "id": "AIDAT",
@@ -103,7 +111,11 @@
       "placementSlot": "notice-board",
       "clue": "C01_DEFTER_SILINTI",
       "status": "IDEA",
-      "notes": "Sezon gizemi hazırlığı."
+      "notes": "Sezon gizemi hazırlığı.",
+      "places": [
+        "yildiz-apt"
+      ],
+      "eventType": "MAHALLE_GERILIMI"
     },
     {
       "id": "KARGO",
@@ -137,7 +149,11 @@
       "placementSlot": "parcel-box",
       "clue": "C02_GECE_ISIK",
       "status": "IDEA",
-      "notes": ""
+      "notes": "",
+      "places": [
+        "yildiz-apt"
+      ],
+      "eventType": "MISTERI"
     },
     {
       "id": "KASA",
@@ -171,7 +187,11 @@
       "placementSlot": "safe-box",
       "clue": "C05_ANAHTAR",
       "status": "IDEA",
-      "notes": "SEZON GİZEMİNİN BAŞLANGICI (1. cliffhanger). A/B: kimi sorgulayalım (SORGU döngüsünü açar)."
+      "notes": "SEZON GİZEMİNİN BAŞLANGICI (1. cliffhanger). A/B: kimi sorgulayalım (SORGU döngüsünü açar).",
+      "places": [
+        "yildiz-apt"
+      ],
+      "eventType": "MAHALLE_GERILIMI"
     },
     {
       "id": "EMRE",
@@ -204,7 +224,11 @@
       "placementSlot": "laptop",
       "clue": "C03_PARK_BANKI",
       "status": "IDEA",
-      "notes": ""
+      "notes": "",
+      "places": [
+        "yildiz-apt"
+      ],
+      "eventType": "MAHALLE_GERILIMI"
     },
     {
       "id": "ZIL",
@@ -238,7 +262,11 @@
       "placementSlot": "coffee",
       "clue": "C04_KOLI",
       "status": "IDEA",
-      "notes": ""
+      "notes": "",
+      "places": [
+        "yildiz-apt"
+      ],
+      "eventType": "MISTERI"
     },
     {
       "id": "MEKTUP",
@@ -271,7 +299,11 @@
       "placementSlot": "radio",
       "clue": null,
       "status": "IDEA",
-      "notes": "Duygusal bölüm; marka güvenli."
+      "notes": "Duygusal bölüm; marka güvenli.",
+      "places": [
+        "yildiz-apt"
+      ],
+      "eventType": "MAHALLE_GERILIMI"
     },
     {
       "id": "PARTI",
@@ -306,7 +338,11 @@
       "placementSlot": "speaker",
       "clue": "C06_PARTI",
       "status": "IDEA",
-      "notes": ""
+      "notes": "",
+      "places": [
+        "yildiz-apt"
+      ],
+      "eventType": "MAHALLE_GERILIMI"
     },
     {
       "id": "ANNEKIZ",
@@ -338,7 +374,11 @@
       "placementSlot": "phone",
       "clue": null,
       "status": "IDEA",
-      "notes": "Gençlik alt hikâyesi (Defne gönüllü)."
+      "notes": "Gençlik alt hikâyesi (Defne gönüllü).",
+      "places": [
+        "yildiz-apt"
+      ],
+      "eventType": "MAHALLE_GERILIMI"
     },
     {
       "id": "ANAHTARLAR",
@@ -370,7 +410,11 @@
       "placementSlot": "key-board",
       "clue": "C08_KEDI_PATIKA",
       "status": "IDEA",
-      "notes": ""
+      "notes": "",
+      "places": [
+        "yildiz-apt"
+      ],
+      "eventType": "MISTERI"
     },
     {
       "id": "MERDIVEN",
@@ -403,6 +447,378 @@
       "cliffhanger": "Merdivende bir ayak sesi — gece yarısı.",
       "placementSlot": "cleaning-product",
       "clue": "C09_EFE_FENER",
+      "status": "IDEA",
+      "notes": "",
+      "places": [
+        "yildiz-apt"
+      ],
+      "eventType": "MISTERI"
+    },
+    {
+      "id": "MAC_AKSAMI",
+      "title": "Maç Akşamı",
+      "suggestedOrder": 13,
+      "chars": [
+        "hatice",
+        "ferhat",
+        "nuri",
+        "hacer",
+        "recep"
+      ],
+      "flats": [],
+      "places": [
+        "cay-ocagi",
+        "doner"
+      ],
+      "eventType": "GUNDEM",
+      "hook": "Bu akşam bütün mahalle çay ocağında. Ama içlerinden biri maçı hiç izlemiyor.",
+      "hookPattern": "H1",
+      "conflict": "Ferhat 'maç menüsü' çıkardı, Nuri radyodan karşı çıktı, Hacer 'ben futbol anlamam' diyip en çok heyecanlanan oldu.",
+      "evidenceObject": "Ortak ekran",
+      "decision": {
+        "question": "Ekran nerede olsun?",
+        "A": {
+          "label": "Ortak ekran çay ocağında",
+          "cost": "Hatice'nin ocağı doluyor, Nuri küsüyor"
+        },
+        "B": {
+          "label": "Ekran dönerciye taşınsın",
+          "cost": "Ferhat kazanır, Hatice'yle arası bozulur"
+        }
+      },
+      "cliffhanger": "Ekran bir anda kararıyor.",
+      "placementSlot": "tea-brand",
+      "clue": null,
+      "status": "IDEA",
+      "notes": "Gündem uyarlaması: spor maçı. Takım adı yok (Kırmızılar-Mavililer)."
+    },
+    {
+      "id": "BUZLU_CAY",
+      "title": "Buzlu Çay Krizi",
+      "suggestedOrder": 14,
+      "chars": [
+        "hatice",
+        "nuri",
+        "kemal",
+        "bulent"
+      ],
+      "flats": [],
+      "places": [
+        "cay-ocagi",
+        "bakkal",
+        "durak"
+      ],
+      "eventType": "GUNDEM",
+      "hook": "Mahallede sıcaklık rekor kırdı. Hatice Abla'nın buzu bitti.",
+      "hookPattern": "H3",
+      "conflict": "Buz kimde? Nuri'nin dolabında ama veresiyeye kapalı.",
+      "evidenceObject": "Boş buz kovası",
+      "decision": {
+        "question": "Buzu kim getirsin?",
+        "A": {
+          "label": "Nuri buzu bedava versin",
+          "cost": "Nuri'nin zararı, Hatice'ye borç"
+        },
+        "B": {
+          "label": "Kemal taksiyle buz getirsin",
+          "cost": "Kemal yorulur, ücret konuşulur"
+        }
+      },
+      "cliffhanger": "Bir kamyon geliyor: kimse çağırmadı.",
+      "placementSlot": "sugar",
+      "clue": null,
+      "status": "IDEA",
+      "notes": "Gündem uyarlaması: sıcaklık rekoru."
+    },
+    {
+      "id": "DEFTER_UYGULAMA",
+      "title": "Defter mi Uygulama mı?",
+      "suggestedOrder": 15,
+      "chars": [
+        "nuri",
+        "bulent",
+        "ceren",
+        "ferhat"
+      ],
+      "flats": [],
+      "places": [
+        "bakkal"
+      ],
+      "eventType": "GUNDEM",
+      "hook": "Bülent bakkalın veresiye defterini uygulamaya çevirdi. Nuri Amca defteri sakladı.",
+      "hookPattern": "H2",
+      "conflict": "Ceren çekim yapıyor, Ferhat 'ben de uygulamaya girerim' diyor.",
+      "evidenceObject": "Veresiye defteri",
+      "decision": {
+        "question": "Defter mi uygulama mı?",
+        "A": {
+          "label": "Uygulamaya geç",
+          "cost": "Nuri'nin gururu, deftere veda"
+        },
+        "B": {
+          "label": "Defterde kal",
+          "cost": "Bülent bakkaldan soğur"
+        }
+      },
+      "cliffhanger": "Defterin son sayfası ıslak.",
+      "placementSlot": "grocery-bag",
+      "clue": null,
+      "status": "IDEA",
+      "notes": "Gündem uyarlaması: yeni uygulama/teknoloji."
+    },
+    {
+      "id": "OCAK_SATILIK",
+      "title": "Ocak Satılık mı?",
+      "suggestedOrder": 16,
+      "chars": [
+        "hatice",
+        "hacer",
+        "nuri"
+      ],
+      "flats": [],
+      "places": [
+        "cay-ocagi",
+        "meydan"
+      ],
+      "eventType": "MAHALLE_GERILIMI",
+      "hook": "Çay ocağının önünde bir 'SATILIK' tabelası belirdi. Hatice Abla asmadı.",
+      "hookPattern": "H1",
+      "conflict": "Kim astı? Mahalle toplanıyor.",
+      "evidenceObject": "Tabela",
+      "decision": {
+        "question": "Ne yapsınlar?",
+        "A": {
+          "label": "Tabelayı indir, kimin astığını bul",
+          "cost": "Mahalle ikiye bölünür"
+        },
+        "B": {
+          "label": "Teklifi dinle",
+          "cost": "Hatice'nin güveni sarsılır"
+        }
+      },
+      "cliffhanger": "Kapıda bir emlakçı.",
+      "placementSlot": "tea-brand",
+      "clue": null,
+      "status": "IDEA",
+      "notes": "ARC_OCAK başlangıcı."
+    },
+    {
+      "id": "TERAS_SAHNE",
+      "title": "Hacer Hanım TERAS'a Çıktı",
+      "suggestedOrder": 17,
+      "chars": [
+        "hacer",
+        "nil",
+        "kerem",
+        "koray"
+      ],
+      "flats": [],
+      "places": [
+        "teras7",
+        "pasaj-han"
+      ],
+      "eventType": "MAHALLE_GERILIMI",
+      "hook": "Hacer Hanım gece 23.00'te TERAS 7'nin kapısında. Elinde çiçek.",
+      "hookPattern": "H4",
+      "conflict": "Şikâyet mi, iyilik mi? Koray kapıyı açıyor.",
+      "evidenceObject": "Çiçek saksısı",
+      "decision": {
+        "question": "Hacer içeri girsin mi?",
+        "A": {
+          "label": "Hacer içeri girsin",
+          "cost": "Nil'in gururu, Kerem'in rahatlığı bozulur"
+        },
+        "B": {
+          "label": "Koray kapıyı kapasın",
+          "cost": "Savaş büyür"
+        }
+      },
+      "cliffhanger": "Müzik kesildi. Nil mikrofonda 'Hacer Hanım'.",
+      "placementSlot": "bar-drink",
+      "clue": null,
+      "status": "IDEA",
+      "notes": "ARC_TERAS dönüm noktası."
+    },
+    {
+      "id": "YENI_KIRACI",
+      "title": "Gül Apartmanı'na Bir Koli Geldi",
+      "suggestedOrder": 18,
+      "chars": [
+        "recep",
+        "hatice",
+        "hacer"
+      ],
+      "flats": [],
+      "places": [
+        "gul-apt",
+        "durak"
+      ],
+      "eventType": "YENI_GELEN",
+      "hook": "Gül Apartmanı'na bir koli geldi. Alıcı kimse yok.",
+      "hookPattern": "H8",
+      "conflict": "Mahalle sorguda: kim bu? (MİSAFİR döngüsü).",
+      "evidenceObject": "Koli etiketi",
+      "decision": {
+        "question": "Mahalleye kim gelsin?",
+        "A": {
+          "label": "Kiracı 'Ressam Lale' olsun",
+          "cost": "Çınarın resmi yapılır, Rıza Amca açılır"
+        },
+        "B": {
+          "label": "Kiracı 'Emlakçı Orhan' olsun",
+          "cost": "Çay ocağı tehdit altına girer"
+        }
+      },
+      "cliffhanger": "Kapı aralandı.",
+      "placementSlot": "moving-boxes",
+      "clue": null,
+      "status": "IDEA",
+      "notes": "MİSAFİR: iki profil de gerçek tohum."
+    },
+    {
+      "id": "KAYIP_KEDI",
+      "title": "Kayıp Kedi İlanı",
+      "suggestedOrder": 19,
+      "chars": [
+        "nuri",
+        "efe",
+        "hacer",
+        "pasa"
+      ],
+      "flats": [],
+      "places": [
+        "bakkal",
+        "park"
+      ],
+      "eventType": "GUNDELIK_KOMIK",
+      "hook": "Bakkalın duvarına bir ilan asıldı: 'Kayıp kedi'. Ama mahallede kayıp kedi yok.",
+      "hookPattern": "H1",
+      "conflict": "Efe fener ile arıyor, Paşa 'bilmiyorum' bakıyor.",
+      "evidenceObject": "İlan kâğıdı",
+      "decision": {
+        "question": "Efe ne yapsın?",
+        "A": {
+          "label": "Efe aramaya devam etsin",
+          "cost": "Efe gece dışarıda"
+        },
+        "B": {
+          "label": "İlanı kaldır",
+          "cost": "Sahibi bulunamaz"
+        }
+      },
+      "cliffhanger": "İlanın arkasında bir telefon numarası: Hacer'in numarası.",
+      "placementSlot": "cat-food",
+      "clue": null,
+      "status": "IDEA",
+      "notes": ""
+    },
+    {
+      "id": "PAZAR_GUNU",
+      "title": "Çarşamba Pazarı",
+      "suggestedOrder": 20,
+      "chars": [
+        "ferhat",
+        "nuri",
+        "hatice",
+        "nermin"
+      ],
+      "flats": [],
+      "places": [
+        "meydan"
+      ],
+      "eventType": "GUNDELIK_KOMIK",
+      "hook": "Pazar kuruldu. Ama bir tezgâh fazla.",
+      "hookPattern": "H1",
+      "conflict": "Kimin tezgâhı bu? Satıcı gelmiyor.",
+      "evidenceObject": "Boş tezgâh",
+      "decision": {
+        "question": "Tezgâh kimin olsun?",
+        "A": {
+          "label": "Tezgâhı Nermin kullansın",
+          "cost": "Pazarcı esnaf küser"
+        },
+        "B": {
+          "label": "Tezgâh kaldırılsın",
+          "cost": "Pazar sakin ama mahalle merak eder"
+        }
+      },
+      "cliffhanger": "Tezgâhın altından bir ses.",
+      "placementSlot": "festival-banner",
+      "clue": null,
+      "status": "IDEA",
+      "notes": ""
+    },
+    {
+      "id": "KUAFORDE_SIR",
+      "title": "Koltukta Söylenen Sır",
+      "suggestedOrder": 21,
+      "chars": [
+        "nermin",
+        "hatice",
+        "dilara",
+        "ceren"
+      ],
+      "flats": [],
+      "places": [
+        "kuafor",
+        "cay-ocagi"
+      ],
+      "eventType": "DEDIKODU",
+      "hook": "Nermin'in koltuğunda söylenen bir sır, on dakikada çay ocağına ulaştı.",
+      "hookPattern": "H1",
+      "conflict": "Kim söyledi? Kim yaydı? Sır büyüyerek dolaşıyor.",
+      "evidenceObject": "Kurutma başlığı",
+      "decision": {
+        "question": "Sır kimin sorumluluğu?",
+        "A": {
+          "label": "Nermin sır tutmayı bıraksın",
+          "cost": "Salonun güveni sarsılır"
+        },
+        "B": {
+          "label": "Hatice dedikoduyu durdursun",
+          "cost": "Çay ocağı sessiz kalır, mahalle merak eder"
+        }
+      },
+      "cliffhanger": "Kapı zili: sırrın sahibi içeri giriyor.",
+      "placementSlot": "hair-product",
+      "clue": null,
+      "status": "IDEA",
+      "notes": ""
+    },
+    {
+      "id": "ILK_ISIK",
+      "title": "Sabah 05.00'in Işığı",
+      "suggestedOrder": 22,
+      "chars": [
+        "recep",
+        "hatice",
+        "suleyman"
+      ],
+      "flats": [],
+      "places": [
+        "firin",
+        "cay-ocagi",
+        "durak"
+      ],
+      "eventType": "MISTERI",
+      "hook": "Mahallede sabah 05.00'te yanan tek ışık fırının. Ama fırıncı bugün gelmedi.",
+      "hookPattern": "H1",
+      "conflict": "Bekçi Recep ışığın nedenini arıyor.",
+      "evidenceObject": "Fırın ışığı",
+      "decision": {
+        "question": "Fırına girelim mi?",
+        "A": {
+          "label": "Fırına gir",
+          "cost": "Mülkiyet tartışması"
+        },
+        "B": {
+          "label": "Fırıncıyı bekle",
+          "cost": "Mahalle ekmeksiz kalır"
+        }
+      },
+      "cliffhanger": "Işık bir anda sönüyor.",
+      "placementSlot": "pastry",
+      "clue": null,
       "status": "IDEA",
       "notes": ""
     }

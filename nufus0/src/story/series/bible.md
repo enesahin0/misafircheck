@@ -1,54 +1,55 @@
-# KOMŞULAR — Seri İncili (v3)
+# MAHALLE — Seri İncili (v4)
 
 > Okunabilir özet. **Tek doğruluk kaynağı** yanındaki JSON dosyalarıdır; `npm run validate:universe` tutarlılığı denetler.
-> Üst belge: `../../../CLAUDE.md`. Önceki konsept (NÜFUS_0 / KAPI) `../_arsiv_nufus0/` içinde arşivdedir.
+> Üst belge: `../../../CLAUDE.md`. Önceki konseptler (NÜFUS_0/KAPI, tek apartman) `../_arsiv_nufus0/` içinde veya Yıldız Apartmanı olarak mahallenin içinde yaşar.
 
 ## 1. Seri tek cümlede
-**Bir apartmanın duvarını açıyoruz: 10 daire, 17 komşu, bitmeyen dedikodu. Her gün biri bir sır ya da kavga yaşıyor; kimin haklı olduğuna ve ne yapacaklarına SEN karar veriyorsun.**
+**Çınar Mahallesi: bakkal, dönerci, çay ocağı, apartmanlar, çatıda bir gece kulübü. Her gün mahallede garip, komik ya da duygusal bir olay oluyor; bazen o günün gündemi mahalleye uğruyor. Kimin haklı olduğuna ve mahallenin ne yapacağına SEN karar veriyorsun.**
+*(Çalışma adı: MAHALLE. Kesin ad ve kullanıcı adı kararı bekliyor.)*
 
-## 2. Seyirciye vaat
-1. Her gün 60 saniyede biten küçük bir komşuluk dramı.
-2. Sonunda tek tuşluk seçim (A/B).
-3. Kararın ertesi gün apartmanı gerçekten değiştiriyor.
-4. Sezon boyunca çözülen gizem: **Kayıp Aidat Kasası**.
+## 2. Dört sütun
+1. **Mahalle hayatı:** sabit mekânlar, sabit kadro, değişken ilişkiler (sevgi ↔ nefret).
+2. **Gündem:** haberler MAHALLE ÖLÇEĞİNDE ve güvenli biçimde (hassas konular yok). `npm run gundem` adayları listeler, karar insanda.
+3. **Misafir:** tek bölümlük ve 3–5 bölümlük konuklar; kalıcı olma kararını izleyici verir.
+4. **Nadir anlar:** düğün (~40 bölümde 1), cenaze/yas (~60'ta 1, saygılı, ölüm gösterilmez), yeni taşınan, festival.
 
-## 3. Bina — Yıldız Apartmanı (kesit)
+## 3. Mahalle haritası (6×4 blok)
 ```
-  ÇATI    su deposu · çamaşır ipleri
-  5. KAT  D9 Kerem & Ceren        | D10 KİRALIK (boş)
-  4. KAT  D7 Rıza Amca            | D8 Aylin & Defne
-  3. KAT  D5 Cemal & Güler (yönetici) | D6 Dilara & Pelin
-  2. KAT  D3 Nermin, Kemal, Efe   | D4 Barış
-  1. KAT  D1 Hacer Hanım (+Paşa)  | D2 Selin & Emre
-  ZEMİN   giriş · posta kutuları · kapıcı Süleyman
-  BODRUM  kazan · depo · (kasa odası)
+        0           1            2             3            4              5
+ 0  .            Yıldız Apt.   .             .          PASAJ HAN        .
+                 (5 kat)                                 └ TERAS 7 (çatı kulübü)
+ 1  .            BAKKAL     MEYDAN+ÇINAR   FERHAT USTA   .             FIRIN
+                  (Nuri)    + ÇAY OCAĞI     DÖNER                        (Sönmez)
+ 2  .             .          .            NERMİN KUAFÖR   .              .
+ 3  PARK &        .          .              .          GÜL APT.        DURAK &
+    OYUN ALANI                                           (yeni kiracılar) BEKÇİ KULÜBESİ
 ```
-Asansör **yok** (bilerek). Ön cephe açılır: kapak karesi her zaman bina kesiti + o günün parlayan penceresi.
+Kamera: karakterler hep okunur (geniş ≥70px, orta ≥140px, yakın = el/nesne/ekran). Işık: sabah/öğle/akşam/gece.
 
-## 4. Kadro
-Hacer (71, emekli öğretmen) · Selin & Emre (29/31, yeni evli, **Emre işsiz**) · Nermin, Kemal (taksi), Efe (9, merdiven dedektifi) · Barış (kargo sırrı) ·
-Cemal (yönetici) & Güler · Dilara (hemşire) & Pelin · Rıza Amca (denizci, mektup) · Aylin (avukat) & Defne (15) · Kerem (DJ) & Ceren (içerik üreticisi) ·
-Süleyman Abi (kapıcı) · Paşa (kedi, tek tanık). Yeni kiracı D10'a izleyici kararıyla gelir.
-Her karakter: tek baskın renk + imza nesne; yüzsüz low-poly; **giysi/ölçek değişmez**.
+## 4. Kadro (27: 13 CORE, 14 REGULAR)
+**Esnaf/mekân:** Hatice Abla (çaycı, 52) · Nuri Amca (bakkal, 63) + yeğeni Bülent (24) · Ferhat Usta (dönerci, 47) + çırağı Mert (19) · Nermin (kuaför, 41) · Nil Hanım (TERAS 7 sahibi, 38) + Koray (güvenlik) + Kerem (DJ).
+**Mahalle:** Hacer Hanım (71, emekli öğretmen, kedisi Paşa) · Kemal (taksi) · Bekçi Recep (50) · Süleyman Abi (kapıcı) · Efe (9) · Cemal Bey (yönetici) & Güler · Selin & Emre · Barış · Dilara & Pelin · Rıza Amca · Aylin & Defne · Ceren · köpek Karabaş.
+Her karakterin: geçmişi, erdemleri, kusurları, tikleri, sloganı, isteği/korkusu/sırrı, sesi. İlişkiler **yönlü** (A→B ≠ B→A), −5 nefret … +5 sevgi, güven 0–5, patlama noktalarıyla; kararlar bu değerleri değiştirir (haftalık **Mahalle Barometresi**).
 
-## 5. Bölüm formülü (60 sn)
-HOOK (0–3) → KİM/NE → ÇATIŞMA (maket canlandırır) → BÜKÜM → KARAR (A/B, bedeller adil) → CLIFFHANGER + "yarın 20.00".
-Her bölüm **dünkü oylamanın gerçek sonucunu** söyleyerek açılır. 8 hook kalıbı, her bölüm için 3 hook varyantı (`format.json`).
+## 5. Olaylar (eventCatalog.json)
+Gündelik komik · Mahalle gerilimi · **Gündem uyarlaması** · Dedikodu zinciri · Festival · Yeni gelen · Duygusal · Mini gizem · **Düğün (nadir)** · **Yas (çok nadir, saygılı)** · Küçük mahalle krizi (elektrik/su/kar). Kurallar: ardışık iki bölüm aynı türde olmaz, haftada ≥2 mekân, aynı anda ≤3 aktif yay.
 
-## 6. Haftalık özel: 60 SANİYE ÖNCE
-Aynı 60 saniyelik olay tekrar tekrar oynar; izleyici her seferinde **tek bir ayrıntıyı** değiştirir (A/B/C). Hook: *"Bu 60 saniye 12. kez tekrarlanıyor."* Yan kanon (sezon gizemine ipucu verirse "kanon" damgalı).
+## 6. Gündem hattı (gundem.json)
+Tara → Seç (insan) → Teyit (2 kaynak) → Mahalleye çevir → Güvenlik denetimi → Yaz. Yasak: ölüm/kaza/terör/savaş/siyaset/yargı/mağdurlu afet/din-etnik kimlik/istismar/gerçek kişi ve marka. Videoda "GÜNDEM" etiketi + açıklamada "gerçek bir haberden esinlenilmiştir; kurgusaldır".
+Örnek: büyük maç → çay ocağında ortak ekran (takım adı yok) · sıcaklık rekoru → buzlu çay krizi · yeni uygulama → Bülent defteri dijitale taşımak istiyor, Nuri direniyor.
 
-## 7. Sezon 1 — Kayıp Aidat Kasası
-Kasa 5. bölümde kayboluyor. 7 şüpheli, 12 ipucu. **Adil oyun kuralı:** 19. bölümdeki kilide kadar her ipucu en az iki şüpheyle uyumlu; izleyici SORGU oylarıyla yön verir; fail ipuçlarıyla çelişmeden kilitlenir. Oylamanın rolü açıkça söylenir. Kimse "kötü karakter" değildir.
+## 7. Yaylar (arcs.json)
+Sezonluk: **Kayıp Aidat Kasası** (Yıldız Apartmanı, 7 şüpheli, adil oyun). Kısa (3–5 bölüm): Çay Ocağı Satılık mı? · Gürültü Savaşı → Çınar Şenliği (Hacer–Nil) · Yeni Gelen · Pelin–Kerem(–Ceren) · Bakkal ve Dijital.
+**Konuklar:** TEK_BÖLÜM / KISA_YAY / KALICI (MİSAFİR oylamasıyla). Korkuluk: reşit olmayanlar (Efe 9, Defne 15) romantik/korkutucu içerikte yer almaz.
 
-## 8. Etkileşim
-KIM HAKLI (A/B) · SORGU (kimi sorgulayalım) · KİRACI (D10'a kim taşınsın) · DEDİKODU (izleyici önerir, izinle) · DÖNGÜ (A/B/C) · İZ (ipucu avı). Kurallar: kullanıcı başına ilk geçerli oy, uydurma sayı yok, kişisel veri yok.
+## 8. Bölüm formülü ve etkileşim
+60 sn: HOOK → KİM/NE → ÇATIŞMA → BÜKÜM → KARAR → CLIFFHANGER. Döngüler: KİM HAKLI · SORGU · OLAY (mahalleye bugün ne olsun?) · MİSAFİR · KİRACI · DEDİKODU · DÖNGÜ (60 SANİYE ÖNCE, cumartesi) · İZ · BAROMETRE.
 
-## 9. Para kazanma (şu an reklam yok)
-Birikim → ürün yerleştirme (30 hazır yuva: çay, modem, kargo, kahve…) → sponsorlu daire/bölüm → ek gelir. Kurallar: ürün asla kötü sonucun sebebi olmaz; sponsor oyu belirleyemez; sezon gizemi para hırsızlığı olduğu için finans markalarıyla çakışma yönetilir; reklam etiketi yayın anında konur; reklam öncesi ses lisans kapısı (`audio:audit --commercial`).
+## 9. Para kazanma (şu an yok)
+Esnaf mekânları en doğal ürün yerleştirme alanı: çay ocağı (çay), bakkal (market), dönerci (yemek/içecek), kuaför, TERAS 7 (içecek), durak/taksi. 53 marka yuvası. Kurallar: ürün asla kötü sonucun sebebi olmaz; sponsor oyu belirleyemez; gündem bölümlerinde haber+marka birleşmez; reklam etiketi yayın anında; reklam öncesi ses lisans kapısı.
 
 ## 10. Açık kararlar (kullanıcıya ait)
-- Seri adı: KOMŞULAR mı, daha çarpıcı bir ad mı? (marka/kullanıcı adı müsaitliği kontrol edilmedi)
-- ~~Görsel stil~~ **KARAR: low-poly izometrik** (palet: gece + sıcak amber pencereler).
-- Pilot bölüm: `SAKSI` taslağı hazır (`episodes/ep001-saksi.json`); onay bekliyor.
-- Sezon sonu: fail oylamayla mı belirlenecek, yazarla mı?
+- **Seri adı** (MAHALLE çalışma adı): bkz. `docs/ISIM_ONERILERI.md`.
+- Gündem bölümü sıklığı (ayda ~6) ve haber seçimini kimin yapacağı (öneri: her gün tarama listesinden kullanıcı seçer).
+- Gündüz ışığı ön ayarı (pazar/festival sahneleri) için palet genişletmesi.
+- Pilot: `SAKSI` (Yıldız Apartmanı, mahalle içinde) mı, yoksa mahalle tanıtım bölümü mü?

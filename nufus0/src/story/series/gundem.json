@@ -1,0 +1,172 @@
+{
+  "version": 4,
+  "purpose": "Her gün ülkede/dünyada olanlardan MAHALLE ÖLÇEĞİNDE, güvenli ve komik/sıcak olay üretmek. Gündem haberi bir MALZEMEDİR, bölüm kurmaca kalır.",
+  "principles": [
+    "Gerçek kişi, kurum, marka, siyasetçi, gerçek olay mağdurları ANILMAZ; haber mahalle benzeriyle anlatılır",
+    "Haberin doğruluğu çoklu güvenilir kaynakta teyitlidir (tek kaynak/doğrulanmamış söylenti kullanılmaz)",
+    "Taraf tutmayan, suçlayıcı olmayan, hedef göstermeyen ton",
+    "Videoda 'Gündem' damgası + açıklamada 'gerçek bir haberden esinlenilmiştir; olaylar ve karakterler kurgusaldır' notu",
+    "Gündem bölümleri ayda ~6 (eventCatalog.GUNDEM); kalan kurmaca"
+  ],
+  "allow": {
+    "spor": "maçlar, şampiyonluklar, turnuvalar (bahis/şiddet yok)",
+    "hava": "sıcak/soğuk rekoru, kar, yağmur (kayıplı felaket değil)",
+    "kultur": "festival, konser, film/dizi ödülleri, sergi",
+    "teknoloji": "yeni telefon/uygulama, yapay zekâ gelişmeleri, uzay",
+    "yasam": "tatil, okul açılışı, sınav dönemi (LGS/YKS) — öğrenciye baskı yok",
+    "hayvan": "viral hayvan haberleri",
+    "viral": "eğlenceli sosyal medya akımları (kişi hedeflemeden)",
+    "bilim": "keşifler, uzay görevleri"
+  },
+  "maybe": {
+    "fiyat/zam/indirim": "Yalnızca mahalle ölçeğinde (bakkal etiketi) ve suçlayıcı olmadan; ekonomi politikası yorumu YOK",
+    "ulasim": "hat/duraklar gibi yerel kolaylık; kaza yok"
+  },
+  "block": [
+    "ölüm, kaza, cinayet, intihar, saldırı, terör, savaş/çatışma",
+    "seçim, parti, hükümet, bakan, cumhurbaşkanı, siyasi liderler, milletvekili",
+    "mahkeme, tutuklama, gözaltı, soruşturma, iddianame",
+    "deprem, sel, yangın gibi mağdurlu afetler",
+    "din, ibadet, mezhep, etnik/azınlık kimliği",
+    "istismar, taciz, şiddet",
+    "sağlık krizleri, salgın",
+    "gerçek kişilerin özel hayatı/ünlü dedikodusu"
+  ],
+  "method": [
+    {
+      "step": 1,
+      "name": "Tara",
+      "how": "npm run gundem → RSS (TRT, NTV, CNN Türk, BBC Türkçe, Hürriyet, Google Trends TR) çeker, filtreler, adayları listeler."
+    },
+    {
+      "step": 2,
+      "name": "Seç",
+      "how": "İnsan (kullanıcı) UYGUN/İNCELE adaylarından birini seçer; ELE'ler elenir."
+    },
+    {
+      "step": 3,
+      "name": "Teyit",
+      "how": "Haber iki bağımsız kaynakta aynı mı? Tarih bugün/dün mü?"
+    },
+    {
+      "step": 4,
+      "name": "Mahalleye çevir",
+      "how": "Haberin özünü (spor: maç gecesi; hava: sıcak; teknoloji: yeni cihaz) bir mahalle mekânı + 2–3 karakter + bir yanlış anlaşılmayla anlat."
+    },
+    {
+      "step": 5,
+      "name": "Kuralları denetle",
+      "how": "Block listesi + gerçek kişi/marka yok + taraf tutmuyor. Şüphede: kullanma."
+    },
+    {
+      "step": 6,
+      "name": "Yaz & yayınla",
+      "how": "Normal bölüm şablonu; 'Gündem' damgası ve açıklama notu."
+    }
+  ],
+  "adaptationExamples": [
+    {
+      "news": "Büyük bir futbol maçı oynanıyor",
+      "neighborhood": "Çay ocağında ortak ekran akşamı: Ferhat dönerci 'maç menüsü' çıkarır, Nuri radyoda yorumcuyla tartışır, Hacer 'ben hiç futbol anlamam' deyip herkesten çok heyecanlanır.",
+      "type": "GUNDEM",
+      "places": [
+        "cay-ocagi",
+        "doner"
+      ],
+      "decision": "Hangi takımın menüsü? (marka/takım adı yok: Kırmızılar-Mavililer)"
+    },
+    {
+      "news": "Sıcaklık rekoru kırıldı",
+      "neighborhood": "Buzlu çay krizi: Hatice Abla'nın buzu bitti, Nuri'nin bakkalı su satışı, Kemal'in taksisi klimalı oda.",
+      "type": "GUNDEM",
+      "places": [
+        "cay-ocagi",
+        "bakkal",
+        "durak"
+      ],
+      "decision": "Buzu kime verelim?"
+    },
+    {
+      "news": "Yeni bir akıllı telefon/yapay zekâ uygulaması çıktı",
+      "neighborhood": "Bülent bakkalı uygulamayla yönetmeye çalışır, Nuri deftere sadık; Ceren 'içerik' çeker.",
+      "type": "GUNDEM",
+      "places": [
+        "bakkal"
+      ],
+      "decision": "Defter mi uygulama mı?"
+    },
+    {
+      "news": "Okullar açıldı",
+      "neighborhood": "Efe'nin ilk gün telaşı; Hacer eski öğretmen olarak 'ödev' veriyor; bakkalda defter kampanyası.",
+      "type": "GUNDEM",
+      "places": [
+        "bakkal",
+        "meydan"
+      ],
+      "decision": "Efe okula yalnız mı gitsin?"
+    },
+    {
+      "news": "Bir film/dizi ödül aldı",
+      "neighborhood": "Mahalle çay ocağında 'ödül töreni' parodisi: Ferhat 'en iyi sos' ödülünü verir.",
+      "type": "GUNDEM",
+      "places": [
+        "cay-ocagi",
+        "meydan"
+      ],
+      "decision": "Ödül kimin?"
+    },
+    {
+      "news": "Uzay/bilim keşfi",
+      "neighborhood": "Efe ve Rıza Amca çatıdan gökyüzünü izler, Hacer teleskop için çiçeği kenara alır.",
+      "type": "GUNDEM",
+      "places": [
+        "yildiz-apt"
+      ],
+      "decision": "Teleskopu kim kullansın?"
+    },
+    {
+      "news": "Bir festival düzenleniyor",
+      "neighborhood": "Çınar Şenliği hazırlıkları: Nil'in TERAS 7 sahnesi, Hacer'in şikâyeti, mahallenin buluşması.",
+      "type": "FESTIVAL",
+      "places": [
+        "meydan",
+        "teras7"
+      ],
+      "decision": "Şenliğin başlangıç şarkısı kim olsun?"
+    }
+  ],
+  "disclosure": "Gündem bölümlerinde ekran köşesinde 'GÜNDEM' etiketi; açıklamada: 'Gerçek bir haberden esinlenilmiştir; olaylar ve karakterler tamamen kurgusaldır.'",
+  "sources": [
+    {
+      "id": "trt",
+      "name": "TRT Haber",
+      "feed": "https://www.trthaber.com/sondakika.rss"
+    },
+    {
+      "id": "ntv",
+      "name": "NTV",
+      "feed": "https://www.ntv.com.tr/gundem.rss"
+    },
+    {
+      "id": "cnnturk",
+      "name": "CNN Türk",
+      "feed": "https://www.cnnturk.com/feed/rss/all/news"
+    },
+    {
+      "id": "bbc",
+      "name": "BBC Türkçe",
+      "feed": "https://www.bbc.com/turkce/index.xml"
+    },
+    {
+      "id": "hurriyet",
+      "name": "Hürriyet",
+      "feed": "https://www.hurriyet.com.tr/rss/gundem"
+    },
+    {
+      "id": "trends",
+      "name": "Google Trends TR",
+      "feed": "https://trends.google.com/trending/rss?geo=TR"
+    }
+  ],
+  "notes": "Kaynak listesi bu ortamdan erişilebilenlerdir. Haber siteleri kullanım şartları ve telif: yalnızca başlık ve olgu fikri alınır, metin kopyalanmaz."
+}

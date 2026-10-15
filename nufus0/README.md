@@ -35,7 +35,8 @@ npm run render:001         # DOSYA 001, tam 1080x1920, 30 fps, 60.00 sn → out/
 | `npm run models -- <etiket>` | 3D model ara (1.603 CC0 model). |
 | `npm run sfx -- <etiket>` | Ses kütüphanesinde ara (ör. `npm run sfx -- door close`). Etiketsiz çalıştırırsan paketleri listeler. |
 | `npm run test:webgl` | Bu makinede tarayıcı WebGL'i çalışıyor mu? |
-| `npm run validate:universe` | KOMŞULAR evreni denetimi (karakter↔daire, ipucu adil oyun kuralı, tohumlar, marka yuvaları). |
+| `npm run validate:universe` | MAHALLE evreni denetimi (kadro↔mekân, ilişkiler, olay dağılımı, ipucu adil oyun kuralı, tohumlar, korkuluklar). |
+| `npm run gundem` | Bugünün haber başlıklarını (TRT, NTV, CNN Türk, BBC Türkçe, Hürriyet, Google Trends) çeker; UYGUN/İNCELE/ELE olarak sınıflar; mahalle uyarlaması önerir. |
 | `npm run render:001:pixel` | Piksel stili (3D katman 1/4 çözünürlük). `npm run stills:pixel` ile kareler. |
 | `npm run check` | Tip + evren + bölüm doğrulaması. **Render öncesi geçmeli.** |
 
@@ -72,8 +73,8 @@ Kendi SFX/müziğinizi koymak için `episode001.ts` içindeki `audio.sfx` / `aud
 ## Kaynak kütüphaneleri
 Tüm ses ve görsel kaynakların envanteri, lisansları ve durumu: [`docs/KAYNAKLAR.md`](docs/KAYNAKLAR.md). Ağdan indirilen paketler (Mixkit, BBC, Incompetech) repoya girmez; `npm run library:fetch` ile edinilir.
 
-## Evren (KOMŞULAR)
-Konsept: apartman kesiti, 17 komşu, günlük A/B kararı, sezon gizemi "Kayıp Aidat Kasası", haftalık özel "60 SANİYE ÖNCE". Tek doğruluk kaynağı `src/story/series/` (özet: `bible.md`): bina, karakterler, ilişkiler, sezon yayı, ipucu defteri, bölüm formülü + hook kalıpları, etkileşim döngüleri, marka yuvaları, 12 bölüm tohumu. `npm run validate:universe` tutarlılığı denetler. Eski NÜFUS_0/KAPI evreni `src/story/_arsiv_nufus0/` içinde arşivdedir; DOSYA 001 teknik prototiptir.
+## Evren (MAHALLE)
+İzometrik low-poly **Çınar Mahallesi**: 12 mekân (bakkal, dönerci, çay ocağı, kuaför, iki apartman, Pasaj Han + çatıda TERAS 7 gece kulübü, park, fırın, durak), 27 karakter, 48 yönlü ilişki, olay kataloğu, yaylar ve konuk sistemi, gündem hattı. Tek doğruluk kaynağı `src/story/series/` (özet `bible.md`). `npm run validate:universe` denetler; `npm run gundem` bugünün haberlerinden **güvenli** aday listesi çıkarır (karar insanda). Önceki evrenler `src/story/_arsiv_nufus0/` içinde.
 
 ## Mimari (kısa)
 

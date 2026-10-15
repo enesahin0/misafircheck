@@ -12,14 +12,19 @@
 
 Boş çıkması "kesin senindir" demek değildir: kontrol anındaki durumdur, ad başkasınca alınabilir. Bulduğunda hesabı hemen aç.
 
-## Adaylar (taranan 25 addan en iyiler)
-| Sıra | Seri adı | Gerekçe | Önerilen handle | YouTube | TikTok |
-|---|---|---|---|---|---|
-| 1 | **APARTMAN MECLİSİ** | Konsepti tek adla anlatır: izleyici = meclis. CTA'ya dönüşür ("Meclis oylamada"). | `apartman.meclisi` (`apartmanmeclisi` YouTube'da DOLU) | boş | boş |
-| 2 | **YILDIZ APARTMANI** | Dünyanın adı; dizi hissi, marka olarak taşınabilir. | `yildizapartmani` | boş | boş |
-| 3 | **DAİRE ON** | Merak: "boş kalan 10. daire". Kısa, akılda kalıcı. | `dairenon` | boş | boş |
-| — | Diğer boş çıkanlar | KOMŞU DİZİSİ (`komsudizisi`), KAYIP AİDAT (`kayipaidat`), KAPICI DEFTERİ (`kapicidefteri`), APARTMAN KARARI (`apartmankarari`) | | boş | boş |
-| ✗ | Dolu | `kimhakli` (3 platform), `daire10`, `merdivenbasi`, `apartmanmeclisi` (YouTube), `kapikomsusu` | | | |
+## Adaylar — MAHALLE konsepti (güncel)
+Yöntem aynı (YouTube 404 + TikTok durum kodu). Aşağıdaki handle'lar **her iki platformda boş** çıktı; Instagram sende kontrol edilecek.
+| Sıra | Seri adı | Gerekçe | Handle |
+|---|---|---|---|
+| 1 | **ÇINAR MAHALLESİ** (çalışma adı MAHALLE) | Dünyanın adı; dizi hissi, taşınabilir marka | `yildizmahallesi` benzeri değil — önce `cinarmahallesi` kontrol edilmeli (taranmadı) |
+| 2 | **MAHALLE MECLİSİ** | İzleyici = meclis; "Meclis oylamada" CTA'sı. Not: "meclis" siyasi çağrışım taşır, çatışmasız ton korunmalı | `mahalle.meclisi`, `mahallemeclisi` |
+| 3 | **MAHALLENİN KARARI** | Doğrudan CTA | `mahalleninkarari` |
+| 4 | **MAHALLE OYLAMASI** | Net, kısa | `mahalleoylamasi` |
+| 5 | **ÇAY OCAĞI DİZİSİ** | Sıcak, tanıdık; mekân odaklı | `cayocagidizi` |
+| 6 | **MİNİK MAHALLE** | Maket/izometrik hissi | `minikmahalle`, `mahallemaketi` |
+
+Taranmış ve boş: `mahalle.meclisi`, `mahallemeclisi`, `mahalleninkarari`, `mahalleoylamasi`, `cayocagidizi`, `mahallemaketi`, `minikmahalle`, `yildizmahallesi`.
+Instagram ve TÜRKPATENT (sınıf 9, 41, 38) kontrolü yapılmadı.
 
 ## Kurallar
 - Tüm platformlarda **aynı handle**. İlk tercih tutmazsa sıradaki.

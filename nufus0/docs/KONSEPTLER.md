@@ -1,3 +1,5 @@
+> **GÜNCEL KARAR (2026-10-15): MAHALLE.** Tek apartman yerine izometrik mahalle (bakkal, dönerci, çay ocağı, apartmanlar, çatı gece kulübü) + günlük kurmaca/gündem olayları + dizi kadrosu. Evren: `src/story/series/bible.md`.
+
 > **KARAR KAYDI (2026-10-15):** İlk üç konsept (Maket Dava / Minik Felaket / Para Nerede?) kullanıcı isteğiyle elendi ve yeniden konsept arandı. Seçilen: **KOMŞULAR (ana, günlük) + 60 SANİYE ÖNCE (haftalık)**. Güncel evren: `src/story/series/bible.md`. Aşağıdaki metin tarihçe + hook sistemi referansıdır (hook sistemi KOMŞULAR için de geçerlidir).
 
 # KONSEPT ÖNERİLERİ + HOOK SİSTEMİ

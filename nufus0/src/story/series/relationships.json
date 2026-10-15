@@ -1,19 +1,664 @@
 {
-  "version": 3,
-  "note": "tension: 0 (sakin) – 5 (patlama noktası). Karar sonuçları bu değerleri günceller; süreklilik denetimi tensiyonun bir bölümde >2 sıçramasını gerekçesiz bulursa uyarır.",
+  "version": 4,
+  "scale": {
+    "affinity": "-5 (nefret) … +5 (sevgi); yönlü: A→B ile B→A farklı olabilir",
+    "trust": "0 … 5",
+    "volatility": "düşük/orta/yüksek: değişim hızı"
+  },
+  "note": "Karar sonuçları affinity/trust değerlerini günceller. Süreklilik denetimi tek bölümde |Δaffinity|>2 sıçramayı gerekçesiz bulursa hata verir. Her değişiklik history'ye yazılır.",
   "edges": [
-    { "a": "hacer", "b": "kerem", "type": "komşu kavgası", "tension": 3, "about": "Üst kat gürültüsü / saksı" },
-    { "a": "hacer", "b": "baris", "type": "şüphe", "tension": 2, "about": "Çok koli, perde hep kapalı" },
-    { "a": "hacer", "b": "cemal", "type": "saygı-rekabet", "tension": 2, "about": "Apartmanın gerçek yöneticisi kim?" },
-    { "a": "selin", "b": "emre", "type": "evlilik", "tension": 1, "about": "Emre'nin işsizlik sırrı" },
-    { "a": "nermin", "b": "kemal", "type": "evlilik", "tension": 3, "about": "Para ve borç" },
-    { "a": "kemal", "b": "cemal", "type": "borç", "tension": 3, "about": "Kemal'in Cemal'e borcu" },
-    { "a": "cemal", "b": "guler", "type": "evlilik", "tension": 1, "about": "Kasa anahtarının ikincisi" },
-    { "a": "cemal", "b": "suleyman", "type": "işveren-çalışan", "tension": 2, "about": "Maaş ve anahtar" },
-    { "a": "aylin", "b": "defne", "type": "anne-kız", "tension": 2, "about": "Gizlilik ve güven" },
-    { "a": "dilara", "b": "pelin", "type": "ev arkadaşı", "tension": 1, "about": "Gece sesleri, borç" },
-    { "a": "pelin", "b": "kerem", "type": "gizli ilgi", "tension": 1, "about": "Pelin'in sırrı" },
-    { "a": "riza", "b": "efe", "type": "dostluk", "tension": 0, "about": "Efe Rıza Amca'dan denizci hikâyeleri dinler" },
-    { "a": "ceren", "b": "baris", "type": "gizlilik", "tension": 2, "about": "Ceren'in çekimleri" }
-  ]
+    {
+      "from": "hacer",
+      "to": "hatice",
+      "affinity": 3,
+      "trust": 4,
+      "since": "20 yıl",
+      "why": "Çay ocağında eski dost; ocak satılırsa kimin tarafında?",
+      "volatility": "orta",
+      "flashpoints": [
+        "ocağın borcu",
+        "gizli dedikodu sızması"
+      ]
+    },
+    {
+      "from": "hatice",
+      "to": "hacer",
+      "affinity": 3,
+      "trust": 4,
+      "since": "20 yıl",
+      "why": "Hacer'e 'öğretmenim' der; ama ona kırgın bir olay var",
+      "volatility": "orta",
+      "flashpoints": [
+        "Hacer'in sert eleştirisi"
+      ]
+    },
+    {
+      "from": "hacer",
+      "to": "nil",
+      "affinity": -3,
+      "trust": 1,
+      "since": "6 ay",
+      "why": "Gürültü ve TERAS 7; 'mahalleye yakışmaz'",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "festival",
+        "gece şikâyeti"
+      ]
+    },
+    {
+      "from": "nil",
+      "to": "hacer",
+      "affinity": -1,
+      "trust": 2,
+      "since": "6 ay",
+      "why": "Hacer'in tepkisini kendine karşı kişisel görüyor; aslında hayranlık var",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "Hacer'in ilk iyiliği"
+      ]
+    },
+    {
+      "from": "hacer",
+      "to": "kerem",
+      "affinity": -2,
+      "trust": 2,
+      "since": "1 yıl",
+      "why": "Üst kat gürültüsü / saksı",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "saksı",
+        "parti"
+      ]
+    },
+    {
+      "from": "kerem",
+      "to": "hacer",
+      "affinity": 1,
+      "trust": 2,
+      "since": "1 yıl",
+      "why": "Hacer'e saygı duyar ama sıkılır",
+      "volatility": "orta",
+      "flashpoints": [
+        "Hacer'in şikâyeti"
+      ]
+    },
+    {
+      "from": "hacer",
+      "to": "efe",
+      "affinity": 4,
+      "trust": 5,
+      "since": "9 yıl",
+      "why": "Sevgi dolu torun gibi",
+      "volatility": "düşük",
+      "flashpoints": [
+        "Efe'nin sırrı"
+      ]
+    },
+    {
+      "from": "hacer",
+      "to": "cemal",
+      "affinity": 1,
+      "trust": 2,
+      "since": "10 yıl",
+      "why": "Yönetici kim? sorusu",
+      "volatility": "orta",
+      "flashpoints": [
+        "aidat",
+        "kasa"
+      ]
+    },
+    {
+      "from": "hacer",
+      "to": "suleyman",
+      "affinity": 3,
+      "trust": 4,
+      "since": "15 yıl",
+      "why": "Karşılıklı saygı",
+      "volatility": "düşük",
+      "flashpoints": [
+        "maaş meselesi"
+      ]
+    },
+    {
+      "from": "hacer",
+      "to": "baris",
+      "affinity": -1,
+      "trust": 1,
+      "since": "2 yıl",
+      "why": "Şüphe: çok koli",
+      "volatility": "orta",
+      "flashpoints": [
+        "kargo"
+      ]
+    },
+    {
+      "from": "nuri",
+      "to": "ferhat",
+      "affinity": 1,
+      "trust": 3,
+      "since": "15 yıl",
+      "why": "Rakip esnaf, gizli saygı",
+      "volatility": "orta",
+      "flashpoints": [
+        "zam rekabeti",
+        "mahalle maçı"
+      ]
+    },
+    {
+      "from": "ferhat",
+      "to": "nuri",
+      "affinity": 2,
+      "trust": 3,
+      "since": "15 yıl",
+      "why": "Veresiye ekmek aldığı yıllardan hatıra",
+      "volatility": "orta",
+      "flashpoints": [
+        "tarif konuşması"
+      ]
+    },
+    {
+      "from": "nuri",
+      "to": "bulent",
+      "affinity": 3,
+      "trust": 2,
+      "since": "24 yıl",
+      "why": "Yeğenini sever ama değişimi sevmez",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "Instagram",
+        "online satış"
+      ]
+    },
+    {
+      "from": "bulent",
+      "to": "nuri",
+      "affinity": 3,
+      "trust": 2,
+      "since": "24 yıl",
+      "why": "Amcasını sever, sabırsızlanır",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "bakkalın geleceği"
+      ]
+    },
+    {
+      "from": "ferhat",
+      "to": "mert",
+      "affinity": 3,
+      "trust": 3,
+      "since": "1 yıl",
+      "why": "Baba-oğul gibi, sert öğretmen",
+      "volatility": "orta",
+      "flashpoints": [
+        "geceleri kaybolması"
+      ]
+    },
+    {
+      "from": "mert",
+      "to": "kerem",
+      "affinity": 4,
+      "trust": 2,
+      "since": "6 ay",
+      "why": "Hayranlık: DJ olmak istiyor",
+      "volatility": "orta",
+      "flashpoints": [
+        "Kerem'in ilgisizliği"
+      ]
+    },
+    {
+      "from": "mert",
+      "to": "ferhat",
+      "affinity": 3,
+      "trust": 3,
+      "since": "1 yıl",
+      "why": "Hayranlık ve korku",
+      "volatility": "orta",
+      "flashpoints": [
+        "Teras'ta çalıştığı ortaya çıkarsa"
+      ]
+    },
+    {
+      "from": "hatice",
+      "to": "nuri",
+      "affinity": 2,
+      "trust": 3,
+      "since": "20 yıl",
+      "why": "Eski komşu; veresiye ve ocak",
+      "volatility": "orta",
+      "flashpoints": [
+        "zam",
+        "dedikodu"
+      ]
+    },
+    {
+      "from": "hatice",
+      "to": "recep",
+      "affinity": 3,
+      "trust": 4,
+      "since": "15 yıl",
+      "why": "Bekçiye her gece çay",
+      "volatility": "düşük",
+      "flashpoints": [
+        "gece sırrı"
+      ]
+    },
+    {
+      "from": "hatice",
+      "to": "dilara",
+      "affinity": 3,
+      "trust": 3,
+      "since": "1 yıl",
+      "why": "Eski hemşire dayanışması",
+      "volatility": "düşük",
+      "flashpoints": [
+        "gece vardiyası"
+      ]
+    },
+    {
+      "from": "recep",
+      "to": "nil",
+      "affinity": -1,
+      "trust": 2,
+      "since": "6 ay",
+      "why": "Şikâyet bekçisi, ama Teras'ı güvende tutuyor",
+      "volatility": "orta",
+      "flashpoints": [
+        "gürültü şikâyeti"
+      ]
+    },
+    {
+      "from": "nil",
+      "to": "koray",
+      "affinity": 3,
+      "trust": 4,
+      "since": "5 yıl",
+      "why": "Güvenlik ve koruyucu",
+      "volatility": "düşük",
+      "flashpoints": [
+        "Koray'ın geçmişi"
+      ]
+    },
+    {
+      "from": "nil",
+      "to": "kerem",
+      "affinity": 2,
+      "trust": 2,
+      "since": "3 yıl",
+      "why": "İş ilişkisi, geç kalışlar",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "maaş",
+        "stüdyo hayali"
+      ]
+    },
+    {
+      "from": "kerem",
+      "to": "nil",
+      "affinity": 1,
+      "trust": 2,
+      "since": "3 yıl",
+      "why": "Patron; saygı ve korku",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "kira borcu"
+      ]
+    },
+    {
+      "from": "kerem",
+      "to": "pelin",
+      "affinity": 1,
+      "trust": 2,
+      "since": "4 ay",
+      "why": "Pelin'in ilgisini fark etmedi",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "parti gecesi"
+      ]
+    },
+    {
+      "from": "pelin",
+      "to": "kerem",
+      "affinity": 4,
+      "trust": 1,
+      "since": "4 ay",
+      "why": "Gizli ilgi",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "Kerem'in başka biriyle görülmesi"
+      ]
+    },
+    {
+      "from": "kerem",
+      "to": "ceren",
+      "affinity": 2,
+      "trust": 2,
+      "since": "1 yıl",
+      "why": "Kız arkadaş; 'içerik' gerilimi",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "çekim",
+        "gizlilik"
+      ]
+    },
+    {
+      "from": "ceren",
+      "to": "kerem",
+      "affinity": 3,
+      "trust": 2,
+      "since": "1 yıl",
+      "why": "Sever ama içerik öncelikli",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "gündem"
+      ]
+    },
+    {
+      "from": "nermin",
+      "to": "kemal",
+      "affinity": 3,
+      "trust": 3,
+      "since": "15 yıl",
+      "why": "Evlilik; borç gerilimi",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "borç",
+        "gizli biriktirme"
+      ]
+    },
+    {
+      "from": "kemal",
+      "to": "nermin",
+      "affinity": 4,
+      "trust": 4,
+      "since": "15 yıl",
+      "why": "Sevgi derin; sorumluluk korkusu",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "borç ortaya çıkarsa"
+      ]
+    },
+    {
+      "from": "kemal",
+      "to": "cemal",
+      "affinity": -2,
+      "trust": 1,
+      "since": "1 yıl",
+      "why": "Borç: Cemal'e ödünç var",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "defter",
+        "kasa"
+      ]
+    },
+    {
+      "from": "cemal",
+      "to": "kemal",
+      "affinity": -1,
+      "trust": 1,
+      "since": "1 yıl",
+      "why": "Borç ve saygı: Kemal'in güvenilirliğine şüphe",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "kasa kaybı"
+      ]
+    },
+    {
+      "from": "selin",
+      "to": "emre",
+      "affinity": 4,
+      "trust": 3,
+      "since": "3 yıl",
+      "why": "Evlilik",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "işsizlik sırrı"
+      ]
+    },
+    {
+      "from": "emre",
+      "to": "selin",
+      "affinity": 4,
+      "trust": 2,
+      "since": "3 yıl",
+      "why": "Evlilik; yalan",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "sır ortaya çıkarsa"
+      ]
+    },
+    {
+      "from": "cemal",
+      "to": "guler",
+      "affinity": 3,
+      "trust": 3,
+      "since": "28 yıl",
+      "why": "Evlilik; kasa anahtarı",
+      "volatility": "orta",
+      "flashpoints": [
+        "kasa"
+      ]
+    },
+    {
+      "from": "cemal",
+      "to": "suleyman",
+      "affinity": 1,
+      "trust": 2,
+      "since": "10 yıl",
+      "why": "İşveren; maaş",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "maaş",
+        "anahtar"
+      ]
+    },
+    {
+      "from": "aylin",
+      "to": "defne",
+      "affinity": 3,
+      "trust": 2,
+      "since": "15 yıl",
+      "why": "Anne-kız; güven sorunu",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "gönüllülük",
+        "gece çıkışlar"
+      ]
+    },
+    {
+      "from": "defne",
+      "to": "aylin",
+      "affinity": 3,
+      "trust": 2,
+      "since": "15 yıl",
+      "why": "Anneye yalan söylemek istemez",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "hastane"
+      ]
+    },
+    {
+      "from": "riza",
+      "to": "efe",
+      "affinity": 4,
+      "trust": 4,
+      "since": "2 yıl",
+      "why": "Dede-torun benzeri",
+      "volatility": "düşük",
+      "flashpoints": [
+        "mektup"
+      ]
+    },
+    {
+      "from": "efe",
+      "to": "riza",
+      "affinity": 4,
+      "trust": 4,
+      "since": "2 yıl",
+      "why": "Denizci hayranlığı",
+      "volatility": "düşük",
+      "flashpoints": [
+        "mektup"
+      ]
+    },
+    {
+      "from": "dilara",
+      "to": "pelin",
+      "affinity": 3,
+      "trust": 3,
+      "since": "2 yıl",
+      "why": "Ev arkadaşı",
+      "volatility": "orta",
+      "flashpoints": [
+        "gece sesleri",
+        "borç"
+      ]
+    },
+    {
+      "from": "nermin",
+      "to": "hatice",
+      "affinity": 3,
+      "trust": 3,
+      "since": "3 yıl",
+      "why": "Kuaför-çay ocağı: sır ağı",
+      "volatility": "orta",
+      "flashpoints": [
+        "bilgi sızması"
+      ]
+    },
+    {
+      "from": "nermin",
+      "to": "nil",
+      "affinity": 2,
+      "trust": 2,
+      "since": "4 ay",
+      "why": "Gece kulübü saç/makyaj ortaklığı",
+      "volatility": "orta",
+      "flashpoints": [
+        "festival"
+      ]
+    },
+    {
+      "from": "bulent",
+      "to": "ceren",
+      "affinity": 2,
+      "trust": 1,
+      "since": "3 ay",
+      "why": "İçerik üreticisiyle dijital işbirliği fikri",
+      "volatility": "orta",
+      "flashpoints": [
+        "gizlilik"
+      ]
+    },
+    {
+      "from": "recep",
+      "to": "efe",
+      "affinity": 3,
+      "trust": 3,
+      "since": "2 yıl",
+      "why": "Fener ışığıyla hikâye",
+      "volatility": "düşük",
+      "flashpoints": [
+        "gece merdiveni"
+      ]
+    },
+    {
+      "from": "pasa",
+      "to": "karabas",
+      "affinity": 0,
+      "trust": 2,
+      "since": "2 yıl",
+      "why": "Rekabet-dostluk",
+      "volatility": "orta",
+      "flashpoints": [
+        "mama",
+        "meydan"
+      ]
+    },
+    {
+      "from": "pasa",
+      "to": "hacer",
+      "affinity": 4,
+      "trust": 5,
+      "since": "9 yıl",
+      "why": "Sahibi; ama yalnızca mama saatinde sadık",
+      "volatility": "düşük",
+      "flashpoints": [
+        "07.10 mama"
+      ]
+    },
+    {
+      "from": "hacer",
+      "to": "pasa",
+      "affinity": 5,
+      "trust": 5,
+      "since": "9 yıl",
+      "why": "Eşinden kalan tek canlı hatıra",
+      "volatility": "düşük",
+      "flashpoints": [
+        "Paşa'nın kaybolması"
+      ]
+    },
+    {
+      "from": "hatice",
+      "to": "nil",
+      "affinity": -2,
+      "trust": 1,
+      "since": "6 ay",
+      "why": "Gece müziği ocağın sabah sakinliğini bozuyor; ama Nil'in şarkısını gizlice seviyor",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "festival",
+        "ocak satılık yayı"
+      ]
+    },
+    {
+      "from": "recep",
+      "to": "kerem",
+      "affinity": -2,
+      "trust": 2,
+      "since": "1 yıl",
+      "why": "Gece şikâyetleri; Kerem'in hep 'tamamdır' demesi",
+      "volatility": "orta",
+      "flashpoints": [
+        "gece partisi"
+      ]
+    },
+    {
+      "from": "hacer",
+      "to": "ceren",
+      "affinity": -3,
+      "trust": 0,
+      "since": "1 yıl",
+      "why": "Gizlice çekim yapılması",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "çekim yakalanması"
+      ]
+    },
+    {
+      "from": "ceren",
+      "to": "hacer",
+      "affinity": -1,
+      "trust": 1,
+      "since": "1 yıl",
+      "why": "Hacer'in 'öğretmen' tavrı; içerik için fırsat görüyor",
+      "volatility": "yüksek",
+      "flashpoints": [
+        "viral olay"
+      ]
+    },
+    {
+      "from": "ferhat",
+      "to": "nil",
+      "affinity": -2,
+      "trust": 1,
+      "since": "6 ay",
+      "why": "TERAS 7'nin kuyruğu dönercinin müşterisini çalıyor mu?",
+      "volatility": "orta",
+      "flashpoints": [
+        "festival yemek yarışması"
+      ]
+    }
+  ],
+  "history": []
 }

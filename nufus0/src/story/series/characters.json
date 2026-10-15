@@ -1,25 +1,860 @@
 {
-  "version": 3,
-  "note": "Çekirdek kadro bilinçli olarak sınırlı (17 kişi + 1 kedi). Karakterler bölümlere kademeli tanıtılır: ilk 3 bölümde en fazla 4 yüz. Giysi rengi / ölçek bölümler arası DEĞİŞMEZ.",
-  "characters": [
-    { "id": "hacer", "name": "Hacer Hanım", "age": 71, "flat": "D1", "role": "Emekli öğretmen, apartmanın 'gözü kulağı'", "color": "#8E6F9A", "signature": "Çiçekli balkon, dürbünsüz dürbün: perde aralığı", "want": "Apartmanın düzeni ve kendisinin dinlenmesi", "fear": "Yalnız ve unutulmuş kalmak", "secret": "Eski öğrencisinin yardımıyla aidat kasasının nerede durduğunu bilen tek kişi", "voice": "Sıcak, sert görünümlü; herkese öğretmen gibi hitap eder", "pet": "pasa" },
-    { "id": "selin", "name": "Selin", "age": 29, "flat": "D2", "role": "Yeni evli, grafik tasarımcı (uzaktan)", "color": "#E0897A", "signature": "Laptop + bitki", "want": "Kendi hayatını kurmak, kiradan kurtulmak", "fear": "Borç ve yalan", "secret": "Eşinin işten çıkarıldığını henüz bilmiyor", "voice": "Hızlı, esprili, kaygılı" },
-    { "id": "emre", "name": "Emre", "age": 31, "flat": "D2", "role": "Selin'in eşi, 'şirkette' çalışıyor", "color": "#5E7C9A", "signature": "Takım elbise, boş çanta", "want": "Selin'i üzmemek", "fear": "Başarısız görünmek", "secret": "3 aydır işsiz; her sabah takım elbiseyle çıkıp parkta oturuyor", "voice": "Kibar, kaçamak" },
-    { "id": "nermin", "name": "Nermin", "age": 41, "flat": "D3", "role": "Ev kadını, evden kuaförlük yapıyor", "color": "#C9835A", "signature": "Önlük, makas", "want": "Evin geçimi ve çocuğuna iyi gelecek", "fear": "Kocasının borçları", "secret": "Gizlice para biriktiriyor", "voice": "Pratik, güldüren, dobra" },
-    { "id": "kemal", "name": "Kemal", "age": 46, "flat": "D3", "role": "Taksi şoförü", "color": "#C9A64A", "signature": "Sarı taksi, tespih", "want": "Ailesine yetmek", "fear": "Taksi plakası borcu", "secret": "Cemal Bey'e borcu var", "voice": "Gürültülü, kalbi yumuşak" },
-    { "id": "efe", "name": "Efe", "age": 9, "flat": "D3", "role": "İlkokul öğrencisi, 'merdiven dedektifi'", "color": "#6FB08E", "signature": "Sırt çantası, el feneri", "want": "Bir sır çözmek", "fear": "Karne", "secret": "Merdiven boşluğunda bir şey görmüş", "voice": "Meraklı; çoğunlukla ipucu verir" },
-    { "id": "baris", "name": "Barış", "age": 34, "flat": "D4", "role": "Freelance, evden çalışıyor", "color": "#4A5568", "signature": "Çift ekran, koli yığını, kapüşonlu", "want": "Kimse karışmasın", "fear": "Tanınmak", "secret": "İkinci el koleksiyon ürün satıyor; yoğun kargo bundan", "voice": "Az konuşan, kuru espri" },
-    { "id": "cemal", "name": "Cemal Bey", "age": 58, "flat": "D5", "role": "Apartman yöneticisi", "color": "#3F5F8A", "signature": "Defter, kalem, kasa anahtarı", "want": "Düzen ve saygı", "fear": "Hesap sorulması", "secret": "Aidat kasasından 'ödünç' almış olabilir (şüphe: sezon gizemi)", "voice": "Resmî, buyurgan" },
-    { "id": "guler", "name": "Güler Hanım", "age": 55, "flat": "D5", "role": "Cemal Bey'in eşi", "color": "#B0627A", "signature": "Dantel örtü, börek tepsisi", "want": "Huzur, komşuluk", "fear": "Cemal'in kaybettiği saygı", "secret": "Kasa anahtarının ikincisi onda", "voice": "Tatlı, yönlendirici" },
-    { "id": "dilara", "name": "Dilara", "age": 26, "flat": "D6", "role": "Hemşire, gece vardiyası", "color": "#6AA6A8", "signature": "Termos, önlük", "want": "Uyumak ve sessizlik", "fear": "Kimsenin onu ciddiye almaması", "secret": "Gece dönüşünde merdivende birini görüyor", "voice": "Yorgun, net" },
-    { "id": "pelin", "name": "Pelin", "age": 22, "flat": "D6", "role": "Dilara'nın ev arkadaşı, öğrenci", "color": "#D6A0C0", "signature": "Kulaklık, kitap yığını", "want": "Bağımsız olmak", "fear": "Dilara'yı kaybetmek", "secret": "Kerem'e gizli ilgisi var", "voice": "Neşeli, dağınık" },
-    { "id": "riza", "name": "Rıza Amca", "age": 76, "flat": "D7", "role": "Emekli denizci", "color": "#7A8F6A", "signature": "Gemi maketi, radyo", "want": "Kayıp oğlundan haber", "fear": "Unutulmak", "secret": "Yıllardır yazıp göndermediği mektuplar", "voice": "Yavaş, şiirsel" },
-    { "id": "aylin", "name": "Aylin", "age": 39, "flat": "D8", "role": "Avukat, boşanmış anne", "color": "#8A5A7A", "signature": "Dosya çantası, kırmızı topuklu", "want": "Kızıyla arasının iyi olması", "fear": "Yetersiz anne olmak", "secret": "Aidat davasını üstlenmesi istendi (çıkar çatışması)", "voice": "Net, keskin, yorgun" },
-    { "id": "defne", "name": "Defne", "age": 15, "flat": "D8", "role": "Lise öğrencisi", "color": "#E0B34A", "signature": "Kulaklık, telefon", "want": "Özgürlük", "fear": "Annesine yalan söylemek", "secret": "Gizlice bir yerde gönüllü çalışıyor", "voice": "Ironik" },
-    { "id": "kerem", "name": "Kerem", "age": 27, "flat": "D9", "role": "DJ / müzisyen", "color": "#5AA05A", "signature": "Hoparlör, kulaklık boynunda", "want": "Sahne", "fear": "Parasızlık", "secret": "Kira borcu var", "voice": "Rahat, sempatik" },
-    { "id": "ceren", "name": "Ceren", "age": 25, "flat": "D9", "role": "Kerem'in kız arkadaşı, içerik üreticisi", "color": "#C45A5A", "signature": "Halka ışık, telefon", "want": "Takipçi", "fear": "Gündem dışı kalmak", "secret": "Apartmanı gizlice çekiyor (gizlilik sorunu)", "voice": "Hızlı, 'gündem' dilli" },
-    { "id": "suleyman", "name": "Süleyman Abi", "age": 62, "flat": "ZK", "role": "Kapıcı", "color": "#7A6A52", "signature": "Anahtar halkası, süpürge", "want": "Maaşını zamanında almak", "fear": "İşten çıkarılmak", "secret": "Bodrumdan kasaya gizlice bakmış", "voice": "Mahalleli, bilge, sır tutmaz" },
-    { "id": "pasa", "name": "Paşa", "age": null, "flat": "D1", "role": "Hacer Hanım'ın kedisi", "color": "#B08E6A", "signature": "Her yere girer: apartmanın tek tanığı", "want": "Mama", "fear": "Banyo", "secret": "Merdiven boşluğundaki gizli patika", "voice": "(sessiz)" }
+  "version": 4,
+  "note": "Çekirdek kadro (CORE) sık görünür; REGULAR dönemsel; konuklar (GUEST) ayrıca kayıtlanır. Giysi rengi/ölçek bölümler arası DEĞİŞMEZ. Karakterler yüzsüz low-poly; kimlik renk + imza nesneyle okunur.",
+  "tiers": {
+    "CORE": "Haftada birkaç kez",
+    "REGULAR": "Yaylarda ve olaylarda",
+    "GUEST": "Tek bölümlük ya da 3–5 bölümlük konuk"
+  },
+  "guardrails": [
+    "Reşit olmayanlar (Efe 9, Defne 15) romantik/korkutucu/sömürücü hikâyede yer almaz",
+    "Gerçek kişi/işletme/marka adı kullanılmaz (yerleştirme anlaşması dışında)",
+    "Etnik, dini, siyasi kimlik üzerinden hiciv yok",
+    "Şiddet, istismar, ölüm gösterilmez; yas/cenaze saygılı ve nadir"
   ],
-  "guest": "Yeni kiracı (D10) izleyici kararıyla seçilir; profil kartı bölüm verisine eklenir ve kalıcı olur."
+  "characters": [
+    {
+      "id": "hacer",
+      "name": "Hacer Hanım",
+      "age": 71,
+      "tier": "CORE",
+      "home": "D1",
+      "role": "Emekli öğretmen",
+      "color": "#8E6F9A",
+      "signature": "Çiçekli balkon, perde aralığı, kedisi Paşa",
+      "backstory": "35 yıl ilkokulda okuttu; mahallenin yarısı eski öğrencisi. Eşini 9 yıl önce kaybetti, oğlu yurt dışında. Balkonu ve apartman düzeni hayatının merkezi.",
+      "traits": {
+        "virtues": [
+          "Adil",
+          "Hafızası güçlü",
+          "Derinden sadık"
+        ],
+        "flaws": [
+          "Eleştirel",
+          "Dedikoduya meraklı",
+          "Kolay kırılır"
+        ],
+        "quirks": [
+          "Herkese ödev verir gibi konuşur",
+          "Perdeyi aralık bırakır",
+          "Her çiçeğin adı var"
+        ],
+        "catchphrase": "Bu iş böyle olmaz."
+      },
+      "want": "Mahallenin düzeni ve dinlenmek",
+      "fear": "Yalnız ve unutulmuş kalmak",
+      "secret": "Aidat kasasının nerede durduğunu bilen tek kişi",
+      "voice": "Sıcak ama sert; öğretmen tonu",
+      "arcPotential": "Hatice ile yeniden dostluk/kopuş; Nil ile gürültü savaşı; Efe'ye sırlar emanet"
+    },
+    {
+      "id": "hatice",
+      "name": "Hatice Abla",
+      "age": 52,
+      "tier": "CORE",
+      "home": "cay-ocagi",
+      "role": "Çaycı (Çay Ocağı sahibi)",
+      "color": "#B5651D",
+      "signature": "Semaver, boncuklu gözlük zinciri",
+      "backstory": "20 yıl hemşire olarak çalıştı; babası ölünce ocağı devraldı. Mahalleye gelen her haberin ilk uğrağı. Sırları saklamayı hemşirelikten, yaymayı çay ocağından öğrendi.",
+      "traits": {
+        "virtues": [
+          "Dinleyici",
+          "Cesur",
+          "Adil hakem"
+        ],
+        "flaws": [
+          "Dedikodu bağımlısı",
+          "Kırgınlık hafızası uzun",
+          "Para konusunda saf"
+        ],
+        "quirks": [
+          "Bardakları isimle tanır",
+          "Her çaya küçük bir söz",
+          "Ocağın radyosunu hep aynı kanala sabitler"
+        ],
+        "catchphrase": "Çay demli, dedikodu taze."
+      },
+      "want": "Ocağın yaşaması",
+      "fear": "Ocağın satılması, unutulması",
+      "secret": "Ocağın tapusu eski bir borç yüzünden teminatta",
+      "voice": "Kuru espri, sakin otorite",
+      "arcPotential": "Ocak satılık arkı (3–5 bölüm); Hacer ile rekabet"
+    },
+    {
+      "id": "nuri",
+      "name": "Nuri Amca",
+      "age": 63,
+      "tier": "CORE",
+      "home": "bakkal",
+      "role": "Bakkal",
+      "color": "#6B8E4E",
+      "signature": "Veresiye defteri, tezgâhta radyo",
+      "backstory": "Gençliğinde amatör basketbolcu. Bakkalı babasından devraldı. Defterde kimin ne borcu olduğunu bilir ama bazı sayfaları hiç açmaz. Yeğeni Bülent'e işi devretmek istiyor.",
+      "traits": {
+        "virtues": [
+          "Cömert",
+          "Hafıza",
+          "Sabırlı"
+        ],
+        "flaws": [
+          "İnatçı",
+          "Zamlara isyan eder",
+          "Değişime kapalı"
+        ],
+        "quirks": [
+          "Para üstünü kuruşuna kadar verir",
+          "Sabah ilk müşteriye hep ikram",
+          "Radyoda spor yorumcusuna cevap verir"
+        ],
+        "catchphrase": "Hesap defterde, gönül tezgâhta."
+      },
+      "want": "Bakkalı yeğenine bırakmak",
+      "fear": "Zincir market açılması",
+      "secret": "Defterde Rıza Amca'nın borcunu hiç yazmadı",
+      "voice": "Yumuşak, bilge, laf sokan",
+      "arcPotential": "Ferhat ile rakip-dostluk; Bülent ile kuşak çatışması"
+    },
+    {
+      "id": "ferhat",
+      "name": "Ferhat Usta",
+      "age": 47,
+      "tier": "CORE",
+      "home": "doner",
+      "role": "Dönerci (Ferhat Usta Döner sahibi)",
+      "color": "#C0392B",
+      "signature": "Döner bıçağı, önlük, kolları sıvalı",
+      "backstory": "Amatör güreşçi olarak üç kupa kazandı; sakatlanınca dönere geçti. Mahallenin tek dönercisi. Mahalle maçında kaptan. Tarifin yarısı annesinden.",
+      "traits": {
+        "virtues": [
+          "Cömert (öğrenciye indirim)",
+          "Hızlı",
+          "Takım ruhu"
+        ],
+        "flaws": [
+          "Gurur",
+          "Gösteriş",
+          "Kolay alınır"
+        ],
+        "quirks": [
+          "Bıçağıyla konuşur gibi çalışır",
+          "Sosuna isim verir",
+          "Kuyruğa herkesi adıyla çağırır"
+        ],
+        "catchphrase": "Usta bir tane, tarif iki."
+      },
+      "want": "Tarifini bir yarışmaya taşımak",
+      "fear": "Tarifinin çalınması",
+      "secret": "Tarifin yarısı annesinin defterinden; sahip çıkamıyor",
+      "voice": "Gür, neşeli, abartılı",
+      "arcPotential": "Nuri ile rakip-dostluk; Mert'in akıl hocası"
+    },
+    {
+      "id": "kemal",
+      "name": "Kemal",
+      "age": 46,
+      "tier": "CORE",
+      "home": "D3",
+      "role": "Taksi şoförü",
+      "color": "#C9A64A",
+      "signature": "Sarı taksi, tespih",
+      "backstory": "Taksi plakasını kredi çekerek aldı; borcu yıllarca sürecek. Mahalleye dönüş yolunda herkesin sırrını dinler. Kalbi yumuşak, sesi yüksek.",
+      "traits": {
+        "virtues": [
+          "Yardımsever",
+          "Güvenilir",
+          "Esprili"
+        ],
+        "flaws": [
+          "Gürültülü",
+          "Borç stresi",
+          "Hızlı öfkelenir"
+        ],
+        "quirks": [
+          "Direksiyonda tespih çeker",
+          "Müşteriye ikinci bir yol önerir",
+          "Yağmurda herkesi ücretsiz bırakır"
+        ],
+        "catchphrase": "Ben fiyat sormam, yol sorarım."
+      },
+      "want": "Ailesine yetmek",
+      "fear": "Plakayı kaybetmek",
+      "secret": "Cemal Bey'e ödünç borcu var",
+      "voice": "Gürültülü, sıcak",
+      "arcPotential": "Borç yayı; Nermin ile evlilik gerilimi"
+    },
+    {
+      "id": "nermin",
+      "name": "Nermin",
+      "age": 41,
+      "tier": "CORE",
+      "home": "kuafor",
+      "role": "Kuaför (Nermin Güzellik sahibi)",
+      "color": "#C9835A",
+      "signature": "Önlük, makas, kurutma başlığı",
+      "backstory": "Evden kuaförlükle başladı, geçen yıl Çınar Sokak'ta salon açtı. Gelin saçından yas hazırlığına kadar herkes koltuğuna oturur. Kocasının borçlarını gizlice kapatmaya çalışıyor.",
+      "traits": {
+        "virtues": [
+          "Pratik",
+          "Güldüren",
+          "Dobra"
+        ],
+        "flaws": [
+          "Sır tutamaz görünür ama tutar",
+          "İşkolik",
+          "Eleştiriye hassas"
+        ],
+        "quirks": [
+          "Konuşurken makasla havayı keser",
+          "Herkesin saçından ruh hâlini okur",
+          "Salonda hep aynı şarkı"
+        ],
+        "catchphrase": "Saç her şeyi anlatır."
+      },
+      "want": "Çocuğuna iyi gelecek",
+      "fear": "Kocasının borçlarının büyümesi",
+      "secret": "Gizlice para biriktiriyor",
+      "voice": "Dobra, sıcak",
+      "arcPotential": "Düğün hazırlığı bölümleri; sır sızması"
+    },
+    {
+      "id": "kerem",
+      "name": "Kerem",
+      "age": 27,
+      "tier": "CORE",
+      "home": "D9",
+      "role": "DJ (TERAS 7)",
+      "color": "#5AA05A",
+      "signature": "Hoparlör, boynunda kulaklık",
+      "backstory": "Müzik okulunu yarıda bıraktı; üç yıldır TERAS 7'de DJ. Parayı bulunca stüdyo hayali. Gündüz uyur, gece sahnede.",
+      "traits": {
+        "virtues": [
+          "Rahat",
+          "Yaratıcı",
+          "Cömert kalpli"
+        ],
+        "flaws": [
+          "Sorumsuz",
+          "Geç kalır",
+          "Borca batık"
+        ],
+        "quirks": [
+          "Sabahları kulaklıkla yürür",
+          "Kulağıyla ritim tutar",
+          "Her şeye 'tamamdır' der"
+        ],
+        "catchphrase": "Ritim hallolur."
+      },
+      "want": "Sahne ve stüdyo",
+      "fear": "Parasızlık",
+      "secret": "Kira borcu var",
+      "voice": "Rahat, sempatik",
+      "arcPotential": "Pelin ile ilişki; Nil ile iş-gerilim; Hacer ile gürültü"
+    },
+    {
+      "id": "nil",
+      "name": "Nil Hanım",
+      "age": 38,
+      "tier": "CORE",
+      "home": "teras7",
+      "role": "TERAS 7 sahibi (gece kulübü)",
+      "color": "#9B59B6",
+      "signature": "Mor eşarp, yüksek topuk",
+      "backstory": "Konservatuvarda opera okudu; 8 yıl yurtdışında şarkıcılık yaptı. Mahalleye dönüp Pasaj Han'ın çatısında TERAS 7'yi kurdu. Kabul görmek ister, gürültüyü hâlâ görmezden gelir.",
+      "traits": {
+        "virtues": [
+          "Vizyoner",
+          "Cömert bahşiş",
+          "Cesur"
+        ],
+        "flaws": [
+          "Baskın",
+          "Gürültüye kayıtsız",
+          "Gururlu"
+        ],
+        "quirks": [
+          "Her gece aynı renk eşarp",
+          "Mikrofonda ses kontrolü yapar",
+          "Aksan değiştirir"
+        ],
+        "catchphrase": "Gece benim, gündüz sizin."
+      },
+      "want": "Mahallede kabul görmek",
+      "fear": "Kulübün batması",
+      "secret": "Çatıyı resmî izin olmadan kiralamış",
+      "voice": "Zarif, hafif aksanlı, keskin",
+      "arcPotential": "Hacer ile gürültü savaşı → barış; festival yayı"
+    },
+    {
+      "id": "cemal",
+      "name": "Cemal Bey",
+      "age": 58,
+      "tier": "CORE",
+      "home": "D5",
+      "role": "Apartman yöneticisi",
+      "color": "#3F5F8A",
+      "signature": "Defter, kalem, kasa anahtarı",
+      "backstory": "Eski belediye memuru; apartman yöneticiliği ona emeklilik gibi geldi. Kasayı titizlikle tutar; son iki yılda hesaplarda boşluklar var.",
+      "traits": {
+        "virtues": [
+          "Düzenli",
+          "Resmî",
+          "Kararlı"
+        ],
+        "flaws": [
+          "Buyurgan",
+          "Saygı takıntısı",
+          "Hesap sorulmasından korkar"
+        ],
+        "quirks": [
+          "Her şeyi deftere yazar",
+          "Cümleye 'efendim' ile başlar",
+          "Kravat takarak çöp çıkarır"
+        ],
+        "catchphrase": "Usulüne uygun efendim."
+      },
+      "want": "Düzen ve saygı",
+      "fear": "Hesap sorulması",
+      "secret": "Aidat kasasından 'ödünç' almış olabilir",
+      "voice": "Resmî, buyurgan",
+      "arcPotential": "Sezon gizemi şüphelisi"
+    },
+    {
+      "id": "suleyman",
+      "name": "Süleyman Abi",
+      "age": 62,
+      "tier": "CORE",
+      "home": "ZK",
+      "role": "Kapıcı (Yıldız Apartmanı)",
+      "color": "#7A6A52",
+      "signature": "Anahtar halkası, süpürge",
+      "backstory": "30 yıldır apartman kapıcısı. Çocukları büyüttü, eşini kaybetti. Binanın her sırrını bilir ama tutmaz. Maaşı aylardır gecikiyor.",
+      "traits": {
+        "virtues": [
+          "Bilge",
+          "Yardımsever",
+          "Gözlemci"
+        ],
+        "flaws": [
+          "Sır tutamaz",
+          "Hafif şikâyetçi",
+          "Gurur"
+        ],
+        "quirks": [
+          "Süpürgeyle düşünür",
+          "Herkesin ayak sesini tanır",
+          "Radyoda eski şarkılar"
+        ],
+        "catchphrase": "Ben bir şey demedim ama..."
+      },
+      "want": "Maaşını zamanında almak",
+      "fear": "İşten çıkarılmak",
+      "secret": "Bodrumdan kasaya bakmış",
+      "voice": "Mahalleli, sıcak",
+      "arcPotential": "Sezon gizemi şüphelisi"
+    },
+    {
+      "id": "recep",
+      "name": "Bekçi Recep",
+      "age": 50,
+      "tier": "CORE",
+      "home": "durak",
+      "role": "Mahalle bekçisi",
+      "color": "#34495E",
+      "signature": "Düdük, not defteri, fener",
+      "backstory": "Yıllardır mahalle bekçisi; geceleri herkesin uyumasını bekler. Ağır işi ciddiye alır, ama çay ocağında rahatlar.",
+      "traits": {
+        "virtues": [
+          "Sorumlu",
+          "Babacan",
+          "Sadık"
+        ],
+        "flaws": [
+          "Aşırı ciddi",
+          "Bilgi sızdırır",
+          "Uykusuz"
+        ],
+        "quirks": [
+          "Düdüğü ritimle çalar",
+          "Her şeyi deftere yazar",
+          "Çocuklara fener ışığıyla hikâye anlatır"
+        ],
+        "catchphrase": "Her şey kayıtta."
+      },
+      "want": "Huzurlu mahalle",
+      "fear": "İhmal edilmek",
+      "secret": "Gece vardiyasında bazen ışığı söndürüp uyuyor",
+      "voice": "Sakin, resmî",
+      "arcPotential": "Gece olayları; TERAS 7 şikâyetleri"
+    },
+    {
+      "id": "efe",
+      "name": "Efe",
+      "age": 9,
+      "tier": "CORE",
+      "home": "D3",
+      "role": "İlkokul öğrencisi",
+      "color": "#6FB08E",
+      "signature": "Sırt çantası, el feneri",
+      "backstory": "Merdiven dedektifi. Rıza Amca'nın denizci hikâyelerini dinler. Karnesi iyi ama sınıfta dalgın.",
+      "traits": {
+        "virtues": [
+          "Meraklı",
+          "Cesur",
+          "Dürüst"
+        ],
+        "flaws": [
+          "Her şeye karışır",
+          "Sır saklayamaz",
+          "Kolay korkar"
+        ],
+        "quirks": [
+          "Mahalleyi defterine çizer",
+          "Her gizemde fener açar",
+          "Paşa'yla konuşur"
+        ],
+        "catchphrase": "Ben gördüm!"
+      },
+      "want": "Bir sır çözmek",
+      "fear": "Karne",
+      "secret": "Merdiven boşluğunda bir şey görmüş",
+      "voice": "Meraklı çocuk",
+      "arcPotential": "Mahalle dedektifi yayları"
+    },
+    {
+      "id": "selin",
+      "name": "Selin",
+      "age": 29,
+      "tier": "REGULAR",
+      "home": "D2",
+      "role": "Grafik tasarımcı (uzaktan)",
+      "color": "#E0897A",
+      "signature": "Laptop, bitki",
+      "backstory": "Yeni evli; kiradan kurtulma hayali. Eşinin işine güveniyor.",
+      "traits": {
+        "virtues": [
+          "Çalışkan",
+          "Esprili"
+        ],
+        "flaws": [
+          "Kaygılı",
+          "Dolaylı konuşur"
+        ],
+        "quirks": [
+          "Mahalleyi çizim defterine çizer"
+        ],
+        "catchphrase": "Birazdan bitiyor."
+      },
+      "want": "Kendi hayatını kurmak",
+      "fear": "Borç ve yalan",
+      "secret": "Eşinin işten çıkarıldığını bilmiyor",
+      "voice": "Hızlı, esprili"
+    },
+    {
+      "id": "emre",
+      "name": "Emre",
+      "age": 31,
+      "tier": "REGULAR",
+      "home": "D2",
+      "role": "'Şirkette' çalışıyor (işsiz)",
+      "color": "#5E7C9A",
+      "signature": "Takım elbise, boş çanta",
+      "backstory": "3 aydır işsiz; her sabah takım elbiseyle çıkıp parkta oturuyor. Selin'i üzmemek istiyor.",
+      "traits": {
+        "virtues": [
+          "Kibar",
+          "Sevecen"
+        ],
+        "flaws": [
+          "Kaçamak",
+          "Gururlu"
+        ],
+        "quirks": [
+          "Çantasında hiç belge yok"
+        ],
+        "catchphrase": "İş çıkışı konuşuruz."
+      },
+      "want": "Selin'i üzmemek",
+      "fear": "Başarısız görünmek",
+      "secret": "İşsiz, Selin'e söyleyemiyor",
+      "voice": "Kibar, kaçamak"
+    },
+    {
+      "id": "baris",
+      "name": "Barış",
+      "age": 34,
+      "tier": "REGULAR",
+      "home": "D4",
+      "role": "Freelance, evden çalışıyor",
+      "color": "#4A5568",
+      "signature": "Çift ekran, koli yığını",
+      "backstory": "İkinci el koleksiyon ürün satıyor; kargo yoğunluğu buradan. Mahalleyle az konuşur.",
+      "traits": {
+        "virtues": [
+          "Zeki",
+          "Yardımsever (gizlice)"
+        ],
+        "flaws": [
+          "Kapalı",
+          "Güvensiz"
+        ],
+        "quirks": [
+          "Perde hep kapalı"
+        ],
+        "catchphrase": "Kargo gelmiş."
+      },
+      "want": "Kimse karışmasın",
+      "fear": "Tanınmak",
+      "secret": "Gece kargo hareketi var",
+      "voice": "Az konuşan, kuru espri"
+    },
+    {
+      "id": "guler",
+      "name": "Güler Hanım",
+      "age": 55,
+      "tier": "REGULAR",
+      "home": "D5",
+      "role": "Ev hanımı, börekçi",
+      "color": "#B0627A",
+      "signature": "Dantel örtü, börek tepsisi",
+      "backstory": "Cemal Bey'in eşi; apartmanın tatlı yüzü. Börek tepsisi komşu diplomasisi.",
+      "traits": {
+        "virtues": [
+          "Tatlı",
+          "Yönlendirici",
+          "Cömert"
+        ],
+        "flaws": [
+          "Gizli biriktirici",
+          "Pasif-agresif"
+        ],
+        "quirks": [
+          "Her kriz öncesi börek yapar"
+        ],
+        "catchphrase": "Bir börek yer misin?"
+      },
+      "want": "Huzur",
+      "fear": "Cemal'in saygı kaybı",
+      "secret": "Kasa anahtarının ikincisi onda",
+      "voice": "Tatlı, yönlendirici"
+    },
+    {
+      "id": "dilara",
+      "name": "Dilara",
+      "age": 26,
+      "tier": "REGULAR",
+      "home": "D6",
+      "role": "Hemşire (gece vardiyası)",
+      "color": "#6AA6A8",
+      "signature": "Termos, önlük",
+      "backstory": "Gündüz uyur, gece hastanede. Hatice Abla'yla eski meslek sohbeti.",
+      "traits": {
+        "virtues": [
+          "Merhametli",
+          "Net"
+        ],
+        "flaws": [
+          "Yorgun",
+          "Çabuk bunalır"
+        ],
+        "quirks": [
+          "Termosundan çay içerek uyur"
+        ],
+        "catchphrase": "Beş dakika sessizlik lütfen."
+      },
+      "want": "Uyumak",
+      "fear": "Kimsenin onu ciddiye almaması",
+      "secret": "Gece dönüşte merdivende birini görüyor",
+      "voice": "Yorgun, net"
+    },
+    {
+      "id": "pelin",
+      "name": "Pelin",
+      "age": 22,
+      "tier": "REGULAR",
+      "home": "D6",
+      "role": "Öğrenci",
+      "color": "#D6A0C0",
+      "signature": "Kulaklık, kitap yığını",
+      "backstory": "Üniversite öğrencisi, Dilara'nın ev arkadaşı. Kerem'e gizli ilgisi.",
+      "traits": {
+        "virtues": [
+          "Neşeli",
+          "Cesur"
+        ],
+        "flaws": [
+          "Dağınık",
+          "Dikkatsiz"
+        ],
+        "quirks": [
+          "Çaydanlığı unutur"
+        ],
+        "catchphrase": "Hemen geliyorum!"
+      },
+      "want": "Bağımsız olmak",
+      "fear": "Dilara'yı kaybetmek",
+      "secret": "Kerem'e ilgisi",
+      "voice": "Neşeli"
+    },
+    {
+      "id": "riza",
+      "name": "Rıza Amca",
+      "age": 76,
+      "tier": "REGULAR",
+      "home": "D7",
+      "role": "Emekli denizci",
+      "color": "#7A8F6A",
+      "signature": "Gemi maketi, radyo",
+      "backstory": "40 yıl gemilerde; oğlu yıllar önce kayboldu/bağı kesildi. Yazıp göndermediği mektuplar var.",
+      "traits": {
+        "virtues": [
+          "Şiirsel",
+          "Yumuşak"
+        ],
+        "flaws": [
+          "Kapanık",
+          "Eski tutkular"
+        ],
+        "quirks": [
+          "Efe'ye denizci hikâyeleri anlatır"
+        ],
+        "catchphrase": "Deniz herkesi bir gün bulur."
+      },
+      "want": "Oğlundan haber",
+      "fear": "Unutulmak",
+      "secret": "Yazılmış ama gönderilmemiş mektuplar",
+      "voice": "Yavaş, şiirsel"
+    },
+    {
+      "id": "aylin",
+      "name": "Aylin",
+      "age": 39,
+      "tier": "REGULAR",
+      "home": "D8",
+      "role": "Avukat",
+      "color": "#8A5A7A",
+      "signature": "Dosya çantası, kırmızı topuklu",
+      "backstory": "Boşanmış anne. İşi ağır, kızıyla arası zayıf.",
+      "traits": {
+        "virtues": [
+          "Net",
+          "Çalışkan"
+        ],
+        "flaws": [
+          "Yorgun",
+          "Kontrolcü"
+        ],
+        "quirks": [
+          "Telefonu elinden bırakmaz"
+        ],
+        "catchphrase": "İtiraz ediyorum."
+      },
+      "want": "Kızıyla bağ",
+      "fear": "Yetersiz anne olmak",
+      "secret": "Aidat davası için çıkar çatışması",
+      "voice": "Net, keskin"
+    },
+    {
+      "id": "defne",
+      "name": "Defne",
+      "age": 15,
+      "tier": "REGULAR",
+      "home": "D8",
+      "role": "Lise öğrencisi",
+      "color": "#E0B34A",
+      "signature": "Kulaklık, telefon",
+      "backstory": "Aylin'in kızı. Gizlice hastanede gönüllü.",
+      "traits": {
+        "virtues": [
+          "Merhametli",
+          "Zeki"
+        ],
+        "flaws": [
+          "Asi",
+          "Gizli"
+        ],
+        "quirks": [
+          "Kulaklığı hep boynunda"
+        ],
+        "catchphrase": "Ay anne hadi ama."
+      },
+      "want": "Özgürlük",
+      "fear": "Anneye yalan söylemek",
+      "secret": "Hastanede gönüllü",
+      "voice": "İronik"
+    },
+    {
+      "id": "ceren",
+      "name": "Ceren",
+      "age": 25,
+      "tier": "REGULAR",
+      "home": "D9",
+      "role": "İçerik üreticisi",
+      "color": "#C45A5A",
+      "signature": "Halka ışık, telefon",
+      "backstory": "Gündem takipçisi; apartmanı çekimlerine karıştırır.",
+      "traits": {
+        "virtues": [
+          "Enerjik",
+          "Meraklı"
+        ],
+        "flaws": [
+          "Gizliliğe saygısız",
+          "Gündem düşkünü"
+        ],
+        "quirks": [
+          "Her şeyi 'içerik' görür"
+        ],
+        "catchphrase": "Bu içerik olur!"
+      },
+      "want": "Takipçi",
+      "fear": "Gündem dışı kalmak",
+      "secret": "Apartmanı gizlice çekiyor",
+      "voice": "Hızlı, gündem dilli"
+    },
+    {
+      "id": "mert",
+      "name": "Mert",
+      "age": 19,
+      "tier": "REGULAR",
+      "home": "doner",
+      "role": "Dönerci çırağı",
+      "color": "#E67E22",
+      "signature": "Kulaklık, önlük",
+      "backstory": "Liseyi bıraktı, Ferhat Usta'nın yanında çalışıyor. Kerem'e hayran, DJ olmak istiyor.",
+      "traits": {
+        "virtues": [
+          "Çalışkan",
+          "Meraklı"
+        ],
+        "flaws": [
+          "Acelecilik",
+          "Kolay etkilenir"
+        ],
+        "quirks": [
+          "Dönerle ritim tutar"
+        ],
+        "catchphrase": "Usta, bir şey söyleyeceğim."
+      },
+      "want": "DJ olmak",
+      "fear": "Ferhat'ı hayal kırıklığına uğratmak",
+      "secret": "Geceleri gizlice TERAS 7 kapısında çalışıyor",
+      "voice": "Heyecanlı"
+    },
+    {
+      "id": "bulent",
+      "name": "Bülent",
+      "age": 24,
+      "tier": "REGULAR",
+      "home": "bakkal",
+      "role": "Bakkal yardımcısı (Nuri'nin yeğeni)",
+      "color": "#2ECC71",
+      "signature": "Telefon, kolisiz not defteri",
+      "backstory": "İşletme mezunu, işsiz kalınca amcasının yanına geçti. Bakkalı dijitalleştirmek istiyor.",
+      "traits": {
+        "virtues": [
+          "Yenilikçi",
+          "Çalışkan"
+        ],
+        "flaws": [
+          "Sabırsız",
+          "Amcayı dinlemez"
+        ],
+        "quirks": [
+          "Bakkalı Instagram'da tanıtmaya çalışır"
+        ],
+        "catchphrase": "Amca, bu çağda..."
+      },
+      "want": "Bakkalı dijitalleştirmek",
+      "fear": "Amcasının sözünü kırmak",
+      "secret": "Online satış denemesi borç yarattı",
+      "voice": "Genç, hızlı"
+    },
+    {
+      "id": "koray",
+      "name": "Koray",
+      "age": 35,
+      "tier": "REGULAR",
+      "home": "teras7",
+      "role": "TERAS 7 güvenlik",
+      "color": "#2C3E50",
+      "signature": "Siyah ceket, kapıda çiçek",
+      "backstory": "Eski boksör. Kapıda duran, çiçek sulayan güvenlik. Sessiz öfkeyi yenmeyi öğrendi.",
+      "traits": {
+        "virtues": [
+          "Koruyucu",
+          "Sabırlı"
+        ],
+        "flaws": [
+          "Sessiz öfke",
+          "Kapalı"
+        ],
+        "quirks": [
+          "Teras'ta saksı yetiştirir"
+        ],
+        "catchphrase": "Sakin ol abi."
+      },
+      "want": "Sakin hayat",
+      "fear": "Geçmişin dönmesi",
+      "secret": "Eski boksör",
+      "voice": "Sakin, alçak"
+    },
+    {
+      "id": "pasa",
+      "name": "Paşa",
+      "age": null,
+      "tier": "CORE",
+      "home": "D1",
+      "role": "Hacer Hanım'ın kedisi",
+      "color": "#B08E6A",
+      "signature": "Her yere girer",
+      "backstory": "Apartmanın en eski sakini; mahallede her kapıyı bilir.",
+      "traits": {
+        "virtues": [
+          "Hayatta kalan"
+        ],
+        "flaws": [
+          "Bencil"
+        ],
+        "quirks": [
+          "Saat 07.10'da mama ister"
+        ],
+        "catchphrase": "(sessiz)"
+      },
+      "want": "Mama",
+      "fear": "Banyo",
+      "secret": "Merdiven boşluğundaki gizli patika",
+      "voice": "(sessiz)",
+      "species": "cat"
+    },
+    {
+      "id": "karabas",
+      "name": "Karabaş",
+      "age": null,
+      "tier": "REGULAR",
+      "home": "meydan",
+      "role": "Mahalle köpeği",
+      "color": "#555B66",
+      "signature": "Meydandaki çınar altı",
+      "backstory": "Mahallenin ortak köpeği; herkes mama bırakır, kimse sahiplenemez. Paşa ile tuhaf bir rekabet-dostluk.",
+      "traits": {
+        "virtues": [
+          "Sadık",
+          "Sosyal"
+        ],
+        "flaws": [
+          "Dedikoducu havlaması"
+        ],
+        "quirks": [
+          "Çay ocağının kapısında uyur"
+        ],
+        "catchphrase": "(sessiz)"
+      },
+      "want": "Meydan huzuru",
+      "fear": "Kış",
+      "secret": "Kimse bilmiyor ama geceleri Bekçi Recep'i izliyor",
+      "voice": "(sessiz)",
+      "species": "dog"
+    }
+  ]
 }

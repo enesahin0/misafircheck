@@ -1,15 +1,15 @@
 {
-  "version": 3,
-  "workingTitle": "KOMŞULAR",
-  "format": "Instagram Reels · günlük 60 sn · 3D maket (cutaway apartman) + anlatıcı sesi + altyazı",
-  "logline": "Bir apartmanın duvarını açıyoruz: 10 daire, 17 komşu, bitmeyen dedikodu. Her gün biri bir sır ya da kavga yaşıyor, kimin haklı olduğuna ve ne yapacaklarına SEN karar veriyorsun.",
+  "version": 4,
+  "workingTitle": "MAHALLE (çalışma adı)",
+  "format": "Instagram Reels · günlük 60 sn · izometrik low-poly mahalle diorama + anlatıcı sesi + altyazı",
+  "logline": "Çınar Mahallesi: bakkal, dönerci, çay ocağı, apartmanlar ve çatıda bir gece kulübü. Her gün mahallede garip, komik, bazen duygusal bir olay oluyor; bazen o günün gündemi mahalleye uğruyor. Kimin haklı olduğuna ve mahallenin ne yapacağına SEN karar veriyorsun.",
   "promise": [
-    "Her gün 60 saniyede biten küçük bir komşuluk dramı",
-    "Sonunda tek tuşluk bir seçim (A/B, kim haklı?)",
-    "Kararın ertesi gün apartmanı gerçekten değiştiriyor",
-    "Sezon boyunca çözülen büyük bir gizem: Kayıp Aidat Kasası"
+    "Her gün 60 saniyede biten bir mahalle olayı (kurmaca + bazen gündemden esinlenme)",
+    "Sonunda tek tuşluk seçim (kim haklı / ne yapsınlar / kim gelsin)",
+    "Kararlar kalıcı: ilişkiler sevgiye ya da nefrete kayar, mahalle değişir",
+    "Sezon boyunca yaylar: kayıp aidat kasası, çay ocağı satılık mı, gürültü savaşı..."
   ],
-  "audience": "Türkçe konuşan, dizi/dedikodu/'kim haklı' tartışmalarını seven geniş kitle; 18–45. Ses kapalı da izlenir (altyazı).",
+  "audience": "Türkçe konuşan, dizi/dedikodu/'kim haklı' sevenler; 18–45. Ses kapalı da izlenir (altyazı).",
   "tone": {
     "do": [
       "Sıcak ve ince mizahlı",
@@ -25,10 +25,16 @@
     ]
   },
   "visualIdentity": {
-    "core": "Gece. Cutaway bina: her dairenin penceresi sıcak amber yanar; bölümün dairesi parlak, diğerleri loş. Kapak karesi hep: bina kesiti + öne çıkan daire.",
-    "note": "KARAR (kullanıcı): low-poly izometrik. Palet NÜFUS_0 ile ortak (deepNight, slate, concrete, bone, amber); kırmızı yalnızca çatışma/sır anında. Piksel modu (--pixel) kodda durur ama kullanılmaz.",
+    "core": "İzometrik low-poly mahalle diorama; karakterler her çekimde okunur. Kapak karesi: mahalle genel çekimi + olayın geçtiği mekân vurgulu. Işık: sabah/öğle/akşam/gece (bkz. neighborhood.json).",
+    "note": "KARAR (kullanıcı): low-poly izometrik. Palet NÜFUS_0 ile aynı aile; gece/akşam ışığında amber pencereler, kırmızı yalnızca çatışma/sır anında. Piksel modu kodda durur ama kullanılmaz.",
     "characters": "Yüzsüz low-poly gövdeler; her karakter TEK baskın renk + bir imza nesne (kimliği silüetten okunur). Duygu: ses, jest, kamera ritmi."
   },
   "brandSafety": "Aile dostu. Marka ürünü asla kötü bir sonucun sebebi olmaz (bkz. monetization.json).",
-  "disclosure": "Profilde ve sabit içerikte: kurgusaldır, animasyonla üretilmiştir; gerçek kişi/kurum yoktur."
+  "disclosure": "Profilde ve sabit içerikte: kurgusaldır, animasyonla üretilmiştir; gerçek kişi/kurum yoktur.",
+  "pillars": [
+    "MAHALLE HAYATI: sabit mekânlar, sabit kadro, değişken ilişkiler",
+    "GÜNDEM: haberler mahalle ölçeğinde (gundem.json), hassas konular yok",
+    "MİSAFİR: tek bölümlük ve 3–5 bölümlük konuk karakterler",
+    "NADİR ANLAR: düğün, cenaze (çok nadir, saygılı), yeni taşınan, festival"
+  ]
 }

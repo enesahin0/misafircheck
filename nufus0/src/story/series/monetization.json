@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "stage": "BİRİKİM (şu an reklam yok)",
   "plan": [
     {
@@ -175,6 +175,121 @@
       "id": "mail-boxes",
       "where": "Zemin posta kutuları",
       "category": "posta/kargo"
+    },
+    {
+      "id": "bench-ad",
+      "where": "Meydan banklarının panosu",
+      "category": "yerel hizmet/emlak"
+    },
+    {
+      "id": "festival-banner",
+      "where": "Meydan festival afişi",
+      "category": "etkinlik/sponsor"
+    },
+    {
+      "id": "water-fountain",
+      "where": "Meydan çeşmesi",
+      "category": "su/içecek"
+    },
+    {
+      "id": "tea-brand",
+      "where": "Çay ocağı çay kutusu",
+      "category": "çay/içecek"
+    },
+    {
+      "id": "sugar",
+      "where": "Çay ocağı şekerliği",
+      "category": "gıda"
+    },
+    {
+      "id": "newspaper",
+      "where": "Çay ocağı gazetesi",
+      "category": "medya"
+    },
+    {
+      "id": "bread",
+      "where": "Bakkal/fırın ekmek",
+      "category": "gıda"
+    },
+    {
+      "id": "dairy",
+      "where": "Bakkal süt/peynir",
+      "category": "gıda"
+    },
+    {
+      "id": "restaurant",
+      "where": "Ferhat Usta dükkânı",
+      "category": "yemek/restoran"
+    },
+    {
+      "id": "drink-fridge",
+      "where": "Dönerci ayran dolabı",
+      "category": "içecek"
+    },
+    {
+      "id": "sauce",
+      "where": "Dönerci sosu",
+      "category": "gıda"
+    },
+    {
+      "id": "delivery-bag",
+      "where": "Dönerci motor çantası",
+      "category": "teslimat/yemek uygulaması"
+    },
+    {
+      "id": "hair-product",
+      "where": "Kuaför ürünleri",
+      "category": "kişisel bakım"
+    },
+    {
+      "id": "mirror-ad",
+      "where": "Kuaför ayna panosu",
+      "category": "kişisel bakım/hizmet"
+    },
+    {
+      "id": "magazine",
+      "where": "Kuaför dergisi",
+      "category": "medya"
+    },
+    {
+      "id": "business-sign",
+      "where": "Pasaj Han tabelası",
+      "category": "yerel hizmet"
+    },
+    {
+      "id": "sign-board",
+      "where": "Pasaj Han panosu",
+      "category": "yerel hizmet"
+    },
+    {
+      "id": "bar-drink",
+      "where": "TERAS 7 barı",
+      "category": "içecek"
+    },
+    {
+      "id": "light-rig",
+      "where": "TERAS 7 ışık sistemi",
+      "category": "elektronik/ses-ışık"
+    },
+    {
+      "id": "sports-gear",
+      "where": "Park spor aleti",
+      "category": "spor"
+    },
+    {
+      "id": "playground-ad",
+      "where": "Oyun alanı panosu",
+      "category": "çocuk/aile"
+    },
+    {
+      "id": "pastry",
+      "where": "Fırın poğaça",
+      "category": "gıda"
+    },
+    {
+      "id": "transit-ad",
+      "where": "Durak panosu",
+      "category": "ulaşım/telekom"
     }
   ],
   "rules": [
@@ -183,7 +298,9 @@
     "Reklam/iş birliği etiketi platformun ve ilgili mevzuatın gerektirdiği biçimde YAYIN ANINDA konur (güncel kural o zaman kontrol edilir).",
     "Sponsor, oyun sonucunu veya kimin haklı çıkacağını belirleyemez; oylama dürüst kalır.",
     "Yerleştirme hikâyeyi bozmaz: ürün dekorun doğal parçası; ekranda en fazla birkaç saniye net görünür.",
-    "Ürün yerleştirme için gerçek marka logosu 3D'de doğru lisansla kullanılır (marka onayı); o zamana kadar jenerik ambalaj."
+    "Ürün yerleştirme için gerçek marka logosu 3D'de doğru lisansla kullanılır (marka onayı); o zamana kadar jenerik ambalaj.",
+    "Mahalle esnafı (bakkal, dönerci, çay ocağı) ürün yerleştirme için en doğal alandır; mekân adı kurgusal kalır, gerçek marka ancak anlaşmayla ve lisanslı ambalajla girer.",
+    "Gündem bölümlerinde gerçek haber ve marka birleştirilmez (haber sponsorsuz kalır)."
   ],
   "audioLicenseGate": "Reklam öncesi: npm run audio:audit -- <bölüm> --commercial hata vermeden geçmeli (BBC sesleri değiştirilmeli)."
 }

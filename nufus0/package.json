@@ -24,7 +24,8 @@
     "audio:audit": "tsx scripts/audit-audio.ts",
     "library:fetch": "python3 scripts/acquire/fetch_library.py all",
     "postinstall": "tsx scripts/make-audio.ts",
-    "script:check": "tsx scripts/validate-script.ts"
+    "script:check": "tsx scripts/validate-script.ts",
+    "gundem": "tsx scripts/gundem.ts"
   },
   "dependencies": {
     "@fontsource/barlow-condensed": "5.3.0",

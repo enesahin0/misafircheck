@@ -9,6 +9,7 @@ export const seriesSchema = z.object({
   format: z.string(),
   logline: z.string(),
   promise: z.array(z.string()).min(3),
+  pillars: z.array(z.string()).min(3),
   audience: z.string(),
   tone: z.object({ do: z.array(z.string()), dont: z.array(z.string()) }),
   visualIdentity: z.object({ core: z.string(), note: z.string(), characters: z.string() }),
@@ -42,19 +43,80 @@ export const buildingSchema = z.object({
 export const charactersSchema = z.object({
   version: z.number(),
   note: z.string(),
+  tiers: z.record(z.string()),
+  guardrails: z.array(z.string()),
   characters: z.array(
     z.object({
-      id: z.string(), name: z.string(), age: z.number().nullable(), flat: z.string(), role: z.string(), color: hex,
-      signature: z.string(), want: z.string(), fear: z.string(), secret: z.string(), voice: z.string(), pet: z.string().optional(),
+      id: z.string(), name: z.string(), age: z.number().nullable(), tier: z.enum(["CORE", "REGULAR"]), home: z.string(), role: z.string(), color: hex,
+      signature: z.string(), backstory: z.string(),
+      traits: z.object({ virtues: z.array(z.string()).min(1), flaws: z.array(z.string()).min(1), quirks: z.array(z.string()).min(1), catchphrase: z.string() }),
+      want: z.string(), fear: z.string(), secret: z.string(), voice: z.string(), arcPotential: z.string().optional(), species: z.enum(["cat", "dog"]).optional(),
     }),
   ),
-  guest: z.string(),
 });
 
 export const relationshipsSchema = z.object({
   version: z.number(),
+  scale: z.record(z.string()),
   note: z.string(),
-  edges: z.array(z.object({ a: z.string(), b: z.string(), type: z.string(), tension: z.number().int().min(0).max(5), about: z.string() })),
+  edges: z.array(z.object({ from: z.string(), to: z.string(), affinity: z.number().int().min(-5).max(5), trust: z.number().int().min(0).max(5), since: z.string(), why: z.string(), volatility: z.enum(["düşük", "orta", "yüksek"]), flashpoints: z.array(z.string()) })),
+  history: z.array(z.any()),
+});
+
+export const neighborhoodSchema = z.object({
+  version: z.number(),
+  id: z.string(),
+  name: z.string(),
+  note: z.string(),
+  scale: z.string(),
+  streets: z.array(z.object({ id: z.string(), name: z.string(), axis: z.string(), role: z.string() })),
+  grid: z.object({ cols: z.number().int(), rows: z.number().int(), cellSize: z.string() }),
+  venues: z.array(
+    z.object({
+      id: z.string(), name: z.string(), type: z.enum(["public", "venue", "residential", "commercial"]), cell: z.tuple([z.number().int(), z.number().int()]), floors: z.number().int(),
+      owner: z.string().optional(), staff: z.array(z.string()).default([]), ref: z.string().optional(), elevation: z.string().optional(),
+      description: z.string(), eventAffordances: z.array(z.string()).min(1), placementSlots: z.array(z.string()), props: z.array(z.string()),
+    }),
+  ),
+  cameraGuidelines: z.object({ principle: z.string(), wide: z.string(), medium: z.string(), close: z.string(), establishing: z.string(), lighting: z.array(z.string()), lightingNote: z.string() }),
+  calendar: z.object({ weekly: z.record(z.string()), rhythm: z.string() }),
+});
+
+export const eventCatalogSchema = z.object({
+  version: z.number(),
+  note: z.string(),
+  types: z.array(
+    z.object({
+      id: z.string(), name: z.string(), per30: z.number(), tone: z.string(), examples: z.array(z.string()).min(2), places: z.array(z.string()).min(1),
+      decisionStyle: z.string(), rarity: z.string().optional(), rules: z.array(z.string()).optional(), policy: z.string().optional(),
+    }),
+  ),
+  rules: z.record(z.string()),
+});
+
+export const arcsSchema = z.object({
+  version: z.number(),
+  note: z.string(),
+  guestSystem: z.object({
+    tiers: z.array(z.object({ id: z.string(), name: z.string(), rule: z.string() })),
+    profileCard: z.array(z.string()),
+    examples: z.array(z.object({ id: z.string(), name: z.string(), tier: z.string(), hook: z.string(), arc: z.string() })),
+  }),
+  arcs: z.array(z.object({ id: z.string(), name: z.string(), kind: z.enum(["TEK", "KISA", "SEZONLUK"]), episodes: z.string(), where: z.array(z.string()), chars: z.array(z.string()), summary: z.string(), status: z.enum(["PLANNED", "ACTIVE", "DONE"]) })),
+});
+
+export const gundemSchema = z.object({
+  version: z.number(),
+  purpose: z.string(),
+  principles: z.array(z.string()).min(3),
+  allow: z.record(z.string()),
+  maybe: z.record(z.string()),
+  block: z.array(z.string()).min(5),
+  method: z.array(z.object({ step: z.number(), name: z.string(), how: z.string() })).min(5),
+  adaptationExamples: z.array(z.object({ news: z.string(), neighborhood: z.string(), type: z.string(), places: z.array(z.string()), decision: z.string() })).min(5),
+  disclosure: z.string(),
+  sources: z.array(z.object({ id: z.string(), name: z.string(), feed: z.string() })),
+  notes: z.string(),
 });
 
 export const seasonArcSchema = z.object({
@@ -116,7 +178,7 @@ export const episodeSeedsSchema = z.object({
   note: z.string(),
   seeds: z.array(
     z.object({
-      id: z.string(), title: z.string(), suggestedOrder: z.number().int(), chars: z.array(z.string()), flats: z.array(z.string()),
+      id: z.string(), title: z.string(), suggestedOrder: z.number().int(), chars: z.array(z.string()), flats: z.array(z.string()), places: z.array(z.string()), eventType: z.string(),
       hook: z.string(), hookPattern: z.string(), conflict: z.string(), evidenceObject: z.string(),
       decision: z.object({ question: z.string(), A: option, B: option }),
       cliffhanger: z.string(), placementSlot: z.string().nullable(), clue: z.string().nullable(),

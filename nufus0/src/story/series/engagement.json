@@ -1,23 +1,98 @@
 {
-  "version": 3,
+  "version": 4,
   "goal": "Yorum, paylaşım, kaydetme ve takip için AYRI sebepler: karar (yorum), ipucu avı (kaydetme), 'komşunu etiketle' (paylaşım), cliffhanger (takip).",
   "loops": [
-    { "id": "KIM_HAKLI", "syntax": "A  veya  B", "for": "yorum", "what": "Günlük ana karar: kim haklı / ne yapsın. Çoğunluk ertesi bölümü belirler.", "rule": "Kullanıcı başına ilk geçerli oy. Eşitlikte ilk geçerli oyu veren taraf. Hiç oy yoksa 'Apartman karar veremedi; Cemal Bey kararı verdi' (uydurma katılım yok)." },
-    { "id": "SORGU", "syntax": "SORGU: isim", "for": "yorum + oyun", "what": "Sezon gizemi için 'bu hafta kimi sorgulayalım?' en çok yazılan şüpheli sorgulanır.", "rule": "Yalnız suspects listesindeki id'ler. Oylar dürüstçe gösterilir." },
-    { "id": "KIRACI", "syntax": "KİRACI: profil", "for": "sahiplenme + paylaşım", "what": "D10'a kim taşınsın: 3 profil kartından biri (A/B/C) ya da izleyici önerisi (takma ad, izinle).", "rule": "Gerçek kişi/kurum yok. İzinle, takma adla; küfür/kişisel veri yok." },
-    { "id": "DEDIKODU", "syntax": "DEDİKODU: ...", "for": "yorum + içerik", "what": "İzleyici 'komşular arasında şu olsa' diye yazar; uygun öneriler bölüm tohumu olur.", "rule": "Gerçek hayattan kişisel hikâye birebir kullanılmaz; kurgusallaştırılır, izin istenir." },
-    { "id": "DONGU", "syntax": "A / B / C", "for": "yorum", "what": "60 SANİYE ÖNCE: bu döngüde neyi değiştirelim?", "rule": "Tek değişken, tek tuş." },
-    { "id": "IZ", "syntax": "(yorumda 'buldum')", "for": "kaydetme + tekrar izleme", "what": "Her bölümde 1 arka plan ipucu (clueLedger). İzleyici ipucunu bulup yorumlar.", "rule": "İpucu veri modelinde sabit; yanlışlıkla değişmez." }
+    {
+      "id": "KIM_HAKLI",
+      "syntax": "A  veya  B",
+      "for": "yorum",
+      "what": "Günlük ana karar: kim haklı / ne yapsın. Çoğunluk ertesi bölümü belirler.",
+      "rule": "Kullanıcı başına ilk geçerli oy. Eşitlikte ilk geçerli oyu veren taraf. Hiç oy yoksa 'Apartman karar veremedi; Cemal Bey kararı verdi' (uydurma katılım yok)."
+    },
+    {
+      "id": "SORGU",
+      "syntax": "SORGU: isim",
+      "for": "yorum + oyun",
+      "what": "Sezon gizemi için 'bu hafta kimi sorgulayalım?' en çok yazılan şüpheli sorgulanır.",
+      "rule": "Yalnız suspects listesindeki id'ler. Oylar dürüstçe gösterilir."
+    },
+    {
+      "id": "KIRACI",
+      "syntax": "KİRACI: profil",
+      "for": "sahiplenme + paylaşım",
+      "what": "D10'a kim taşınsın: 3 profil kartından biri (A/B/C) ya da izleyici önerisi (takma ad, izinle).",
+      "rule": "Gerçek kişi/kurum yok. İzinle, takma adla; küfür/kişisel veri yok."
+    },
+    {
+      "id": "DEDIKODU",
+      "syntax": "DEDİKODU: ...",
+      "for": "yorum + içerik",
+      "what": "İzleyici 'komşular arasında şu olsa' diye yazar; uygun öneriler bölüm tohumu olur.",
+      "rule": "Gerçek hayattan kişisel hikâye birebir kullanılmaz; kurgusallaştırılır, izin istenir."
+    },
+    {
+      "id": "DONGU",
+      "syntax": "A / B / C",
+      "for": "yorum",
+      "what": "60 SANİYE ÖNCE: bu döngüde neyi değiştirelim?",
+      "rule": "Tek değişken, tek tuş."
+    },
+    {
+      "id": "IZ",
+      "syntax": "(yorumda 'buldum')",
+      "for": "kaydetme + tekrar izleme",
+      "what": "Her bölümde 1 arka plan ipucu (clueLedger). İzleyici ipucunu bulup yorumlar.",
+      "rule": "İpucu veri modelinde sabit; yanlışlıkla değişmez."
+    },
+    {
+      "id": "OLAY",
+      "syntax": "OLAY: ...",
+      "for": "yorum + içerik",
+      "what": "'Mahalleye bugün ne olsun?' — izleyici olay önerir (kişisel hikâye kurgusallaştırılarak, izinle).",
+      "rule": "Gerçek kişi/işletme yok; uygun öneriler eventCatalog'a girer."
+    },
+    {
+      "id": "MISAFIR",
+      "syntax": "A / B / C",
+      "for": "sahiplenme + paylaşım",
+      "what": "Mahalleye gelecek konuk karakterin profilini izleyici seçer; kalıcı olma kararı da oylanır.",
+      "rule": "Profil kartı arcs.json guestSystem şablonunu izler."
+    },
+    {
+      "id": "BAROMETRE",
+      "syntax": "(haftalık story)",
+      "for": "takip + tekrar izleme",
+      "what": "Mahalle Barometresi: seçili iki karakterin sevgi/nefret ölçeği haftalık güncellenir ('Hacer–Nil: −3 → −2').",
+      "rule": "Değerler relationships.json'dan; oylar gerçek sonucu yansıtır."
+    }
   ],
-  "shareHooks": ["Komşunu etiketle: sende de böyle biri var mı?", "Sen olsan ne yapardın? Arkadaşına sor: o da aynı mı seçerdi?", "Bu ipucunu kaç saniyede buldun?"],
+  "shareHooks": [
+    "Komşunu etiketle: sende de böyle biri var mı?",
+    "Sen olsan ne yapardın? Arkadaşına sor: o da aynı mı seçerdi?",
+    "Bu ipucunu kaç saniyede buldun?"
+  ],
   "ctaTemplates": [
     "Kim haklı? A ya da B yaz. Çoğunluğun kararı yarın 20.00'de.",
     "Bu hafta kimi sorgulayalım? SORGU: Cemal / SORGU: Barış...",
     "D10'a kim taşınsın? A, B ya da C.",
-    "Bu apartmanda başına gelen tuhaf bir komşuluk olayı var mı? DEDİKODU: yaz."
+    "Bu apartmanda başına gelen tuhaf bir komşuluk olayı var mı? DEDİKODU: yaz.",
+    "Mahalleye bugün ne olsun? OLAY: yaz.",
+    "Mahalleye kim taşınsın? A, B ya da C.",
+    "Bu iki komşunun arası düzelir mi? Yarın barometrede göreceğiz."
   ],
-  "cadence": { "daily": "her gün 20:00 (Europe/Istanbul)", "weekly": "cumartesi 20:00: 60 SANİYE ÖNCE", "voteCloses": "ertesi gün 14:00", "note": "Kapanış saati önceden duyurulur; sonradan değişmez." },
+  "cadence": {
+    "daily": "her gün 20:00 (Europe/Istanbul)",
+    "weekly": "cumartesi 20:00: 60 SANİYE ÖNCE · çarşamba: pazar günü olayı · cuma: TERAS 7 gecesi (isteğe bağlı)",
+    "voteCloses": "ertesi gün 14:00",
+    "note": "Kapanış saati önceden duyurulur; sonradan değişmez."
+  },
   "pinnedComment": "Her bölümde sabit yorum: kuralı tek satırda yaz (örn. 'A: Hacer haklı · B: Kerem haklı. Yarın 14:00'te kapanır.'). İlk saat yorumlara cevap ver.",
-  "metricsToTrack": ["İzlenme süresi / tamamlama", "İlk 3 sn tutma ve atlama", "Kaydetme, paylaşım, yorum", "Hangi hook kalıbı ve hangi çatışma türü daha çok yorum aldı", "Takipçi artışı (bölüm bazında)"],
+  "metricsToTrack": [
+    "İzlenme süresi / tamamlama",
+    "İlk 3 sn tutma ve atlama",
+    "Kaydetme, paylaşım, yorum",
+    "Hangi hook kalıbı ve hangi çatışma türü daha çok yorum aldı",
+    "Takipçi artışı (bölüm bazında)"
+  ],
   "honesty": "Gerçek veri gelmeden sayım uydurulmaz. Fail seçimi oylamaya bağlıysa bu açıkça söylenir."
 }

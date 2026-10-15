@@ -1,0 +1,169 @@
+{
+  "version": 4,
+  "note": "Yaylar: tek bölüm / kısa (3–5) / sezonluk. Aynı anda ≤3 aktif yay. Her yayın giriş-orta-sonuç vuruşları ve karar noktaları olur; izleyici kararları yönü etkiler ama yazar korkulukları korunur.",
+  "guestSystem": {
+    "tiers": [
+      {
+        "id": "TEK_BOLUM",
+        "name": "Tek bölüm konuk",
+        "rule": "Bir bölümde görünür; kalıcı olmaz. Kayıt kartı tutulur (tekrar gelirse tutarlı)."
+      },
+      {
+        "id": "KISA_YAY",
+        "name": "3–5 bölümlük konuk",
+        "rule": "Bir yay boyunca kalır, sonra gider veya REGULAR olur."
+      },
+      {
+        "id": "KALICI",
+        "name": "Kalıcı olma adayı",
+        "rule": "MİSAFİR oylamasıyla (A/B/C: kalsın / gitsin / yan karakter) karar verilir; izleyici kararı dürüstçe uygulanır."
+      }
+    ],
+    "profileCard": [
+      "id",
+      "ad",
+      "yaş",
+      "meslek",
+      "renk+imza",
+      "kim/nereden",
+      "neden mahalleye geldi",
+      "gizli niyeti/sırrı",
+      "kimlerle nasıl bağ kurar",
+      "kalma ölçütü"
+    ],
+    "examples": [
+      {
+        "id": "g-ressam",
+        "name": "Gezgin ressam Lale",
+        "tier": "KISA_YAY",
+        "hook": "Meydandaki çınarın resmini yapıyor. Neden o ağaç?",
+        "arc": "Çınar ve mahalle tarihi; Rıza Amca ile bağ"
+      },
+      {
+        "id": "g-emlak",
+        "name": "Emlakçı Orhan",
+        "tier": "KISA_YAY",
+        "hook": "Ocağın tapusuna gizemli bir teklif",
+        "arc": "Çay ocağı satılık yayı"
+      },
+      {
+        "id": "g-yeni-kiraci",
+        "name": "Yeni kiracı (profilini izleyici seçer)",
+        "tier": "KALICI",
+        "hook": "Gül Apartmanı'na bir koli geldi, kimsenin görmediği biri",
+        "arc": "MİSAFİR döngüsü"
+      }
+    ]
+  },
+  "arcs": [
+    {
+      "id": "ARC_KASA",
+      "name": "Kayıp Aidat Kasası",
+      "kind": "SEZONLUK",
+      "episodes": "5–19",
+      "where": [
+        "yildiz-apt"
+      ],
+      "chars": [
+        "cemal",
+        "guler",
+        "suleyman",
+        "baris",
+        "emre",
+        "kerem",
+        "kemal"
+      ],
+      "summary": "Yıldız Apartmanı kasası kayboldu; 7 şüpheli, 12 ipucu (clueLedger.json), 19. bölümde kilit; adil oyun kuralı geçerli.",
+      "status": "PLANNED"
+    },
+    {
+      "id": "ARC_OCAK",
+      "name": "Çay Ocağı Satılık mı?",
+      "kind": "KISA",
+      "episodes": "3–5",
+      "where": [
+        "cay-ocagi",
+        "meydan"
+      ],
+      "chars": [
+        "hatice",
+        "hacer",
+        "nuri",
+        "g-emlak"
+      ],
+      "summary": "Ocağın tapusu borç yüzünden teminatta; bir emlakçı teklif getirir. Mahalle toplanır: ocağı kurtarma yolları (A/B/C).",
+      "status": "PLANNED"
+    },
+    {
+      "id": "ARC_TERAS",
+      "name": "Gürültü Savaşı → Çınar Şenliği",
+      "kind": "KISA",
+      "episodes": "4–5",
+      "where": [
+        "teras7",
+        "yildiz-apt",
+        "meydan"
+      ],
+      "chars": [
+        "hacer",
+        "nil",
+        "kerem",
+        "recep",
+        "nermin"
+      ],
+      "summary": "Hacer ile Nil'in savaşı festival hazırlığında ortak payda arar; Hacer'in sürprizi Nil'in şarkısı.",
+      "status": "PLANNED"
+    },
+    {
+      "id": "ARC_YENI",
+      "name": "Yeni Gelen",
+      "kind": "KISA",
+      "episodes": "3–4",
+      "where": [
+        "gul-apt",
+        "durak",
+        "cay-ocagi"
+      ],
+      "chars": [
+        "MISAFIR"
+      ],
+      "summary": "MİSAFİR döngüsünde seçilen profil mahalleye gelir; sorgu, kabul, kalma kararı.",
+      "status": "PLANNED"
+    },
+    {
+      "id": "ARC_ASK",
+      "name": "Pelin–Kerem",
+      "kind": "KISA",
+      "episodes": "3–5",
+      "where": [
+        "teras7",
+        "yildiz-apt"
+      ],
+      "chars": [
+        "pelin",
+        "kerem",
+        "ceren",
+        "nil"
+      ],
+      "summary": "Sevgi-nefret üçgeni; Ceren ve Pelin arasında kalan Kerem. (Yetişkinler arası; romantik şiddet/zehirli ilişki işlenmez.)",
+      "status": "PLANNED"
+    },
+    {
+      "id": "ARC_BAKKAL",
+      "name": "Bakkal ve Dijital",
+      "kind": "KISA",
+      "episodes": "3",
+      "where": [
+        "bakkal"
+      ],
+      "chars": [
+        "nuri",
+        "bulent",
+        "ferhat",
+        "ceren"
+      ],
+      "summary": "Bülent bakkalı internete taşıyor; Nuri'nin sert direnişi; Ferhat'ın rakip hamlesi.",
+      "status": "PLANNED"
+    }
+  ]
+}

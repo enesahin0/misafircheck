@@ -1,0 +1,208 @@
+{
+  "version": 4,
+  "note": "Her gün bir olay. Olay türü + mekân + karakterler + ton koruması. Sıklıklar 30 bölümlük pencere içindir (hedef dağılım, katı kural değil).",
+  "types": [
+    {
+      "id": "GUNDELIK_KOMIK",
+      "name": "Gündelik komik",
+      "per30": 8,
+      "tone": "hafif, sıcak",
+      "examples": [
+        "Bakkal kedisi bütün yumurtaları devirdi: kim ödeyecek?",
+        "Ferhat Usta tarifini yanlış yazdırdı, kuyruk uzadı",
+        "Çaycı Hatice'nin semaveri 'hastalandı': mahalle çay krizi"
+      ],
+      "places": [
+        "bakkal",
+        "doner",
+        "cay-ocagi",
+        "meydan"
+      ],
+      "decisionStyle": "Kim haklı? / Ne yapsınlar?"
+    },
+    {
+      "id": "MAHALLE_GERILIMI",
+      "name": "Mahalle gerilimi",
+      "per30": 4,
+      "tone": "gerilim + mizah",
+      "examples": [
+        "TERAS 7 gürültü saati: Hacer vs Nil",
+        "Nuri-Ferhat zam savaşı",
+        "Park bankı kimin?"
+      ],
+      "places": [
+        "teras7",
+        "yildiz-apt",
+        "meydan"
+      ],
+      "decisionStyle": "Taraf seç"
+    },
+    {
+      "id": "GUNDEM",
+      "name": "Gündem uyarlaması",
+      "per30": 6,
+      "tone": "mahalle ölçeğinde, hafif hiciv",
+      "examples": [
+        "(Spor maçı) → çay ocağında ortak ekran, bahis yok sadece çay",
+        "(Hava rekoru) → buzlu çay krizi",
+        "(Yeni telefon/teknoloji) → Bülent bakkalı dijitalleştirmeye çalışır"
+      ],
+      "places": [
+        "cay-ocagi",
+        "meydan",
+        "bakkal"
+      ],
+      "decisionStyle": "Mahalle ne yapsın?",
+      "policy": "gundem.json"
+    },
+    {
+      "id": "DEDIKODU",
+      "name": "Dedikodu zinciri",
+      "per30": 2,
+      "tone": "komik, yanlış anlaşılma",
+      "examples": [
+        "Bir söz çay ocağından kuaföre giderken büyüyor",
+        "Kim kimi gördü?"
+      ],
+      "places": [
+        "cay-ocagi",
+        "kuafor",
+        "bakkal"
+      ],
+      "decisionStyle": "Söylenti doğru mu?"
+    },
+    {
+      "id": "FESTIVAL",
+      "name": "Festival / kutlama",
+      "per30": 2,
+      "tone": "neşeli, kalabalık",
+      "examples": [
+        "Çınar Şenliği: yemek yarışması, mini konser TERAS 7'de",
+        "Semt pazarı özel günü",
+        "Mahalle maçı"
+      ],
+      "places": [
+        "meydan",
+        "teras7"
+      ],
+      "decisionStyle": "Hangi yarışmayı kazansın?"
+    },
+    {
+      "id": "YENI_GELEN",
+      "name": "Yeni taşınan / yeni çalışan",
+      "per30": 2,
+      "tone": "merak",
+      "examples": [
+        "Gül Apartmanı'na yeni bir kiracı: mahalle sorguda",
+        "Çaycıya yeni çırak",
+        "Dönerciye yeni rakip dükkân hayali"
+      ],
+      "places": [
+        "gul-apt",
+        "durak",
+        "cay-ocagi"
+      ],
+      "decisionStyle": "Mahalle onu kabul etsin mi? (MİSAFİR döngüsü)"
+    },
+    {
+      "id": "DUYGUSAL",
+      "name": "Duygusal bölüm",
+      "per30": 2,
+      "tone": "sıcak, hüzünlü olmayan",
+      "examples": [
+        "Rıza Amca'nın mektubu",
+        "Hacer'in eski öğrencisi ziyarete geldi"
+      ],
+      "places": [
+        "yildiz-apt",
+        "park"
+      ],
+      "decisionStyle": "Ne yapsın?"
+    },
+    {
+      "id": "MISTERI",
+      "name": "Mini gizem",
+      "per30": 3,
+      "tone": "merak",
+      "examples": [
+        "Sabah her gün biri saksıyı düşürüyor",
+        "Gece çatıdan gelen ses"
+      ],
+      "places": [
+        "yildiz-apt",
+        "pasaj-han",
+        "teras7"
+      ],
+      "decisionStyle": "Kim yaptı?"
+    },
+    {
+      "id": "NADIR_DUGUN",
+      "name": "Düğün (NADİR)",
+      "per30": 0.5,
+      "rarity": "~40 bölümde 1",
+      "tone": "neşeli, kalabalık, saygılı",
+      "examples": [
+        "Mahalle düğünü: Pelin'in ablası? (yeni konuk karakter)",
+        "Gelin saçı Nermin'in salonunda yetişmeye çalışıyor; konvoy meydandan geçerken Ferhat Usta herkese ikram çıkarıyor"
+      ],
+      "places": [
+        "meydan",
+        "kuafor",
+        "teras7"
+      ],
+      "rules": [
+        "Dini ritüel gösterilmez",
+        "Gelin-damat konuk veya REGULAR; romantik dram abartısı yok"
+      ],
+      "decisionStyle": "Düğün nasıl olsun?"
+    },
+    {
+      "id": "NADIR_YAS",
+      "name": "Cenaze / yas (ÇOK NADİR)",
+      "per30": 0.2,
+      "rarity": "~60 bölümde 1",
+      "tone": "saygılı, sakin, dramatik değil",
+      "examples": [
+        "Mahalle bir komşusunu uğurluyor: karakter ölüm gösterilmez; mahallenin dayanışması",
+        "Çay ocağında bir sandalye boş bırakılır; herkes sırayla bir anı anlatır (ölüm sahnesi gösterilmez)"
+      ],
+      "places": [
+        "meydan",
+        "cay-ocagi"
+      ],
+      "rules": [
+        "Ölüm sahnesi YOK, cenaze töreninin dini ritüel ayrıntıları gösterilmez",
+        "Karakter ancak uzun yaydan sonra, oyla değil yazarın kararıyla",
+        "Oylama bu bölümde 'nasıl anarız?' gibi saygılı bir seçimdir, A/B yarışması değil",
+        "Marka yerleştirme yapılmaz"
+      ],
+      "decisionStyle": "Nasıl analım?"
+    },
+    {
+      "id": "AFET_BENZERI",
+      "name": "Mahalle çapında kriz (küçük)",
+      "per30": 1,
+      "tone": "komik-gerilim",
+      "examples": [
+        "Elektrik kesintisi: bütün mahalle çay ocağında",
+        "Su kesintisi, bakkalın su şişesi satışı",
+        "İlk kar: Kemal'in taksisi"
+      ],
+      "places": [
+        "meydan",
+        "cay-ocagi"
+      ],
+      "rules": [
+        "Gerçek afet/felaket temalı değil, gündelik kesinti ölçeğinde",
+        "Yaralanma/ölüm yok"
+      ],
+      "decisionStyle": "Kriz nasıl çözülsün?"
+    }
+  ],
+  "rules": {
+    "dailyMix": "Haftada ≥2 mekân çeşitliliği; ardışık 2 bölüm aynı mekânda geçmez (yaylar hariç).",
+    "freshness": "Aynı olay türü art arda 2 kez gelmez.",
+    "arcDensity": "Aynı anda en çok 3 aktif yay.",
+    "rarity": "Düğün ve cenaze önceden planlanır, oylama gerektirmeyen saygılı kısmı yazarda kalır."
+  }
+}

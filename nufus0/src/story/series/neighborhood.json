@@ -1,0 +1,420 @@
+{
+  "version": 4,
+  "id": "CINAR_MAHALLESI",
+  "name": "Çınar Mahallesi",
+  "note": "Kurgusal mahalle. Gerçek ilçe/mahalle/adres/işletme adı yok. Meydandaki yaşlı çınar ağacı mahallenin simgesidir.",
+  "scale": "Küçük mahalle: ~6×4 blok. Kamera karakterleri okunur tutar (bkz. cameraGuidelines).",
+  "streets": [
+    {
+      "id": "cinar-sk",
+      "name": "Çınar Sokak",
+      "axis": "doğu-batı",
+      "role": "Ana sokak: bakkal, meydan, dönerci, kuaför"
+    },
+    {
+      "id": "gul-sk",
+      "name": "Gül Sokak",
+      "axis": "kuzey-güney",
+      "role": "Apartmanlar ve Pasaj Han"
+    },
+    {
+      "id": "firin-sk",
+      "name": "Fırın Sokağı",
+      "axis": "doğu-batı",
+      "role": "Arka sokak: park, Gül Apartmanı, dolmuş durağı"
+    }
+  ],
+  "grid": {
+    "cols": 6,
+    "rows": 4,
+    "cellSize": "1 blok ≈ 12 birim (mevcut 3D dünya ölçeği)"
+  },
+  "venues": [
+    {
+      "id": "meydan",
+      "name": "Çınar Meydanı",
+      "type": "public",
+      "cell": [
+        2,
+        1
+      ],
+      "floors": 0,
+      "description": "Yaşlı çınar, çeşme, banklar. Semt pazarı (çarşamba) ve festivaller burada.",
+      "eventAffordances": [
+        "festival",
+        "pazar günü",
+        "maç ekranı akşamı",
+        "düğün konvoyu geçişi",
+        "toplu dedikodu",
+        "yeni taşınanın ilk günü"
+      ],
+      "placementSlots": [
+        "bench-ad",
+        "festival-banner",
+        "water-fountain"
+      ],
+      "props": [
+        "çınar",
+        "çeşme",
+        "bank",
+        "afiş panosu"
+      ],
+      "staff": [
+        "karabas"
+      ]
+    },
+    {
+      "id": "cay-ocagi",
+      "name": "Çay Ocağı",
+      "type": "venue",
+      "cell": [
+        2,
+        1
+      ],
+      "floors": 1,
+      "owner": "hatice",
+      "description": "Meydanın köşesinde küçük ocak: semaver, plastik taburelere dizili masalar. Mahallenin haber ajansı.",
+      "eventAffordances": [
+        "dedikodu zinciri",
+        "kavga/barışma",
+        "maç izleme",
+        "hava durumu muhabbeti",
+        "yeni gelene sorgu",
+        "gizli buluşma"
+      ],
+      "placementSlots": [
+        "tea-set",
+        "tea-brand",
+        "sugar",
+        "newspaper"
+      ],
+      "props": [
+        "semaver",
+        "tabureler",
+        "gazete"
+      ],
+      "staff": []
+    },
+    {
+      "id": "bakkal",
+      "name": "Nuri'nin Bakkalı",
+      "type": "venue",
+      "cell": [
+        1,
+        1
+      ],
+      "floors": 1,
+      "owner": "nuri",
+      "description": "Veresiye defteri, tezgâhta radyo, kapıda ekmek kasası. Her şeyin hesabı burada tutulur.",
+      "eventAffordances": [
+        "veresiye kavgası",
+        "zam tartışması",
+        "kayıp kedi ilanı",
+        "bakkal kedisi hırsızlığı",
+        "gece geç alışveriş"
+      ],
+      "placementSlots": [
+        "grocery-bag",
+        "snacks",
+        "bread",
+        "cleaning-product",
+        "dairy"
+      ],
+      "props": [
+        "tezgâh",
+        "raf",
+        "defter",
+        "radyo",
+        "ekmek kasası"
+      ],
+      "staff": [
+        "bulent"
+      ]
+    },
+    {
+      "id": "doner",
+      "name": "Ferhat Usta Döner",
+      "type": "venue",
+      "cell": [
+        3,
+        1
+      ],
+      "floors": 1,
+      "owner": "ferhat",
+      "description": "Dönüş mili, sac, ayran buzdolabı; akşamları kuyruk. Rakip yok: mahallede tek dönerci.",
+      "eventAffordances": [
+        "kuyruk kavgası",
+        "yeni çırak",
+        "gizli tarif",
+        "yemek yarışması",
+        "mahalle maçı sonrası"
+      ],
+      "placementSlots": [
+        "restaurant",
+        "drink-fridge",
+        "sauce",
+        "delivery-bag"
+      ],
+      "props": [
+        "döner mili",
+        "ayran dolabı",
+        "tezgâh",
+        "motor"
+      ],
+      "staff": [
+        "mert"
+      ]
+    },
+    {
+      "id": "kuafor",
+      "name": "Nermin Güzellik",
+      "type": "venue",
+      "cell": [
+        3,
+        2
+      ],
+      "floors": 1,
+      "owner": "nermin",
+      "description": "Üç koltuklu kuaför: sır deposu. Gelin saçından cenaze hazırlığına kadar herkes uğrar.",
+      "eventAffordances": [
+        "düğün hazırlığı",
+        "sır sızması",
+        "makyaj/gösteri",
+        "yeni stil tartışması"
+      ],
+      "placementSlots": [
+        "hair-product",
+        "mirror-ad",
+        "magazine"
+      ],
+      "props": [
+        "koltuk",
+        "ayna",
+        "kurutma başlığı"
+      ],
+      "staff": []
+    },
+    {
+      "id": "yildiz-apt",
+      "name": "Yıldız Apartmanı",
+      "type": "residential",
+      "cell": [
+        1,
+        0
+      ],
+      "floors": 6,
+      "ref": "building.json",
+      "description": "5 katlı klasik apartman (cutaway detayı building.json'da). Hacer, Cemal, Kerem ve diğerleri burada.",
+      "eventAffordances": [
+        "komşu kavgası",
+        "aidat toplantısı",
+        "asansör tartışması",
+        "balkon olayı",
+        "kapıcı hikâyeleri"
+      ],
+      "placementSlots": [
+        "notice-board",
+        "balcony-planter",
+        "mail-boxes"
+      ],
+      "props": [
+        "balkonlar",
+        "posta kutuları",
+        "çamaşır ipleri"
+      ],
+      "staff": []
+    },
+    {
+      "id": "gul-apt",
+      "name": "Gül Apartmanı",
+      "type": "residential",
+      "cell": [
+        4,
+        3
+      ],
+      "floors": 4,
+      "description": "Daha küçük, öğrenci ve genç kiracı apartmanı. Yeni taşınanlar çoğunlukla burada.",
+      "eventAffordances": [
+        "yeni taşınan",
+        "ev arkadaşı kavgası",
+        "taşınma günü",
+        "kira meselesi"
+      ],
+      "placementSlots": [
+        "moving-boxes",
+        "furniture",
+        "real-estate"
+      ],
+      "props": [
+        "koli",
+        "kiralık ilanı"
+      ],
+      "staff": []
+    },
+    {
+      "id": "pasaj-han",
+      "name": "Pasaj Han",
+      "type": "commercial",
+      "cell": [
+        4,
+        0
+      ],
+      "floors": 4,
+      "description": "Eski iş hanı: terzi, bir noter ofisi, depolar. Çatısında TERAS 7. Merdivenleri dar, asansörü bozuk.",
+      "eventAffordances": [
+        "gürültü şikâyeti",
+        "ofis sırrı",
+        "terzi ilanı",
+        "çatıya çıkış"
+      ],
+      "placementSlots": [
+        "business-sign",
+        "sign-board"
+      ],
+      "props": [
+        "pano",
+        "dar merdiven"
+      ],
+      "staff": []
+    },
+    {
+      "id": "teras7",
+      "name": "TERAS 7",
+      "type": "venue",
+      "cell": [
+        4,
+        0
+      ],
+      "floors": 1,
+      "elevation": "Pasaj Han çatısı",
+      "owner": "nil",
+      "description": "Çatı katında gece kulübü: ışık zincirleri, küçük DJ kabini, bar. Mahalleden yüksek: tüm meydanı görür. Sınırlı kapasite.",
+      "eventAffordances": [
+        "gece partisi",
+        "gürültü savaşı",
+        "gizli buluşma",
+        "konser/festival afterparty",
+        "yarışma gecesi",
+        "bir sırrın yukarıdan görülmesi"
+      ],
+      "placementSlots": [
+        "bar-drink",
+        "speaker",
+        "light-rig",
+        "energy-drink"
+      ],
+      "props": [
+        "bar",
+        "DJ masası",
+        "ışık zinciri",
+        "kanepe"
+      ],
+      "staff": [
+        "koray",
+        "kerem"
+      ]
+    },
+    {
+      "id": "park",
+      "name": "Çınar Parkı & Oyun Alanı",
+      "type": "public",
+      "cell": [
+        0,
+        3
+      ],
+      "floors": 0,
+      "description": "Salıncak, kum havuzu, iki satranç masası. Emekliler ve çocuklar.",
+      "eventAffordances": [
+        "satranç turnuvası",
+        "çocuk oyunu",
+        "köpek-kedi olayı",
+        "açık hava sinemasından ilk deneme"
+      ],
+      "placementSlots": [
+        "sports-gear",
+        "playground-ad"
+      ],
+      "props": [
+        "salıncak",
+        "satranç masası"
+      ],
+      "staff": []
+    },
+    {
+      "id": "firin",
+      "name": "Sönmez Fırın",
+      "type": "venue",
+      "cell": [
+        5,
+        1
+      ],
+      "floors": 1,
+      "description": "Sabah 05.00'te yanan tek ışık; simit, poğaça, ekmek. İsteğe bağlı mekân.",
+      "eventAffordances": [
+        "sabah rutini",
+        "kayıp tepsi",
+        "ilk ışık"
+      ],
+      "placementSlots": [
+        "bread",
+        "pastry"
+      ],
+      "props": [
+        "fırın tezgâhı",
+        "tepsiler"
+      ],
+      "staff": []
+    },
+    {
+      "id": "durak",
+      "name": "Dolmuş Durağı & Bekçi Kulübesi",
+      "type": "public",
+      "cell": [
+        5,
+        3
+      ],
+      "floors": 0,
+      "description": "Küçük durak; yanında bekçi kulübesi. Kemal'in taksisi ve dolmuşlar burada bekler.",
+      "eventAffordances": [
+        "yolcu hikâyesi",
+        "kayıp eşya",
+        "bekçi nöbeti",
+        "yeni gelen ilk burada iner"
+      ],
+      "placementSlots": [
+        "taxi-brand",
+        "transit-ad"
+      ],
+      "props": [
+        "durak",
+        "kulübe"
+      ],
+      "staff": [
+        "recep",
+        "kemal"
+      ]
+    }
+  ],
+  "cameraGuidelines": {
+    "principle": "Mahalle 'yakın' diorama: karakterler her çekimde okunur (silüet + renk + imza nesne).",
+    "wide": "Meydan + 2 komşu mekân: karakter boyu ≥ 70 px (kamera zoom ≈ 40–48).",
+    "medium": "Tek mekân + önündeki sahne: karakter boyu ≥ 140 px (zoom ≈ 70–90).",
+    "close": "Yüz yok; el, nesne, ekran, tepki: zoom ≥ 120.",
+    "establishing": "Her bölümün ilk karesi: o günün mekânı parlayan ışıkla; kapak karesi hep mahalle genel çekimi + olay yeri vurgusu.",
+    "lighting": [
+      "sabah",
+      "öğle",
+      "akşam (mavi saat)",
+      "gece"
+    ],
+    "lightingNote": "Önceki gece paleti 'gece/akşam' ışığında kalır; gündüz sahneleri (pazar, festival) için ışık ön ayarı ayrıca yazılacak (palet aynı aile)."
+  },
+  "calendar": {
+    "weekly": {
+      "çarşamba": "Semt pazarı (meydan)",
+      "cumartesi": "60 SANİYE ÖNCE (haftalık özel)",
+      "cuma": "TERAS 7 gecesi"
+    },
+    "rhythm": "Gün içinde mekân akışı: 05.00 fırın → 07.00 çay ocağı → 09.00 bakkal/kuaför → 12.00 döner → akşam meydan → gece TERAS 7."
+  }
+}
