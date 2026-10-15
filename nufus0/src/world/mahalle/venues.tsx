@@ -3,15 +3,15 @@
 import React from "react";
 import { basic, mat } from "../materials";
 import { BaseBox, Box, Cone, Cyl, Emissive, Glow, Shadow, V3 } from "../primitives";
-import { Antenna, Bench, BladeSign, Block, Crate, Facade, MCar, MLamp, MTree, RoundTable, Sign, Stool, StringLights, WallText, WaterTank, useLight } from "./kit";
+import { Antenna, Awning, Bench, BladeSign, Block, Crate, Cypress, Facade, Fence, HipRoof, MCar, MLamp, MTree, Pot, RoundTable, Sign, Stool, StringLights, WallText, WaterTank, useLight } from "./kit";
 import { M } from "./palette";
 import { rand } from "../../utils/deterministic";
 
 type VP = { frame: number };
 
 /* ------------------------------------------------------------------ açık dükkân kabuğu */
-const Shell: React.FC<{ w: number; d: number; h: number; wall: string; floor: string; trim?: string; low?: number; door?: number; doorAt?: number; children?: React.ReactNode }> = ({
-  w, d, h, wall, floor, trim = M.white, low = 1.05, door = 2.2, doorAt = 0, children,
+const Shell: React.FC<{ w: number; d: number; h: number; wall: string; floor: string; trim?: string; low?: number; door?: number; doorAt?: number; roof?: number; awning?: [string, string]; children?: React.ReactNode }> = ({
+  w, d, h, wall, floor, trim = M.white, low = 1.05, door = 2.2, doorAt = 0, roof = 0, awning, children,
 }) => {
   const { light } = useLight();
   const left = (w - door) / 2 + doorAt;
@@ -31,6 +31,18 @@ const Shell: React.FC<{ w: number; d: number; h: number; wall: string; floor: st
       {/* köşe sütunları */}
       <BaseBox size={[0.3, h * 0.55, 0.3]} pos={[w / 2 - 0.15, 0.12, d / 2 - 0.15]} color={trim} />
       {light.lamps > 0.05 && <Glow pos={[0, 0.3, 0]} size={Math.max(w, d) * 1.5} color={M.warm} opacity={0.38 * light.lamps} />}
+      {/* kapı yanı saksıları */}
+      <Pot pos={[doorAt - door / 2 - 0.55, 0.12, d / 2 + 0.55]} flower={M.rose} />
+      <Pot pos={[doorAt + door / 2 + 0.55, 0.12, d / 2 + 0.55]} flower={M.yellow} scale={0.9} />
+      {/* arka kiremit çatı (iç görünür kalır: yalnızca arka duvarın üstü) */}
+      {roof > 0 && (
+        <group>
+          <BaseBox size={[w + 0.5, 0.22, roof]} pos={[0, h + 0.12, -d / 2 + roof / 2 - 0.2]} color={M.roofTile} />
+          <BaseBox size={[w + 0.5, 0.18, 0.3]} pos={[0, h + 0.34, -d / 2 + roof - 0.3]} color={M.terracotta} />
+          <BaseBox size={[0.55, 1.2, 0.55]} pos={[-w / 2 + 1.0, h + 0.3, -d / 2 + 0.7]} color={M.brickDark} />
+        </group>
+      )}
+      {awning && <Awning pos={[doorAt, 2.55, d / 2 + 0.05]} w={door + 0.9} depth={1.1} c1={awning[0]} c2={awning[1]} />}
       {children}
     </group>
   );
@@ -57,7 +69,7 @@ const Counter: React.FC<{ pos: V3; w: number; d?: number; top?: string; body?: s
 /* ------------------------------------------------------------------ BAKKAL */
 export const Bakkal: React.FC<VP> = () => (
   <group>
-    <Shell w={8} d={6} h={3.4} wall={M.mint} floor={M.paveDark} trim={M.cream}>
+    <Shell w={8} d={6} h={3.4} wall={M.mint} floor={M.paveDark} trim={M.cream} awning={[M.green, M.white]}>
       <Shelf pos={[-2.9, 0.12, -2.55]} seed={1} />
       <Shelf pos={[-1.0, 0.12, -2.55]} seed={2} />
       <Shelf pos={[0.9, 0.12, -2.55]} seed={3} />
@@ -82,7 +94,7 @@ export const CayOcagi: React.FC<VP> = ({ frame }) => {
   const steam = 0.5 + 0.5 * Math.sin(frame / 7);
   return (
     <group>
-      <Shell w={4.6} d={3.4} h={3.0} wall={M.sky} floor={M.paveDark} trim={M.white} low={1.1} door={1.6}>
+      <Shell w={4.6} d={3.4} h={3.0} wall={M.sky} floor={M.paveDark} trim={M.white} low={1.1} door={1.6} roof={1.3} awning={[M.blue, M.white]}>
         <Counter pos={[0.4, 0.12, -0.3]} w={3.0} d={0.7} top={M.white} body={M.blue} />
         <Cyl r={0.28} h={0.7} pos={[-0.6, 1.07, -0.3]} color={M.grey} seg={8} />
         <Cone r={0.3} h={0.28} pos={[-0.6, 1.77, -0.3]} color={M.greyDark} seg={8} />
@@ -113,10 +125,10 @@ export const Doner: React.FC<VP> = ({ frame }) => {
   const glow = 0.55 + 0.45 * Math.sin(frame / 5) ** 2;
   return (
     <group>
-      <Shell w={8} d={6} h={3.4} wall={M.brick} floor={M.paveDark} trim={M.cream}>
+      <Shell w={8} d={6} h={3.4} wall={M.brick} floor={M.paveDark} trim={M.cream} roof={1.9} awning={[M.red, M.white]}>
         <Counter pos={[0.8, 0.12, 0.3]} w={4.6} d={0.8} top={M.white} body={M.brickDark} />
         {/* döner mili */}
-        <group position={[1.6, 0.12, -1.9]}>
+        <group position={[-0.4, 0.12, -2.0]}>
           <BaseBox size={[1.5, 1.6, 0.8]} pos={[0, 0, 0]} color={M.greyDark} />
           <group position={[0, 1.7, 0]} rotation={[0, spin, 0]}>
             <Cone r={0.55} h={1.15} pos={[0, 0, 0]} color={M.terracotta} seg={7} />
@@ -153,7 +165,7 @@ export const Doner: React.FC<VP> = ({ frame }) => {
 /* ------------------------------------------------------------------ KUAFÖR */
 export const Kuafor: React.FC<VP> = ({ frame }) => (
   <group>
-    <Shell w={7} d={6} h={3.4} wall={M.lilac} floor={M.paveDark} trim={M.white}>
+    <Shell w={7} d={6} h={3.4} wall={M.lilac} floor={M.paveDark} trim={M.white} awning={[M.lilac, M.white]}>
       {[-2.2, 0.4, 3.0].map((x, i) => (
         <group key={i}>
           <BaseBox size={[1.4, 1.8, 0.1]} pos={[x - 0.2, 0.9, -2.8]} color={M.sky} />
@@ -197,7 +209,7 @@ export const Firin: React.FC<VP> = ({ frame }) => {
   const smoke = (frame % 90) / 90;
   return (
     <group>
-      <Shell w={7} d={6} h={3.4} wall={M.terracotta} floor={M.paveDark} trim={M.cream}>
+      <Shell w={7} d={6} h={3.4} wall={M.terracotta} floor={M.paveDark} trim={M.cream} roof={2.0} awning={[M.mustard, M.white]}>
         <BaseBox size={[2.4, 1.8, 1.2]} pos={[-1.8, 0.12, -2.1]} color={M.ink} />
         <Emissive size={[1.6, 0.8, 0.06]} pos={[-1.8, 1.1, -1.5]} color={M.orange} />
         <Counter pos={[1.6, 0.12, 0.2]} w={3.0} d={0.8} top={M.cream} body={M.woodDark} />
@@ -266,6 +278,9 @@ export const YildizApt: React.FC<VP> = () => {
       <WaterTank pos={[-2.4, floors * 3 + 0.35, -1.8]} />
       <Antenna pos={[2.2, floors * 3 + 0.35, -2.2]} />
       <BaseBox size={[1.8, 1.6, 1.8]} pos={[1.6, floors * 3 + 0.35, 1.2]} color={M.cream} />
+      {[-0.9, 0.9].map((x) => (
+        <Box key={x} size={[1.5, 0.08, 1.0]} pos={[x - 0.2, floors * 3 + 1.0, 2.2]} rot={[-0.5, 0, 0]} color={M.navy} />
+      ))}
     </group>
   );
 };
@@ -459,7 +474,7 @@ export const Meydan: React.FC<VP & { market?: boolean }> = ({ frame, market }) =
             <icosahedronGeometry args={[r, 0]} />
           </mesh>
         ))}
-        <Shadow pos={[0, 0, 0]} size={[6.5, 6.5]} opacity={0.2} />
+        <Shadow pos={[0, 0, 0]} size={[4.4, 4.4]} opacity={0.2} />
       </group>
       {/* çeşme */}
       <group position={[1.2, 0, 2.6]}>
@@ -500,8 +515,40 @@ export const Meydan: React.FC<VP & { market?: boolean }> = ({ frame, market }) =
 };
 
 /* ------------------------------------------------------------------ DOLGU BLOKLARI */
-const FILL_COLORS: Record<string, string> = { cream: M.cream, lilac: M.lilac, mint: M.mint, sky: M.sky, mustard: M.mustard, rose: M.rose };
-export const FillerBlock: React.FC<{ type: "block" | "garden" | "parking" | "grove"; floors?: number; color?: string; seed: number }> = ({ type, floors = 3, color = "cream", seed }) => {
+const FILL_COLORS: Record<string, string> = { cream: M.cream, lilac: M.lilac, mint: "#B9D8A8", sky: M.sky, mustard: M.mustard, rose: M.rose };
+
+const House: React.FC<{ seed: number; color: string }> = ({ seed, color }) => {
+  const w = 6.2, d = 5.4, floors = 2, fh = 2.7, h = floors * fh;
+  const wall = FILL_COLORS[color] ?? M.cream;
+  return (
+    <group>
+      <BaseBox size={[10, 0.05, 10]} pos={[0, 0, 0]} color={M.grass} />
+      <group position={[-0.6, 0, -1.6]}>
+        <BaseBox size={[w + 0.2, 0.4, d + 0.2]} pos={[0, 0, 0]} color={M.cream} />
+        <BaseBox size={[w, h, d]} pos={[0, 0.4, 0]} color={wall} />
+        <group position={[0, 0.4, 0]}>
+          <Facade w={w} d={d} floors={floors} floorH={fh} face="z" seed={seed} cols={2} winW={0.9} winH={1.2} skipGround frameColor={M.white} />
+          <Facade w={w} d={d} floors={floors} floorH={fh} face="x" seed={seed + 1} cols={2} winW={0.9} winH={1.2} frameColor={M.white} />
+        </group>
+        <BaseBox size={[1.0, 1.9, 0.12]} pos={[-1.3, 0.4, d / 2 + 0.02]} color={M.woodDark} />
+        <BaseBox size={[1.6, 0.14, 0.9]} pos={[-1.3, 2.4, d / 2 + 0.4]} color={M.roofTile} />
+        <Box size={[0.9, 0.08, 0.5]} pos={[1.6, 1.3, d / 2 + 0.3]} color={M.white} />
+        <HipRoof pos={[0, h + 0.4, 0]} w={w} d={d} h={2.3} color={rand(seed, 3) > 0.5 ? M.roofTile : M.terracotta} />
+        <BaseBox size={[0.6, 1.4, 0.6]} pos={[1.4, h + 0.9, -0.8]} color={M.brickDark} />
+      </group>
+      <Fence from={[-4.6, 0.05, 4.6]} to={[4.6, 0.05, 4.6]} />
+      <Fence from={[4.6, 0.05, 4.6]} to={[4.6, 0.05, -2.0]} />
+      <Cypress pos={[3.8, 0.05, -3.8]} seed={seed} />
+      <Cypress pos={[-4.0, 0.05, 3.0]} seed={seed + 1} scale={0.9} />
+      <MTree pos={[3.6, 0.05, 2.6]} seed={seed + 2} scale={0.85} tone={1} />
+      <Pot pos={[-3.2, 0.05, 3.7]} flower={M.red} />
+      <Pot pos={[0.6, 0.05, 3.9]} flower={M.yellow} />
+    </group>
+  );
+};
+
+export const FillerBlock: React.FC<{ type: "block" | "house" | "garden" | "veg" | "parking" | "grove"; floors?: number; color?: string; seed: number }> = ({ type, floors = 3, color = "cream", seed }) => {
+  if (type === "house") return <House seed={seed} color={color} />;
   if (type === "block") {
     const w = 7.5, d = 7;
     const col = FILL_COLORS[color] ?? M.cream;
@@ -511,8 +558,11 @@ export const FillerBlock: React.FC<{ type: "block" | "garden" | "parking" | "gro
         <Facade w={w} d={d} floors={floors} face="z" seed={seed} cols={3} frameColor={M.white} />
         <Facade w={w} d={d} floors={floors} face="x" seed={seed + 1} cols={3} frameColor={M.white} />
         <BaseBox size={[1.4, 2.2, 0.1]} pos={[1.2, 0, d / 2 + 0.02]} color={M.woodDark} />
-        {rand(seed, 3) > 0.4 && <WaterTank pos={[-1.8, floors * 3 + 0.35, -1.5]} />}
-        {rand(seed, 4) > 0.4 && <Antenna pos={[2.0, floors * 3 + 0.35, -1.8]} />}
+        {[-1.6, 0, 1.6].map((x, i) => (
+          <Box key={i} size={[1.3, 0.1, 0.5]} pos={[x, floors * 3 + 0.5, d / 2 - 0.4]} color={M.grey} />
+        ))}
+        <WaterTank pos={[-1.8, floors * 3 + 0.35, -1.5]} />
+        <Antenna pos={[2.0, floors * 3 + 0.35, -1.8]} />
       </group>
     );
   }
@@ -523,8 +573,33 @@ export const FillerBlock: React.FC<{ type: "block" | "garden" | "parking" | "gro
         <BaseBox size={[1.2, 0.07, 9.4]} pos={[0.6, 0, 0]} color={M.paveDark} />
         <MTree pos={[-3.2, 0, -3]} seed={seed} tone={1} scale={1.1} />
         <MTree pos={[3.4, 0, -3.4]} seed={seed + 1} tone={0} />
-        <MTree pos={[-3, 0, 3.2]} seed={seed + 2} tone={2} scale={0.9} />
+        <Cypress pos={[-3.4, 0, 3.0]} seed={seed + 2} />
+        <Cypress pos={[-2.2, 0, -0.6]} seed={seed + 3} scale={0.8} />
         <Bench pos={[3.2, 0, 2.4]} rotY={Math.PI / 2} />
+        <Pot pos={[2.2, 0, 3.8]} flower={M.rose} />
+        <Fence from={[-4.6, 0, 4.6]} to={[4.6, 0, 4.6]} />
+      </group>
+    );
+  }
+  if (type === "veg") {
+    return (
+      <group>
+        <BaseBox size={[9.4, 0.05, 9.4]} pos={[0, 0, 0]} color={M.dirt} />
+        {[-2.8, -0.6, 1.6].map((z, i) => (
+          <group key={i}>
+            <BaseBox size={[6.4, 0.35, 1.4]} pos={[-0.6, 0.05, z - 0.8]} color={M.woodDark} />
+            {Array.from({ length: 10 }, (_, k) => (
+              <mesh key={k} position={[-3.4 + k * 0.62, 0.55, z - 0.8 + (k % 2 ? 0.25 : -0.25)]} material={mat([M.leaf, M.red, M.leaf3, M.orange][(i + k) % 4])}>
+                <icosahedronGeometry args={[0.24, 0]} />
+              </mesh>
+            ))}
+          </group>
+        ))}
+        <BaseBox size={[2.0, 1.8, 2.0]} pos={[3.2, 0.05, 2.6]} color={M.sand} />
+        <HipRoof pos={[3.2, 1.85, 2.6]} w={2.0} d={2.0} h={1.1} />
+        <Cypress pos={[-3.8, 0, 3.6]} seed={seed} />
+        <MTree pos={[3.6, 0, -3.4]} seed={seed + 1} scale={0.9} />
+        <Fence from={[-4.6, 0, 4.6]} to={[4.6, 0, 4.6]} />
       </group>
     );
   }
@@ -534,7 +609,10 @@ export const FillerBlock: React.FC<{ type: "block" | "garden" | "parking" | "gro
       <group>
         <BaseBox size={[9.6, 0.04, 9.6]} pos={[0, 0, 0]} color={M.asphaltDark} />
         {[-3.2, -1.1, 1.0, 3.1].map((x, i) =>
-          rand(seed, i) > 0.3 ? <MCar key={i} pos={[x, 0.04, -2.6]} rotY={0} color={cols[Math.floor(rand(seed, i + 9) * cols.length)]} /> : null,
+          rand(seed, i) > 0.2 ? <MCar key={i} pos={[x, 0.04, -2.6]} rotY={0} color={cols[Math.floor(rand(seed, i + 9) * cols.length)]} /> : null,
+        )}
+        {[-3.2, -1.1, 1.0, 3.1].map((x, i) =>
+          rand(seed, i + 20) > 0.3 ? <MCar key={`b${i}`} pos={[x, 0.04, 2.4]} rotY={Math.PI} color={cols[Math.floor(rand(seed, i + 40) * cols.length)]} /> : null,
         )}
         {[-3.2, -1.1, 1.0, 3.1].map((x) => (
           <BaseBox key={x} size={[0.08, 0.02, 3.2]} pos={[x + 1.05, 0.05, -2.6]} color={M.white} />
@@ -546,9 +624,9 @@ export const FillerBlock: React.FC<{ type: "block" | "garden" | "parking" | "gro
   return (
     <group>
       <BaseBox size={[9.4, 0.05, 9.4]} pos={[0, 0, 0]} color={M.grass} />
-      {[[-3, -3], [0.8, -3.4], [3.4, -1.6], [-2.6, 1.0], [1.2, 1.6], [-0.4, 3.6], [3.4, 3.4]].map(([x, z], i) => (
-        <MTree key={i} pos={[x, 0, z]} seed={seed + i} tone={(i % 3) as 0 | 1 | 2} scale={0.95} />
-      ))}
+      {[[-3, -3], [0.8, -3.4], [3.4, -1.6], [-2.6, 1.0], [1.2, 1.6], [-0.4, 3.6], [3.4, 3.4]].map(([x, z], i) =>
+        i % 2 ? <Cypress key={i} pos={[x, 0, z]} seed={seed + i} /> : <MTree key={i} pos={[x, 0, z]} seed={seed + i} tone={(i % 3) as 0 | 1 | 2} scale={0.95} />,
+      )}
     </group>
   );
 };

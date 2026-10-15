@@ -146,7 +146,7 @@ try {
   for (let c = 0; c < COLS; c++) for (let r = 0; r < ROWS; r++) if (!covered.has(`${c},${r}`)) errors.push(`3D kit: hücre ${c},${r} boş (mekân veya dolgu ekle)`);
   for (const v of nh.venues) {
     if (!PLACES[v.id]) errors.push(`3D kit: mekân '${v.id}' için yerleşim (PLACES) yok`);
-    for (const k of ["genis", "orta", "yakin"]) {
+    for (const k of ["genis", "orta", "yakin", "kart"]) {
       try { shotFor(`${v.id}:${k}`); } catch (e) { errors.push(`3D kit: ${v.id}:${k} planı kurulamadı (${(e as Error).message})`); }
     }
   }

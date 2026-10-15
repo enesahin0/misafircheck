@@ -13,7 +13,8 @@ const opt = (n: string) => args.find((a) => a.startsWith(`--${n}=`))?.split("=")
 const flag = (n: string) => args.includes(`--${n}`);
 
 const allShots = ["genel", ...VENUES.flatMap((v) => [`${v.id}:orta`])];
-const shots = (opt("shots") ?? "genel").split(",").flatMap((s) => (s === "hepsi" ? allShots : [s]));
+const allCards = VENUES.map((v) => `${v.id}:kart`);
+const shots = (opt("shots") ?? "genel").split(",").flatMap((s) => (s === "hepsi" ? allShots : s === "kartlar" ? allCards : [s]));
 const lights = (opt("light") ?? "ogle").split(",");
 const frame = Number(opt("frame") ?? 0);
 const highlight = opt("highlight") ?? null;
@@ -28,7 +29,7 @@ const highlight = opt("highlight") ?? null;
   const browser = await openBrowser("chrome", { browserExecutable, chromiumOptions, chromeMode: "headless-shell" });
   for (const shot of shots) {
     for (const light of lights) {
-      const inputProps = { shot, frame, params: { light, highlight, market: flag("market"), cast: flag("empty") ? "none" : "default" } };
+      const inputProps = { shot, frame, params: { light, highlight, market: flag("market"), cast: flag("empty") ? "none" : "default", solo: shot.endsWith(":kart") ? shot.split(":")[0] : null } };
       const composition = await selectComposition({ serveUrl, id: "MahalleDebug", inputProps, browserExecutable, chromiumOptions, logLevel: "error" });
       const out = path.join(dir, `${shot.replace(":", "_")}__${light}.png`);
       await renderStill({ composition, serveUrl, inputProps, frame: 0, output: out, puppeteerInstance: browser, chromiumOptions, browserExecutable, logLevel: "error", timeoutInMilliseconds: 240000 });

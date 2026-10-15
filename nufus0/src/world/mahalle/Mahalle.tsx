@@ -5,13 +5,13 @@ import * as THREE from "three";
 import { IsoCam, IsoCamera } from "../camera";
 import { BaseBox, Box, Cyl, Glow } from "../primitives";
 import { mat } from "../materials";
-import { Bench, LightCtx, MCar, MLamp, MTree } from "./kit";
+import { Bench, LightCtx, MCar, MLamp, MTree, Paving } from "./kit";
 import { CELL, COLS, FILLERS, ROWS, SIDEWALK, VENUES, WORLD_D, WORLD_W, cellCenter, venue } from "./layout";
 import { LIGHTS, LightId, M } from "./palette";
 import { Ambient, CastEntry, Person, Pet } from "./People";
 import { Bakkal, CayOcagi, Doner, Durak, FillerBlock, Firin, GulApt, Kuafor, Meydan, PasajHan, Park, Teras7, YildizApt } from "./venues";
 import { STATIONS } from "./layout";
-import { pulse } from "../../utils/deterministic";
+import { pulse, rand } from "../../utils/deterministic";
 
 const COMPONENTS: Record<string, React.FC<{ frame: number; market?: boolean }>> = {
   meydan: Meydan, "cay-ocagi": CayOcagi, bakkal: Bakkal, doner: Doner, kuafor: Kuafor, "yildiz-apt": YildizApt, "gul-apt": GulApt,
@@ -23,6 +23,35 @@ export const DEFAULT_CAST: CastEntry[] = Object.keys(STATIONS).filter((id) => id
 const SLAB_TOP = 0.15;
 const SLAB_COLORS: Record<string, string> = { meydan: M.plaza, park: M.grass, durak: M.pave };
 
+/** Kayalık yüzen ada: üstte toprak, aşağı doğru daralan katmanlar + kenarlarda taş kayalar. */
+const IslandBase: React.FC = () => {
+  const W = WORLD_W + 6, D = WORLD_D + 6;
+  const rocks: React.ReactNode[] = [];
+  for (let i = 0; i < 26; i++) {
+    const onFront = i % 2 === 0;
+    const t = (rand(7, i) - 0.5) * 0.92;
+    const layer = i % 3;
+    const y = -0.9 - layer * 1.5 - rand(8, i) * 0.4;
+    const r = 0.7 + rand(9, i) * 0.9;
+    const inset = layer * 1.4;
+    const pos: [number, number, number] = onFront ? [t * (W - inset * 2), y, D / 2 - inset + 0.2] : [W / 2 - inset + 0.2, y, t * (D - inset * 2)];
+    rocks.push(
+      <mesh key={i} position={pos} material={mat(["#9A8068", "#8A7059", "#A68C72"][i % 3])} scale={[1, 0.85, 1]}>
+        <icosahedronGeometry args={[r, 0]} />
+      </mesh>,
+    );
+  }
+  return (
+    <group>
+      <BaseBox size={[W, 1.55, D]} pos={[0, -1.6, 0]} color="#8C6B4B" />
+      <BaseBox size={[W - 2.8, 1.6, D - 2.8]} pos={[0, -3.2, 0]} color="#745A40" />
+      <BaseBox size={[W - 7, 1.7, D - 7]} pos={[0, -4.9, 0]} color="#5F4A35" />
+      <BaseBox size={[W - 13, 1.2, D - 13]} pos={[0, -6.1, 0]} color="#4F3E2D" />
+      {rocks}
+    </group>
+  );
+};
+
 const Ground: React.FC = () => {
   const cells: React.ReactNode[] = [];
   for (let c = 0; c < COLS; c++) {
@@ -30,11 +59,12 @@ const Ground: React.FC = () => {
       const [cx, cz] = cellCenter(c, r);
       const own = VENUES.find((v) => v.cell[0] === c && v.cell[1] === r && SLAB_COLORS[v.id]);
       cells.push(<BaseBox key={`${c}-${r}`} size={[SIDEWALK, SLAB_TOP, SIDEWALK]} pos={[cx, 0, cz]} color={own ? SLAB_COLORS[own.id] : M.pave} />);
-      // bordür
       cells.push(<BaseBox key={`k${c}-${r}`} size={[SIDEWALK + 0.3, 0.1, SIDEWALK + 0.3]} pos={[cx, 0, cz]} color={M.curb} />);
+      if (!own || own.id === "durak") cells.push(
+        <group key={`p${c}-${r}`} position={[cx, SLAB_TOP, cz]}><Paving size={SIDEWALK - 0.1} y={0.006} /></group>,
+      );
     }
   }
-  // yol çizgileri (hücreler arası boşluklar)
   const dashes: React.ReactNode[] = [];
   for (let i = 0; i <= COLS; i++) {
     const x = -WORLD_W / 2 + i * CELL;
@@ -46,7 +76,7 @@ const Ground: React.FC = () => {
   }
   return (
     <group>
-      <BaseBox size={[WORLD_W + 6, 2.16, WORLD_D + 6]} pos={[0, -2.2, 0]} color={M.dirt} />
+      <IslandBase />
       <BaseBox size={[WORLD_W + 6, 0.04, WORLD_D + 6]} pos={[0, -0.04, 0]} color={M.asphalt} />
       {dashes}
       {cells}
@@ -102,11 +132,47 @@ export type MahalleParams = {
   pets?: boolean;
   ambient?: boolean;
   market?: boolean;
+  /** Yalnız bu mekânın hücresini yüzen ada olarak göster ("mekân kartı"). */
+  solo?: string | null;
 };
 
-export const Mahalle: React.FC<{ frame: number } & MahalleParams> = ({ frame, light, highlight, cast = "default", pets = true, ambient = true, market }) => {
+/** Tek hücrelik yüzen ada (kayalık taban + döşeme). */
+const SoloBase: React.FC<{ cell: [number, number] }> = ({ cell }) => {
+  const [cx, cz] = cellCenter(cell[0], cell[1]);
+  const W = SIDEWALK + 1.2;
+  return (
+    <group position={[cx, 0, cz]}>
+      <BaseBox size={[W, 1.3, W]} pos={[0, -1.35, 0]} color="#8C6B4B" />
+      <BaseBox size={[W - 2.2, 1.5, W - 2.2]} pos={[0, -2.85, 0]} color="#745A40" />
+      <BaseBox size={[W - 5, 1.3, W - 5]} pos={[0, -4.15, 0]} color="#5F4A35" />
+      {Array.from({ length: 12 }, (_, i) => {
+        const front = i % 2 === 0;
+        const t = (rand(3, i) - 0.5) * 0.9;
+        const layer = i % 3;
+        const pos: [number, number, number] = front ? [t * (W - layer * 2), -1.0 - layer * 1.4, W / 2 - layer * 1.1 + 0.15] : [W / 2 - layer * 1.1 + 0.15, -1.0 - layer * 1.4, t * (W - layer * 2)];
+        return (
+          <mesh key={i} position={pos} material={mat(["#9A8068", "#8A7059", "#A68C72"][i % 3])} scale={[1, 0.85, 1]}>
+            <icosahedronGeometry args={[0.55 + rand(4, i) * 0.6, 0]} />
+          </mesh>
+        );
+      })}
+      <BaseBox size={[SIDEWALK + 0.6, SLAB_TOP + 0.05, SIDEWALK + 0.6]} pos={[0, -0.05, 0]} color={M.curb} />
+      <BaseBox size={[SIDEWALK, SLAB_TOP, SIDEWALK]} pos={[0, 0, 0]} color={M.pave} />
+      <group position={[0, SLAB_TOP, 0]}><Paving size={SIDEWALK - 0.1} y={0.006} /></group>
+    </group>
+  );
+};
+
+export const Mahalle: React.FC<{ frame: number } & MahalleParams> = ({ frame, light, highlight, cast = "default", pets = true, ambient = true, market, solo }) => {
   const lp = LIGHTS[light];
-  const people = cast === "none" ? [] : cast === "default" ? DEFAULT_CAST : cast;
+  let people = cast === "none" ? [] : cast === "default" ? DEFAULT_CAST : cast;
+  const soloCell = solo ? venue(solo).cell : null;
+  const inSolo = (x: number, z: number) => {
+    if (!soloCell) return true;
+    const [cx, cz] = cellCenter(soloCell[0], soloCell[1]);
+    return Math.abs(x - cx) < 6 && Math.abs(z - cz) < 6;
+  };
+  if (soloCell) people = people.filter((p) => inSolo(p.pos?.[0] ?? STATIONS[p.id]?.x ?? 0, p.pos?.[1] ?? STATIONS[p.id]?.z ?? 0));
   const centers: Record<string, [number, number]> = {};
   for (let c = 0; c < COLS; c++) for (let r = 0; r < ROWS; r++) centers[`${c},${r}`] = cellCenter(c, r);
   return (
@@ -116,9 +182,8 @@ export const Mahalle: React.FC<{ frame: number } & MahalleParams> = ({ frame, li
       <hemisphereLight args={[lp.hemiSky, lp.hemiGround, lp.hemiI]} />
       <directionalLight position={lp.sunPos} intensity={lp.sunI} color={lp.sun} />
       <directionalLight position={[-lp.sunPos[0], lp.sunPos[1] * 0.6, -lp.sunPos[2]]} intensity={lp.fillI} color={lp.fill} />
-      <Ground />
-      <StreetFurniture />
-      {VENUES.map((v) => {
+      {soloCell ? <SoloBase cell={soloCell} /> : (<><Ground /><StreetFurniture /></>)}
+      {VENUES.filter((v) => !soloCell || (v.cell[0] === soloCell[0] && v.cell[1] === soloCell[1])).map((v) => {
         const C = COMPONENTS[v.id];
         if (!C) return null;
         const y = v.id === "teras7" ? SLAB_TOP + v.top : SLAB_TOP;
@@ -128,7 +193,7 @@ export const Mahalle: React.FC<{ frame: number } & MahalleParams> = ({ frame, li
           </group>
         );
       })}
-      {FILLERS.map((f) => {
+      {!soloCell && FILLERS.map((f) => {
         const [cx, cz] = cellCenter(f.cell[0], f.cell[1]);
         return (
           <group key={`f${f.cell}`} position={[cx, SLAB_TOP, cz]}>
@@ -139,13 +204,13 @@ export const Mahalle: React.FC<{ frame: number } & MahalleParams> = ({ frame, li
       {people.map((p) => (
         <Person key={p.id} entry={p} frame={frame} />
       ))}
-      {pets && cast !== "none" && (
+      {pets && cast !== "none" && !soloCell && (
         <>
           <Pet kind="dog" pos={[STATIONS.karabas.x, 0, STATIONS.karabas.z]} rot={STATIONS.karabas.rot} frame={frame} />
           <Pet kind="cat" pos={[STATIONS.hacer.x + 0.9, STATIONS.hacer.y, STATIONS.hacer.z]} rot={-0.4} frame={frame} />
         </>
       )}
-      {ambient && cast !== "none" && <Ambient frame={frame} centers={centers} />}
+      {ambient && cast !== "none" && !soloCell && <Ambient frame={frame} centers={centers} />}
       {highlight && <Beacon id={highlight} frame={frame} />}
     </LightCtx.Provider>
   );

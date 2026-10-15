@@ -241,3 +241,120 @@ export const Antenna: React.FC<{ pos: V3 }> = ({ pos }) => (
     <Box size={[0.6, 0.05, 0.05]} pos={[0, 2.0, 0]} color={M.ink} />
   </group>
 );
+
+/* ------------------------------------------------------------------ referans zenginliği: servi, kiremit çatı, tente, saksı, çit, döşeme */
+export const Cypress: React.FC<{ pos: V3; seed?: number; scale?: number }> = ({ pos, seed = 1, scale = 1 }) => {
+  const k = scale * (0.85 + 0.35 * rand(seed, 5));
+  return (
+    <group position={pos} scale={[k, k, k]}>
+      <Cyl r={0.12} h={0.6} color={M.woodDark} seg={4} />
+      <Cone r={0.75} h={2.2} pos={[0, 0.5, 0]} color={M.greenDark} seg={6} />
+      <Cone r={0.6} h={1.9} pos={[0, 1.9, 0]} color={M.green} seg={6} />
+      <Cone r={0.4} h={1.2} pos={[0, 3.2, 0]} color={M.greenDark} seg={6} />
+    </group>
+  );
+};
+
+/** Dört yüzlü (kırma) kiremit çatı. Taban merkezi pos, ayak izi w×d, yükseklik h. */
+export const HipRoof: React.FC<{ pos: V3; w: number; d: number; h: number; color?: string; overhang?: number }> = ({ pos, w, d, h, color = M.roofTile, overhang = 0.45 }) => {
+  const sx = (w + overhang * 2) / Math.SQRT2, sz = (d + overhang * 2) / Math.SQRT2;
+  return (
+    <group position={pos} scale={[sx, 1, sz]}>
+      <mesh position={[0, h / 2, 0]} rotation={[0, Math.PI / 4, 0]} material={mat(color)}>
+        <coneGeometry args={[1, h, 4]} />
+      </mesh>
+    </group>
+  );
+};
+
+const stripeTexture = (c1: string, c2: string): THREE.CanvasTexture =>
+  textTexture(`stripe|${c1}|${c2}`, 128, 128, (g, w, h) => {
+    const n = 8;
+    for (let i = 0; i < n; i++) {
+      g.fillStyle = i % 2 ? c2 : c1;
+      g.fillRect((i * w) / n, 0, w / n + 1, h);
+    }
+  });
+
+const awningMats = new Map<string, THREE.Material>();
+/** Çizgili tente: ön kenar aşağıda; yüzü +z'ye bakan duvarın üstüne takılır. pos = üst (duvar) kenarı. */
+export const Awning: React.FC<{ pos: V3; w?: number; depth?: number; c1?: string; c2?: string }> = ({ pos, w = 3, depth = 1.0, c1 = M.red, c2 = M.white }) => {
+  const key = `${c1}|${c2}`;
+  let material = awningMats.get(key);
+  if (!material) {
+    material = new THREE.MeshStandardMaterial({ map: stripeTexture(c1, c2), roughness: 0.95, side: THREE.DoubleSide });
+    awningMats.set(key, material);
+  }
+  const t = 0.5;
+  return (
+    <group position={pos} rotation={[0, 0, 0]}>
+      <mesh position={[0, -Math.sin(t) * depth * 0.5, Math.cos(t) * depth * 0.5]} rotation={[-Math.PI / 2 + t, 0, 0]} material={material}>
+        <planeGeometry args={[w, depth]} />
+      </mesh>
+    </group>
+  );
+};
+
+export const Pot: React.FC<{ pos: V3; scale?: number; flower?: string }> = ({ pos, scale = 1, flower }) => (
+  <group position={pos} scale={[scale, scale, scale]}>
+    <Cyl r={0.26} rTop={0.3} h={0.45} color={M.terracotta} seg={7} />
+    <mesh position={[0, 0.7, 0]} material={mat(M.leaf)}>
+      <icosahedronGeometry args={[0.32, 0]} />
+    </mesh>
+    {flower && (
+      <mesh position={[0.12, 0.92, 0.05]} material={mat(flower)}>
+        <icosahedronGeometry args={[0.1, 0]} />
+      </mesh>
+    )}
+  </group>
+);
+
+/** Düz çit (x veya z yönünde). */
+export const Fence: React.FC<{ from: V3; to: V3; color?: string; h?: number }> = ({ from, to, color = M.ink, h = 0.9 }) => {
+  const dx = to[0] - from[0], dz = to[2] - from[2];
+  const len = Math.hypot(dx, dz);
+  const n = Math.max(2, Math.round(len / 0.7));
+  return (
+    <group position={from} rotation={[0, Math.atan2(dx, dz), 0]}>
+      <Box size={[0.05, 0.05, len]} pos={[0, h, len / 2]} color={color} />
+      <Box size={[0.05, 0.05, len]} pos={[0, h * 0.45, len / 2]} color={color} />
+      {Array.from({ length: n + 1 }, (_, i) => (
+        <Box key={i} size={[0.06, h, 0.06]} pos={[0, h / 2, (len * i) / n]} color={color} />
+      ))}
+    </group>
+  );
+};
+
+/** Taş döşeme dokusu (kare plaka üstüne). */
+let pavingMat: THREE.Material | null = null;
+export const Paving: React.FC<{ size: number; y?: number; plaza?: boolean }> = ({ size, y = 0.01, plaza }) => {
+  if (!pavingMat || plaza) {
+    const tex = textTexture(plaza ? "paving-plaza" : "paving", 512, 512, (g, w, h) => {
+      const n = 10;
+      for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) {
+        const v = 0.5 + 0.5 * rand(i * 7 + (plaza ? 40 : 0), j);
+        const base = plaza ? [226, 214, 186] : [214, 200, 172];
+        g.fillStyle = `rgb(${base[0] - v * 14},${base[1] - v * 14},${base[2] - v * 16})`;
+        g.fillRect((i * w) / n, (j * h) / n, w / n, h / n);
+      }
+      g.strokeStyle = "rgba(120,104,80,0.28)";
+      g.lineWidth = 2;
+      for (let i = 0; i <= n; i++) {
+        g.beginPath(); g.moveTo((i * w) / n, 0); g.lineTo((i * w) / n, h); g.stroke();
+        g.beginPath(); g.moveTo(0, (i * h) / n); g.lineTo(w, (i * h) / n); g.stroke();
+      }
+    });
+    const m = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.95 });
+    if (plaza) return (
+      <mesh position={[0, y, 0]} rotation={[-Math.PI / 2, 0, 0]} material={m}>
+        <planeGeometry args={[size, size]} />
+      </mesh>
+    );
+    pavingMat = m;
+  }
+  return (
+    <mesh position={[0, y, 0]} rotation={[-Math.PI / 2, 0, 0]} material={pavingMat!}>
+      <planeGeometry args={[size, size]} />
+    </mesh>
+  );
+};

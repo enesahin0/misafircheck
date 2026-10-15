@@ -123,6 +123,9 @@ export const Pet: React.FC<{ kind: "cat" | "dog"; pos: V3; rot?: number; frame: 
 const AMBIENT: { cell: [number, number]; seed: number; color: string }[] = [
   { cell: [1, 1], seed: 3, color: M.rose }, { cell: [3, 1], seed: 7, color: M.mustard }, { cell: [2, 2], seed: 11, color: M.sky },
   { cell: [3, 2], seed: 19, color: M.mint }, { cell: [4, 2], seed: 23, color: M.terracotta }, { cell: [2, 0], seed: 29, color: M.lilac },
+  { cell: [4, 1], seed: 31, color: M.orange }, { cell: [1, 2], seed: 37, color: M.blue }, { cell: [2, 3], seed: 41, color: M.rose },
+  { cell: [3, 3], seed: 43, color: M.mint }, { cell: [5, 1], seed: 47, color: M.mustard }, { cell: [1, 3], seed: 53, color: M.sky },
+  { cell: [0, 2], seed: 59, color: M.lilac }, { cell: [2, 1], seed: 61, color: M.terracotta },
 ];
 export const Ambient: React.FC<{ frame: number; centers: Record<string, [number, number]> }> = ({ frame, centers }) => (
   <>

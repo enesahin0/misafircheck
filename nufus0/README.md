@@ -87,10 +87,11 @@ Tüm ses ve görsel kaynakların envanteri, lisansları ve durumu: [`docs/KAYNAK
 | `People.tsx` | `Person` (Humanoid + aksesuar), `Pet`, `Ambient` |
 | `Mahalle.tsx` | `<Mahalle frame light highlight cast market />`, `MahalleScene` |
 
-Kamera planları: `genel`, `<mekân>:genis|orta|yakin` (örn. `teras7:orta`). Kontrol kareleri (video değil):
+Kamera planları (hepsi **kutuya sığdırılır**, kareden taşmaz): `genel` (tüm ada), `<mekân>:genis|orta|yakin`, `<mekân>:kart` (yalnız o hücre, yüzen küçük ada — referans "mekân kartı"), `teras7:ust`. Kontrol kareleri (video değil):
 ```bash
 npm run mahalle:stills -- --shots=genel,bakkal:orta --light=ogle,gece            # out/mahalle/*.png
 npm run mahalle:stills -- --shots=hepsi --light=aksam --highlight=doner            # tüm mekânlar, vurgulu
+npm run mahalle:stills -- --shots=kartlar --light=ogle                              # 12 mekân kartı
 npm run mahalle:stills -- --shots=meydan:genis --light=ogle --market               # çarşamba pazarı
 ```
 `MahalleDebug` kompozisyonu Remotion Studio'da (`npm run dev`) de açılır. `npm run validate:universe` her hücrenin dolu, her mekânın yerleşimi ve kamera planı olduğunu denetler.

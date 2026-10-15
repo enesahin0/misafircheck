@@ -28,8 +28,8 @@ export type LightPreset = {
 };
 
 export const LIGHTS: Record<LightId, LightPreset> = {
-  sabah: { id: "sabah", label: "Sabah", bg: "#C8DAE4", fogNear: 220, fogFar: 380, hemiSky: "#FFF0D2", hemiGround: "#8E8574", hemiI: 1.9, sun: "#FFD9A6", sunI: 2.5, sunPos: [34, 20, 10], fill: "#BFD6F0", fillI: 0.35, windows: 0.12, lamps: 0.0, neon: 0.0 },
-  ogle: { id: "ogle", label: "Öğle", bg: "#A9CDE6", fogNear: 240, fogFar: 400, hemiSky: "#FFFFFF", hemiGround: "#9A9482", hemiI: 2.0, sun: "#FFF4E0", sunI: 2.6, sunPos: [18, 38, 22], fill: "#CFE2F5", fillI: 0.3, windows: 0.0, lamps: 0.0, neon: 0.0 },
+  sabah: { id: "sabah", label: "Sabah", bg: "#8FC3EA", fogNear: 220, fogFar: 380, hemiSky: "#FFF0D2", hemiGround: "#8E8574", hemiI: 1.9, sun: "#FFD9A6", sunI: 2.5, sunPos: [34, 20, 10], fill: "#BFD6F0", fillI: 0.35, windows: 0.12, lamps: 0.0, neon: 0.0 },
+  ogle: { id: "ogle", label: "Öğle", bg: "#53A9F2", fogNear: 260, fogFar: 420, hemiSky: "#FFFFFF", hemiGround: "#A39A84", hemiI: 2.05, sun: "#FFE6B8", sunI: 2.9, sunPos: [26, 34, 16], fill: "#CFE2F5", fillI: 0.3, windows: 0.0, lamps: 0.0, neon: 0.0 },
   aksam: { id: "aksam", label: "Akşam (mavi saat)", bg: "#35456B", fogNear: 200, fogFar: 340, hemiSky: "#7E93C4", hemiGround: "#3A3038", hemiI: 1.7, sun: "#FF9D6A", sunI: 1.9, sunPos: [-10, 9, 30], fill: "#6F86C2", fillI: 0.55, windows: 0.4, lamps: 0.85, neon: 0.6 },
   gece: { id: "gece", label: "Gece", bg: "#0E1428", fogNear: 180, fogFar: 320, hemiSky: "#4A5C92", hemiGround: "#1B1A26", hemiI: 1.45, sun: "#8EA2E0", sunI: 1.15, sunPos: [-14, 26, 18], fill: "#4A5C92", fillI: 0.6, windows: 0.5, lamps: 1.0, neon: 1.0 },
 };
