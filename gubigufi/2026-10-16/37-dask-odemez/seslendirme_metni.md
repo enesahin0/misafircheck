@@ -4,19 +4,21 @@
 **Formül:** "sen" diye açılan kanca + yaygın yanlış → gündem bağı (İstanbul sel) → kurallar → ortada paylaş çağrısı → 3 pratik adım → kısa kapanış (≤4 sn)
 **Kapak:** su/sel YOK → poliçe + "ÖDENMEZ" damgası + para. Başlık: "DASK ÖDER SANIYORSUN / ÖDEMİYOR"
 
-## Seslendirme (düz metin)
+## Seslendirme (düz metin) — v2 (GZT videosuna göre güncellendi)
 
 DASK sel zararını öder sanıyorsun, değil mi? Ödemiyor.
 
-Bu hafta İstanbul'da bin iki yüzden fazla yeri su bastı. Ama DASK sadece depremi karşılar. Evinin selden zararını, ancak konut sigortanda "sel ve su baskını" teminatı varsa alırsın.
+Bu hafta İstanbul'da binden fazla yeri su bastı. Ama DASK sadece depremi karşılar. Evinin zararını, ancak konut sigortanda "sel ve su baskını" teminatı varsa alırsın.
 
-Gubi, sence trafik sigortası arabayı öder mi? Hayır. O sadece karşı tarafın zararını öder. Senin arabanı, ancak sel teminatı olan kasko öder.
+Gubi, sence trafik sigortası arabayı öder mi? Hayır. Arabanı, sel teminatı olan kasko öder.
 
-Bunu bilmeyen birine şimdi gönder.
+Kaskon yoksa? Zarar altyapı yüzündense, belediyeye dava açıp tazminat isteyebilirsin.
+
+Bunu bilmeyen birine gönder.
 
 Gufi, sen poliçeni hiç okudun mu? Tahmin etmiştim.
 
-Hasar olunca üç şeyi unutma. Bir: Suya gömülen arabanın motorunu çalıştırma; hem hasar büyür, hem ödemen riske girer. İki: Her şeyin fotoğrafını ve videosunu çek; eksper gelmeden hiçbir şeyi atma. Üç: Beş iş günü içinde sigortana bildir.
+Üç kural. Bir: Su basan arabayı çalıştırma; motor gider, masraf altı yüz bin liraya çıkabilir. Çekiciyle servise götür. İki: Her şeyin fotoğrafını çek, hiçbir şeyi atma. Üç: Beş iş günü içinde sigortana bildir.
 
 Senin sigortan seli kapsıyor mu? Yorumlara yaz.
 
@@ -42,5 +44,6 @@ Her gün bir merak için gubigufi'yi takip et.
 | 7 | Soru + takip (≤4 sn) | "SİGORTAN SELİ KAPSIYOR MU?" + takip kartı → logo (kısa). |
 
 ## Kaynaklar (ekranda küçük çip)
+- GZT (Instagram, 15.10.2026) — kaskosu olmayan: altyapı yetersizliği/önlem alınmaması → ilgili idareye dava ile tazminat; araçta da bildirim 5 iş günü; kasko türleri (dar/standart/genişletilmiş/tam) → poliçede sel teminatı kontrolü; tazminat yetersizse Sigorta Tahkim Komisyonu; suya giren motoru çalıştırmak 600.000 TL'ye varan masraf; çekiciyle servise
 - Sigorta Life Dergi, 15.10.2026 — DASK seli kapsamaz; konut/iş yeri "sel ve su baskını" teminatı; trafik sigortası kendi aracını ödemez; sel teminatlı kasko; motoru çalıştırma; fotoğraf/video; eksper öncesi atma; konut/iş yeri bildirimi en geç 5 iş günü
 - İstanbul Valiliği (14.10.2026) — 1.277 su baskını ihbarı
