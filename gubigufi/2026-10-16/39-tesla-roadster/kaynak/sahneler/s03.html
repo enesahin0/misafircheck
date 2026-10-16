@@ -127,33 +127,43 @@ const altUc = (kucuk, buyuk, { renk = '#7FD0FF', fs = 78, etiket = '' } = {}) =>
 const tas = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-46 8 L-30 -34 L8 -48 L44 -26 L52 14 L24 44 L-22 40Z" fill="#8A8F9C"/><path d="M-30 -34 L8 -48 L44 -26 L10 -8Z" fill="#B4B9C6"/><path d="M-46 8 L-22 40 L24 44 L52 14 L10 -8Z" fill="#6A6F7C"/></g>`;
 const arkadas = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-70" y="40" width="140" height="150" rx="50" fill="#3E8EDE"/><circle cx="0" cy="-10" r="58" fill="#F2C9A0"/><path d="M-60 -20 Q-50 -78 0 -74 Q50 -78 60 -20 Q30 -48 0 -44 Q-30 -48 -60 -20Z" fill="#2A2A33"/><rect x="-44" y="-18" width="38" height="20" rx="8" fill="#14171F"/><rect x="6" y="-18" width="38" height="20" rx="8" fill="#14171F"/><rect x="-8" y="-12" width="16" height="6" fill="#14171F"/><path d="M-22 26 Q0 42 22 26" stroke="#8A4A3A" stroke-width="7" fill="none" stroke-linecap="round"/></g>`;
 
+const roadsterG = (id, cx, cy, sc, ters, parilti, u) => {
+  const m = 380 * sc;
+  return `<defs><radialGradient id="rg${id}"><stop offset=".3" stop-color="#fff"/><stop offset="1" stop-color="#000"/></radialGradient><mask id="mk${id}" maskUnits="userSpaceOnUse" x="${cx - m / 2}" y="${cy - m / 2}" width="${m}" height="${m}"><rect x="${cx - m / 2}" y="${cy - m / 2}" width="${m}" height="${m}" fill="url(#rg${id})"/></mask></defs>` +
+    `<defs><radialGradient id="pg${id}"><stop offset="0" stop-color="${parilti}" stop-opacity=".28"/><stop offset="1" stop-color="${parilti}" stop-opacity="0"/></radialGradient></defs><circle cx="${cx}" cy="${cy - 70}" r="${300 * sc / 1.45}" fill="url(#pg${id})"/>` +
+    `<g mask="url(#mk${id})" style="mix-blend-mode:screen"><g transform="translate(${ters ? 2 * cx : 0} 0) scale(${ters ? -1 : 1} 1)"><image href="${u}" x="${cx - 330 * sc}" y="${cy - 440 * sc}" width="${640 * sc}" height="${804 * sc}"/></g></g>`;
+};
+const kafa = (renk, ters, agiz) => `<g transform="scale(${ters ? -1 : 1} 1)"><circle r="46" fill="#E0B48A"/><path d="M-46 -8 Q-44 -48 0 -50 Q44 -48 46 -8 Q28 -30 0 -28 Q-28 -30 -46 -8Z" fill="${renk}"/><path d="M-34 -20 L-9 -9 M34 -20 L9 -9" stroke="#1B1B22" stroke-width="8" stroke-linecap="round"/><circle cx="-18" cy="-3" r="5.5" fill="#14171F"/><circle cx="18" cy="-3" r="5.5" fill="#14171F"/><path d="M-25 15 Q0 4 25 15 Q8 20 0 18 Q-8 20 -25 15Z" fill="#1B1B22"/><ellipse cx="0" cy="32" rx="14" ry="${agiz}" fill="#5A1A1A"/></g>`;
 MO.sahne({
-  zemin: MO.zemin({ ust: '#0F1630', alt: '#06080F', isik: [620, 600, '#3E6FB8', .18], ikinci: [200, 1200, '#E8323C', .12] }),
-  kamera: [[0, 1.0, 540, 900], [.1, 1.05, 540, 900, 4.3, 'kamera']],
+  zemin: MO.zemin({ ust: '#0B1230', alt: '#05070F', isik: [540, 1000, '#3E6FB8', .16], ikinci: [900, 300, '#E8323C', .10] }),
+  kamera: [[0, 1.0, 540, 960], [.1, 1.05, 540, 960, 4.5, 'kamera']],
   ciz: t => {
     let o = '';
-    // siluet + yol
-    let sil = ''; [[-20, 150, 520], [150, 110, 600], [260, 140, 480], [400, 120, 560], [520, 170, 440], [690, 110, 580], [800, 150, 500], [950, 130, 560]].forEach(([x, w, y]) => sil += R(x, y + 60, w, 1110 - y - 60, 4, '#151C38'));
-    o += sil + R(-100, 1060, 1280, 260, 0, '#161B30') + R(-100, 1052, 1280, 12, 0, '#2A3354');
-    for (let i = 0; i < 9; i++) o += R(i * 140 - 40, 1190, 80, 10, 5, '#FFD23F', .6);
-    // trafik: üç araba art arda
-    const arabalar = [[230, '#E8323C', -1], [560, '#3E8EDE', 0], [890, '#FBAC39', 1]];
-    arabalar.forEach(([x, rk, i], k) => { o += MO.sar(SE.araba(0, 0, 1.25, { renk: rk }), MO.oge(t, { gir: .1 + k * .12, agirlik: 'orta', giris: 'yan', yon: k === 0 ? -1 : 1, materyal: 'plastik', x }), x, 1175, { golge: false }); });
-    // havada duran Roadster (fotoğraf kırpığı, ekran karışımı: koyu zemin şeffaflaşır)
-    const bob = Math.sin(t * 2.1) * 14, cx = 650, cy = 520 + bob, sc = 1.9, u = MO.yukle('../ortak/img/foto1.jpg');
-    const roadster = `<defs><radialGradient id="rgM"><stop offset=".45" stop-color="#fff"/><stop offset="1" stop-color="#000"/></radialGradient><mask id="mskR" maskUnits="userSpaceOnUse" x="${cx - 360}" y="${cy - 360}" width="720" height="720"><rect x="${cx - 360}" y="${cy - 360}" width="720" height="720" fill="url(#rgM)"/></mask></defs>` +
-      `<g mask="url(#mskR)" style="mix-blend-mode:screen"><image href="${u}" x="${cx - 330 * sc}" y="${cy - 440 * sc}" width="${640 * sc}" height="${804 * sc}"/></g>`;
-    o += MO.sar(roadster, MO.oge(t, { gir: .3, agirlik: 'kahraman', giris: 'olcek', materyal: 'plastik', x: 650 }), 0, 0, { golge: false });
-    // kızgın amca: soldaki arabadan sarkar
-    const sal = t > 2.46 && t < 4.4 ? Math.sin(t * 40) * 4 : 0;
-    const amca = `<g transform="translate(${sal} 0)"><circle r="62" fill="#E0B48A"/><path d="M-62 -10 Q-60 -64 0 -66 Q60 -64 62 -10 Q40 -40 0 -38 Q-40 -40 -62 -10Z" fill="#2A2A33"/><path d="M-46 -26 L-12 -14 M46 -26 L12 -14" stroke="#2A2A33" stroke-width="10" stroke-linecap="round"/><circle cx="-24" cy="-4" r="7" fill="#14171F"/><circle cx="24" cy="-4" r="7" fill="#14171F"/><path d="M-34 20 Q0 4 34 20 Q10 26 0 24 Q-10 26 -34 20Z" fill="#2A2A33"/><ellipse cx="0" cy="42" rx="20" ry="${t > 2.46 ? 14 : 4}" fill="#5A1A1A"/></g>`;
-    o += MO.sar(amca, MO.oge(t, { gir: .55, agirlik: 'orta', giris: 'yuksel', materyal: 'kumas', x: 230 }), 220, 945, { golge: false });
-    o += MO.sar(`<g transform="rotate(-18)"><rect x="-22" y="-22" width="44" height="44" rx="14" fill="#E0B48A"/></g>`, MO.oge(t, { gir: 2.46, cik: 4.6, agirlik: 'hafif', giris: 'olcek', x: 140 }), 120, 915, { golge: false });
-    // korna
-    o += MO.sar(txt('BİİİP!', 0, 0, 56, '#FFD23F', 900), MO.oge(t, { gir: 1.35, cik: 2.3, agirlik: 'hafif', giris: 'olcek', materyal: 'plastik', x: 560 }), 600, 885, { golge: false });
-    // "İN AŞAĞI LAN!" balonu
-    o += MO.sar(M.balon(0, 0, txt('İN AŞAĞI', 0, -6, 52, '#1B2440', 900) + txt('LAN!', 0, 46, 60, '#E8323C', 900), { w: 400, h: 190, yon: -1 }), MO.oge(t, { gir: 2.46, agirlik: 'oyuncu', giris: 'olcek', materyal: 'plastik', x: 300 }), 330, 725, { golge: false });
-    o += MO.sar(etiket('KAVGA İPTAL', 0, 0, '#E8323C', '#FFFFFF', 84, -6, 1), MO.oge(t, { gir: 3.9, agirlik: 'kahraman', giris: 'damga', materyal: 'lastik', x: 540 }), 560, 380, { golge: false });
+    const u = MO.yukle('../ortak/img/foto1.jpg');
+    // aşağıda: şehir + tıkalı yol (iniş yeri)
+    let sil = ''; [[-20, 130, 130], [100, 90, 200], [190, 120, 100], [300, 100, 170], [400, 140, 90], [530, 90, 190], [620, 130, 110], [740, 100, 180], [840, 130, 100], [960, 140, 160]].forEach(([x, w, h]) => sil += R(x, 1090 - h, w, h, 4, '#121A38'));
+    o += sil + R(-100, 1090, 1280, 130, 0, '#141A30') + R(-100, 1082, 1280, 10, 0, '#2A3354');
+    for (let i = 0; i < 9; i++) o += R(i * 140 - 40, 1165, 80, 8, 4, '#FFD23F', .5);
+    [[110, '#E8323C'], [330, '#3E8EDE'], [545, '#FBAC39'], [760, '#2FBF71'], [980, '#E8323C']].forEach(([x, rk], k) => { o += MO.sar(SE.araba(0, 0, .55, { renk: rk }), MO.oge(t, { gir: .05 + k * .05, agirlik: 'hafif', giris: 'yuksel', x }), x, 1160, { golge: false }); });
+    // iki Roadster havada (biri aynalı)
+    const b1 = Math.sin(t * 2.1) * 12, b2 = Math.sin(t * 2.4 + 1.5) * 12;
+    o += MO.sar(roadsterG('L', 310, 705 + b1, 1.1, false, '#3E8EDE', u), MO.oge(t, { gir: .1, agirlik: 'kahraman', giris: 'yan', yon: -1, materyal: 'plastik', x: 310 }), 0, 0, { golge: false });
+    o += MO.sar(roadsterG('R', 770, 795 + b2, 1.1, true, '#FBAC39', u), MO.oge(t, { gir: .25, agirlik: 'kahraman', giris: 'yan', yon: 1, materyal: 'plastik', x: 770 }), 0, 0, { golge: false });
+    // sürücüler
+    const sal1 = t > 2.5 && t < 3.3 ? Math.sin(t * 40) * 4 : 0, sal2 = t > 3.3 && t < 4.3 ? Math.sin(t * 40) * 4 : 0;
+    o += MO.sar(kafa('#2A2A33', false, t > 2.5 ? 14 : 4), MO.oge(t, { gir: .6, agirlik: 'orta', giris: 'yuksel', materyal: 'kumas', x: 460 }), 428 + sal1, 632 + b1, { golge: false });
+    o += MO.sar(kafa('#8A6A4A', true, t > 3.3 ? 14 : 4), MO.oge(t, { gir: .75, agirlik: 'orta', giris: 'yuksel', materyal: 'kumas', x: 620 }), 652 + sal2, 722 + b2, { golge: false });
+    // korna: BİİP yazıları + ses halkaları
+    const korna = (x, y, g, yon) => { const k = MO.ar(t, g, g + .35); return k <= 0 || k >= 1 ? '' : `<g opacity="${(1 - k).toFixed(2)}" transform="translate(${x} ${y})">` + [0, 1, 2].map(r => `<path d="M${yon * (30 + 22 * r + 30 * k)} -26 q${yon * 18} 26 0 52" stroke="#FFD23F" stroke-width="7" fill="none" stroke-linecap="round" opacity="${1 - r * .28}"/>`).join('') + `<text x="${yon * 150}" y="0" font-size="48" font-weight="900" text-anchor="middle" style="fill:#FFD23F" transform="rotate(${-yon * 8} ${yon * 150} 0)">BİİP!</text></g>`; };
+    o += korna(385, 600 + b1, 1.30, 1) + korna(385, 600 + b1, 1.85, 1) + korna(700, 690 + b2, 1.55, -1) + korna(700, 690 + b2, 2.25, -1);
+    // konuşma balonları
+    o += MO.sar(M.balon(0, 0, txt('İN AŞAĞI', 0, -6, 50, '#1B2440', 900) + txt('LAN!', 0, 46, 58, '#E8323C', 900), { w: 380, h: 180, yon: -1 }), MO.oge(t, { gir: 2.5, agirlik: 'oyuncu', giris: 'olcek', materyal: 'plastik', x: 330 }), 300, 436, { golge: false });
+    o += MO.sar(M.balon(0, 0, txt('YİYORSA ASIL', 0, -6, 44, '#1B2440', 900) + txt('SEN İNSENE!', 0, 44, 50, '#2E78C8', 900), { w: 440, h: 180, yon: 1 }), MO.oge(t, { gir: 3.3, agirlik: 'oyuncu', giris: 'olcek', materyal: 'plastik', x: 780 }), 790, 520, { golge: false });
+    // inemezler: yer çizgisi + ✕
+    const ip = MO.E.outCubic(MO.ar(t, 3.95, 4.4));
+    if (ip > 0) o += `<g opacity="${ip.toFixed(2)}"><path d="M310 960 V1075 M770 960 V1075" stroke="#C8D0DC" stroke-width="5" stroke-dasharray="14 12"/></g>`;
+    o += MO.sar(isaretX(0, 0, 1.2), MO.oge(t, { gir: 3.95, agirlik: 'agir', giris: 'damga', materyal: 'lastik', x: 310 }), 310, 1035, { golge: false });
+    o += MO.sar(isaretX(0, 0, 1.2), MO.oge(t, { gir: 4.1, agirlik: 'agir', giris: 'damga', materyal: 'lastik', x: 770 }), 770, 1035, { golge: false });
     return o;
   },
   onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: 'merak', bakHedef: [540, 900] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: t > 1 ? 'saskin' : 'merak', bakHedef: [540, 900] })
