@@ -1,4 +1,4 @@
-[serious] Sosyal medya hesabın için yakında e-Devlet'e girmen gerekecek, biliyor muydun? [short pause] Bir Kasım'da başlıyor; on beşten küçükler artık hesap açamayacak. [pause] Ebeveyn izni bile yetmiyor.
+[excited] Türkiye'de sosyal medya yasaklanıyor! [short pause] [serious] Herkese değil... on beşten küçüklere. Bir Kasım'da başlıyor; hesap açmak için e-Devlet'e girmen gerekecek. [pause] Ebeveyn izni bile yetmiyor.
 
 [curious] Üç şey var; sonuncusu en şaşırtıcısı.
 
