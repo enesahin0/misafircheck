@@ -8,47 +8,52 @@
   {
    "dosya": "sahneler/s01.html",
    "baslangic": 0,
-   "bitis": 4.2
+   "bitis": 4.1
   },
   {
    "dosya": "sahneler/s02.html",
-   "baslangic": 4.2,
-   "bitis": 16.85
+   "baslangic": 4.1,
+   "bitis": 15.95
   },
   {
    "dosya": "sahneler/s03.html",
-   "baslangic": 16.85,
-   "bitis": 27.8
+   "baslangic": 15.95,
+   "bitis": 22.95
   },
   {
    "dosya": "sahneler/s04.html",
-   "baslangic": 27.8,
-   "bitis": 30.05
+   "baslangic": 22.95,
+   "bitis": 28.7
   },
   {
    "dosya": "sahneler/s05.html",
-   "baslangic": 30.05,
-   "bitis": 34.35
+   "baslangic": 28.7,
+   "bitis": 30.95
   },
   {
    "dosya": "sahneler/s06.html",
-   "baslangic": 34.35,
-   "bitis": 51.35
+   "baslangic": 30.95,
+   "bitis": 34.85
   },
   {
    "dosya": "sahneler/s07.html",
-   "baslangic": 51.35,
-   "bitis": 54.55
+   "baslangic": 34.85,
+   "bitis": 50.0
   },
   {
    "dosya": "sahneler/s08.html",
-   "baslangic": 54.55,
-   "bitis": 57.9
+   "baslangic": 50.0,
+   "bitis": 53.15
   },
   {
    "dosya": "sahneler/s09.html",
-   "baslangic": 57.9,
-   "bitis": 59.9
+   "baslangic": 53.15,
+   "bitis": 56.4
+  },
+  {
+   "dosya": "sahneler/s10.html",
+   "baslangic": 56.4,
+   "bitis": 58.4
   }
  ]
 }

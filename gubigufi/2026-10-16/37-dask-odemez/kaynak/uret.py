@@ -2,17 +2,18 @@
 import json, sys
 sys.path.insert(0, '../../../marka')
 from tepki_kontrol import kontrol
-SB = [0, 4.2, 16.85, 27.8, 30.05, 34.35, 51.35, 54.55, 57.9, 59.9]
+SB = [0, 4.1, 15.95, 22.95, 28.7, 30.95, 34.85, 50.0, 53.15, 56.4, 58.4]
 ALT = {}
 TEP = {
-    1: [('gufi', .6, 'korku'), ('gubi', 3.3, 'sasir')],
-    2: [('gubi', 1.0, 'gozle'), ('gufi', 5.0, 'endise')],
-    3: [('gubi', .4, 'dusun'), ('gubi', 3.9, 'uzgun'), ('gufi', 9.6, 'evet')],
-    4: [('gubi', .3, 'gel'), ('gufi', .4, 'goster')],
-    5: [('gufi', .3, 'utan'), ('gubi', 3.0, 'evet')],
-    6: [('gufi', 2.3, 'say'), ('gubi', 8.5, 'aha'), ('gufi', 14.2, 'begen')],
-    7: [('gubi', .5, 'kafaKasi'), ('gufi', 2.2, 'gel')],
-    8: [('gubi', .3, 'selam'), ('gufi', .5, 'selam')],
+    1: [('gufi', .6, 'korku'), ('gubi', 3.2, 'sasir')],
+    2: [('gubi', 1.0, 'gozle'), ('gufi', 4.2, 'endise')],
+    3: [('gubi', .3, 'dusun'), ('gubi', 3.4, 'uzgun'), ('gufi', 6.0, 'evet')],
+    4: [('gufi', .4, 'kafaKasi'), ('gubi', 3.3, 'aha'), ('gufi', 4.8, 'mutlu')],
+    5: [('gubi', .3, 'gel'), ('gufi', .4, 'goster')],
+    6: [('gufi', .3, 'utan'), ('gubi', 2.8, 'evet')],
+    7: [('gufi', 1.2, 'say'), ('gubi', 4.9, 'sok'), ('gufi', 12.3, 'begen')],
+    8: [('gubi', .5, 'kafaKasi'), ('gufi', 2.2, 'gel')],
+    9: [('gubi', .3, 'selam'), ('gufi', .5, 'selam')],
 }
 kontrol(TEP, SB)
 ORTAK = r"""
@@ -100,6 +101,8 @@ const police = (x, y, w, baslik, satirlar, renk = '#2E78C8', vurgu = -1, vk = 0)
     o += `<text x="${x - w / 2 + 50}" y="${yy + 12}" font-size="36" font-weight="800" style="fill:#1B2440">${ad}</text>` + (d === 1 ? isaretV(x + w / 2 - 60, yy, .9) : d === 0 ? isaretX(x + w / 2 - 60, yy, .9) : d === 2 ? `<g transform="translate(${x + w / 2 - 60} ${yy})"><circle r="27" fill="#C8D0DC"/><text y="13" font-size="38" font-weight="900" text-anchor="middle" style="fill:#5A6478">?</text></g>` : ''); });
   return o; };
 const suY = (y, t, op = .9) => R(0, y, 1080, 1920 - y, 0, SE.SU, op) + SE.dalga(y, t);
+const belediye = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-230" y="-20" width="460" height="30" fill="#C8C0B0"/><rect x="-250" y="10" width="500" height="26" fill="#B8B0A0"/><rect x="-200" y="-230" width="400" height="210" fill="#E8E0D0"/>` + [-150, -50, 50, 150].map(c => `<rect x="${c - 18}" y="-220" width="36" height="200" fill="#F8F2E6"/>`).join('') + `<path d="M-230 -230 L0 -330 L230 -230Z" fill="#D8D0C0"/><text x="0" y="-252" font-size="30" font-weight="900" text-anchor="middle" style="fill:#5A5048">BELEDİYE</text><rect x="-3" y="-420" width="6" height="90" fill="#8A8070"/><path d="M3 -420 L70 -404 L3 -388Z" fill="#E30A17"/></g>`;
+const terazi = (x, y, s = 1, eg = 0) => `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-6" y="-90" width="12" height="150" fill="#C8963A"/><rect x="-50" y="56" width="100" height="16" rx="6" fill="#C8963A"/><g transform="rotate(${eg} 0 -84)"><rect x="-110" y="-90" width="220" height="10" rx="5" fill="#C8963A"/><path d="M-100 -80 L-130 -20 L-70 -20Z M100 -80 L70 -20 L130 -20Z" fill="none" stroke="#C8963A" stroke-width="4"/><path d="M-140 -20 Q-100 10 -60 -20Z M60 -20 Q100 10 140 -20Z" fill="#E8B860"/></g></g>`;
 const deprem = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-70 0 L-40 0 L-28 -36 L-12 40 L4 -54 L18 30 L30 -16 L42 0 L70 0" stroke="#E8A020" stroke-width="9" fill="none" stroke-linejoin="round" stroke-linecap="round"/></g>`;
 """
 exec(open('_head.py').read())

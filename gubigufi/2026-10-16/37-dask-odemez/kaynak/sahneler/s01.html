@@ -4,7 +4,7 @@
 <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
   <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
 </svg>
-<script>window.SB = 0; const TP = {"gubi": [[3.3, "sasir"]], "gufi": [[0.6, "korku"]]};</script>
+<script>window.SB = 0; const TP = {"gubi": [[3.2, "sasir"]], "gufi": [[0.6, "korku"]]};</script>
 <script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script><script src="../ortak/au.js"></script><script src="../ortak/kp.js"></script><script src="../ortak/al.js"></script><script src="../ortak/sl.js"></script><script src="../ortak/se.js"></script>
 <script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
 <script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
@@ -103,6 +103,8 @@ const police = (x, y, w, baslik, satirlar, renk = '#2E78C8', vurgu = -1, vk = 0)
     o += `<text x="${x - w / 2 + 50}" y="${yy + 12}" font-size="36" font-weight="800" style="fill:#1B2440">${ad}</text>` + (d === 1 ? isaretV(x + w / 2 - 60, yy, .9) : d === 0 ? isaretX(x + w / 2 - 60, yy, .9) : d === 2 ? `<g transform="translate(${x + w / 2 - 60} ${yy})"><circle r="27" fill="#C8D0DC"/><text y="13" font-size="38" font-weight="900" text-anchor="middle" style="fill:#5A6478">?</text></g>` : ''); });
   return o; };
 const suY = (y, t, op = .9) => R(0, y, 1080, 1920 - y, 0, SE.SU, op) + SE.dalga(y, t);
+const belediye = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-230" y="-20" width="460" height="30" fill="#C8C0B0"/><rect x="-250" y="10" width="500" height="26" fill="#B8B0A0"/><rect x="-200" y="-230" width="400" height="210" fill="#E8E0D0"/>` + [-150, -50, 50, 150].map(c => `<rect x="${c - 18}" y="-220" width="36" height="200" fill="#F8F2E6"/>`).join('') + `<path d="M-230 -230 L0 -330 L230 -230Z" fill="#D8D0C0"/><text x="0" y="-252" font-size="30" font-weight="900" text-anchor="middle" style="fill:#5A5048">BELEDİYE</text><rect x="-3" y="-420" width="6" height="90" fill="#8A8070"/><path d="M3 -420 L70 -404 L3 -388Z" fill="#E30A17"/></g>`;
+const terazi = (x, y, s = 1, eg = 0) => `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-6" y="-90" width="12" height="150" fill="#C8963A"/><rect x="-50" y="56" width="100" height="16" rx="6" fill="#C8963A"/><g transform="rotate(${eg} 0 -84)"><rect x="-110" y="-90" width="220" height="10" rx="5" fill="#C8963A"/><path d="M-100 -80 L-130 -20 L-70 -20Z M100 -80 L70 -20 L130 -20Z" fill="none" stroke="#C8963A" stroke-width="4"/><path d="M-140 -20 Q-100 10 -60 -20Z M60 -20 Q100 10 140 -20Z" fill="#E8B860"/></g></g>`;
 const deprem = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-70 0 L-40 0 L-28 -36 L-12 40 L4 -54 L18 30 L30 -16 L42 0 L70 0" stroke="#E8A020" stroke-width="9" fill="none" stroke-linejoin="round" stroke-linecap="round"/></g>`;
 
 $('zemin').innerHTML = zeminK('#1A2A50', '#0B1428');
@@ -112,9 +114,9 @@ window.renderAt = t => {
   o += daskKalkan(540, 960, 1.35 + .03 * Math.sin(t * 3));
   const sy = 1180 - 300 * E(A(t, 0, 3.1));
   o += suY(sy, t, .85);
-  if (t > 3.2) o += etiket('ÖDEMİYOR', 540, 700, '#E8323C', '#FFFFFF', 92, -8, pop(t, 3.22, .3));
+  if (t > 3.1) o += etiket('ÖDEMİYOR', 540, 700, '#E8323C', '#FFFFFF', 92, -8, pop(t, 3.1, .3));
   o += gubi(t, { x: 880, y: 1600, boy: 120, duygu: 'merak', bakHedef: [540, 960] }) + gufi(t, { x: 200, y: 1780, boy: 170, duygu: 'saskin', bakHedef: [540, 960] });
-  $('dinamik').innerHTML = o + bam(t, 3.22, .25);
+  $('dinamik').innerHTML = o + bam(t, 3.1, .25);
 };
 </script>
 <script src="../ortak/kanal.js"></script>
