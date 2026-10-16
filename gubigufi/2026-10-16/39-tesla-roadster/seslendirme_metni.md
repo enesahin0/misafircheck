@@ -12,3 +12,6 @@ Düz metin (okunacak): `elevenlabs_metin.md` (etiketli). Eski sürüm: `*_v1.md`
 ## Doğrulama notu
 - Tofaş Şahin 0–100: ilan/blog kaynaklarında 13,1–13,5 sn (üretici verisi değil) → "yaklaşık on üç saniye" denir. 13,2 / 0,59 ≈ 22,4.
 - 0,59 sn Tesla'nın kendi iddiası ("en azından Tesla öyle diyor").
+
+## Ek (kullanıcı fikri)
+- "Tofaş olmasa da... bununla yan yan gidebilirsin." — Tofaş drift kültürüne gönderme; espri, Tesla iddiası değil. Görsel: havada kayan Roadster + drift dumanı.
