@@ -6,8 +6,6 @@
 
 [playful] Mekik kalkarken astronotlar üç g taşırdı; bu araçta dört buçuk. [short pause] Gubi, dayanır mısın? [pause] [amused] Titremeye başladı.
 
-[warm] Bunu arabasıyla övünen arkadaşına gönder.
-
 [curious] Nasıl mı? [short pause] [serious] SpaceX'in soğuk gaz iticileri, arabayı arkadan tekmeliyor. [curious] Fanlar da onu... tavana yapıştıracak kadar emiyor.
 
 [serious] Ama bu en uç sürüm: [short pause] davetli, yolda yasak.
@@ -16,6 +14,6 @@
 
 [serious] Fiyat yok. [short pause] Üretim, iki bin yirmi sekiz.
 
-[curious] Sence yola çıkacak mı? [short pause] Yorumlara A ya da B yaz.
+[warm] Bunu arabasıyla övünen arkadaşına gönder.
 
 [warm] Her gün bir merak için gubigufi'yi takip et.

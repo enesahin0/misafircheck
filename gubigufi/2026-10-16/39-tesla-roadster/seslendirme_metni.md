@@ -1,6 +1,6 @@
 # #39 — Tesla Roadster: "0,59 saniye ne demek?" (GÜNDEM · "oha" karşılaştırmaları)
 
-**Hedef süre:** ~59 sn (≈129 kelime) · **Ton:** magazinsel, izleyiciyi içine alan, her 6–9 sn'de yeni bir "çüş oha" · **Kategori:** GÜNDEM · TEKNOLOJİ
+**Hedef süre:** ~55 sn (≈118 kelime) · **Ton:** magazinsel, izleyiciyi içine alan, her 6–9 sn'de yeni bir "çüş oha" · **Kategori:** GÜNDEM · TEKNOLOJİ
 **Kural (kullanıcı, KALICI):** Rakamı tek başına söyleme — hemen **izleyicinin kafasında canlandıracağı bir karşılaştırma/ölçek** ver ("oha" dedirt). Bu yüzden her rakam bir imgeyle eşlendi: kendi arabası (10 sn → 17 kat), düşen taş (4,5 kat), uzay mekiği (3 g vs 4,6 g), Rimac Nevera (3 kat), tavanda ters duran araba.
 **Önceki taslaktan fark:** "2017 sözü vs bugün" haber anlatımıydı, izleyiciyi içine almıyordu → çıkarıldı. İlk cümle artık izleyiciye soru ("Senin araban… kaç saniyede?"), cevap ardından gelen "oha" zinciri.
 **Alternatif kancalar:** B: "Tesla'nın uçan arabası geldi — ama uçmuyor." (Yanlış Bilinen) · C: "Bir arabayı uçurumdan bıraksan bile bu arabadan yavaş hızlanır."
@@ -16,8 +16,6 @@ Uçurumdan bıraktığın taş bile 96'ya 2,7 saniyede çıkar. Bu araba, ondan 
 
 Mekik kalkarken astronotlar üç g taşırdı; bu araçta dört buçuk. Gubi, dayanır mısın? Titremeye başladı.
 
-Bunu arabasıyla övünen arkadaşına gönder.
-
 Nasıl mı? SpaceX'in soğuk gaz iticileri arabayı arkadan tekmeliyor. Fanlar da onu tavana yapıştıracak kadar emiyor.
 
 Ama bu en uç sürüm: davetli, yolda yasak.
@@ -26,7 +24,7 @@ Gufi, ayırtır mısın? Önce fiyata baktı.
 
 Fiyat yok. Üretim, iki bin yirmi sekiz.
 
-Sence yola çıkacak mı? Yorumlara A ya da B yaz.
+Bunu arabasıyla övünen arkadaşına gönder.
 
 Her gün bir merak için gubigufi'yi takip et.
 
@@ -38,12 +36,12 @@ Her gün bir merak için gubigufi'yi takip et.
 | 12–20 | "On saniye bekleyene kadar on yedi kere yapar" + Nevera 3× | Roadster 17 kez ardı ardına 96'ya çıkıyor (tekrar eden çubuk); yanında Nevera çubuğu | **17 kat** — sayıyla "çüş" |
 | 20–28 | "Uçurumdan bıraktığın taş… dört buçuk kat hızlı" | Uçurumdan düşen taş (2,7 sn) ↔ araba (0,59) yarış; taş çok geride kalır | fizik şoku |
 | 28–37 | "Mekik 3 g; bu araçta 4,5" + Gubi | G-metre: mekik 3 g (dolu), Roadster 4,6 g taşar; Gubi sıkışıp titrer | uzay mekiğinden fazlası |
-| ~37 | Paylaş: "arabasıyla övünen arkadaşına gönder" | telefon + uçak | paylaşım tetikler |
 | 38–46 | "Nasıl mı? soğuk gaz iticileri… fanlar tavana yapıştırıyor" | Roadster kesiti, itici gaz patlamaları; arabanın tavanda ters durduğu sahne (Tesla iddiası) | "bu bir araba mı?" |
-| 46–50 | "Ama bu en uç sürüm: davetli, yolda yasak." | ROCKET kartına "DAVETLİ ✓ · YOLDA YASAK ✕" damgası | kısıt (hayal kırıklığı) |
-| 50–54 | Gufi: "ayırtır mısın? önce fiyata baktı." | Gufi fiyat etiketi gag'i | espri |
-| 54–57 | "Fiyat yok. Üretim 2028." (+ekranda: rezervasyon 50.000 $) | "?" damgası → "2028" | vurucu gerçek |
-| 57–62 | A/B + takip (≤4 sn) | A/B kartı + logo | yorum |
+| 43–46 | "Ama bu en uç sürüm: davetli, yolda yasak." | ROCKET kartına "DAVETLİ ✓ · YOLDA YASAK ✕" damgası | kısıt (hayal kırıklığı) |
+| 46–50 | Gufi: "ayırtır mısın? önce fiyata baktı." | Gufi fiyat etiketi gag'i | espri |
+| 50–54 | "Fiyat yok. Üretim 2028." (+ekranda: rezervasyon 50.000 $) | "?" damgası → "2028" | vurucu gerçek |
+| 54–57 | "Bunu arabasıyla övünen arkadaşına gönder." (**sonda**, kullanıcı kararı) | telefon + uçak, arkadaşa gider | paylaşım tetikler |
+| 57–61 | Takip + logo (≤4 sn) | takip kartı → logo | — |
 Takip çipi ~20–24. sn (konuşma yok).
 
 ## Maskot anları (2)
@@ -64,4 +62,4 @@ Hesaplar (60 mph = 26,82 m/s = 96,6 km/s; sabit ivme varsayımı):
 - Rezervasyon: 5.000 $ bugün (iade edilebilir) + 10 gün içinde 45.000 $ = 50.000 $; fiyat yok; üretim "2028, actually" (Musk).
 Kaynak çipi: ELECTREK · TESLA/X · 15.10.2026 · NASA (mekik g sınırı) · MOTOR AUTHORITY (Nevera).
 **AÇIK NOKTALAR:** hızlanma rakamları şirket iddiası; "yarım saniye" yalnız Rocket (davetli, yolda yasak) — seste son kısımda bu söyleniyor; ekranda ilk anda "ROCKET SÜRÜMÜ" çipi. Performance (yola çıkacak olan) <1,6 sn.
-Yorum notu: A/B → 🅰 Çıkar 🅱 Çıkmaz. Sabit yorum: "Sence Roadster gerçekten yola çıkacak mı? 🅰 Çıkar 🅱 Çıkmaz — harfini yaz 👇"
+Yayın notu (kullanıcı kararı, bu video): videoda A/B yorum sorusu YOK; paylaşım çağrısı sonda. Sabit yorum (isteğe bağlı, seste yok): "Sence Roadster gerçekten yola çıkacak mı? 🅰 Çıkar 🅱 Çıkmaz — harfini yaz 👇"
