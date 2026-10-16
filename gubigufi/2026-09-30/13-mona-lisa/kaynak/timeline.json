@@ -1,0 +1,219 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 59.95,
+  "konusma_bloklari": [
+    [
+      0.0,
+      2.229
+    ],
+    [
+      2.64,
+      4.683
+    ],
+    [
+      5.048,
+      6.016
+    ],
+    [
+      6.374,
+      8.686
+    ],
+    [
+      9.152,
+      10.466
+    ],
+    [
+      10.722,
+      12.513
+    ],
+    [
+      12.881,
+      14.893
+    ],
+    [
+      15.331,
+      15.83
+    ],
+    [
+      16.1,
+      19.057
+    ],
+    [
+      19.484,
+      20.717
+    ],
+    [
+      21.15,
+      23.576
+    ],
+    [
+      23.889,
+      25.615
+    ],
+    [
+      25.954,
+      27.807
+    ],
+    [
+      28.145,
+      29.583
+    ],
+    [
+      29.892,
+      31.258
+    ],
+    [
+      31.633,
+      34.095
+    ],
+    [
+      34.492,
+      36.491
+    ],
+    [
+      36.89,
+      38.208
+    ],
+    [
+      38.516,
+      42.407
+    ],
+    [
+      42.756,
+      44.151
+    ],
+    [
+      44.442,
+      47.542
+    ],
+    [
+      47.882,
+      48.946
+    ],
+    [
+      49.214,
+      51.523
+    ],
+    [
+      51.874,
+      52.569
+    ],
+    [
+      52.827,
+      55.138
+    ],
+    [
+      55.51,
+      56.337
+    ],
+    [
+      56.733,
+      58.346
+    ],
+    [
+      58.713,
+      59.95
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 2.23,
+      "sure": 2.23,
+      "metin": "Yirmi bir Ağustos, bin dokuz yüz on bir."
+    },
+    {
+      "no": 2,
+      "baslangic": 2.23,
+      "bitis": 4.68,
+      "sure": 2.45,
+      "metin": "Louvre Müzesi'nden bir tablo çalındı."
+    },
+    {
+      "no": 3,
+      "baslangic": 4.68,
+      "bitis": 8.69,
+      "sure": 4.0,
+      "metin": "Ve bu hırsızlık, onu dünyanın en ünlü tablosu yaptı."
+    },
+    {
+      "no": 4,
+      "baslangic": 8.69,
+      "bitis": 15.83,
+      "sure": 7.14,
+      "metin": "O güne kadar Mona Lisa, sanat çevrelerinde saygı gören ama halkın pek tanımadığı bir eserdi."
+    },
+    {
+      "no": 5,
+      "baslangic": 15.83,
+      "bitis": 20.72,
+      "sure": 4.89,
+      "metin": "Hırsız, müzede cam vitrin işleri yapmış İtalyan bir işçiydi: Vincenzo Peruggia."
+    },
+    {
+      "no": 6,
+      "baslangic": 20.72,
+      "bitis": 25.61,
+      "sure": 4.9,
+      "metin": "Müzenin kapalı olduğu bir pazartesi sabahı, beyaz iş önlüğüyle içeri girdi."
+    },
+    {
+      "no": 7,
+      "baslangic": 25.61,
+      "bitis": 31.26,
+      "sure": 5.64,
+      "metin": "Tabloyu çerçevesinden çıkardı, önlüğünün altına sakladı ve kapıdan yürüyüp çıktı."
+    },
+    {
+      "no": 8,
+      "baslangic": 31.26,
+      "bitis": 34.09,
+      "sure": 2.84,
+      "metin": "Kaybolduğu ancak ertesi gün fark edildi."
+    },
+    {
+      "no": 9,
+      "baslangic": 34.09,
+      "bitis": 36.49,
+      "sure": 2.4,
+      "metin": "Gazeteler günlerce manşet attı."
+    },
+    {
+      "no": 10,
+      "baslangic": 36.49,
+      "bitis": 42.41,
+      "sure": 5.92,
+      "metin": "Müze yeniden açılınca insanlar, tablonun asılı olduğu boş duvarı görmek için kuyruğa girdi."
+    },
+    {
+      "no": 11,
+      "baslangic": 42.41,
+      "bitis": 47.54,
+      "sure": 5.14,
+      "metin": "Tablo iki yıl boyunca, Peruggia'nın Paris'teki odasında bir sandıkta saklandı."
+    },
+    {
+      "no": 12,
+      "baslangic": 47.54,
+      "bitis": 52.57,
+      "sure": 5.03,
+      "metin": "Bin dokuz yüz on üçte Floransa'da satmaya çalışırken yakalandı."
+    },
+    {
+      "no": 13,
+      "baslangic": 52.57,
+      "bitis": 56.34,
+      "sure": 3.77,
+      "metin": "Döndüğünde Mona Lisa artık sadece bir tablo değil, bir yıldızdı."
+    },
+    {
+      "no": 14,
+      "baslangic": 56.34,
+      "bitis": 59.95,
+      "sure": 3.61,
+      "metin": "Bazen bir şeyi ünlü yapan, onu kaybetmektir."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/kc.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  let o = `<g transform="translate(0 -150)">` + KC.koridor(1, { komsuAcik: .45 }) + KC.carpi(450, 880, .95, 1) + '</g>';
+  o += M.canli('gufi', { t: 1.2, x: 930, y: 1130, boy: 230, duygu: 'saskin', bakHedef: [430, 730] });
+  o += M.canli('gubi', { t: 1.2, x: 940, y: 620, boy: 150, duygu: 'saskin', parla: .3, bakHedef: [430, 730] });
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#1E2430"/><rect x="0" y="1150" width="1080" height="18" fill="#C8232F"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#E8B0A8">BİR İŞARETİN HİKÂYESİ</text>`;
+  o += txt('KAPIDAKİ ÇARPI', 540, 1362, 96) + txt('NEDEN ATILIYORDU?', 540, 1458, 62, '#E8B0A8');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>

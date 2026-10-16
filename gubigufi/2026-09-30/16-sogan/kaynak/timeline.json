@@ -1,0 +1,258 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 67.16,
+  "konusma_bloklari": [
+    [
+      0.0,
+      2.014
+    ],
+    [
+      2.455,
+      3.18
+    ],
+    [
+      3.491,
+      6.676
+    ],
+    [
+      7.11,
+      10.035
+    ],
+    [
+      10.488,
+      12.595
+    ],
+    [
+      13.045,
+      16.087
+    ],
+    [
+      16.483,
+      17.562
+    ],
+    [
+      17.827,
+      19.639
+    ],
+    [
+      20.032,
+      20.34
+    ],
+    [
+      20.685,
+      22.151
+    ],
+    [
+      22.515,
+      23.99
+    ],
+    [
+      24.252,
+      25.698
+    ],
+    [
+      26.094,
+      27.259
+    ],
+    [
+      27.55,
+      28.047
+    ],
+    [
+      28.297,
+      30.053
+    ],
+    [
+      30.495,
+      33.701
+    ],
+    [
+      34.118,
+      39.651
+    ],
+    [
+      40.017,
+      41.851
+    ],
+    [
+      42.37,
+      44.451
+    ],
+    [
+      44.908,
+      47.157
+    ],
+    [
+      47.594,
+      49.555
+    ],
+    [
+      49.944,
+      51.01
+    ],
+    [
+      51.416,
+      52.678
+    ],
+    [
+      53.083,
+      54.981
+    ],
+    [
+      55.415,
+      56.963
+    ],
+    [
+      57.398,
+      59.784
+    ],
+    [
+      60.254,
+      61.568
+    ],
+    [
+      62.007,
+      64.74
+    ],
+    [
+      65.121,
+      67.16
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 2.01,
+      "sure": 2.01,
+      "metin": "Soğan doğrarken neden ağlarız?"
+    },
+    {
+      "no": 2,
+      "baslangic": 2.01,
+      "bitis": 6.68,
+      "sure": 4.66,
+      "metin": "Çünkü soğan, kendini korumak için kurulmuş küçük bir kimya tuzağıdır."
+    },
+    {
+      "no": 3,
+      "baslangic": 6.68,
+      "bitis": 12.6,
+      "sure": 5.92,
+      "metin": "Soğanın hücrelerinde iki şey ayrı ayrı durur: kükürtlü bir madde ve bir enzim."
+    },
+    {
+      "no": 4,
+      "baslangic": 12.6,
+      "bitis": 16.09,
+      "sure": 3.49,
+      "metin": "Bıçak hücreyi parçaladığı an, ikisi karşılaşır."
+    },
+    {
+      "no": 5,
+      "baslangic": 16.09,
+      "bitis": 20.34,
+      "sure": 4.25,
+      "metin": "Tepkimenin sonunda havaya uçucu bir gaz yayılır."
+    },
+    {
+      "no": 6,
+      "baslangic": 20.34,
+      "bitis": 22.15,
+      "sure": 1.81,
+      "metin": "Adı: propantiyal es-oksit."
+    },
+    {
+      "no": 7,
+      "baslangic": 22.15,
+      "bitis": 25.7,
+      "sure": 3.55,
+      "metin": "Bu gaz gözüne ulaşınca, gözdeki sinirleri uyarır."
+    },
+    {
+      "no": 8,
+      "baslangic": 25.7,
+      "bitis": 30.05,
+      "sure": 4.36,
+      "metin": "Beynin alarm verir ve göz, kendini yıkamak için yaş döker."
+    },
+    {
+      "no": 9,
+      "baslangic": 30.05,
+      "bitis": 33.7,
+      "sure": 3.65,
+      "metin": "Yani ağlamak, aslında gözünün kendini savunması."
+    },
+    {
+      "no": 10,
+      "baslangic": 33.7,
+      "bitis": 41.85,
+      "sure": 8.15,
+      "metin": "Bu tuzağın son parçası ancak iki bin iki yılında, Japon bilim insanları tarafından bulundu: gazı üreten özel bir enzim."
+    },
+    {
+      "no": 11,
+      "baslangic": 41.85,
+      "bitis": 44.45,
+      "sure": 2.6,
+      "metin": "Peki ağlamadan nasıl doğrarsın?"
+    },
+    {
+      "no": 12,
+      "baslangic": 44.45,
+      "bitis": 49.55,
+      "sure": 5.1,
+      "metin": "Soğanı yarım saat buzdolabında soğut; soğukken gaz daha az uçar."
+    },
+    {
+      "no": 13,
+      "baslangic": 49.55,
+      "bitis": 52.68,
+      "sure": 3.12,
+      "metin": "Keskin bıçak kullan; daha az hücre ezilir."
+    },
+    {
+      "no": 14,
+      "baslangic": 52.68,
+      "bitis": 54.98,
+      "sure": 2.3,
+      "metin": "Ve kök kısmını en sona bırak."
+    },
+    {
+      "no": 15,
+      "baslangic": 54.98,
+      "bitis": 56.96,
+      "sure": 1.98,
+      "metin": "Bu maddeler en çok orada."
+    },
+    {
+      "no": 16,
+      "baslangic": 56.96,
+      "bitis": 61.57,
+      "sure": 4.6,
+      "metin": "Ağzına ekmek almak ya da mum yakmak mı?"
+    },
+    {
+      "no": 17,
+      "baslangic": 61.57,
+      "bitis": 62.8,
+      "sure": 1.23,
+      "metin": "Onlar pek işe yaramıyor."
+    },
+    {
+      "no": 18,
+      "baslangic": 62.8,
+      "bitis": 64.74,
+      "sure": 1.94,
+      "metin": "Kısacası soğan seni ağlatmak istemiyor."
+    },
+    {
+      "no": 19,
+      "baslangic": 64.74,
+      "bitis": 67.16,
+      "sure": 2.42,
+      "metin": "Sadece yenmek istemiyor."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

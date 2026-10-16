@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/au.js"></script><script src="../ortak/kp.js"></script><script src="../ortak/sl.js"></script><script src="../ortak/se.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const R = PR.R, h = HK.hash;
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  // sarı uyarı zemini + şerit
+  let o = `<rect width="1080" height="1150" fill="#FFD23F"/>`;
+  for (let i = -2; i < 16; i++) o += `<path d="M${i * 120} 0 L${i * 120 + 60} 0 L${i * 120 - 140} 200 L${i * 120 - 200} 200Z" fill="#1B2440" opacity=".9"/>`;
+  o += `<rect x="0" y="200" width="1080" height="950" fill="#FFE27A"/>`;
+  // üç durum: büyük ikon kutuları
+  const kutu = (x, y, ikon, ad, renk) => R(x - 150, y - 150, 300, 330, 36, '#000', .15) + R(x - 160, y - 160, 300, 330, 36, '#FFFFFF') + `<g transform="translate(${x - 10} ${y - 10})">${ikon}</g>` + R(x - 150, y + 110, 280, 60, 30, renk) + txt(ad, x - 10, y + 154, 40, '#FFFFFF');
+  const sokak = `<rect x="-100" y="40" width="200" height="50" fill="#3E8EDE"/>` + KP.yetiskin(0, 60, .32, { renk: '#1B2440' }) + `<path d="M-90 60 l40 0 M10 70 l40 0" stroke="#FFFFFF" stroke-width="6" opacity=".7"/>`;
+  const bodrum = `<path d="M-90 -10 L0 -80 L90 -10Z" fill="#1B2440"/><rect x="-80" y="-10" width="160" height="70" fill="#5A6478"/><rect x="-80" y="60" width="160" height="40" fill="#3E8EDE"/><path d="M-60 30 h30 v15 h30 v15 h30" stroke="#FFFFFF" stroke-width="6" fill="none"/>`;
+  const araba = `<g transform="translate(0 60)">${SE.araba(0, 0, .55, { rot: -8 })}</g><rect x="-110" y="40" width="220" height="50" fill="#3E8EDE" opacity=".85"/>`;
+  o += kutu(200, 520, sokak, 'SOKAK', '#2A6AB0') + kutu(540, 520, bodrum, 'BODRUM', '#2A6AB0') + kutu(880, 520, araba, 'ARABA', '#2A6AB0');
+  o += `<g transform="rotate(-4 540 920)"><rect x="170" y="860" width="740" height="120" rx="60" fill="#E8323C"/>` + txt('ÇOĞUMUZ TERSİNİ YAPIYOR', 540, 940, 48, '#FFFFFF') + `</g>`;
+  o += M.canli('gufi', { t: 1, x: 130, y: 1130, boy: 150, duygu: 'saskin', bakHedef: [540, 520] }) + M.canli('gubi', { t: 1, x: 960, y: 1060, boy: 110, duygu: 'kararli', bakHedef: [540, 520] });
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#1B2440"/><rect x="0" y="1150" width="1080" height="18" fill="#FFD23F"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#FFD23F">3 DURUM · 3 KURAL</text>`;
+  o += txt('SEL ANINDA', 540, 1362, 100) + txt('NE YAPMALISIN?', 540, 1470, 96, '#FFD23F');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>

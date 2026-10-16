@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/au.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const R = PR.R;
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const gtxt = (s, x, y, size, renk) => txt(s, x + 6, y + 8, size, '#000', 900, 'opacity=".45"') + txt(s, x, y, size, renk);
+const sticker = (s, x, y, fs, zem, yazi, rot) => { const w = K.yaziGen(s, fs) + 70; return `<g transform="translate(${x} ${y}) rotate(${rot})">` + R(-w / 2 + 8, -fs * .95 + 10, w, fs * 1.9, 24, '#000', .4) + R(-w / 2, -fs * .95, w, fs * 1.9, 24, zem) + txt(s, 0, fs * .35, fs, yazi) + '</g>'; };
+window.renderAt = t => {
+  let o = `<rect width="1080" height="1920" fill="#120A10"/>`;
+  const ic = `<image href="../ortak/img/bayrak2.jpg" x="-60" y="-120" width="1200" height="1400" preserveAspectRatio="xMidYMid slice"/>`;
+  const z = [[560, -10], [520, 200], [600, 380], [500, 560], [585, 760], [510, 960], [560, 1200]], yol = z.map(p => p.join(' ')).join(' L');
+  o += `<defs><clipPath id="sol"><path d="M0 0 L560 0 L${yol} L560 1920 L0 1920Z"/></clipPath><clipPath id="sag"><path d="M1080 0 L560 0 L${yol} L560 1920 L1080 1920Z"/></clipPath>
+    <linearGradient id="alt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5A1E2A" stop-opacity="0"/><stop offset="1" stop-color="#5A1E2A"/></linearGradient>
+    <radialGradient id="kor"><stop offset="0" stop-color="#FF4A3A" stop-opacity=".9"/><stop offset="1" stop-color="#FF4A3A" stop-opacity="0"/></radialGradient></defs>`;
+  o += `<rect x="440" y="0" width="200" height="1200" fill="url(#kor)"/>`;
+  o += `<g transform="translate(-34 6) rotate(-2 300 600)"><g clip-path="url(#sol)">${ic}</g></g><g transform="translate(34 -6) rotate(2 780 600)"><g clip-path="url(#sag)">${ic}</g></g>`;
+  o += `<path d="M${yol}" stroke="#FFD0A0" stroke-width="5" fill="none" opacity=".8"/>`;
+  o += sticker('TEK MİLLET İKİ DEVLET?', 540, 420, 52, '#FFF3E0', '#7A2E3A', -3);
+  o += sticker('BAŞÖRTÜSÜ', 250, 760, 40, '#E8323C', '#FFFFFF', -6) + sticker('SİLAH', 840, 860, 44, '#FFD23F', '#1B1410', 5);
+  o += `<rect x="0" y="900" width="1080" height="260" fill="url(#alt)"/>`;
+  o += M.canli('gufi', { t: 1, x: 540, y: 1158, boy: 180, duygu: 'saskin', bakHedef: [540, 600] });
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#5A1E2A"/><rect x="0" y="1150" width="1080" height="10" fill="#FFD23F"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="30" text-anchor="middle" letter-spacing="5" style="fill:#FFD23F">BAŞÖRTÜSÜ · SİLAHLAR · ANKARA</text>`;
+  o += gtxt("AZERBAYCAN'LA", 540, 1362, 104, '#FFF3E0') + gtxt('NE OLUYOR?', 540, 1470, 104, '#FFD23F');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  o += l + '</g>';
+  document.getElementById('dinamik').innerHTML = o;
+};
+</script></body></html>

@@ -1,0 +1,2239 @@
+# PDF metin dökümü (fonttaki i harfi ! olarak çıkıyordu, düzeltildi; tablo düzeni bozuk olabilir)
+
+gubigufi Niş Stratejisi: 10 Dikey, 250 Konu, İlk 30 Video
+Sayfayı takip ettirecek şey konu genişliği değil, izleyicinin "bir sonrakini kaçırmayayım" diyeceği sabit format ve seri yapısı. 10 dikeyi aynı anda açmayın:
+takip motivasyonu en güçlü 4 dikeyle (Hukuk, Ekonomi, Sağlık, Psikoloji) başlayın, diğer 6'sını aralara "nefes" videosu olarak serpiştirin.
+TL;DR
+Neden bu dört dikey: Hukuk, Ekonomi ve Sağlık cüzdana, hakka ve bedene dokunduğu için en çok kaydedilen dikeyler. Social Media Today'in 22 Ocak
+2025 tarihli haberinde aktarılan Adam Mosseri açıklamasına göre Instagram'da sıralamayı en çok etkileyen üç sinyal izlenme süresi, beğeni ve
+gönderme; Mosseri'nin ifadesiyle gönderme, takipçi olmayanlara ("unconnected") erişimde biraz daha önemli. Rakiplerin boşluğu "konuşan kafa" ve
+gündem yorumu; sizin fırsatınız zamansız mekanizma anlatımı ve maskotlu animasyon.
+Konu listesi: Her dikeyde 25 konu var; ilk 5'i 12 sütunlu tam tabloda, kalan 20'si kompakt listede. 
+ = bu araştırmada birincil ya da güvenilir kaynakla
+doğrulandı. 
+ = yaygın bilinen bilgi, yayından önce belirtilen birincil kaynakla kontrol edilmeli. Hiçbir kaynak uydurulmadı; link yalnızca doğrulanan
+kaynaklara verildi.
+İlk 30 videonun mantığı: Kısa ömürlü güncel rakamları (186.000 TL hakem heyeti sınırı, 73.729,87 TL kıdem tavanı, %37 politika faizi) zamansız
+mekanizmalarla (kayıp cüzdan, 72 kuralı, tahlil referans aralığı) dönüşümlü yayınlayın; her videoyu bir sonraki seri bölümüne bağlayın.
+Genel Bulgular
+Kitle: Cumhuriyet'in aktardığı TÜİK 2026 Hanehalkı BT Kullanım Araştırması verisine göre (16–74 yaş) internet kullanımı 2025'teki %90,9'dan %92,3'e
+çıktı; YouTube %77,6 (erkeklerde %80,1, kadınlarda %75,0), Instagram %71,1 (erkeklerde %71,9, kadınlarda %70,2). 2025'te YouTube %72,9, Instagram
+%68,1 idi; iki platform da büyüyor. Rakamlar TÜİK'i kaynak gösteren DHA/AA haberlerinden; TÜİK bültenine doğrudan erişilemedi.
+Instagram: Beğeni mevcut takipçide, gönderme yeni kitlede daha önemli. Highstyle Meta sabit bir katsayı yayımlamıyor; "gönderme = 3–5 beğeni"
+doğrulanmamış bir topluluk tahmini. Mayata Vision Highstyle
+YouTube Shorts: TeamYouTube'un 26 Mart 2025'te Help Community forumunda duyurduğu (PPC Land) değişiklikle, 31 Mart 2025'ten beri
+görüntüleme video oynamaya başladığı an sayılıyor. Eski ölçü "engaged views" adıyla Advanced Mode'da sürüyor; YPP uygunluğu ve Shorts gelir
+paylaşımı bu metrikle hesaplanıyor. Etkileşimli görüntüleme, izlenme oranı ve kazanılan aboneyi takip edin. Teleprompter
+Format: 0–2 sn kanca · 2–40 sn mekanizma · 40–52 sn "işte bu yüzden…" · 52–60 sn seri kancası ("takip et" yerine "Bölüm 3 yarın: …"). Gubi soruyu
+soran meraklı, Gufi uzman olsun; "Gufi haklı mı?" yorum döngüsü doğar.
+Dikey önerileri: "Tablonun Sırrı" ile "Perde Arkası"nı başta tek "Kültür" rotasyonunda yürütün (kitle ve üretim maliyeti örtüşüyor). "Kelimenin Dipnotu"
+(etimoloji) dikeyi ekleyin: ucuz üretilir, çok paylaşılır, her dikeye köprü kurar (yoğurt → Mutfak, kahve → Tarih). Sivas'tan bir "Anadolu'dan" etiketi açın;
+yerel ve sahici bir farklılaşma.
+1. Hukuk — "Kanun Böyle Diyor"
+A. Kitle ve motivasyon
+Kitle: 22–40 yaş kiracılar, beyaz yakalılar, online alışveriş yapanlar, hukuk öğrencileri ve genç avukatlar. "Bir gün lazım olur" diye kaydeder, ev sahibi ya
+da işverenle sorun yaşayan arkadaşına gönderir.
+Rakipler: "Hukuklu" kendini en yüksek takipçili hukuk sayfası olarak tanıtıyor (114 bin; hedefi hukukçular). Hukuklu "Bir Tutam Hukuk" mizahi çizgide;
+TikTok'ta Av. Feyza Altun gibi avukat vlogcular var. MicroDestek TikTok Güncel sayılar doğrulanamadı.
+Boşluk: İçerik ya meslek içi ya kişisel vlog. Mekanizmayı görselleştiren, avukat reklam yasağına takılmayan tarafsız anlatıcı yok.
+Kancalar: "Bunu yaparsan suç işlemiş olursun", "Bu cümleyi söyleyen ev sahibi yanılıyor".
+Hassasiyet: Somut olaya tavsiye yok, genel kural anlatılır; rakamlara yıl damgası. Uyarı: "Bu video genel bilgilendirmedir, hukuki tavsiye değildir; kendi
+durumun için bir avukata danış."
+B. Tam tablo (ilk 5)
+#
+başlık
+kanca
+öz
+şaşırtıcı b"lg"
+sev"ye
+TR
+bağlantısı
+görsel
+zamansız/güncel
+nüans
+1
+Bulduğun
+Cüzdan
+Kimin?
+"Yolda cüzdan
+buldun; kanun
+sana ödül hakkı
+tanıyor."
+Bulunmuş eşya:
+bildirirsen ve 5 yıl
+içinde sahibi
+çıkmazsa mal
+senin; sahibine
+verirsen "uygun
+ödül"
+isteyebilirsin.
+Ghdernegi
+Ev, işyeri ya da
+kamu binasında
+bulursan ödül
+isteyemezsin
+(TMK 771/3).
+Defineyi bulana
+değerinin yarısını
+aşmayan ödül
+(TMK 772).
+Adana Avukat
+Adana Avukat
+herkes
+TMK 771–
+772
+Cüzdan, 5
+yıllık kum
+saati,
+içeri/dışarı
+bölünmüş
+ekran
+zamansız
+Kanun oran
+vermiyor;
+"%10" efsane
+Tarihî eserde
+2863 sayılı
+Kanun
+uygulanır.
+2
+Kedin Artık
+"Eşya" Değil
+"2021'e kadar
+kanun gözünde
+kedinle
+koltuğun
+aynıydı."
+7332 sayılı
+Kanunla
+hayvanlar "mal"
+değil "canlı"
+olarak korunuyor;
+kötü muamele
+ayrı bir suç.
+Aschukuk
+RG
+14.07.2021/31541.
+"Süs hayvanı"
+ifadesi çıkarıldı;
+ev hayvanı
+haczedilemiyor.
+YT Law Office
+meraklı
+5199 ve
+7332 sayılı
+Kanunlar
+"Eşya"
+etiketinin
+"canlı"ya
+dönüşmesi
+zamansız (2024'te
+7527 ile yeniden
+değişti)
+Mevzuat Bilgi Sistemi
+Medeni
+hukukta eşya
+niteliği
+akademide
+tartışmalı;
+sokak hayvan
+düzenlemesi
+politik açıdan
+hassas.
+Sozbursa
+3
+"Kahve
+Sıcaktı"
+Davası
+"Kahvesini
+döküp milyon
+dolar aldı…
+hikâye öyle
+değil."
+Cezai tazminat ve
+kusur paylaşımı:
+jüri kadını %20
+kusurlu buldu.
+1994'te 2,7
+milyon $ cezai
+tazminat verildi;
+hâkim 480 bin
+$'a indirdi. Kahve
+180–190°F (82–
+88°C)
+sıcaklıktaydı. Gizli
+uzlaşmayla bitti.
+cornell
+meraklı
+Türk
+hukukunda
+cezai
+tazminat
+yok
+Termometre,
+efsane/gerçek
+terazisi
+zamansız
+Yanıklar
+üçüncü
+dereceydi;
+"kolay para"
+anlatısı yanlış
+Tavrn
+4
+186.000 TL
+Kuralı
+"Bozuk telefon
+için mahkemeye
+gidemezsin;
+önce buraya."
+186.000 TL
+altındaki tüketici
+uyuşmazlıklarında
+Tüketici Hakem
+Heyeti zorunlu ve
+ücretsiz.
+Hukukcularevi
+2025'te 149.000
+TL, 2026'da
+186.000 TL
+(%25,49 artış).
+Ticaret
+herkes
+6502 s.
+Kanun
+m.68
+Fatura, iki
+kapı, eşik
+güncel (1 Ocak
+2027'de değişir)
+Karara 15 gün
+içinde itiraz
+edilebilir.
+Hukukcularev
+5
+Kıdem
+Tazminatının
+Tavanı
+"20 yıl çalıştın
+ama maaşın
+kadar kıdem
+alamayabilirsin."
+Her tam yıl için
+30 günlük brüt
+ücret, ama yıllık
+tavanla sınırlı;
+tavan en yüksek
+devlet
+memurunun
+emeklilik
+ikramiyesine
+bağlı. TÜRMOB
+Verginet
+1 Temmuz–31
+Aralık 2026
+tavanı 73.729,87
+TL; yalnızca
+damga vergisi
+kesilir. TÜRMOB
+herkes
+1475 s.
+Kanun
+m.14
+Maaş sütunu
+tavana çarpıp
+kesiliyor
+güncel (Ocak 2027)
+Hesap
+"giydirilmiş"
+brüt ücretle
+yapılır.
+Bigpara
+Diğer 20 konu (
+; puan parantez içinde)
+6. Zamanaşımı ile hak düşürücü süre: biri hakkı dava edilemez kılar, diğeri öldürür (TBK 146 vd.) (7) · 7. Kira artış tavanı = 12 aylık TÜFE ortalaması (TBK
+344); Eylül 2026 için %31,79 (ikincil kaynak) (9) GONCA · 8. "10 yıl dolunca kiracı çıkar" doğru mu? (TBK 347) (8) · 9. Ayıplı malda 4 seçimlik hak (6502
+m.11) (8) · 10. Online alışverişte 14 gün cayma hakkı ve istisnaları (8) · 11. Saklı pay: mirasın hepsi kediye bırakılamaz (TMK 506) (8) · 12. Masumiyet karinesi
+(Anayasa m.38, AİHS m.6) (6) · 13. Susma hakkı (CMK 147) ve Miranda (1966) (7) · 14. Mücbir sebep: deprem sözleşmeyi bitirir mi? (7) · 15. İçtihadı
+birleştirme kararları ve Türkiye'de "emsal" (6) · 16. Kabahat ile suç (5326 / 5237) (6) · 17. Hayvan sahibinin sorumluluğu (TBK 67) (6) · 18. Hammurabi'nin
+"göze göz"ü cezayı sınırlıyordu (7) · 19. Mecelle (1869–1876) (6) · 20. 1926 Medeni Kanunu neden İsviçre'den? (7) · 21. Kadeş'ten BM'ye barış antlaşması
+(Tarih ortak) (8) · 22. Haksız fiilin şartları (TBK 49) (6) · 23. Nafaka türleri ve süresiz nafaka tartışması (7) · 24. İşveren telefonunu okuyabilir mi? AİHM
+Bărbulescu/Romanya (2017) (8) · 25. Trafikte "%10 tolerans" efsanesi: yazılı kural doğrulanamadı (7)
+2. Sağlık & Vücut — "Vücut Kılavuzu"
+A. Kitle ve motivasyon
+Kitle: 25–55 yaş, tahlil sonucu bekleyenler, ebeveynler, sporcular, tıp/hemşirelik öğrencileri. "Tahlil gelince bakarım" diye kaydeder, anne-babasına
+gönderir.
+Rakipler: Prof. Dr. Mustafa Çetiner (bilgi kirliliğiyle mücadele), "Doktorum" programı, Dr. Mehmet Öz ile Doç. Dr. Halit Yerebakan'ın ortak kanalı,
+diyetisyen hesapları. Hürriyet Güncel sayılar doğrulanamadı.
+Boşluk: İçerik ya tavsiye veriyor ya ürün satıyor; mekanizmayı gösterip tavsiye vermeyen animasyon neredeyse yok.
+Kancalar: "Tahlilinde bu yıldız varsa panik yapma", "Ağrı kesicin ağrıyı nerede kesiyor?"
+Hassasiyet: Doz, tedavi, "şunu iç geçer" yok; her videoyu bir hekime okutun. Uyarı: "Bu video tıbbi tavsiye değildir; teşhis ve tedavi için hekimine
+danış."
+B. Tam tablo (ilk 5)
+#
+başlık
+kanca
+öz
+şaşırtıcı
+b"lg"
+sev"ye
+TR
+bağlantısı
+görsel
+zamansız/güncel
+nüans
+kaynak
+1
+Tahlilindeki
+Yıldız Yalan
+Söyleyebilir
+"Tamamen
+sağlıklısın
+ama
+tahlilinde
+yıldız
+çıkabilir."
+Referans
+aralığı
+sağlıklıların
+orta %95'i;
+her testte
+sağlıklı 20
+kişiden 1'i
+aralık
+dışında kalır.
+20
+bağımsız
+testte en
+az bir
+"yıldız"
+olasılığı ≈
+%64
+(1−0,95²⁰).
+uzman
+da
+beğenir
+e-Nabız
+20 kişilik
+kalabalıkta 1
+kırmızı, zarlar
+zamansız
+Testler
+tam
+bağımsız
+değil, oran
+yaklaşık.
+ CLSI
+EP28-A3c;
+hesap
+matematiksel
+2
+Kendine
+Mikrop
+İçen
+Doktor
+"Ülseri
+kanıtlamak
+için bakteri
+dolu bir
+bardak
+içti."
+Ülserin
+büyük kısmı
+stresten
+değil H.
+pylori'den;
+tedavi
+antibiyotik.
+Barry
+Marshall
+1984'te
+kültürü içti;
+Marshall
+ve Warren
+2005
+Nobel.
+meraklı
+Türkiye'de
+H. pylori
+yaygın (oran
+)
+Bardak, spiral
+bakteri,
+madalya
+zamansız
+Ağrı
+kesiciler
+de ülser
+yapar.
+nobelprize.org
+2005
+3
+El Yıkamayı
+Öneren
+Adam
+Neden
+Kovuldu?
+"Doktorlara
+'elinizi
+yıkayın'
+dedi,
+kariyeri
+bitti."
+Mikrop
+teorisinden
+önce kanıtın
+reddi:
+Semmelweis
+refleksi.
+1847
+Viyana'da
+klorlu
+kireçle el
+yıkamadan
+sonra
+lohusa
+humması
+ölümleri
+belirgin
+düştü.
+herkes
+–
+El,
+mikroskopsuz
+dünya,
+kovulma
+mektubu
+zamansız
+Rakamlar
+kaynaklara
+göre
+değişiyor
+(~%10–
+18'den
+~%1–
+2'ye).
+Semmelweis
+(1861);
+Loudon,
+JRSM
+4
+Aspirinin
+Mucidi
+Kim?
+"Aspirinin
+mucidi
+olarak
+bilinen isim
+tartışmalı."
+Söğüt
+kabuğundan
+asetilsalisilik
+aside; COX
+enzimini
+baskılar.
+Bayer
+1897;
+Hoffmann
+mı
+Eichengrün
+mü
+tartışması.
+uzman
+da
+beğenir
+–
+Söğüt,
+molekül
+dönüşümü,
+iki isim
+zamansız
+"Kesin
+mucit"
+demeyin.
+ Sneader,
+BMJ 2000
+5
+Balıkların
+Doktor
+Olduğu
+Kaplıca
+"Sivas'ta
+balıklar
+derinin ölü
+tabakasını
+yiyor."
+Garra rufa
+ölü deriyi
+kemirir;
+sedef
+hastalığında
+destekleyici
+kullanımı
+araştırılmış.
+Kangal
+Balıklı
+Kaplıca.
+herkes
+Sivas/Kangal
+Minik balıklar,
+deri kesiti
+zamansız
+Kanıt
+sınırlı;
+"tedavi
+eder"
+demeyin,
+hijyen
+tartışması
+var.
+ PubMed
+"Garra rufa
+psoriasis"
+Diğer 20 konu (
+)
+6. Antibiyotik neden virüse işlemez? (8) · 7. Parasetamol ile ibuprofen farklı yollarla çalışır (7) · 8. Ferritin düşük, hemoglobin normal ne demek? (8) · 9.
+HbA1c neden 3 aylık ortalama? Eritrosit ~120 gün (8) · 10. Kolesterol "iyi-kötü" değil taşıyıcı meselesi (7) · 11. Bağışıklık hafızası: hafıza B hücreleri (6) · 12.
+Kafein yorgunluğu gidermez, adenozini maskeler (9) · 13. Kas ağrısı laktik asitten değil (DOMS) (8) · 14. "Metabolizma saati" mitleri (6) · 15. Plasebo ve açık
+etiketli plasebo (8) · 16. Kan grubu diyeti kanıtsız (Wang ve ark. 2014, PLoS One) (7) · 17. Anestezi nasıl çalışır? Hâlâ tam bilinmiyor (8) · 18. Röntgen (1895)
+ve Bertha'nın eli (7) · 19. Hıçkırık refleksi (6) · 20. Beyin %10 efsanesi (7) · 21. Uyku borcu ve REM (7) · 22. Herkes tuza aynı duyarlı değil (6) · 23. Kalp krizi ≠
+kalp durması (8) · 24. Grip ≠ soğuk algınlığı (6) · 25. Sivas Darüşşifası (1217) (8)
+3. Ekonomi & Para — "Paranın Dili"
+A. Kitle ve motivasyon
+Kitle: 20–45 yaş maaşlılar, öğrenciler, esnaf, yeni yatırımcılar. Her ay açıklanan enflasyon ve faiz haberini "anlamak" için bir çevirmen arıyorlar.
+Rakipler: Murat Muratoğlu (753 bin abone, 2025 listesi), Kanal Finans (708 bin), İslam Memiş (508 bin), Mesele Ekonomi, Atilla Yeşilada. Paraanaliz
+Haberler90 Güncel sayılar doğrulanamadı.
+Boşluk: Rakiplerin neredeyse tamamı piyasa yorumu ve "ne alalım" içeriği üretiyor. Kavramı net ve ekonomistin onaylayacağı doğrulukta, tavsiyesiz
+anlatan görsel anlatıcı yok.
+Kancalar: "Maaşın neden eriyor?", "Faiz sabit, kredi neden pahalandı?"
+Hassasiyet: SPK düzenlemeleri nedeniyle hisse/coin/fon önerisi yok, siyasi taraf yok; rakamlara açıklama tarihi. Uyarı: "Yatırım tavsiyesi değildir."
+B. Tam tablo (ilk 5)
+#
+başlık
+kanca
+öz
+şaşırtıcı
+b"lg"
+sev"ye
+TR
+bağlantısı
+görsel
+zamansız/güncel
+nüans
+kaynak
+1
+Senin
+Enflasyonun
+Kaç?
+"Resmî
+enflasyon
+%31,5; senin
+sepetin
+başka
+olabilir."
+TÜFE ağırlıklı bir
+sepettir; kişisel
+enflasyon senin
+harcama
+ağırlıklarına
+bağlı.
+Ağustos
+2026 yıllık
+%31,51;
+hizmetlerde
+%40,28,
+temel
+mallarda
+%15,89.
+Sbb
+herkes
+TÜİK
+TÜFE
+İki sepet,
+ağırlık
+terazisi
+güncel (her ayın
+3'ü)
+Metodoloji
+2026'da değişti
+(2025=100).
+CNN TÜRK
+tradingeconomics
+ SBB
+2
+Merkez
+Bankası
+Faizi Ne İşe
+Yarar?
+"Merkez
+Bankası %37
+dedi; bu
+cebine nasıl
+ulaşıyor?"
+Parasal aktarım:
+politika faizi
+bankaların
+fonlama maliyeti
+üzerinden
+krediye ve
+mevduata geçer.
+Halilbakirci
+10 Eylül
+2026: repo
+%37,
+gecelik borç
+verme %40,
+borçlanma
+%35,5.
+TCMB
+meraklı
+TCMB PPK
+Musluk-
+boru
+sistemi
+güncel (sonraki
+PPK 22 Ekim
+2026)
+TrenSonHaber
+Politika faizi
+sabitken kredi
+faizi değişebilir.
+Halilbakirci
+ TCM
+2026-3
+3
+Kira Zammı
+Neden
+%31,79?
+"Ev sahibin
+%50 istiyor;
+kanun başka
+rakam
+söylüyor."
+Yıllık oran ile 12
+aylık ortalama
+farkı; ortalama
+daha yavaş
+hareket eder.
+Eylül 2026
+kira tavanı
+%31,79;
+aynı ay yıllık
+oran
+%31,51.
+GONCA
+herkes
+TBK 344
+Hızlı ve
+yavaş iki
+çizgi
+güncel
+İkincil kaynak;
+TÜİK'le teyit edin.
+ GO
+(TÜİK v
+4
+72 Kuralı
+"Paran kaç
+yılda ikiye
+katlanır?
+72'yi faize
+böl."
+Bileşik faizin kısa
+yolu; enflasyona
+da uygulanır.
+%31,5
+enflasyonda
+fiyatlar ≈
+2,3 yılda
+ikiye
+katlanır.
+herkes
+TL
+enflasyonu
+Kartopu,
+takvim
+zamansız
+Yüksek oranlarda
+sapma artar.
+Matema
+(ln2)
+5
+Altı Sıfır
+Nereye
+Gitti?
+"Bir
+zamanlar
+hepimiz
+milyonerdik."
+Redenominasyon
+enflasyonu
+düşürmez, birimi
+sadeleştirir.
+1 Ocak
+2005'te
+1.000.000
+TL = 1 YTL.
+Kaplumbağa
+Terbiyecisi
+2004'te "5
+trilyon"a
+satıldı =
+bugünkü 5
+milyon TL.
+Wikipedia
+herkes
+5083 s.
+Kanun
+Banknottan
+uçan
+sıfırlar
+zamansız
+–
+ 508
+Kanun; 
+satış bi
+Diğer 20 konu (
+)
+6. Neden her şey 99,90 TL? Sol basamak etkisi (Thomas & Morwitz 2005, JCR) (9) · 7. Mevduat faizi ve reel getiri (8) · 8. Kur neden yükselir? (7) · 9. Kredi
+kartı asgari ödeme tuzağı (9) · 10. Gresham Kanunu (7) · 11. Big Mac Endeksi (1986) (7) · 12. 1929 Buhranı tek grafikte (6) · 13. 2001 krizi ve Kara Çarşamba
+(8) · 14. Zimbabwe'nin 100 trilyonluk banknotu (8) · 15. Batık maliyet yanılgısı (7) · 16. "Zam aldım, maaşım düştü" vergi dilimi efsanesi (9) · 17. Brüt ile net
+arasındaki fark (8) · 18. Kartel ve Rekabet Kurumu (6) · 19. Fırsat maliyeti (6) · 20. İlk hisse senedi 1602 (VOC) (7) · 21. Merkez bankası bağımsızlığı (6) · 22.
+Ahilik ve narh sistemi (7) · 23. Shrinkflation (9) · 24. Asgari ücret tartışması (7) · 25. Sanat bir yatırım aracı mı? (7)
+4. Psikoloji & Beyin — "Beyin Tuzakları"
+A. Kitle ve motivasyon
+Kitle: 18–35 yaş öğrenciler, kişisel gelişim meraklıları, pazarlamacılar, öğretmenler. "Bu tam sen" diye arkadaşını etiketler; gönderme sinyali en güçlü
+dikey.
+Rakipler: Sinan Canan, Serkan Karaismailoğlu, Evrim Ağacı (sayılar doğrulanamadı).
+Boşluk: Popüler psikoloji, tekrarlanamayan deneyleri kesin bilgi gibi anlatıyor. "Bu deney tekrarlanınca ne oldu?" diyen dürüst kanal yok; güven ve takip
+buradan gelir.
+Kancalar: "Beynin sana her gün bu oyunu oynuyor", "Bu ünlü deney aslında sorunluydu".
+Hassasiyet: Klinik tanı yok (narsist, depresyon vb.); replikasyon durumu belirtilir.
+B. Tam tablo (ilk 5)
+#
+başlık
+kanca
+öz
+şaşırtıcı b"lg"
+sev"ye
+TR
+bağlantısı
+görsel
+zamansız/güncel
+nüans
+kaynak
+1
+Çapa Etkisi
+"Bir çarkın
+gösterdiği
+sayı cevabını
+değiştirdi."
+İlk duyulan
+sayı
+sonraki
+tahmini
+demirler.
+Tversky ve
+Kahneman
+(1974): 10 ya
+da 65'te
+duran çark,
+Afrika ülkeleri
+oranı
+tahminini
+değiştirdi.
+meraklı
+Pazarlık,
+"indirimden
+önce"
+etiketi
+Çark, çapa
+zamansız
+Etki sağlam,
+büyüklüğü
+bağlama
+bağlı.
+ Science
+185, 1974
+2
+Stanford
+Hapishane
+Deneyi
+Neden
+Sorunlu?
+"Psikolojinin
+en ünlü
+deneyi
+yönlendirilmiş
+olabilir."
+Talep
+özellikleri:
+katılımcı
+beklenen
+davranışı
+sergiler.
+Le Texier
+(2019,
+American
+Psychologist)
+arşivde
+gardiyanlara
+yönlendirme
+olduğunu
+belgeledi.
+uzman
+da
+beğenir
+–
+Sahne
+arkası,
+yönetmen-
+oyuncu
+zamansız
+Zimbardo
+yanıt verdi;
+iki tarafı
+anlatın.
+ Le Texier
+2019
+3
+Görünmez
+Goril
+"Pasları
+sayıyorsun,
+önünden bir
+goril geçiyor."
+Dikkatsizlik
+körlüğü:
+dikkat bir
+spot ışığı.
+Simons ve
+Chabris
+(1999,
+Perception
+28:1059–
+1074): 192
+gözlemcinin
+%46'sı
+beklenmedik
+olayı fark
+etmedi; kolay
+görevde fark
+etme oranı
+%64, zor
+görevde
+%45.
+herkes
+Trafikte
+motosikleti
+görmemek
+Oyuncular,
+goril
+zamansız
+Oran koşula
+bağlı.
+Perception
+28, 1999
+4
+Marshmallow
+Testi Neyi
+Ölçtü?
+"Şekeri
+bekleyen
+çocuk başarılı
+olur mu? Pek
+değil."
+Belirleyici
+olan irade
+değil, aile
+ve
+ekonomik
+koşullar.
+Watts,
+Duncan ve
+Quan (2018,
+Psychological
+Science
+29(7)):
+korelasyon
+orijinal
+çalışmaların
+yalnızca
+yarısı kadardı
+ve aile
+geçmişi,
+erken bilişsel
+yetenek ve
+ev ortamı
+kontrol
+edilince üçte
+iki oranında
+azaldı.
+uzman
+da
+beğenir
+–
+Şeker,
+saat, aile
+arka planı
+zamansız
+Etki
+sıfırlanmadı,
+küçüldü.
+Psychological
+Science 2018
+5
+Kaybetmek
+Daha Çok
+Acıtır
+"100 TL
+bulmak, 100
+TL
+kaybetmenin
+acısını
+kapatmaz."
+Kayıptan
+kaçınma ve
+beklenti
+teorisi.
+Kayıp
+katsayısı
+genellikle ~2
+diye anılır.
+meraklı
+Borsa,
+"stokta son
+3"
+Asimetrik
+terazi
+zamansız
+Meta-
+analizler
+katsayının
+daha düşük
+olabileceğini
+tartışıyor.
+Kahneman &
+Tversky 1979,
+Econometrica
+Diğer 20 konu (
+)
+6. Onay yanlılığı (7) · 7. Kitty Genovese hikâyesinin çarpıtılması (9) · 8. Milgram ve yeni arşiv tartışmaları (8) · 9. Spotlight etkisi (8) · 10. Loftus'un sahte
+anıları (8) · 11. Zeigarnik: diziler neden en heyecanlı yerde biter? (8) · 12. Reçel deneyi ve replikasyon sorunu (7) · 13. Halo etkisi (6) · 14. Dopamin "haz"
+değil "beklenti" sinyali (8) · 15. Kumarbaz yanılgısı (7) · 16. Hedonik adaptasyon (7) · 17. Çoklu görev efsanesi (7) · 18. Déjà vu (8) · 19. Pareidolia: prizde yüz
+(7) · 20. Uykuda öğrenme efsanesi (6) · 21. Belirsizliğe tahammülsüzlük ve korna (6) · 22. Sosyal kanıt: boş restoran (7) · 23. Mere exposure (6) · 24.
+Varsayılan etki ve organ bağışı (Johnson & Goldstein 2003) (8) · 25. "Ben demiştim" yanılgısı (6)
+5. Yemek & Mutfak Bilimi — "Mutfak Laboratuvarı"
+A. Kitle ve motivasyon
+Kitle: 20–50 yaş evde yemek yapanlar (kadın ağırlıklı), gastronomi öğrencileri, şefler. Pratik fayda için kaydeder ("Bir dahaki sefere böyle yapacağım").
+Rakipler: Refika'nın Mutfağı (Instagram'da 1,8 milyonun üzerinde takipçi; tarihsiz ikincil kaynak), Famous Birthdays tarif kanalları, FluTV. Yemek bilimi ya
+da tarihine odaklanan Türkçe kanal doğrulanamadı; doğrudan boşluk.
+Kancalar: "Soğanı yanlış kavuruyorsun", "Bu yemek aslında…"
+Hassasiyet: Köken iddiaları milliyetçi tartışmaya açık (baklava, yoğurt, kahve); "kesin bizim" yerine belgelenmiş en eski kaydı anlatın.
+B. Tam tablo (ilk 5)
+#
+başlık
+kanca
+öz
+şaşırtıcı
+b"lg"
+sev"ye
+TR
+bağlantısı
+görsel
+zamansız/güncel
+nüans
+kayna
+1
+Etin
+Kızarması
+Yanmak
+Değil
+"Etin
+kahverengileşmesi
+yanmak değil, bir
+reaksiyon."
+Maillard:
+amino asit ve
+şekerler
+~140°C
+üzerinde
+yüzlerce
+aroma
+molekülüne
+dönüşür; ıslak
+et bu
+sıcaklığa
+ulaşamaz.
+Adını
+1912'de
+tanımlayan
+Louis-
+Camille
+Maillard'dan
+alır.
+meraklı
+Döner,
+kavurma,
+simit
+Molekül
+dansı, kuru/
+ıslak et
+zamansız
+Eşik kaynağa
+göre değişir;
+karamelizasyonla
+karıştırmayın.
+McGe
+On Fo
+and
+Cook
+2
+Türk Kahvesi
+Neden
+UNESCO'da?
+"UNESCO'da
+tescilli olan kahve
+değil, bir
+gelenek."
+Somut
+olmayan
+miras ürünü
+değil pratiği
+korur:
+pişirme,
+ikram, fal.
+Unesco
+2013'te
+listeye
+alındı; 5
+Aralık
+Dünya Türk
+Kahvesi
+Günü.
+Istdergi
+herkes
+Türk
+kahvesi
+Cezve,
+köpük,
+telve
+zamansız
+Kahve bitkisi
+Türkiye kökenli
+değil.
+UNES
+Türkiy
+3
+Köpük
+Neden
+Önemli?
+"Türk kahvesinin
+köpüğü tesadüf
+değil, fizik."
+Yavaş ısıtma
+ve ince
+partiküllerin
+stabilize ettiği
+yapı.
+Kaynarsa
+köpük
+çöker.
+meraklı
+Türk
+kahvesi
+Makro
+kabarcık
+animasyonu
+zamansız
+Literatür sınırlı;
+genel köpük
+fiziğiyle anlatın.
+Köpü
+stabi
+litera
+4
+Keşkek
+Neden
+Dövülür?
+"Bu yemek
+düğünlerde
+davulla zurnayla
+pişer."
+Nişastanın
+jelatinleşmesi,
+dövmenin
+dokuyu
+değiştirmesi;
+tören yemeği.
+UNESCO
+yılı
+kaynaklarda
+2011 ve
+2012 diye
+farklı; genel
+liste 2011.
+Unesco
+IGU
+meraklı
+Anadolu
+düğünleri
+Tokmak,
+kazan
+zamansız
+Ermenistan ile
+köken tartışması;
+yılı teyit edin.
+UNES
+Türkiy
+5
+Mayonez
+Neden
+Kesilir?
+"Yağ ve su
+karışmaz, peki
+mayonez nasıl
+var?"
+Emülsiyon:
+lesitinin bir
+ucu suyu,
+diğeri yağı
+tutar.
+Yağ hızlı
+eklenirse
+damlacıklar
+birleşir.
+herkes
+Tarator,
+cacık
+Köprü
+molekül,
+damlacıklar
+zamansız
+–
+McGe
+Diğer 20 konu (
+)
+6. "Yoğurt" dünyaya Türkçeden geçti (OED) (8) · 7. Ekşi maya ile hazır maya (8) · 8. Soğan neden ağlatır? (8) · 9. Pilav neden yıkanır? (8) · 10. Turşu ve laktik
+fermantasyon (7) · 11. Çayda sıcaklık ve tanen (8) · 12. Maraş dondurması ve salep (9) · 13. Baklava köken tartışması (8) · 14. Acı tat değil ağrıdır (kapsaisin,
+TRPV1) (8) · 15. Taze ve kuru makarna (6) · 16. Et dinlendirme efsane mi? (7) · 17. Mpemba etkisi (tartışmalı) (7) · 18. Tuz kaynamayı ne kadar etkiler? (7) ·
+19. Lokum ve 1777 Hacı Bekir iddiası (7) · 20. Kayseri pastırması ve çemen (7) · 21. MSG korkusu nereden çıktı? (8) · 22. İnce ekmek geleneği UNESCO'da
+(2016) (6) Unesco · 23. Sucukta nitrit (7) · 24. Kıymanın içi neden gri? Miyoglobin (7) · 25. Sivas'ın madımak ve peskütanı (7)
+6. Spor — "Sporun Gizli Kuralları"
+A. Kitle ve motivasyon
+Kitle: 15–45 yaş erkek ağırlıklı taraftarlar, FIFA/FM oyuncuları, amatör sporcular. Maç sonrası tartışmayı kazanmak için paylaşır ("Kural aslında böyle").
+Rakipler: Socrates Dergi (analiz ve tarih), 343 Dijital (yorum), Ağırsağlam (spor bilimi); KOBITEK +2 güncel sayılar doğrulanamadı.
+Boşluk: Taraftarlığa girmeden kuralın neden var olduğunu anlatan içerik az.
+Kancalar: "Bu golü VAR neden iptal etti?", "Ofsayt bir zamanlar 3 oyuncuydu".
+Hassasiyet: Kulüp tarafgirliği, bahis ve güncel hakem tartışmaları yok (hukuki risk); kuralları IFAB'ın güncel sürümüyle teyit edin.
+B. Tam tablo (ilk 5)
+#
+başlık
+kanca
+öz
+şaşırtıcı b"lg"
+sev"ye
+TR
+bağlantısı
+görsel
+zamansız/güncel
+nüans
+kaynak
+1
+Ofsayt
+Neden Var?
+"Ofsayt
+olmasa
+futbol kale
+önünde
+beklemek
+olurdu."
+Ofsayt,
+kale
+önünde
+beklemeyi
+engeller ve
+takımı
+dikeyde
+sıkıştırır;
+taktiğin
+anası.
+1866: 3 oyuncu
+kuralı. 1925: 2
+oyuncuya indi,
+goller arttı. 1990:
+aynı hiza ofsayt
+değil. Isrscork
+History of Sports
+uzman
+da
+beğenir
+Süper Lig
+VAR
+çizgileri
+Yıllara
+göre
+kayan
+savunma
+çizgisi
+zamansız
+1863 FA kuralı
+"topun
+önündeki
+ofsayt" idi;
+yılları dikkatli
+verin.
+Footballorbit
+ Oyun
+kuralları
+tarihçesi
+(ikincil)
+2
+Sarı Kart
+Trafik
+Lambasından
+Doğdu
+"Sarı kartın
+fikri bir
+trafik
+lambasında
+doğdu."
+Kartlar dil
+engelini
+aşan
+evrensel
+iletişim
+çözümü.
+Wikipedia
+Ken Aston fikri
+1966'daki dil
+karmaşasından
+sonra buldu;
+kartlar ilk kez
+1970 Dünya
+Kupası'nda
+kullanıldı, o
+turnuvada kırmızı
+kart çıkmadı.
+Olympics
+Stmichaelssoccer
+herkes
+–
+Lamba
+renklerinin
+karta
+dönüşmesi
+zamansız
+"Kırmızı
+çıkmadı"
+bilgisi ikincil;
+FIFA arşiviyle
+teyit edin.
+Olympics.co
+3
+Kaleci Geri
+Pası Neden
+Tutamaz?
+"1990
+Dünya
+Kupası o
+kadar
+sıkıcıydı ki
+kural
+değişti."
+Geri pas
+kuralı
+zaman
+öldürmeyi
+bitirdi,
+kaleciyi
+oyun
+kurucu
+yaptı.
+1992'de getirildi;
+en başarılı kural
+değişikliklerinden
+sayılıyor.
+Wikipedia
+meraklı
+–
+Kalecinin
+elinde kilit
+zamansız
+–
+ Özet; 
+IFAB
+4
+Frikikte Top
+Neden
+Döner?
+"Top
+havada
+dönerse
+yolunu
+değiştirir."
+Magnus
+etkisi:
+dönüş iki
+yanda
+basınç
+farkı
+yaratır.
+Roberto Carlos'un
+1997'de
+Fransa'ya frikiği.
+meraklı
+Süper Lig
+frikikleri
+Hava akım
+okları
+zamansız
+"Knuckleball"
+ayrı bir konu.
+ Dupeux
+ve ark. 2010,
+New J. Phys
+5
+VAR Nasıl
+Çalışır?
+"VAR her
+şeye değil,
+yalnızca 4
+duruma
+karışabilir."
+Gol,
+penaltı,
+direkt
+kırmızı,
+yanlış
+kimlik;
+"açık ve
+bariz hata"
+eşiği.
+2016'da test
+edildi, 2018'de
+kurallara girdi.
+VOI
+herkes
+TFF VAR
+kayıtları
+Oda,
+ekranlar, 4
+ikon
+güncel
+Güncel
+tartışmalardan
+uzak durun.
+ IFAB VAR
+Protokolü
+Diğer 20 konu (
+)
+6. Penaltı 1891'de William McCrum'un fikri (8) · 7. Fosbury Flop (1968) (8) · 8. Rakımda top ve kondisyon (7) · 9. Neden 11 kişi? (6) · 10. Neden 90 dakika?
+(7) · 11. Uzatma nasıl hesaplanır? (7) · 12. VO2max (7) · 13. Laktat eşiği (6) · 14. Top basıncı kuralı (6) · 15. Hakan Şükür'ün 2002'deki rekor erken golü (~11
+sn; FIFA'dan teyit) (9) · 16. Basketbolda 24 saniye (8) · 17. Teniste 15-30-40 (köken tartışmalı) (8) · 18. Kırkpınar kuralları, UNESCO 2010 (8) IGU · 19.
+Libero neden farklı forma giyer? (7) · 20. Maraton neden 42,195 km? (1908) (8) · 21. Sacchi'nin ofsayt tuzağı (7) · 22. Gegenpressing (7) · 23. Kar maçında
+turuncu top (6) · 24. Süper Lig'in kuruluşu (1959) (6) · 25. Cirit (7)
+7. Sanat, Tasarım & Mimari — "Tablonun Sırrı"
+A. Kitle ve motivasyon
+Kitle: 18–40 yaş tasarımcılar, mimarlık ve sanat öğrencileri, müze gezginleri. "Müzeye gidince bakacağım" diye kaydeder.
+Rakipler: Barış Özcan'ın sanat ve tasarım hikâyeleri, Uzak Zamanlar. Onuduymustum 10layn Sanat tarihine odaklı Türkçe kısa video hesabı
+doğrulanamadı; büyük boşluk.
+Kanca: "Bu tablonun köşesine bir daha bak".
+Hassasiyet: Görsel telif: kamu malı eser kullanın ya da eseri kendi flat stilinizde yeniden yorumlayın. Yorumu kesin bilgi gibi sunmayın.
+B. Tam tablo (ilk 5)
+#
+başlık
+kanca
+öz
+şaşırtıcı b"lg"
+sev"ye
+TR
+bağlantısı
+görsel
+zamansız/güncel
+nüans
+1
+Kaplumbağa
+Terbiyecisi'nin
+İkizi Var
+"Türkiye'nin
+en ünlü
+tablosu
+aslında iki
+tane."
+Oryantalistlerde
+iki versiyon
+pratiği; derviş
+Osman
+Hamdi'nin
+kendisi, mekân
+Bursa Yeşil
+Cami.
+Milliyetsanat
+1906 versiyonu
+2004'te Pera
+Müzesi'ne 5
+trilyon eski
+liraya (~3,5
+milyon $)
+satıldı; 1907
+versiyonu ayrı
+koleksiyonda.
+3 Nokta
+Herkes Duysun
+herkes
+Osman
+Hamdi, Pera
+Müzesi
+İki tablo,
+farkları bul
+zamansız
+1907
+versiyonunun
+yeri
+kaynaklarda
+çelişkili (Simavi
+mi, İş Bankası
+mı?).
+Sanat-magazin
+3 Nokta
+V
+S
+2
+Ebru: Su
+Üstünde Resim
+"Bu resim su
+üstünde
+yapılıyor."
+Kitreli suyun
+yüzey gerilimi
+boyayı taşır; öd
+safrası
+yayılmayı
+sağlar.
+UNESCO 2014;
+temel beceriler
+en az 2 yılda
+kazanılıyor.
+Unesco
+meraklı
+Türk ebrusu
+Suda
+yayılan
+boya
+zamansız
+–
+T
+3
+Mona Lisa'yı
+Ünlü Yapan
+Hırsızlık
+"Mona Lisa
+çalınana kadar
+bu kadar ünlü
+değildi."
+Şöhretin medya
+tarafından
+üretilmesi.
+1911'de
+Louvre'dan
+çalındı, 1913'te
+bulundu.
+herkes
+–
+Boş duvar,
+manşetler
+zamansız
+"Hiç ünlü
+değildi" abartı;
+"süperstar
+oldu" deyin.
+4
+Süleymaniye'nin
+İsi Nereye
+Gidiyordu?
+"Kandil isi
+mürekkebe
+dönüşüyordu."
+Hava akışı
+tasarımı; is
+odası anlatısı.
+Mimar Sinan
+dönemi.
+meraklı
+Süleymaniye
+Hava
+okları,
+hokka
+zamansız
+Birincil
+kaynakla
+doğrulanamadı;
+efsane olabilir,
+öyle
+çerçeveleyin.
+G
+t
+5
+Altın Oran
+Efsanesi
+"Her güzel
+şeyde altın
+oran var mı?
+Hayır."
+Seçici
+eşleştirme;
+sanattaki
+iddiaların çoğu
+sonradan.
+Mona Lisa,
+Parthenon,
+Apple logosu
+iddiaları.
+uzman
+da
+beğenir
+–
+Her şeye
+yapıştırılan
+spiral
+zamansız
+Doğadaki
+Fibonacci
+gerçek,
+sanattaki
+abartılı.
+1
+C
+Diğer 20 konu (
+)
+6. Divriği'nin taş işçiliği (gölge konusu hariç) (8) · 7. Sivas Gök Medrese ve Çifte Minareli (8) · 8. Van Gogh hayattayken kaç tablo sattı? (9) · 9. Brunelleschi
+ve perspektif (7) · 10. Ultramarin neden altından pahalıydı? (8) · 11. Eyfel geçici yapılmıştı (1889) (8) · 12. Helvetica her yerde (7) · 13. İznik çinisinin mavisi
+(7) · 14. Zeugma mozaiği ve pixel art (8) · 15. Banksy'nin kendini imha eden tablosu (2018) (8) · 16. Hat sanatında nokta ölçüsü (7) · 17. Dur işareti neden
+sekizgen? (7) · 18. Pantone yılın rengi (6) · 19. Rönesans tablolarında "Türk halısı" (8) · 20. Minarelerin deprem davranışı (7) · 21. Gotik vitrayın mavisi (6) ·
+22. "Çığlık"ın versiyonları (7) · 23. Logoların sadeleşmesi (7) · 24. Sinan'ın kubbe mühendisliği (7) · 25. Çatalhöyük duvar resmi ilk harita mı? (tartışmalı) (8)
+8. Sinema, Dizi & Kitap — "Perde Arkası"
+A. Kitle ve motivasyon
+Kitle: 18–40 yaş dizi-film izleyicileri, sinema öğrencileri, kitap kulüpleri. "Bir dahaki filmde bunu fark edeceğim" duygusuyla takip eder.
+Rakipler: Ezgi'nin Kanalı, Filmler ve Filimler, Filme Gitmeden Önce, Melikşah Altuntaş, Kerem Akça (Film Ölçer). Techmedya ListeList
+Boşluk: İnceleme ve tavsiye ağırlıklı; sinema dilini (kurgu, ses, kadraj) öğreten kısa animasyon yok. Belgesel ve film deneyiminiz en güçlü farklılaştırıcı:
+"yapımcıdan dipnot" imzası kullanın.
+Kancalar: "Bu sahnede kamera hiç kesmedi", "Bu ses aslında bir sebzeydi".
+Hassasiyet: Klip telifi: sahneleri animasyonla yeniden canlandırın; spoiler uyarısı verin.
+B. Tam tablo (ilk 5)
+#
+başlık
+kanca
+öz
+şaşırtıcı b"lg"
+sev"ye
+TR
+bağlantısı
+görsel
+zamansız/güncel
+nüans
+kayna
+1
+Yeşilçam
+Bir Yılda
+300 Film
+Çekti
+"Türkiye bir
+zamanlar en
+çok film üreten
+ülkelerdendi."
+Seri üretim
+ekonomisi:
+tek set, aynı
+oyuncular,
+dublaj, arka
+arkaya
+çekim.
+1972'de yaklaşık
+300 film;
+1966'da 241
+filmle dünyada 4.
+sıra. Gzt
+herkes
+Yeşilçam
+Fabrika
+bandında
+film
+makaraları
+zamansız
+1972 sayısı
+kaynağa göre
+298/300/302;
+dünya
+sıralaması (4.
+mü 5. mi)
+çelişkili.
+Sineturkiye +3
+ G
+Vikipe
+2
+Yeşilçam'da
+Herkes
+Neden Aynı
+Sesle
+Konuşur?
+"Yeşilçam'da
+oyuncuların
+çoğu aslında
+konuşmuyordu."
+Postsenkron
+dublaj: sesli
+çekim
+pahalıydı,
+sesler
+stüdyoda
+sonradan
+kaydedildi.
+Birkaç
+seslendirme
+sanatçısı
+yüzlerce
+karakteri
+seslendirdi.
+meraklı
+Yeşilçam
+Dudak-ses
+uyumsuzluğu
+zamansız
+Sanatçı
+isimlerini
+doğrulayın.
+Scogn
+Türk S
+Tarihi
+3
+Berlin'de
+Altın Ayı
+Alan İlk
+Türk Filmi
+"1964'te bir
+Türk filmi
+Berlin'i fethetti."
+Festival
+sinemasının
+dili.
+Susuz Yaz (Metin
+Erksan), 1964
+Altın Ayı.
+Google Translate
+meraklı
+Türk
+sineması
+Ayı heykeli,
+kuru tarla
+zamansız
+–
+ C
+of Tur
+ Be
+4
+Eşkıya Türk
+Sinemasını
+Nasıl
+Kurtardı?
+"90'larda Türk
+sineması
+neredeyse
+ölmüştü."
+Gişe çöküşü
+ve yerli
+filme dönüş.
+Eşkıya 1996–
+97'de 2.568.339
+seyirciye ulaştı;
+üretim çift haneli
+sayılara
+düşmüştü. Gzt
+herkes
+Yavuz
+Turgul
+Düşüş ve
+sıçrama
+grafiği
+zamansız
+–
+ G
+5
+Foley:
+Sesin
+Sahtekârları
+"O kemik
+kırılma sesi
+aslında
+sebzeydi."
+Seslerin ayrı
+kaydedilip
+yeniden
+kurulması.
+Jack Foley,
+1920'lerin sonu.
+herkes
+Türk
+dizilerinde
+foley
+Stüdyoda
+sebzeler,
+ayakkabılar
+zamansız
+Ses örnekleri
+filmden filme
+değişir.
+ A
+The F
+Grail
+Diğer 20 konu (
+)
+6. 180 derece kuralı (8) · 7. Neden 24 kare? (8) · 8. Hitchcock'un bomba teorisi (9) · 9. Kış Uykusu 2014 Altın Palmiye; Uzak 2003 Cannes Büyük Ödülü (
+Uzak) (7) Google Translate · 10. Turuncu-mavi renk paleti (7) · 11. Tek plan sahneler (8) · 12. Sahne yemekleri (7) · 13. Orhan Pamuk'un Nobeli (2006) (6) ·
+14. Tutunamayanlar neden geç anlaşıldı? (7) · 15. Sait Faik'in Burgaz'ı (6) · 16. Kafka eserlerinin yakılmasını istedi (8) · 17. Frankenstein'ı 18 yaşında bir kız
+yazdı (8) · 18. Dede Korkut'un Dresden ve Vatikan nüshaları (8) · 19. Hollandalı açı (6) · 20. Eisenstein montajı (Kuleşov hariç) (7) · 21. Yeşilçam'ın "aynı
+villa"ları (8) · 22. Cliffhanger ve Zeigarnik (8) · 23. Türk dizi ihracatı (rakamı Bakanlıktan teyit) (8) · 24. "Sivas" (Kaan Müjdeci, 2014) Venedik Jüri Özel
+Ödülü (8) · 25. Kitap kapaklarının gizli dili (6)
+9. Bilim & Teknoloji — "Nasıl Çalışır?"
+A. Kitle ve motivasyon
+Kitle: 15–35 yaş mühendislik ve fen öğrencileri, teknoloji meraklıları; sınıf ve iş gruplarında paylaşır.
+Rakipler: Evrim Ağacı, Barış Özcan, Bebar Bilim, Gelecek Bilimde. Ogrencikariyeri 10layn Uzun formatta güçlüler, 60 saniyelik mekanizma
+animasyonunda zayıflar.
+Kanca: "Telefonun Einstein olmadan yolunu kaybederdi".
+Hassasiyet: Sayısal değerleri teyit edin; basitleştirme yanlışlığa dönüşmesin.
+B. Tam tablo (ilk 5)
+#
+başlık
+kanca
+öz
+şaşırtıcı b"lg"
+sev"ye
+TR
+bağlantısı
+görsel
+zamansız/güncel
+nüans
+kaynak
+Uydu
+saatleri özel
+1
+GPS ve
+Görelilik
+"Einstein
+olmasa
+haritan her
+gün
+kilometrelerce
+kayardı."
+görelilikle
+yavaşlar,
+genel
+görelilikle
+hızlanır; net
+fark
+düzeltilir.
+Günde ~38
+mikrosaniye;
+düzeltilmezse
+günde ~10
+km hata.
+uzman
+da
+beğenir
+–
+İki saat,
+kayan
+harita pini
+zamansız
+"10 km"
+kaynağa göre
+değişiyor.
+ Ashby
+2003, Living
+Reviews in
+Relativity
+2
+Mikrodalga
+Bir
+Çikolatayla
+Keşfedildi
+"Cebindeki
+çikolata
+eriyince bir
+buluş doğdu."
+Mikrodalga
+su
+moleküllerini
+döndürerek
+ısıtır.
+Percy
+Spencer,
+1945.
+herkes
+–
+Dönen su
+molekülleri
+zamansız
+"İçten dışa
+pişirir" yanlış.
+ ABD
+patenti
+2,495,429
+3
+QR Kod Go
+Oyunundan
+Doğdu
+"QR kod Go
+oyunu
+taşlarından
+ilham aldı."
+Hata
+düzeltme:
+%30'a kadar
+hasarda
+okunur (H
+seviyesi).
+Denso Wave,
+1994.
+meraklı
+–
+Kareler,
+Go taşları
+zamansız
+–
+ Denso
+Wave
+4
+Ekran
+Neden
+Eldiveni
+Tanımaz?
+"Ekran
+parmağını
+değil,
+elektriğini
+hisseder."
+Kapasitif
+algılama:
+parmak
+alanın
+yükünü
+değiştirir.
+Eldiven
+yalıtkandır.
+herkes
+–
+Elektrik
+ızgarası
+zamansız
+–
+ Ders kitab
+5
+İnternet
+Okyanusun
+Dibinden
+Geçer
+"İnternet
+uydudan
+değil, denizin
+dibinden
+geliyor."
+Uluslararası
+trafiğin
+büyük
+kısmını
+denizaltı
+fiber
+kablolar
+taşır.
+FCC'nin 2013
+verisine göre
+uydular
+ABD'nin
+toplam
+uluslararası
+kapasitesinin
+yalnızca
+%0,37'sini
+taşıyor.
+herkes
+Türkiye'ye
+bağlanan
+kablolar
+Okyanus
+kesiti, ışık
+darbeleri
+zamansız
+TeleGeography
+(2023) yaygın
+"%99"
+rakamının
+dayanağını
+bulamadı; FCC
+rakamı küresel
+değil, ABD'ye
+ait.
+TeleGeograph
+2023; FCC
+2013
+Diğer 20 konu (
+)
+6. Wi-Fi duvardan nasıl geçer? (7) · 7. Lityum pil neden şişer? (8) · 8. Uçak neden uçar? Bernoulli tek başına yetmez (9) · 9. Buzdolabı soğuk üretmez, sıcağı
+taşır (8) · 10. Hızlı şarj (7) · 11. Deprem erken uyarı (Android, AFAD) (8) · 12. Beton kürü (7) · 13. Kolon-kiriş ve deprem (8) · 14. Megapiksel yanılgısı (7) · 15.
+Hash ve şifre kırma (7) · 16. Yapay zekâ ve sonraki kelime tahmini (8) · 17. Güneş paneli (6) · 18. Gök neden mavi? (7) · 19. Karadelik fotoğrafı (2019, EHT)
+(7) · 20. Barkod ve kumdaki Mors (8) · 21. Çin Seddi uzaydan görünmez (8) · 22. Mıknatıs (6) · 23. Termos (6) · 24. Işık yılı bir mesafe (6) · 25. Şimşekle
+mesafe hesabı (6)
+10. Tarih — "Tarihin Dipnotu"
+A. Kitle ve motivasyon
+Kitle: 18–60 yaş, en geniş kitle: öğretmenler, KPSS/YKS adayları, meraklılar. Kimlik, gurur ve "okulda böyle öğretmediler" hissiyle paylaşır.
+Rakipler: Omnibus (Emrah Safa Gürkan), DFT Tarih, Tarih Obası, Uzak Zamanlar, Kronik Tarih; Technopat +2 sayılar doğrulanamadı. Uzun formatta
+güçlüler; kısa, kaynaklı "dipnot" formatı az.
+Kancalar: "Okulda öğretmedikleri…", "Bu antlaşmanın kopyası BM'de asılı".
+Hassasiyet: Ulusal hassasiyetler (1915, Kıbrıs vb.), güncel siyaset ve tartışmalı kuruluş iddialarından kaçının.
+B. Tam tablo (ilk 5)
+#
+başlık
+kanca
+öz
+şaşırtıcı
+b"lg"
+sev"ye
+TR
+bağlantısı
+görsel
+zamansız/güncel
+nüans
+kaynak
+1
+En Eski Barış
+Antlaşmalarından
+Biri Anadolu'da
+"Dünyanın ilk
+barış
+antlaşmalarından
+biri Hititlerle
+yapıldı."
+Kadeş
+berabere
+bitti ama iki
+taraf da
+zafer ilan
+etti: antik
+propaganda.
+Kil tablet
+İstanbul
+Arkeoloji
+Müzesi'nde,
+kopyası
+BM'de.
+herkes
+Hattuşa
+(Çorum)
+İki kral, iki
+metin,
+tablet
+zamansız
+"İlk"
+tartışmalı;
+"bilinen en
+eski
+yazılılardan
+biri" deyin.
+~MÖ 1259.
+İstanbul
+Arkeoloji
+Müzeleri;
+BM
+ Atatürk
+2
+Sivas
+Kongresi'nde Ne
+Konuşuldu?
+"Bu şehirdeki bir
+okulda bir
+ülkenin kaderi
+tartışıldı."
+Manda
+tartışması
+ve ulusal
+iradenin
+temsili.
+4–11 Eylül
+1919.
+meraklı
+Sivas
+Okul
+binası,
+harita
+zamansız
+Manda
+konusu
+hassas;
+belgeyle
+anlatın.
+Kongre ve
+Etnografya
+Müzesi;
+TBMM
+arşivi
+3
+Soyadı Olmadan
+Nasıl
+Yaşanıyordu?
+"1934'e kadar
+çoğu insanın
+soyadı yoktu."
+Soyadı
+Kanunu ve
+lakap
+geleneği.
+2525 sayılı
+Kanun, 21
+Haziran
+1934.
+herkes
+Türkiye
+Nüfus
+defteri,
+lakap
+balonları
+zamansız
+–
+ Resmî
+Gazete
+(1934)
+4
+Harf Devrimi
+"Bir ülke
+okumayı yeniden
+öğrendi."
+1353 sayılı
+Kanun ve
+Millet
+Mektepleri.
+1 Kasım
+1928.
+meraklı
+Türkiye
+Harflerin
+dönüşümü
+zamansız
+Okuryazarlık
+rakamları
+kaynağa
+göre farklı.
+ Resmî
+Gazete
+(1928)
+5
+1509 "Küçük
+Kıyamet"
+Depremi
+"İstanbul'da bir
+deprem 'küçük
+kıyamet' diye
+anıldı."
+Tarihsel
+sismoloji ve
+Kuzey
+Anadolu
+Fayı.
+1509
+İstanbul
+depremi.
+meraklı
+İstanbul
+Harita
+üstünde
+fay
+zamansız
+Can kaybı
+tahminleri
+çok farklı.
+Ambrasey
+katalogları
+Diğer 20 konu (
+)
+6. Kadınlara seçme-seçilme hakkı: 5 Aralık 1934 (8) · 7. Hattuşa'nın yeşil taşı (7) · 8. Çatalhöyük'te evlere çatıdan girilirdi (9) · 9. Troya gerçek miydi? (8) ·
+10. Müteferrika matbaası, 1727 (8) · 11. Osmanlı'da kahvehane yasakları (8) · 12. Kervansaraylar arası neden ~30–40 km? (8) · 13. Orhun Yazıtları (7) · 14.
+Kaşgarlı Mahmud'un dünya haritası (8) · 15. Hezarfen: tek kaynak Evliya Çelebi (9) · 16. Osmanlı saat kuleleri (7) · 17. Ayasofya kubbesi 558'de neden
+çöktü? (7) · 18. Sabiha Gökçen (7) · 19. Kanuni Batı'da neden "Muhteşem"? (7) · 20. Selçuklu Sivas'ının ticaret önemi (7) · 21. Miladi takvime geçiş
+(1925/1926) (8) · 22. Hafta tatili 1935'te neden pazara alındı? (8) · 23. Sokullu'nun Don-Volga kanalı (7) · 24. Ahlat taş işçiliği UNESCO acil koruma
+listesinde (7) IGU · 25. Mısır Çarşısı'nın adı (7)
+C. Serileştirme
+D"key
+M"n" ser"ler
+V"deo sonu kancası
+Hukuk
+"Kiracının 5 Hakkı" (#7, #8, #4, #10, #9); "Tuhaf Davalar" (#3, #24, #13); "Hukuk
+Sözlüğü" (#6, #12, #14, #16)
+"Ev sahibin zam istedi; peki 10 yıl dolunca seni
+çıkarabilir mi? Bölüm 2 yarın."
+Sağlık
+"Tahlilini Oku" (#1, #8, #9, #10); "Tıbbın Asileri" (#2, #3, #4); "Vücut Mitleri" (#12, #13,
+#20)
+"Yıldızı anladın; ferritin düşük, hemoglobin normalse?"
+Ekonomi
+"Kavram Sözlüğü: Enflasyon, Faiz, Kur" (#1, #2, #8); "Maaşın Matematiği" (#17, #16, #9);
+"Büyük Krizler" (#12, #13, #14)
+"Enflasyonu gördün; faiz onu nasıl durduruyor? Bölüm
+2."
+Psikoloji
+"Çürüyen Deneyler" (#2, #4, #8, #7); "Alışverişte Beyin" (#1, #5, #22)
+"Bu deney çöktü; sırada daha ünlüsü var: Milgram."
+Mutfak
+"Mutfak Kimyası 101" (#1, #5, #8, #9); "UNESCO Sofrası" (#2, #4, #22)
+"Kahveyi gördün; sırada davulla pişen keşkek."
+Spor
+"Kuralların Doğum Günü" (#1, #2, #3, #6); "Topun Fiziği" (#4, #7, #20)
+"Ofsayt 1925'te değişti; penaltıyı kim icat etti?"
+Sanat
+"Bir Tablo, Bir Sır" (#1, #3, #8, #22); "Anadolu Taşları" (#6, #7, #24)
+"Kaplumbağa'nın ikizini gördün; sırada Mona Lisa'yı
+ünlü yapan hırsızlık."
+Sinema
+"Yeşilçam Fabrikası" (#1, #2, #21, #4); "Sinema Dili" (#5, #6, #7, #11)
+"300 film çektiler; ama sesler nereden geldi? Bölüm 2:
+dublaj."
+Bilim
+"Cebindeki Fizik" (#1, #4, #7, #10); "Tesadüf İcatlar" (#2, #3, #20)
+"GPS'i Einstein kurtardı; ekran parmağını nasıl
+hissediyor?"
+Tarih
+"Anadolu'nun İlkleri" (#1, #8, #7); "Gündelik Devrimler" (#3, #4, #21, #22)
+"Soyadını aldın; peki pazar neden tatil oldu?"
+Çapraz seri: "Aynı Konu, İki Dikey" (ör. Kaplumbağa Terbiyecisi önce Sanat, sonra Ekonomi dikeyinde). İzleyiciyi dikeyler arasında taşır.
+D. İlk 30 Videonun Yayın Planı
+Sıra
+D"key
+Konu
+Gerekçe
+1
+Hukuk
+Bulduğun Cüzdan Kimin?
+Evrensel merak, çok gönderilir
+2
+Ekonomi
+Senin Enflasyonun Kaç?
+Güncel, kişisel
+3
+Sağlık
+Tahlildeki Yıldız
+Yüksek kaydetme
+4
+Psikoloji
+Çapa Etkisi
+Etiketleme
+5
+Sinema
+Yeşilçam 300 Film
+Nostalji
+6
+Hukuk
+186.000 TL Kuralı
+Güncel fayda
+7
+Ekonomi
+72 Kuralı
+Zamansız, kaydedilir
+8
+Spor
+Ofsayt Neden Var?
+Erkek kitleyi açar
+9
+Mutfak
+Maillard
+Kaydedilir
+10
+Sağlık
+Kendine Mikrop İçen Doktor
+Hikâye gücü
+11
+Ekonomi/Hukuk
+Kira Zammı %31,79
+Eylül-Ekim'de çok güncel
+12
+Tarih
+Soyadı Olmadan
+Geniş kitle
+13
+Psikoloji
+Stanford Deneyi
+Güven inşası
+14
+Sanat
+Kaplumbağa'nın İkizi
+Tanıdık eser
+15
+Ekonomi
+Faiz Cebine Nasıl Ulaşır?
+Kavram serisi
+16
+Hukuk
+Kahve Davası
+Efsane çürütme
+17
+Bilim
+GPS ve Görelilik
+Çok gönderilir
+18
+Spor
+Sarı Kart
+Hikâye
+19
+Sağlık
+Semmelweis
+Seri devamı
+20
+Tarih
+Sivas Kongresi
+Yerel kimlik
+21
+Hukuk
+Kıdem Tavanı
+Çalışanlar
+22
+Mutfak
+Türk Kahvesi UNESCO (5 Aralık'ta yeniden paylaşın)
+Kimlik
+23
+Psikoloji
+Görünmez Goril
+Etkileşim
+24
+Sinema
+Yeşilçam Dublajı
+Seri devamı
+25
+Ekonomi
+Altı Sıfır
+Nostalji
+26
+Hukuk
+Kedin Artık Eşya Değil
+Hayvanseverler
+27
+Bilim
+Okyanus Dibindeki İnternet
+Merak
+28
+Sağlık
+Kangal Balıklı Kaplıca
+Sivas
+29
+Tarih
+Kadeş Antlaşması
+Gurur, paylaşım
+30
+Spor
+Geri Pas Kuralı
+Seri devamı
+Öneriler
+İlk 10 videodan sonra erişim başına gönderme ve kaydetme oranlarına bakın; en iyi iki dikeyin payını %50'ye çıkarın.
+Güncel rakamlı videoları (hakem heyeti, kıdem tavanı, faiz) her dönem başında "2027 güncellemesi" olarak yeniden üretin; hem yeni içerik hem takip
+gerekçesi olur.
+Hukuk ve Sağlık için birer gönüllü uzman okur (avukat, hekim) bulun; açıklamaya "Kontrol eden: Av./Dr. …" yazmak güveni ve farkı somutlaştırır.
+Uyarılar
+ konular bu araştırmada birincil kaynakla doğrulanmadı; senaryodan önce tek tek kontrol edin.
+Rakip takipçi sayıları 2025 listelerinden ya da tarihsiz kaynaklardan; Eylül 2026 için doğrulanamadı.
+Güncel rakamların son kullanma tarihi: politika faizi 22 Ekim 2026; enflasyon ve kira oranı her ayın 3'ü; kıdem tavanı ve hakem heyeti sınırı Ocak 2027.

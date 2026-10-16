@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="d"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/cevre.js"></script>
+<script>
+const Q = new URLSearchParams(location.search);
+window.renderAt = t => {
+  const sahne = 2; let o = '';
+  if (sahne === 1) { // teal mutfak
+    const T = CV.ton('teal');
+    o += CV.oda(T, { pencere: [700, 420, 260, 340] }) + CV.raf(80, 560, 420, T, 3) + CV.tencere(260, 1000, 1, T) + `<rect x="60" y="1000" width="560" height="30" rx="12" fill="${T.koyu}"/>`;
+    o += CV.bitki(980, 1180, .9, T);
+    o += KS.karakter({ x: 540, y: 1560, boy: 760, ten: T.ten, sac: { tip: 'kakul', renk: '#1B1F5E' }, ust: T.vurgu, alt: '#1B1F5E', poz: 'selam', t, ifade: 'gulumse' });
+    o += `<rect x="120" y="1280" width="840" height="60" rx="24" fill="#B8336A"/><rect x="160" y="1340" width="760" height="360" fill="#9A2A5A"/><ellipse cx="540" cy="1270" rx="150" ry="36" fill="#FFFFFF"/><ellipse cx="540" cy="1262" rx="110" ry="24" fill="#FFC94C"/>`;
+    o += `<ellipse cx="260" cy="1262" rx="110" ry="40" fill="${T.vurgu2}"/><circle cx="240" cy="1240" r="22" fill="#3FA35A"/><circle cx="280" cy="1245" r="16" fill="#E8505B"/>`;
+    o += M.canli('gufi', { t, x: 850, y: 1280, boy: 130, bakHedef: [540, 900] }) + M.canli('gubi', { t, x: 160, y: 760, boy: 110, bakHedef: [540, 900] });
+  }
+  if (sahne === 2) { // sarı salon
+    const T = CV.ton('sari');
+    o += CV.oda(T, { dolap: false, pencere: [640, 330, 300, 420] }) + CV.raf(80, 520, 380, T, 7) + CV.lamba(160, 1400, 1.2, T) + CV.poster(470, 520, 170, 230, T, 6) + CV.bitki(950, 1250, 1.1, T);
+    o += `<rect x="200" y="1080" width="620" height="200" rx="60" fill="${T.koyu}"/><rect x="180" y="980" width="660" height="140" rx="60" fill="${T.orta}"/><rect x="170" y="1060" width="120" height="220" rx="50" fill="${T.cokKoyu}"/><rect x="730" y="1060" width="120" height="220" rx="50" fill="${T.cokKoyu}"/>`;
+    o += M.canli('gufi', { t, x: 470, y: 1090, boy: 150, duygu: 'mutlu' }) + M.canli('gubi', { t, x: 640, y: 900, boy: 120, bakHedef: [470, 1000] });
+    o += `<rect x="540" y="1480" width="260" height="60" rx="14" fill="#2E9A9C"/><path d="M560 1480 L780 1480 L740 1420 L600 1420Z" fill="#E8505B"/>`;
+  }
+  if (sahne === 3) { // orman
+    const T = CV.ton('orman');
+    o += `<rect width="1080" height="1920" fill="${T.fon1}"/>` + K.glow({ x: 700, y: 500, r: 700, renk: '#FFFBD0', guc: .7 });
+    for (let i = 0; i < 6; i++) o += CV.agacGovde(100 + i * 190, 1400, 60 + (i % 3) * 20, 1400, { cokKoyu: i % 2 ? '#8FC766' : '#A9D96A', koyu: '#C6E88A' });
+    o += CV.huzme(420, 0, T, 4, 14);
+    o += `<path d="M0 1250 Q300 1180 600 1240 T1080 1220 V1920 H0Z" fill="${T.orta}"/><path d="M0 1360 Q300 1300 600 1350 T1080 1330 V1920 H0Z" fill="${T.koyu}"/>`;
+    o += CV.agacGovde(170, 1500, 150, 1500, T) + CV.agacGovde(920, 1500, 180, 1500, T);
+    o += CV.kaya(420, 1420, 1.1, T) + CV.kaya(700, 1460, .9, T);
+    o += M.canli('gufi', { t, x: 420, y: 1330, boy: 140, bakHedef: [700, 1200] }) + M.canli('gubi', { t, x: 700, y: 1250, boy: 110, bakHedef: [420, 1200] });
+    for (let i = 0; i < 10; i++) o += CV.otTutami(60 + i * 110, 1500 + (i % 2) * 40, 1.4, T.orta) + CV.cicek(90 + i * 110, 1470, 1.2, '#FF9A3C');
+    o += CV.onYaprak(T, 'ust', 5) + CV.onYaprak(T, 'alt', 8);
+  }
+  document.getElementById('d').innerHTML = o;
+};
+</script></body></html>

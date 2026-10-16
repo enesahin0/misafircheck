@@ -1,0 +1,18 @@
+Kaynak: https://github.com/Panniantong/Agent-Reach (MIT) — v1.5.0, 2026-10-04 kuruldu.
+CLI bulut konteynerinde her oturumda yeniden kurulmalı (konteyner geçici):
+  git clone --depth 1 https://github.com/Panniantong/Agent-Reach.git /tmp/ar
+  python3 -m venv ~/.agent-reach-venv && ~/.agent-reach-venv/bin/pip install /tmp/ar
+  ln -sf ~/.agent-reach-venv/bin/agent-reach /usr/local/bin/agent-reach && agent-reach install --env=auto --system
+Ağ izni gereken alan adları (ortam ayarı → Network access → Custom → Allowed domains):
+  youtube.com, www.youtube.com, *.googlevideo.com (YouTube/yt-dlp) · r.jina.ai (web sayfası okuma) · mcp.exa.ai (web araması)
+Şu an çalışan: RSS. Cookie gerektiren platformlar (Twitter, Instagram, Reddit) KURULMADI — ana hesap riskli, ikincil hesap önerilir.
+
+2026-10-04 ek: twitter-cli ve rdt-cli kuruldu (agent-reach install --system --channels=twitter,reddit).
+  Instagram: OpenCLI masaüstü Chrome oturumu ister → bulut sunucuda KURULAMAZ.
+  Twitter giriş: ortam değişkenleri TWITTER_AUTH_TOKEN ve TWITTER_CT0 (ikincil hesabın x.com çerezleri; ortam ayarlarında secret olarak).
+  Reddit giriş: rdt login tarayıcı çerezi okur (bulutta tarayıcı yok); giriş olmadan herkese açık okuma denenir.
+  Ek ağ izinleri: x.com, twitter.com, api.x.com, *.twimg.com, reddit.com, www.reddit.com, oauth.reddit.com
+
+2026-10-15 durum: ağ izinleri AÇIK. Çalışan: Exa web araması (mcporter call exa.web_search_exa query="..." numResults=5), YouTube arama/altyazı (yt-dlp, venv içine kuruldu), web sayfası okuma (r.jina.ai), RSS, V2EX, B站.
+Çalışmayan: Twitter (cookie yok — kullanıcı kararı: ikincil hesapla sonra), Reddit (cookie yok; anonim JSON ve Jina üzerinden geçici engel), Instagram/Facebook (OpenCLI + tarayıcı girişi gerekir), GitHub arama (oturum yalnız kendi depomuza bağlı).
+Yeni oturumda yt-dlp de kurulmalı: ~/.agent-reach-venv/bin/pip install -U "yt-dlp[default]"

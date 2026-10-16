@@ -1,0 +1,15 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/hareket.js"></script>
+<script>
+window.renderAt = t => {
+  let o = `<rect width="1080" height="1920" fill="#F6EBDD"/>`;
+  o += FX.harfHarf('ÇAPA ETKİSİ', 540, 520, 110, t, .2, { renk: '#6B3A5B' });
+  o += FX.maskeliYazi('Duyduğun ilk sayı', 540, 700, 70, FX.E.expo(FX.ar(t, .6, 1.2)), { renk: '#1F6F78' });
+  o += `<text x="540" y="900" font-size="120" font-weight="900" text-anchor="middle" style="fill:#C0583A">${FX.sayac(t, .5, 1.6, 0, 45)}%</text>`;
+  o += FX.sokHalkasi(540, 1250, t, 1.0, { renk: '#D8A032' }) + FX.dalgaNoktalar(540, 1250, t, [1.0]);
+  o += FX.gecis(t, { orta: 1.9, renk: '#1F6F78', serit: '#D8A032', kapat: { tur: 'egik' } });
+  $ = null; document.getElementById('dinamik').innerHTML = o;
+};
+</script></body></html>

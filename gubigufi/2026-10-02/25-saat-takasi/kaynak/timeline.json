@@ -1,0 +1,241 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 66.04,
+  "konusma_bloklari": [
+    [
+      0.0,
+      3.543
+    ],
+    [
+      3.976,
+      6.719
+    ],
+    [
+      7.116,
+      9.787
+    ],
+    [
+      10.211,
+      11.295
+    ],
+    [
+      11.788,
+      12.635
+    ],
+    [
+      13.048,
+      15.733
+    ],
+    [
+      16.116,
+      18.386
+    ],
+    [
+      18.813,
+      21.085
+    ],
+    [
+      21.449,
+      22.012
+    ],
+    [
+      22.334,
+      25.949
+    ],
+    [
+      26.346,
+      29.259
+    ],
+    [
+      29.715,
+      30.746
+    ],
+    [
+      31.114,
+      33.524
+    ],
+    [
+      33.922,
+      36.899
+    ],
+    [
+      37.215,
+      39.319
+    ],
+    [
+      39.707,
+      43.616
+    ],
+    [
+      43.968,
+      47.753
+    ],
+    [
+      48.133,
+      50.288
+    ],
+    [
+      50.714,
+      53.02
+    ],
+    [
+      53.386,
+      55.447
+    ],
+    [
+      55.843,
+      58.464
+    ],
+    [
+      58.752,
+      62.269
+    ],
+    [
+      62.731,
+      66.04
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 3.54,
+      "sure": 3.54,
+      "metin": "Ocakta İstanbul'da güneş sabah sekiz buçukta doğuyor."
+    },
+    {
+      "no": 2,
+      "baslangic": 3.54,
+      "bitis": 6.72,
+      "sure": 3.18,
+      "metin": "Çocuklar okula, güneş doğmadan yola çıkıyor."
+    },
+    {
+      "no": 3,
+      "baslangic": 6.72,
+      "bitis": 9.79,
+      "sure": 3.07,
+      "metin": "Oysa güneş bu kadar geç doğmak zorunda değildi."
+    },
+    {
+      "no": 4,
+      "baslangic": 9.79,
+      "bitis": 12.63,
+      "sure": 2.85,
+      "metin": "Bunu bir karar yaptı."
+    },
+    {
+      "no": 5,
+      "baslangic": 12.63,
+      "bitis": 13.48,
+      "sure": 0.84,
+      "metin": "İki bin on altı."
+    },
+    {
+      "no": 6,
+      "baslangic": 13.48,
+      "bitis": 15.73,
+      "sure": 2.26,
+      "metin": "Mart ayında saatler bir saat ileri alındı."
+    },
+    {
+      "no": 7,
+      "baslangic": 15.73,
+      "bitis": 22.01,
+      "sure": 6.28,
+      "metin": "Eylülde Resmî Gazete'de bir karar çıktı: O saat artık hiç geri alınmayacak."
+    },
+    {
+      "no": 8,
+      "baslangic": 22.01,
+      "bitis": 25.95,
+      "sure": 3.94,
+      "metin": "Gerekçe, enerji tasarrufu ve gün ışığından daha fazla yararlanmaktı."
+    },
+    {
+      "no": 9,
+      "baslangic": 25.95,
+      "bitis": 30.75,
+      "sure": 4.8,
+      "metin": "Yani akşamlar bir saat daha aydınlık olacaktı."
+    },
+    {
+      "no": 10,
+      "baslangic": 30.75,
+      "bitis": 31.76,
+      "sure": 1.01,
+      "metin": "Ama bir sorun var."
+    },
+    {
+      "no": 11,
+      "baslangic": 31.76,
+      "bitis": 33.52,
+      "sure": 1.76,
+      "metin": "Saatimiz kırk beşinci boylama göre ayarlı."
+    },
+    {
+      "no": 12,
+      "baslangic": 33.52,
+      "bitis": 36.9,
+      "sure": 3.38,
+      "metin": "Türkiye'nin en doğu ucu bile o çizgiye varmıyor."
+    },
+    {
+      "no": 13,
+      "baslangic": 36.9,
+      "bitis": 39.32,
+      "sure": 2.42,
+      "metin": "Bütün ülke, o çizginin batısında."
+    },
+    {
+      "no": 14,
+      "baslangic": 39.32,
+      "bitis": 43.62,
+      "sure": 4.3,
+      "metin": "Yani İstanbul'da güneş tam tepedeyken, saat on üçe geliyor."
+    },
+    {
+      "no": 15,
+      "baslangic": 43.62,
+      "bitis": 47.75,
+      "sure": 4.14,
+      "metin": "Saatler geri alınsaydı, ocakta güneş yedi buçukta doğacaktı."
+    },
+    {
+      "no": 16,
+      "baslangic": 47.75,
+      "bitis": 50.29,
+      "sure": 2.53,
+      "metin": "Ama akşam beşe varmadan batacaktı."
+    },
+    {
+      "no": 17,
+      "baslangic": 50.29,
+      "bitis": 53.02,
+      "sure": 2.73,
+      "metin": "Aslında Türkiye o gün bir takas yaptı."
+    },
+    {
+      "no": 18,
+      "baslangic": 53.02,
+      "bitis": 55.45,
+      "sure": 2.43,
+      "metin": "Sabahın ışığını, akşama taşıdı."
+    },
+    {
+      "no": 19,
+      "baslangic": 55.45,
+      "bitis": 62.27,
+      "sure": 6.82,
+      "metin": "Ve her ekim, Avrupa saatini geri alınca, Almanya ile aramızdaki fark bir saatten iki saate çıkıyor."
+    },
+    {
+      "no": 20,
+      "baslangic": 62.27,
+      "bitis": 66.04,
+      "sure": 3.77,
+      "metin": "Her gün bir merak için gubigufi'yi takip et."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

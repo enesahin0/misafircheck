@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 11.14;</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/isik.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+
+$('zemin').innerHTML = I.bg({ nx: 540, ny: 760, neb: I.UZ.cyan, no: .15 }) + I.parca(7, 50);
+window.renderAt = t => {
+  const flas = [1.2, 3.4, 4.3].reduce((m, a) => Math.max(m, Math.exp(-Math.max(0, t - a) * 8) * (t > a ? 1 : 0)), 0);
+  let o = I.kamera(540, 760, pop(t, .1, .6) + .001, t, flas);
+  const ek = pop(t, .9); if (ek > 0) o += grp(`<rect x="-270" y="-46" width="540" height="92" rx="46" fill="#0B1433" opacity=".8"/>` + `<text class="mono" x="0" y="14" font-size="36" text-anchor="middle" letter-spacing="3" style="fill:#3CD6F0">EN HASSAS KAMERA</text>`, 540, 400, ek);
+  const g = Math.max(1, Math.ceil(3 * E(A(t, 3.2, 4.6)))); const ga = pop(t, 3.2);
+  if (ga > 0) o += grp(`<rect x="-150" y="-60" width="300" height="120" rx="40" fill="#FFF3D6"/>` + txt('GÜN ' + g, 0, 22, 64, '#1E1B4B'), 540, 1150, ga);
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

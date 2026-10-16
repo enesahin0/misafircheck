@@ -1,0 +1,25 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/au.js"></script><script src="../ortak/kp.js"></script><script src="../ortak/al.js"></script><script src="../ortak/dt.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const R = PR.R;
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  let o = DT.salon(1);
+  const DX = 540, DY = 1330, DS = 1.45;
+  o += DT.damat(DX, DY, DS, { kurdele: true, takilar: [{ tip: 'sikke', u: .12 }, { tip: 'bilezik', u: .32 }, { tip: 'sikke', u: .55 }, { tip: 'sikke', u: .74, parla: 1 }, { tip: 'sikke', u: .92 }] });
+  const [bx, by] = DT.kP(DX, DY, DS, .32), [sx, sy] = DT.kP(DX, DY, DS, .74);
+  o += DT.kutu(220, 470, 300, 170, 'GELİNE', DT.PEMBE) + DT.kutu(860, 470, 300, 170, 'DAMADA', '#2A3A6A');
+  o += `<path d="M${bx - 40} ${by - 20} Q140 ${by - 120} 220 580" stroke="#FFE45C" stroke-width="10" fill="none" stroke-dasharray="20 14"/><path d="M${sx + 40} ${sy - 20} Q940 ${sy - 160} 860 580" stroke="#FFE45C" stroke-width="10" fill="none" stroke-dasharray="20 14"/>`;
+  o += `<circle cx="${bx}" cy="${by}" r="62" fill="none" stroke="#FFE45C" stroke-width="8"/><circle cx="${sx}" cy="${sy}" r="52" fill="none" stroke="#FFE45C" stroke-width="8"/>`;
+  o += AL.bilezik(220, 520, 50, -10) + AL.sikke(860, 520, 38, { parla: 1 });
+  o += M.canli('gubi', { t: 1, x: 300, y: 300, boy: 120, duygu: 'mutlu', bakHedef: [220, 500], ust: KO.giy('gubi', [['papyon', { renk: '#E86A9A' }]]) }) + M.canli('gufi', { t: .5, x: 770, y: 385, boy: 140, duygu: 'saskin', bakHedef: [860, 500], ust: KO.giy('gufi', [['papyon', { renk: '#1B2440' }]]) });
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#1E1438"/><rect x="0" y="1150" width="1080" height="18" fill="#8C6CFF"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#C8B8F0">DÜĞÜN TAKISI · YENİ KURAL</text>`;
+  o += txt('BİLEZİK GELİNİN,', 540, 1362, 92) + txt('ÇEYREK DAMADIN!', 540, 1470, 92, '#F2CE7A');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>

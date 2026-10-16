@@ -1,0 +1,239 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 69.49,
+  "konusma_bloklari": [
+    [
+      0.0,
+      2.37
+    ],
+    [
+      2.801,
+      3.666
+    ],
+    [
+      4.155,
+      9.084
+    ],
+    [
+      9.479,
+      11.814
+    ],
+    [
+      12.201,
+      14.948
+    ],
+    [
+      15.387,
+      17.192
+    ],
+    [
+      17.589,
+      18.129
+    ],
+    [
+      18.387,
+      19.652
+    ],
+    [
+      20.153,
+      26.057
+    ],
+    [
+      26.531,
+      28.294
+    ],
+    [
+      28.765,
+      33.21
+    ],
+    [
+      33.651,
+      35.338
+    ],
+    [
+      35.623,
+      37.528
+    ],
+    [
+      37.983,
+      41.361
+    ],
+    [
+      41.815,
+      43.788
+    ],
+    [
+      44.21,
+      45.483
+    ],
+    [
+      45.871,
+      47.791
+    ],
+    [
+      48.182,
+      50.53
+    ],
+    [
+      50.869,
+      53.646
+    ],
+    [
+      54.043,
+      54.61
+    ],
+    [
+      54.999,
+      55.817
+    ],
+    [
+      56.096,
+      58.383
+    ],
+    [
+      58.791,
+      61.008
+    ],
+    [
+      61.433,
+      64.322
+    ],
+    [
+      64.75,
+      68.283
+    ],
+    [
+      68.554,
+      69.49
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 2.37,
+      "sure": 2.37,
+      "metin": "Maymun deyince aklına ilk ne geliyor?"
+    },
+    {
+      "no": 2,
+      "baslangic": 2.37,
+      "bitis": 3.67,
+      "sure": 1.3,
+      "metin": "Muz, değil mi?"
+    },
+    {
+      "no": 3,
+      "baslangic": 3.67,
+      "bitis": 9.08,
+      "sure": 5.42,
+      "metin": "Ama doğadaki maymunların çoğu, bildiğimiz muzla hayatı boyunca hiç karşılaşmaz."
+    },
+    {
+      "no": 4,
+      "baslangic": 9.08,
+      "bitis": 14.95,
+      "sure": 5.86,
+      "metin": "Çünkü o tatlı, çekirdeksiz muzu, insanlar en az yedi bin yıl önce ıslah etti."
+    },
+    {
+      "no": 5,
+      "baslangic": 14.95,
+      "bitis": 19.65,
+      "sure": 4.7,
+      "metin": "Yabani muzun içi ise böyle: sert, iri çekirdeklerle dolu."
+    },
+    {
+      "no": 6,
+      "baslangic": 19.65,
+      "bitis": 26.06,
+      "sure": 6.4,
+      "metin": "Maymunlar doğada yaprak, çiçek, tohum, böcek ve lifli yabani meyvelerle beslenir."
+    },
+    {
+      "no": 7,
+      "baslangic": 26.06,
+      "bitis": 28.29,
+      "sure": 2.24,
+      "metin": "Peki bu algı nereden çıktı?"
+    },
+    {
+      "no": 8,
+      "baslangic": 28.29,
+      "bitis": 33.21,
+      "sure": 4.92,
+      "metin": "Yirminci yüzyılın başında muz, ucuz ve her yerde bulunan bir meyve oldu."
+    },
+    {
+      "no": 9,
+      "baslangic": 33.21,
+      "bitis": 37.53,
+      "sure": 4.32,
+      "metin": "Hayvanat bahçeleri ve sirkler, maymunlara bol bol muz verdi."
+    },
+    {
+      "no": 10,
+      "baslangic": 37.53,
+      "bitis": 41.36,
+      "sure": 3.83,
+      "metin": "Sonra çizgi filmler bu görüntüyü herkesin aklına kazıdı."
+    },
+    {
+      "no": 11,
+      "baslangic": 41.36,
+      "bitis": 43.79,
+      "sure": 2.43,
+      "metin": "Peki maymunlar muzu seviyor mu?"
+    },
+    {
+      "no": 12,
+      "baslangic": 43.79,
+      "bitis": 45.48,
+      "sure": 1.7,
+      "metin": "Evet, hem de çok."
+    },
+    {
+      "no": 13,
+      "baslangic": 45.48,
+      "bitis": 47.79,
+      "sure": 2.31,
+      "metin": "Ama biz de pastayı çok seviyoruz."
+    },
+    {
+      "no": 14,
+      "baslangic": 47.79,
+      "bitis": 53.65,
+      "sure": 5.86,
+      "metin": "İngiltere'deki Paignton Hayvanat Bahçesi, iki bin on dörtte maymunlarına muz vermeyi bıraktı."
+    },
+    {
+      "no": 15,
+      "baslangic": 53.65,
+      "bitis": 58.38,
+      "sure": 4.74,
+      "metin": "Gerekçe: fazla şeker, diş çürükleri ve şeker hastalığı riski."
+    },
+    {
+      "no": 16,
+      "baslangic": 58.38,
+      "bitis": 61.01,
+      "sure": 2.62,
+      "metin": "Yerine yeşil yapraklı sebzeler geldi."
+    },
+    {
+      "no": 17,
+      "baslangic": 61.01,
+      "bitis": 64.32,
+      "sure": 3.31,
+      "metin": "Maymunlar daha sakin, tüyleri daha parlak oldu."
+    },
+    {
+      "no": 18,
+      "baslangic": 64.32,
+      "bitis": 69.49,
+      "sure": 5.17,
+      "metin": "Yani bir maymunu gerçekten seviyorsan, ona muz değil, salata ver."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

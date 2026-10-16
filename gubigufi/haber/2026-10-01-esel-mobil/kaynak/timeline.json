@@ -1,0 +1,183 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 65.41,
+  "konusma_bloklari": [
+    [
+      0.0,
+      0.812
+    ],
+    [
+      1.066,
+      2.264
+    ],
+    [
+      2.645,
+      6.767
+    ],
+    [
+      7.324,
+      11.145
+    ],
+    [
+      11.635,
+      14.662
+    ],
+    [
+      15.169,
+      20.956
+    ],
+    [
+      21.372,
+      24.305
+    ],
+    [
+      24.555,
+      26.577
+    ],
+    [
+      27.165,
+      30.382
+    ],
+    [
+      30.815,
+      33.031
+    ],
+    [
+      33.433,
+      36.585
+    ],
+    [
+      36.882,
+      38.704
+    ],
+    [
+      39.045,
+      41.172
+    ],
+    [
+      41.476,
+      44.735
+    ],
+    [
+      45.305,
+      51.004
+    ],
+    [
+      51.613,
+      54.156
+    ],
+    [
+      54.636,
+      59.823
+    ],
+    [
+      60.449,
+      64.1
+    ],
+    [
+      64.48,
+      65.125
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 2.26,
+      "sure": 2.26,
+      "metin": "İyi akşamlar, GubiGufi Haber'desiniz."
+    },
+    {
+      "no": 2,
+      "baslangic": 2.26,
+      "bitis": 6.77,
+      "sure": 4.5,
+      "metin": "Akaryakıtta yıllardır süren bir uygulama bugün itibarıyla sona erdi."
+    },
+    {
+      "no": 3,
+      "baslangic": 6.77,
+      "bitis": 11.14,
+      "sure": 4.38,
+      "metin": "Resmî Gazete'de yayımlanan kararla eşel mobil sistemi kaldırıldı."
+    },
+    {
+      "no": 4,
+      "baslangic": 11.14,
+      "bitis": 14.66,
+      "sure": 3.52,
+      "metin": "Ayrıntılar için sahadaki muhabirimiz Gufi'ye bağlanıyoruz."
+    },
+    {
+      "no": 5,
+      "baslangic": 14.66,
+      "bitis": 20.96,
+      "sure": 6.29,
+      "metin": "Eşel mobil sistemi, petrol fiyatlarındaki artışların pompaya yansımasını sınırlamak için uygulanıyordu."
+    },
+    {
+      "no": 6,
+      "baslangic": 20.96,
+      "bitis": 26.58,
+      "sure": 5.62,
+      "metin": "Akaryakıta gelen zammın yüzde yetmiş beşine kadarı, Özel Tüketim Vergisi'nden düşülüyordu."
+    },
+    {
+      "no": 7,
+      "baslangic": 26.58,
+      "bitis": 30.38,
+      "sure": 3.8,
+      "metin": "Sistemin sona ermesiyle birlikte vergiler yeniden artıyor."
+    },
+    {
+      "no": 8,
+      "baslangic": 30.38,
+      "bitis": 33.03,
+      "sure": 2.65,
+      "metin": "Ancak benzinde geçiş kademeli olacak."
+    },
+    {
+      "no": 9,
+      "baslangic": 33.03,
+      "bitis": 44.73,
+      "sure": 11.7,
+      "metin": "Benzinde litre başına alınan Özel Tüketim Vergisi, ekimde yedi lira doksan kuruş, kasımda on bir lira otuz altı kuruş, aralıkta ise on dört lira seksen üç kuruş olarak uygulanacak."
+    },
+    {
+      "no": 10,
+      "baslangic": 44.73,
+      "bitis": 51.0,
+      "sure": 6.27,
+      "metin": "Bu da önümüzdeki üç ay boyunca benzin fiyatlarına her ay yeni bir artış yansıyacağı anlamına geliyor."
+    },
+    {
+      "no": 11,
+      "baslangic": 51.0,
+      "bitis": 54.16,
+      "sure": 3.15,
+      "metin": "LPG'de ise kademeli geçiş uygulanmadı."
+    },
+    {
+      "no": 12,
+      "baslangic": 54.16,
+      "bitis": 59.82,
+      "sure": 5.67,
+      "metin": "Kilogram başına vergi, dokuz lira yirmi iki kuruştan on bir lira otuz sekiz kuruşa yükseldi."
+    },
+    {
+      "no": 13,
+      "baslangic": 59.82,
+      "bitis": 64.1,
+      "sure": 4.28,
+      "metin": "Haberleri animasyonla takip etmek için GubiGufi Haber'i takip edin."
+    },
+    {
+      "no": 14,
+      "baslangic": 64.1,
+      "bitis": 65.12,
+      "sure": 1.03,
+      "metin": "İyi akşamlar."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

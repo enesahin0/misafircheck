@@ -1,0 +1,5 @@
+@import url("fonts/fonts.css");
+html, body { width:1080px !important; height:1920px !important; }
+.kamera { transform-origin:540px 900px !important; }
+text { font-family:"Outfit","Noto Sans CJK JP","DejaVu Sans",sans-serif; }
+.mono { font-family:"JetBrains Mono","DejaVu Sans Mono",monospace; font-weight:700; }

@@ -1,0 +1,269 @@
+{
+  "ses": "../ses_orijinal.mp3",
+  "toplam_sure": 72.83,
+  "konusma_bloklari": [
+    [
+      0.0,
+      2.117
+    ],
+    [
+      2.735,
+      7.471
+    ],
+    [
+      8.03,
+      10.02
+    ],
+    [
+      10.464,
+      13.459
+    ],
+    [
+      13.86,
+      15.606
+    ],
+    [
+      15.874,
+      18.387
+    ],
+    [
+      18.808,
+      21.566
+    ],
+    [
+      21.962,
+      23.037
+    ],
+    [
+      23.456,
+      24.421
+    ],
+    [
+      24.814,
+      27.237
+    ],
+    [
+      27.637,
+      31.039
+    ],
+    [
+      31.405,
+      34.429
+    ],
+    [
+      34.814,
+      36.011
+    ],
+    [
+      36.353,
+      38.219
+    ],
+    [
+      38.598,
+      39.923
+    ],
+    [
+      40.287,
+      41.68
+    ],
+    [
+      42.019,
+      43.473
+    ],
+    [
+      43.839,
+      46.968
+    ],
+    [
+      47.397,
+      48.343
+    ],
+    [
+      48.601,
+      50.362
+    ],
+    [
+      50.842,
+      51.763
+    ],
+    [
+      52.191,
+      55.815
+    ],
+    [
+      56.067,
+      58.194
+    ],
+    [
+      58.59,
+      59.654
+    ],
+    [
+      60.05,
+      62.598
+    ],
+    [
+      62.968,
+      63.797
+    ],
+    [
+      64.183,
+      64.582
+    ],
+    [
+      64.99,
+      66.876
+    ],
+    [
+      67.248,
+      69.435
+    ],
+    [
+      69.844,
+      72.83
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 2.12,
+      "sure": 2.12,
+      "metin": "Azerbaycan'la aramızda ne oluyor?"
+    },
+    {
+      "no": 2,
+      "baslangic": 2.12,
+      "bitis": 7.47,
+      "sure": 5.35,
+      "metin": "\"Tek millet iki devlet\" dediğimiz kardeşimizle ipler nasıl bu kadar gerildi?"
+    },
+    {
+      "no": 3,
+      "baslangic": 7.47,
+      "bitis": 10.02,
+      "sure": 2.55,
+      "metin": "Her şey bir okul kapısında başladı."
+    },
+    {
+      "no": 4,
+      "baslangic": 10.02,
+      "bitis": 13.46,
+      "sure": 3.44,
+      "metin": "Azerbaycan okullara yeni bir kıyafet kuralı getirdi."
+    },
+    {
+      "no": 5,
+      "baslangic": 13.46,
+      "bitis": 18.39,
+      "sure": 4.93,
+      "metin": "Kararda başörtüsü geçmiyor ama başörtülü öğrenciler derse alınmadı."
+    },
+    {
+      "no": 6,
+      "baslangic": 18.39,
+      "bitis": 21.57,
+      "sure": 3.18,
+      "metin": "Gubi, sence ne giyeceğine kim karar vermeli?"
+    },
+    {
+      "no": 7,
+      "baslangic": 21.57,
+      "bitis": 23.04,
+      "sure": 1.47,
+      "metin": "Aynen, sen."
+    },
+    {
+      "no": 8,
+      "baslangic": 23.04,
+      "bitis": 27.24,
+      "sure": 4.2,
+      "metin": "Mesele din değil; kıyafet, inanç, kişisel özgürlük."
+    },
+    {
+      "no": 9,
+      "baslangic": 27.24,
+      "bitis": 31.04,
+      "sure": 3.8,
+      "metin": "Otuz yedi kişi gözaltına alındı, sosyal medya kısıtlandı."
+    },
+    {
+      "no": 10,
+      "baslangic": 31.04,
+      "bitis": 39.92,
+      "sure": 8.88,
+      "metin": "Türkiye'den eleştiri gelince Aliyev'den sert çıkış: \"Herkes yerini bilsin, yaşam tarzımıza burnunu sokmasın.\" Gufi, sıkı tutun."
+    },
+    {
+      "no": 11,
+      "baslangic": 39.92,
+      "bitis": 43.47,
+      "sure": 3.55,
+      "metin": "Asıl bomba silahlar: \"Bize kimse yardım etmedi."
+    },
+    {
+      "no": 12,
+      "baslangic": 43.47,
+      "bitis": 46.97,
+      "sure": 3.5,
+      "metin": "Bütün silahları son mermisine kadar kendi paramızla aldık."
+    },
+    {
+      "no": 13,
+      "baslangic": 46.97,
+      "bitis": 51.76,
+      "sure": 4.79,
+      "metin": "Hatta bazıları bize birkaç katı fiyatına sattı.\" Adres vermedi."
+    },
+    {
+      "no": 14,
+      "baslangic": 51.76,
+      "bitis": 58.19,
+      "sure": 6.43,
+      "metin": "Azerbaycan basını Rusya'yı işaret etti, ama Türkiye'de herkes Karabağ'daki SİHA'ları hatırladı."
+    },
+    {
+      "no": 15,
+      "baslangic": 58.19,
+      "bitis": 62.6,
+      "sure": 4.4,
+      "metin": "Ankara ise sakin: \"Yanlış anlaşılma\" dedi ve cevap vermedi."
+    },
+    {
+      "no": 16,
+      "baslangic": 62.6,
+      "bitis": 64.58,
+      "sure": 1.98,
+      "metin": "Gufi umutlu."
+    },
+    {
+      "no": 17,
+      "baslangic": 64.58,
+      "bitis": 64.88,
+      "sure": 0.3,
+      "metin": "Ya sen?"
+    },
+    {
+      "no": 18,
+      "baslangic": 64.88,
+      "bitis": 66.88,
+      "sure": 1.99,
+      "metin": "Sence bu kardeşlik krizi geçer mi?"
+    },
+    {
+      "no": 19,
+      "baslangic": 66.88,
+      "bitis": 69.44,
+      "sure": 2.56,
+      "metin": "Yorumlara yaz, konuşan birine gönder."
+    },
+    {
+      "no": 20,
+      "baslangic": 69.44,
+      "bitis": 72.83,
+      "sure": 3.39,
+      "metin": "Her gün bir merak için gubigufi'yi takip et."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

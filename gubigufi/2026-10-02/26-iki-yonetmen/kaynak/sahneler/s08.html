@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
+</svg>
+<script>window.SB = 49.8; const TP = {"gubi": [[1.8, "sasir"]], "gufi": [[3.2, "isaret"]]};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script><script src="../ortak/nb.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = K.yaziGen(s, fs, { mono: true, ls: 3 }) + fs * 1.7; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+const R = PR.R, h = HK.hash;
+const PROJ = KO.giy('gufi', [['kasket', { renk: '#2A2E40', siper: '#1B1F2A' }]]);
+const ARSIV = KO.giy('gubi', [['papyon', { renk: '#C8232F' }], 'gozluk']);
+const DEDEKTIF = KO.giy('gufi', [['melon', { renk: '#5A4A3A', bant: '#1B1640' }], ['monokl', {}]]);
+
+window.renderAt = t => {
+  const T = t + 49.8, c = A(t, 1.7, 2.1);
+  let o = NB.salon(T, `<text x="450" y="330" font-size="120" font-weight="900" text-anchor="middle" style="fill:#C8232F">SESSİZLİK</text><text x="450" y="460" font-size="100" font-weight="900" text-anchor="middle" style="fill:#1B1640" opacity="${c}">BOZULDU</text><path d="M120 100 L320 330 L260 380 L420 600 M780 80 L610 300 L680 360 L520 560" stroke="#1B1640" stroke-width="8" fill="none" opacity="${c}"/>`, { sallan: A(t, 1.6, 1.9) * (1 - A(t, 1.9, 2.3)) });
+  o += NB.koltuk(300, 1250, 1.0, 'Z.D.') + NB.koltuk(780, 1250, 1.0, 'N.B.C.', { vurgu: 1 });
+  const a = pop(t, .3); if (a > 0) o += grp(NB.cipO('CEYLAN YANIT VERDİ', 0, 0, '#1B1640', '#FFE45C', 34), 540, 1130, a);
+  o += gufi(t, { yol: [[0, 240, 1800, 270], [2.0, 240, 1800, 270], [3.0, 640, 1800, 270]], x: 240, y: 1800, boy: 270, bakHedef: [780, 900], isaretHedef: [780, 1000], ust: PROJ });
+  o += gubi(t, { x: 860, y: 1620, boy: 230, duygu: t > 1.8 ? 'saskin' : 'merak', bakHedef: [780, 900], ust: ARSIV });
+  o += DP.sar(t, 2.9, 6.9, d => NBD.xKart(d, 'Kendine şimdiden bir YouTube kanalı açarsa iyi eder.'));
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

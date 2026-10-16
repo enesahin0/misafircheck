@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 40.15;</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/venus.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+
+$('zemin').innerHTML = V.bg({ nx: 540, ny: 760, neb: V.PAL.mag }) + V.yildiz(23, 80);
+window.renderAt = t => {
+  let o = V.venus({ x: 540, y: 520, r: 150, faz: t * .05 });
+  const npasta = Math.floor(A(t, 2.5, 4.4) * 6 + (t > 2.5 ? 1 : 0)), sabah = pop(t, 4.9);
+  const tilt = Math.min(npasta, 6) * 2.2 - (sabah > 0 ? 3 : 0) + Math.sin(t * 2) * .6, ang = tilt * Math.PI / 180;
+  const cx = 540, cy = 860, L = 330, lx = cx - Math.cos(ang) * L, ly = cy + Math.sin(ang) * L, rx = cx + Math.cos(ang) * L, ry = cy - Math.sin(ang) * L;
+  o += `<rect x="${cx - 18}" y="${cy}" width="36" height="330" rx="18" fill="#2E3A7A"/><rect x="${cx - 140}" y="${cy + 310}" width="280" height="40" rx="20" fill="#2E3A7A"/>`;
+  o += `<line x1="${lx}" y1="${ly}" x2="${rx}" y2="${ry}" stroke="#FFF3D6" stroke-width="20" stroke-linecap="round"/><circle cx="${cx}" cy="${cy}" r="24" fill="${V.PAL.amber}"/>`;
+  const kefe = (x, y, ic) => `<line x1="${x}" y1="${y}" x2="${x - 90}" y2="${y + 140}" stroke="#FFF3D6" stroke-opacity=".6" stroke-width="6"/><line x1="${x}" y1="${y}" x2="${x + 90}" y2="${y + 140}" stroke="#FFF3D6" stroke-opacity=".6" stroke-width="6"/>` +
+     `<path d="M${x - 130} ${y + 140} Q${x} ${y + 220} ${x + 130} ${y + 140}Z" fill="${V.PAL.cyan}"/>` + ic;
+  let pc = ''; for (let i = 0; i < Math.min(npasta, 6); i++) { const k = pop(t, 2.5 + i * .31, .35); pc += grp(V.pasta({ x: 0, y: 0, s: .28, mum: 1, t }), lx - 70 + (i % 3) * 70, ly + 128 - Math.floor(i / 3) * 42, k); }
+  o += kefe(lx, ly, pc);
+  const sb = sabah > 0 ? grp(V.gunes({ x: 0, y: 0, r: 34 }) + `<rect x="-70" y="0" width="140" height="40" fill="${V.PAL.cyan}"/>`, rx, ry + 120, sabah) : '';
+  o += kefe(rx, ry, sb);
+  if (npasta > 0) o += txt('DOĞUM GÜNÜ', lx, ly - 40, 38, V.PAL.mag, 700, 'class="mono"');
+  if (sabah > 0) o += txt('SABAH', rx, ry - 40, 38, V.PAL.amber, 700, 'class="mono"');
+  o += grp(M.gubi({ x: 0, y: 0, boy: 110, duygu: t > 5.8 ? 'mutlu' : 'merak', bak: [1, 0], kirp: -1 }), 170, 1230 + Math.sin(t * 3) * 8, pop(t, .3));
+  o += grp(M.gufi({ x: 0, y: 0, boy: 110, duygu: t > 5.8 ? 'mutlu' : 'saskin', bak: [-1, 0], kirp: -2 }), 910, 1260, pop(t, .5));
+  $('dinamik').innerHTML = o;
+  const z = 1 - .9 * E(A(t, 6.85, 7.24)); $('dinamik').setAttribute('transform', `translate(540 800) scale(${z}) translate(-540 -800)`);
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

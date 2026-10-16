@@ -1,0 +1,24 @@
+{
+ "fps": 30,
+ "genislik": 1080,
+ "yukseklik": 1920,
+ "ses": "ses48.wav",
+ "cikti": "lab.mp4",
+ "sahneler": [
+  {
+   "dosya": "sahneler/s01.html",
+   "baslangic": 0,
+   "bitis": 4.0
+  },
+  {
+   "dosya": "sahneler/s02.html",
+   "baslangic": 4.0,
+   "bitis": 8.0
+  },
+  {
+   "dosya": "sahneler/s03.html",
+   "baslangic": 8.0,
+   "bitis": 11.0
+  }
+ ]
+}
