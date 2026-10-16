@@ -22,13 +22,13 @@ yaz, commit + push. Bir madde yarım kaldıysa `[~]` + nerede kalındığı notu
 - [x] 1d Ses tasarım teknikleri: transient/body/tail katmanlama, materyal eşleme, EQ oyuğu, sidechain, reverb send, varyasyon
 
 ## 2. Motion sistemi v2 → `marka/ortak/motion2.js` (geriye uyumlu, yeni videolarda varsayılan)
-- [ ] 2a Koreografi çekirdeği: öğe yaşam döngüsü (giriş → bekleme/ikincil hareket → ÇIKIŞ), ağırlık sınıfları (hafif/orta/ağır/kahraman),
+- [x] 2a Koreografi çekirdeği: öğe yaşam döngüsü (giriş → bekleme/ikincil hareket → ÇIKIŞ), ağırlık sınıfları (hafif/orta/ağır/kahraman),
       anticipation, overshoot, stagger, follow-through; zaman çizelgesi tanımı (`TL` nesnesi)
-- [ ] 2b Kamera rig'i: sahne kamerası (push-in, pan, whip-pan + hareket bulanıklığı), parallax katmanları (arka/orta/ön), odak (DoF hissi)
-- [ ] 2c Geçiş sistemi: match-cut, nesne-üzerinden geçiş (kart büyüyüp sonraki sahne olur), maske açılışı; beyaz flaşın yerini alır
-- [ ] 2d Işık/derinlik/doku: tutarlı ışık yönü, yumuşak gölge, rim ışık, kâğıt grenı, renk derecelendirme (sahne başına LUT benzeri ton)
-- [ ] 2e Kinetik tipografi: sayı vurguları (sayaç + ölçek + renk), kelime vurgusu, maskeli yazı; altyazıyla çakışmayan yerleşim
-- [ ] 2f Olay yayını: her görsel olay `olaylar.json`'a yazılır (zaman, tür, ağırlık, materyal, hız, ekran konumu) → ses bunu okur
+- [x] 2b Kamera rig'i: sahne kamerası (push-in, pan, whip-pan + hareket bulanıklığı), parallax katmanları (arka/orta/ön), odak (DoF hissi)
+- [x] 2c Geçiş sistemi: match-cut, nesne-üzerinden geçiş (kart büyüyüp sonraki sahne olur), maske açılışı; beyaz flaşın yerini alır
+- [x] 2d Işık/derinlik/doku: tutarlı ışık yönü, yumuşak gölge, rim ışık, kâğıt grenı, renk derecelendirme (sahne başına LUT benzeri ton)
+- [x] 2e Kinetik tipografi: sayı vurguları (sayaç + ölçek + renk), kelime vurgusu, maskeli yazı; altyazıyla çakışmayan yerleşim
+- [x] 2f Olay yayını: her görsel olay `olaylar.json`'a yazılır (zaman, tür, ağırlık, materyal, hız, ekran konumu) → ses bunu okur
 
 ## 3. Ses tasarımı v2 → `marka/ses2.py`
 - [ ] 3a Katmanlı efekt üreteci: transient + gövde + kuyruk; materyal sözlüğü (kâğıt, kart/plastik, metal, cam, su, kumaş, hava)
@@ -48,3 +48,4 @@ yaz, commit + push. Bir madde yarım kaldıysa `[~]` + nerede kalındığı notu
 ## İlerleme kaydı
 - 16.10.2026 — brif ve plan yazıldı; saatlik devam görevi kuruldu.
 - 16.10.2026 — Aşama 1 bitti: ARASTIRMA.md (motor kararı: kendi motorumuz + flubber + culori; kural seti 13 madde; yeni ses kaynağı BigSoundBank CC0; ses tasarım kuralları 11 madde).
+- 16.10.2026 — Aşama 2 bitti: `ortak/motion2.js` (analitik yay, 5 ağırlık sınıfı + anticipation/çıkış, kamera rig + parallax, 6 geçiş türü: odak/itme/yildiz/kayma/perde/kes, katmanlı zemin + gölge filtreleri + film greni + ton, kinetik başlık/sayaç/çizgi, flubber morf, culori OKLCH), `vendor/` (flubber, culori; MIT), `olay_tara.py` → olaylar.json. Lab: `motion/lab/` (3 sahnelik test, kareler doğrulandı).

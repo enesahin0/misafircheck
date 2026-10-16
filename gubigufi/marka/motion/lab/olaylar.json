@@ -1,0 +1,132 @@
+[
+{
+"tur": "sayac",
+"t": 0.3,
+"sure": 1.6,
+"x": 540,
+"doku": 1
+},
+{
+"tur": "giris",
+"t": 0.618,
+"agirlik": "hafif",
+"materyal": "plastik",
+"x": 540,
+"giris": "yuksel",
+"etiket": ""
+},
+{
+"tur": "varis",
+"t": 1.9,
+"agirlik": "agir",
+"x": 540
+},
+{
+"tur": "kamera",
+"t": 2.1,
+"hiz": 478,
+"x": 540,
+"sure": 1,
+"olcekDegisim": 1.28
+},
+{
+"tur": "giris",
+"t": 2.338,
+"agirlik": "agir",
+"materyal": "plastik",
+"x": 540,
+"giris": "dus",
+"etiket": ""
+},
+{
+"tur": "gecis",
+"t": 3.937,
+"gecisTur": "yildiz",
+"x": 540,
+"yonu": "cik"
+},
+{
+"tur": "kelime",
+"t": 4.35,
+"x": 265.15,
+"doku": 1
+},
+{
+"tur": "kelime",
+"t": 4.42,
+"x": 498,
+"doku": 1
+},
+{
+"tur": "kelime",
+"t": 4.49,
+"x": 772.85,
+"doku": 1
+},
+{
+"tur": "giris",
+"t": 5.374,
+"agirlik": "orta",
+"materyal": null,
+"x": 540,
+"giris": "yan",
+"etiket": ""
+},
+{
+"tur": "giris",
+"t": 5.434,
+"agirlik": "orta",
+"materyal": null,
+"x": 540,
+"giris": "yan",
+"etiket": ""
+},
+{
+"tur": "giris",
+"t": 5.494,
+"agirlik": "orta",
+"materyal": null,
+"x": 540,
+"giris": "yan",
+"etiket": ""
+},
+{
+"tur": "kamera",
+"t": 5.8,
+"hiz": 152,
+"x": 540,
+"sure": 1.2,
+"olcekDegisim": 0.893
+},
+{
+"tur": "cikis",
+"t": 7.2,
+"agirlik": "orta",
+"materyal": null,
+"x": 540,
+"etiket": ""
+},
+{
+"tur": "cikis",
+"t": 7.245,
+"agirlik": "orta",
+"materyal": null,
+"x": 540,
+"etiket": ""
+},
+{
+"tur": "cikis",
+"t": 7.29,
+"agirlik": "orta",
+"materyal": null,
+"x": 540,
+"etiket": ""
+},
+{
+"tur": "gecis",
+"t": 7.943,
+"gecisTur": "odak",
+"x": 540,
+"yonu": "cik"
+}
+]
