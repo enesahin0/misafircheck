@@ -1,10 +1,6 @@
-[curious] Senin araban sıfırdan 96 kilometreye kaç saniyede çıkıyor? [short pause] On mu? [pause] [serious] Tesla'nın dün tanıttığı araba... yarım saniyede. [amused] En azından Tesla öyle diyor.
+[curious] Daha önce böyle bir araba gördün mü? [short pause] [excited] Havada duruyor! [serious] Tesla'nın dün tanıttığı yeni Roadster. Sıfırdan 96'ya... yarım saniyede. [amused] En azından Tesla öyle diyor.
 
-[curious] Sen on saniye bekleyene kadar o, bunu... [short pause] [excited] on yedi kere yapar. [short pause] [serious] Rimac Nevera'dan bile üç kat hızlı.
-
-[calm] Uçurumdan bıraktığın taş bile 96'ya 2,7 saniyede çıkar. [short pause] [excited] Bu araba, ondan dört buçuk kat hızlı.
-
-[playful] Mekik kalkarken astronotlar üç g taşırdı; bu araçta dört buçuk. [short pause] Gubi, dayanır mısın? [pause] [amused] Titremeye başladı.
+[playful] Tofaş Şahin, sıfırdan 96'ya yaklaşık on üç saniyede çıkar. [short pause] [excited] Sen çıkana kadar bu araba... yirmi iki kere çıkar. [short pause] [amused] Bir de Türkiye'de olsa... trafikte kimse "in aşağı lan" diyemez. [short pause] Araba havada.
 
 [curious] Nasıl mı? [short pause] [serious] SpaceX'in soğuk gaz iticileri, arabayı arkadan tekmeliyor. [curious] Fanlar da onu... tavana yapıştıracak kadar emiyor.
 
