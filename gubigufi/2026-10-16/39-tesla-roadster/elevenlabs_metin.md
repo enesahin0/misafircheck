@@ -1,19 +1,21 @@
-[curious] Tesla'nın dün tanıttığı araba havada takla atıyor. Sen onu alabilir misin? [short pause] [serious] Sıfırdan 96 kilometreye, yarım saniyede çıkıyor.
+[curious] Senin araban sıfırdan 96 kilometreye kaç saniyede çıkıyor? On mu? [short pause] [serious] Tesla'nın dün tanıttığı araba, yarım saniyede. En azından Tesla öyle diyor.
 
-[curious] Ama asıl hikâye, dokuz yıl önceki söz.
+[curious] Sen on saniye bekleyene kadar o, bunu on yedi kere yapar. [short pause] Rimac Nevera'dan bile üç kat hızlı.
 
-[calm] İki bin on yedide dört kişilik, bin kilometre menzilli, saatte dört yüz diye tanıttılar. Bugün: iki koltuk, dört yüz seksen kilometre, üç yüz yetmiş.
+[calm] Uçurumdan bıraktığın taş bile 96'ya 2,7 saniyede çıkar. Bu araba, ondan dört buçuk kat hızlı.
 
-[playful] Gubi, söz tutuldu mu? [pause] [serious] Menzil yarıya, koltuk yarıya. [calm] Ama hızlanma tam tersi: Tesla'ya göre bir buçuk saniyenin altı. Rimac Nevera bile bir yetmiş dört.
+[playful] Mekik kalkarken astronotlar üç g taşırdı; bu araçta dört buçuk. Gubi, dayanır mısın? [pause] [amused] Titremeye başladı.
 
-[warm] Bunu araba delisi birine gönder.
+[warm] Bunu arabasıyla övünen arkadaşına gönder.
 
-[curious] Sır, SpaceX'in soğuk gaz iticileri. Lastiğin tutabileceği gücün dört beş katı. [serious] Ama sadece davetli sürümde; en hızlısı yolda yasak.
+[curious] Nasıl mı? SpaceX'in soğuk gaz iticileri arabayı arkadan tekmeliyor. Fanlar da onu tavana yapıştıracak kadar emiyor.
+
+[serious] Ama bu en uç sürüm: davetli, yolda yasak.
 
 [playful] Gufi, ayırtır mısın? [pause] [amused] Önce fiyata baktı.
 
-[serious] Fiyat yok. Üretim, iki bin yirmi sekiz. Rezervasyon, elli bin dolar.
+[serious] Fiyat yok. Üretim, iki bin yirmi sekiz.
 
-[curious] Sence Tesla sözünü tutar mı? Yorumlara A ya da B yaz.
+[curious] Sence yola çıkacak mı? Yorumlara A ya da B yaz.
 
 [warm] Her gün bir merak için gubigufi'yi takip et.
