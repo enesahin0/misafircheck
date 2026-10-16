@@ -31,10 +31,10 @@ yaz, commit + push. Bir madde yarım kaldıysa `[~]` + nerede kalındığı notu
 - [x] 2f Olay yayını: her görsel olay `olaylar.json`'a yazılır (zaman, tür, ağırlık, materyal, hız, ekran konumu) → ses bunu okur
 
 ## 3. Ses tasarımı v2 → `marka/ses2.py`
-- [ ] 3a Katmanlı efekt üreteci: transient + gövde + kuyruk; materyal sözlüğü (kâğıt, kart/plastik, metal, cam, su, kumaş, hava)
-- [ ] 3b Olay→ses eşleyici: `olaylar.json` → hareket hızı/ağırlığına göre ses seçimi, perde/hız varyasyonu, tekrar yasağı, panorama (ekran x'i)
-- [ ] 3c Miks zinciri: VO için EQ oyuğu (2–5 kHz), sidechain, ortak kısa oda reverb'i, bus kompresör, müzik dinamiği (bölüm geçişlerinde nefes)
-- [ ] 3d Müzik yatağı v2: statik pad yerine bölüm yapısına uyan, ritmik ama melodisiz/ciddi seçenekler + "gündem" ve "pratik" modları
+- [x] 3a Katmanlı efekt üreteci: transient + gövde + kuyruk; materyal sözlüğü (kâğıt, kart/plastik, metal, cam, su, kumaş, hava)
+- [x] 3b Olay→ses eşleyici: `olaylar.json` → hareket hızı/ağırlığına göre ses seçimi, perde/hız varyasyonu, tekrar yasağı, panorama (ekran x'i)
+- [x] 3c Miks zinciri: VO için EQ oyuğu (2–5 kHz), sidechain, ortak kısa oda reverb'i, bus kompresör, müzik dinamiği (bölüm geçişlerinde nefes)
+- [x] 3d Müzik yatağı v2: statik pad yerine bölüm yapısına uyan, ritmik ama melodisiz/ciddi seçenekler + "gündem" ve "pratik" modları
 
 ## 4. Test: #37'nin ilk 4 sahnesi v2 ile yeniden (A/B demo)
 - [ ] 4a S1–S4 v2 sistemle kurulur, render
@@ -49,3 +49,4 @@ yaz, commit + push. Bir madde yarım kaldıysa `[~]` + nerede kalındığı notu
 - 16.10.2026 — brif ve plan yazıldı; saatlik devam görevi kuruldu.
 - 16.10.2026 — Aşama 1 bitti: ARASTIRMA.md (motor kararı: kendi motorumuz + flubber + culori; kural seti 13 madde; yeni ses kaynağı BigSoundBank CC0; ses tasarım kuralları 11 madde).
 - 16.10.2026 — Aşama 2 bitti: `ortak/motion2.js` (analitik yay, 5 ağırlık sınıfı + anticipation/çıkış, kamera rig + parallax, 6 geçiş türü: odak/itme/yildiz/kayma/perde/kes, katmanlı zemin + gölge filtreleri + film greni + ton, kinetik başlık/sayaç/çizgi, flubber morf, culori OKLCH), `vendor/` (flubber, culori; MIT), `olay_tara.py` → olaylar.json. Lab: `motion/lab/` (3 sahnelik test, kareler doğrulandı).
+- 16.10.2026 — Aşama 3 bitti: `ses2.py` (Tasarim: olaylar.json → materyal eşlemeli katmanlı efekt [BigSoundBank kesiti + sub + ön-whoosh], ağırlık→perde/aile, kare tohumlu varyasyon, panorama, maske/aile/yoğunluk budaması, stagger→doku; miks: ducking, 2–5 kHz EQ oyuğu, ortak oda, bus kompresör, limitör; müzik yatağı + kesme nefesi). `bsb_indir.py` ile 299 CC0 materyal kaydı (yerel, .gitignore), `sfx_lib` bs: öneki.

@@ -7,6 +7,7 @@ Kaynaklar (marka/sfx_kutuphane/):
   ui:<tema>/<ad>       uisfx (CC0) — 12 tema × 78 arayüz sesi (cinematic, glass, rubber, soft, studio, arcade, organic, minimal, mechanical, scifi, dreamy, zen)
   sx:<ad>              rse/soundfx (CC0 / CC-BY-3.0 — dosyanın .txt'sine bak)
   sn:<paket>/<dosya>   Sonniss GDC 2026 seçkisi (ticari serbest, atıfsız; repoda YOK → python3 sonniss_indir.py). Dosya adının başı yeterli.
+  bs:<KAT>/<id>        BigSoundBank (CC0, ticari serbest; repoda YOK → python3 bsb_indir.py) — materyal foley
   bb:<id>              BBC Sound Effects (RemArc — SADECE TİCARİ OLMAYAN; para kazanılınca çıkarılacak). python3 bbc_ara.py "sorgu" ile indir.
 Lisans özeti: sfx_kutuphane/KAYNAKLAR.md
 Kullanım (ses.py içinde):
@@ -66,6 +67,11 @@ def _yol(ad):
     if tur == 'ui': return os.path.join(KOK, 'uisfx', ad2 + '.mp3')
     if tur == 'sx': return os.path.join(KOK, 'soundfx', ad2 + '.mp3')
     if tur == 'bb': return os.path.join(KOK, 'bbc', ad2 + '.mp3')
+    if tur == 'bs':  # BigSoundBank (CC0): bs:<KAT>/<id veya ad parçası>
+        k, f = ad2.split('/', 1); kl = os.path.join(KOK, 'bsb', k)
+        for g in sorted(os.listdir(kl)):
+            if g.startswith(f) or f in g: return os.path.join(kl, g)
+        raise FileNotFoundError(ad)
     if tur == 'sn':
         p, f = ad2.split('/', 1); kl = os.path.join(KOK, 'sonniss', p)
         if not os.path.isdir(kl):
