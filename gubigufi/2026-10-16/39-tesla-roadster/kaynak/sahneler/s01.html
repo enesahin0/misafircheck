@@ -4,7 +4,7 @@
 <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
   <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
 </svg>
-<script>window.SB = 0; const TP = {"gubi": [[4.7, "gozle"]], "gufi": [[8.0, "sasir"]]}; window.GECIS = {"gir": null, "cik": {"tur": "kayma"}}; window.KLIP_N = {"a": 41, "b": 47, "c": 59, "d": 47, "e": 59};</script>
+<script>window.SB = 0; const TP = {"gubi": [[5.0, "gozle"]], "gufi": [[10.1, "sasir"]]}; window.GECIS = {"gir": null, "cik": {"tur": "kayma"}}; window.KLIP_N = {"a": 41, "b": 47, "c": 59, "d": 47, "e": 59};</script>
 <script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script><script src="../ortak/au.js"></script><script src="../ortak/kp.js"></script><script src="../ortak/al.js"></script><script src="../ortak/sl.js"></script><script src="../ortak/se.js"></script>
 <script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
 <script src="../ortak/vendor/flubber.min.js"></script><script src="../ortak/vendor/culori.js"></script><script src="../ortak/motion2.js"></script><script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
@@ -128,36 +128,30 @@ const tas = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><p
 const arkadas = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-70" y="40" width="140" height="150" rx="50" fill="#3E8EDE"/><circle cx="0" cy="-10" r="58" fill="#F2C9A0"/><path d="M-60 -20 Q-50 -78 0 -74 Q50 -78 60 -20 Q30 -48 0 -44 Q-30 -48 -60 -20Z" fill="#2A2A33"/><rect x="-44" y="-18" width="38" height="20" rx="8" fill="#14171F"/><rect x="6" y="-18" width="38" height="20" rx="8" fill="#14171F"/><rect x="-8" y="-12" width="16" height="6" fill="#14171F"/><path d="M-22 26 Q0 42 22 26" stroke="#8A4A3A" stroke-width="7" fill="none" stroke-linecap="round"/></g>`;
 
 MO.sahne({
-  zemin: MO.zemin({ ust: '#161B38', alt: '#080B1C', isik: [540, 900, '#3E6FB8', .26], ikinci: [900, 250, '#E8323C', .10] }),
-  kamera: [[0, 1.0, 540, 900], [.1, 1.05, 540, 900, 5.4, 'kamera'], [5.7, 1.0, 540, 900, .6]],
-  sarsinti: [[7.98, 14]],
+  zemin: MO.zemin({ ust: '#0A0E1E', alt: '#05070F', isik: [540, 900, '#3E6FB8', .10] }),
+  kamera: [[0, 1.0, 540, 900], [.05, 1.06, 540, 900, 4.4, 'kamera'], [4.6, 1.0, 540, 900, .4], [5.1, 1.05, 540, 900, 8.0, 'kamera']],
+  sarsinti: [[10.04, 14]],
   ciz: t => {
-    const b = Math.max(0, t - .4), vS = Math.min(96, 96 * b / 10), rk = MO.cl((t - 7.38) / .59), vR = 96 * rk;
     let o = '';
-    // A) 0–5,6: tek büyük gösterge — senin araban
-    const A = 1 - MO.E.outCubic(MO.ar(t, 5.3, 5.75));
-    if (A > .01) {
-      o += `<g opacity="${A.toFixed(3)}">`;
-      o += MO.sar(AU.cip('SENİN ARABAN', 0, 0, '#FFFFFF', '#1B2440', 28), MO.oge(t, { gir: -.25, agirlik: 'hafif', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 385, { golge: false });
-      o += MO.sar(SE.araba(0, 0, .75, { renk: '#E8323C' }), MO.oge(t, { gir: -.3, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540, bekle: 2 }), 540, 520);
-      o += MO.sar(gosterge(0, 0, 280, vS, { renk: '#7FD0FF' }), MO.oge(t, { gir: -.2, agirlik: 'agir', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 860);
-      o += MO.sar(zamanChip(`${Math.min(10, b).toFixed(1)} sn`, 0, 0, '#0B1433', '#7FD0FF', 40), MO.oge(t, { gir: -.1, agirlik: 'hafif', giris: 'yuksel', x: 540 }), 540, 1115, { golge: false });
-      o += `</g>`;
+    // 0–4,6: Tesla'nın gerçek tanıtım görüntüsü (yavaş çekim) — "yan yan gidebilirsin"
+    const e0 = 1 - MO.cl((t - 4.4) / .5);
+    if (e0 > 0) o += MO.klip('a', t * .38, { x: 540, y: 760, w: 1200, h: 1500, r: 0, op: e0 });
+    // 4,4'ten sonra: gerçek fotoğraf tüm kadraj ("uçuyor")
+    if (t > 4.3) {
+      const tit = t > 10.04 && t < 10.6 ? Math.sin(t * 95) * 7 : 0;
+      o += MO.sar(MO.fotograf('foto1', { x: 0, y: 0, w: 1150, h: 1445, r: 0, kayma: [tit, 0], olcek: 1 + .06 * MO.E.outCubic(MO.ar(t, 4.6, 13.3)) }), MO.oge(t, { gir: 4.4, agirlik: 'kahraman', giris: 'olcek', materyal: 'plastik', x: 540 }), 540, 700, { golge: false });
     }
-    // B) 5,68'den sonra: gerçek Tesla fotoğrafı tüm kadraj; altta iki çubuk yarışı
-    if (t > 5.4) {
-      const tit = t > 7.38 && t < 7.98 ? Math.sin(t * 95) * 7 : 0;
-      o += MO.sar(MO.fotograf('foto1', { x: 0, y: 0, w: 1150, h: 1445, r: 0, kayma: [tit, 0], olcek: 1 + .06 * MO.E.outCubic(MO.ar(t, 5.7, 10.9)) }), MO.oge(t, { gir: 5.6, agirlik: 'kahraman', giris: 'olcek', materyal: 'plastik', x: 540 }), 540, 700, { golge: false });
-      o += `<g opacity="${MO.E.outCubic(MO.ar(t, 5.6, 6.1)).toFixed(3)}">` + filmKat() + `</g>`;
-      const sat = (ad, y, v, f, renk, vs, ts) => `<text class="mono" x="70" y="${y}" font-size="30" letter-spacing="4" style="fill:${renk}">${ad}</text><text class="mono" x="1010" y="${y}" font-size="30" text-anchor="end" letter-spacing="2" style="fill:#FFF3D6">${v} km/sa · ${ts} sn</text>` + R(70, y + 18, 940, 24, 12, '#2A3550', .85) + (f > .003 ? R(70, y + 18, 940 * f, 24, 12, renk) : '');
-      o += MO.sar(sat('SENİN ARABAN', 1030, Math.round(vS), vS / 96, '#7FD0FF', 0, Math.min(10, b).toFixed(1)), MO.oge(t, { gir: 5.75, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 0, 0, { golge: false });
-      o += MO.sar(sat('TESLA ROADSTER', 1135, Math.round(vR), rk, '#FFD23F', 0, (.59 * rk).toFixed(2)), MO.oge(t, { gir: 5.95, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 0, 0, { golge: false });
-      o += MO.sar(zamanChip('ROCKET SÜRÜMÜ · TESLA İDDİASI', 0, 0, '#E8323C', '#FFFFFF', 21), MO.oge(t, { gir: 6.3, agirlik: 'hafif', giris: 'yuksel', x: 540 }), 540, 965, { golge: false });
-      o += MO.sar(etiket('0.59 SN', 0, 0, '#E8323C', '#FFFFFF', 112, -5, 1), MO.oge(t, { gir: 7.98, agirlik: 'kahraman', giris: 'damga', materyal: 'lastik', x: 540 }), 540, 440, { golge: false });
-    }
+    o += filmKat();
+    o += MO.sar(altUc('15 EKİM 2026 · TANITILDI', 'TESLA ROADSTER', { renk: '#FFD23F', fs: 78 }), MO.oge(t, { gir: 5.0, cik: 7.6, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 1130, { golge: false });
+    const rk = MO.cl((t - 9.45) / .59);
+    const sat = `<text class="mono" x="70" y="0" font-size="30" letter-spacing="4" style="fill:#FFD23F">TESLA ROADSTER · 0 → 96 KM/SA</text><text class="mono" x="1010" y="0" font-size="30" text-anchor="end" letter-spacing="2" style="fill:#FFF3D6">${(.59 * rk).toFixed(2)} sn</text>` + R(70, 20, 940, 26, 13, '#2A3550', .85) + (rk > .003 ? R(70, 20, 940 * rk, 26, 13, '#FFD23F') : '');
+    o += MO.sar(sat, MO.oge(t, { gir: 7.9, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 0, 1110, { golge: false });
+    o += MO.sar(etiket('0.59 SN', 0, 0, '#E8323C', '#FFFFFF', 112, -5, 1), MO.oge(t, { gir: 10.04, agirlik: 'kahraman', giris: 'damga', materyal: 'lastik', x: 540 }), 540, 440, { golge: false });
+    o += MO.sar(zamanChip('TESLA İDDİASI', 0, 0, '#E8323C', '#FFFFFF', 22), MO.oge(t, { gir: 11.4, agirlik: 'hafif', giris: 'yuksel', x: 540 }), 540, 965, { golge: false });
+    o += kredi('GÖRÜNTÜ: TESLA (@teslamotors)', 60, 1490);
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: 'merak', bakHedef: [540, 900] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: t > 7.4 ? 'saskin' : 'merak', bakHedef: [540, 900] })
+  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: 'merak', bakHedef: [540, 900] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: t > 10.1 ? 'saskin' : 'merak', bakHedef: [540, 900] })
 });
 </script>
 <script src="../ortak/kanal.js"></script>

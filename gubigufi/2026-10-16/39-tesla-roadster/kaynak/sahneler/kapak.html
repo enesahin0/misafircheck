@@ -42,7 +42,7 @@ window.renderAt = t => {
   // üst karartma: sayı okunaklı olsun
   const ug = gid('u'); o += `<defs>${lin(ug, 'rgba(11,10,18,1)', 'rgba(11,10,18,0)')}</defs><rect x="0" y="0" width="1080" height="700" fill="url(#${ug})"/>`;
   o += golgeTxt('0.59 SN', 540, 510, 250, '#7FD0FF');
-  o += `<g transform="translate(540 608)">` + R(-300 + 6, -34 + 8, 600, 68, 34, '#000', .45) + R(-300, -34, 600, 68, 34, '#FFF3E0') + `<text class="mono" x="0" y="13" font-size="36" font-weight="800" text-anchor="middle" letter-spacing="2" style="fill:#0B0A12">SENİN ARABAN: ~10 SN</text></g>`;
+  o += `<g transform="translate(540 608)">` + R(-230 + 6, -34 + 8, 460, 68, 34, '#000', .45) + R(-230, -34, 460, 68, 34, '#FFF3E0') + `<text class="mono" x="0" y="13" font-size="36" font-weight="800" text-anchor="middle" letter-spacing="2" style="fill:#0B0A12">ÜSTELİK UÇUYOR</text></g>`;
   o += vinyet() + altBant('#7FD0FF', 'GÜNDEM · TEKNOLOJİ', 'YARIM SANİYE', 'TESLA ROADSTER', '#7FD0FF') + logo();
   document.getElementById('dinamik').innerHTML = o;
 };

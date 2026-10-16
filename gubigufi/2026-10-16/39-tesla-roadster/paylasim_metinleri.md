@@ -1,11 +1,14 @@
-# #39 Tesla Roadster — paylaşım metinleri
+# #39 Tesla Roadster — paylaşım metinleri (v2)
 
 ## Instagram açıklaması
-Tesla yeni Roadster'ı tanıttı: 0'dan 96 km/s → 0,59 saniye 🚀
-Senin araban bunu ~10 saniyede yapıyor. Yani aynı hızı 17 kat geç alıyor.
-Gerçek rakamlar ve "uçuyor mu?" sorusunun cevabı videoda. Bunu arabasıyla övünen arkadaşına gönder 😄
+Bir Tofaş olmasa da bununla gerçekten yan yan gidebilirsin 😄
+Tesla'nın dün tanıttığı yeni Roadster hem uçuyor hem de 0'dan 96 km/s'ye 0,59 saniyede çıkıyor.
+Bu, uçurumdan bıraktığın bir taştan 4,5 kat hızlı. (Tesla'nın iddiası — gerçek testi bekliyoruz.)
+Fiyat yok, üretim 2028. Rocket sürümü davetli, yolda kullanım yok.
 
-Kaynak: Tesla (X, 15.10.2026), Electrek, Motor Authority, NASA
+Bunu arabasıyla övünen arkadaşına gönder 🚗
+
+Kaynak: Tesla (X, 15.10.2026), Electrek, Motor Authority
 Görüntü: Tesla (@teslamotors)
 
 #tesla #roadster #teknoloji #gundem #gubigufi
@@ -13,10 +16,10 @@ Görüntü: Tesla (@teslamotors)
 gubigufi ✦ 1 dakikada bir merak
 
 ## Sabit yorum (isteğe bağlı)
-Sence 50.000 $ rezervasyon verip 2028'i beklemeye değer mi? 👇
+Türkiye'de bununla trafikte "in aşağı lan" diyen amcaya ne olurdu? 👇
 
 ## YouTube Shorts başlığı
-Tesla Roadster 0'dan 96'ya 0,59 saniyede! Senin araban kaç saniyede? #shorts
+Tesla'nın yeni arabası UÇUYOR ve 0'dan 96'ya 0,59 saniyede çıkıyor! #shorts
 
 ## YouTube etiketleri
-tesla roadster, yeni tesla roadster, tesla roadster 2026, 0-100 hızlanma, 0.59 saniye, tesla uçan araba, spacex paketi, elon musk, elektrikli araba, teknoloji gündemi, gubigufi, shorts
+tesla roadster, yeni tesla roadster, tesla roadster 2026, uçan araba, 0-100 hızlanma, 0.59 saniye, spacex paketi, elon musk, elektrikli araba, teknoloji gündemi, gubigufi, shorts

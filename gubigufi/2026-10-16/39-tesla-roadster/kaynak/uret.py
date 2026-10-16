@@ -2,25 +2,24 @@
 import json, re, sys
 sys.path.insert(0, '../../../marka')
 from tepki_kontrol import kontrol
-SB = [0, 10.9, 17.9, 25.4, 33.2, 38.4, 41.4, 45.1, 48.3, 51.4, 54.15, 57.3, 59.3]
+SB = [0, 13.3, 22.0, 26.65, 31.85, 35.0, 38.5, 41.8, 44.7, 47.2, 50.0, 52.3]
 TEP = {
-    1: [('gubi', 4.7, 'gozle'), ('gufi', 8.0, 'sasir')],
-    2: [('gufi', 2.0, 'say'), ('gubi', 6.1, 'sasir')],
-    3: [('gubi', 1.5, 'gozle'), ('gufi', 6.0, 'sasir')],
-    4: [('gufi', 4.0, 'sok'), ('gubi', 5.0, 'korku')],
-    5: [('gufi', 3.4, 'aha')],
-    6: [('gubi', 1.0, 'sasir')],
-    7: [('gubi', 3.0, 'uzgun')],
-    8: [('gufi', .3, 'goster'), ('gufi', 2.8, 'omuzSilk')],
-    9: [('gubi', 1.7, 'aha')],
-    10: [('gubi', .3, 'gel'), ('gufi', .6, 'goster')],
-    11: [('gubi', .3, 'selam'), ('gufi', .5, 'selam')],
+    1: [('gubi', 5.0, 'gozle'), ('gufi', 10.1, 'sasir')],
+    2: [('gubi', 1.5, 'gozle'), ('gufi', 7.2, 'sasir')],
+    3: [('gufi', 1.2, 'sasir'), ('gubi', 3.9, 'aha')],
+    4: [('gufi', 3.4, 'aha')],
+    5: [('gubi', 1.0, 'sasir')],
+    6: [('gubi', 2.7, 'uzgun')],
+    7: [('gufi', .3, 'goster'), ('gufi', 2.8, 'omuzSilk')],
+    8: [('gubi', 1.5, 'aha')],
+    9: [('gubi', .3, 'gel'), ('gufi', .6, 'goster')],
+    10: [('gubi', .3, 'selam'), ('gufi', .5, 'selam')],
 }
 kontrol(TEP, SB)
 # geçiş k → k+1: whip · odak · odak · push-through (araca dalış) · kes (iki gerçek klip) · odak · whip · odak · odak · kes · Gubi yıldızı → logo
-GECIS = {1: {'tur': 'kayma'}, 2: {'tur': 'odak'}, 3: {'tur': 'odak'}, 4: {'tur': 'itme', 'merkez': [540, 900]}, 5: {'tur': 'kes'}, 6: {'tur': 'odak'},
-         7: {'tur': 'kayma', 'yon': -1}, 8: {'tur': 'odak'}, 9: {'tur': 'odak'}, 10: {'tur': 'kes'}, 11: {'tur': 'yildiz', 'renk': '#141112', 'merkez': [540, 900]}}
-ALT = {1: 2, 5: 2, 7: 2}
+GECIS = {1: {'tur': 'kayma'}, 2: {'tur': 'odak'}, 3: {'tur': 'itme', 'merkez': [650, 560]}, 4: {'tur': 'kes'}, 5: {'tur': 'odak'},
+         6: {'tur': 'kayma', 'yon': -1}, 7: {'tur': 'odak'}, 8: {'tur': 'odak'}, 9: {'tur': 'kes'}, 10: {'tur': 'yildiz', 'renk': '#141112', 'merkez': [540, 900]}}
+ALT = {1: 2, 4: 2, 6: 2}
 KLIPN = json.load(open('ortak/img/klip/bilgi.json'))
 v1 = open('../../37-dask-odemez/kaynak/uret.py').read()
 ORTAK = re.search(r'ORTAK = r"""(.*?)"""', v1, re.S).group(1)

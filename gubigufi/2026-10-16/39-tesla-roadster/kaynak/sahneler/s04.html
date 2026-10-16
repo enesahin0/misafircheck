@@ -4,7 +4,7 @@
 <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
   <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
 </svg>
-<script>window.SB = 25.4; const TP = {"gubi": [[5.0, "korku"]], "gufi": [[4.0, "sok"]]}; window.GECIS = {"gir": {"tur": "odak"}, "cik": {"tur": "itme", "merkez": [540, 900]}}; window.KLIP_N = {"a": 41, "b": 47, "c": 59, "d": 47, "e": 59};</script>
+<script>window.SB = 26.65; const TP = {"gubi": [], "gufi": [[3.4, "aha"]]}; window.GECIS = {"gir": {"tur": "itme", "merkez": [650, 560]}, "cik": {"tur": "kes"}}; window.KLIP_N = {"a": 41, "b": 47, "c": 59, "d": 47, "e": 59};</script>
 <script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script><script src="../ortak/au.js"></script><script src="../ortak/kp.js"></script><script src="../ortak/al.js"></script><script src="../ortak/sl.js"></script><script src="../ortak/se.js"></script>
 <script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
 <script src="../ortak/vendor/flubber.min.js"></script><script src="../ortak/vendor/culori.js"></script><script src="../ortak/motion2.js"></script><script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
@@ -127,28 +127,22 @@ const altUc = (kucuk, buyuk, { renk = '#7FD0FF', fs = 78, etiket = '' } = {}) =>
 const tas = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-46 8 L-30 -34 L8 -48 L44 -26 L52 14 L24 44 L-22 40Z" fill="#8A8F9C"/><path d="M-30 -34 L8 -48 L44 -26 L10 -8Z" fill="#B4B9C6"/><path d="M-46 8 L-22 40 L24 44 L52 14 L10 -8Z" fill="#6A6F7C"/></g>`;
 const arkadas = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-70" y="40" width="140" height="150" rx="50" fill="#3E8EDE"/><circle cx="0" cy="-10" r="58" fill="#F2C9A0"/><path d="M-60 -20 Q-50 -78 0 -74 Q50 -78 60 -20 Q30 -48 0 -44 Q-30 -48 -60 -20Z" fill="#2A2A33"/><rect x="-44" y="-18" width="38" height="20" rx="8" fill="#14171F"/><rect x="6" y="-18" width="38" height="20" rx="8" fill="#14171F"/><rect x="-8" y="-12" width="16" height="6" fill="#14171F"/><path d="M-22 26 Q0 42 22 26" stroke="#8A4A3A" stroke-width="7" fill="none" stroke-linecap="round"/></g>`;
 
-const sh = `<ellipse cx="0" cy="-30" rx="26" ry="82" fill="#F2F4F8"/><path d="M-26 20 L-62 74 L-26 56Z M26 20 L62 74 L26 56Z" fill="#C8D0DC"/><path d="M0 -112 L16 -80 L-16 -80Z" fill="#E8323C"/><path d="M-14 82 Q0 150 14 82Z" fill="#FBAC39"/>`;
 MO.sahne({
-  zemin: MO.zemin({ ust: '#1D1738', alt: '#0B0817', isik: [540, 1000, '#E8323C', .16], ikinci: [200, 500, '#3E6FB8', .12] }),
-  kamera: [[0, 1.0, 540, 900], [2.9, 1.05, 560, 930, 1.2, 'kamera']],
+  zemin: MO.zemin({ ust: '#0A0E1E', alt: '#05070F', isik: [540, 900, '#3E6FB8', .10] }),
+  kamera: [[0, 1.0, 540, 900], [.1, 1.05, 540, 900, 5.0, 'kamera']],
   ciz: t => {
     let o = '';
-    const taban = 1180, gp = 110, e1 = MO.E.outCubic(MO.ar(t, 1.9, 2.7)), e2 = MO.E.outCubic(MO.ar(t, 3.0, 4.4));
-    // ölçek çizgileri
-    for (let g = 1; g <= 5; g++) o += `<path d="M110 ${taban - g * gp} H900" stroke="#FFFFFF" stroke-opacity="${g === 3 ? .35 : .12}" stroke-width="${g === 3 ? 4 : 2}" ${g === 3 ? 'stroke-dasharray="14 12"' : ''}/>` + `<text class="mono" x="100" y="${taban - g * gp + 8}" font-size="24" text-anchor="end" style="fill:#7FA0D0">${g} g</text>`;
-    o += MO.sar(sh, MO.oge(t, { gir: 1.6, agirlik: 'orta', giris: 'yuksel', materyal: 'metal', x: 200 }), 200, 560);
-    o += MO.sar(R(-65, 0, 130, 330 * e1, 16, '#5A8EE0') + (e1 > .95 ? txt('3 g', 0, 56, 48, '#FFFFFF') : ''), MO.oge(t, { gir: 1.9, agirlik: 'agir', giris: 'sabit', x: 200, ses: false }), 200, taban - 330 * e1, { golge: false });
-    o += MO.sar(AU.cip('UZAY MEKİĞİ', 0, 0, '#FFFFFF', '#1B2440', 22), MO.oge(t, { gir: 1.7, agirlik: 'hafif', giris: 'yuksel', x: 200 }), 200, 690, { golge: false });
-    o += MO.sar(MO.fotograf('foto1_arac', { x: 0, y: 0, w: 200, h: 119, r: 14 }), MO.oge(t, { gir: 2.9, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 800 }), 790, 560, { golge: false });
-    o += MO.sar(R(-65, 0, 130, 506 * e2, 16, '#E8323C') + (e2 > .95 ? txt('4,6 g', 0, 56, 44, '#FFFFFF') : ''), MO.oge(t, { gir: 3.0, agirlik: 'agir', giris: 'sabit', x: 790, ses: false }), 790, taban - 506 * e2, { golge: false });
-    o += MO.sar(AU.cip('ROADSTER (ORT.)', 0, 0, '#FFD23F', '#1B2440', 22), MO.oge(t, { gir: 2.95, agirlik: 'hafif', giris: 'yuksel', x: 790 }), 790, 650, { golge: false });
-    // Gubi sıkışır, titrer
-    const am = 12 * MO.E.outCubic(MO.ar(t, 4.96, 7.4)), sq = MO.E.outCubic(MO.ar(t, 4.5, 6.0));
-    const gx = 500 + Math.sin(t * 75) * am, gy = 1090;
-    o += `<g transform="translate(${gx} ${gy}) scale(${1 + .07 * sq} ${1 - .13 * sq}) translate(${-gx} ${-gy})">` + gubi(t, { x: gx, y: gy, boy: 300, duygu: t > 4.9 ? 'korku' : 'merak', bakHedef: 'kamera' }) + '</g>';
+    o += MO.klip('c', t * .46, { x: 540, y: 760, w: 1200, h: 1500, r: 0 });
+    o += filmKat();
+    o += MO.sar(altUc('SPACEX', 'SOĞUK GAZ İTİCİSİ', { renk: '#7FD0FF', fs: 76 }), MO.oge(t, { gir: 1.35, cik: 3.2, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 1130, { golge: false });
+    const k1 = MO.E.outCubic(MO.ar(t, 3.5, 4.1)), k2 = MO.E.outCubic(MO.ar(t, 3.7, 4.5));
+    const kart = `<g transform="translate(-470 0)"><text class="mono" x="0" y="-26" font-size="26" letter-spacing="4" style="fill:#C8D0DC">LASTİĞİN TUTABİLDİĞİ</text>` + R(0, -8, 940, 22, 11, '#2A3550', .85) + R(0, -8, 190 * k1, 22, 11, '#8A94A8') +
+      `<text class="mono" x="0" y="72" font-size="26" letter-spacing="4" style="fill:#7FD0FF">İTİCİ KUVVETİ ~4–5×</text>` + R(0, 90, 940, 22, 11, '#2A3550', .85) + R(0, 90, 940 * k2, 22, 11, '#7FD0FF') + zamanChip('TESLA İDDİASI', 830, 62, '#E8323C', '#FFFFFF', 19) + `</g>`;
+    o += MO.sar(kart, MO.oge(t, { gir: 3.3, cik: 5.1, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 1090, { golge: false });
+    o += kredi('GÖRÜNTÜ: TESLA (@teslamotors)', 60, 1490);
     return o;
   },
-  onCiz: t => gufi(t, { x: 200, y: 1780, boy: 170, duygu: t > 3.8 ? 'saskin' : 'merak', bakHedef: [540, 900] })
+  onCiz: t => gubi(t, { x: 880, y: 1700, boy: 100, duygu: 'merak', bakHedef: [540, 900] }) + gufi(t, { x: 160, y: 1800, boy: 140, duygu: 'saskin', bakHedef: [540, 900] })
 });
 </script>
 <script src="../ortak/kanal.js"></script>
