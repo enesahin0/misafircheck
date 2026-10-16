@@ -35,15 +35,16 @@ const deprem = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"
 const sticker = (s, x, y, fs, zem, yazi, rot) => { const w = K.yaziGen(s, fs) + 70; return `<g transform="translate(${x} ${y}) rotate(${rot})">` + R(-w / 2 + 8, -fs * .95 + 10, w, fs * 1.9, 24, '#000', .45) + R(-w / 2, -fs * .95, w, fs * 1.9, 24, zem) + txt(s, 0, fs * .35, fs, yazi) + '</g>'; };
 const para = (x, y, r, s = 1) => `<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><rect x="-110" y="-55" width="220" height="110" rx="10" fill="#7CC08A"/><rect x="-96" y="-42" width="192" height="84" rx="6" fill="none" stroke="#4E9A5E" stroke-width="5"/><circle r="26" fill="#4E9A5E"/><text y="12" font-size="34" font-weight="900" text-anchor="middle" style="fill:#E8F5EA">₺</text></g>`;
 window.renderAt = t => {
-  const g = gid('g'); let o = `<defs>${lin(g, '#101A3A', '#24183A')}</defs><rect width="1080" height="1920" fill="url(#${g})"/>`;
-  o += isik(540, 640, 560, '#FFD23F', .22);
-  for (let i = 0; i < 9; i++) o += para(80 + h(i) * 920, 300 + h(i + 4) * 700, -30 + 60 * h(i + 2), .7 + .4 * h(i + 6));
-  o += `<g transform="translate(560 650) rotate(-7)">` + police(0, 0, 720, 'KONUT · KASKO · DASK', [['Deprem', 1], ['Yangın', 1], ['SEL ZARARI', 0], ['Senin araban', 0]], '#2E78C8', 2, 1) + '</g>';
-  o += isik(190, 400, 200, '#3E8EDE', .35) + daskKalkan(190, 400, 1.05);
-  o += `<g transform="translate(600 760) rotate(-14)"><rect x="-300" y="-90" width="600" height="180" rx="22" fill="none" stroke="#E8323C" stroke-width="16"/><text x="0" y="40" font-size="120" font-weight="900" text-anchor="middle" style="fill:#E8323C" letter-spacing="6">ÖDEMİYOR</text></g>`;
-  o += `<g transform="translate(860 470) rotate(-20)"><circle r="95" fill="#BFE0FF" opacity=".25"/><circle r="95" fill="none" stroke="#2A2E40" stroke-width="20"/><path d="M68 68 L160 160" stroke="#2A2E40" stroke-width="30" stroke-linecap="round"/></g>`;
-  o += M.canli('gufi', { t: 1, x: 220, y: 1140, boy: 170, duygu: 'saskin', bakHedef: [560, 700] }) + M.canli('gubi', { t: 1, x: 900, y: 1010, boy: 110, duygu: 'saskin', bakHedef: [560, 700] });
-  o += sticker('SEL ZARARINI KİM ÖDER?', 600, 200, 46, '#FFFFFF', '#1B2440', -3);
+  const g = gid('g'); let o = `<defs>${lin(g, '#16244A', '#0B1226')}</defs><rect width="1080" height="1920" fill="url(#${g})"/>`;
+  o += isik(540, 560, 620, '#5A86C8', .30) + isik(900, 200, 380, '#8FA8D8', .12);
+  o += SL.bulut(220, 250, 1.5, '#2E3E64') + SL.bulut(860, 210, 1.7, '#2A3A60') + yagmur(70, 140, 820, .38);
+  // kahraman: su basan ev + DASK kalkanı
+  o += ev(540, 1075, 1.95);
+  o += daskKalkan(540, 800, 1.6);
+  o += `<defs>${lin('suG', '#3E8EDE', '#12356A')}</defs><rect x="0" y="890" width="1080" height="340" fill="url(#suG)" opacity=".9"/>` + SE.dalga(890, .7, '#9ED2FF', 8, 12);
+  // damga: düz kırmızı, beyaz yazı — okunaklı, hiçbir şeyin üstüne bindirilmiş metin yok
+  o += `<g transform="translate(540 360) rotate(-7)">` + R(-420 + 10, -110 + 14, 840, 220, 30, '#000', .4) + R(-420, -110, 840, 220, 30, '#E8323C') + `<rect x="-400" y="-92" width="800" height="184" rx="20" fill="none" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="6"/>` + txt('ÖDEMİYOR', 0, 44, 132, '#FFFFFF', 900, 'letter-spacing="4"') + '</g>';
+  o += M.canli('gufi', { t: 1, x: 200, y: 1125, boy: 160, duygu: 'saskin', bakHedef: [540, 760] }) + M.canli('gubi', { t: 1, x: 890, y: 1040, boy: 110, duygu: 'saskin', bakHedef: [540, 760] });
   o += vinyet() + altBant('#FFD23F', 'PARA & HAK · SİGORTA', 'DASK ÖDER', 'SANIYORSUN', '#FFD23F') + logo();
   document.getElementById('dinamik').innerHTML = o;
 };
