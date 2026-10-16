@@ -1,20 +1,31 @@
 
 // ===== #40 DEPREM — ortak çizim yardımcıları =====
 const RK = { sakin: '#E8323C', yap: '#1F9E5B', mavi: '#3E8EDE', turuncu: '#FF8A4A', sari: '#FFD23F', koyu: '#0B1433', bej: '#FFF3D6' };
-// insan: x,y = ayak tabanı ortası, boy ≈ 230*s. poz: dur | tut | kos | bas | cok
-const ins = (x, y, s = 1, { renk = '#3E8EDE', poz = 'dur', yon = 1, ten = '#F2C9A0', sac = '#2A2A33', sal = 0, pant = '#2A3456' } = {}) => {
+// insan: x,y = ayak tabanı ortası, boy ≈ 230*s. poz: dur | tut | kos | bas | cok.
+// ANATOMİ: kollar iki parçalı (omuz→dirsek→el), toplam erişim SABİT (≈100 birim); hedef erişimin dışındaysa el hedefe UZANMAZ, yerinde kalır.
+// elL/elR (yerel koordinat) ile el hedefi verilir; hedefe ulaşılamıyorsa kişiyi hedefe yaklaştır (sahne kodunda), kolu uzatma.
+const ins = (x, y, s = 1, { renk = '#3E8EDE', poz = 'dur', yon = 1, ten = '#F2C9A0', sac = '#2A2A33', sal = 0, pant = '#2A3456', elL = null, elR = null } = {}) => {
   const P = {
-    dur: { h: -95, sh: -160, hd: -200, l: [[-38, -84], [38, -84]], d: [[-14, -50, -14, 0], [14, -50, 14, 0]], r: 0 },
-    tut: { h: -95, sh: -160, hd: -200, l: [[-38, -84], [60, -246]], d: [[-14, -50, -14, 0], [14, -50, 14, 0]], r: 0 },
-    kos: { h: -95, sh: -158, hd: -198, l: [[-56, -120], [52, -198]], d: [[-30, -56, -40, 0], [30, -60, 40, -16]], r: 14 },
-    bas: { h: -95, sh: -160, hd: -200, l: [[-26, -252], [26, -252]], d: [[-14, -50, -14, 0], [14, -50, 14, 0]], r: 0 },
-    cok: { h: -58, sh: -106, hd: -146, l: [[-30, -186], [30, -186]], d: [[-34, -34, -26, 0], [34, -34, 26, 0]], r: 5 },
+    dur: { h: -95, sh: -160, hd: -200, l: [-40, -76], r: [40, -76], d: [[-14, -50, -14, 0], [14, -50, 14, 0]], r0: 0 },
+    tut: { h: -95, sh: -160, hd: -200, l: [-40, -76], r: [44, -238], d: [[-14, -50, -14, 0], [14, -50, 14, 0]], r0: 0 },
+    kos: { h: -95, sh: -158, hd: -198, l: [-54, -112], r: [56, -190], d: [[-30, -56, -40, 0], [30, -60, 40, -16]], r0: 14 },
+    bas: { h: -95, sh: -160, hd: -200, l: [-22, -236], r: [22, -236], d: [[-14, -50, -14, 0], [14, -50, 14, 0]], r0: 0 },
+    cok: { h: -58, sh: -106, hd: -146, l: [-24, -176], r: [24, -176], d: [[-34, -34, -26, 0], [34, -34, 26, 0]], r0: 5 },
   }[poz];
-  const sx = -30, ex = 30;
-  let o = `<g transform="translate(${x} ${y}) scale(${yon * s} ${s}) rotate(${P.r + sal})">`;
+  const kol = (sx, sy, tx, ty, yan) => {
+    const A = 52, B = 50; let dx = tx - sx, dy = ty - sy, d = Math.hypot(dx, dy); const mx = A + B - 2;
+    if (d > mx) { dx *= mx / d; dy *= mx / d; d = mx; tx = sx + dx; ty = sy + dy; }
+    if (d < 20) { d = 20; }
+    const a = (A * A - B * B + d * d) / (2 * d), h = Math.sqrt(Math.max(0, A * A - a * a)), ux = dx / d, uy = dy / d;
+    const c1 = [sx + ux * a - uy * h, sy + uy * a + ux * h], c2 = [sx + ux * a + uy * h, sy + uy * a - ux * h];
+    const sk = c => c[1] * .6 + yan * c[0] * .5, e = sk(c1) > sk(c2) ? c1 : c2;
+    return `<path d="M${sx} ${sy} L${e[0].toFixed(1)} ${e[1].toFixed(1)} L${tx.toFixed(1)} ${ty.toFixed(1)}" stroke="${renk}" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${tx.toFixed(1)}" cy="${ty.toFixed(1)}" r="10" fill="${ten}"/>`;
+  };
+  let o = `<g transform="translate(${x} ${y}) scale(${yon * s} ${s}) rotate(${P.r0 + sal})">`;
   P.d.forEach(([kx, ky, fx, fy], i) => { const hx = i ? 12 : -12; o += `<path d="M${hx} ${P.h} L${kx} ${ky} L${fx} ${fy}" stroke="${pant}" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="${fx + (i ? 6 : -6)}" cy="${fy - 2}" rx="17" ry="8" fill="#14171F"/>`; });
-  o += R(sx, P.sh, 60, P.h - P.sh + 8, 22, renk);
-  P.l.forEach(([hx, hy], i) => { const sxx = i ? ex - 4 : sx + 4; o += `<path d="M${sxx} ${P.sh + 14} L${hx} ${hy}" stroke="${renk}" stroke-width="18" fill="none" stroke-linecap="round"/><circle cx="${hx}" cy="${hy}" r="10" fill="${ten}"/>`; });
+  o += R(-30, P.sh, 60, P.h - P.sh + 8, 22, renk);
+  const l = elL || P.l, r = elR || P.r;
+  o += kol(-24, P.sh + 16, l[0], l[1], -1) + kol(24, P.sh + 16, r[0], r[1], 1);
   o += `<circle cx="0" cy="${P.hd}" r="30" fill="${ten}"/><path d="M-31 ${P.hd - 4} Q-28 ${P.hd - 34} 0 ${P.hd - 34} Q28 ${P.hd - 34} 31 ${P.hd - 4} Q14 ${P.hd - 18} -4 ${P.hd - 14} Q-18 ${P.hd - 12} -31 ${P.hd - 4}Z" fill="${sac}"/><circle cx="-10" cy="${P.hd + 2}" r="3.5" fill="#14171F"/><circle cx="10" cy="${P.hd + 2}" r="3.5" fill="#14171F"/>`;
   return o + '</g>';
 };

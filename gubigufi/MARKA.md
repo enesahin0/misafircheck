@@ -478,3 +478,10 @@ KURALLAR (KALICI):
 8. **#35 izleyici eğrisi (1:02):** ilk 3 sn'de %100→~%60, ~12. sn'de ~%50, sonra **~%45'te düz** (çok iyi), ~55–57. sn'de **%40→%10 uçurum** = paylaş/yorum/takip çağrısı + takip kartı + logo bloğu (son ~7 sn). → **Kapanış bloğu en fazla ~4 sn:** son bilgi cümlesinden sonra tek çağrı + takip cümlesi; "gönder" çağrısı videonun ORTASINA taşınır; logo kuyruğu kısa (~1,2 sn).
 9. **#35 dağıtım:** Reels sekmesi %75,1 · Keşfet %16,2 · Hikâye %3 · Akış %3 · Profil %1,2; **takipçi olmayan %97,4** → algoritma yeni kitleye itiyor. Bu kitle daha genç: 18–24 %34,8 + 25–34 %38,9 (13–17 %7,5). Gündem videosu (#34) 25–44'e, pratik bilgi videosu (#35) 18–34'e gitti.
 10. Seçilen #35 kapağı: harita kapak "SEL ANINDA NERDESİN?" (kapak2_5).
+
+## FİZİK ve ANATOMİ KONTROLÜ (her çizimde — kullanıcı her seferinde söylemesin)
+- **Uzuv uzunluğu sabit.** İnsan/karakter kolları iki parçalı (omuz→dirsek→el), toplam erişim sabit (`ins()` iskeleti, `_ortak_deprem.js`); el hedefine yetişmiyorsa kol UZAMAZ — kişiyi hedefe yaklaştır. Düz uzayan "lastik kol", uzayan bacak/boyun YOK.
+- **Temas gerçek olmalı:** bir şeyi tutan elin tuttuğu yerde olması, ayakların zemine basması, ağırlığın desteği (masa altına sığan boy, merdivende dik duran kişi, gövdeye uyan kıvrım). Eşyaların boyutu insana göre makul (masa kişiden küçük/büyük çıkmaz).
+- **Hareket yönü ve süre fiziğe uysun:** düşen cisim ivmelenir, sallanan şey sönümlenir, ağır şey geç döner; kamera/nesne titremesi bir yerden başlayıp sönsün.
+- **Gönderilmeden önce:** insan içeren HER sahneden en az bir kare büyük çözünürlükle bak; kol/bacak/boyun oranı, el–nesne teması, boy–eşya oranı kontrol et. Şüphe varsa kolu kısalt, pozu sadeleştir (fotoğrafçı gözüyle: "gerçek biri böyle durabilir mi?").
+- Kural kaynağı: #40 deprem videosu (16.10.2026) — masayı tutan kolun 3× uzun çizilmesi kullanıcı tarafından yakalandı.

@@ -368,12 +368,15 @@ MO.sahne({
   ciz: t => {
     let o = yBas(t, 'ev', 'EVDEYSEN', '#FF8A4A');
     const sh = Math.sin(t * 38) * 4;
-    const gir = MO.E.inOutCubic(MO.ar(t, .3, 1.0)), px = -250 + 250 * gir;
-    const poz = t < .9 ? 'dur' : 'cok';
-    const ic = R(-460, 190, 920, 130, 0, '#3A4A7A') + `<g transform="translate(0 190) scale(1.55) translate(0 -190)">` + `<g transform="translate(${sh.toFixed(1)} 0)">` + R(-270, 0, 540, 26, 8, '#B8884A') + R(-250, 26, 26, 164, 4, '#9A6A3A') + R(224, 26, 26, 164, 4, '#9A6A3A') + R(-250, 40, 500, 8, 0, '#9A6A3A', .0) +
-      (t > 2.7 ? `<circle cx="237" cy="120" r="14" fill="#F2C9A0"/>` : '') + `</g>` + ins(px + sh * .5, 190, .7, { renk: '#3E8EDE', poz }) + (t > 2.7 ? `<path d="M${px + 20} 118 L224 120" stroke="#3E8EDE" stroke-width="12" stroke-linecap="round"/>` : '') + `</g>`;
+    const gir = MO.E.inOutCubic(MO.ar(t, .3, 1.0)), px = -330 + 490 * gir, SC = .8;
+    const ay = 190, poz = px < -262 ? 'dur' : 'cok';
+    // adım 1 (ÇÖK): eller dizde · adım 2 (KAPAN): iki el başın üstünde · adım 3 (TUTUN): bir el başta, öteki masa ayağını kavrar (erişim içinde)
+    const adim = t < 2.0 ? 1 : t < 2.7 ? 2 : 3;
+    const legX = (226 - px) / SC, legY = (ay - 70 - ay) / SC;
+    const elL = adim === 1 ? [-40, -40] : null, elR = adim === 1 ? [40, -40] : adim === 3 ? [Math.min(legX, 92), -80] : null;
+    const sol = adim === 3 ? [-24, -176] : elL;
+    const ic = R(-460, 190, 920, 130, 0, '#3A4A7A') + `<g transform="translate(0 190) scale(1.55) translate(0 -190)">` + `<g transform="translate(${sh.toFixed(1)} 0)">` + R(-270, 0, 540, 26, 8, '#B8884A') + R(-250, 26, 26, 164, 4, '#9A6A3A') + R(224, 26, 26, 164, 4, '#9A6A3A') + `</g>` + ins(px + sh * .5, ay, SC, { renk: '#3E8EDE', poz, elL: poz === 'cok' ? sol : null, elR: poz === 'cok' ? elR : null }) + `</g>`;
     o += PK(t, .1, undefined, ic);
-    const adim = (g, n, ad) => MO.sar(R(-290, -50, 580, 100, 50, '#1F9E5B') + `<circle cx="-236" cy="0" r="34" fill="#FFFFFF"/>` + txt(String(n), -236, 16, 46, '#1F9E5B') + txt(ad, 30, 18, 52, '#FFFFFF'), MO.oge(t, { gir: g, agirlik: 'orta', giris: 'damga', materyal: 'lastik', x: 540 }), 540, 1170 + (n - 1) * 0, { golge: false });
     o += BN(t, .2, 1.95, 'v', '1 · ÇÖK', 56) + BN(t, 2.0, 2.65, 'v', '2 · KAPAN', 56) + BN(t, 2.7, undefined, 'v', '3 · TUTUN', 56);
     return o;
   },
