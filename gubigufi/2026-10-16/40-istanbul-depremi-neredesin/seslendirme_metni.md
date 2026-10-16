@@ -1,26 +1,21 @@
-# #40 — "Beklenen İstanbul depremi oldu, sen neredesin?" · Pratik Bilgi · hikâyede paylaşılacak
-Kategori: DOĞA & ŞEHİR. Hedef ~58–60 sn (~123 kelime). Düz metin = `elevenlabs_metin.md` (etiketli).
+# #40 — "Beklenen İstanbul depremi oldu, sen neredesin?" · v2 (ayrıntılı, ~100 sn)
+Düz metin (okunacak): `elevenlabs_metin.md` (etiketli, ~209 kelime). Önceki kısa sürüm: `*_v1.md`.
 
-## Tutma haritası (her cümleden sonra "sırada ne var?")
-- 0–7 sn KANCA: olay + 5 yer sorusu (vapur/metro/köprü/sokak/ev) + "beşinde de ilk refleksin yanlış" → izleyen kendi yerini arar, 5 yerin hepsini bekler.
-- 7–13 VAPUR: "kıyıya koşma!" (beklenmedik) → sebep/ne yap.
-- 13–20 METRO: "raya inme!" → elektrik + karşı tren → tutun-bekle.
-- 20–28 KÖPRÜ: "panik frenine basma" → yavaşla/sağa yanaş → bitince uzaklaş.
-- 28–35 SOKAK: "binanın dibine sığınma!" → dış duvar/cam/tabela → açık alan.
-- 35–50 EV (en büyük hata): "koşmak" → balkon/asansör/merdiven yok → çök-kapan-tutun → gazı kapat, sonra çık.
-- 50–55 STORY çağrısı (paylaşılabilir son kart: 5 yerin 5 kuralı tek ekranda) → takip.
-Kalıp: her blokta "SAKIN şunu yapma!" (olumsuz, tek fiil) + "şunu yap" (3 adım). Şaşırtma sırası: kıyıya koşma → raya inme → fren yapma → binaya sığınma → koşma.
+## Tutma haritası (her blok: ilk hissedeceğin şey → sistem ne yapar → SAKIN → ne yap)
+- KANCA: olay + 5 yer sorusu + "beşinde de ilk refleksin yanlış".
+- VAPUR: "sallanma değil, karaya oturmuş gibi sert sarsıntı (deniz depremi)" → açık denizde dalga küçük, tehlike kıyıda → kapılara üşüşme/tutun/kaptan → inince sahilden uzaklaş.
+- METRO: "tren sertçe durabilir" → sistem treni en yakın istasyona çekmek için tasarlandı → raya inme → tutun/başını koru/anons → istasyonda: çıkışa koşma, yürüyen merdivende bantlara tutun, peronda sütun yanı.
+- KÖPRÜ: "en çok sallanacağın yer" → esneyecek şekilde yapılır, yetkililer dayanıklı diyor → panik freni yok (arkandan çarparlar), yavaşla/sağa yanaş/içeride bekle → bitince durma, hasarlıysa kullanma.
+- SOKAK: "asıl tehlike tepen" → cam/tabela/saçak/baca; herkes bina dibine koşuyor → park/meydan/okul bahçesi → direk/kablo/yamaçtan uzak.
+- EV: "önce gümbürtü, saniyeler sonra asıl sarsıntı" → herkes koşacak → balkon/asansör/merdiven yok → çök-kapan-tutun → bitince gaz-elektrik-su, sonra çık.
+- STORY çağrısı → takip. Paylaşılabilir son kart: 5 yer × 1 "SAKIN" + 1 "YAP".
 
-## Görsel fikir (video aşamasında)
-- İlk kare: İstanbul silüeti + deprem kıvrımı çizgisi, "BEKLENEN DEPREM OLDU", ekranda 5 ikon kartı (vapur/metro/köprü/sokak/ev) — hangisinde olduğunu izleyen seçsin.
-- Her yer için: yer kesiti + "✕ YAPMA" (kırmızı damga) → "✓ YAP" (3 adım kart). Maskotlar: Gufi uyarır, Gubi sakin eşlik eder (korku değil, net/yardımsever ton).
-- Son kart (hikâyede paylaşılabilir): 5 satır "VAPUR · METRO · KÖPRÜ · SOKAK · EV" + tek cümle kural; "STORY'NE AT" çipi.
-
-## Doğrulama notları (güvenlik konusu — rakam/iddia dikkatli)
-- **Ev**: balkona çıkma/pencereden atlama/asansör kullanma yasak; sağlam masa altı/dolgun koltuk yanında çök-kapan-tut; sarsıntı bitince gaz-elektrik-su vanaları kapatılır; "en büyük tehlike dış duvarların yıkılması, bina içinden kaçarken enkaz riski" — AFAD önerileri (bianet/Birgün/Cumhuriyet aktarımı; afad.gov.tr sayfası oturumda 500 verdi, doğrudan okunamadı) ✓.
-- **Sokak/açık alan**: bina, direk, tel, ağaçtan uzaklaş; düşen baca-cam-sıva; yamaç altında durma; açık alanda çök-kapan — AFAD ✓. ("Köprü, üst geçit, tünelden uzak dur" da AFAD açık alan listesinde.)
-- **Metro**: "gerekmedikçe inme (elektrik / karşı hattan tren)", tutunma, personel talimatı, araç en yakın istasyona gider ya da tahliye edilir; peronda "raylara inme" — Metro İstanbul/İBB AKOM tatbikatı + AFAD önerisi (Karar, 28.11.2020 haberi; tek resmi belge yok) ✓ (kısmen).
-- **Köprü**: AFAD'ın köprüye özel maddesi YOK. Dayanak: araçta "güvenliyse yolu kapatmadan sağa yanaşıp dur; hasar gören yol/köprü/rampayı kullanma; üst geçit altında durma; köprü/üst geçit/tünelden uzak dur". "Panik frenine basma" genel sürüş mantığı (kaynaklı değil). ⚠ En zayıf madde — yayından önce yorum/uzman görüşüyle (AFAD/KGM) teyit edilmeli; alternatif nötr cümle: "Köprüdeysen: kontrolü kaybetme, güvenliyse sağa yanaş; bitince köprüyü hemen terk et, hasarlıysa kullanma."
-- **Vapur**: AFAD/Şehir Hatları'nın vapura özel resmî talimatı BULUNAMADI. Dayanak: AFAD "deniz kıyısından uzaklaş", genel "kalabalıkta panikle çıkışa yönelme" ve tutunma. "Kaptanın anonsunu bekle" = standart gemi güvenliği. ⚠ Yayından önce Şehir Hatları/İBB afet rehberine bakılmalı; kesin ifade yerine "kıyıya koşma" yerine "çıkışa üşüşme" denebilir.
-- "Beklenen İstanbul depremi" bir senaryo; olasılık/büyüklük konusunda uzmanlar farklı (Görür %64/30 yıl ve 7,2–7,6 vs Bektaş "7+ olasılığı zayıfladı", Milliyet 13.9.2026). Videoda rakam YOK — doğru tercih.
-- 112 / AFAD uygulaması / toplanma alanı yok: süre için çıkarıldı; hat kilitlenebileceği için "112" demedik.
+## Doğrulama (güvenlik içeriği — kaynak gücü)
+GÜÇLÜ (AFAD önerileri, birden çok aktarım): ev (balkon/asansör/koşma yasak; sağlam masa altı/dolgun koltuk yanı; bitince gaz-elektrik-su; "ölümlerin önemli kısmı kaçarken/dış duvar"), sokak (bina/direk/tel/ağaç/yamaçtan uzak; baca-cam-sıva düşer), araçta (güvenliyse yolu kapatmadan sağa yanaş; hasarlı yol/köprü/rampayı kullanma).
+ORTA (Metro İstanbul / İBB aktarımları, resmî tek belge yok): metro — tutun, personel/anons, raya inme (elektrik / karşı hat treni), peronda sütun yanı, yürüyen merdivende bantlara tutun (Karar 28.11.2020; İBB AKOM tatbikatı). "Sensör + trenin en yakın istasyonda durması" Sözcü/Cumhuriyet 23.4.2025 (kurum belirtilmemiş) → metinde "tasarlandı" kipi + "durabilir". Tünelde 750 m'de acil çıkış kapıları, acil telefonlar (İBB Deprem Çalıştayı 3.12.2019).
+ZAYIF / ÇIKARIM (yayından önce teyit): 
+- Vapur: AFAD/Şehir Hatları vapura özel talimat YOK. "Deniz depremi" = denizcilik literatüründe tekne/gemiye ani şok olarak hissedilen deprem (gemi karaya oturmuş sanılır); açık denizde tsunami dalgası genelde <1 m, kıyıda büyür; AFAD "deniz kıyısından uzaklaş". "Kaptanı dinle" = standart gemi güvenliği. Marmara'da vapurda pratik veri yok.
+- Köprü: AFAD'ın köprüye özel maddesi YOK. "Yetkililer dayanıklı diyor" = Ulaştırma Bakanlığı açıklaması (bağımsız doğrulama yok); "7,5'e göre projelendirildi" rakamı kaynaksız, KULLANILMADI. "Panik freni/arkandan çarparlar" sürüş mantığı. "Orta şeride geç" kaynak YOK, kullanılmadı.
+- "Önce gümbürtü, saniyeler sonra asıl sarsıntı" = P/S dalgası fiziği (bazı depremlerde, uzaklığa bağlı).
+Rakam (büyüklük/olasılık/ölü sayısı) YOK: uzmanlar ayrışıyor (Görür vs Bektaş).
+112 / AFAD uygulaması / toplanma alanı: süre için konmadı (hat kilitlenebilir).
