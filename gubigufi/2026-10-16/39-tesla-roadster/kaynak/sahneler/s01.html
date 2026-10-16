@@ -115,31 +115,49 @@ const gosterge = (x, y, r, v, { vmax = 100, renk = '#FBAC39', birim = 'km/sa' } 
   return o + txt(String(Math.round(v)), x, y + r * .44, r * .42, '#FFFFFF') + `<text class="mono" x="${x}" y="${y + r * .66}" font-size="${r * .13}" text-anchor="middle" letter-spacing="2" style="fill:#7FA0D0">${birim}</text>`;
 };
 const zamanChip = (s, x, y, renk = '#0B1433', yazi = '#FFF3D6', fs = 34) => { const w = K.yaziGen(s, fs, { mono: true, ls: 2 }) + fs * 1.6; return R(x - w / 2, y - fs * .95, w, fs * 1.9, fs * .95, renk, .92) + `<text class="mono" x="${x}" y="${y + fs * .34}" font-size="${fs}" text-anchor="middle" letter-spacing="2" style="fill:${yazi}">${s}</text>`; };
+let _sg = 0;
+const scrim = (y0, y1, a0, a1, renk = '#05070F') => { const i = 'sg' + (++_sg); return `<defs><linearGradient id="${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${renk}" stop-opacity="${a0}"/><stop offset="1" stop-color="${renk}" stop-opacity="${a1}"/></linearGradient></defs><rect x="-200" y="${y0}" width="1480" height="${y1 - y0}" fill="url(#${i})"/>`; };
+// sinematik görüntü katmanı: üstte hafif karartma, altta altyazıya kadar siyaha eriyen geçiş
+const filmKat = () => scrim(-200, 420, .8, 0) + scrim(940, 1330, 0, 1) + R(-200, 1329, 1480, 800, 0, '#05070F', 1);
+// sol hizalı alt üçlü: ince renkli çizgi + mono üst başlık + dev başlık (merkez x=540'a göre çizilir)
+const altUc = (kucuk, buyuk, { renk = '#7FD0FF', fs = 78, etiket = '' } = {}) => `<g transform="translate(-470 0)"><rect x="0" y="-62" width="8" height="${fs + 58}" rx="4" fill="${renk}"/>` +
+  `<text class="mono" x="32" y="-30" font-size="28" letter-spacing="5" style="fill:${renk}">${kucuk}</text>` +
+  `<text x="30" y="${fs - 14}" font-size="${fs}" font-weight="900" style="fill:#FFF6E6">${buyuk}</text>` +
+  (etiket ? zamanChip(etiket, 850, -38, '#E8323C', '#FFFFFF', 19) : '') + `</g>`;
 const tas = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-46 8 L-30 -34 L8 -48 L44 -26 L52 14 L24 44 L-22 40Z" fill="#8A8F9C"/><path d="M-30 -34 L8 -48 L44 -26 L10 -8Z" fill="#B4B9C6"/><path d="M-46 8 L-22 40 L24 44 L52 14 L10 -8Z" fill="#6A6F7C"/></g>`;
 const arkadas = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-70" y="40" width="140" height="150" rx="50" fill="#3E8EDE"/><circle cx="0" cy="-10" r="58" fill="#F2C9A0"/><path d="M-60 -20 Q-50 -78 0 -74 Q50 -78 60 -20 Q30 -48 0 -44 Q-30 -48 -60 -20Z" fill="#2A2A33"/><rect x="-44" y="-18" width="38" height="20" rx="8" fill="#14171F"/><rect x="6" y="-18" width="38" height="20" rx="8" fill="#14171F"/><rect x="-8" y="-12" width="16" height="6" fill="#14171F"/><path d="M-22 26 Q0 42 22 26" stroke="#8A4A3A" stroke-width="7" fill="none" stroke-linecap="round"/></g>`;
 
 MO.sahne({
-  zemin: MO.zemin({ ust: '#161B38', alt: '#080B1C', isik: [540, 1000, '#3E6FB8', .26], ikinci: [900, 250, '#E8323C', .10] }),
-  kamera: [[0, 1.0, 540, 900], [5.55, 1.04, 560, 930, .9], [8.2, 1.0, 540, 900, .8]],
+  zemin: MO.zemin({ ust: '#161B38', alt: '#080B1C', isik: [540, 900, '#3E6FB8', .26], ikinci: [900, 250, '#E8323C', .10] }),
+  kamera: [[0, 1.0, 540, 900], [.1, 1.05, 540, 900, 5.4, 'kamera'], [5.7, 1.0, 540, 900, .6]],
   sarsinti: [[7.98, 14]],
   ciz: t => {
     const b = Math.max(0, t - .4), vS = Math.min(96, 96 * b / 10), rk = MO.cl((t - 7.38) / .59), vR = 96 * rk;
     let o = '';
-    o += MO.sar(AU.cip('SENİN ARABAN', 0, 0, '#FFFFFF', '#1B2440', 26), MO.oge(t, { gir: -.25, agirlik: 'hafif', giris: 'yuksel', materyal: 'plastik', x: 300 }), 300, 360, { golge: false });
-    o += MO.sar(SE.araba(0, 0, .7, { renk: '#E8323C' }), MO.oge(t, { gir: -.3, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 300, bekle: 2 }), 300, 700);
-    o += MO.sar(gosterge(0, 0, 170, vS, { renk: '#7FD0FF' }), MO.oge(t, { gir: -.2, agirlik: 'agir', giris: 'yuksel', materyal: 'plastik', x: 300 }), 300, 1000);
-    o += MO.sar(zamanChip(`${Math.min(10, b).toFixed(1)} sn`, 0, 0, '#0B1433', '#7FD0FF', 38), MO.oge(t, { gir: -.1, agirlik: 'hafif', giris: 'yuksel', x: 300 }), 300, 1185, { golge: false });
-    // sağ: Tesla Roadster — gerçek fotoğraf
-    o += MO.sar(AU.cip('TESLA ROADSTER', 0, 0, '#FFD23F', '#1B2440', 26), MO.oge(t, { gir: 5.68, agirlik: 'hafif', giris: 'yuksel', materyal: 'plastik', x: 735 }), 735, 360, { golge: false });
-    const tit = t > 7.38 && t < 7.98 ? Math.sin(t * 95) * 7 : 0;
-    o += MO.sar(MO.fotograf('foto1', { x: 0, y: 0, w: 320, h: 402, r: 24, kayma: [tit, 0], olcek: 1 + .05 * MO.E.outCubic(MO.ar(t, 5.7, 10.9)) }), MO.oge(t, { gir: 5.68, agirlik: 'agir', giris: 'yuksel', materyal: 'plastik', x: 735 }), 735, 620, { golge: false });
-    o += MO.sar(zamanChip('ROCKET SÜRÜMÜ · TESLA İDDİASI', 0, 0, '#E8323C', '#FFFFFF', 17), MO.oge(t, { gir: 6.1, agirlik: 'hafif', giris: 'yuksel', x: 735 }), 735, 805, { golge: false });
-    o += MO.sar(gosterge(0, 0, 170, vR, { renk: '#FBAC39' }), MO.oge(t, { gir: 5.9, agirlik: 'agir', giris: 'yuksel', materyal: 'plastik', x: 735 }), 735, 1000);
-    o += MO.sar(zamanChip(`${(.59 * rk).toFixed(2)} sn`, 0, 0, '#0B1433', '#FBAC39', 38), MO.oge(t, { gir: 6.0, agirlik: 'hafif', giris: 'yuksel', x: 735 }), 735, 1185, { golge: false });
-    o += MO.sar(etiket('0.59 SN', 0, 0, '#E8323C', '#FFFFFF', 76, -6, 1), MO.oge(t, { gir: 7.98, agirlik: 'kahraman', giris: 'damga', materyal: 'lastik', x: 735 }), 735, 620, { golge: false });
+    // A) 0–5,6: tek büyük gösterge — senin araban
+    const A = 1 - MO.E.outCubic(MO.ar(t, 5.3, 5.75));
+    if (A > .01) {
+      o += `<g opacity="${A.toFixed(3)}">`;
+      o += MO.sar(AU.cip('SENİN ARABAN', 0, 0, '#FFFFFF', '#1B2440', 28), MO.oge(t, { gir: -.25, agirlik: 'hafif', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 385, { golge: false });
+      o += MO.sar(SE.araba(0, 0, .75, { renk: '#E8323C' }), MO.oge(t, { gir: -.3, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540, bekle: 2 }), 540, 520);
+      o += MO.sar(gosterge(0, 0, 280, vS, { renk: '#7FD0FF' }), MO.oge(t, { gir: -.2, agirlik: 'agir', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 860);
+      o += MO.sar(zamanChip(`${Math.min(10, b).toFixed(1)} sn`, 0, 0, '#0B1433', '#7FD0FF', 40), MO.oge(t, { gir: -.1, agirlik: 'hafif', giris: 'yuksel', x: 540 }), 540, 1115, { golge: false });
+      o += `</g>`;
+    }
+    // B) 5,68'den sonra: gerçek Tesla fotoğrafı tüm kadraj; altta iki çubuk yarışı
+    if (t > 5.4) {
+      const tit = t > 7.38 && t < 7.98 ? Math.sin(t * 95) * 7 : 0;
+      o += MO.sar(MO.fotograf('foto1', { x: 0, y: 0, w: 1150, h: 1445, r: 0, kayma: [tit, 0], olcek: 1 + .06 * MO.E.outCubic(MO.ar(t, 5.7, 10.9)) }), MO.oge(t, { gir: 5.6, agirlik: 'kahraman', giris: 'olcek', materyal: 'plastik', x: 540 }), 540, 700, { golge: false });
+      o += `<g opacity="${MO.E.outCubic(MO.ar(t, 5.6, 6.1)).toFixed(3)}">` + filmKat() + `</g>`;
+      const sat = (ad, y, v, f, renk, vs, ts) => `<text class="mono" x="70" y="${y}" font-size="30" letter-spacing="4" style="fill:${renk}">${ad}</text><text class="mono" x="1010" y="${y}" font-size="30" text-anchor="end" letter-spacing="2" style="fill:#FFF3D6">${v} km/sa · ${ts} sn</text>` + R(70, y + 18, 940, 24, 12, '#2A3550', .85) + (f > .003 ? R(70, y + 18, 940 * f, 24, 12, renk) : '');
+      o += MO.sar(sat('SENİN ARABAN', 1030, Math.round(vS), vS / 96, '#7FD0FF', 0, Math.min(10, b).toFixed(1)), MO.oge(t, { gir: 5.75, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 0, 0, { golge: false });
+      o += MO.sar(sat('TESLA ROADSTER', 1135, Math.round(vR), rk, '#FFD23F', 0, (.59 * rk).toFixed(2)), MO.oge(t, { gir: 5.95, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 0, 0, { golge: false });
+      o += MO.sar(zamanChip('ROCKET SÜRÜMÜ · TESLA İDDİASI', 0, 0, '#E8323C', '#FFFFFF', 21), MO.oge(t, { gir: 6.3, agirlik: 'hafif', giris: 'yuksel', x: 540 }), 540, 965, { golge: false });
+      o += MO.sar(etiket('0.59 SN', 0, 0, '#E8323C', '#FFFFFF', 112, -5, 1), MO.oge(t, { gir: 7.98, agirlik: 'kahraman', giris: 'damga', materyal: 'lastik', x: 540 }), 540, 440, { golge: false });
+    }
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1600, boy: 120, duygu: 'merak', bakHedef: [540, 900] }) + gufi(t, { x: 200, y: 1780, boy: 170, duygu: t > 7.4 ? 'saskin' : 'merak', bakHedef: [540, 900] })
+  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: 'merak', bakHedef: [540, 900] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: t > 7.4 ? 'saskin' : 'merak', bakHedef: [540, 900] })
 });
 </script>
 <script src="../ortak/kanal.js"></script>

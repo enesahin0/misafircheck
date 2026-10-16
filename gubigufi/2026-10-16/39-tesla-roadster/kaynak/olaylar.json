@@ -4,7 +4,7 @@
 "t": -0.132,
 "agirlik": "hafif",
 "materyal": "plastik",
-"x": 300,
+"x": 540,
 "giris": "yuksel",
 "etiket": ""
 },
@@ -13,7 +13,7 @@
 "t": -0.126,
 "agirlik": "orta",
 "materyal": "plastik",
-"x": 300,
+"x": 540,
 "giris": "yuksel",
 "etiket": ""
 },
@@ -22,7 +22,7 @@
 "t": 0.018,
 "agirlik": "hafif",
 "materyal": null,
-"x": 300,
+"x": 540,
 "giris": "yuksel",
 "etiket": ""
 },
@@ -31,60 +31,59 @@
 "t": 0.038,
 "agirlik": "agir",
 "materyal": "plastik",
-"x": 300,
+"x": 540,
 "giris": "yuksel",
 "etiket": ""
 },
 {
+"tur": "kamera",
+"t": 2.8,
+"hiz": 8,
+"x": 540,
+"sure": 5.4,
+"olcekDegisim": 1.05
+},
+{
 "tur": "giris",
-"t": 5.798,
-"agirlik": "hafif",
+"t": 5.88,
+"agirlik": "kahraman",
 "materyal": "plastik",
-"x": 735,
-"giris": "yuksel",
+"x": 540,
+"giris": "olcek",
 "etiket": ""
 },
 {
 "tur": "giris",
-"t": 5.918,
-"agirlik": "agir",
+"t": 5.924,
+"agirlik": "orta",
 "materyal": "plastik",
-"x": 735,
+"x": 540,
 "giris": "yuksel",
 "etiket": ""
 },
 {
 "tur": "kamera",
 "t": 6,
-"hiz": 81,
-"x": 560,
-"sure": 0.9,
-"olcekDegisim": 1.04
+"hiz": 0,
+"x": 540,
+"sure": 0.6,
+"olcekDegisim": 1
 },
 {
 "tur": "giris",
-"t": 6.118,
-"agirlik": "hafif",
-"materyal": null,
-"x": 735,
-"giris": "yuksel",
-"etiket": ""
-},
-{
-"tur": "giris",
-"t": 6.138,
-"agirlik": "agir",
+"t": 6.124,
+"agirlik": "orta",
 "materyal": "plastik",
-"x": 735,
+"x": 540,
 "giris": "yuksel",
 "etiket": ""
 },
 {
 "tur": "giris",
-"t": 6.218,
+"t": 6.418,
 "agirlik": "hafif",
 "materyal": null,
-"x": 735,
+"x": 540,
 "giris": "yuksel",
 "etiket": ""
 },
@@ -98,17 +97,9 @@
 "t": 8.26,
 "agirlik": "kahraman",
 "materyal": "lastik",
-"x": 735,
+"x": 540,
 "giris": "damga",
 "etiket": ""
-},
-{
-"tur": "kamera",
-"t": 8.6,
-"hiz": 0,
-"x": 540,
-"sure": 0.8,
-"olcekDegisim": 1
 },
 {
 "tur": "gecis",
@@ -691,15 +682,6 @@
 "etiket": ""
 },
 {
-"tur": "giris",
-"t": 39.718,
-"agirlik": "hafif",
-"materyal": null,
-"x": 540,
-"giris": "yuksel",
-"etiket": ""
-},
-{
 "tur": "kamera",
 "t": 39.95,
 "hiz": 15,
@@ -716,8 +698,8 @@
 },
 {
 "tur": "giris",
-"t": 41.888,
-"agirlik": "agir",
+"t": 41.868,
+"agirlik": "hafif",
 "materyal": "plastik",
 "x": 540,
 "giris": "yuksel",
@@ -733,11 +715,29 @@
 },
 {
 "tur": "giris",
+"t": 43.524,
+"agirlik": "orta",
+"materyal": null,
+"x": 540,
+"giris": "yuksel",
+"etiket": ""
+},
+{
+"tur": "giris",
 "t": 43.574,
 "agirlik": "orta",
 "materyal": "lastik",
-"x": 800,
+"x": 140,
 "giris": "damga",
+"etiket": ""
+},
+{
+"tur": "giris",
+"t": 44.424,
+"agirlik": "orta",
+"materyal": null,
+"x": 540,
+"giris": "yuksel",
 "etiket": ""
 },
 {
@@ -745,7 +745,7 @@
 "t": 44.558,
 "agirlik": "agir",
 "materyal": "lastik",
-"x": 800,
+"x": 140,
 "giris": "damga",
 "etiket": ""
 },

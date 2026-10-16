@@ -3,27 +3,36 @@ S = {}
 #   7,38'de fırlar, 0,59 sn damgası + sarsıntı. İki gösterge yan yana → "oha" kıyası.
 S[1] = r"""
 MO.sahne({
-  zemin: MO.zemin({ ust: '#161B38', alt: '#080B1C', isik: [540, 1000, '#3E6FB8', .26], ikinci: [900, 250, '#E8323C', .10] }),
-  kamera: [[0, 1.0, 540, 900], [5.55, 1.04, 560, 930, .9], [8.2, 1.0, 540, 900, .8]],
+  zemin: MO.zemin({ ust: '#161B38', alt: '#080B1C', isik: [540, 900, '#3E6FB8', .26], ikinci: [900, 250, '#E8323C', .10] }),
+  kamera: [[0, 1.0, 540, 900], [.1, 1.05, 540, 900, 5.4, 'kamera'], [5.7, 1.0, 540, 900, .6]],
   sarsinti: [[7.98, 14]],
   ciz: t => {
     const b = Math.max(0, t - .4), vS = Math.min(96, 96 * b / 10), rk = MO.cl((t - 7.38) / .59), vR = 96 * rk;
     let o = '';
-    o += MO.sar(AU.cip('SENİN ARABAN', 0, 0, '#FFFFFF', '#1B2440', 26), MO.oge(t, { gir: -.25, agirlik: 'hafif', giris: 'yuksel', materyal: 'plastik', x: 300 }), 300, 360, { golge: false });
-    o += MO.sar(SE.araba(0, 0, .7, { renk: '#E8323C' }), MO.oge(t, { gir: -.3, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 300, bekle: 2 }), 300, 700);
-    o += MO.sar(gosterge(0, 0, 170, vS, { renk: '#7FD0FF' }), MO.oge(t, { gir: -.2, agirlik: 'agir', giris: 'yuksel', materyal: 'plastik', x: 300 }), 300, 1000);
-    o += MO.sar(zamanChip(`${Math.min(10, b).toFixed(1)} sn`, 0, 0, '#0B1433', '#7FD0FF', 38), MO.oge(t, { gir: -.1, agirlik: 'hafif', giris: 'yuksel', x: 300 }), 300, 1185, { golge: false });
-    // sağ: Tesla Roadster — gerçek fotoğraf
-    o += MO.sar(AU.cip('TESLA ROADSTER', 0, 0, '#FFD23F', '#1B2440', 26), MO.oge(t, { gir: 5.68, agirlik: 'hafif', giris: 'yuksel', materyal: 'plastik', x: 735 }), 735, 360, { golge: false });
-    const tit = t > 7.38 && t < 7.98 ? Math.sin(t * 95) * 7 : 0;
-    o += MO.sar(MO.fotograf('foto1', { x: 0, y: 0, w: 320, h: 402, r: 24, kayma: [tit, 0], olcek: 1 + .05 * MO.E.outCubic(MO.ar(t, 5.7, 10.9)) }), MO.oge(t, { gir: 5.68, agirlik: 'agir', giris: 'yuksel', materyal: 'plastik', x: 735 }), 735, 620, { golge: false });
-    o += MO.sar(zamanChip('ROCKET SÜRÜMÜ · TESLA İDDİASI', 0, 0, '#E8323C', '#FFFFFF', 17), MO.oge(t, { gir: 6.1, agirlik: 'hafif', giris: 'yuksel', x: 735 }), 735, 805, { golge: false });
-    o += MO.sar(gosterge(0, 0, 170, vR, { renk: '#FBAC39' }), MO.oge(t, { gir: 5.9, agirlik: 'agir', giris: 'yuksel', materyal: 'plastik', x: 735 }), 735, 1000);
-    o += MO.sar(zamanChip(`${(.59 * rk).toFixed(2)} sn`, 0, 0, '#0B1433', '#FBAC39', 38), MO.oge(t, { gir: 6.0, agirlik: 'hafif', giris: 'yuksel', x: 735 }), 735, 1185, { golge: false });
-    o += MO.sar(etiket('0.59 SN', 0, 0, '#E8323C', '#FFFFFF', 76, -6, 1), MO.oge(t, { gir: 7.98, agirlik: 'kahraman', giris: 'damga', materyal: 'lastik', x: 735 }), 735, 620, { golge: false });
+    // A) 0–5,6: tek büyük gösterge — senin araban
+    const A = 1 - MO.E.outCubic(MO.ar(t, 5.3, 5.75));
+    if (A > .01) {
+      o += `<g opacity="${A.toFixed(3)}">`;
+      o += MO.sar(AU.cip('SENİN ARABAN', 0, 0, '#FFFFFF', '#1B2440', 28), MO.oge(t, { gir: -.25, agirlik: 'hafif', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 385, { golge: false });
+      o += MO.sar(SE.araba(0, 0, .75, { renk: '#E8323C' }), MO.oge(t, { gir: -.3, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540, bekle: 2 }), 540, 520);
+      o += MO.sar(gosterge(0, 0, 280, vS, { renk: '#7FD0FF' }), MO.oge(t, { gir: -.2, agirlik: 'agir', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 860);
+      o += MO.sar(zamanChip(`${Math.min(10, b).toFixed(1)} sn`, 0, 0, '#0B1433', '#7FD0FF', 40), MO.oge(t, { gir: -.1, agirlik: 'hafif', giris: 'yuksel', x: 540 }), 540, 1115, { golge: false });
+      o += `</g>`;
+    }
+    // B) 5,68'den sonra: gerçek Tesla fotoğrafı tüm kadraj; altta iki çubuk yarışı
+    if (t > 5.4) {
+      const tit = t > 7.38 && t < 7.98 ? Math.sin(t * 95) * 7 : 0;
+      o += MO.sar(MO.fotograf('foto1', { x: 0, y: 0, w: 1150, h: 1445, r: 0, kayma: [tit, 0], olcek: 1 + .06 * MO.E.outCubic(MO.ar(t, 5.7, 10.9)) }), MO.oge(t, { gir: 5.6, agirlik: 'kahraman', giris: 'olcek', materyal: 'plastik', x: 540 }), 540, 700, { golge: false });
+      o += `<g opacity="${MO.E.outCubic(MO.ar(t, 5.6, 6.1)).toFixed(3)}">` + filmKat() + `</g>`;
+      const sat = (ad, y, v, f, renk, vs, ts) => `<text class="mono" x="70" y="${y}" font-size="30" letter-spacing="4" style="fill:${renk}">${ad}</text><text class="mono" x="1010" y="${y}" font-size="30" text-anchor="end" letter-spacing="2" style="fill:#FFF3D6">${v} km/sa · ${ts} sn</text>` + R(70, y + 18, 940, 24, 12, '#2A3550', .85) + (f > .003 ? R(70, y + 18, 940 * f, 24, 12, renk) : '');
+      o += MO.sar(sat('SENİN ARABAN', 1030, Math.round(vS), vS / 96, '#7FD0FF', 0, Math.min(10, b).toFixed(1)), MO.oge(t, { gir: 5.75, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 0, 0, { golge: false });
+      o += MO.sar(sat('TESLA ROADSTER', 1135, Math.round(vR), rk, '#FFD23F', 0, (.59 * rk).toFixed(2)), MO.oge(t, { gir: 5.95, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 0, 0, { golge: false });
+      o += MO.sar(zamanChip('ROCKET SÜRÜMÜ · TESLA İDDİASI', 0, 0, '#E8323C', '#FFFFFF', 21), MO.oge(t, { gir: 6.3, agirlik: 'hafif', giris: 'yuksel', x: 540 }), 540, 965, { golge: false });
+      o += MO.sar(etiket('0.59 SN', 0, 0, '#E8323C', '#FFFFFF', 112, -5, 1), MO.oge(t, { gir: 7.98, agirlik: 'kahraman', giris: 'damga', materyal: 'lastik', x: 540 }), 540, 440, { golge: false });
+    }
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1600, boy: 120, duygu: 'merak', bakHedef: [540, 900] }) + gufi(t, { x: 200, y: 1780, boy: 170, duygu: t > 7.4 ? 'saskin' : 'merak', bakHedef: [540, 900] })
+  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: 'merak', bakHedef: [540, 900] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: t > 7.4 ? 'saskin' : 'merak', bakHedef: [540, 900] })
 });"""
 # 02 — 17 KERE (10,9–17,9): 10 sn çubuğu dolarken Roadster (gerçek fotoğraf kırpığı) 17 kez art arda çıkar; "17 KERE" damgası. Sonra Nevera çubuk grafiği, "3 KAT".
 S[2] = r"""
@@ -107,11 +116,14 @@ MO.sahne({
   ciz: t => {
     let o = '';
     const a = 1 - MO.cl((t - 3.0) / .25);
-    if (a > 0) o += MO.klip('a', t * .55, { x: 540, y: 900, op: a });
-    if (a < 1) o += MO.klip('c', Math.max(0, t - 3.1), { x: 540, y: 900, op: 1 - a });
-    o += MO.sar(zamanChip('SPACEX · SOĞUK GAZ İTİCİSİ', 0, 0, '#0B1433', '#7FD0FF', 24), MO.oge(t, { gir: 1.35, cik: 3.2, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 360, { golge: false });
+    if (a > 0) o += MO.klip('a', t * .55, { x: 540, y: 760, w: 1200, h: 1500, r: 0, op: a });
+    if (a < 1) o += MO.klip('c', Math.max(0, t - 3.1), { x: 540, y: 760, w: 1200, h: 1500, r: 0, op: 1 - a });
+    o += filmKat();
+    o += MO.sar(altUc('SPACEX', 'SOĞUK GAZ İTİCİSİ', { renk: '#7FD0FF', fs: 76 }), MO.oge(t, { gir: 1.35, cik: 3.2, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 1130, { golge: false });
     const k1 = MO.E.outCubic(MO.ar(t, 3.5, 4.1)), k2 = MO.E.outCubic(MO.ar(t, 3.7, 4.5));
-    o += MO.sar(zamanChip('LASTİĞİN TUTABİLDİĞİ', -88, -50, '#0B1433', '#C8D0DC', 18) + R(-290, -22, 120 * k1, 30, 15, '#8A94A8') + zamanChip('İTİCİ KUVVETİ ~4–5×', -64, 52, '#0B1433', '#7FD0FF', 18) + R(-290, 80, 540 * k2, 30, 15, '#7FD0FF') + zamanChip('TESLA İDDİASI', 150, 150, '#E8323C', '#FFFFFF', 16), MO.oge(t, { gir: 3.3, cik: 5.1, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 1090, { golge: false });
+    const kart = `<g transform="translate(-470 0)"><text class="mono" x="0" y="-26" font-size="26" letter-spacing="4" style="fill:#C8D0DC">LASTİĞİN TUTABİLDİĞİ</text>` + R(0, -8, 940, 22, 11, '#2A3550', .85) + R(0, -8, 190 * k1, 22, 11, '#8A94A8') +
+      `<text class="mono" x="0" y="72" font-size="26" letter-spacing="4" style="fill:#7FD0FF">İTİCİ KUVVETİ ~4–5×</text>` + R(0, 90, 940, 22, 11, '#2A3550', .85) + R(0, 90, 940 * k2, 22, 11, '#7FD0FF') + zamanChip('TESLA İDDİASI', 830, 62, '#E8323C', '#FFFFFF', 19) + `</g>`;
+    o += MO.sar(kart, MO.oge(t, { gir: 3.3, cik: 5.1, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 1090, { golge: false });
     o += kredi('GÖRÜNTÜ: TESLA (@teslamotors)', 60, 1490);
     return o;
   },
@@ -123,9 +135,8 @@ MO.sahne({
   zemin: MO.zemin({ ust: '#0A0E1E', alt: '#05070F', isik: [540, 900, '#3E6FB8', .10] }),
   kamera: [[0, 1.05, 540, 900], [.05, 1.0, 540, 900, 3.0, 'kamera']],
   ciz: t => {
-    let o = MO.klip('b', t * .6, { x: 540, y: 900 });
-    o += MO.sar(zamanChip('FAN: ARACI TAVANA TERS TUTAR', 0, 0, '#0B1433', '#7FD0FF', 24), MO.oge(t, { gir: .9, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 360, { golge: false });
-    o += MO.sar(zamanChip('TESLA İDDİASI', 0, 0, '#E8323C', '#FFFFFF', 20), MO.oge(t, { gir: 1.2, agirlik: 'hafif', giris: 'yuksel', x: 540 }), 540, 425, { golge: false });
+    let o = MO.klip('b', t * .6, { x: 540, y: 760, w: 1200, h: 1500, r: 0 }) + filmKat();
+    o += MO.sar(altUc('FAN · EMİŞ KUVVETİ', 'TAVANA TERS', { renk: '#7FD0FF', fs: 88, etiket: 'TESLA İDDİASI' }), MO.oge(t, { gir: .9, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 1130, { golge: false });
     o += kredi('GÖRÜNTÜ: TESLA (@teslamotors)', 60, 1490);
     return o;
   },
@@ -137,11 +148,13 @@ MO.sahne({
   zemin: MO.zemin({ ust: '#0A0E1E', alt: '#05070F', isik: [540, 900, '#3E6FB8', .10] }),
   kamera: [[0, 1.0, 540, 900], [.1, 1.06, 540, 940, 3.5, 'kamera']],
   ciz: t => {
-    let o = MO.klip('d', t * .5, { x: 540, y: 900 });
-    const kart = R(-350, -150, 700, 300, 30, '#0B1433', .92) + txt('ROCKET SÜRÜMÜ', 0, -70, 48, '#FFFFFF') + txt('Sadece davetli', -330 + 10, 20, 38, '#C8D0DC', 800, 'text-anchor="start"') + txt('Yolda kullanım', -330 + 10, 100, 38, '#C8D0DC', 800, 'text-anchor="start"');
-    o += MO.sar(kart, MO.oge(t, { gir: .25, agirlik: 'agir', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 520);
-    o += MO.sar(isaretV(0, 0, 1.2), MO.oge(t, { gir: 2.0, agirlik: 'orta', giris: 'damga', materyal: 'lastik', x: 800 }), 800, 540, { golge: false });
-    o += MO.sar(isaretX(0, 0, 1.2), MO.oge(t, { gir: 2.92, agirlik: 'agir', giris: 'damga', materyal: 'lastik', x: 800 }), 800, 620, { golge: false });
+    let o = MO.klip('d', t * .5, { x: 540, y: 760, w: 1200, h: 1500, r: 0 }) + filmKat();
+    o += MO.sar(`<g transform="translate(-470 0)"><rect x="0" y="-26" width="8" height="34" rx="4" fill="#7FD0FF"/><text class="mono" x="32" y="0" font-size="30" letter-spacing="6" style="fill:#7FD0FF">ROCKET SÜRÜMÜ</text></g>`, MO.oge(t, { gir: .35, agirlik: 'hafif', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 1020, { golge: false });
+    o += MO.sar(`<g transform="translate(-470 0)"><text x="100" y="0" font-size="72" font-weight="900" style="fill:#FFF6E6">SADECE DAVETLİ</text></g>`, MO.oge(t, { gir: 1.95, agirlik: 'orta', giris: 'yuksel', x: 540 }), 540, 1110, { golge: false });
+    o += MO.sar(isaretV(0, 0, 1.5), MO.oge(t, { gir: 2.0, agirlik: 'orta', giris: 'damga', materyal: 'lastik', x: 140 }), 110, 1088, { golge: false });
+    const sl = MO.E.outCubic(MO.ar(t, 3.0, 3.35));
+    o += MO.sar(`<g transform="translate(-470 0)"><text x="100" y="0" font-size="72" font-weight="900" style="fill:#C8D0DC">YOLDA KULLANIM</text>` + (sl > 0 ? `<rect x="96" y="-26" width="${(560 * sl).toFixed(0)}" height="9" rx="4" fill="#E8323C"/>` : '') + `</g>`, MO.oge(t, { gir: 2.85, agirlik: 'orta', giris: 'yuksel', x: 540 }), 540, 1215, { golge: false });
+    o += MO.sar(isaretX(0, 0, 1.5), MO.oge(t, { gir: 2.92, agirlik: 'agir', giris: 'damga', materyal: 'lastik', x: 140 }), 110, 1193, { golge: false });
     o += kredi('GÖRÜNTÜ: TESLA (@teslamotors)', 60, 1490);
     return o;
   },
