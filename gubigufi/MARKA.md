@@ -12,6 +12,19 @@
 - Safe alan (Instagram + YouTube kesişimi): üst 250 px, alt 480 px, sağ 190 px, sol 60 px.
   Okunması gereken hiçbir şey bu bölgelere girmez; arka plan tüm kareyi kullanır.
 
+## MOTION v2 + SES v2 (KALICI, 16.10.2026 — yaratıcı yönetmen brifi: `marka/motion/YONETMEN_BRIEF.md`)
+Yeni videolar `marka/sablon_v2/` iskeletiyle kurulur. Sistem: `marka/ortak/motion2.js` (MO), `marka/ses2.py` (Tasarim), `marka/olay_tara.py`.
+- **Her öğenin girişi VE çıkışı var** (`MO.oge(t, {gir, cik, agirlik, giris, cikYon, materyal})`); eşik zamanında aniden yok olmak yasak.
+  Ağırlık sınıfları: hafif (çip/ikon) · orta (kart) · agir (büyük kart, damga) · kahraman (ana nesne) · oyuncu (maskot/balon). Girişler: yuksel, dus, yan, olcek, damga, maske, sabit.
+- **Kamera birleştiricidir:** her sahnede `kamera: [[t, ölçek, odakX, odakY, süre], ...]` — anlatılan öğeye yaklaş (orta yakın/yakın), sonra geniş plana aç; dikey "dünya" kurup aşağı pan ile aşamalı ifşa. Darbe anlarında `sarsinti`.
+- **Geçişler (`uret.py` GECIS):** video başına ≥ 2 tür; beyaz flaş (`bam`) YOK. Türler: `odak` (rack focus), `perde` (+`dalga:1` su), `kayma` (whip), `yildiz` (Gubi yıldızı maskesi — marka imzası, genelde logoya), `itme` (push-through, video başına en çok 1), `kes`.
+  Sahneye giren geçişte ilk kare boş olmamalı (öğeler hazır/`sabit` girer) — "ölü kare" yasak.
+- **Zemin asla düz değil:** `MO.zemin({ust, alt, isik, ikinci})` (gradyan + ışık havuzu + yavaş süpürme) + film greni (%5) — gölgeler tutarlı sol-üst ışıkla (`moG1–3`).
+- **Kinetik tipografi:** sayılar `MO.sayiVurgu` (sayaç + varış vuruşu), başlıklar `MO.baslik` (kelime kelime maskeli, *vurgu* altı çizilir). Altyazı bölgesiyle (y ≈ 1300–1420) çakışmaz.
+- **Ses görüntüden türetilir:** `olay_tara.py` → `olaylar.json` → `ses2.Tasarim.olaylardan()` (materyal eşlemeli katmanlı efekt: BigSoundBank CC0 kesiti + sub + ön-whoosh; ağırlık → perde/aile; kare tohumlu varyasyon; panorama). Hedef **0,7–0,9 olay/sn**; budama otomatik.
+  Miks: ducking (dokular konuşma altında), 2–5 kHz EQ oyuğu, ortak kısa oda, bus kompresör, limitör, sonra loudnorm −14 LUFS. Müzik yatağı kesmelerde "nefes" alır. Gündem/ciddi videoda `mod='gundem'` (maskot sesi yok).
+- Eski `pop()`/`bam()`/`AU.zemin` ile kurulmuş sahneler çalışmaya devam eder; yeni işte kullanılmaz.
+
 ## Görsel prensipler
 
 ### Kategori girişi denemesi İPTAL edildi (kullanıcı kararı): video başında ayrı kategori girişi YOK; kategori etiketi eskisi gibi sol üstte sade şekilde belirir.
