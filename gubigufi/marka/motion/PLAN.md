@@ -14,12 +14,12 @@ yaz, commit + push. Bir madde yarım kaldıysa `[~]` + nerede kalındığı notu
   VO'ya göre EQ oyuğu yok, ortak "oda" (reverb send) yok, müzik statik pad.
 
 ## 1. Araştırma (kaynak + teknik + ses) → `ARASTIRMA.md`
-- [ ] 1a Animasyon/motion kütüphaneleri ve teknikleri (JS/SVG/canvas, Lottie, motion-canvas, theatre.js, rive, GSAP eklentileri,
+- [x] 1a Animasyon/motion kütüphaneleri ve teknikleri (JS/SVG/canvas, Lottie, motion-canvas, theatre.js, rive, GSAP eklentileri,
       creative-coding toplulukları); bizim deterministik SVG→kare boru hattına uygunluk + lisans değerlendirmesi
-- [ ] 1b Profesyonel motion prensip kaynakları (stüdyo yazıları, easing/spring çalışmaları, geçiş katalogları) → uygulanabilir kurallar
-- [ ] 1c Ses kaynakları: Sonniss arşivinin geri kalanı, Freesound CC0, BBC, OpenGameArt, Kenney, ZapSplat, Pixabay, Free Firearm/Foley
+- [x] 1b Profesyonel motion prensip kaynakları (stüdyo yazıları, easing/spring çalışmaları, geçiş katalogları) → uygulanabilir kurallar
+- [x] 1c Ses kaynakları: Sonniss arşivinin geri kalanı, Freesound CC0, BBC, OpenGameArt, Kenney, ZapSplat, Pixabay, Free Firearm/Foley
       kütüphaneleri, GitHub'daki ses paketleri; lisans + erişim (hesap gerekenler kullanıcı onayına listelenir)
-- [ ] 1d Ses tasarım teknikleri: transient/body/tail katmanlama, materyal eşleme, EQ oyuğu, sidechain, reverb send, varyasyon
+- [x] 1d Ses tasarım teknikleri: transient/body/tail katmanlama, materyal eşleme, EQ oyuğu, sidechain, reverb send, varyasyon
 
 ## 2. Motion sistemi v2 → `marka/ortak/motion2.js` (geriye uyumlu, yeni videolarda varsayılan)
 - [ ] 2a Koreografi çekirdeği: öğe yaşam döngüsü (giriş → bekleme/ikincil hareket → ÇIKIŞ), ağırlık sınıfları (hafif/orta/ağır/kahraman),
@@ -47,3 +47,4 @@ yaz, commit + push. Bir madde yarım kaldıysa `[~]` + nerede kalındığı notu
 
 ## İlerleme kaydı
 - 16.10.2026 — brif ve plan yazıldı; saatlik devam görevi kuruldu.
+- 16.10.2026 — Aşama 1 bitti: ARASTIRMA.md (motor kararı: kendi motorumuz + flubber + culori; kural seti 13 madde; yeni ses kaynağı BigSoundBank CC0; ses tasarım kuralları 11 madde).
