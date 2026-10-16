@@ -261,6 +261,27 @@ const MO = (() => {
   const _morf = {};
   function morf(a, b, p, anahtar) { if (!window.flubber) return p < .5 ? a : b; const k = anahtar || a + '→' + b; if (!_morf[k]) _morf[k] = flubber.interpolate(a, b, { maxSegmentLength: 8 }); return _morf[k](cl(p)); }
 
+  // ---------------- GERÇEK GÖRÜNTÜ (2g): kare dizisi klipleri + fotoğraf ----------------
+  // Klip kareleri ortak/img/klip/<ad>/0001.jpg… (video kaynak klasöründe klip_cikar.py üretir). Yavaş çekimde komşu kareler harmanlanır.
+  // render.py her karede window.__klipBek içindeki görsellerin yüklenip çözülmesini bekler (deterministik, titreme/boş kare yok).
+  const _bek = window.__klipBek = window.__klipBek || new Set();
+  const KFPS = 23.976, yukle = u => { _bek.add(u); return u; };
+  function klip(ad, tk, { x = 540, y = 960, w = 960, h = 1200, r = 28, op = 1, kayma = [0, 0], olcek = 1, harman = true, n = (window.KLIP_N || {})[ad] } = {}) {
+    if (!n) return '';
+    const f = cl(tk * KFPS, 0, n - 1.001), i = Math.floor(f), a = f - i, u = k => `../ortak/img/klip/${ad}/${String(k + 1).padStart(4, '0')}.jpg`;
+    yukle(u(i)); const ikinci = harman && a > .02; if (ikinci) yukle(u(i + 1));
+    const id = `mk${ad}${Math.round(x)}${Math.round(y)}`, X = x - w / 2, Y = y - h / 2;
+    return `<g opacity="${op}"><rect x="${X}" y="${Y}" width="${w}" height="${h}" rx="${r}" fill="#000" opacity=".4" transform="translate(10 16)"/><defs><clipPath id="${id}"><rect x="${X}" y="${Y}" width="${w}" height="${h}" rx="${r}"/></clipPath></defs>` +
+      `<g clip-path="url(#${id})"><g transform="translate(${x + kayma[0]} ${y + kayma[1]}) scale(${olcek}) translate(${-x} ${-y})"><image href="${u(i)}" x="${X}" y="${Y}" width="${w}" height="${h}" preserveAspectRatio="xMidYMid slice"/>` +
+      (ikinci ? `<image href="${u(i + 1)}" x="${X}" y="${Y}" width="${w}" height="${h}" preserveAspectRatio="xMidYMid slice" opacity="${a.toFixed(3)}"/>` : '') + `</g></g></g>`;
+  }
+  // fotoğraf kartı (Ken Burns: olcek/kayma t'ye bağlı verilir)
+  function fotograf(ad, { x = 540, y = 960, w = 760, h = 954, r = 28, op = 1, olcek = 1, kayma = [0, 0], uzanti = 'jpg' } = {}) {
+    const u = yukle(`../ortak/img/${ad}.${uzanti}`), id = `mf${ad}${Math.round(x)}${Math.round(y)}`, X = x - w / 2, Y = y - h / 2;
+    return `<g opacity="${op}"><rect x="${X}" y="${Y}" width="${w}" height="${h}" rx="${r}" fill="#000" opacity=".4" transform="translate(10 16)"/><defs><clipPath id="${id}"><rect x="${X}" y="${Y}" width="${w}" height="${h}" rx="${r}"/></clipPath></defs>` +
+      `<g clip-path="url(#${id})"><g transform="translate(${x + kayma[0]} ${y + kayma[1]}) scale(${olcek}) translate(${-x} ${-y})"><image href="${u}" x="${X}" y="${Y}" width="${w}" height="${h}" preserveAspectRatio="xMidYMid slice"/></g></g></g>`;
+  }
+
   // ---------------- SAHNE ÇATISI ----------------
   // Katmanlar: #zemin (parallax .25) → .kamera (#sabit, #dinamik) → #moOrtu (geçiş örtüsü) → #moGren (film greni) → kanal katmanı
   function sahne({ zemin: zf = zemin(), kamera: cek = [[0, 1, 540, 960]], ciz, onCiz = null, ton: tn = '', gren = .05, parallax = .25, nefes = .012, sarsinti = [] } = {}) {
@@ -291,5 +312,5 @@ const MO = (() => {
     };
   }
 
-  return { E, bezier, yay, AG, oge, sar, sira, kamera, kameraTr, gecisDurum, GSURE, yildizYol, zemin, ton, renkKaristir, baslik, sayiVurgu, cizgiCiz, morf, sahne, olay, gen, cl, lerp, ar, DEFS };
+  return { E, bezier, yay, AG, oge, sar, sira, kamera, kameraTr, gecisDurum, GSURE, yildizYol, zemin, ton, renkKaristir, baslik, sayiVurgu, cizgiCiz, morf, klip, fotograf, yukle, sahne, olay, gen, cl, lerp, ar, DEFS };
 })();
