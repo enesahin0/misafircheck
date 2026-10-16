@@ -37,8 +37,8 @@ yaz, commit + push. Bir madde yarım kaldıysa `[~]` + nerede kalındığı notu
 - [x] 3d Müzik yatağı v2: statik pad yerine bölüm yapısına uyan, ritmik ama melodisiz/ciddi seçenekler + "gündem" ve "pratik" modları
 
 ## 4. Test: #37'nin ilk 4 sahnesi v2 ile yeniden (A/B demo)
-- [ ] 4a S1–S4 v2 sistemle kurulur, render
-- [ ] 4b CD kalite kontrolü (kare şeritleri, hareket eğrileri, ses spektrumu); zayıf noktalar yeniden tasarlanır
+- [x] 4a S1–S4 v2 sistemle kurulur, render
+- [x] 4b CD kalite kontrolü (kare şeritleri, hareket eğrileri, ses spektrumu); zayıf noktalar yeniden tasarlanır
 - [ ] 4c Kullanıcıya A/B (eski vs yeni) gönderilir
 
 ## 5. Kalıcılaştırma
@@ -50,3 +50,4 @@ yaz, commit + push. Bir madde yarım kaldıysa `[~]` + nerede kalındığı notu
 - 16.10.2026 — Aşama 1 bitti: ARASTIRMA.md (motor kararı: kendi motorumuz + flubber + culori; kural seti 13 madde; yeni ses kaynağı BigSoundBank CC0; ses tasarım kuralları 11 madde).
 - 16.10.2026 — Aşama 2 bitti: `ortak/motion2.js` (analitik yay, 5 ağırlık sınıfı + anticipation/çıkış, kamera rig + parallax, 6 geçiş türü: odak/itme/yildiz/kayma/perde/kes, katmanlı zemin + gölge filtreleri + film greni + ton, kinetik başlık/sayaç/çizgi, flubber morf, culori OKLCH), `vendor/` (flubber, culori; MIT), `olay_tara.py` → olaylar.json. Lab: `motion/lab/` (3 sahnelik test, kareler doğrulandı).
 - 16.10.2026 — Aşama 3 bitti: `ses2.py` (Tasarim: olaylar.json → materyal eşlemeli katmanlı efekt [BigSoundBank kesiti + sub + ön-whoosh], ağırlık→perde/aile, kare tohumlu varyasyon, panorama, maske/aile/yoğunluk budaması, stagger→doku; miks: ducking, 2–5 kHz EQ oyuğu, ortak oda, bus kompresör, limitör; müzik yatağı + kesme nefesi). `bsb_indir.py` ile 299 CC0 materyal kaydı (yerel, .gitignore), `sfx_lib` bs: öneki.
+- 16.10.2026 — 4a/4b: `37-dask-odemez/kaynak_v2/` (S1–S4 v2: geri çekilen kamera + damga sarsıntısı, su perdesiyle geçiş, sayaç, örtüşen kart koreografisi, SEL satırına yakınlaşma, Gubi'ye yakın çekim → geniş plan, dikey dünya + aşağı pan, yıldız maskeyle logo). CD kontrolünde düzeltilen: eski .kamera CSS animasyonu SVG kamerayı eziyordu (motion2'de kapatıldı), kart üst üste binmesi (cikYon eklendi), S4 başında ölü kare, S3 yakın çekimde kadraj taşması. Ses: olay/sn 0,88, −14,0 LUFS. Çıktılar: video_v2_demo.mp4, ab_karsilastirma.mp4.

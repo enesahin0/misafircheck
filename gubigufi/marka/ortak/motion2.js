@@ -80,7 +80,7 @@ const MO = (() => {
   // MO.oge(t, { gir, cik, agirlik, giris, yon, materyal, x, gecik, bekle }) → durum
   // giris: 'yuksel' | 'dus' | 'olcek' | 'yan' | 'maske' | 'sabit'
   // durum: { gor (0/1 çizilsin mi), op, k (ölçek), kx, ky (ezil-uzan), dx, dy, rot, p (yay ilerlemesi), cikiyor, yuk (yükseklik → gölge) }
-  function oge(t, { gir = 0, cik = null, agirlik = 'orta', giris = 'yuksel', yon = 1, materyal = null, x = 540, gecik = 0, bekle = 0, ses = true, etiket = '' } = {}) {
+  function oge(t, { gir = 0, cik = null, agirlik = 'orta', giris = 'yuksel', yon = 1, cikYon = null, materyal = null, x = 540, gecik = 0, bekle = 0, ses = true, etiket = '' } = {}) {
     const a = AG[agirlik] || AG.orta, t0 = gir + gecik;
     if (ses) {
       olay('giris', t0 + a.sure * .28, { agirlik, materyal, x, giris, etiket });
@@ -101,13 +101,17 @@ const MO = (() => {
     else if (giris === 'olcek') { s.k = lerp(a.olcek0, 1, p); if (t < t0) s.k = 1 + p * 1.5; }
     else if (giris === 'yan') { s.dx = (1 - p) * m * 1.8 * yon; s.rot = (1 - p) * 4 * yon; }
     else if (giris === 'maske') { s.mask = cl(p); }
+    else if (giris === 'damga') { s.k = lerp(1.75, 1, Math.min(p, 1.04)); s.rot = (1 - cl(p)) * -6; s.op = E.outCubic(ar(t, t0, t0 + .08)); s.yuk = Math.max(0, 1 - cl(p)) * 2; }
     // bekleme: ağır/kahraman öğelerde nefes (çok küçük) — ölü kare olmasın
     if (bekle) { const f = (x * .013) % 6.28; s.dy += Math.sin(t * 1.6 + f) * bekle; s.rot += Math.sin(t * 1.1 + f) * bekle * .12; }
     // çıkış: hızlı, ivmelenen; giriş yönünün devamı
     if (cik != null && t >= cik) {
       const q = E.inQuad(ar(t, cik, cik + a.cik));
-      s.cikiyor = q; s.op *= 1 - q; s.k *= 1 - .07 * q; s.dy -= q * m * .45; s.yuk += q;
-      if (giris === 'yan') s.dx -= q * m * 1.2 * yon;
+      s.cikiyor = q; s.op *= 1 - q; s.k *= 1 - .07 * q; s.yuk += q;
+      // çıkış yönü: varsayılan girişin devamı (yükselen yukarı, yandan gelen karşı yana); cikYon: 'yukari'|'asagi'|'sol'|'sag'
+      const cy = cikYon || (giris === 'yan' ? (yon > 0 ? 'sol' : 'sag') : 'yukari'), mm = m * 1.3 + 120;
+      if (cy === 'yukari') s.dy -= q * m * .45; else if (cy === 'asagi') s.dy += q * m * .6;
+      else { s.dx += (cy === 'sol' ? -1 : 1) * q * mm * 1.6; s.rot += (cy === 'sol' ? -1 : 1) * q * 3; }
     }
     return s;
   }
@@ -121,6 +125,8 @@ const MO = (() => {
     return `<g transform="${tr}" opacity="${s.op.toFixed(3)}"${f}>${ic}</g>`;
   }
   // çocuk öğeler için stagger: i. çocuğun gecikmesi
+  const _h = n => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+  const gurultu = x => { const i = Math.floor(x), f = x - i, u = f * f * (3 - 2 * f); return lerp(_h(i), _h(i + 1), u) * 2 - 1; };
   const sira = (i, agirlik = 'orta', carpan = 1) => i * (AG[agirlik] || AG.orta).stagger * carpan;
 
   // ---------------- KAMERA (2b) ----------------
@@ -148,6 +154,9 @@ const MO = (() => {
   // tur: 'odak' (rack focus), 'itme' (push-through, video başına ~1), 'yildiz' (marka maskesi: Gubi yıldızı), 'kayma' (whip),
   //      'perde' (renk alanı kayması), 'kes' (düz kesme; hareket üstüne).
   const GSURE = { odak: [.38, .5], itme: [.42, .62], yildiz: [.42, .55], kayma: [.28, .38], perde: [.4, .5], kes: [0, 0] };
+  // perde üst kenarı: düz eğik ya da dalgalı (su) — y: kenarın ortalama yüksekliği
+  const perdeYol = (y, alt, egim, dalga, t) => { if (!dalga) return `M-40 ${y + egim} L${W + 40} ${y - egim} L${W + 40} ${alt} L-40 ${alt}Z`;
+    let d = `M-40 ${alt} L-40 ${y}`; for (let x = -40; x <= W + 40; x += 30) d += ` L${x} ${(y + Math.sin(x * .012 + t * 7) * 26 + Math.sin(x * .031 - t * 5) * 10).toFixed(1)}`; return d + ` L${W + 40} ${alt}Z`; };
   const yildizYol = (cx, cy, r) => { let d = ''; for (let i = 0; i < 4; i++) { const a = -Math.PI / 2 + i * Math.PI / 2, b = a + Math.PI / 4, n = a + Math.PI / 2; d += (i ? '' : `M${(cx + Math.cos(a) * r).toFixed(1)} ${(cy + Math.sin(a) * r).toFixed(1)}`) + ` Q${(cx + Math.cos(b) * r * .16).toFixed(1)} ${(cy + Math.sin(b) * r * .16).toFixed(1)} ${(cx + Math.cos(n) * r).toFixed(1)} ${(cy + Math.sin(n) * r).toFixed(1)}`; } return d + 'Z'; };
   // gecisDurum: kameraya uygulanacak değişiklik + üst örtü SVG + bulanıklık
   function gecisDurum(t) {
@@ -163,7 +172,7 @@ const MO = (() => {
         if (g.tur === 'itme') { r.s *= 1 + 1.1 * E.inCubic(q); r.blurY = r.blurX = 10 * E.inCubic(q); r.fx = mx; r.fy = my; }
         if (g.tur === 'kayma') { const e = E.inCubic(q); r.dx -= 260 * e * (g.yon || 1); r.blurX = 40 * e; }
         if (g.tur === 'yildiz') { const e = E.inExpo(q), rr = lerp(10, 2600, e); r.ortu += `<path d="${yildizYol(mx, my, rr)}" fill="${renk}" transform="rotate(${45 * e} ${mx} ${my})"/>`; r.s *= 1 + .05 * E.inQuad(q); }
-        if (g.tur === 'perde') { const e = E.inOutCubic(q), y = lerp(H + 200, -60, e); r.ortu += `<path d="M-40 ${y + 120} L${W + 40} ${y - 120} L${W + 40} ${H + 400} L-40 ${H + 400}Z" fill="${renk}"/>`; r.dy -= 60 * e; }
+        if (g.tur === 'perde') { const e = E.inOutCubic(q), y = lerp(H + 200, -80, e); r.ortu += `<path d="${perdeYol(y, H + 400, g.dalga ? 0 : 120, g.dalga, t)}" fill="${renk}"/>` + (g.dalga ? `<path d="${perdeYol(y + 40, H + 400, 0, 1, t + .3)}" fill="#000" opacity=".12"/>` : ''); r.dy -= 60 * e; }
       } else {
         const q = ar(t, 0, dg); if (q >= 1) return;
         if (g.tur === 'odak') { const e = 1 - E.outCubic(q); r.s *= 1 + .08 * e; r.blurX = r.blurY = 16 * e; r.karart = .4 * e; }
@@ -171,7 +180,8 @@ const MO = (() => {
         if (g.tur === 'kayma') { const e = 1 - E.outExpo(q); r.dx += 260 * e * (g.yon || 1); r.blurX = 40 * e; }
         if (g.tur === 'yildiz') { const e = E.outCubic(q), rr = lerp(30, 2600, e);
           r.ortu += `<path fill-rule="evenodd" d="M-50 -50 H${W + 50} V${H + 50} H-50Z ${yildizYol(mx, my, rr)}" fill="${renk}" transform="rotate(${-20 * (1 - e)} ${mx} ${my})"/>`; r.s *= 1 + .06 * (1 - e); }
-        if (g.tur === 'perde') { const e = E.outCubic(q), y = lerp(-60, -H - 400, e); r.ortu += `<path d="M-40 ${y + 120} L${W + 40} ${y - 120} L${W + 40} ${y + H + 400} L-40 ${y + H + 400}Z" fill="${renk}"/>`; r.dy += 50 * (1 - e); }
+        if (g.tur === 'perde') { if (g.dalga) { const e = E.inOutCubic(q), y = lerp(-80, H + 260, e); r.ortu += `<path d="${perdeYol(y, H + 400, 0, 1, t)}" fill="${renk}"/>`; }
+          else { const e = E.outCubic(q), y = lerp(-60, -H - 400, e); r.ortu += `<path d="M-40 ${y + 120} L${W + 40} ${y - 120} L${W + 40} ${y + H + 400} L-40 ${y + H + 400}Z" fill="${renk}"/>`; } r.dy += 50 * (1 - q); }
       }
     };
     uygula(G.cik, 'cik'); uygula(G.gir, 'gir');
@@ -253,17 +263,20 @@ const MO = (() => {
 
   // ---------------- SAHNE ÇATISI ----------------
   // Katmanlar: #zemin (parallax .25) → .kamera (#sabit, #dinamik) → #moOrtu (geçiş örtüsü) → #moGren (film greni) → kanal katmanı
-  function sahne({ zemin: zf = zemin(), kamera: cek = [[0, 1, 540, 960]], ciz, onCiz = null, ton: tn = '', gren = .05, parallax = .25, nefes = .012 } = {}) {
+  function sahne({ zemin: zf = zemin(), kamera: cek = [[0, 1, 540, 960]], ciz, onCiz = null, ton: tn = '', gren = .05, parallax = .25, nefes = .012, sarsinti = [] } = {}) {
     const svg = document.querySelector('svg'), NS = 'http://www.w3.org/2000/svg';
     svg.insertAdjacentHTML('afterbegin', DEFS);
     const kamG = document.querySelector('.kamera'), zG = document.getElementById('zemin'), dyn = document.getElementById('dinamik');
     const mk = id => { const g = document.createElementNS(NS, 'g'); g.setAttribute('id', id); document.getElementById('kamYak').appendChild(g); return g; };
-    const ortu = mk('moOrtu'), grenG = mk('moGren'), onG = onCiz ? mk('moOn') : null;
+    const onG = onCiz ? mk('moOn') : null, ortu = mk('moOrtu'), grenG = mk('moGren');  // ekrana sabit katman (maskotlar, çipler) geçiş örtüsünün ALTINDA
     const blurN = document.getElementById('moBlurN');
+    // eski kamera CSS'i (stil.css pushIn animasyonu + kanal.css transform-origin) SVG transform'unu ezer → kapat
+    for (const g of [kamG, zG]) { g.style.animation = 'none'; g.style.setProperty('transform-origin', '0 0', 'important'); g.style.transformBox = 'view-box'; }
     window.renderAt = t => {
       const c = kamera(t, cek, { nefes }), g = gecisDurum(t);
       if (g.fx != null) { c.fx = lerp(c.fx, g.fx, .5); c.fy = lerp(c.fy, g.fy, .5); }
       c.s *= g.s; c.dx += g.dx; c.dy += g.dy;
+      for (const [t0, px] of sarsinti) { const d = t - t0; if (d < 0 || d > .8) continue; const k = px * Math.exp(-9 * d); c.dx += gurultu(t * 38 + t0 * 7) * k; c.dy += gurultu(t * 38 + t0 * 13 + 50) * k; if (d < .02) olay('sarsinti', t0, { guc: px }); }
       kamG.setAttribute('transform', kameraTr(c));
       const zs = 1 + (c.s - 1) * parallax;
       zG.setAttribute('transform', `translate(${W / 2 + c.dx * parallax} ${H / 2 + c.dy * parallax}) scale(${Math.max(1, zs).toFixed(4)}) translate(${-(W / 2 + (c.fx - W / 2) * parallax)} ${-(H / 2 + (c.fy - H / 2) * parallax)})`);

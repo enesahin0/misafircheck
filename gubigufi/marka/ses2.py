@@ -174,7 +174,8 @@ class Tasarim:
             tut.append(c); son_olay = c['t']; aile_son[c['aile']] = c['t']
         olay = [c for c in tut if not (c.get('doku') or c.get('eslik'))]
         while len(olay) / self.sure > hedef:
-            dus = min(olay, key=lambda c: (c.get('oncelik', 0), c.get('guc', .5))); olay.remove(dus); tut.remove(dus); self.rapor.append(('yogunluk', dus['t'], dus['aile']))
+            dus = min(olay, key=lambda c: (c.get('oncelik', 0), c.get('guc', .5)))
+            olay = [c for c in olay if c is not dus]; tut = [c for c in tut if c is not dus]; self.rapor.append(('yogunluk', dus['t'], dus['aile']))
         for c in tut: self.ekle(c['kaynak'], c['t'], c['aile'], c['guc'], c['x'], c['perde'], c.get('sure'), c.get('ters', False))
         self.olay_sn = len(olay) / self.sure
 
