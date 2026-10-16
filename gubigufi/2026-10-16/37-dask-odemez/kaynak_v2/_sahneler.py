@@ -104,3 +104,90 @@ MO.sahne({
   onCiz: t => MO.sar(AU.cip('KASKON YOKSA?', 0, 0, '#E8A020', '#1B2440', 36), MO.oge(t, { gir: .1, cik: 2.85, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 420, { golge: false }) +
     gubi(t, { x: 880, y: 1600, boy: 120, duygu: 'merak', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1780, boy: 170, duygu: 'merak', bakHedef: [540, 800] })
 });"""
+# 05 — PAYLAŞ (28,7–30,95): telefon kahraman olarak yükselir; "GÖNDER" basılınca kâğıt uçak ekrandan çıkar (ses olayı: ucus)
+S[5] = r"""
+MO.sahne({
+  zemin: MO.zemin({ ust: '#15403A', alt: '#0A1E1C', isik: [540, 1000, '#2FBF71', .24], ikinci: [900, 1500, '#FBAC39', .08] }),
+  kamera: [[0, 1.1, 540, 900], [.1, 1.0, 540, 900, 1.9]],
+  ciz: t => {
+    let tel = R(-170, -320, 340, 640, 46, '#1B2440') + R(-150, -290, 300, 560, 28, '#2A3456');
+    tel += R(-120, -200, 240, 90, 20, '#FFF8EE') + `<text x="0" y="-145" font-size="28" font-weight="900" text-anchor="middle" style="fill:#1B2440">DASK SELİ</text><text x="0" y="-115" font-size="28" font-weight="900" text-anchor="middle" style="fill:#E8323C">ÖDEMİYOR!</text>`;
+    const bas = MO.E.outCubic(1 - A(t, .55, .8)) * 0 + (t > .5 && t < .72 ? .93 : 1);
+    tel += `<g transform="translate(0 -45) scale(${bas})">` + R(-120, -35, 240, 70, 20, '#2FBF71') + `<text x="0" y="10" font-size="30" font-weight="900" text-anchor="middle" style="fill:#FFFFFF">GÖNDER</text></g>`;
+    let o = MO.sar(tel, MO.oge(t, { gir: .05, agirlik: 'kahraman', giris: 'yuksel', materyal: 'plastik', x: 540, bekle: 2 }), 540, 860);
+    const u = MO.E.inOutCubic(A(t, .55, 1.65));
+    if (u > 0) o += `<g transform="translate(${540 + 520 * u} ${780 - 560 * u}) rotate(${-20 - 10 * u})" opacity="${(1 - A(t, 1.5, 1.8)).toFixed(3)}"><path d="M-50 0 L50 -30 L10 40 L0 10Z" fill="#FFFFFF"/><path d="M0 10 L50 -30" stroke="#C8D0DC" stroke-width="4"/></g>`;
+    MO.olay('ucus', .55, { x: 540, agirlik: 'hafif' });
+    return o;
+  },
+  onCiz: t => MO.sar(AU.cip('BİLMEYEN BİRİNE GÖNDER', 0, 0, '#2FBF71', '#FFFFFF', 34), MO.oge(t, { gir: .1, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 430, { golge: false }) +
+    gubi(t, { x: 880, y: 1600, boy: 130, duygu: 'mutlu', bakHedef: 'kamera' }) + gufi(t, { x: 200, y: 1780, boy: 180, duygu: 'mutlu', bakHedef: [540, 860] })
+});"""
+# 06 — GUFİ'YE SORU (30,95–34,85): kamera Gufi'ye yaklaşır (yakın çekim), gözünü kaçırır; arkasından buruşuk poliçe düşer; "…" balonu
+S[6] = r"""
+MO.sahne({
+  zemin: MO.zemin({ ust: '#3A2440', alt: '#160E1C', isik: [540, 1250, '#E8323C', .20], ikinci: [200, 400, '#8A6AC8', .10] }),
+  kamera: [[0, 1.0, 540, 1000], [.15, 1.32, 540, 1130, 1.5], [3.0, 1.38, 540, 1150, 1.2]],
+  ciz: t => {
+    let o = '';
+    const pl = MO.oge(t, { gir: 1.85, agirlik: 'agir', giris: 'dus', materyal: 'kagit', x: 820 });
+    let p = `<path d="M-110 -150 L95 -140 L118 -40 L100 70 L120 150 L-100 160 L-120 60 L-95 -30Z" fill="#FFF8EE"/>`; for (let i = 0; i < 6; i++) p += `<path d="M${-80 + h(i) * 10} ${-110 + i * 42} L${70 - h(i + 3) * 20} ${-104 + i * 42}" stroke="#C8D0DC" stroke-width="7"/>`;
+    p += `<text x="0" y="-118" font-size="22" font-weight="900" text-anchor="middle" style="fill:#2E78C8">POLİÇE</text><path d="M-100 -20 L100 30 M-80 80 L90 50" stroke="#B8A890" stroke-width="3"/>`;
+    o += MO.sar(p, pl, 830, 1330);
+    o += gubi(t, { x: 900, y: 1560, boy: 130, duygu: 'merak', bakHedef: [540, 1000] });
+    o += gufi(t, { x: 540, y: 1250, boy: 380, duygu: 'utangac', bakHedef: [1100, 800] });
+    o += MO.sar(M.balon(0, 0, txt('…', 0, 6, 64, '#1B2440'), { w: 170, h: 100, yon: 1 }), MO.oge(t, { gir: 2.6, agirlik: 'oyuncu', giris: 'olcek', materyal: 'plastik', x: 330 }), 360, 1010, { golge: false });
+    return o;
+  }
+});"""
+# 07 — 3 KURAL (34,85–50,0): kamera kart kart ilerler (1 → 2 → 3), sonra geniş plana açılır; 600 bin damgası; kartlar sırayla girer, önceki kart geride kalır
+S[7] = r"""
+const kartK = (n, ikon, b1, b2, renk, alt) => R(-450, -105, 900, 210, 34, '#000', .3) + R(-460, -115, 900, 210, 34, '#FFF8EE') + R(-460, -115, 150, 210, 34, renk) + R(-340, -115, 30, 210, 0, renk) +
+  txt(String(n), -385, 30, 90, '#FFFFFF') + `<g transform="translate(-220 -10)">${ikon}</g>` + `<text x="-120" y="-10" font-size="40" font-weight="900" style="fill:#1B2440">${b1}</text>` + (alt ? `<text x="-120" y="45" font-size="27" font-weight="700" style="fill:#5A6478">${b2}</text>` : '');
+const anahtar = `<rect x="-26" y="-50" width="52" height="66" rx="16" fill="#3A3F50"/><rect x="-7" y="10" width="14" height="50" fill="#8A94A8"/>` + isaretX(36, 34, .8);
+const kameraI = `<rect x="-50" y="-34" width="100" height="70" rx="14" fill="#3A3F50"/><circle cx="0" cy="2" r="22" fill="#8AB0E0"/><rect x="-20" y="-46" width="40" height="16" rx="5" fill="#3A3F50"/>`;
+const takvimI = `<rect x="-46" y="-50" width="92" height="96" rx="12" fill="#FFFFFF" stroke="#C8D0DC" stroke-width="4"/><rect x="-46" y="-50" width="92" height="28" rx="10" fill="#E8323C"/><rect x="-28" y="-62" width="8" height="22" rx="4" fill="#3A3F50"/><rect x="20" y="-62" width="8" height="22" rx="4" fill="#3A3F50"/><text x="0" y="34" font-size="52" font-weight="900" text-anchor="middle" style="fill:#1B2440">5</text>`;
+MO.sahne({
+  zemin: MO.zemin({ ust: '#1A2340', alt: '#0B1022', isik: [540, 900, '#3E6FB8', .26], ikinci: [900, 300, '#FBAC39', .07] }),
+  kamera: [[0, 1.0, 540, 900], [1.0, 1.1, 540, 690, .9], [8.35, 1.1, 540, 850, .85], [12.1, 1.1, 540, 1000, .85], [14.1, 1.0, 540, 900, .9]],
+  ciz: t => {
+    let o = '';
+    o += MO.sar(AU.cip('HASAR OLUNCA', 0, 0, '#FFD23F', '#1B2440', 36), MO.oge(t, { gir: .1, cik: 8.3, agirlik: 'orta', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 420, { golge: false });
+    o += MO.sar(etiket('3 KURAL', 0, 0, '#FFD23F', '#1B2440', 130, -4, 1), MO.oge(t, { gir: .08, cik: 1.0, cikYon: 'yukari', agirlik: 'agir', giris: 'damga', materyal: 'lastik', x: 540 }), 540, 740, { golge: false });
+    o += MO.sar(kartK(1, anahtar, 'MOTORU ÇALIŞTIRMA', t > 6.85 ? 'çekiciyle servise götür' : 'masraf 600 bin TL\'ye çıkabilir', '#E8323C', t > 3.65), MO.oge(t, { gir: 1.17, agirlik: 'agir', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 600);
+    o += MO.sar(etiket('600.000 ₺', 0, 0, '#E8323C', '#FFFFFF', 54, -4, 1), MO.oge(t, { gir: 3.65, cik: 6.7, cikYon: 'asagi', agirlik: 'agir', giris: 'damga', materyal: 'metal', x: 760 }), 760, 770, { golge: false });
+    o += MO.sar(kartK(2, kameraI, 'FOTOĞRAF + VİDEO ÇEK', 'eksper gelmeden hiçbir şeyi atma', '#2E78C8', t > 10.9), MO.oge(t, { gir: 8.55, agirlik: 'agir', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 840);
+    o += MO.sar(kartK(3, takvimI, '5 İŞ GÜNÜNDE BİLDİR', 'sigortana / acentene', '#2FA060', t > 13.6), MO.oge(t, { gir: 12.3, agirlik: 'agir', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 1080);
+    return o;
+  },
+  onCiz: t => gubi(t, { x: 920, y: 1600, boy: 120, duygu: 'merak', bakHedef: [540, 840] }) + gufi(t, { x: 180, y: 1780, boy: 160, duygu: 'kararli', bakHedef: [540, 840] })
+});"""
+# 08 — SORU (50,0–53,15): kart kahraman girer, kamera yavaşça yaklaşır; EVET / BİLMİYORUM düğmeleri sırayla; "YORUMLARA YAZ" 2,16'da
+S[8] = r"""
+MO.sahne({
+  zemin: MO.zemin({ ust: '#1E3A44', alt: '#0B1A22', isik: [540, 850, '#3EC8B8', .20], ikinci: [150, 1500, '#FBAC39', .08] }),
+  kamera: [[0, 1.0, 540, 900], [.05, 1.1, 540, 840, 3.0, 'kamera']],
+  ciz: t => {
+    let k = R(-420, -230, 840, 460, 40, '#000', .3) + R(-430, -240, 840, 460, 40, '#FFF8EE') + txt('SENİN SİGORTAN', -10, -110, 54, '#1B2440') + txt('SELİ KAPSIYOR MU?', -10, -30, 64, '#2E78C8');
+    let o = MO.sar(k, MO.oge(t, { gir: .05, agirlik: 'kahraman', giris: 'yuksel', materyal: 'plastik', x: 540, bekle: 2 }), 540, 820);
+    o += MO.sar(AU.cip('YORUMLARA YAZ', 0, 0, '#FFD23F', '#1B2440', 32), MO.oge(t, { gir: 2.16, agirlik: 'orta', giris: 'damga', materyal: 'lastik', x: 540 }), 540, 500, { golge: false });
+    o += MO.sar(R(-170, -50, 340, 100, 50, '#2FBF71') + txt('✓ EVET', 0, 18, 46, '#FFFFFF'), MO.oge(t, { gir: .7, agirlik: 'hafif', giris: 'yuksel', materyal: 'plastik', x: 340 }), 340 - 10, 820 + 90);
+    o += MO.sar(R(-170, -50, 340, 100, 50, '#E8A020') + txt('? BİLMİYORUM', 0, 16, 40, '#FFFFFF'), MO.oge(t, { gir: .9, agirlik: 'hafif', giris: 'yuksel', materyal: 'plastik', x: 730 }), 730 - 10 + 10, 820 + 90);
+    return o;
+  },
+  onCiz: t => gubi(t, { x: 880, y: 1600, boy: 130, duygu: 'merak', bakHedef: 'kamera' }) + gufi(t, { x: 200, y: 1780, boy: 180, duygu: 'merak', bakHedef: 'kamera' })
+});"""
+# 09 — TAKİP ET (53,15–56,4): kart kahraman, "+ TAKİP ET" düğmesi basılır gibi; maskotlar mutlu, kameraya selam
+S[9] = r"""
+MO.sahne({
+  zemin: MO.zemin({ ust: '#101A30', alt: '#0A0F1C', isik: [540, 760, '#FFD23F', .22], supurme: .04 }),
+  kamera: [[0, 1.08, 540, 800], [.1, 1.0, 540, 900, 2.6]],
+  ciz: t => {
+    const kart = R(-380, -150, 760, 300, 40, '#0B1433') + `<rect x="-380" y="-150" width="760" height="300" rx="40" fill="none" stroke="#FFD23F" stroke-width="6"/>` + AU.yaz('gubigufi', 0, -20, 96, '#FFFFFF');
+    let o = MO.sar(kart, MO.oge(t, { gir: .04, agirlik: 'kahraman', giris: 'yuksel', materyal: 'plastik', x: 540, bekle: 2 }), 540, 760);
+    const bs = t > 1.0 && t < 1.15 ? .92 : 1;
+    o += MO.sar(`<g transform="scale(${bs})">` + R(-220, -40, 440, 80, 40, '#FFD23F') + AU.yaz('+ TAKİP ET', 0, 18, 46, '#1B2440') + '</g>', MO.oge(t, { gir: .55, agirlik: 'orta', giris: 'damga', materyal: 'lastik', x: 540 }), 540, 760 + 80, { golge: false });
+    return o;
+  },
+  onCiz: t => gubi(t, { x: 300, y: 1540, boy: 170, duygu: 'mutlu', bakHedef: 'kamera' }) + gufi(t, { x: 780, y: 1720, boy: 220, duygu: 'mutlu', bakHedef: 'kamera' })
+});"""

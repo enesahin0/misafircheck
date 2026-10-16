@@ -151,6 +151,8 @@ class Tasarim:
                 for k in range(n):
                     u = k / (n - 1); tt = t + o.get('sure', 1) * (1 - (1 - u) ** .35) * .98
                     ham.append(dict(kaynak='rol:tik', t=tt, aile='doku', guc=.5 + .3 * u, x=x, perde=u * 4, sure=.08, oncelik=-1, doku=1))
+            elif tur == 'ucus':
+                ham.append(dict(kaynak='rol:gecis_hizli#1', t=t, aile='whoosh', guc=.6, x=700, perde=3, sure=.8, oncelik=3))
             elif tur == 'varis':
                 ham.append(dict(kaynak='rol:darbe#3', t=t, aile='darbe', guc=.45, x=x, perde=0, sure=.8, oncelik=3))
             elif tur == 'kelime' and kelime_doku:
