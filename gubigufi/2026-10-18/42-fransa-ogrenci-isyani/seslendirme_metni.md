@@ -1,5 +1,5 @@
 # #42 Fransa'da okullar yanıyor — öğrenci isyanı · seslendirme metni ve üretim planı
-Durum: METİN HAZIR → kullanıcı ElevenLabs'te seslendirecek (Yasemin – Deep Smooth and Warm, aynı ayarlar). Tahmini süre ≈ 106–110 sn.
+Durum: METİN HAZIR → kullanıcı ElevenLabs'te seslendirecek (Yasemin – Deep Smooth and Warm, aynı ayarlar). Tahmini süre ≈ 90 sn (kullanıcı kısalttı: Bastille ve 17 Ekim katılım paragrafları çıkarıldı).
 Yapıştırılacak dosya: `elevenlabs_metin.md`.
 
 ## Tutma haritası (izleyiciyi her 7–10 sn'de bir "devam etme sebebi")

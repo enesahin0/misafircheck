@@ -6,10 +6,6 @@
 
 [serious] Hükümet üç bin yedek öğretmen sözü verdi; sendikalar "yetmez" dedi. Sokakta polis, gaz ve sersemletici bombalarla karşılık verdi. Altı binden fazla gözaltı oldu, çoğu on sekiz yaşından küçük. [calm] On beş yaşında bir genç elini kaybetti; olay soruşturuluyor. Hükümete göre, dokuz yüzden fazla polis de yaralandı.
 
-[curious] Öğrenciler Bastille Sütunu'na bile çıktı: 1789'a gönderme. Hükümet "bunu bir parti kışkırtıyor" diyor; öğrenciler "kendiliğinden" diyor.
-
-[serious] On yedi Ekim'de, içişlerine göre beş yüz elli bin, örgütlere göre sekiz yüz bin kişi sokaktaydı. Yalnızca Paris'te yüz on bin: Vodafone Park'ın neredeyse üç katı. İsyan Belçika'ya, İtalya'ya, Arnavutluk'a sıçradı.
-
 [curious] Ve ipucu: Fransa'da 1968'de de bir öğrenci isyanı, ülkeyi erken seçime götürmüştü. Şimdi cumhurbaşkanlığı seçimine sadece altı ay var. Tekrarlanır mı? Kimse bilmiyor.
 
 [curious] Gubi, sence haklılar mı? [short pause] [calm] Omuz silkti. Kolay cevap yok: sorun gerçek, yöntem tartışmalı.
