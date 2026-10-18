@@ -40,3 +40,10 @@ ORTA:
 - YAN ÇEVİRME (koma/derlenme pozisyonu) eklendi: ERC 2025 First Aid — yanıtsız ama NORMAL nefes alan, travma olmayan kişi; nefesi izle, bozulursa sırtüstü + CPR. "Agonal solunum ve travmada recovery position YOK."
 - "Hırıltılı" tuzağı: hırıltılı/çok yavaş/düzensiz/gasping nefes = kalp durması (ERC 2025: agonal gasping) → masaj. "Şüphedeysen CPR". Horlama gibi yüzeysel ayrımlar metinde YOK (karıştırma riski).
 - Ağızdan köpük/kusmuk: nefes düzgünse yan çevirme zaten çözer. CPR sırasında köpük/kusma gelirse masajı bölme (Avustralya Resüsitasyon Konseyi: köpüğü boşaltmaya çalışma, CPR'a devam) — videoda YOK, kaynak tek; uzman teyidi gerek. Nöbet (havale) ayrı video konusu.
+
+## v3 düzeltmeleri (kullanıcı)
+- Açılış: "etrafında yardım isteyeceğin kimse yok" (sadece ikiniz kaldırıldı); "tamamen senin elinde" kaldırıldı → "o dakikalar... [pause] Peki ne yapacaksın?".
+- Bayılma: "cevap verirse bayılmıştır" mantık hatasıydı → "gözlerini açıp cevap veriyorsa, bayılıp kendine gelmiştir"; "kendine gelmezse" çıkarıldı (zaten gelmiş) → "göğsü ağrıyorsa ya da toparlanamıyorsa yine de 112".
+- CPR anlatımı: "sadece bas" kaldırıldı; BAS–BIRAK ritmi + "göğsün tamamen yükselmesine izin ver" (ERC/RCUK: göğüs tam geri dönsün, yaslanma) + saniyede 2. "Nefes vermek zorunda değilsin" satırı çıkarıldı (kaynak: eğitimsiz kurtarıcıda yalnız bası yeterli; videoda gereksiz).
+- Sıra: boğulma (Heimlich) → kaza.
+- Görsel notu (MARKA anatomi kuralı): CPR sahnesinde göğüs bas–bırak animasyonu (çökme + geri yükselme), sabit baskı DEĞİL.
