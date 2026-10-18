@@ -3,14 +3,21 @@ S = {}
 S[1] = r"""
 MO.sahne({
   zemin: MO.zemin({ ust: '#0F1B33', alt: '#05080F', isik: [420, 700, '#FFD27A', .16], ikinci: [900, 1500, '#E8323C', .06] }),
-  kamera: [[0, 1.0, 540, 960], [.1, 1.04, 540, 960, 9.7, 'kamera'], [10.0, 2.7, 330, 980, 1.3, 'kamera']],
+  kamera: [[0, 1.0, 540, 960], [.1, 1.04, 540, 960, 9.7, 'kamera'], [10.0, 2.8, 345, 880, 1.3, 'kamera']],
   sarsinti: [[1.5, 12], [10.2, 10], [10.6, 8], [11.0, 6]],
   ciz: t => {
     let o = '';
     [[-20, 120, 330], [110, 90, 250], [205, 130, 380], [700, 110, 300], [815, 150, 420], [975, 120, 260]].forEach(([x, w, h]) => o += R(x, 1180 - h, w, h, 3, '#10182C'));
-    for (let i = 0; i < 18; i++) { const x = (i * 211) % 1060 + 10, y = 900 + (i * 97) %240; if (Math.sin(t * 1.5 + i) > -.6) o += R(x, y, 8, 11, 2, '#FFD27A', .5); }
+    for (let i = 0; i < 18; i++) { const x = (i * 211) % 1060 + 10, y = 900 + (i * 97) % 240; if (Math.sin(t * 1.5 + i) > -.6) o += R(x, y, 8, 11, 2, '#FFD27A', .5); }
     o += `<path d="M175 1180 V760 Q175 720 215 720 H300" stroke="#2B3550" stroke-width="12" fill="none"/>` + R(280, 716, 70, 20, 8, '#FFE9A8') + `<path d="M280 736 L180 1180 H410 L350 736Z" fill="#FFE9A8" opacity=".10"/>`;
     o += R(-100, 1180, 1280, 800, 0, '#1A2238') + R(-100, 1180, 1280, 8, 0, '#2E3A5C') + R(-100, 1500, 1280, 6, 0, '#2B3550', .6);
+    const ear = fd(t, 4.4, 4.7) * (1 - fd(t, 6.3, 6.6));
+    const korku = t > 10.0, sas = t > .9, pls = korku ? 1 + .03 * Math.sin(t * 22) : 1;
+    o += `<g transform="translate(340 1180) scale(${pls}) translate(-340 -1180)">` + dur(340, 1180, 1.55, { renk: '#3E8EDE', elR: ear > .01 ? [(24 * ear + 28 * (1 - ear)), (-190 * ear - 64 * (1 - ear))] : [28, -64], goz: sas ? 'genis' : 'acik', agiz: korku || sas ? 'acik' : 'duz', ifade: korku ? 'korku' : 'normal', basEk: t < .9 ? 0 : (t < 3.3 ? -8 : 0) }) + '</g>';
+    const wob = t > .35 && t < .98 ? Math.sin(t * 24) * 2.5 * fd(t, .35, .9) : 0;
+    if (t < 1.0) o += `<g transform="rotate(${wob} 840 1180)">` + dur(840, 1180, 1.55, { renk: '#E8774A', goz: 'kapali', agiz: 'duz', elL: [-34, -90], elR: [34, -90 + 14 * fd(t, .5, 1)] }) + '</g>';
+    else { const th = MO.E.inQuad(fd(t, .98, 1.55)); o += th < 1 ? dusus(840, 1180, 1.55, th, { renk: '#E8774A' }) : yatan(840 - 168 * 1.55, 1180, 1.55, { renk: '#E8774A' }); }
+    const dz = MO.ar(t, 1.55, 2.4); if (dz > 0 && dz < 1) for (let k = 0; k < 5; k++) o += `<circle cx="${620 + k * 55}" cy="${1170 - 20 * dz * (1 + k % 2)}" r="${14 + 30 * dz}" fill="#8A94A8" opacity="${(.4 * (1 - dz)).toFixed(2)}"/>`;
     o += ET(t, 3.25, 4.35, 'KİMSE YOK', '#E8323C', '#FFFFFF', 84, 520, -3);
     o += MO.sar(R(-210, -150, 420, 300, 40, '#0F1838') + `<rect x="-210" y="-150" width="420" height="300" rx="40" fill="none" stroke="#7FD0FF" stroke-width="5"/>` + ikon('tel', -90, 0, 1.9) + txt('112', 80, 34, 110, '#FFFFFF'), MO.oge(t, { gir: 4.4, cik: 6.45, agirlik: 'orta', giris: 'olcek', materyal: 'plastik', x: 540 }), 540, 620, { golge: false });
     o += MO.sar(R(-250, -62, 500, 124, 62, '#1F9E5B') + `<circle cx="-170" cy="0" r="38" fill="#FFFFFF"/><path d="M-188 2 L-176 14 L-152 -14" stroke="#1F9E5B" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>` + txt('DOĞRU', 40, 22, 62, '#FFFFFF'), MO.oge(t, { gir: 6.5, cik: 7.7, agirlik: 'hafif', giris: 'yuksel', materyal: 'lastik', x: 540 }), 540, 620, { golge: false });
@@ -20,15 +27,6 @@ MO.sahne({
       o += `<g opacity="${ka.toFixed(2)}">` + MO.sar(saat(0, 0, 100, (t - 7.4) * .7), MO.oge(t, { gir: 7.5, cik: 9.8, agirlik: 'agir', giris: 'olcek', materyal: 'plastik', x: 540 }), 880, 560, { golge: false }) + '</g>';
       o += MO.sar(zamanChip('O DAKİKALAR', 0, 0, '#E8323C', '#FFFFFF', 40), MO.oge(t, { gir: 7.8, cik: 9.8, agirlik: 'hafif', giris: 'yuksel', x: 540 }), 400, 560, { golge: false });
     }
-    // oyuncular: Gufi yığılan kişi, Gubi yanındaki "sen". Havadan görüntüde köşede izler.
-    const gA = 1 - ka;
-    if (gA > .01) {
-      const gx = 780, gy = 1180;
-      if (t < 3.1) o += `<g opacity="${gA.toFixed(2)}">` + gufi(t, { x: gx, y: gy, boy: 300, duygu: t < .98 ? 'merak' : 'uyu', bakHedef: [340, 980] }) + '</g>';
-      else o += `<g opacity="${gA.toFixed(2)}"><g transform="rotate(-90 ${gx} ${gy - 150})">` + gufi(t, { x: gx, y: gy, boy: 300, duygu: 'uyu', tepkiler: [], canlilik: false }) + '</g></g>';
-      o += `<g opacity="${gA.toFixed(2)}">` + gubi(t, { x: 340, y: 960, boy: 250, duygu: t > 10.1 ? 'korku' : (t > .9 ? 'saskin' : 'merak'), bakHedef: t < .9 ? [840, 1060] : [840, 1160], isaretHedef: [540, 620] }) + '</g>';
-    }
-    if (ka > .01) o += `<g opacity="${ka.toFixed(2)}">` + gubi(t, { x: 180, y: 1530, boy: 190, duygu: 'saskin', bakHedef: [540, 1000] }) + '</g>';
     return o;
   },
   onCiz: t => ET(t, 10.5, 99, 'NE YAPACAKSIN?', '#FFD23F', '#1B2440', 76, 520, -2)

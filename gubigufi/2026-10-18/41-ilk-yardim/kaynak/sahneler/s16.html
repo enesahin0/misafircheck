@@ -249,6 +249,7 @@ const yuzCiz = (goz, agiz, ifade) => {
   return o; };
 const kafaCiz = (hc, rot, ten, sac, goz, agiz, ifade) => `<g transform="translate(${F1(hc[0])} ${F1(hc[1])}) rotate(${rot.toFixed(1)})"><circle r="30" fill="${ten}"/><path d="M-31 -4 Q-28 -34 0 -34 Q28 -34 31 -4 Q14 -18 -4 -14 Q-18 -12 -31 -4Z" fill="${sac}"/>`
   + (goz === 'kapali' ? `<path d="M-15 3 Q-10 7 -5 3 M5 3 Q10 7 15 3" stroke="#14171F" stroke-width="3" fill="none" stroke-linecap="round"/>` : `<circle cx="-10" cy="2" r="${goz === 'genis' ? 4.6 : 3.5}" fill="#14171F"/><circle cx="10" cy="2" r="${goz === 'genis' ? 4.6 : 3.5}" fill="#14171F"/>`)
+  + (ifade === 'korku' ? `<path d="M-19 -9 L-5 -15 M19 -9 L5 -15" stroke="#3A2A22" stroke-width="3.4" stroke-linecap="round"/><path d="M31 -14 q7 11 0 17 q-7 -6 0 -17Z M-29 0 q6 10 0 15 q-6 -5 0 -15Z" fill="#9FD8FF"/>` : '')
   + (agiz === 'acik' || agiz === 'korku' ? `<ellipse cx="0" cy="17" rx="7" ry="8" fill="#5A1A1A"/>` : agiz === 'gulum' ? `<path d="M-8 14 Q0 22 8 14" stroke="#5A1A1A" stroke-width="3" fill="none" stroke-linecap="round"/>` : `<path d="M-6 17 H6" stroke="#5A1A1A" stroke-width="3" stroke-linecap="round"/>`) + `</g>`;
 // kisi: sh omuz, hip kalça (yerel). Önden görünüm: shW>0 ; yandan: shW=0.
 const uzv = (s0, t, pref, renk, kal) => { const [e, h] = ik2(s0[0], s0[1], t[0], t[1], KSZ.A, KSZ.B, pref); return { yol: `<path d="M${F1(s0[0])} ${F1(s0[1])} L${F1(e[0])} ${F1(e[1])} L${F1(h[0])} ${F1(h[1])}" stroke="${renk}" stroke-width="${kal}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`, el: h }; };
