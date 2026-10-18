@@ -199,3 +199,10 @@ const gogusUst = (t, elP) => {
   o += `<circle cx="0" cy="-62" r="${40 + 7 * pu}" fill="none" stroke="#FFD23F" stroke-width="6" stroke-dasharray="11 9"/><circle cx="0" cy="-62" r="7" fill="#FFD23F"/>`;
   o += elP;
   return o; };
+
+// ===== Gubi & Gufi: olayın içinde. bm = konuşma balonu, MAS = köşedeki oyuncular + balonlar =====
+const bm = (t, a, b, x, y, metin, { yon = -1, fs = 38 } = {}) => { const k = fd(t, a, a + .22) * (1 - fd(t, b - .2, b)); if (k <= .01) return ''; const w = K.yaziGen(metin, fs) + 80, sc = .8 + .2 * ob(fd(t, a, a + .3));
+  return `<g opacity="${k.toFixed(2)}" transform="translate(${x} ${y}) scale(${sc.toFixed(3)})">` + M.balon(0, 0, txt(metin, 0, fs * .34, fs, '#1B2440'), { w, h: fs * 2.3, yon }) + '</g>'; };
+const MAS = (t, o = {}) => gubi(t, { x: 880, y: 1650, boy: 150, duygu: o.gd || 'merak', bakHedef: o.bh || [540, 800], isaretHedef: o.ih || null })
+  + gufi(t, { x: 200, y: 1840, boy: 210, duygu: o.gf || 'merak', bakHedef: o.bh || [540, 800], isaretHedef: o.ih || null })
+  + (o.b || []).map(([k, a, b, m]) => bm(t, a, b, k === 'gubi' ? 720 : 360, 1492, m, { yon: k === 'gubi' ? 1 : -1 })).join('');

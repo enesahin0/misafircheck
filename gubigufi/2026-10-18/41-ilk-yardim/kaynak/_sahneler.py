@@ -3,34 +3,35 @@ S = {}
 S[1] = r"""
 MO.sahne({
   zemin: MO.zemin({ ust: '#0F1B33', alt: '#05080F', isik: [420, 700, '#FFD27A', .16], ikinci: [900, 1500, '#E8323C', .06] }),
-  kamera: [[0, 1.0, 540, 960], [.1, 1.04, 540, 960, 9.7, 'kamera'], [10.0, 3.1, 345, 880, 1.3, 'kamera']],
+  kamera: [[0, 1.0, 540, 960], [.1, 1.04, 540, 960, 9.7, 'kamera'], [10.0, 2.7, 330, 980, 1.3, 'kamera']],
   sarsinti: [[1.5, 12], [10.2, 10], [10.6, 8], [11.0, 6]],
   ciz: t => {
     let o = '';
     [[-20, 120, 330], [110, 90, 250], [205, 130, 380], [700, 110, 300], [815, 150, 420], [975, 120, 260]].forEach(([x, w, h]) => o += R(x, 1180 - h, w, h, 3, '#10182C'));
-    for (let i = 0; i < 18; i++) { const x = (i * 211) % 1060 + 10, y = 900 + (i * 97) % 240; if (Math.sin(t * 1.5 + i) > -.6) o += R(x, y, 8, 11, 2, '#FFD27A', .5); }
+    for (let i = 0; i < 18; i++) { const x = (i * 211) % 1060 + 10, y = 900 + (i * 97) %240; if (Math.sin(t * 1.5 + i) > -.6) o += R(x, y, 8, 11, 2, '#FFD27A', .5); }
     o += `<path d="M175 1180 V760 Q175 720 215 720 H300" stroke="#2B3550" stroke-width="12" fill="none"/>` + R(280, 716, 70, 20, 8, '#FFE9A8') + `<path d="M280 736 L180 1180 H410 L350 736Z" fill="#FFE9A8" opacity=".10"/>`;
     o += R(-100, 1180, 1280, 800, 0, '#1A2238') + R(-100, 1180, 1280, 8, 0, '#2E3A5C') + R(-100, 1500, 1280, 6, 0, '#2B3550', .6);
-    const ear = fd(t, 4.4, 4.7) * (1 - fd(t, 6.3, 6.6));
-    const korku = t > 10.0, sas = t > .9;
-    o += dur(340, 1180, 1.55, { renk: '#3E8EDE', elR: ear > .01 ? [(24 * ear + 38 * (1 - ear)), (-200 * ear + -74 * (1 - ear))] : [38, -74], goz: sas ? 'genis' : 'acik', agiz: korku ? 'korku' : (sas ? 'acik' : 'duz'), ifade: korku ? 'korku' : (sas ? 'sasir' : 'normal'), basEk: t < .9 ? 0 : (t < 3.3 ? -8 : 0) });
-    const wob = t > .35 && t < .98 ? Math.sin(t * 24) * 2.5 * fd(t, .35, .9) : 0;
-    if (t < 1.0) o += `<g transform="rotate(${wob} 840 1180)">` + dur(840, 1180, 1.55, { renk: '#E8774A', goz: 'kapali', agiz: 'duz', elL: [-34, -90], elR: [34, -90 + 14 * fd(t, .5, 1)] }) + '</g>';
-    else { const th = MO.E.inQuad(fd(t, .98, 1.55)); o += th < 1 ? dusus(840, 1180, 1.55, th, { renk: '#E8774A' }) : yatan(840 - 173 * 1.55, 1180, 1.55, { renk: '#E8774A' }); }
-    const dz = MO.ar(t, 1.55, 2.4); if (dz > 0 && dz < 1) for (let k = 0; k < 5; k++) o += `<circle cx="${620 + k * 55}" cy="${1170 - 20 * dz * (1 + k % 2)}" r="${14 + 30 * dz}" fill="#8A94A8" opacity="${(.4 * (1 - dz)).toFixed(2)}"/>`;
     o += ET(t, 3.25, 4.35, 'KİMSE YOK', '#E8323C', '#FFFFFF', 84, 520, -3);
     o += MO.sar(R(-210, -150, 420, 300, 40, '#0F1838') + `<rect x="-210" y="-150" width="420" height="300" rx="40" fill="none" stroke="#7FD0FF" stroke-width="5"/>` + ikon('tel', -90, 0, 1.9) + txt('112', 80, 34, 110, '#FFFFFF'), MO.oge(t, { gir: 4.4, cik: 6.45, agirlik: 'orta', giris: 'olcek', materyal: 'plastik', x: 540 }), 540, 620, { golge: false });
-    o += MO.sar(R(-250, -62, 500, 124, 62, '#1F9E5B') + `<circle cx="-170" cy="0" r="38" fill="#FFFFFF"/><path d="M-188 2 L-176 14 L-152 -14" stroke="#1F9E5B" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>` + txt('DOĞRU', 40, 22, 62, '#FFFFFF'), MO.oge(t, { gir: 6.5, cik: 7.7, agirlik: 'hafif', giris: 'damga', materyal: 'lastik', x: 540 }), 540, 620, { golge: false });
-    // kuş bakışı: ambulans trafikte
+    o += MO.sar(R(-250, -62, 500, 124, 62, '#1F9E5B') + `<circle cx="-170" cy="0" r="38" fill="#FFFFFF"/><path d="M-188 2 L-176 14 L-152 -14" stroke="#1F9E5B" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>` + txt('DOĞRU', 40, 22, 62, '#FFFFFF'), MO.oge(t, { gir: 6.5, cik: 7.7, agirlik: 'hafif', giris: 'yuksel', materyal: 'lastik', x: 540 }), 540, 620, { golge: false });
     const ka = fd(t, 6.9, 7.4) * (1 - fd(t, 9.8, 10.2));
     if (ka > .01) {
       o += `<g opacity="${ka.toFixed(2)}">` + kusTrafik(t, 7.2) + `</g>`;
       o += `<g opacity="${ka.toFixed(2)}">` + MO.sar(saat(0, 0, 100, (t - 7.4) * .7), MO.oge(t, { gir: 7.5, cik: 9.8, agirlik: 'agir', giris: 'olcek', materyal: 'plastik', x: 540 }), 880, 560, { golge: false }) + '</g>';
       o += MO.sar(zamanChip('O DAKİKALAR', 0, 0, '#E8323C', '#FFFFFF', 40), MO.oge(t, { gir: 7.8, cik: 9.8, agirlik: 'hafif', giris: 'yuksel', x: 540 }), 400, 560, { golge: false });
     }
+    // oyuncular: Gufi yığılan kişi, Gubi yanındaki "sen". Havadan görüntüde köşede izler.
+    const gA = 1 - ka;
+    if (gA > .01) {
+      const gx = 780, gy = 1180;
+      if (t < 3.1) o += `<g opacity="${gA.toFixed(2)}">` + gufi(t, { x: gx, y: gy, boy: 300, duygu: t < .98 ? 'merak' : 'uyu', bakHedef: [340, 980] }) + '</g>';
+      else o += `<g opacity="${gA.toFixed(2)}"><g transform="rotate(-90 ${gx} ${gy - 150})">` + gufi(t, { x: gx, y: gy, boy: 300, duygu: 'uyu', tepkiler: [], canlilik: false }) + '</g></g>';
+      o += `<g opacity="${gA.toFixed(2)}">` + gubi(t, { x: 340, y: 960, boy: 250, duygu: t > 10.1 ? 'korku' : (t > .9 ? 'saskin' : 'merak'), bakHedef: t < .9 ? [840, 1060] : [840, 1160], isaretHedef: [540, 620] }) + '</g>';
+    }
+    if (ka > .01) o += `<g opacity="${ka.toFixed(2)}">` + gubi(t, { x: 180, y: 1530, boy: 190, duygu: 'saskin', bakHedef: [540, 1000] }) + '</g>';
     return o;
   },
-  onCiz: t => ET(t, 10.5, 99, 'NE YAPACAKSIN?', '#FFD23F', '#1B2440', 76, 520, -2) + gubi(t, { x: 880, y: 1640, boy: 120, duygu: t > 3 ? 'saskin' : 'merak', bakHedef: [700, 1100] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: t > 1 ? 'saskin' : 'merak', bakHedef: [700, 1100] })
+  onCiz: t => ET(t, 10.5, 99, 'NE YAPACAKSIN?', '#FFD23F', '#1B2440', 76, 520, -2)
 });"""
 
 # 02 — İLK 10 SANİYE (11,6–20,2): etrafa bak (2,5) · omzundan sars + seslen (4,8–7,6) · "İyi misin?" (7,9)
@@ -67,7 +68,7 @@ MO.sahne({
     o += AD(t, 3.1, 99, 2, 'OMZUNDAN SARS · SESLEN');
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: 'merak', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: t > 3.5 ? 'saskin' : 'merak', bakHedef: [540, 800] })
+  onCiz: t => MAS(t, { gd: 'merak', gf: 'merak', b: [['gubi', 1.0, 2.7, '10 saniye var!'], ['gufi', 5.1, 7.0, 'Sesin çıksın!']] })
 });"""
 
 # 03 — CEVAP VERİYORSA (20,2–26,2): gözünü açar (0,3) · kendine gelmiştir · sırtüstü yatır (3,7) · bacakları kaldır (4,8)
@@ -87,7 +88,7 @@ MO.sahne({
     o += BN(t, 3.7, 99, 'v', 'SIRTÜSTÜ YATIR · BACAKLARI KALDIR', 38, 1215);
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: 'mutlu', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: t > 3.6 ? 'mutlu' : 'merak', bakHedef: [540, 800] })
+  onCiz: t => MAS(t, { gd: 'mutlu', gf: 'mutlu', b: [['gufi', 1.3, 3.0, 'Uyandı, oh!'], ['gubi', 3.8, 5.6, 'Bacaklar yukarı!']] })
 });"""
 
 # 04 — AĞZINA BİR ŞEY VERME ✕ (0,1–2,6) · göğüs ağrısı (1,8) · toparlanamıyor (2,9) · yine de 112 (4,5)
@@ -114,7 +115,7 @@ MO.sahne({
     o += BN(t, 4.3, 99, 'v', 'YİNE DE 112', 56, 1215);
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: t > 1.8 ? 'saskin' : 'merak', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: 'merak', bakHedef: [540, 800] })
+  onCiz: t => MAS(t, { gd: 'saskin', gf: 'merak', b: [['gubi', .4, 2.0, 'Su da verme!'], ['gufi', 2.2, 4.4, 'Göğüs ağrısı ciddi!']] })
 });"""
 
 # 05 — CEVAP YOK → 112 + HOPARLÖR (31,5–37,5): cevap yok (0,1) · 112 çevrilir (1,0) · hoparlör (2,5) · sağlık görevlisi (3,5)
@@ -139,7 +140,7 @@ MO.sahne({
     o += BN(t, 1.0, 99, 'v', '112 · HOPARLÖRE AL', 54, 1215);
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: 'merak', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: t > 1.5 ? 'merak' : 'saskin', bakHedef: [540, 800] })
+  onCiz: t => MAS(t, { gd: 'merak', gf: 'merak', ih: [540, 640], b: [['gubi', 1.1, 2.6, 'Ara, ara!'], ['gufi', 3.9, 5.8, 'Dinle, söyler']] })
 });"""
 
 # 06 — NEFES KONTROLÜ (37,5–44,0): göğsüne bak (0,4) · 10 sn (2,5) · nabız aramaya kalkma ✕ (4,0)
@@ -163,7 +164,7 @@ MO.sahne({
     o += BN(t, 4.0, 99, 'x', 'NABIZ ARAMA · VAKİT KAYBI', 50, 1215);
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: t > 4 ? 'saskin' : 'merak', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: 'merak', bakHedef: [540, 800] })
+  onCiz: t => MAS(t, { gd: 'merak', gf: 'merak', b: [['gubi', .7, 2.3, 'Göğsünü izle!'], ['gufi', 4.2, 6.2, 'Nabızla uğraşma!']] })
 });"""
 
 # 07 — NEFES VAR → YAN YATIŞ (44,0–50,4): düzgün nefes (0,1) · kaza geçirmediyse (3,0) · yan çevir (4,1) · ağzı aşağı (5,2)
@@ -184,7 +185,7 @@ MO.sahne({
     o += BN(t, 4.2, 99, 'v', 'YAN ÇEVİR · AĞZI AŞAĞI', 54, 1215);
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: 'mutlu', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: t > 3 ? 'merak' : 'mutlu', bakHedef: [540, 800] })
+  onCiz: t => MAS(t, { gd: 'mutlu', gf: 'mutlu', b: [['gufi', .9, 2.6, 'Nefes var, tamam!'], ['gubi', 4.5, 6.2, 'Yan yatır!']] })
 });"""
 
 # 08 — KUSARSA / KÖPÜRÜRSE (50,4–53,9): sıvı dışarı akar · nefesini izle (2,5)
@@ -207,7 +208,7 @@ MO.sahne({
     o += BN(t, 2.5, 99, 'v', 'NEFESİNİ İZLE', 54, 1215);
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: 'merak', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: 'merak', bakHedef: [540, 800] })
+  onCiz: t => MAS(t, { gd: 'saskin', gf: 'merak', b: [['gubi', .5, 2.2, 'Boğulmasın!'], ['gufi', 2.5, 3.5, 'İzle!']] })
 });"""
 
 # 09 — KALBİ DURMUŞ SAY (53,9–59,4): nefes yok (0,3) · hırıltılı (1,7) · çok yavaş (2,5) · düzensiz (3,3) · kalbi durmuş say (4,0)
@@ -228,7 +229,7 @@ MO.sahne({
     o += ET(t, 4.0, 99, 'KALBİ DURMUŞ SAY', '#E8323C', '#FFFFFF', 74, 1215, -2);
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: t > 4 ? 'saskin' : 'merak', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: 'saskin', bakHedef: [540, 800] })
+  onCiz: t => MAS(t, { gd: 'korku', gf: 'korku', b: [['gubi', 2.5, 4.0, 'Dikkat!'], ['gufi', 4.2, 5.4, 'Kalp durdu!']] })
 });"""
 
 # 10 — KALP MASAJI POZİSYONU (59,4–65,4): göğüs ortası, iki el üst üste (0,2–2,7) · kollar dümdüz (2,9) · 5 santim sert bas (4,0–5,6)
@@ -258,7 +259,7 @@ MO.sahne({
     o += AD(t, 2.9, 99, 2, 'KOLLAR DÜMDÜZ · 5 CM BAS', 1215, '#FFD23F');
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: 'saskin', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: 'merak', bakHedef: [540, 800] })
+  onCiz: t => MAS(t, { gd: 'merak', gf: 'kararli', ih: [540, 700], b: [['gubi', 1.3, 3.0, 'Tam ortaya!'], ['gufi', 3.7, 5.6, 'Kollar düz!']] })
 });"""
 
 # 11 — BAS–BIRAK (65,4–74,5): tam yüksel (0,3–2,7) · bas,bırak yavaş (3,24–5,2) · 2 Hz (5,9→) · ambulans gelene kadar durma (7,3 · 8,4)
@@ -297,7 +298,7 @@ MO.sahne({
     o += ET(t, 8.38, 99, 'DURMA', '#E8323C', '#FFFFFF', 86, 1215, -3);
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: 'saskin', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: t > 6 ? 'saskin' : 'merak', bakHedef: [540, 800] })
+  onCiz: t => MAS(t, { gd: 'kararli', gf: 'kararli', b: [['gufi', 3.4, 5.4, 'Bas! Bırak!'], ['gubi', 7.5, 9.1, 'Durma, durma!']] })
 });"""
 
 # 12 — BOĞAZINI TUTUYORSA (74,5–78,5): yemek yerken (0,1) · öksürebiliyorsa karışma (2,4)
@@ -322,7 +323,7 @@ MO.sahne({
     o += ET(t, 2.45, 99, 'ÖKSÜREBİLİYORSA KARIŞMA', '#FFD23F', '#1B2440', 48, 1215, -1);
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: 'saskin', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: t > 2.4 ? 'merak' : 'saskin', bakHedef: [540, 800] })
+  onCiz: t => MAS(t, { gd: 'korku', gf: 'merak', b: [['gubi', .6, 2.3, 'Lokma takıldı!'], ['gufi', 2.7, 4.0, 'Öksürsün!']] })
 });"""
 
 # 13 — SIRTA 5 VURUŞ (78,5–85,1): konuşamıyor (0,06) · arkasına geç (1,9) · öne eğ (3,3) · kürek kemikleri (4,0) · 5 vuruş (5,14–6,35)
@@ -356,7 +357,7 @@ MO.sahne({
     o += AD(t, 5.0, 99, 3, 'KÜREK KEMİKLERİ ARASI · 5 VURUŞ', 1215, '#FFD23F');
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: 'saskin', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: 'saskin', bakHedef: [540, 800] })
+  onCiz: t => MAS(t, { gd: 'kararli', gf: 'kararli', ih: [540, 760], b: [['gubi', 4.1, 5.2, 'Kürek kemiği!'], ['gufi', 5.4, 6.6, '5 sert vuruş!']] })
 });"""
 
 # 14 — HEIMLICH (85,1–92,2): arkadan sarıl (0,14) · yumruk göbek üstü (1,84) · beş kere içe ve yukarı (3,7–5,2) · HEIMLICH (5,74)
@@ -390,7 +391,7 @@ MO.sahne({
     o += ET(t, 5.74, 99, 'HEIMLICH', '#E8323C', '#FFFFFF', 96, 1215, -3);
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: t > 5.7 ? 'mutlu' : 'saskin', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: 'saskin', bakHedef: [540, 800] })
+  onCiz: t => MAS(t, { gd: 'kararli', gf: 'kararli', b: [['gubi', 3.8, 5.5, 'İçe ve yukarı!'], ['gufi', 5.9, 7.1, 'Heimlich!']] })
 });"""
 
 # 15 — BİLİNCİ KAPANIRSA (92,2–95,4): yığılır (0,3–1,0) · yatır (1,3) · kalp masajına geç (1,94)
@@ -410,7 +411,7 @@ MO.sahne({
     o += AD(t, 1.95, 99, 2, 'KALP MASAJINA GEÇ', 1215, '#FF6B81');
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: 'saskin', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: 'merak', bakHedef: [540, 800] })
+  onCiz: t => MAS(t, { gd: 'korku', gf: 'kararli', b: [['gubi', .6, 1.9, 'Bilinci kapandı!'], ['gufi', 2.2, 3.2, 'Hemen masaj!']] })
 });"""
 
 # 16 — STORY'NE AT (95,4–99,8): 4 adımlık özet kart · bilen kişi sen ol (3,0)
@@ -428,7 +429,7 @@ MO.sahne({
     o += ET(t, 3.0, 99, 'BİLEN KİŞİ SEN OL', '#FFD23F', '#1B2440', 54, 1180, -2);
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: 'mutlu', bakHedef: 'kamera' }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: 'mutlu', bakHedef: 'kamera' })
+  onCiz: t => gubi(t, { x: 880, y: 1650, boy: 150, duygu: 'mutlu', bakHedef: 'kamera' }) + gufi(t, { x: 200, y: 1840, boy: 210, duygu: 'mutlu', bakHedef: 'kamera' }) + bm(t, .9, 2.5, 360, 1492, 'Kaydet!', { yon: -1 }) + bm(t, 3.3, 4.4, 720, 1492, 'Sen de bil!', { yon: 1 })
 });"""
 
 # 17 — TAKİP (99,8–103,0)

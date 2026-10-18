@@ -4,7 +4,7 @@
 <svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
   <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
 </svg>
-<script>window.SB = 74.5; const TP = {"gubi": [[1.0, "gozle"]], "gufi": []}; window.GECIS = {"gir": {"tur": "kayma"}, "cik": {"tur": "odak"}}; window.KLIP_N = {};</script>
+<script>window.SB = 74.5; const TP = {"gubi": [[0.5, "korku"]], "gufi": [[2.6, "dur"]]}; window.GECIS = {"gir": {"tur": "kayma"}, "cik": {"tur": "odak"}}; window.KLIP_N = {};</script>
 <script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script><script src="../ortak/au.js"></script><script src="../ortak/kp.js"></script><script src="../ortak/al.js"></script><script src="../ortak/sl.js"></script><script src="../ortak/se.js"></script>
 <script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
 <script src="../ortak/vendor/flubber.min.js"></script><script src="../ortak/vendor/culori.js"></script><script src="../ortak/motion2.js"></script><script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
@@ -399,6 +399,13 @@ const gogusUst = (t, elP) => {
   o += elP;
   return o; };
 
+// ===== Gubi & Gufi: olayın içinde. bm = konuşma balonu, MAS = köşedeki oyuncular + balonlar =====
+const bm = (t, a, b, x, y, metin, { yon = -1, fs = 38 } = {}) => { const k = fd(t, a, a + .22) * (1 - fd(t, b - .2, b)); if (k <= .01) return ''; const w = K.yaziGen(metin, fs) + 80, sc = .8 + .2 * ob(fd(t, a, a + .3));
+  return `<g opacity="${k.toFixed(2)}" transform="translate(${x} ${y}) scale(${sc.toFixed(3)})">` + M.balon(0, 0, txt(metin, 0, fs * .34, fs, '#1B2440'), { w, h: fs * 2.3, yon }) + '</g>'; };
+const MAS = (t, o = {}) => gubi(t, { x: 880, y: 1650, boy: 150, duygu: o.gd || 'merak', bakHedef: o.bh || [540, 800], isaretHedef: o.ih || null })
+  + gufi(t, { x: 200, y: 1840, boy: 210, duygu: o.gf || 'merak', bakHedef: o.bh || [540, 800], isaretHedef: o.ih || null })
+  + (o.b || []).map(([k, a, b, m]) => bm(t, a, b, k === 'gubi' ? 720 : 360, 1492, m, { yon: k === 'gubi' ? 1 : -1 })).join('');
+
 MO.sahne({
   zemin: MO.zemin({ ust: '#2A2214', alt: '#0B0905', isik: [540, 800, '#FFD23F', .18], ikinci: [200, 1500, '#E8323C', .08] }),
   kamera: [[0, 1.0, 540, 960], [.1, 1.05, 540, 960, 4.0, 'kamera']],
@@ -419,7 +426,7 @@ MO.sahne({
     o += ET(t, 2.45, 99, 'ÖKSÜREBİLİYORSA KARIŞMA', '#FFD23F', '#1B2440', 48, 1215, -1);
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: 'saskin', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: t > 2.4 ? 'merak' : 'saskin', bakHedef: [540, 800] })
+  onCiz: t => MAS(t, { gd: 'korku', gf: 'merak', b: [['gubi', .6, 2.3, 'Lokma takıldı!'], ['gufi', 2.7, 4.0, 'Öksürsün!']] })
 });
 </script>
 <script src="../ortak/kanal.js"></script>
