@@ -84,7 +84,7 @@ MO.sahne({
   zemin: MO.zemin({ ust: '#2A1424', alt: '#0A0710', isik: [540, 760, '#FF6B81', .30], ikinci: [900, 300, '#E8323C', .14] }),
   kamera: [[0, 1.0, 540, 960]], gren: .04,
   ciz: t => {
-    let o = `<g transform="translate(540 430) rotate(-3)">` + R(-460 + 10, -80 + 14, 920, 160, 30, '#000', .4) + R(-460, -80, 920, 160, 30, '#E8323C') + `<rect x="-440" y="-64" width="880" height="128" rx="20" fill="none" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="5"/>` + txt('YANINDA BİRİ YIĞILDI', 0, 22, 62, '#FFFFFF') + `</g>`;
+    let o = `<g transform="translate(540 430) rotate(-3)">` + R(-460 + 10, -80 + 14, 920, 160, 30, '#000', .4) + R(-460, -80, 920, 160, 30, '#E8323C') + `<rect x="-440" y="-64" width="880" height="128" rx="20" fill="none" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="5"/>` + txt('EYVAH! ACİL DURUM!', 0, 22, 62, '#FFFFFF') + `</g>`;
     o += gTxt('NE', 540, 690, 150, '#FFF3E0') + gTxt('YAPACAKSIN?', 540, 830, 140, '#FFD23F');
     o += R(-100, 1160, 1280, 400, 0, '#1A2238') + R(-100, 1160, 1280, 6, 0, '#2E3A5C');
     o += dur(300, 1160, 1.15, { renk: '#3E8EDE', goz: 'genis', agiz: 'acik', ifade: 'korku' }) + yatan(840 - 168 * 1.15, 1160, 1.15, { renk: '#E8774A' });
