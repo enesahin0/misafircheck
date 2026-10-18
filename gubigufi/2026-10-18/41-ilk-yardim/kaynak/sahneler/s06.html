@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
+</svg>
+<script>window.SB = 37.5; const TP = {"gubi": [[3.8, "sasir"]], "gufi": []}; window.GECIS = {"gir": {"tur": "kayma", "yon": -1}, "cik": {"tur": "odak"}}; window.KLIP_N = {};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script><script src="../ortak/au.js"></script><script src="../ortak/kp.js"></script><script src="../ortak/al.js"></script><script src="../ortak/sl.js"></script><script src="../ortak/se.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script src="../ortak/vendor/flubber.min.js"></script><script src="../ortak/vendor/culori.js"></script><script src="../ortak/motion2.js"></script><script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = q => q < .5 ? 4 * q * q * q : 1 - Math.pow(-2 * q + 2, 3) / 2;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = K.yaziGen(s, fs, { mono: true, ls: 3 }) + fs * 1.7; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+const R = PR.R, h = HK.hash, C = AU.C;
+const kam = (s, { x = 540, y = 900, k = 1, dx = 0, dy = 0 } = {}) => `<g transform="translate(${dx} ${dy}) translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const bam = (t, a, d = .35) => { const q = A(t, a, a + d); return q > 0 && q < 1 ? `<rect width="1080" height="1920" fill="#FFFFFF" opacity="${.35 * (1 - q)}"/>` : ''; };
+const zeminK = (u = '#1A2340', a = '#0B1022') => AU.zemin(u, a);
+const foto = (ad, x, y, w, hh, { k = 1, ox = 0, oy = 0, r = 28, op = 1, gri = 0 } = {}) => { const id = `f_${ad}_${Math.round(x)}_${Math.round(y)}`;
+  return `<g opacity="${op}"><defs><clipPath id="${id}"><rect x="${x}" y="${y}" width="${w}" height="${hh}" rx="${r}"/></clipPath></defs>` + R(x + 10, y + 14, w, hh, r, '#000', .3) +
+    `<g clip-path="url(#${id})"><g transform="translate(${x + w / 2 + ox} ${y + hh / 2 + oy}) scale(${k}) translate(${-(x + w / 2)} ${-(y + hh / 2)})"><image href="../ortak/img/${ad}.jpg" x="${x}" y="${y}" width="${w}" height="${hh}" preserveAspectRatio="xMidYMid slice" ${gri ? `style="filter:grayscale(${gri})"` : ''}/></g></g></g>`; };
+const kredi = (s, x, y) => { const w = K.yaziGen(s, 17, { mono: true, ls: 1 }) + 24; return R(x, y - 20, w, 30, 15, '#0B1433', .7) + `<text class="mono" x="${x + 12}" y="${y}" font-size="17" letter-spacing="1" style="fill:#FFF3D6;opacity:.85">${s}</text>`; };
+const trB = (x, y, w) => { const hh = w * 2 / 3, r = hh / 4; return `<g transform="translate(${x} ${y})">` + R(-w / 2, -hh / 2, w, hh, 6, '#E30A17') + `<circle cx="${-w * .14}" cy="0" r="${r}" fill="#FFFFFF"/><circle cx="${-w * .1}" cy="0" r="${r * .8}" fill="#E30A17"/>` + yildiz(w * .1, 0, r * .55, 5, '#FFFFFF') + '</g>'; };
+const azB = (x, y, w) => { const hh = w / 2, s = hh / 3; return `<g transform="translate(${x} ${y})">` + R(-w / 2, -hh / 2, w, s, 0, '#00B5E2') + R(-w / 2, -hh / 2 + s, w, s, 0, '#EF3340') + R(-w / 2, -hh / 2 + 2 * s, w, s, 0, '#509E2F') + `<circle cx="${-w * .03}" cy="0" r="${s * .38}" fill="#FFFFFF"/><circle cx="${w * .0}" cy="0" r="${s * .31}" fill="#EF3340"/>` + yildiz(w * .07, 0, s * .2, 8, '#FFFFFF') + '</g>'; };
+function yildiz(x, y, r, n, renk) { let d = ''; for (let i = 0; i < n * 2; i++) { const a = -Math.PI / 2 + i * Math.PI / n, rr = i % 2 ? r * (n === 8 ? .55 : .42) : r; d += (i ? 'L' : 'M') + (x + rr * Math.cos(a)).toFixed(1) + ' ' + (y + rr * Math.sin(a)).toFixed(1); } return `<path d="${d}Z" fill="${renk}"/>`; }
+const etiket = (s, x, y, renk = '#FFFFFF', yazi = '#E8323C', fs = 44, rot = -3, p = 1) => p <= 0 ? '' : grp(R(-(K.yaziGen(s, fs) + 70) / 2 + 8, -fs * .95 + 10, K.yaziGen(s, fs) + 70, fs * 1.9, 22, '#000', .35) + R(-(K.yaziGen(s, fs) + 70) / 2, -fs * .95, K.yaziGen(s, fs) + 70, fs * 1.9, 22, renk) + txt(s, 0, fs * .35, fs, yazi), x, y, p, rot);
+const takipCip = (t, a, b) => { const p = pop(t, a) * (1 - A(t, b - .3, b)); return p > 0 ? grp(R(-250, -34, 500, 68, 34, '#0B1433', .85) + `<circle cx="-212" cy="0" r="20" fill="#E8323C"/><path d="M-221 0 h18 M-212 -9 v18" stroke="#FFF" stroke-width="5"/>` + `<text class="mono" x="20" y="9" font-size="24" text-anchor="middle" letter-spacing="2" style="fill:#FFF3D6">TAKİP ET · HER GÜN 1 MERAK</text>`, 540, 400, p) : ''; };
+
+// ---- #36b çizim yardımcıları (fotoğraf yerine)
+const dalgaBayrak = (x, y, w, h, t, ic, faz = 0) => { const id = `db${Math.round(x)}_${Math.round(y)}`; let d = `M${x} ${y}`; const n = 12;
+  for (let i = 0; i <= n; i++) { const q = i / n; d += ` L${x + w * q} ${y + Math.sin(q * 5 + t * 3 + faz) * h * .05 * q}`; }
+  for (let i = n; i >= 0; i--) { const q = i / n; d += ` L${x + w * q} ${y + h + Math.sin(q * 5 + t * 3 + faz + .4) * h * .05 * q}`; }
+  let gl = ''; for (let i = 0; i < 4; i++) gl += `<rect x="${x + w * (.15 + i * .22)}" y="${y - h * .1}" width="${w * .08}" height="${h * 1.2}" fill="#000" opacity="${.08 + .05 * Math.sin(t * 3 + i)}"/>`;
+  return `<defs><clipPath id="${id}"><path d="${d}Z"/></clipPath></defs><g clip-path="url(#${id})">${ic}${gl}</g>`; };
+const alevKule = (x, y, s, renk) => `<path transform="translate(${x} ${y}) scale(${s})" d="M-40 0 L40 0 L36 -180 Q30 -300 0 -340 Q-34 -300 -38 -180Z" fill="${renk}"/>` + `<g transform="translate(${x} ${y}) scale(${s})" opacity=".35">${[0, 1, 2, 3, 4, 5, 6].map(i => `<path d="M-36 ${-30 - i * 42} L36 ${-30 - i * 42}" stroke="#FFB347" stroke-width="3"/>`).join('')}</g>`;
+function bakuBalkon(t) {
+  let o = `<defs><linearGradient id="gk1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F5A65B"/><stop offset=".55" stop-color="#F7C98B"/><stop offset="1" stop-color="#9CC0E0"/></linearGradient></defs><rect x="0" y="300" width="1080" height="1000" fill="url(#gk1)"/>`;
+  o += alevKule(200, 760, 1.0, '#6A4A6A') + alevKule(300, 760, .82, '#7A5A78') + alevKule(390, 760, .66, '#8A6A86');
+  for (let i = 0; i < 9; i++) o += R(i * 130 - 20, 640 + (i % 3) * 30, 120, 200, 4, '#C8A890', .55);
+  // eski Bakü binası: taş cephe + ahşap pencere + balkon
+  o += R(470, 380, 560, 900, 0, '#E8D2B0') + R(470, 380, 560, 30, 0, '#5A6A7A');
+  for (let r = 0; r < 9; r++) o += `<path d="M470 ${440 + r * 90} H1030" stroke="#D4BC98" stroke-width="3"/>`;
+  o += R(600, 470, 300, 330, 10, '#7A4A2A') + R(616, 486, 130, 140, 6, '#5A7AA8') + R(754, 486, 130, 140, 6, '#5A7AA8') + R(616, 636, 130, 150, 6, '#5A7AA8') + R(754, 636, 130, 150, 6, '#5A7AA8');
+  o += R(616, 486, 130, 40, 0, '#FFFFFF', .15) + R(754, 486, 130, 40, 0, '#FFFFFF', .15);
+  o += R(540, 820, 430, 26, 6, '#4A3A30') + R(540, 1000, 430, 40, 4, '#5A4A3A') + R(530, 1040, 450, 30, 4, '#3A2E26');
+  for (let i = 0; i < 10; i++) o += R(556 + i * 44, 846, 8, 154, 3, '#3A2E26');
+  // balkondan sarkan iki bayrak (yan yana)
+  o += dalgaBayrak(560, 846, 200, 135, t, trB(660, 913, 200), 0) + dalgaBayrak(770, 846, 200, 135, t, azB(870, 913, 200).replace('translate(870 913)', 'translate(870 913) scale(1 1.35)'), 1.3);
+  o += `<path d="M0 1080 L470 1080 L470 1300 L0 1300Z" fill="#B89878"/>`;
+  return o;
+}
+function tb2(x, y, s = 1) {  // Bayraktar TB2 yandan: ince gövde, ters V kuyruk, arkada pervane, burun altı kamera topu, üç teker
+  return `<g transform="translate(${x} ${y}) scale(${s})">` +
+    `<path d="M-330 -40 Q-350 -60 -310 -70 L180 -78 Q230 -78 250 -70 L300 -64 L300 -54 L240 -48 L-300 -36Z" fill="#E8ECF0"/>` +
+    `<path d="M-300 -40 L240 -50 L240 -44 L-300 -36Z" fill="#B8C0CC"/>` +
+    `<path d="M150 -76 L250 -150 L275 -150 L210 -74Z" fill="#D8DEE6"/><path d="M180 -60 L250 -6 L268 -6 L215 -58Z" fill="#C8D0DA"/>` +
+    `<rect x="236" y="-140" width="22" height="16" fill="#E30A17"/><circle cx="244" cy="-132" r="5" fill="#FFFFFF"/>` +
+    `<path d="M-60 -74 L120 -74 L130 -68 L-70 -66Z" fill="#9AA4B2"/>` +
+    `<ellipse cx="305" cy="-59" rx="6" ry="40" fill="#5A6070" opacity=".75"/>` +
+    `<circle cx="-270" cy="-28" r="16" fill="#3A3F50"/><circle cx="-274" cy="-30" r="6" fill="#6A7AA0"/>` +
+    `<path d="M-240 -38 L-240 0 M60 -48 L50 0 M90 -48 L100 0" stroke="#4A4F60" stroke-width="7"/>` +
+    `<circle cx="-240" cy="4" r="12" fill="#1A1A22"/><circle cx="50" cy="4" r="14" fill="#1A1A22"/><circle cx="100" cy="4" r="14" fill="#1A1A22"/>` +
+    `<text x="-120" y="-50" font-size="18" font-weight="900" style="fill:#5A6478">BAYRAKTAR</text></g>`;
+}
+function pist(t) {
+  let o = `<defs><linearGradient id="gk5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FB8E0"/><stop offset="1" stop-color="#DCE8F2"/></linearGradient></defs><rect x="0" y="480" width="1080" height="480" fill="url(#gk5)"/>`;
+  for (let i = 0; i < 12; i++) o += `<ellipse cx="${i * 100 - 20}" cy="${775 - (i % 3) * 8}" rx="70" ry="${30 + (i % 4) * 8}" fill="#5A7A4A" opacity=".8"/>`;
+  o += R(0, 790, 1080, 200, 0, '#8A929C') + R(0, 790, 1080, 6, 0, '#C8CED6');
+  for (let i = 0; i < 8; i++) o += R(i * 160 - ((t * 0) % 160), 860, 90, 10, 3, '#FFFFFF', .85);
+  o += `<ellipse cx="520" cy="852" rx="330" ry="14" fill="#000" opacity=".22"/>` + tb2(520, 845, 1.0);
+  return o;
+}
+function tokalasma(t) {  // bayraklar önünde iki lider (Aliyev solda, Erdoğan sağda) + el sıkışma
+  let o = `<rect x="0" y="440" width="1080" height="700" fill="#2A3A5A"/>` + R(0, 440, 1080, 380, 0, '#3A4E72');
+  o += R(160, 470, 10, 420, 4, '#C8B080') + dalgaBayrak(170, 480, 220, 150, t, azB(280, 555, 220).replace('translate(280 555)', 'translate(280 555) scale(1 1.36)'), 0);
+  o += R(910, 470, 10, 420, 4, '#C8B080') + `<g transform="translate(1830 0) scale(-1 1)">` + dalgaBayrak(920, 480, 220, 150, t, `<g transform="translate(2060 0) scale(-1 1)">${trB(1030, 555, 225)}</g>`, 1) + '</g>';
+  o += R(0, 1000, 1080, 140, 0, '#1E2A40');
+  o += KS.kisi({ x: 370, y: 1080, boy: 470, ten: 'acik', sac: { tip: 'geriTarali', renk: '#4A4642' }, biyik: { renk: '#3E3A36', tip: 'kalin' }, kiyafet: { renk: '#1E2230', yaka: 'ceket', gomlek: '#FFFFFF' }, kravat: '#23395B', yas: 1, ifade: 'gulumse', bak: [.4, 0] });
+  o += KS.kisi({ x: 720, y: 1080, boy: 500, ten: 'acik', sac: { tip: 'kisaYan', renk: '#C8C4BC' }, biyik: { renk: '#B0ABA2', tip: 'kalin' }, kiyafet: { renk: '#2A2E3A', yaka: 'ceket', gomlek: '#FFFFFF' }, kravat: '#4A2A3A', yas: 2, ifade: 'gulumse', bak: [-.4, 0] });
+  // el sıkışma (ön planda): iki ceket kolu + beyaz manşet + kenetlenmiş eller
+  const sal = Math.sin(t * 6) * 4;
+  o += `<g transform="translate(0 ${sal})"><path d="M330 1060 Q420 1000 500 990 L510 1030 Q430 1040 360 1090Z" fill="#1E2230"/><path d="M760 1060 Q660 1000 580 990 L570 1030 Q650 1040 730 1090Z" fill="#2A2E3A"/>` +
+    `<rect x="490" y="984" width="22" height="50" rx="6" fill="#FFFFFF" transform="rotate(-12 500 1008)"/><rect x="568" y="984" width="22" height="50" rx="6" fill="#FFFFFF" transform="rotate(12 580 1008)"/>` +
+    `<path d="M505 990 Q540 970 575 990 Q585 1012 570 1030 Q540 1044 510 1030 Q496 1012 505 990Z" fill="#F2C9A6"/><path d="M520 996 Q545 990 565 1000 M518 1010 Q545 1004 568 1014 M520 1024 Q544 1020 562 1026" stroke="#D9A580" stroke-width="4" fill="none" stroke-linecap="round"/></g>`;
+  return o;
+}
+
+// ---- #37 yardımcıları
+const ev = (x, y, s = 1, renk = '#F4E8D8') => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-150 0 L-150 -170 L0 -290 L150 -170 L150 0Z" fill="${renk}"/><path d="M-185 -150 L0 -310 L185 -150 L160 -128 L0 -265 L-160 -128Z" fill="#B8463A"/><rect x="-40" y="-110" width="80" height="110" rx="8" fill="#7A4A2A"/><rect x="-120" y="-150" width="60" height="55" rx="6" fill="#7FB0E0"/><rect x="60" y="-150" width="60" height="55" rx="6" fill="#7FB0E0"/><rect x="85" y="-270" width="30" height="60" fill="#8A5A4A"/></g>`;
+const daskKalkan = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M0 -110 L90 -76 Q90 40 0 110 Q-90 40 -90 -76Z" fill="#2E78C8"/><path d="M0 -110 L90 -76 Q90 40 0 110Z" fill="#000" opacity=".15"/><path d="M0 -92 L74 -64 Q74 32 0 92 Q-74 32 -74 -64Z" fill="none" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="5"/><text x="0" y="16" font-size="46" font-weight="900" text-anchor="middle" style="fill:#FFFFFF">DASK</text></g>`;
+const isaretV = (x, y, s = 1, renk = '#2FBF71') => `<g transform="translate(${x} ${y}) scale(${s})"><circle r="30" fill="${renk}"/><path d="M-14 0 L-4 11 L15 -11" stroke="#FFF" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+const isaretX = (x, y, s = 1, renk = '#E8323C') => `<g transform="translate(${x} ${y}) scale(${s})"><circle r="30" fill="${renk}"/><path d="M-11 -11 L11 11 M11 -11 L-11 11" stroke="#FFF" stroke-width="7" stroke-linecap="round"/></g>`;
+const police = (x, y, w, baslik, satirlar, renk = '#2E78C8', vurgu = -1, vk = 0) => { const hh = 130 + satirlar.length * 92; let o = R(x - w / 2 + 10, y - hh / 2 + 14, w, hh, 28, '#000', .3) + R(x - w / 2, y - hh / 2, w, hh, 28, '#FFF8EE') + R(x - w / 2, y - hh / 2, w, 96, 28, renk) + R(x - w / 2, y - hh / 2 + 60, w, 36, 0, renk);
+  o += txt(baslik, x, y - hh / 2 + 64, 40, '#FFFFFF');
+  satirlar.forEach(([ad, d], i) => { const yy = y - hh / 2 + 160 + i * 92; if (i === vurgu && vk > 0) o += R(x - w / 2 + 18, yy - 46, (w - 36) * vk, 80, 16, '#FFD23F', .55);
+    o += `<text x="${x - w / 2 + 50}" y="${yy + 12}" font-size="36" font-weight="800" style="fill:#1B2440">${ad}</text>` + (d === 1 ? isaretV(x + w / 2 - 60, yy, .9) : d === 0 ? isaretX(x + w / 2 - 60, yy, .9) : d === 2 ? `<g transform="translate(${x + w / 2 - 60} ${yy})"><circle r="27" fill="#C8D0DC"/><text y="13" font-size="38" font-weight="900" text-anchor="middle" style="fill:#5A6478">?</text></g>` : ''); });
+  return o; };
+const suY = (y, t, op = .9) => R(0, y, 1080, 1920 - y, 0, SE.SU, op) + SE.dalga(y, t);
+const belediye = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-230" y="-20" width="460" height="30" fill="#C8C0B0"/><rect x="-250" y="10" width="500" height="26" fill="#B8B0A0"/><rect x="-200" y="-230" width="400" height="210" fill="#E8E0D0"/>` + [-150, -50, 50, 150].map(c => `<rect x="${c - 18}" y="-220" width="36" height="200" fill="#F8F2E6"/>`).join('') + `<path d="M-230 -230 L0 -330 L230 -230Z" fill="#D8D0C0"/><text x="0" y="-252" font-size="30" font-weight="900" text-anchor="middle" style="fill:#5A5048">BELEDİYE</text><rect x="-3" y="-420" width="6" height="90" fill="#8A8070"/><path d="M3 -420 L70 -404 L3 -388Z" fill="#E30A17"/></g>`;
+const terazi = (x, y, s = 1, eg = 0) => `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-6" y="-90" width="12" height="150" fill="#C8963A"/><rect x="-50" y="56" width="100" height="16" rx="6" fill="#C8963A"/><g transform="rotate(${eg} 0 -84)"><rect x="-110" y="-90" width="220" height="10" rx="5" fill="#C8963A"/><path d="M-100 -80 L-130 -20 L-70 -20Z M100 -80 L70 -20 L130 -20Z" fill="none" stroke="#C8963A" stroke-width="4"/><path d="M-140 -20 Q-100 10 -60 -20Z M60 -20 Q100 10 140 -20Z" fill="#E8B860"/></g></g>`;
+const deprem = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-70 0 L-40 0 L-28 -36 L-12 40 L4 -54 L18 30 L30 -16 L42 0 L70 0" stroke="#E8A020" stroke-width="9" fill="none" stroke-linejoin="round" stroke-linecap="round"/></g>`;
+
+const gosterge = (x, y, r, v, { vmax = 100, renk = '#FBAC39', birim = 'km/sa' } = {}) => {
+  const f = Math.min(1, Math.max(0, v / vmax)), a = Math.PI * (1 - f), ex = x + r * Math.cos(a), ey = y - r * Math.sin(a), kal = r * .16;
+  let o = `<path d="M${x - r} ${y} A${r} ${r} 0 0 1 ${x + r} ${y}" fill="none" stroke="#2A3550" stroke-width="${kal}" stroke-linecap="round"/>`;
+  if (f > .004) o += `<path d="M${x - r} ${y} A${r} ${r} 0 0 1 ${ex.toFixed(1)} ${ey.toFixed(1)}" fill="none" stroke="${renk}" stroke-width="${kal}" stroke-linecap="round"/>`;
+  o += `<line x1="${x}" y1="${y}" x2="${(x + r * .74 * Math.cos(a)).toFixed(1)}" y2="${(y - r * .74 * Math.sin(a)).toFixed(1)}" stroke="#FFF3D6" stroke-width="${r * .05}" stroke-linecap="round"/><circle cx="${x}" cy="${y}" r="${r * .07}" fill="#FFF3D6"/>`;
+  return o + txt(String(Math.round(v)), x, y + r * .44, r * .42, '#FFFFFF') + `<text class="mono" x="${x}" y="${y + r * .66}" font-size="${r * .13}" text-anchor="middle" letter-spacing="2" style="fill:#7FA0D0">${birim}</text>`;
+};
+const zamanChip = (s, x, y, renk = '#0B1433', yazi = '#FFF3D6', fs = 34) => { const w = K.yaziGen(s, fs, { mono: true, ls: 2 }) + fs * 1.6; return R(x - w / 2, y - fs * .95, w, fs * 1.9, fs * .95, renk, .92) + `<text class="mono" x="${x}" y="${y + fs * .34}" font-size="${fs}" text-anchor="middle" letter-spacing="2" style="fill:${yazi}">${s}</text>`; };
+let _sg = 0;
+const scrim = (y0, y1, a0, a1, renk = '#05070F') => { const i = 'sg' + (++_sg); return `<defs><linearGradient id="${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${renk}" stop-opacity="${a0}"/><stop offset="1" stop-color="${renk}" stop-opacity="${a1}"/></linearGradient></defs><rect x="-200" y="${y0}" width="1480" height="${y1 - y0}" fill="url(#${i})"/>`; };
+// sinematik görüntü katmanı: üstte hafif karartma, altta altyazıya kadar siyaha eriyen geçiş
+const filmKat = () => scrim(-200, 420, .8, 0) + scrim(940, 1330, 0, 1) + R(-200, 1329, 1480, 800, 0, '#05070F', 1);
+// sol hizalı alt üçlü: ince renkli çizgi + mono üst başlık + dev başlık (merkez x=540'a göre çizilir)
+const altUc = (kucuk, buyuk, { renk = '#7FD0FF', fs = 78, etiket = '' } = {}) => `<g transform="translate(-470 0)"><rect x="0" y="-62" width="8" height="${fs + 58}" rx="4" fill="${renk}"/>` +
+  `<text class="mono" x="32" y="-30" font-size="28" letter-spacing="5" style="fill:${renk}">${kucuk}</text>` +
+  `<text x="30" y="${fs - 14}" font-size="${fs}" font-weight="900" style="fill:#FFF6E6">${buyuk}</text>` +
+  (etiket ? zamanChip(etiket, 850, -38, '#E8323C', '#FFFFFF', 19) : '') + `</g>`;
+const tas = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-46 8 L-30 -34 L8 -48 L44 -26 L52 14 L24 44 L-22 40Z" fill="#8A8F9C"/><path d="M-30 -34 L8 -48 L44 -26 L10 -8Z" fill="#B4B9C6"/><path d="M-46 8 L-22 40 L24 44 L52 14 L10 -8Z" fill="#6A6F7C"/></g>`;
+const arkadas = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-70" y="40" width="140" height="150" rx="50" fill="#3E8EDE"/><circle cx="0" cy="-10" r="58" fill="#F2C9A0"/><path d="M-60 -20 Q-50 -78 0 -74 Q50 -78 60 -20 Q30 -48 0 -44 Q-30 -48 -60 -20Z" fill="#2A2A33"/><rect x="-44" y="-18" width="38" height="20" rx="8" fill="#14171F"/><rect x="6" y="-18" width="38" height="20" rx="8" fill="#14171F"/><rect x="-8" y="-12" width="16" height="6" fill="#14171F"/><path d="M-22 26 Q0 42 22 26" stroke="#8A4A3A" stroke-width="7" fill="none" stroke-linecap="round"/></g>`;
+
+// ===== #40 DEPREM — ortak çizim yardımcıları =====
+const RK = { sakin: '#E8323C', yap: '#1F9E5B', mavi: '#3E8EDE', turuncu: '#FF8A4A', sari: '#FFD23F', koyu: '#0B1433', bej: '#FFF3D6' };
+// insan: x,y = ayak tabanı ortası, boy ≈ 230*s. poz: dur | tut | kos | bas | cok.
+// ANATOMİ: kollar iki parçalı (omuz→dirsek→el), toplam erişim SABİT (≈100 birim); hedef erişimin dışındaysa el hedefe UZANMAZ, yerinde kalır.
+// elL/elR (yerel koordinat) ile el hedefi verilir; hedefe ulaşılamıyorsa kişiyi hedefe yaklaştır (sahne kodunda), kolu uzatma.
+const ins = (x, y, s = 1, { renk = '#3E8EDE', poz = 'dur', yon = 1, ten = '#F2C9A0', sac = '#2A2A33', sal = 0, pant = '#2A3456', elL = null, elR = null } = {}) => {
+  const P = {
+    dur: { h: -95, sh: -160, hd: -200, l: [-40, -76], r: [40, -76], d: [[-14, -50, -14, 0], [14, -50, 14, 0]], r0: 0 },
+    tut: { h: -95, sh: -160, hd: -200, l: [-40, -76], r: [44, -238], d: [[-14, -50, -14, 0], [14, -50, 14, 0]], r0: 0 },
+    kos: { h: -95, sh: -158, hd: -198, l: [-54, -112], r: [56, -190], d: [[-30, -56, -40, 0], [30, -60, 40, -16]], r0: 14 },
+    bas: { h: -95, sh: -160, hd: -200, l: [-22, -236], r: [22, -236], d: [[-14, -50, -14, 0], [14, -50, 14, 0]], r0: 0 },
+    cok: { h: -58, sh: -106, hd: -146, l: [-24, -176], r: [24, -176], d: [[-34, -34, -26, 0], [34, -34, 26, 0]], r0: 5 },
+  }[poz];
+  const kol = (sx, sy, tx, ty, yan) => {
+    const A = 52, B = 50; let dx = tx - sx, dy = ty - sy, d = Math.hypot(dx, dy); const mx = A + B - 2;
+    if (d > mx) { dx *= mx / d; dy *= mx / d; d = mx; tx = sx + dx; ty = sy + dy; }
+    if (d < 20) { d = 20; }
+    const a = (A * A - B * B + d * d) / (2 * d), h = Math.sqrt(Math.max(0, A * A - a * a)), ux = dx / d, uy = dy / d;
+    const c1 = [sx + ux * a - uy * h, sy + uy * a + ux * h], c2 = [sx + ux * a + uy * h, sy + uy * a - ux * h];
+    const sk = c => c[1] * .6 + yan * c[0] * .5, e = sk(c1) > sk(c2) ? c1 : c2;
+    return `<path d="M${sx} ${sy} L${e[0].toFixed(1)} ${e[1].toFixed(1)} L${tx.toFixed(1)} ${ty.toFixed(1)}" stroke="${renk}" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${tx.toFixed(1)}" cy="${ty.toFixed(1)}" r="10" fill="${ten}"/>`;
+  };
+  let o = `<g transform="translate(${x} ${y}) scale(${yon * s} ${s}) rotate(${P.r0 + sal})">`;
+  P.d.forEach(([kx, ky, fx, fy], i) => { const hx = i ? 12 : -12; o += `<path d="M${hx} ${P.h} L${kx} ${ky} L${fx} ${fy}" stroke="${pant}" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="${fx + (i ? 6 : -6)}" cy="${fy - 2}" rx="17" ry="8" fill="#14171F"/>`; });
+  o += R(-30, P.sh, 60, P.h - P.sh + 8, 22, renk);
+  const l = elL || P.l, r = elR || P.r;
+  o += kol(-24, P.sh + 16, l[0], l[1], -1) + kol(24, P.sh + 16, r[0], r[1], 1);
+  o += `<circle cx="0" cy="${P.hd}" r="30" fill="${ten}"/><path d="M-31 ${P.hd - 4} Q-28 ${P.hd - 34} 0 ${P.hd - 34} Q28 ${P.hd - 34} 31 ${P.hd - 4} Q14 ${P.hd - 18} -4 ${P.hd - 14} Q-18 ${P.hd - 12} -31 ${P.hd - 4}Z" fill="${sac}"/><circle cx="-10" cy="${P.hd + 2}" r="3.5" fill="#14171F"/><circle cx="10" cy="${P.hd + 2}" r="3.5" fill="#14171F"/>`;
+  return o + '</g>';
+};
+// küçük ikonlar (merkez orijin, ≈170×130)
+const ikon = (tur, x, y, s = 1) => {
+  let o = `<g transform="translate(${x} ${y}) scale(${s})">`;
+  if (tur === 'vapur') o += `<path d="M-84 8 L84 8 L62 52 L-64 52Z" fill="#F4F6FA"/>` + R(-70, -34, 128, 42, 8, '#DDE3EE') + R(-12, -66, 30, 34, 6, '#E8323C') + R(-12, -70, 30, 8, 3, '#14171F') + [-56, -34, -12, 10, 32].map(a => R(a, -22, 14, 14, 4, '#3E8EDE')).join('') + `<path d="M-100 58 Q-76 44 -52 58 T-4 58 T44 58 T92 58" stroke="#3E8EDE" stroke-width="9" fill="none" stroke-linecap="round"/>`;
+  if (tur === 'metro') o += R(-70, -66, 140, 112, 24, '#2A3A6A') + R(-54, -48, 108, 44, 10, '#BFE0FF') + `<circle cx="0" cy="22" r="16" fill="#E8323C"/><text x="0" y="29" font-size="22" font-weight="900" text-anchor="middle" style="fill:#fff">M</text>` + R(-58, 26, 14, 10, 4, '#FFE9A8') + R(44, 26, 14, 10, 4, '#FFE9A8') + R(-96, 54, 192, 8, 3, '#8A94A8');
+  if (tur === 'kopru') o += R(-64, -74, 12, 112, 4, '#C8D0DC') + R(52, -74, 12, 112, 4, '#C8D0DC') + R(-104, 12, 208, 12, 4, '#8A94A8') + `<path d="M-104 12 Q-76 -44 -58 -72 Q-22 -4 0 6 Q22 -4 58 -72 Q76 -44 104 12" stroke="#E8323C" stroke-width="6" fill="none"/>`;
+  if (tur === 'sokak') o += R(-86, -50, 70, 104, 4, '#3A4A7A') + R(-4, -84, 80, 138, 4, '#2A3A6A') + [0, 1, 2].map(i => R(-72, -34 + i * 30, 16, 16, 3, '#FFE9A8') + R(10, -66 + i * 32, 16, 16, 3, '#FFE9A8') + R(40, -66 + i * 32, 16, 16, 3, '#FFE9A8')).join('') + R(-30, -20, 18, 12, 2, '#E8323C') + R(-24, 12, 12, 8, 2, '#E8323C');
+  if (tur === 'ev') o += `<path d="M-84 -6 L0 -76 L84 -6Z" fill="#B8463A"/>` + R(-66, -6, 132, 62, 4, '#F4E8D8') + R(-14, 12, 28, 44, 4, '#7A4A2A') + R(-52, 8, 26, 24, 4, '#7FB0E0') + R(26, 8, 26, 24, 4, '#7FB0E0');
+  if (tur === 'kalp') o += `<path d="M0 50 C-90 -10 -70 -64 -32 -64 C-12 -64 0 -50 0 -42 C0 -50 12 -64 32 -64 C70 -64 90 -10 0 50Z" fill="#E8323C"/><path d="M-60 -2 H-26 L-12 -26 L8 22 L22 -2 H60" stroke="#FFFFFF" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+  if (tur === 'tel') o += R(-34, -64, 68, 120, 14, '#2A3456') + R(-27, -54, 54, 84, 6, '#7FD0FF') + `<circle cx="0" cy="44" r="6" fill="#8A94A8"/><text x="0" y="-6" font-size="24" font-weight="900" text-anchor="middle" style="fill:#0B1433">112</text>`;
+  if (tur === 'nefes') o += `<path d="M-6 -60 V-10 M6 -60 V-10" stroke="#8A94A8" stroke-width="8"/><path d="M-8 -20 Q-70 -30 -76 20 Q-80 56 -40 52 Q-8 48 -8 10Z" fill="#FF8FA3"/><path d="M8 -20 Q70 -30 76 20 Q80 56 40 52 Q8 48 8 10Z" fill="#FF8FA3"/>`;
+  if (tur === 'bogaz') o += `<circle cx="0" cy="-20" r="34" fill="#F2C9A0"/>` + R(-30, 12, 60, 50, 16, '#3E8EDE') + `<circle cx="-11" cy="-24" r="4" fill="#14171F"/><circle cx="11" cy="-24" r="4" fill="#14171F"/><ellipse cx="0" cy="-6" rx="7" ry="8" fill="#5A1A1A"/><circle cx="-14" cy="14" r="10" fill="#F2C9A0"/><circle cx="14" cy="14" r="10" fill="#F2C9A0"/>`;
+  return o + '</g>';
+};
+const panel = (w = 920, h = 640, renk = '#0F1838') => R(-w / 2 + 8, -h / 2 + 14, w, h, 36, '#000', .35) + R(-w / 2, -h / 2, w, h, 36, renk) + `<rect x="${-w / 2}" y="${-h / 2}" width="${w}" height="${h}" rx="36" fill="none" stroke="#FFFFFF" stroke-opacity=".10" stroke-width="3"/>`;
+// "yer" başlığı: ikon + büyük yazı (merkez orijin)
+const yerBas = (tur, ad, renk = '#FF8A4A', fs = 70) => { const w = K.yaziGen(ad, fs) + 210; return R(-w / 2 + 8, -62 + 12, w, 124, 62, '#000', .35) + R(-w / 2, -62, w, 124, 62, '#0B1433', .95) + `<rect x="${-w / 2}" y="-62" width="${w}" height="124" rx="62" fill="none" stroke="${renk}" stroke-width="5"/>` + ikon(tur, -w / 2 + 92, 4, .62) + txt(ad, 62, fs * .34, fs, '#FFF6E6'); };
+// YAPMA / YAP bandı (merkez orijin). tur: 'x' | 'v'
+const bant = (tur, s, fs = 54, w = 900) => { const kr = tur === 'x' ? RK.sakin : RK.yap; return R(-w / 2 + 8, -54 + 12, w, 108, 54, '#000', .35) + R(-w / 2, -54, w, 108, 54, kr) + `<circle cx="${-w / 2 + 62}" cy="0" r="34" fill="#FFFFFF"/>` + (tur === 'x' ? `<path d="M${-w / 2 + 50} -12 L${-w / 2 + 74} 12 M${-w / 2 + 74} -12 L${-w / 2 + 50} 12" stroke="${kr}" stroke-width="9" stroke-linecap="round"/>` : `<path d="M${-w / 2 + 47} 2 L${-w / 2 + 59} 14 L${-w / 2 + 79} -12" stroke="${kr}" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`) + txt(s, 34, fs * .34, fs, '#FFFFFF'); };
+// dalgalı su yüzeyi yolu: y seviyesi, genlik, uzunluk, faz → kapalı yol (aşağıya h kadar)
+const suYol = (y, t, { amp = 14, uz = 170, hiz = 1.3, h = 700, x0 = -140, x1 = 1220 } = {}) => { let d = `M${x0} ${y + h} L${x0} ${y}`; for (let x = x0; x <= x1; x += 20) d += ` L${x} ${(y + amp * Math.sin((x / uz + t * hiz) * 2 * Math.PI / 2)).toFixed(1)}`; return d + ` L${x1} ${y + h}Z`; };
+const halka = (cx, cy, r, op, renk = '#FF8A4A', kal = 8) => op <= 0 ? '' : `<circle cx="${cx}" cy="${cy}" r="${r.toFixed(1)}" fill="none" stroke="${renk}" stroke-width="${kal}" opacity="${Math.min(1, op).toFixed(2)}"/>`;
+// İstanbul silueti (sabit): kubbe + minareler + Galata + köprü kulesi + bloklar. y0 = zemin çizgisi
+const istSil = (y0, renk = '#1B1630', pen = '#FFD27A', t = 0) => {
+  let o = `<g>`;
+  const blok = (x, w, h) => R(x, y0 - h, w, h + 60, 3, renk);
+  [[-30, 90, 110], [60, 70, 150], [130, 80, 100], [210, 60, 130], [740, 70, 120], [810, 90, 170], [900, 70, 110], [970, 110, 140]].forEach(([x, w, h]) => o += blok(x, w, h));
+  // kubbe
+  o += `<path d="M300 ${y0} Q300 ${y0 - 120} 410 ${y0 - 124} Q520 ${y0 - 120} 520 ${y0}Z" fill="${renk}"/>` + R(290, y0 - 12, 240, 70, 3, renk);
+  [[286, 220], [534, 220], [306, 180], [514, 180]].forEach(([x, h]) => o += R(x - 8, y0 - h, 16, h + 40, 4, renk) + `<path d="M${x - 11} ${y0 - h} L${x} ${y0 - h - 50} L${x + 11} ${y0 - h}Z" fill="${renk}"/>`);
+  // Galata
+  o += R(626, y0 - 230, 56, 250, 4, renk) + `<path d="M618 ${y0 - 230} L654 ${y0 - 300} L690 ${y0 - 230}Z" fill="${renk}"/>` + R(618, y0 - 236, 72, 14, 3, renk);
+  // pencere ışıkları
+  for (let i = 0; i < 26; i++) { const x = (i * 197) % 1000 + 20, h = 20 + (i * 53) % 90; if (Math.sin(t * 2 + i) > -.7) o += R(x, y0 - h, 7, 10, 2, pen, .55); }
+  return o + '</g>';
+};
+const PK = (t, a, b, ic, y = 790, w = 920, h = 640) => MO.sar(panel(w, h) + ic, MO.oge(t, { gir: a, cik: b, agirlik: 'agir', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, y, { golge: false });
+const BN = (t, a, b, tur, s, fs = 54, y = 1215) => MO.sar(bant(tur, s, fs), MO.oge(t, { gir: a, cik: b, agirlik: 'orta', giris: 'damga', materyal: 'lastik', x: 540 }), 540, y, { golge: false });
+const yBas = (t, tur, ad, renk, a = .05, y = 400) => MO.sar(yerBas(tur, ad, renk, 50), MO.oge(t, { gir: a, agirlik: 'hafif', giris: 'yuksel', x: 540 }), 540, y, { golge: false });
+const hoparlor = (x, y, s, t, renk = '#FFD23F') => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-40 -26 L10 -26 L60 -66 L60 66 L10 26 L-40 26Z" fill="${renk}"/>` + [0, 1, 2].map(i => { const q = (Math.sin(t * 7 - i * 1.1) + 1) / 2; return `<path d="M${84 + i * 30} -${24 + i * 14} Q${112 + i * 30} 0 ${84 + i * 30} ${24 + i * 14}" stroke="${renk}" stroke-width="9" fill="none" stroke-linecap="round" opacity="${(.35 + .65 * q).toFixed(2)}"/>`; }).join('') + `</g>`;
+
+// ===== #41 İLK YARDIM — anatomik iskelet (uzuv uzunlukları SABİT; hedefe yetişmezse uzamaz, el yerinde kalır) =====
+// kol 52+50, bacak 52+50, gövde = omuz→kalça çizgisi (kalınlık 54), baş r30 omuzdan 42 yukarıda.
+const KSZ = { A: 52, B: 50, T: 52, S: 50, GOV: 54 };
+const ik2 = (sx, sy, tx, ty, A, B, pref) => {
+  let dx = tx - sx, dy = ty - sy, d = Math.hypot(dx, dy) || 1; const mx = A + B - 1.5, mn = Math.abs(A - B) + 4;
+  if (d > mx) { dx *= mx / d; dy *= mx / d; d = mx; } else if (d < mn) { dx *= mn / d; dy *= mn / d; d = mn; }
+  const a = (A * A - B * B + d * d) / (2 * d), h = Math.sqrt(Math.max(0, A * A - a * a)), ux = dx / d, uy = dy / d;
+  const c1 = [sx + ux * a - uy * h, sy + uy * a + ux * h], c2 = [sx + ux * a + uy * h, sy + uy * a - ux * h];
+  const f = c => (c[0] - (sx + dx / 2)) * pref[0] + (c[1] - (sy + dy / 2)) * pref[1];
+  return [f(c1) > f(c2) ? c1 : c2, [sx + dx, sy + dy]];
+};
+const uz = (s, t, A, B, pref, renk, kal) => { const [e, h] = ik2(s[0], s[1], t[0], t[1], A, B, pref); return { yol: `<path d="M${s[0].toFixed(1)} ${s[1].toFixed(1)} L${e[0].toFixed(1)} ${e[1].toFixed(1)} L${h[0].toFixed(1)} ${h[1].toFixed(1)}" stroke="${renk}" stroke-width="${kal}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`, el: h }; };
+// kisi: sh omuz, hip kalça (yerel). elL/elR el hedefleri; ayL/ayR ayak hedefleri; prefK/prefB dirsek/diz bükülme yönü. shW/hipW: önden görünümde omuz/kalça yarı genişliği.
+const kisi = ({ x = 0, y = 0, s = 1, sh, hip, elL = null, elR = null, ayL = null, ayR = null, prefK = [0, 1], prefB = [0, -1], shW = 24, hipW = 12, renk = '#3E8EDE', pant = '#2A3456', ten = '#F2C9A0', sac = '#2A2A33', goz = 'acik', agiz = 'duz', basEk = 0, bas = null, govdeOz = null, govde = true, kol = true, bacak = true, kafa = true, ayakRenk = '#14171F', yon = 1, kolRenk = null, govKal = null }) => {
+  const ux = sh[0] - hip[0], uy = sh[1] - hip[1], L = Math.hypot(ux, uy) || 1;
+  const hc = bas || [sh[0] + ux / L * 42, sh[1] + uy / L * 42];
+  const rot = Math.atan2(hc[0] - sh[0], -(hc[1] - sh[1])) * 180 / Math.PI + basEk;
+  let o = `<g transform="translate(${x} ${y}) scale(${s * yon} ${s})">`;
+  if (bacak) [[ayL, -1], [ayR, 1]].forEach(([ay, sg]) => { if (!ay) return; const p = uz([hip[0] + sg * hipW, hip[1]], ay, KSZ.T, KSZ.S, prefB, pant, 20); o += p.yol + `<ellipse cx="${(p.el[0] + sg * 4).toFixed(1)}" cy="${(p.el[1]).toFixed(1)}" rx="16" ry="8" fill="${ayakRenk}"/>`; });
+  if (govde) o += govdeOz || `<path d="M${sh[0]} ${sh[1]} L${hip[0]} ${hip[1]}" stroke="${renk}" stroke-width="${govKal || KSZ.GOV}" stroke-linecap="round"/>`;
+  if (kol) [[elL, -1], [elR, 1]].forEach(([el, sg]) => { if (!el) return; const p = uz([sh[0] + sg * shW, sh[1] + 4], el, KSZ.A, KSZ.B, prefK, kolRenk || renk, 17); o += p.yol + `<circle cx="${p.el[0].toFixed(1)}" cy="${p.el[1].toFixed(1)}" r="10" fill="${ten}"/>`; });
+  if (kafa) o += `<g transform="translate(${hc[0].toFixed(1)} ${hc[1].toFixed(1)}) rotate(${rot.toFixed(1)})"><circle r="30" fill="${ten}"/><path d="M-31 -4 Q-28 -34 0 -34 Q28 -34 31 -4 Q14 -18 -4 -14 Q-18 -12 -31 -4Z" fill="${sac}"/>` + (goz === 'acik' ? `<circle cx="-10" cy="2" r="3.5" fill="#14171F"/><circle cx="10" cy="2" r="3.5" fill="#14171F"/>` : goz === 'genis' ? `<circle cx="-10" cy="2" r="6" fill="#fff"/><circle cx="10" cy="2" r="6" fill="#fff"/><circle cx="-10" cy="2" r="2.8" fill="#14171F"/><circle cx="10" cy="2" r="2.8" fill="#14171F"/>` : `<path d="M-15 3 Q-10 7 -5 3 M5 3 Q10 7 15 3" stroke="#14171F" stroke-width="3" fill="none" stroke-linecap="round"/>`) + (agiz === 'acik' ? `<ellipse cx="0" cy="17" rx="7" ry="8" fill="#5A1A1A"/>` : agiz === 'gulum' ? `<path d="M-8 14 Q0 22 8 14" stroke="#5A1A1A" stroke-width="3" fill="none" stroke-linecap="round"/>` : `<path d="M-6 17 H6" stroke="#5A1A1A" stroke-width="3" stroke-linecap="round"/>`) + `</g>`;
+  return o + '</g>';
+};
+// ayakta duran (önden). Ayak tabanı y=0. hand targets verilmezse kollar yanda sarkar.
+const dur = (x, y, s, o = {}) => kisi(Object.assign({ x, y, s, sh: [0, -160], hip: [0, -95], ayL: [-14, 0], ayR: [14, 0], elL: [-36, -66], elR: [36, -66], prefB: [0, -1], prefK: [0, 1] }, o));
+// yatan (yandan; baş solda, zemin y=0). poz: sirtustu | bacakYukari | yan. k: 0..1 sirtustu→yan geçişi. d: göğüs çökmesi (px), nf: nefes yüksekliği
+const gvYatan = (d, nf, renk) => {
+  let top = '', x1 = 0, x2 = 70;
+  for (let x = x1; x <= x2; x += 2) { const w = Math.abs(x - 34) < 22 ? (1 + Math.cos(Math.PI * (x - 34) / 22)) / 2 : 0; const lift = nf * ((1 + Math.cos(Math.PI * Math.min(1, Math.abs(x - 34) / 40))) / 2); top += ` L${x} ${(-54 + d * w - lift).toFixed(1)}`; }
+  return `<path d="M${x1} -54${top} L${x2} -54 A27 27 0 0 1 ${x2} 0 L${x1} 0 A27 27 0 0 1 ${x1} -54Z" fill="${renk}"/>`;
+};
+const yatan = (x, y, s, o = {}) => {
+  const poz = o.poz || 'sirtustu', k = poz === 'yan' ? (o.k == null ? 1 : o.k) : 0, L = (a, b) => [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k];
+  const bk = o.bk != null ? o.bk : (poz === 'bacakYukari' ? 1 : 0), A = { ayL: [166 - 10 * bk, -14 - 62 * bk], ayR: [164 - 4 * bk, -30 - 38 * bk] };
+  const Y = { ayL: [166, -12], ayR: [122, -40], elL: [-30, -16], elR: [-6, -52], bas: [-40, -34] };
+  const c = { x, y, s, sh: [0, -27], hip: [70, -27], shW: 0, hipW: 0, prefK: [0, -1], prefB: [0, -1], ayL: L(A.ayL, Y.ayL), ayR: L(A.ayR, Y.ayR), elL: L([46, -12], Y.elL), elR: L([38, -6], Y.elR), bas: [-42 + k * 2, -27 + (o.basY || 0) - k * 7], goz: 'kapali' };
+  if (o.k == null && poz === 'yan') c.k = 1;
+  const cfg = Object.assign(c, o); delete cfg.poz; delete cfg.k; delete cfg.nf; delete cfg.d; delete cfg.basY; delete cfg.bk;
+  if (poz !== 'yan' || k < .01) cfg.govdeOz = gvYatan(o.d || 0, o.nf || 0, o.renk || '#3E8EDE');
+  return kisi(cfg);
+};
+// kalp masajı sahnesi: kurtarıcı karşı tarafta (önden), yatan yandan; d = çökme (px). Kurtarıcının alt gövdesi yatanın arkasında gizli.
+const cprFig = (x, y, s, d, { ust = 0 } = {}) => {
+  const hx = 34, hy = -54 + d - 9;            // eller göğüs yüzeyinde (yerel yatan koordinatı)
+  const ky = hy - 93 - ust;                    // omuzlar ellerin tam üstünde: kollar dümdüz (erişim ≈ 98)
+  const kur = kisi({ x, y, s, sh: [hx, ky], hip: [hx, -30], elL: [hx - 5, hy], elR: [hx + 5, hy], bacak: false, shW: 34, govKal: 46, kolRenk: '#C9582E', prefK: [0, 1], renk: '#E8774A', goz: 'acik', agiz: 'duz' });
+  const yat = yatan(x, y, s, { d, poz: 'sirtustu', renk: '#3E8EDE' });
+  const el = `<g transform="translate(${x} ${y}) scale(${s})"><rect x="${hx - 15}" y="${hy - 8}" width="30" height="17" rx="8" fill="#F2C9A0"/><path d="M${hx - 11} ${hy + 1} H${hx + 11}" stroke="#B88A5E" stroke-width="2.5" stroke-linecap="round"/></g>`;
+  return kur + yat + el;
+};
+// ===== ek ikonlar / küçük çizimler =====
+const bal = (s, x, y, { fs = 40, renk = '#FFFFFF', yazi = '#1B2440', kx = -30, ky = 70 } = {}) => { const w = K.yaziGen(s, fs) + 56, h = fs * 1.7; return `<g transform="translate(${x} ${y})">` + R(-w / 2 + 6, -h / 2 + 10, w, h, h / 2, '#000', .3) + R(-w / 2, -h / 2, w, h, h / 2, renk) + `<path d="M${kx - 14} ${h / 2 - 4} L${kx + 6} ${h / 2 + ky * .55} L${kx + 16} ${h / 2 - 4}Z" fill="${renk}"/>` + txt(s, 0, fs * .34, fs, yazi) + `</g>`; };
+const nefesOk = (x, y, t, h = 1, renk = '#7FD0FF') => { const q = Math.sin(t * 3.2) * .5 + .5; return `<g transform="translate(${x} ${y})" opacity="${(.45 + .55 * q).toFixed(2)}"><path d="M0 ${-30 - 26 * q} V${-70 - 26 * q} M-18 ${-52 - 26 * q} L0 ${-74 - 26 * q} L18 ${-52 - 26 * q}" stroke="${renk}" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>`; };
+const saat = (x, y, r, tt, renk = '#FFD23F') => `<g transform="translate(${x} ${y})"><circle r="${r}" fill="#0B1433" stroke="${renk}" stroke-width="${r * .08}"/>` + [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(i => `<line x1="0" y1="${-r * .82}" x2="0" y2="${-r * .72}" stroke="#FFF3D6" stroke-width="${r * .035}" transform="rotate(${i * 30})"/>`).join('') + `<line x1="0" y1="0" x2="0" y2="${-r * .62}" stroke="#FFF3D6" stroke-width="${r * .06}" stroke-linecap="round" transform="rotate(${tt * 360})"/><line x1="0" y1="0" x2="0" y2="${-r * .42}" stroke="${renk}" stroke-width="${r * .08}" stroke-linecap="round" transform="rotate(${tt * 30})"/><circle r="${r * .06}" fill="${renk}"/></g>`;
+const ambulans = (x, y, s, t) => `<g transform="translate(${x} ${y}) scale(${s})">` + R(-100, -88, 200, 88, 14, '#F4F6FA') + R(-100, -52, 200, 10, 0, '#E8323C') + `<path d="M40 -88 H86 L106 -50 V0 H40Z" fill="#E7EBF2"/>` + R(52, -78, 30, 24, 4, '#7FD0FF') + `<path d="M-60 -76 H-40 V-62 H-26 V-48 H-40 V-34 H-60 V-48 H-74 V-62 H-60Z" fill="#E8323C"/>` + `<circle cx="-56" cy="2" r="17" fill="#14171F"/><circle cx="64" cy="2" r="17" fill="#14171F"/>` + R(-10, -102, 36, 14, 4, Math.sin(t * 14) > 0 ? '#E8323C' : '#3E8EDE') + `</g>`;
+const sersem = (x, y, s, t) => `<g transform="translate(${x} ${y}) scale(${s})"><circle r="38" fill="#F2C9A0"/>` + `<path d="M-14 -2 Q-8 4 -2 -2 M6 -2 Q12 4 18 -2" stroke="#14171F" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M-10 18 Q4 10 14 20" stroke="#5A1A1A" stroke-width="3.5" fill="none" stroke-linecap="round"/>` + [0, 1, 2].map(i => { const a = t * 3 + i * 2.1; return `<text x="${(Math.cos(a) * 56).toFixed(1)}" y="${(-52 + Math.sin(a) * 12).toFixed(1)}" font-size="28" text-anchor="middle" style="fill:#FFD23F">★</text>`; }).join('') + `</g>`;
+const bardak = (x, y, s) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-30 -60 H30 L24 40 H-24Z" fill="#BFE0FF" opacity=".9"/><path d="M-27 -22 H27 L24 40 H-24Z" fill="#3E8EDE" opacity=".85"/></g>`;
+const kalpAgri = (x, y, s, t) => `<g transform="translate(${x} ${y}) scale(${s * (1 + .06 * Math.sin(t * 9))})">` + ikon('kalp', 0, 0, 1) + [0, 1, 2].map(i => `<path d="M${-96 - i * 4} ${-30 + i * 28} l-22 -6 M${96 + i * 4} ${-30 + i * 28} l22 -6" stroke="#FFD23F" stroke-width="7" stroke-linecap="round"/>`).join('') + `</g>`;
+const ekg = (x, y, w, t, mod) => { // mod: 'duz' | 'duzensiz' | 'normal'
+  let d = `M${x - w / 2} ${y}`; const n = 80;
+  for (let i = 1; i <= n; i++) { const u = i / n, px = x - w / 2 + u * w; let py = y;
+    if (mod === 'duz') py = y + Math.sin(u * 40 + t * 3) * 1.5;
+    else { const q = ((u * 5 - t * (mod === 'duzensiz' ? 1.9 : 1.1)) % 1 + 1) % 1; py = y + (q > .42 && q < .5 ? -60 * Math.sin((q - .42) / .08 * Math.PI) : q > .5 && q < .56 ? 26 * Math.sin((q - .5) / .06 * Math.PI) : 0) * (mod === 'duzensiz' ? (.4 + .6 * Math.abs(Math.sin(u * 17))) : 1); }
+    d += ` L${px.toFixed(1)} ${py.toFixed(1)}`; }
+  return `<path d="${d}" stroke="${mod === 'duz' ? '#E8323C' : '#2FBF71'}" stroke-width="6" fill="none" stroke-linejoin="round" stroke-linecap="round"/>`;
+};
+
+const fd = (t, a, b) => MO.cl((t - a) / Math.max(.001, b - a));
+// panel içi zemin (alt köşeler yuvarlak): y = zemin çizgisi (panel yerel), renk
+const yer = (y, renk = '#1E2A52', w = 920, h = 640) => `<path d="M${-w / 2} ${y} H${w / 2} V${h / 2 - 36} Q${w / 2} ${h / 2} ${w / 2 - 36} ${h / 2} H${-w / 2 + 36} Q${-w / 2} ${h / 2} ${-w / 2} ${h / 2 - 36}Z" fill="${renk}"/><rect x="${-w / 2}" y="${y}" width="${w}" height="5" fill="#FFFFFF" opacity=".14"/>`;
+// ayaktan yere yığılma: th 0..1 (ayak tabanı pivot). th=1 → yatan(px-160s, py) ile aynı pozisyon
+const dusus = (px, py, s, th, o = {}) => {
+  const a = -th * Math.PI / 2, c = Math.cos(a), sn = Math.sin(a), R2 = (p) => [p[0] * c - p[1] * sn, p[0] * sn + p[1] * c - 27 * th];
+  const hand = (p) => { const q = R2(p); return [q[0], Math.min(q[1], -12)]; };
+  return kisi(Object.assign({ x: px, y: py, s, sh: R2([0, -160]), hip: R2([0, -95]), ayL: R2([-14, 0]), ayR: R2([14, 0]), elL: hand([-36, -66 + 20 * th]), elR: hand([36, -66 + 20 * th]), shW: 24 * (1 - th), hipW: 12 * (1 - th), prefB: [0, -1], prefK: [0, 1], goz: th > .5 ? 'kapali' : 'acik', agiz: th > .1 ? 'acik' : 'duz' }, o));
+};
+// iki el üst üste (önden/üstten küçük çizim)
+const elIki = (x, y, s = 1, rot = 0) => `<g transform="translate(${x} ${y}) scale(${s}) rotate(${rot})"><rect x="-58" y="-30" width="116" height="60" rx="26" fill="#E8B88C"/><rect x="-44" y="-44" width="112" height="60" rx="26" fill="#F2C9A0"/><path d="M-6 -36 V8 M14 -36 V8 M34 -34 V6" stroke="#C79A6E" stroke-width="3" stroke-linecap="round"/></g>`;
+// yumruk (yandan)
+const yumruk = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-16" y="-14" width="34" height="28" rx="10" fill="#F2C9A0"/><circle cx="0" cy="0" r="14" fill="#F2C9A0"/><path d="M-4 -12 V12 M6 -12 V12" stroke="#C79A6E" stroke-width="2.5"/></g>`;
+const adim = (n, ad, renk = '#FF6B81') => `<g>` + R(-(K.yaziGen(ad, 46) + 150) / 2 + 6, -42 + 10, K.yaziGen(ad, 46) + 150, 84, 42, '#000', .3) + R(-(K.yaziGen(ad, 46) + 150) / 2, -42, K.yaziGen(ad, 46) + 150, 84, 42, '#0B1433', .96) + `<rect x="${-(K.yaziGen(ad, 46) + 150) / 2}" y="-42" width="${K.yaziGen(ad, 46) + 150}" height="84" rx="42" fill="none" stroke="${renk}" stroke-width="4"/><circle cx="${-(K.yaziGen(ad, 46) + 150) / 2 + 44}" cy="0" r="28" fill="${renk}"/>` + txt(String(n), -(K.yaziGen(ad, 46) + 150) / 2 + 44, 14, 38, '#FFFFFF') + txt(ad, 36, 15, 46, '#FFF6E6') + `</g>`;
+const AD = (t, a, b, n, ad, y = 1215, renk) => MO.sar(adim(n, ad, renk), MO.oge(t, { gir: a, cik: b, agirlik: 'orta', giris: 'damga', materyal: 'lastik', x: 540 }), 540, y, { golge: false });
+const ET = (t, a, b, s, bg, yz, fs, y, rot = -2) => MO.sar(etiket(s, 0, 0, bg, yz, fs, rot, 1), MO.oge(t, { gir: a, cik: b, agirlik: 'kahraman', giris: 'damga', materyal: 'lastik', x: 540 }), 540, y, { golge: false });
+// kalp masajı çökme eğrisi: 2 Hz sürekli (t0'dan sonra) — tam geri yükselir
+const cprD = (t, t0, f = 2, mx = 13) => { if (t < t0) return 0; const u = ((t - t0) * f) % 1; return mx * Math.pow(.5 - .5 * Math.cos(2 * Math.PI * u), .75); };
+// aralıklı tek bas–bırak: [a, b] basılı aralıklar (bas hızlı, bırak hızlı)
+const basBirak = (t, aralik, mx = 13) => { let d = 0; for (const [a, b] of aralik) { if (t >= a - .02 && t <= b + .18) d = Math.max(d, mx * MO.E.outQuad(MO.cl((t - a) / .14)) * (1 - MO.E.outQuad(MO.cl((t - b) / .16)))); } return d; };
+
+const ob = x => x <= 0 ? 0 : x >= 1 ? 1 : 1 + 2.70158 * Math.pow(x - 1, 3) + 1.70158 * Math.pow(x - 1, 2);
+
+MO.sahne({
+  zemin: MO.zemin({ ust: '#142034', alt: '#060A14', isik: [540, 800, '#7FD0FF', .16], ikinci: [200, 1500, '#FF6B81', .08] }),
+  kamera: [[0, 1.0, 540, 960], [.1, 1.04, 540, 960, 6.5, 'kamera']],
+  ciz: t => {
+    let o = yBas(t, 'nefes', 'NEFES ALIYOR MU?', '#7FD0FF', .05, 400);
+    const nf = t > .4 ? 8 * (.5 + .5 * Math.sin(t * 3.0)) : 0, st = t > 4.0 ? 0 : 1;
+    let c = yer(215);
+    c += yatan(-250, 215, 2.3, { renk: '#3E8EDE', nf });
+    c += `<g opacity="${(.5 + .5 * Math.sin(t * 3.0 + .6)).toFixed(2)}">` + nefesOk(-250 + 34 * 2.3, 215 - 54 * 2.3 - 20, t) + '</g>';
+    c += `<g transform="translate(-250 215) scale(2.3)"><path d="M-6 -90 L34 -112 L74 -90" stroke="#FFD23F" stroke-width="3" fill="none" stroke-dasharray="6 6" opacity="0"/></g>`;
+    // göz: göğsüne bakan
+    c += `<g transform="translate(${-250 + 34 * 2.3} -40)">` + `<path d="M-52 0 Q0 -46 52 0 Q0 46 -52 0Z" fill="#FFFFFF" stroke="#1B2440" stroke-width="6"/><circle cx="${Math.sin(t * 1.2) * 4}" cy="${6 + 4 * Math.sin(t * 3.0)}" r="19" fill="#3E8EDE"/><circle cx="${Math.sin(t * 1.2) * 4}" cy="${6 + 4 * Math.sin(t * 3.0)}" r="9" fill="#14171F"/></g>`;
+    if (t < 4.0) c += `<g transform="translate(300 -60)">` + saat(0, 0, 100, fd(t, .8, 3.8) * .999, '#FFD23F') + txt('10 SN', 0, 150, 40, '#FFD23F') + '</g>';
+    else c += `<g transform="translate(300 -60)">` + ikon('kalp', 0, 0, 1.0) + isaretX(60, -60, 1.5) + '</g>';
+    o += PK(t, .2, 99, c);
+    o += BN(t, 2.5, 3.9, 'v', 'EN FAZLA 10 SANİYE', 54, 1215);
+    o += BN(t, 4.0, 99, 'x', 'NABIZ ARAMA · VAKİT KAYBI', 50, 1215);
+    return o;
+  },
+  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: t > 4 ? 'saskin' : 'merak', bakHedef: [540, 800] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: 'merak', bakHedef: [540, 800] })
+});
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>
