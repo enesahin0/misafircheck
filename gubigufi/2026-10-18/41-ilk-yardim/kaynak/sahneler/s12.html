@@ -200,7 +200,7 @@ const hoparlor = (x, y, s, t, renk = '#FFD23F') => `<g transform="translate(${x}
 
 // ===== #41 İLK YARDIM — anatomik iskelet v2 =====
 // Uzuv uzunlukları SABİT (kol 52+50, bacak 52+50); hedefe yetişmezse uzuv uzamaz. Her parça konturlu + hafif degrade gölgeli çizilir.
-const KSZ = { A: 52, B: 50, T: 52, S: 50 };
+const KSZ = { A: 52, B: 50, T: 52, S: 50, GOV: 54 };
 const OUT = '#0A1030';
 let _gid = 0;
 const gsh = (hex, k) => { const n = parseInt(hex.slice(1), 16), f = v => Math.max(0, Math.min(255, Math.round(k < 0 ? v * (1 + k) : v + (255 - v) * k))); return '#' + [n >> 16, (n >> 8) & 255, n & 255].map(v => f(v).toString(16).padStart(2, '0')).join(''); };
@@ -217,14 +217,7 @@ const cap = (p, q, r1, r2) => { const dx = q[0] - p[0], dy = q[1] - p[1], L = Ma
   const ci = (c, r) => `M${F1(c[0] - r)} ${F1(c[1])} a${r} ${r} 0 1 0 ${2 * r} 0 a${r} ${r} 0 1 0 ${-2 * r} 0Z`;
   return [`M${F1(p[0] + nx * r1)} ${F1(p[1] + ny * r1)} L${F1(q[0] + nx * r2)} ${F1(q[1] + ny * r2)} L${F1(q[0] - nx * r2)} ${F1(q[1] - ny * r2)} L${F1(p[0] - nx * r1)} ${F1(p[1] - ny * r1)}Z`, ci(p, r1), ci(q, r2)]; };
 // parça listesi: önce kontur geçişi, sonra dolgu (birleşik dış kontur); r = köşe yuvarlama
-const parca = (ds, hex, r = 1, grad = true, gp = null) => { const id = 'gk' + (++_gid); let defs = '', f = hex;
-  const st = `<stop offset="0" stop-color="${gsh(hex, .13)}"/><stop offset=".55" stop-color="${hex}"/><stop offset="1" stop-color="${gsh(hex, -.2)}"/>`;
-  if (grad) { f = `url(#${id})`;
-    if (gp) { const [p, q, w] = gp, dx = q[0] - p[0], dy = q[1] - p[1], L = Math.hypot(dx, dy) || 1, nx = -dy / L * w, ny = dx / L * w, mx = (p[0] + q[0]) / 2, my = (p[1] + q[1]) / 2;
-      defs = `<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${F1(mx - nx)}" y1="${F1(my - ny)}" x2="${F1(mx + nx)}" y2="${F1(my + ny)}">${st}</linearGradient>`; }
-    else defs = `<linearGradient id="${id}" x1="0" y1="0" x2="1" y2="0">${st}</linearGradient>`; }
-  return (defs ? `<defs>${defs}</defs>` : '') + `<g opacity=".24" transform="translate(2.5 4)">` + ds.map(d => `<path d="${d}" fill="#000" stroke="#000" stroke-width="${2 * r}" stroke-linejoin="round"/>`).join('') + `</g>`
-    + ds.map(d => `<path d="${d}" fill="${f}" stroke="${f}" stroke-width="${2 * r}" stroke-linejoin="round"/>`).join(''); };
+const parca = (ds, hex, r = 1, grad = true, gp = null) => ds.map(d => `<path d="${d}" fill="${hex}" stroke="${hex}" stroke-width="${2 * r}" stroke-linejoin="round"/>`).join('');
 // el: ön kol yönünde avuç + başparmak
 const manoCiz = (h, ang, ten, sg = 1) => { const dx = Math.cos(ang), dy = Math.sin(ang), px = -dy * sg, py = dx * sg;
   return parca([...cap([h[0] + dx, h[1] + dy], [h[0] + dx * 11, h[1] + dy * 11], 8.6, 8), ...cap([h[0] + dx * 3 + px * 6, h[1] + dy * 3 + py * 6], [h[0] + dx * 14 + px * 9, h[1] + dy * 14 + py * 9], 3.8, 3.2)], ten, 1, false); };
@@ -254,32 +247,26 @@ const yuzCiz = (goz, agiz, ifade) => {
   else o += `<path d="M-6 19 H6" stroke="#5A1A1A" stroke-width="3" stroke-linecap="round"/>`;
   if (ifade === 'korku') o += `<path d="M30 -16 q7 11 0 17 q-7 -6 0 -17Z" fill="#9FD8FF" stroke="#0A1030" stroke-width="1.6"/><path d="M-27 -2 q6 10 0 15 q-6 -5 0 -15Z" fill="#9FD8FF" stroke="#0A1030" stroke-width="1.6"/>`;
   return o; };
-const kafaCiz = (hc, rot, ten, sac, goz, agiz, ifade) => `<g transform="translate(${F1(hc[0])} ${F1(hc[1])}) rotate(${rot.toFixed(1)})">` + parca([`M-30 0 a30 30 0 1 0 60 0 a30 30 0 1 0 -60 0Z`, `M-33 3 a5.5 5.5 0 1 0 11 0 a5.5 5.5 0 1 0 -11 0Z`, `M22 3 a5.5 5.5 0 1 0 11 0 a5.5 5.5 0 1 0 -11 0Z`], ten, 1, false)
-  + `<path d="M-30 -2 Q-34 -34 0 -35 Q34 -34 30 -2 Q24 -19 8 -22 Q-14 -24 -30 -2Z" fill="${sac}"/>` + yuzCiz(goz, agiz, ifade) + `</g>`;
+const kafaCiz = (hc, rot, ten, sac, goz, agiz, ifade) => `<g transform="translate(${F1(hc[0])} ${F1(hc[1])}) rotate(${rot.toFixed(1)})"><circle r="30" fill="${ten}"/><path d="M-31 -4 Q-28 -34 0 -34 Q28 -34 31 -4 Q14 -18 -4 -14 Q-18 -12 -31 -4Z" fill="${sac}"/>`
+  + (goz === 'kapali' ? `<path d="M-15 3 Q-10 7 -5 3 M5 3 Q10 7 15 3" stroke="#14171F" stroke-width="3" fill="none" stroke-linecap="round"/>` : `<circle cx="-10" cy="2" r="${goz === 'genis' ? 4.6 : 3.5}" fill="#14171F"/><circle cx="10" cy="2" r="${goz === 'genis' ? 4.6 : 3.5}" fill="#14171F"/>`)
+  + (agiz === 'acik' || agiz === 'korku' ? `<ellipse cx="0" cy="17" rx="7" ry="8" fill="#5A1A1A"/>` : agiz === 'gulum' ? `<path d="M-8 14 Q0 22 8 14" stroke="#5A1A1A" stroke-width="3" fill="none" stroke-linecap="round"/>` : `<path d="M-6 17 H6" stroke="#5A1A1A" stroke-width="3" stroke-linecap="round"/>`) + `</g>`;
 // kisi: sh omuz, hip kalça (yerel). Önden görünüm: shW>0 ; yandan: shW=0.
-const kisi = ({ x = 0, y = 0, s = 1, sh, hip, elL = null, elR = null, ayL = null, ayR = null, prefK = [0, 1], prefB = [0, -1], shW = 26, hipW = 12, renk = '#3E8EDE', pant = '#2A3456', ten = '#F2C9A0', sac = '#2A2A33', goz = 'acik', agiz = 'duz', ifade = 'normal', basEk = 0, bas = null, govdeOz = null, govde = true, kol = true, bacak = true, kafa = true, ayakRenk = '#EEF1F8', ayak = 'on', yon = 1, kolRenk = null, govKal = null }) => {
-  const ax = sh[0] - hip[0], ay = sh[1] - hip[1], L = Math.hypot(ax, ay) || 1, a = [ax / L, ay / L], n = [-a[1], a[0]];
-  const hc = bas || [sh[0] + a[0] * 42, sh[1] + a[1] * 42];
+const uzv = (s0, t, pref, renk, kal) => { const [e, h] = ik2(s0[0], s0[1], t[0], t[1], KSZ.A, KSZ.B, pref); return { yol: `<path d="M${F1(s0[0])} ${F1(s0[1])} L${F1(e[0])} ${F1(e[1])} L${F1(h[0])} ${F1(h[1])}" stroke="${renk}" stroke-width="${kal}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`, el: h }; };
+const kisi = ({ x = 0, y = 0, s = 1, sh, hip, elL = null, elR = null, ayL = null, ayR = null, prefK = [0, 1], prefB = [0, -1], shW = 24, hipW = 12, renk = '#3E8EDE', pant = '#2A3456', ten = '#F2C9A0', sac = '#2A2A33', goz = 'acik', agiz = 'duz', ifade = 'normal', basEk = 0, bas = null, govdeOz = null, govde = true, kol = true, bacak = true, kafa = true, ayakRenk = '#14171F', ayak = 'on', yon = 1, kolRenk = null, govKal = null }) => {
+  const ux = sh[0] - hip[0], uy = sh[1] - hip[1], L = Math.hypot(ux, uy) || 1, front = shW > 0;
+  const hc = bas || [sh[0] + ux / L * 42, sh[1] + uy / L * 42];
   const rot = Math.atan2(hc[0] - sh[0], -(hc[1] - sh[1])) * 180 / Math.PI + basEk;
-  const front = shW > 0, wS = front ? shW + 12 : 25, wH = front ? hipW + 15 : 22, r = 10;
   let o = `<g transform="translate(${x} ${y}) scale(${s * yon} ${s})">`;
-  if (bacak) {
-    o += parca(cap([hip[0] + a[0] * 5, hip[1] + a[1] * 5], [hip[0] - a[0] * 10, hip[1] - a[1] * 10], wH - 4, wH - 3), pant);
-    [[ayL, -1], [ayR, 1]].forEach(([ay2, sg]) => { if (ay2) o += bacakCiz([hip[0] + sg * hipW * (front ? 1 : .3), hip[1]], ay2, prefB, sg < 0 && front ? gsh(pant, -.12) : pant, ayak, ayakRenk); });
-  }
-  if (kafa) o += parca(cap(sh, hc, 8.5, 8.5), ten, 1, false);
-  if (govde) {
-    if (govdeOz) o += parca([govdeOz], renk, 1);
-    else { const P = (p, q, k2) => `${F1(p[0] + n[0] * k2)} ${F1(p[1] + n[1] * k2)}`; const t1 = [sh[0] - a[0] * r, sh[1] - a[1] * r], t2 = [hip[0] + a[0] * r, hip[1] + a[1] * r];
-      o += parca([`M${P(t1, 0, wS - r)} L${P(t1, 0, -(wS - r))} L${P(t2, 0, -(wH - r))} L${P(t2, 0, wH - r)}Z`], renk, r);
-      if (front) o += `<path d="M${P(t2, 0, wH - 6)} L${P(t2, 0, -(wH - 6))}" stroke="${gsh(pant, -.4)}" stroke-width="5" stroke-linecap="round" opacity=".8"/>`; }
-  }
-  if (kol) { const up = kolRenk || gsh(renk, -.12); [[elL, -1], [elR, 1]].forEach(([el, sg]) => { if (!el) return; const pk = front && Math.abs(prefK[0]) < .01 ? [sg * .9, prefK[1] * .6] : prefK; o += brazCiz([sh[0] + sg * (front ? shW + 2 : 0), sh[1] + (front ? 8 : 4)], el, pk, up, ten, sg); }); }
+  if (bacak) [[ayL, -1], [ayR, 1]].forEach(([ay, sg]) => { if (!ay) return; const p = uzv([hip[0] + sg * hipW, hip[1]], ay, prefB, sg < 0 ? gsh(pant, -.14) : pant, 20);
+    o += p.yol + (ayak === 'yukari' ? `<ellipse cx="${F1(p.el[0] - 4)}" cy="${F1(p.el[1] - 11)}" rx="8" ry="16" fill="${ayakRenk}"/>` : ayak === 'sag' ? `<ellipse cx="${F1(p.el[0] + 8)}" cy="${F1(p.el[1] + 1)}" rx="17" ry="8" fill="${ayakRenk}"/>` : `<ellipse cx="${F1(p.el[0] + sg * 4)}" cy="${F1(p.el[1])}" rx="16" ry="8" fill="${ayakRenk}"/>`); });
+  if (govde) o += govdeOz ? `<path d="${govdeOz}" fill="${renk}"/>` : `<path d="M${sh[0]} ${sh[1]} L${hip[0]} ${hip[1]}" stroke="${renk}" stroke-width="${govKal || KSZ.GOV}" stroke-linecap="round"/>`;
+  if (kol) [[elL, -1], [elR, 1]].forEach(([el, sg]) => { if (!el) return; const pk = front && Math.abs(prefK[0]) < .01 ? [sg * .9, prefK[1] * .6] : prefK;
+    const p = uzv([sh[0] + sg * shW, sh[1] + 4], el, pk, kolRenk || gsh(renk, -.16), 17); o += p.yol + `<circle cx="${F1(p.el[0])}" cy="${F1(p.el[1])}" r="10" fill="${ten}"/>`; });
   if (kafa) o += kafaCiz(hc, rot, ten, sac, goz, agiz, ifade);
   return o + '</g>';
 };
 // ayakta duran (önden). Ayak tabanı y=0, omuz −173, kalça −108 (bacak düz: 100)
-const dur = (x, y, s, o = {}) => kisi(Object.assign({ x, y, s, sh: [0, -173], hip: [0, -108], ayL: [-15, -8], ayR: [15, -8], elL: [-30, -64], elR: [30, -64], prefB: [0, -1], prefK: [0, 1] }, o));
+const dur = (x, y, s, o = {}) => kisi(Object.assign({ x, y, s, sh: [0, -168], hip: [0, -103], ayL: [-14, -3], ayR: [14, -3], elL: [-28, -64], elR: [28, -64], prefB: [0, -1], prefK: [0, 1] }, o));
 // yatan (yandan; baş solda, zemin y=0; gövde kalınlığı 54). poz: sirtustu | bacakYukari | yan. d: göğüs çökmesi, nf: nefes
 const gvYatan = (d, nf) => { let top = '';
   for (let x = 0; x <= 65; x += 2) { const w = Math.abs(x - 34) < 22 ? (1 + Math.cos(Math.PI * (x - 34) / 22)) / 2 : 0, lift = nf * ((1 + Math.cos(Math.PI * Math.min(1, Math.abs(x - 34) / 40))) / 2); top += ` L${x} ${(-54 + d * w - lift).toFixed(1)}`; }
@@ -311,8 +298,8 @@ const elIki2 = (x, y, s = 1, rot = 0, ten = '#F2C9A0') => { const alt = gsh(ten,
 const elYanCPR = (hx, hy) => parca([...cap([hx - 16, hy + 1], [hx + 9, hy + 1], 6.5, 6.5), ...cap([hx + 9, hy - 1], [hx + 24, hy - 9], 4.6, 3.8), ...cap([hx + 9, hy - 5], [hx + 22, hy - 15], 4.2, 3.6)], '#F2C9A0', 1, false);
 // kalp masajı: kurtarıcı karşı tarafta (önden), yatan yandan; d = çökme. Kurtarıcının alt gövdesi yatanın arkasında kalır.
 const cprFig = (x, y, s, d, { ust = 0 } = {}) => {
-  const hx = 34, hy = -54 + d - 8, ky = hy - 107 - ust;
-  const kur = kisi({ x, y, s, sh: [hx, ky], hip: [hx, -30], elL: [hx - 3, hy - 2], elR: [hx + 3, hy - 2], bacak: false, shW: 20, prefK: [0, 1], renk: '#E8774A', goz: 'acik', agiz: 'duz', ifade: 'odak' });
+  const hx = 34, hy = -54 + d - 8, ky = hy - 105 - ust;
+  const kur = kisi({ x, y, s, sh: [hx, ky], hip: [hx, -30], elL: [hx - 3, hy - 2], elR: [hx + 3, hy - 2], bacak: false, shW: 22, govKal: 46, kolRenk: '#C9582E', prefK: [0, 1], renk: '#E8774A', goz: 'acik', agiz: 'duz' });
   const yat = yatan(x, y, s, { d, poz: 'sirtustu', renk: '#3E8EDE' });
   return kur + yat + `<g transform="translate(${x} ${y}) scale(${s})">` + elYanCPR(hx, hy) + `</g>`;
 };
@@ -320,7 +307,7 @@ const cprFig = (x, y, s, d, { ust = 0 } = {}) => {
 const dusus = (px, py, s, th, o = {}) => {
   const a = -th * Math.PI / 2, c = Math.cos(a), sn = Math.sin(a), R2 = (p) => [p[0] * c - p[1] * sn, p[0] * sn + p[1] * c - 27 * th];
   const hand = (p) => { const q = R2(p); return [q[0], Math.min(q[1], -14)]; };
-  return kisi(Object.assign({ x: px, y: py, s, sh: R2([0, -173]), hip: R2([0, -108]), ayL: R2([-15, -8]), ayR: R2([15, -8]), elL: hand([-30, -64 + 20 * th]), elR: hand([30, -64 + 20 * th]), shW: 26 * (1 - th), hipW: 12 * (1 - th), prefB: [0, -1], prefK: [0, 1], goz: th > .5 ? 'kapali' : 'acik', agiz: th > .1 ? 'acik' : 'duz', ayak: th > .6 ? 'yukari' : 'on' }, o));
+  return kisi(Object.assign({ x: px, y: py, s, sh: R2([0, -168]), hip: R2([0, -103]), ayL: R2([-14, -3]), ayR: R2([14, -3]), elL: hand([-28, -64 + 20 * th]), elR: hand([28, -64 + 20 * th]), shW: 26 * (1 - th), hipW: 12 * (1 - th), prefB: [0, -1], prefK: [0, 1], goz: th > .5 ? 'kapali' : 'acik', agiz: th > .1 ? 'acik' : 'duz', ayak: th > .6 ? 'yukari' : 'on' }, o));
 };
 
 // ===== ek ikonlar / küçük çizimler =====

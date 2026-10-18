@@ -402,7 +402,7 @@ MO.sahne({
   sarsinti: [[1.0, 8]],
   ciz: t => {
     let o = yBas(t, 'kalp', 'BİLİNCİ KAPANIRSA', '#E8323C', .05, 400);
-    const S = 2.0, x0 = -170, px = x0 + 173 * S, th = MO.E.inQuad(fd(t, .3, 1.0));
+    const S = 2.0, x0 = -170, px = x0 + 168 * S, th = MO.E.inQuad(fd(t, .3, 1.0));
     let c = yer(215);
     if (t < 1.9) c += th < 1 ? dusus(px, 215, S, th, { renk: '#3E8EDE', basEk: Math.sin(t * 20) * 3 * (1 - th) }) : yatan(x0, 215, S, { renk: '#3E8EDE' });
     else c += cprFig(x0, 215, S, cprD(t, 1.95, 2, 13));
