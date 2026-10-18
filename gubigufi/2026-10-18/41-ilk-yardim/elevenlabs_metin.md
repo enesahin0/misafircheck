@@ -6,13 +6,11 @@
 
 [serious] Cevap yok mu? [short pause] Hemen 112'yi ara, hoparlöre al; telefondaki sağlık görevlisi seni yönlendirir. [curious] Sonra göğsüne bak: nefes alıyor mu? On saniyeyi geçme. [serious] Nabız aramaya kalkma, vakit kaybettirir.
 
-[calm] Göğsü düzgün inip kalkıyorsa nefes alıyordur: onu yan çevir, ağzı aşağı baksın. Kusarsa ya da köpürürse boğulmasın. Nefesini izle. [serious] Ama nefes yoksa, ya da hırıltılı, çok yavaş, düzensizse: kalbi durmuş say.
+[calm] Göğsü düzgün inip kalkıyorsa nefes alıyordur: kaza geçirmediyse onu yan çevir, ağzı aşağı baksın. Kusarsa ya da köpürürse boğulmasın. Nefesini izle. [serious] Ama nefes yoksa, ya da hırıltılı, çok yavaş, düzensizse: kalbi durmuş say.
 
 [serious] Göğsünün ortasına, iki elini üst üste koy. Kollar dümdüz. Beş santim çökecek kadar sert bas, sonra göğsün tamamen yükselmesine izin ver. Bas, bırak. Bas, bırak. Saniyede iki kere. [calm] Ambulans gelene kadar durma.
 
 [curious] Ya yemek yerken boğazını tutuyorsa? [serious] Öksürebiliyorsa karışma. Konuşamıyor, nefes alamıyorsa: arkasına geç, öne eğ, kürek kemikleri arasına beş sert vuruş. Olmadıysa arkadan sarıl, yumruğunu göbeğinin üstüne koy, beş kere içe ve yukarı çek. Buna Heimlich denir. [calm] Bilincini kaybederse yatır, kalp masajına geç.
-
-[curious] Kaza olduysa? [serious] Tehlike yoksa kişiyi oynatma, yan da çevirme; boynunu ve başını sabit tut. Ama nefes almıyorsa hemen göğüs masajı: önce kalp, sonra boyun.
 
 [warm] Bunu hikâyene at. Bir gün yanında biri yığıldığında, bilen kişi sen ol.
 

@@ -47,3 +47,7 @@ ORTA:
 - CPR anlatımı: "sadece bas" kaldırıldı; BAS–BIRAK ritmi + "göğsün tamamen yükselmesine izin ver" (ERC/RCUK: göğüs tam geri dönsün, yaslanma) + saniyede 2. "Nefes vermek zorunda değilsin" satırı çıkarıldı (kaynak: eğitimsiz kurtarıcıda yalnız bası yeterli; videoda gereksiz).
 - Sıra: boğulma (Heimlich) → kaza.
 - Görsel notu (MARKA anatomi kuralı): CPR sahnesinde göğüs bas–bırak animasyonu (çökme + geri yükselme), sabit baskı DEĞİL.
+
+## v4 (kullanıcı)
+- KAZA bloğu çıkarıldı (süre). Güvenlik için yan çevirme cümlesine "kaza geçirmediyse" koşulu eklendi (ERC 2025: travmada recovery position uygulanmaz). Kaza/omurga/kask konuları ayrı video olabilir.
+- Görsel/tutma haritasındaki KAZA satırı artık geçersiz.
