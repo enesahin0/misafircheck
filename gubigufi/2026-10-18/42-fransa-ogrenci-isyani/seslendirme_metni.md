@@ -1,12 +1,12 @@
 # #42 Fransa'da okullar yanıyor — öğrenci isyanı · seslendirme metni ve üretim planı
-Durum: METİN HAZIR → kullanıcı ElevenLabs'te seslendirecek (Yasemin – Deep Smooth and Warm, aynı ayarlar). Tahmini süre ≈ 105–108 sn (227 kelime).
+Durum: METİN HAZIR → kullanıcı ElevenLabs'te seslendirecek (Yasemin – Deep Smooth and Warm, aynı ayarlar). Tahmini süre ≈ 106–110 sn.
 Yapıştırılacak dosya: `elevenlabs_metin.md`.
 
 ## Tutma haritası (izleyiciyi her 7–10 sn'de bir "devam etme sebebi")
 | sn (≈) | An | Sebep |
 |---|---|---|
-| 0–8 | "Okullar yanıyor… liseliler isyanda" | Şok görüntü + ilk saniyede konu |
-| 8–12 | "…seçime götürebilir mi? Cevabı sonda." | AÇIK DÖNGÜ (cevap 1968 erken seçim + 6 ay kala) |
+| 0–5 | "Bir liseden başlayan bir isyan, Fransa'yı erken seçime mi götürecek?" | Büyük soru = açık döngü (ipucu: 1968 erken seçim + 6 ay kala) |
+| 5–11 | "Devrimlerin ülkesi Fransa'da okullar yanıyor, sokaklar alevler içinde." | Şok görüntü + konu |
 | 12–30 | Sınıf: 36 kişi = 2 dolmuş, 40 derece = fırın | Somut kıyas ("oha") + Gufi'ye soru |
 | 30–42 | Barikat → çöp → kapı yangını; her 4 liseden 1'i | Tırmanma |
 | 42–62 | Hükümet / sendika / polis / gözaltı (sakin, tarafsız) | Gerilim + denge |
@@ -44,7 +44,7 @@ Ton: ciddi/şiddet içeren konu → şakacı seslenme YOK, kısa ve sakin. Gufi'
 
 ## Görsel / animasyon planı (MOTION v2; sahne sahne)
 Palet: gece laciverti zemin + yangın turuncusu/kızıl vurgu, Fransa mavi-beyaz-kırmızı (bayrak şeridi geçişlerde imza). Her sahnede kamera + giriş/çıkış; her 2–4 sn yeni görsel gelişme.
-1. **HOOK (0–12):** Gece, kapalı okul kapısı; kapı ateş alır (tutuşma animasyonu: alevler perlin hareketli, kıvılcım tohumlu), arkada siluet kalabalık, yukarıdan duman yürür. Kamera yavaş push-in. "FRANSA" şeklinde harita: gerçek Fransa haritası (H.ulke) çok sayıda kırmızı nokta yanıp söner (okullar). "NELER OLUYOR?" damga. Son kare: harita Paris'e kitlenir (itme geçişi → sınıf).
+1. **HOOK (0–11):** Önce "FRANSA'YI ERKEN SEÇİME Mİ GÖTÜRECEK?" damga (kâğıt dokulu, perde gibi iner), hemen ardından gece, kapalı okul kapısı; kapı ateş alır (tutuşma animasyonu: alevler perlin hareketli, kıvılcım tohumlu), arkada siluet kalabalık, yukarıdan duman yürür. Kamera yavaş push-in. "FRANSA" şeklinde harita: gerçek Fransa haritası (H.ulke) çok sayıda kırmızı nokta yanıp söner (okullar). "NELER OLUYOR?" damga. Son kare: harita Paris'e kitlenir (itme geçişi → sınıf).
 2. **SINIF (12–30):** Kesit sınıf: sıralar, 36 sandalye tek tek dolar (sayaç 1→36, her biri minik öğrenci ikonu; yan ekran: dolmuş silueti 2 kez, 18+18 dolar), termometre 40°C'ye fırlar (fırın ikonu), boş öğretmen masası (sandalye boş, "KADRO BOŞ" damga). Gufi öğrenci kostümüyle son sırada bunalır → "Gufi sen dinleyebilir miydin?" anında Gufi kameraya yaklaşır.
 3. **TIRMANMA (30–42):** Okul kapısı → barikat (sandalye/masa yığılır) → çöp yangını → kapı. Sayaç: "ONLARCA OKUL" + "4 LİSEDEN 1'İ" (4 kutudan 1'i kırmızıya döner). Geçiş: kayma (whip).
 4. **HÜKÜMET / POLİS (42–62, sakin):** Split-screen: sol "3.000 YEDEK ÖĞRETMEN" (kâğıt zarf), sağ "SENDİKALAR: YETMEZ". Sonra gözaltı sayacı (MO.sayiVurgu 6.000+) — çocuk silueti ikonları (yüzsüz, siyah-beyaz, ağır ton). Elin yaralanması YAZIYLA, hafif karartma; Gubi/Gufi `endise`. Polis yaralı sayacı (dengeli: öğrenci ve polis iki ayrı sütun). Odak geçişi (rack focus).
