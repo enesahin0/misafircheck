@@ -242,7 +242,7 @@ MO.sahne({
     let c = '';
     if (pa < 1) { // A: göğüs üstten — hedef ve iki el
       const el = MO.E.outCubic(fd(t, 1.0, 1.8));
-      c += `<g opacity="${(1 - pa).toFixed(2)}" transform="translate(0 40) scale(.98)">` + gogusUst(t, elIki2(150 * (1 - el), -40 + 190 * (1 - el), 1.5, -30 * (1 - el))) + '</g>';
+      c += `<g opacity="${(1 - pa).toFixed(2)}" transform="translate(0 30) scale(.9)">` + gogusUst(t, elIki2(170 * (1 - el), -50 + 200 * (1 - el), 1.7, -30 * (1 - el))) + '</g>';
       c += `<g opacity="${(1 - pa).toFixed(2)}">` + R(-150, -306, 300, 46, 23, '#FFD23F') + txt('GÖĞSÜN ORTASI', 0, -273, 30, '#1B2440') + '</g>';
     }
     if (pa > 0) { // B: yandan — kollar dümdüz, 5 cm
