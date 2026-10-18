@@ -32,11 +32,11 @@
 },
 {
 "tur": "kamera",
-"t": 5.6,
+"t": 4.95,
 "hiz": 4,
 "x": 540,
-"sure": 11,
-"olcekDegisim": 1.05
+"sure": 9.7,
+"olcekDegisim": 1.04
 },
 {
 "tur": "cikis",
@@ -56,15 +56,6 @@
 "etiket": ""
 },
 {
-"tur": "giris",
-"t": 7.638,
-"agirlik": "agir",
-"materyal": "plastik",
-"x": 540,
-"giris": "olcek",
-"etiket": ""
-},
-{
 "tur": "cikis",
 "t": 7.7,
 "agirlik": "hafif",
@@ -74,7 +65,16 @@
 },
 {
 "tur": "giris",
-"t": 9.118,
+"t": 7.738,
+"agirlik": "agir",
+"materyal": "plastik",
+"x": 540,
+"giris": "olcek",
+"etiket": ""
+},
+{
+"tur": "giris",
+"t": 7.918,
 "agirlik": "hafif",
 "materyal": null,
 "x": 540,
@@ -83,11 +83,29 @@
 },
 {
 "tur": "cikis",
-"t": 10,
+"t": 9.8,
 "agirlik": "agir",
 "materyal": "plastik",
 "x": 540,
 "etiket": ""
+},
+{
+"tur": "sarsinti",
+"t": 10.2,
+"guc": 10
+},
+{
+"tur": "sarsinti",
+"t": 10.6,
+"guc": 8
+},
+{
+"tur": "kamera",
+"t": 10.65,
+"hiz": 1286,
+"x": 345,
+"sure": 1.3,
+"olcekDegisim": 3.1
 },
 {
 "tur": "giris",
@@ -97,6 +115,11 @@
 "x": 540,
 "giris": "damga",
 "etiket": ""
+},
+{
+"tur": "sarsinti",
+"t": 11,
+"guc": 6
 },
 {
 "tur": "gecis",

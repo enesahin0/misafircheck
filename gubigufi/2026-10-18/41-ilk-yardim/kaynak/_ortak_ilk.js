@@ -41,9 +41,8 @@ const bacakCiz = (hp, ay, pref, pant, ayakTur, ayakRenk) => { const [k, a] = ik2
 // yüz: ifade = normal | sasir | korku | odak | agri ; goz = acik|genis|kapali ; agiz = duz|acik|gulum|korku
 const yuzCiz = (goz, agiz, ifade) => {
   let o = '';
-  const ew = goz === 'genis' ? 8.6 : 6.2, eh = goz === 'genis' ? 10 : 7, pr = goz === 'genis' ? 3.1 : 3.6;
-  if (goz === 'kapali') o += `<path d="M-17 2 Q-11 8 -5 2 M5 2 Q11 8 17 2" stroke="#14171F" stroke-width="3" fill="none" stroke-linecap="round"/>`;
-  else o += `<ellipse cx="-11" cy="0" rx="${ew}" ry="${eh}" fill="#FFFFFF" stroke="#14171F" stroke-width="1.2"/><ellipse cx="11" cy="0" rx="${ew}" ry="${eh}" fill="#FFFFFF" stroke="#14171F" stroke-width="1.2"/><circle cx="-10" cy="1" r="${pr}" fill="#14171F"/><circle cx="12" cy="1" r="${pr}" fill="#14171F"/><circle cx="-9" cy="-.5" r="1.1" fill="#fff"/><circle cx="13" cy="-.5" r="1.1" fill="#fff"/>`;
+  if (goz === 'kapali') o += `<path d="M-16 2 Q-10 8 -4 2 M4 2 Q10 8 16 2" stroke="#14171F" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  else { const r = goz === 'genis' ? 4.6 : 3.6; o += `<circle cx="-10" cy="2" r="${r}" fill="#14171F"/><circle cx="10" cy="2" r="${r}" fill="#14171F"/>`; }
   const by = goz === 'genis' ? -15 : -11;
   if (ifade === 'korku') o += `<path d="M-19 ${by + 3} L-5 ${by - 5} M19 ${by + 3} L5 ${by - 5}" stroke="#3A2A22" stroke-width="3.4" stroke-linecap="round"/>`;
   else if (ifade === 'sasir') o += `<path d="M-18 ${by - 2} Q-11 ${by - 8} -4 ${by - 2} M18 ${by - 2} Q11 ${by - 8} 4 ${by - 2}" stroke="#3A2A22" stroke-width="3.2" fill="none" stroke-linecap="round"/>`;
@@ -57,7 +56,7 @@ const yuzCiz = (goz, agiz, ifade) => {
   if (ifade === 'korku') o += `<path d="M30 -16 q7 11 0 17 q-7 -6 0 -17Z" fill="#9FD8FF" stroke="#0A1030" stroke-width="1.6"/><path d="M-27 -2 q6 10 0 15 q-6 -5 0 -15Z" fill="#9FD8FF" stroke="#0A1030" stroke-width="1.6"/>`;
   return o; };
 const kafaCiz = (hc, rot, ten, sac, goz, agiz, ifade) => `<g transform="translate(${F1(hc[0])} ${F1(hc[1])}) rotate(${rot.toFixed(1)})">` + parca([`M-30 0 a30 30 0 1 0 60 0 a30 30 0 1 0 -60 0Z`, `M-33 3 a5.5 5.5 0 1 0 11 0 a5.5 5.5 0 1 0 -11 0Z`, `M22 3 a5.5 5.5 0 1 0 11 0 a5.5 5.5 0 1 0 -11 0Z`], ten, 1, false)
-  + `<path d="M-30 -2 Q-34 -34 0 -35 Q34 -34 30 -2 Q24 -19 8 -22 Q-14 -24 -30 -2Z" fill="${sac}" stroke="${OUT}" stroke-width="2" stroke-linejoin="round"/>` + yuzCiz(goz, agiz, ifade) + `</g>`;
+  + `<path d="M-30 -2 Q-34 -34 0 -35 Q34 -34 30 -2 Q24 -19 8 -22 Q-14 -24 -30 -2Z" fill="${sac}"/>` + yuzCiz(goz, agiz, ifade) + `</g>`;
 // kisi: sh omuz, hip kalça (yerel). Önden görünüm: shW>0 ; yandan: shW=0.
 const kisi = ({ x = 0, y = 0, s = 1, sh, hip, elL = null, elR = null, ayL = null, ayR = null, prefK = [0, 1], prefB = [0, -1], shW = 26, hipW = 12, renk = '#3E8EDE', pant = '#2A3456', ten = '#F2C9A0', sac = '#2A2A33', goz = 'acik', agiz = 'duz', ifade = 'normal', basEk = 0, bas = null, govdeOz = null, govde = true, kol = true, bacak = true, kafa = true, ayakRenk = '#EEF1F8', ayak = 'on', yon = 1, kolRenk = null, govKal = null }) => {
   const ax = sh[0] - hip[0], ay = sh[1] - hip[1], L = Math.hypot(ax, ay) || 1, a = [ax / L, ay / L], n = [-a[1], a[0]];
