@@ -55,6 +55,7 @@ ORTAK += open("_ortak_deprem.js").read() + open("_ortak_ilk.js").read() + open("
 HEAD_SRC = open('_head.py').read().replace('window.GECIS = __GECIS__;', 'window.GECIS = __GECIS__; window.KLIP_N = __KLIPN__;')
 exec(HEAD_SRC)
 exec(open('_sahneler.py').read())
+exec(open('_sahneler_foto.py').read())
 N = len(SB) - 1
 for _k in range(1, N):
     if _k not in S: S[_k] = "MO.sahne({ zemin: MO.zemin(), ciz: t => '' });"

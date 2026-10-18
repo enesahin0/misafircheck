@@ -91,3 +91,49 @@ const takvim = (x, y, w, t0, t) => { const ay = ['KASIM', 'ARALIK', 'OCAK', 'ŞU
 const MF = (t, o = {}) => gubi(t, { x: 880, y: 1650, boy: o.gb || 150, duygu: o.gd || 'merak', bakHedef: o.bh || [540, 800], isaretHedef: o.ih || null, ust: o.gu || '' })
   + gufi(t, { x: 200, y: 1840, boy: o.gfb || 210, duygu: o.gf || 'merak', bakHedef: o.bh || [540, 800], ust: o.fu || '' })
   + (o.b || []).map(([k, a, b, m]) => bm(t, a, b, k === 'gubi' ? 720 : 360, 1492, m, { yon: k === 'gubi' ? 1 : -1 })).join('');
+// ---------------- GERÇEK FOTOĞRAFLAR (Wikimedia Commons; yazar + lisans ekranda) ----------------
+const PH = {
+  grenoble: [3024, 4032, 'David Monniaux', 'CC BY-SA 4.0', 'GRENOBLE · 30 EYLÜL'],
+  paris_yangin: [3840, 2560, 'Jorge Jaramillo', 'CC BY-SA 4.0', 'PARİS · 17 EKİM'],
+  paris_17: [3840, 2560, 'FreCha', 'CC BY-SA 4.0', 'PARİS · 17 EKİM'],
+  paris_6: [3840, 2560, 'FreCha', 'CC BY-SA 4.0', 'PARİS · 6 EKİM'],
+  rennes: [3840, 2880, 'Procrastineur49', 'CC BY 4.0', 'RENNES · 5 EKİM'],
+  perp_afis: [2400, 1352, 'Aurelio Cárdenas', 'CC BY 4.0', 'PERPIGNAN · 2 EKİM'],
+  perp_polis: [3840, 2163, 'Aurelio Cárdenas', 'CC BY 4.0', 'PERPIGNAN · 2 EKİM'],
+  bayonne: [1200, 726, 'Patxi Beltzaitz / Berria', 'CC BY-SA 4.0', 'BAYONNE · 6 EKİM'],
+  mai68: [1856, 1874, 'Tangopaso', 'kamu malı', 'BORDEAUX · MAYIS 1968']
+};
+const fkIm = ad => MO.yukle(`../ortak/img/${ad}.jpg`);
+const fkKredi = (ad, x, y) => { const p = PH[ad], s = 'FOTO: ' + p[2] + ' · ' + p[3], w = K.yaziGen(s, 19, { mono: true, ls: 1 }) + 26;
+  return R(x, y - 24, w, 36, 18, '#0B1433', .72) + `<text class="mono" x="${x + 13}" y="${y}" font-size="19" letter-spacing="1" style="fill:#FFF3D6;opacity:.9">${s}</text>`; };
+const fkYer = (ad, x, y) => { const s = PH[ad][4], fs = 26, w = K.yaziGen(s, fs, { mono: true, ls: 2 }) + fs * 1.6;
+  return R(x, y - fs, w, fs * 1.9, fs * .95, '#E8323C', .95) + `<text class="mono" x="${x + w / 2}" y="${y + fs * .34}" font-size="${fs}" text-anchor="middle" letter-spacing="2" style="fill:#FFFFFF">${s}</text>`; };
+// tam ekran fotoğraf, Ken Burns: f0→f1 odak (görüntü oranı), z0→z1 yakınlık
+const fotoT = (t, ad, a, b, { f0 = [.5, .5], f1 = [.5, .5], z = [1, 1.1], fi = .3, fo = .3, kredi = true, yer = true, kar = .22 } = {}) => {
+  const g = (fi > 0 ? fd(t, a, a + fi) : 1) * (fo > 0 ? 1 - fd(t, b - fo, b) : 1); if (g <= .003 || t < a || t > b + .01) return '';
+  const [pw, ph] = PH[ad], p = clmp((t - a) / (b - a)), pe = p * p * (3 - 2 * p), zz = z[0] + (z[1] - z[0]) * pe;
+  const s = Math.max(1080 / pw, 1920 / ph) * zz, dw = pw * s, dh = ph * s;
+  const fx = f0[0] + (f1[0] - f0[0]) * pe, fy = f0[1] + (f1[1] - f0[1]) * pe;
+  const x0 = clmp(540 - fx * dw, 1080 - dw, 0), y0 = clmp(960 - fy * dh, 1920 - dh, 0);
+  let o = `<g opacity="${g.toFixed(3)}"><image href="${fkIm(ad)}" x="${x0.toFixed(1)}" y="${y0.toFixed(1)}" width="${dw.toFixed(1)}" height="${dh.toFixed(1)}"/>`;
+  o += scrim(-200, 520, .75, 0) + scrim(1000, 1960, 0, .86);
+  if (kar > 0) o += `<rect width="1080" height="1920" fill="#05070F" opacity="${kar}"/>`;
+  if (yer) o += fkYer(ad, 62, 372);
+  if (kredi) o += fkKredi(ad, 62, 1258);
+  return o + '</g>';
+};
+// fotoğraf kartı (çerçeveli; küçük çözünürlüklü fotoğraflar için yakınlaştırmasız), arkada aynı fotoğrafın bulanığı
+const fotoK = (t, ad, a, b, { y = 830, w = 1010, hmax = 900, z = [1, 1], kay = [0, 0], fi = .3, fo = .3, bg = true, yer = true, kredi = true } = {}) => {
+  const g = (fi > 0 ? fd(t, a, a + fi) : 1) * (fo > 0 ? 1 - fd(t, b - fo, b) : 1); if (g <= .003 || t < a || t > b + .01) return '';
+  const [pw, ph] = PH[ad]; let h = w * ph / pw, ww = w; if (h > hmax) { h = hmax; ww = h * pw / ph; }
+  const p = clmp((t - a) / (b - a)), zz = z[0] + (z[1] - z[0]) * p, pop = .965 + .035 * ob(fd(t, a, a + .5));
+  const X = 540 - ww / 2, Y = y - h / 2, id = 'fk' + ad + Math.round(a * 10), u = fkIm(ad);
+  let o = `<g opacity="${g.toFixed(3)}">`;
+  if (bg) o += `<defs><filter id="fkB" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="34"/></filter></defs><image href="${u}" x="-260" y="-60" width="1600" height="2040" preserveAspectRatio="xMidYMid slice" filter="url(#fkB)" opacity=".5"/><rect width="1080" height="1920" fill="#05070F" opacity=".55"/>`;
+  o += `<g transform="translate(540 ${y}) scale(${pop.toFixed(3)}) translate(-540 ${-y})"><rect x="${X + 10}" y="${Y + 16}" width="${ww}" height="${h}" rx="30" fill="#000" opacity=".45"/><defs><clipPath id="${id}"><rect x="${X}" y="${Y}" width="${ww}" height="${h}" rx="30"/></clipPath></defs>` +
+    `<g clip-path="url(#${id})"><g transform="translate(${(540 + kay[0] * p).toFixed(1)} ${(y + kay[1] * p).toFixed(1)}) scale(${zz.toFixed(4)}) translate(-540 ${-y})"><image href="${u}" x="${X}" y="${Y}" width="${ww}" height="${h}"/></g></g>` +
+    `<rect x="${X}" y="${Y}" width="${ww}" height="${h}" rx="30" fill="none" stroke="#FFF6E6" stroke-opacity=".4" stroke-width="3"/>`;
+  if (yer) o += fkYer(ad, X + 20, Y + 44);
+  if (kredi) o += fkKredi(ad, X, Y + h + 40);
+  return o + '</g></g>';
+};
