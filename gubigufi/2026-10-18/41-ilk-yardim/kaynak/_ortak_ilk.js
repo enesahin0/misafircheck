@@ -1,7 +1,10 @@
 
-// ===== #41 İLK YARDIM — anatomik iskelet (uzuv uzunlukları SABİT; hedefe yetişmezse uzamaz, el yerinde kalır) =====
-// kol 52+50, bacak 52+50, gövde = omuz→kalça çizgisi (kalınlık 54), baş r30 omuzdan 42 yukarıda.
-const KSZ = { A: 52, B: 50, T: 52, S: 50, GOV: 54 };
+// ===== #41 İLK YARDIM — anatomik iskelet v2 =====
+// Uzuv uzunlukları SABİT (kol 52+50, bacak 52+50); hedefe yetişmezse uzuv uzamaz. Her parça konturlu + hafif degrade gölgeli çizilir.
+const KSZ = { A: 52, B: 50, T: 52, S: 50 };
+const OUT = '#0A1030';
+let _gid = 0;
+const gsh = (hex, k) => { const n = parseInt(hex.slice(1), 16), f = v => Math.max(0, Math.min(255, Math.round(k < 0 ? v * (1 + k) : v + (255 - v) * k))); return '#' + [n >> 16, (n >> 8) & 255, n & 255].map(v => f(v).toString(16).padStart(2, '0')).join(''); };
 const ik2 = (sx, sy, tx, ty, A, B, pref) => {
   let dx = tx - sx, dy = ty - sy, d = Math.hypot(dx, dy) || 1; const mx = A + B - 1.5, mn = Math.abs(A - B) + 4;
   if (d > mx) { dx *= mx / d; dy *= mx / d; d = mx; } else if (d < mn) { dx *= mn / d; dy *= mn / d; d = mn; }
@@ -10,46 +13,112 @@ const ik2 = (sx, sy, tx, ty, A, B, pref) => {
   const f = c => (c[0] - (sx + dx / 2)) * pref[0] + (c[1] - (sy + dy / 2)) * pref[1];
   return [f(c1) > f(c2) ? c1 : c2, [sx + dx, sy + dy]];
 };
-const uz = (s, t, A, B, pref, renk, kal) => { const [e, h] = ik2(s[0], s[1], t[0], t[1], A, B, pref); return { yol: `<path d="M${s[0].toFixed(1)} ${s[1].toFixed(1)} L${e[0].toFixed(1)} ${e[1].toFixed(1)} L${h[0].toFixed(1)} ${h[1].toFixed(1)}" stroke="${renk}" stroke-width="${kal}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`, el: h }; };
-// kisi: sh omuz, hip kalça (yerel). elL/elR el hedefleri; ayL/ayR ayak hedefleri; prefK/prefB dirsek/diz bükülme yönü. shW/hipW: önden görünümde omuz/kalça yarı genişliği.
-const kisi = ({ x = 0, y = 0, s = 1, sh, hip, elL = null, elR = null, ayL = null, ayR = null, prefK = [0, 1], prefB = [0, -1], shW = 24, hipW = 12, renk = '#3E8EDE', pant = '#2A3456', ten = '#F2C9A0', sac = '#2A2A33', goz = 'acik', agiz = 'duz', basEk = 0, bas = null, govdeOz = null, govde = true, kol = true, bacak = true, kafa = true, ayakRenk = '#14171F', yon = 1, kolRenk = null, govKal = null }) => {
-  const ux = sh[0] - hip[0], uy = sh[1] - hip[1], L = Math.hypot(ux, uy) || 1;
-  const hc = bas || [sh[0] + ux / L * 42, sh[1] + uy / L * 42];
+const F1 = v => v.toFixed(1);
+const cap = (p, q, r1, r2) => { const dx = q[0] - p[0], dy = q[1] - p[1], L = Math.hypot(dx, dy) || 1, nx = -dy / L, ny = dx / L;
+  const ci = (c, r) => `M${F1(c[0] - r)} ${F1(c[1])} a${r} ${r} 0 1 0 ${2 * r} 0 a${r} ${r} 0 1 0 ${-2 * r} 0Z`;
+  return [`M${F1(p[0] + nx * r1)} ${F1(p[1] + ny * r1)} L${F1(q[0] + nx * r2)} ${F1(q[1] + ny * r2)} L${F1(q[0] - nx * r2)} ${F1(q[1] - ny * r2)} L${F1(p[0] - nx * r1)} ${F1(p[1] - ny * r1)}Z`, ci(p, r1), ci(q, r2)]; };
+// parça listesi: önce kontur geçişi, sonra dolgu (birleşik dış kontur); r = köşe yuvarlama
+const parca = (ds, hex, r = 1, grad = true) => { const id = 'gk' + (++_gid), f = grad ? `url(#${id})` : hex;
+  return (grad ? `<defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${gsh(hex, .12)}"/><stop offset="1" stop-color="${gsh(hex, -.22)}"/></linearGradient></defs>` : '')
+    + ds.map(d => `<path d="${d}" fill="${OUT}" stroke="${OUT}" stroke-width="${2 * r + 6}" stroke-linejoin="round"/>`).join('')
+    + ds.map(d => `<path d="${d}" fill="${f}" stroke="${f}" stroke-width="${2 * r}" stroke-linejoin="round"/>`).join(''); };
+// el: ön kol yönünde avuç + başparmak
+const manoCiz = (h, ang, ten, sg = 1) => { const dx = Math.cos(ang), dy = Math.sin(ang), px = -dy * sg, py = dx * sg;
+  return parca([...cap([h[0] + dx, h[1] + dy], [h[0] + dx * 11, h[1] + dy * 11], 8.6, 8), ...cap([h[0] + dx * 3 + px * 6, h[1] + dy * 3 + py * 6], [h[0] + dx * 14 + px * 9, h[1] + dy * 14 + py * 9], 3.8, 3.2)], ten, 1, false); };
+const brazCiz = (s, t, pref, upCol, ten, sg) => { const [e, h] = ik2(s[0], s[1], t[0], t[1], KSZ.A, KSZ.B, pref), ang = Math.atan2(h[1] - e[1], h[0] - e[0]);
+  return parca(cap(e, h, 9, 7), ten, 1, false) + parca(cap(s, e, 11.5, 10), upCol) + manoCiz(h, ang, ten, sg); };
+const ayakCiz = (a, tur, renk) => { let ds, ln = '';
+  if (tur === 'yukari') { ds = cap([a[0] + 2, a[1] + 4], [a[0] - 5, a[1] - 24], 8.5, 7); }
+  else if (tur === 'sag') { ds = cap([a[0] - 5, a[1]], [a[0] + 19, a[1]], 8, 7); ln = `<path d="M${F1(a[0] - 12)} ${F1(a[1] + 7)} H${F1(a[0] + 22)}" stroke="#7C86A0" stroke-width="3" stroke-linecap="round"/>`; }
+  else { ds = cap([a[0] - 11, a[1]], [a[0] + 11, a[1]], 8, 8); ln = `<path d="M${F1(a[0] - 17)} ${F1(a[1] + 7)} H${F1(a[0] + 17)}" stroke="#7C86A0" stroke-width="3" stroke-linecap="round"/>`; }
+  return parca(ds, renk, 1, false) + ln; };
+const bacakCiz = (hp, ay, pref, pant, ayakTur, ayakRenk) => { const [k, a] = ik2(hp[0], hp[1], ay[0], ay[1], KSZ.T, KSZ.S, pref);
+  return parca([...cap(hp, k, 13, 10.5), ...cap(k, a, 10.5, 8.2)], pant) + ayakCiz(a, ayakTur, ayakRenk); };
+// yüz: ifade = normal | sasir | korku | odak | agri ; goz = acik|genis|kapali ; agiz = duz|acik|gulum|korku
+const yuzCiz = (goz, agiz, ifade) => {
+  let o = '';
+  const ew = goz === 'genis' ? 8.6 : 6.2, eh = goz === 'genis' ? 10 : 7, pr = goz === 'genis' ? 3.1 : 3.6;
+  if (goz === 'kapali') o += `<path d="M-17 2 Q-11 8 -5 2 M5 2 Q11 8 17 2" stroke="#14171F" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  else o += `<ellipse cx="-11" cy="0" rx="${ew}" ry="${eh}" fill="#FFFFFF" stroke="#14171F" stroke-width="1.2"/><ellipse cx="11" cy="0" rx="${ew}" ry="${eh}" fill="#FFFFFF" stroke="#14171F" stroke-width="1.2"/><circle cx="-10" cy="1" r="${pr}" fill="#14171F"/><circle cx="12" cy="1" r="${pr}" fill="#14171F"/><circle cx="-9" cy="-.5" r="1.1" fill="#fff"/><circle cx="13" cy="-.5" r="1.1" fill="#fff"/>`;
+  const by = goz === 'genis' ? -15 : -11;
+  if (ifade === 'korku') o += `<path d="M-19 ${by + 3} L-5 ${by - 5} M19 ${by + 3} L5 ${by - 5}" stroke="#3A2A22" stroke-width="3.4" stroke-linecap="round"/>`;
+  else if (ifade === 'sasir') o += `<path d="M-18 ${by - 2} Q-11 ${by - 8} -4 ${by - 2} M18 ${by - 2} Q11 ${by - 8} 4 ${by - 2}" stroke="#3A2A22" stroke-width="3.2" fill="none" stroke-linecap="round"/>`;
+  else if (ifade === 'odak' || ifade === 'agri') o += `<path d="M-18 ${by - 4} L-5 ${by + 1} M18 ${by - 4} L5 ${by + 1}" stroke="#3A2A22" stroke-width="3.4" stroke-linecap="round"/>`;
+  else o += `<path d="M-18 ${by} Q-11 ${by - 4} -4 ${by} M18 ${by} Q11 ${by - 4} 4 ${by}" stroke="#3A2A22" stroke-width="2.8" fill="none" stroke-linecap="round"/>`;
+  o += `<path d="M-1.5 6 Q0 9 2.5 8" stroke="#C79A6E" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
+  if (agiz === 'acik') o += `<ellipse cx="0" cy="19" rx="7.5" ry="8.5" fill="#5A1A1A" stroke="#14171F" stroke-width="1.6"/><ellipse cx="0" cy="23" rx="4.5" ry="3.4" fill="#D9626C"/>`;
+  else if (agiz === 'korku') o += `<path d="M-11 15 Q0 10 11 15 Q10 29 0 29 Q-10 29 -11 15Z" fill="#5A1A1A" stroke="#14171F" stroke-width="1.8" stroke-linejoin="round"/><path d="M-7 16 H7" stroke="#fff" stroke-width="3"/>`;
+  else if (agiz === 'gulum') o += `<path d="M-9 15 Q0 25 9 15" stroke="#5A1A1A" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  else o += `<path d="M-6 19 H6" stroke="#5A1A1A" stroke-width="3" stroke-linecap="round"/>`;
+  if (ifade === 'korku') o += `<path d="M30 -16 q7 11 0 17 q-7 -6 0 -17Z" fill="#9FD8FF" stroke="#0A1030" stroke-width="1.6"/><path d="M-27 -2 q6 10 0 15 q-6 -5 0 -15Z" fill="#9FD8FF" stroke="#0A1030" stroke-width="1.6"/>`;
+  return o; };
+const kafaCiz = (hc, rot, ten, sac, goz, agiz, ifade) => `<g transform="translate(${F1(hc[0])} ${F1(hc[1])}) rotate(${rot.toFixed(1)})">` + parca([`M-30 0 a30 30 0 1 0 60 0 a30 30 0 1 0 -60 0Z`, `M-33 3 a5.5 5.5 0 1 0 11 0 a5.5 5.5 0 1 0 -11 0Z`, `M22 3 a5.5 5.5 0 1 0 11 0 a5.5 5.5 0 1 0 -11 0Z`], ten, 1, false)
+  + `<path d="M-30 -2 Q-34 -34 0 -35 Q34 -34 30 -2 Q24 -19 8 -22 Q-14 -24 -30 -2Z" fill="${sac}" stroke="${OUT}" stroke-width="2" stroke-linejoin="round"/>` + yuzCiz(goz, agiz, ifade) + `</g>`;
+// kisi: sh omuz, hip kalça (yerel). Önden görünüm: shW>0 ; yandan: shW=0.
+const kisi = ({ x = 0, y = 0, s = 1, sh, hip, elL = null, elR = null, ayL = null, ayR = null, prefK = [0, 1], prefB = [0, -1], shW = 26, hipW = 12, renk = '#3E8EDE', pant = '#2A3456', ten = '#F2C9A0', sac = '#2A2A33', goz = 'acik', agiz = 'duz', ifade = 'normal', basEk = 0, bas = null, govdeOz = null, govde = true, kol = true, bacak = true, kafa = true, ayakRenk = '#EEF1F8', ayak = 'on', yon = 1, kolRenk = null, govKal = null }) => {
+  const ax = sh[0] - hip[0], ay = sh[1] - hip[1], L = Math.hypot(ax, ay) || 1, a = [ax / L, ay / L], n = [-a[1], a[0]];
+  const hc = bas || [sh[0] + a[0] * 42, sh[1] + a[1] * 42];
   const rot = Math.atan2(hc[0] - sh[0], -(hc[1] - sh[1])) * 180 / Math.PI + basEk;
+  const front = shW > 0, wS = front ? shW + 12 : 25, wH = front ? hipW + 15 : 22, r = 10;
   let o = `<g transform="translate(${x} ${y}) scale(${s * yon} ${s})">`;
-  if (bacak) [[ayL, -1], [ayR, 1]].forEach(([ay, sg]) => { if (!ay) return; const p = uz([hip[0] + sg * hipW, hip[1]], ay, KSZ.T, KSZ.S, prefB, pant, 20); o += p.yol + `<ellipse cx="${(p.el[0] + sg * 4).toFixed(1)}" cy="${(p.el[1]).toFixed(1)}" rx="16" ry="8" fill="${ayakRenk}"/>`; });
-  if (govde) o += govdeOz || `<path d="M${sh[0]} ${sh[1]} L${hip[0]} ${hip[1]}" stroke="${renk}" stroke-width="${govKal || KSZ.GOV}" stroke-linecap="round"/>`;
-  if (kol) [[elL, -1], [elR, 1]].forEach(([el, sg]) => { if (!el) return; const p = uz([sh[0] + sg * shW, sh[1] + 4], el, KSZ.A, KSZ.B, prefK, kolRenk || renk, 17); o += p.yol + `<circle cx="${p.el[0].toFixed(1)}" cy="${p.el[1].toFixed(1)}" r="10" fill="${ten}"/>`; });
-  if (kafa) o += `<g transform="translate(${hc[0].toFixed(1)} ${hc[1].toFixed(1)}) rotate(${rot.toFixed(1)})"><circle r="30" fill="${ten}"/><path d="M-31 -4 Q-28 -34 0 -34 Q28 -34 31 -4 Q14 -18 -4 -14 Q-18 -12 -31 -4Z" fill="${sac}"/>` + (goz === 'acik' ? `<circle cx="-10" cy="2" r="3.5" fill="#14171F"/><circle cx="10" cy="2" r="3.5" fill="#14171F"/>` : goz === 'genis' ? `<circle cx="-10" cy="2" r="6" fill="#fff"/><circle cx="10" cy="2" r="6" fill="#fff"/><circle cx="-10" cy="2" r="2.8" fill="#14171F"/><circle cx="10" cy="2" r="2.8" fill="#14171F"/>` : `<path d="M-15 3 Q-10 7 -5 3 M5 3 Q10 7 15 3" stroke="#14171F" stroke-width="3" fill="none" stroke-linecap="round"/>`) + (agiz === 'acik' ? `<ellipse cx="0" cy="17" rx="7" ry="8" fill="#5A1A1A"/>` : agiz === 'gulum' ? `<path d="M-8 14 Q0 22 8 14" stroke="#5A1A1A" stroke-width="3" fill="none" stroke-linecap="round"/>` : `<path d="M-6 17 H6" stroke="#5A1A1A" stroke-width="3" stroke-linecap="round"/>`) + `</g>`;
+  if (bacak) {
+    o += parca(cap([hip[0] + a[0] * 5, hip[1] + a[1] * 5], [hip[0] - a[0] * 10, hip[1] - a[1] * 10], wH - 4, wH - 3), pant);
+    [[ayL, -1], [ayR, 1]].forEach(([ay2, sg]) => { if (ay2) o += bacakCiz([hip[0] + sg * hipW * (front ? 1 : .3), hip[1]], ay2, prefB, sg < 0 && front ? gsh(pant, -.12) : pant, ayak, ayakRenk); });
+  }
+  if (kafa) o += parca(cap(sh, hc, 8.5, 8.5), ten, 1, false);
+  if (govde) {
+    if (govdeOz) o += parca([govdeOz], renk, 1);
+    else { const P = (p, q, k2) => `${F1(p[0] + n[0] * k2)} ${F1(p[1] + n[1] * k2)}`; const t1 = [sh[0] - a[0] * r, sh[1] - a[1] * r], t2 = [hip[0] + a[0] * r, hip[1] + a[1] * r];
+      o += parca([`M${P(t1, 0, wS - r)} L${P(t1, 0, -(wS - r))} L${P(t2, 0, -(wH - r))} L${P(t2, 0, wH - r)}Z`], renk, r);
+      if (front) o += `<path d="M${P(t2, 0, wH - 6)} L${P(t2, 0, -(wH - 6))}" stroke="${gsh(pant, -.4)}" stroke-width="5" stroke-linecap="round" opacity=".8"/>`; }
+  }
+  if (kol) { const up = kolRenk || gsh(renk, -.12); [[elL, -1], [elR, 1]].forEach(([el, sg]) => { if (!el) return; const pk = front && Math.abs(prefK[0]) < .01 ? [sg * .9, prefK[1] * .6] : prefK; o += brazCiz([sh[0] + sg * (front ? shW + 2 : 0), sh[1] + (front ? 8 : 4)], el, pk, up, ten, sg); }); }
+  if (kafa) o += kafaCiz(hc, rot, ten, sac, goz, agiz, ifade);
   return o + '</g>';
 };
-// ayakta duran (önden). Ayak tabanı y=0. hand targets verilmezse kollar yanda sarkar.
-const dur = (x, y, s, o = {}) => kisi(Object.assign({ x, y, s, sh: [0, -160], hip: [0, -95], ayL: [-14, 0], ayR: [14, 0], elL: [-36, -66], elR: [36, -66], prefB: [0, -1], prefK: [0, 1] }, o));
-// yatan (yandan; baş solda, zemin y=0). poz: sirtustu | bacakYukari | yan. k: 0..1 sirtustu→yan geçişi. d: göğüs çökmesi (px), nf: nefes yüksekliği
-const gvYatan = (d, nf, renk) => {
-  let top = '', x1 = 0, x2 = 70;
-  for (let x = x1; x <= x2; x += 2) { const w = Math.abs(x - 34) < 22 ? (1 + Math.cos(Math.PI * (x - 34) / 22)) / 2 : 0; const lift = nf * ((1 + Math.cos(Math.PI * Math.min(1, Math.abs(x - 34) / 40))) / 2); top += ` L${x} ${(-54 + d * w - lift).toFixed(1)}`; }
-  return `<path d="M${x1} -54${top} L${x2} -54 A27 27 0 0 1 ${x2} 0 L${x1} 0 A27 27 0 0 1 ${x1} -54Z" fill="${renk}"/>`;
-};
+// ayakta duran (önden). Ayak tabanı y=0, omuz −173, kalça −108 (bacak düz: 100)
+const dur = (x, y, s, o = {}) => kisi(Object.assign({ x, y, s, sh: [0, -173], hip: [0, -108], ayL: [-15, -8], ayR: [15, -8], elL: [-38, -74], elR: [38, -74], prefB: [0, -1], prefK: [0, 1] }, o));
+// yatan (yandan; baş solda, zemin y=0; gövde kalınlığı 54). poz: sirtustu | bacakYukari | yan. d: göğüs çökmesi, nf: nefes
+const gvYatan = (d, nf) => { let top = '';
+  for (let x = 0; x <= 65; x += 2) { const w = Math.abs(x - 34) < 22 ? (1 + Math.cos(Math.PI * (x - 34) / 22)) / 2 : 0, lift = nf * ((1 + Math.cos(Math.PI * Math.min(1, Math.abs(x - 34) / 40))) / 2); top += ` L${x} ${(-54 + d * w - lift).toFixed(1)}`; }
+  return `M0 -54${top} L65 -54 A27 27 0 0 1 65 0 L0 0 A27 27 0 0 1 0 -54Z`; };
 const yatan = (x, y, s, o = {}) => {
   const poz = o.poz || 'sirtustu', k = poz === 'yan' ? (o.k == null ? 1 : o.k) : 0, L = (a, b) => [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k];
-  const bk = o.bk != null ? o.bk : (poz === 'bacakYukari' ? 1 : 0), A = { ayL: [166 - 10 * bk, -14 - 62 * bk], ayR: [164 - 4 * bk, -30 - 38 * bk] };
-  const Y = { ayL: [166, -12], ayR: [122, -40], elL: [-30, -16], elR: [-6, -52], bas: [-40, -34] };
-  const c = { x, y, s, sh: [0, -27], hip: [70, -27], shW: 0, hipW: 0, prefK: [0, -1], prefB: [0, -1], ayL: L(A.ayL, Y.ayL), ayR: L(A.ayR, Y.ayR), elL: L([46, -12], Y.elL), elR: L([38, -6], Y.elR), bas: [-42 + k * 2, -27 + (o.basY || 0) - k * 7], goz: 'kapali' };
-  if (o.k == null && poz === 'yan') c.k = 1;
-  const cfg = Object.assign(c, o); delete cfg.poz; delete cfg.k; delete cfg.nf; delete cfg.d; delete cfg.basY; delete cfg.bk;
-  if (poz !== 'yan' || k < .01) cfg.govdeOz = gvYatan(o.d || 0, o.nf || 0, o.renk || '#3E8EDE');
+  const bk = o.bk != null ? o.bk : (poz === 'bacakYukari' ? 1 : 0), A = { ayL: [162 - 11 * bk, -14 - 60 * bk], ayR: [163 - 13 * bk, -36 - 30 * bk] };
+  const Y = { ayL: [162, -12], ayR: [112, -40], elR: [-24, -58] };
+  const c = { x, y, s, sh: [0, -27], hip: [65, -27], shW: 0, hipW: 0, prefK: [0, -1], prefB: [0, -1], ayL: L(A.ayL, Y.ayL), ayR: L(A.ayR, Y.ayR), elL: null, elR: L([96, -21], Y.elR), bas: [-42 + k * 2, -27 + (o.basY || 0) - k * 7], goz: 'kapali', ayak: 'yukari', basEk: k * 24 };
+  const cfg = Object.assign(c, o); ['poz', 'k', 'nf', 'd', 'basY', 'bk'].forEach(q => delete cfg[q]);
+  if (poz !== 'yan' || k < .01) cfg.govdeOz = gvYatan(o.d || 0, o.nf || 0);
   return kisi(cfg);
 };
-// kalp masajı sahnesi: kurtarıcı karşı tarafta (önden), yatan yandan; d = çökme (px). Kurtarıcının alt gövdesi yatanın arkasında gizli.
+// ellerin üst üste yakın plan çizimi (yukarıdan; parmaklar iç içe, başparmaklar yan yana). (x,y)=avuç içi, rot=derece (parmak yönü: 0 = yukarı)
+const elIki2 = (x, y, s = 1, rot = 0, ten = '#F2C9A0') => { const alt = gsh(ten, -.13);
+  const par = (cx, base, uz, w, col) => parca(cap([cx, base], [cx + (cx < 0 ? -3 : 3) * .4, base - uz], w, w - 1.2), col, 1, false);
+  let o = `<g transform="translate(${x} ${y}) scale(${s}) rotate(${rot})">`;
+  o += parca(cap([-22, 8], [34, 30], 9, 9.5), ten, 1, false);                                                                                 // bilek/ön kol (alt sağ)
+  [[-21, 44], [-7, 51], [8, 48], [22, 40]].forEach(([cx, uz]) => o += par(cx + 7, -14, uz, 7.6, alt));                                        // alttaki elin parmakları
+  o += parca([`M-30 -20 Q-32 20 -14 30 Q8 36 28 26 Q34 -2 30 -20 Q0 -28 -30 -20Z`], alt, 4, false);                                         // alttaki avuç
+  [[-27, 40], [-13, 48], [2, 46], [17, 38]].forEach(([cx, uz]) => o += par(cx, -16, uz, 7.6, ten));                                           // üstteki elin parmakları
+  o += parca([`M-33 -16 Q-35 22 -16 33 Q8 40 30 29 Q36 -4 32 -16 Q2 -26 -33 -16Z`], ten, 5, false);                                         // üstteki avuç (el sırtı)
+  o += `<path d="M-22 -10 Q-12 -14 -2 -10 M2 -10 Q12 -14 22 -10" stroke="${gsh(ten, -.3)}" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
+  o += parca(cap([-34, 4], [-42, -26], 6.5, 6), ten, 1, false) + parca(cap([-27, 14], [-35, -14], 6, 5.5), alt, 1, false);                   // başparmaklar
+  return o + '</g>'; };
+// yandan CPR eli: avuç içi göğüste, parmaklar kalkık (hx,hy = temas noktası, yerel yatan koordinatı)
+const elYanCPR = (hx, hy) => parca([...cap([hx - 16, hy + 1], [hx + 9, hy + 1], 6.5, 6.5), ...cap([hx + 9, hy - 1], [hx + 24, hy - 9], 4.6, 3.8), ...cap([hx + 9, hy - 5], [hx + 22, hy - 15], 4.2, 3.6)], '#F2C9A0', 1, false);
+// kalp masajı: kurtarıcı karşı tarafta (önden), yatan yandan; d = çökme. Kurtarıcının alt gövdesi yatanın arkasında kalır.
 const cprFig = (x, y, s, d, { ust = 0 } = {}) => {
-  const hx = 34, hy = -54 + d - 9;            // eller göğüs yüzeyinde (yerel yatan koordinatı)
-  const ky = hy - 93 - ust;                    // omuzlar ellerin tam üstünde: kollar dümdüz (erişim ≈ 98)
-  const kur = kisi({ x, y, s, sh: [hx, ky], hip: [hx, -30], elL: [hx - 5, hy], elR: [hx + 5, hy], bacak: false, shW: 34, govKal: 46, kolRenk: '#C9582E', prefK: [0, 1], renk: '#E8774A', goz: 'acik', agiz: 'duz' });
+  const hx = 34, hy = -54 + d - 8, ky = hy - 107 - ust;
+  const kur = kisi({ x, y, s, sh: [hx, ky], hip: [hx, -30], elL: [hx - 3, hy - 2], elR: [hx + 3, hy - 2], bacak: false, shW: 20, prefK: [0, 1], renk: '#E8774A', goz: 'acik', agiz: 'duz', ifade: 'odak' });
   const yat = yatan(x, y, s, { d, poz: 'sirtustu', renk: '#3E8EDE' });
-  const el = `<g transform="translate(${x} ${y}) scale(${s})"><rect x="${hx - 15}" y="${hy - 8}" width="30" height="17" rx="8" fill="#F2C9A0"/><path d="M${hx - 11} ${hy + 1} H${hx + 11}" stroke="#B88A5E" stroke-width="2.5" stroke-linecap="round"/></g>`;
-  return kur + yat + el;
+  return kur + yat + `<g transform="translate(${x} ${y}) scale(${s})">` + elYanCPR(hx, hy) + `</g>`;
 };
+// yığılma: ayaktan yere (ayak tabanı pivot). th=1 → yatan(px-173s, py)
+const dusus = (px, py, s, th, o = {}) => {
+  const a = -th * Math.PI / 2, c = Math.cos(a), sn = Math.sin(a), R2 = (p) => [p[0] * c - p[1] * sn, p[0] * sn + p[1] * c - 27 * th];
+  const hand = (p) => { const q = R2(p); return [q[0], Math.min(q[1], -14)]; };
+  return kisi(Object.assign({ x: px, y: py, s, sh: R2([0, -173]), hip: R2([0, -108]), ayL: R2([-15, -8]), ayR: R2([15, -8]), elL: hand([-38, -74 + 24 * th]), elR: hand([38, -74 + 24 * th]), shW: 26 * (1 - th), hipW: 12 * (1 - th), prefB: [0, -1], prefK: [0, 1], goz: th > .5 ? 'kapali' : 'acik', agiz: th > .1 ? 'acik' : 'duz', ayak: th > .6 ? 'yukari' : 'on' }, o));
+};
+
 // ===== ek ikonlar / küçük çizimler =====
 const bal = (s, x, y, { fs = 40, renk = '#FFFFFF', yazi = '#1B2440', kx = -30, ky = 70 } = {}) => { const w = K.yaziGen(s, fs) + 56, h = fs * 1.7; return `<g transform="translate(${x} ${y})">` + R(-w / 2 + 6, -h / 2 + 10, w, h, h / 2, '#000', .3) + R(-w / 2, -h / 2, w, h, h / 2, renk) + `<path d="M${kx - 14} ${h / 2 - 4} L${kx + 6} ${h / 2 + ky * .55} L${kx + 16} ${h / 2 - 4}Z" fill="${renk}"/>` + txt(s, 0, fs * .34, fs, yazi) + `</g>`; };
 const nefesOk = (x, y, t, h = 1, renk = '#7FD0FF') => { const q = Math.sin(t * 3.2) * .5 + .5; return `<g transform="translate(${x} ${y})" opacity="${(.45 + .55 * q).toFixed(2)}"><path d="M0 ${-30 - 26 * q} V${-70 - 26 * q} M-18 ${-52 - 26 * q} L0 ${-74 - 26 * q} L18 ${-52 - 26 * q}" stroke="${renk}" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>`; };
@@ -70,16 +139,8 @@ const ekg = (x, y, w, t, mod) => { // mod: 'duz' | 'duzensiz' | 'normal'
 const fd = (t, a, b) => MO.cl((t - a) / Math.max(.001, b - a));
 // panel içi zemin (alt köşeler yuvarlak): y = zemin çizgisi (panel yerel), renk
 const yer = (y, renk = '#1E2A52', w = 920, h = 640) => `<path d="M${-w / 2} ${y} H${w / 2} V${h / 2 - 36} Q${w / 2} ${h / 2} ${w / 2 - 36} ${h / 2} H${-w / 2 + 36} Q${-w / 2} ${h / 2} ${-w / 2} ${h / 2 - 36}Z" fill="${renk}"/><rect x="${-w / 2}" y="${y}" width="${w}" height="5" fill="#FFFFFF" opacity=".14"/>`;
-// ayaktan yere yığılma: th 0..1 (ayak tabanı pivot). th=1 → yatan(px-160s, py) ile aynı pozisyon
-const dusus = (px, py, s, th, o = {}) => {
-  const a = -th * Math.PI / 2, c = Math.cos(a), sn = Math.sin(a), R2 = (p) => [p[0] * c - p[1] * sn, p[0] * sn + p[1] * c - 27 * th];
-  const hand = (p) => { const q = R2(p); return [q[0], Math.min(q[1], -12)]; };
-  return kisi(Object.assign({ x: px, y: py, s, sh: R2([0, -160]), hip: R2([0, -95]), ayL: R2([-14, 0]), ayR: R2([14, 0]), elL: hand([-36, -66 + 20 * th]), elR: hand([36, -66 + 20 * th]), shW: 24 * (1 - th), hipW: 12 * (1 - th), prefB: [0, -1], prefK: [0, 1], goz: th > .5 ? 'kapali' : 'acik', agiz: th > .1 ? 'acik' : 'duz' }, o));
-};
-// iki el üst üste (önden/üstten küçük çizim)
-const elIki = (x, y, s = 1, rot = 0) => `<g transform="translate(${x} ${y}) scale(${s}) rotate(${rot})"><rect x="-58" y="-30" width="116" height="60" rx="26" fill="#E8B88C"/><rect x="-44" y="-44" width="112" height="60" rx="26" fill="#F2C9A0"/><path d="M-6 -36 V8 M14 -36 V8 M34 -34 V6" stroke="#C79A6E" stroke-width="3" stroke-linecap="round"/></g>`;
-// yumruk (yandan)
-const yumruk = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-16" y="-14" width="34" height="28" rx="10" fill="#F2C9A0"/><circle cx="0" cy="0" r="14" fill="#F2C9A0"/><path d="M-4 -12 V12 M6 -12 V12" stroke="#C79A6E" stroke-width="2.5"/></g>`;
+
+const yumruk = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})">` + parca([...cap([-10, 2], [8, 2], 11, 11)], '#F2C9A0', 1, false) + `<path d="M-6 -9 V13 M1 -10 V14 M8 -8 V12" stroke="#B88A5E" stroke-width="2.2" stroke-linecap="round"/><path d="M8 -9 Q18 -2 10 8" stroke="#B88A5E" stroke-width="2.2" fill="none"/></g>`;
 const adim = (n, ad, renk = '#FF6B81') => `<g>` + R(-(K.yaziGen(ad, 46) + 150) / 2 + 6, -42 + 10, K.yaziGen(ad, 46) + 150, 84, 42, '#000', .3) + R(-(K.yaziGen(ad, 46) + 150) / 2, -42, K.yaziGen(ad, 46) + 150, 84, 42, '#0B1433', .96) + `<rect x="${-(K.yaziGen(ad, 46) + 150) / 2}" y="-42" width="${K.yaziGen(ad, 46) + 150}" height="84" rx="42" fill="none" stroke="${renk}" stroke-width="4"/><circle cx="${-(K.yaziGen(ad, 46) + 150) / 2 + 44}" cy="0" r="28" fill="${renk}"/>` + txt(String(n), -(K.yaziGen(ad, 46) + 150) / 2 + 44, 14, 38, '#FFFFFF') + txt(ad, 36, 15, 46, '#FFF6E6') + `</g>`;
 const AD = (t, a, b, n, ad, y = 1215, renk) => MO.sar(adim(n, ad, renk), MO.oge(t, { gir: a, cik: b, agirlik: 'orta', giris: 'damga', materyal: 'lastik', x: 540 }), 540, y, { golge: false });
 const ET = (t, a, b, s, bg, yz, fs, y, rot = -2) => MO.sar(etiket(s, 0, 0, bg, yz, fs, rot, 1), MO.oge(t, { gir: a, cik: b, agirlik: 'kahraman', giris: 'damga', materyal: 'lastik', x: 540 }), 540, y, { golge: false });
@@ -89,3 +150,48 @@ const cprD = (t, t0, f = 2, mx = 13) => { if (t < t0) return 0; const u = ((t - 
 const basBirak = (t, aralik, mx = 13) => { let d = 0; for (const [a, b] of aralik) { if (t >= a - .02 && t <= b + .18) d = Math.max(d, mx * MO.E.outQuad(MO.cl((t - a) / .14)) * (1 - MO.E.outQuad(MO.cl((t - b) / .16)))); } return d; };
 
 const ob = x => x <= 0 ? 0 : x >= 1 ? 1 : 1 + 2.70158 * Math.pow(x - 1, 3) + 1.70158 * Math.pow(x - 1, 2);
+
+// ===== kuş bakışı trafik (ambulans sıkışmış) — ekran koordinatları; t: sahne içi saniye, u: 0..1 ilerleme =====
+const ustArac = (x, y, renk, w = 118, h = 205) => `<g transform="translate(${F1(x)} ${F1(y)})">` + parca([`M${-w / 2 + 30} ${-h / 2} H${w / 2 - 30} Q${w / 2} ${-h / 2} ${w / 2} ${-h / 2 + 30} V${h / 2 - 30} Q${w / 2} ${h / 2} ${w / 2 - 30} ${h / 2} H${-w / 2 + 30} Q${-w / 2} ${h / 2} ${-w / 2} ${h / 2 - 30} V${-h / 2 + 30} Q${-w / 2} ${-h / 2} ${-w / 2 + 30} ${-h / 2}Z`], renk, 1)
+  + R(-w / 2 + 12, -h / 2 + 36, w - 24, 40, 12, '#10182C') + R(-w / 2 + 14, -h / 2 + 80, w - 28, 62, 12, gsh(renk, .22)) + R(-w / 2 + 12, h / 2 - 62, w - 24, 26, 10, '#10182C')
+  + R(-w / 2 + 8, -h / 2 + 4, 20, 9, 4, '#FFE9A8') + R(w / 2 - 28, -h / 2 + 4, 20, 9, 4, '#FFE9A8') + R(-w / 2 + 8, h / 2 - 12, 22, 8, 3, '#E8323C') + R(w / 2 - 30, h / 2 - 12, 22, 8, 3, '#E8323C') + `</g>`;
+const ustAmbulans = (x, y, t) => { const a = Math.sin(t * 13) > 0, w = 132, h = 262;
+  let o = `<circle cx="${x}" cy="${y}" r="${210 + 14 * Math.sin(t * 13)}" fill="${a ? '#E8323C' : '#3E8EDE'}" opacity=".16"/><circle cx="${x}" cy="${y}" r="120" fill="${a ? '#E8323C' : '#3E8EDE'}" opacity=".14"/>`;
+  o += `<g transform="translate(${x} ${y})">` + parca([`M${-w / 2 + 32} ${-h / 2} H${w / 2 - 32} Q${w / 2} ${-h / 2} ${w / 2} ${-h / 2 + 32} V${h / 2 - 22} Q${w / 2} ${h / 2} ${w / 2 - 22} ${h / 2} H${-w / 2 + 22} Q${-w / 2} ${h / 2} ${-w / 2} ${h / 2 - 22} V${-h / 2 + 32} Q${-w / 2} ${-h / 2} ${-w / 2 + 32} ${-h / 2}Z`], '#F4F6FA', 1)
+    + R(-w / 2 + 12, -h / 2 + 34, w - 24, 44, 12, '#1B2A55') + R(-w / 2, -6, 12, 120, 3, '#E8323C') + R(w / 2 - 12, -6, 12, 120, 3, '#E8323C')
+    + `<path d="M-10 18 H10 V38 H30 V58 H10 V78 H-10 V58 H-30 V38 H-10Z" fill="#E8323C" stroke="#fff" stroke-width="3" transform="translate(0 22)"/>`
+    + R(-w / 2 + 10, -h / 2 + 90, w - 20, 16, 5, a ? '#E8323C' : '#7A1A22') + R(-w / 2 + 10, -h / 2 + 90, (w - 20) / 2, 16, 5, a ? '#7A1A22' : '#3E8EDE')
+    + R(-w / 2 + 8, -h / 2 + 4, 22, 9, 4, '#FFE9A8') + R(w / 2 - 30, -h / 2 + 4, 22, 9, 4, '#FFE9A8') + `</g>`;
+  return o; };
+const kusTrafik = (t, t0) => {
+  const u = t - t0, oy = 26 * u; let o = R(-120, -120, 1320, 2160, 0, '#252A3B');
+  // yan şeritler + çatılar
+  [[-120, 0], [1000, 1]].forEach(([x0, sg]) => { o += R(x0, -120, 200, 2160, 0, '#161B2B'); for (let i = 0; i < 8; i++) { const yy = ((i * 330 + oy * .6) % 2640) - 300; o += R(x0 + (sg ? 28 : 40), yy, 130, 250, 14, i % 2 ? '#2B3450' : '#364062') + R(x0 + (sg ? 46 : 58), yy + 20, 94, 70, 10, '#222A44'); } });
+  // şerit çizgileri
+  [405, 675].forEach(x => { for (let i = 0; i < 12; i++) { const yy = ((i * 220 + oy) % 2640) - 300; o += R(x - 4, yy, 8, 110, 3, '#C8D0DC', .55); } });
+  const CR = ['#E8323C', '#3E8EDE', '#F4F6FA', '#FFD23F', '#2FBF71', '#8A94A8', '#FF8A4A', '#7B5EA7'];
+  const lanes = [270, 540, 810];
+  lanes.forEach((lx, li) => { for (let r = -3; r < 8; r++) {
+    if (li === 1 && r >= 0 && r < 2) continue;                                                             // ambulansın bulunduğu boşluk
+    const base = 1000 - 250 * r, yy = base + oy; let x = lx + ((r * 7 + li * 3) % 5 - 2) * 4;
+    if (li === 1 && r < 0) { const k = MO.E.inOutCubic(fd(t, t0 + 1.4 + .25 * -r, t0 + 2.4 + .25 * -r)); x += (r % 2 ? -1 : 1) * 52 * k; }   // öndeki araçlar yol verir
+    o += ustArac(x, yy, CR[(r * 3 + li * 5 + 16) % 8]); } });
+  o += ustAmbulans(540, 1000 - 18 * Math.min(1, u / 2.8), t);
+  // korna çubukları
+  for (let i = 0; i < 3; i++) { const q = ((t * 2 + i * .33) % 1); o += `<path d="M${420 - 40 * q} ${760 - 30 * q} q-26 20 0 40" stroke="#FFD23F" stroke-width="7" fill="none" stroke-linecap="round" opacity="${(.8 * (1 - q)).toFixed(2)}"/><path d="M${660 + 40 * q} ${760 - 30 * q} q26 20 0 40" stroke="#FFD23F" stroke-width="7" fill="none" stroke-linecap="round" opacity="${(.8 * (1 - q)).toFixed(2)}"/>`; }
+  return o; };
+// ===== üstten göğüs (yatan kişi yukarıdan; panel yerel koordinat). Baş yukarıda =====
+const gogusUst = (t, elP) => {
+  const sk = '#F2C9A0', renk = '#3E8EDE', pant = '#2A3456', up = gsh(renk, -.12);
+  let o = parca([...cap([-38, 120], [-44, 340], 25, 22), ...cap([38, 120], [44, 340], 25, 22)], pant);
+  o += parca(cap([0, -160], [0, -125], 11, 12), sk, 1, false);
+  o += parca([`M-76 -116 H76 L62 100 H-62Z`], renk, 22);
+  o += `<path d="M-58 100 H58" stroke="${gsh(pant, -.4)}" stroke-width="6" opacity=".7"/>`;
+  [[-1, 0], [1, 0]].forEach(([sg]) => { const sx = sg * 94, ex = sg * 108, hx = sg * 100; o += parca(cap([hx, 92], [hx + sg * 2, 120], 12, 10), sk, 1, false) + parca(cap([sx, -98], [ex, 0], 17, 15), up) + parca(cap([ex, 0], [hx, 94], 13, 11), sk, 1, false); });
+  o += `<g transform="translate(0 -208) scale(1.7)">` + kafaCiz([0, 0], 0, sk, '#2A2A33', 'kapali', 'duz', 'normal') + `</g>`;
+  // iç çizgiler: göğüs kafesi + ortaya hedef
+  o += `<path d="M0 -110 V-6" stroke="#FFFFFF" stroke-width="5" opacity=".28" stroke-linecap="round" stroke-dasharray="3 12"/>` + [0, 1, 2].map(i => `<path d="M-50 ${-96 + i * 30} Q0 ${-84 + i * 30} 50 ${-96 + i * 30}" stroke="#FFFFFF" stroke-width="3.5" fill="none" opacity=".13"/>`).join('');
+  const pu = .5 + .5 * Math.sin(t * 7);
+  o += `<circle cx="0" cy="-40" r="${34 + 7 * pu}" fill="none" stroke="#FFD23F" stroke-width="6" stroke-dasharray="11 9"/><circle cx="0" cy="-40" r="7" fill="#FFD23F"/>`;
+  o += elP;
+  return o; };

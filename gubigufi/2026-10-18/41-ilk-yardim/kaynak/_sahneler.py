@@ -3,41 +3,34 @@ S = {}
 S[1] = r"""
 MO.sahne({
   zemin: MO.zemin({ ust: '#0F1B33', alt: '#05080F', isik: [420, 700, '#FFD27A', .16], ikinci: [900, 1500, '#E8323C', .06] }),
-  kamera: [[0, 1.0, 540, 960], [.1, 1.05, 540, 960, 11, 'kamera']],
-  sarsinti: [[1.5, 12]],
+  kamera: [[0, 1.0, 540, 960], [.1, 1.04, 540, 960, 9.7, 'kamera'], [10.0, 3.1, 345, 880, 1.3, 'kamera']],
+  sarsinti: [[1.5, 12], [10.2, 10], [10.6, 8], [11.0, 6]],
   ciz: t => {
     let o = '';
-    // uzak siluet + sokak lambası + zemin
     [[-20, 120, 330], [110, 90, 250], [205, 130, 380], [700, 110, 300], [815, 150, 420], [975, 120, 260]].forEach(([x, w, h]) => o += R(x, 1180 - h, w, h, 3, '#10182C'));
     for (let i = 0; i < 18; i++) { const x = (i * 211) % 1060 + 10, y = 900 + (i * 97) % 240; if (Math.sin(t * 1.5 + i) > -.6) o += R(x, y, 8, 11, 2, '#FFD27A', .5); }
     o += `<path d="M175 1180 V760 Q175 720 215 720 H300" stroke="#2B3550" stroke-width="12" fill="none"/>` + R(280, 716, 70, 20, 8, '#FFE9A8') + `<path d="M280 736 L180 1180 H410 L350 736Z" fill="#FFE9A8" opacity=".10"/>`;
     o += R(-100, 1180, 1280, 800, 0, '#1A2238') + R(-100, 1180, 1280, 8, 0, '#2E3A5C') + R(-100, 1500, 1280, 6, 0, '#2B3550', .6);
-    // sen
     const ear = fd(t, 4.4, 4.7) * (1 - fd(t, 6.3, 6.6));
-    o += dur(340, 1180, 1.55, { renk: '#3E8EDE', elR: ear > .01 ? [26 * ear + 36 * (1 - ear), -190 * ear + -66 * (1 - ear)] : [36, -66], goz: t < 3 ? 'acik' : 'genis', agiz: t > 0.9 ? 'acik' : 'duz', basEk: t < .9 ? 0 : (t < 3.3 ? -8 : 0) });
-    // yığılan
+    const korku = t > 10.0, sas = t > .9;
+    o += dur(340, 1180, 1.55, { renk: '#3E8EDE', elR: ear > .01 ? [(24 * ear + 38 * (1 - ear)), (-200 * ear + -74 * (1 - ear))] : [38, -74], goz: sas ? 'genis' : 'acik', agiz: korku ? 'korku' : (sas ? 'acik' : 'duz'), ifade: korku ? 'korku' : (sas ? 'sasir' : 'normal'), basEk: t < .9 ? 0 : (t < 3.3 ? -8 : 0) });
     const wob = t > .35 && t < .98 ? Math.sin(t * 24) * 2.5 * fd(t, .35, .9) : 0;
-    if (t < 1.0) o += `<g transform="rotate(${wob} 840 1180)">` + dur(840, 1180, 1.55, { renk: '#E8774A', goz: 'kapali', agiz: 'duz', elL: [-26, -150], elR: [26, -150 + 70 * fd(t, .5, 1)] }) + '</g>';
-    else { const th = MO.E.inQuad(fd(t, .98, 1.55)); o += th < 1 ? dusus(840, 1180, 1.55, th, { renk: '#E8774A' }) : yatan(840 - 160 * 1.55, 1180, 1.55, { renk: '#E8774A' }); }
-    // toz
+    if (t < 1.0) o += `<g transform="rotate(${wob} 840 1180)">` + dur(840, 1180, 1.55, { renk: '#E8774A', goz: 'kapali', agiz: 'duz', elL: [-34, -90], elR: [34, -90 + 14 * fd(t, .5, 1)] }) + '</g>';
+    else { const th = MO.E.inQuad(fd(t, .98, 1.55)); o += th < 1 ? dusus(840, 1180, 1.55, th, { renk: '#E8774A' }) : yatan(840 - 173 * 1.55, 1180, 1.55, { renk: '#E8774A' }); }
     const dz = MO.ar(t, 1.55, 2.4); if (dz > 0 && dz < 1) for (let k = 0; k < 5; k++) o += `<circle cx="${620 + k * 55}" cy="${1170 - 20 * dz * (1 + k % 2)}" r="${14 + 30 * dz}" fill="#8A94A8" opacity="${(.4 * (1 - dz)).toFixed(2)}"/>`;
-    // KİMSE YOK
     o += ET(t, 3.25, 4.35, 'KİMSE YOK', '#E8323C', '#FFFFFF', 84, 520, -3);
-    // 112
     o += MO.sar(R(-210, -150, 420, 300, 40, '#0F1838') + `<rect x="-210" y="-150" width="420" height="300" rx="40" fill="none" stroke="#7FD0FF" stroke-width="5"/>` + ikon('tel', -90, 0, 1.9) + txt('112', 80, 34, 110, '#FFFFFF'), MO.oge(t, { gir: 4.4, cik: 6.45, agirlik: 'orta', giris: 'olcek', materyal: 'plastik', x: 540 }), 540, 620, { golge: false });
     o += MO.sar(R(-250, -62, 500, 124, 62, '#1F9E5B') + `<circle cx="-170" cy="0" r="38" fill="#FFFFFF"/><path d="M-188 2 L-176 14 L-152 -14" stroke="#1F9E5B" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>` + txt('DOĞRU', 40, 22, 62, '#FFFFFF'), MO.oge(t, { gir: 6.5, cik: 7.7, agirlik: 'hafif', giris: 'damga', materyal: 'lastik', x: 540 }), 540, 620, { golge: false });
-    // ambulans (uzakta) + saat
-    const ax = -160 + 330 * fd(t, 7.0, 10.0);
-    if (t > 6.9 && t < 10.3) o += ambulans(ax, 1120, .8, t);
-    o += MO.sar(saat(0, 0, 130, (t - 7.4) * .7), MO.oge(t, { gir: 7.4, cik: 10.0, agirlik: 'agir', giris: 'olcek', materyal: 'plastik', x: 540 }), 540, 640, { golge: false });
-    o += MO.sar(zamanChip('O DAKİKALAR', 0, 0, '#E8323C', '#FFFFFF', 40), MO.oge(t, { gir: 9.0, cik: 10.0, agirlik: 'hafif', giris: 'yuksel', x: 540 }), 540, 860, { golge: false });
-    // ?
-    const q = ob(fd(t, 10.1, 10.5));
-    if (q > 0) o += `<text x="760" y="${1000 - 20 * q}" font-size="${240 * q}" font-weight="900" text-anchor="middle" style="fill:#FFD23F">?</text>`;
-    o += ET(t, 10.5, 99, 'NE YAPACAKSIN?', '#FFD23F', '#1B2440', 76, 520, -2);
+    // kuş bakışı: ambulans trafikte
+    const ka = fd(t, 6.9, 7.4) * (1 - fd(t, 9.8, 10.2));
+    if (ka > .01) {
+      o += `<g opacity="${ka.toFixed(2)}">` + kusTrafik(t, 7.2) + `</g>`;
+      o += `<g opacity="${ka.toFixed(2)}">` + MO.sar(saat(0, 0, 100, (t - 7.4) * .7), MO.oge(t, { gir: 7.5, cik: 9.8, agirlik: 'agir', giris: 'olcek', materyal: 'plastik', x: 540 }), 880, 560, { golge: false }) + '</g>';
+      o += MO.sar(zamanChip('O DAKİKALAR', 0, 0, '#E8323C', '#FFFFFF', 40), MO.oge(t, { gir: 7.8, cik: 9.8, agirlik: 'hafif', giris: 'yuksel', x: 540 }), 400, 560, { golge: false });
+    }
     return o;
   },
-  onCiz: t => gubi(t, { x: 880, y: 1640, boy: 120, duygu: t > 3 ? 'saskin' : 'merak', bakHedef: [700, 1100] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: t > 1 ? 'saskin' : 'merak', bakHedef: [700, 1100] })
+  onCiz: t => ET(t, 10.5, 99, 'NE YAPACAKSIN?', '#FFD23F', '#1B2440', 76, 520, -2) + gubi(t, { x: 880, y: 1640, boy: 120, duygu: t > 3 ? 'saskin' : 'merak', bakHedef: [700, 1100] }) + gufi(t, { x: 200, y: 1790, boy: 170, duygu: t > 1 ? 'saskin' : 'merak', bakHedef: [700, 1100] })
 });"""
 
 # 02 — İLK 10 SANİYE (11,6–20,2): etrafa bak (2,5) · omzundan sars + seslen (4,8–7,6) · "İyi misin?" (7,9)
@@ -247,10 +240,10 @@ MO.sahne({
     let o = yBas(t, 'kalp', 'KALP MASAJI', '#FF6B81', .05, 400);
     const pa = fd(t, 2.7, 3.0);
     let c = '';
-    if (pa < 1) { // A: göğüs önden — hedef ve eller
-      const el = MO.E.outCubic(fd(t, 1.0, 2.0));
-      c += `<g opacity="${(1 - pa).toFixed(2)}" transform="translate(0 20)">` + `<circle cx="0" cy="-200" r="58" fill="#F2C9A0"/><path d="M-62 -210 Q-60 -262 0 -262 Q60 -262 62 -210 Q30 -230 -6 -222 Q-40 -216 -62 -210Z" fill="#2A2A33"/><path d="M-40 -150 Q-210 -150 -220 -60 L-200 180 H200 L220 -60 Q210 -150 40 -150Z" fill="#3E8EDE"/><path d="M0 -150 V120" stroke="#FFFFFF" stroke-width="5" opacity=".3" stroke-dasharray="4 10"/>` + [0, 1, 2].map(i => `<path d="M-150 ${-20 + i * 46} Q0 ${-4 + i * 46} 120 ${-20 + i * 46}" stroke="#FFFFFF" stroke-width="4" fill="none" opacity=".12"/>`).join('') + `<circle cx="0" cy="-10" r="${34 + 6 * Math.sin(t * 8)}" fill="none" stroke="#FFD23F" stroke-width="6" stroke-dasharray="10 10"/><circle cx="0" cy="-10" r="8" fill="#FFD23F"/>` + elIki(300 * (1 - el), 0 - 200 * (1 - el), 1.0, -90 + 90 * el) + '</g>';
-      c += `<g opacity="${(1 - pa).toFixed(2)}">` + txt('GÖĞSÜN ORTASI', 0, -270, 38, '#FFD23F') + '</g>';
+    if (pa < 1) { // A: göğüs üstten — hedef ve iki el
+      const el = MO.E.outCubic(fd(t, 1.0, 1.8));
+      c += `<g opacity="${(1 - pa).toFixed(2)}" transform="translate(0 40) scale(.98)">` + gogusUst(t, elIki2(150 * (1 - el), -40 + 190 * (1 - el), 1.5, -30 * (1 - el))) + '</g>';
+      c += `<g opacity="${(1 - pa).toFixed(2)}">` + R(-150, -306, 300, 46, 23, '#FFD23F') + txt('GÖĞSÜN ORTASI', 0, -273, 30, '#1B2440') + '</g>';
     }
     if (pa > 0) { // B: yandan — kollar dümdüz, 5 cm
       const d = basBirak(t, [[4.4, 4.8]], 13);
@@ -320,8 +313,8 @@ MO.sahne({
     c += `<ellipse cx="-270" cy="34" rx="90" ry="14" fill="#F4F6FA"/><ellipse cx="-270" cy="30" rx="62" ry="9" fill="#E7EBF2"/><path d="M-310 24 Q-290 -4 -250 14 Q-230 24 -236 26Z" fill="#D58A3A"/>`;
     const sal = Math.sin(t * 9) * 2;
     const pan = fd(t, .2, .6);
-    c += dur(130, 215, 1.9, { renk: '#E8774A', elL: [-14, -184], elR: [14, -184], goz: 'genis', agiz: 'acik', basEk: sal });
-    c += `<g transform="translate(130 215) scale(1.9)"><circle cx="0" cy="-168" r="9" fill="#D58A3A" opacity="${pan.toFixed(2)}"/></g>`;
+    c += dur(120, 215, 1.9, { renk: '#E8774A', shW: 0, hipW: 5, ayak: 'sag', elL: [10, -183], elR: [22, -175], goz: 'genis', agiz: 'korku', ifade: 'korku', basEk: sal });
+    c += `<g opacity="${pan.toFixed(2)}"><path d="M170 -125 L270 -150" stroke="#FFD23F" stroke-width="3" stroke-dasharray="8 8"/><g transform="translate(335 -170)"><circle r="104" fill="#2A3556" stroke="#FFD23F" stroke-width="6"/><rect x="-36" y="-90" width="72" height="180" rx="30" fill="#D9626C" stroke="#0A1030" stroke-width="5"/><rect x="-22" y="-84" width="44" height="168" rx="22" fill="#5A1A1A"/><circle cx="0" cy="8" r="25" fill="#D58A3A" stroke="#0A1030" stroke-width="4"/><circle cx="-8" cy="0" r="6" fill="#F0B070"/><path d="M-46 -52 v28 m-9 -9 l9 9 l9 -9 M46 -52 v28 m-9 -9 l9 9 l9 -9" stroke="#E8323C" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="0" y="132" font-size="30" font-weight="900" text-anchor="middle" style="fill:#FFD23F">LOKMA TAKILDI</text></g></g>`;
     for (let i = 0; i < 3; i++) c += `<path d="M${-10 - i * 14} ${-60 + i * 30} h-26 M${270 + i * 14} ${-60 + i * 30} h26" stroke="#FFD23F" stroke-width="6" stroke-linecap="round" opacity="${(.5 + .5 * Math.sin(t * 12 + i)).toFixed(2)}"/>`;
     if (t > 2.45) { for (let i = 0; i < 3; i++) { const q = ((t * 2 + i / 3) % 1); c += `<circle cx="${190 + 120 * q}" cy="${-50 - 16 * q + i * 8}" r="${6 + 8 * q}" fill="#FFFFFF" opacity="${(.7 * (1 - q)).toFixed(2)}"/>`; } c += bal('ÖKS! ÖKS!', 330, -200, { fs: 40, kx: -80, ky: 60 }); }
     o += PK(t, .2, 99, c);
@@ -340,19 +333,19 @@ MO.sahne({
   sarsinti: [[5.14, 7], [5.45, 7], [5.75, 7], [6.05, 7], [6.35, 9]],
   ciz: t => {
     let o = yBas(t, 'bogaz', 'NEFES ALAMIYORSA', '#E8323C', .05, 400);
-    const S = 2.1, cx = 40, k = MO.E.inOutCubic(fd(t, 3.3, 4.1)), phi = k * 50 * Math.PI / 180;
-    const hip = [0, -95], u = [Math.sin(phi), -Math.cos(phi)], sh = [hip[0] + 65 * u[0], hip[1] + 65 * u[1]];
+    const S = 1.95, cx = 40, k = MO.E.inOutCubic(fd(t, 3.3, 4.1)), phi = k * 50 * Math.PI / 180;
+    const hip = [0, -108], u = [Math.sin(phi), -Math.cos(phi)], sh = [hip[0] + 65 * u[0], hip[1] + 65 * u[1]];
     const hc = [sh[0] + 42 * Math.sin(phi + .35 * k), sh[1] - 42 * Math.cos(phi + .35 * k)];
     const n = [-Math.cos(phi), -Math.sin(phi)];                        // sırt yüzü normali
     const P = [hip[0] + .66 * 65 * u[0] + n[0] * 37, hip[1] + .66 * 65 * u[1] + n[1] * 37];
     const VUR = [5.14, 5.45, 5.75, 6.05, 6.35];
     let vur = 0; VUR.forEach(a => { vur = Math.max(vur, MO.E.outQuad(fd(t, a - .14, a)) * (1 - MO.E.outQuad(fd(t, a, a + .14)))); });
     const rxu = -60 - 260 * (1 - MO.E.outCubic(fd(t, 1.7, 2.9)));
-    const el = fd(t, 3.9, 4.4), hang = [rxu + 36, -66], hand = [P[0] - 46 * (1 - vur), P[1] - 56 * (1 - vur)];
+    const el = fd(t, 3.9, 4.4), hang = [rxu + 30, -80], hand = [P[0] - 46 * (1 - vur), P[1] - 56 * (1 - vur)];
     const tutan = [hand[0] * el + hang[0] * (1 - el), hand[1] * el + hang[1] * (1 - el)];
     let c = yer(215);
-    c += kisi({ x: cx, y: 215, s: S, sh, hip, bas: hc, ayL: [-8, 0], ayR: [18, 0], elL: [hc[0] + 22, hc[1] + 38], elR: [hc[0] + 28, hc[1] + 30], shW: 0, hipW: 5, prefK: [0, 1], renk: '#E8774A', goz: 'genis', agiz: 'acik' });
-    c += kisi({ x: cx, y: 215, s: S, sh: [rxu, -160], hip: [rxu, -95], ayL: [rxu - 12, 0], ayR: [rxu + 12, 0], elL: [rxu - 4, -64], elR: tutan, shW: 0, hipW: 5, renk: '#3E8EDE', agiz: 'duz', prefK: [0, 1] });
+    c += kisi({ x: cx, y: 215, s: S, sh, hip, bas: hc, ayL: [-8, -8], ayR: [16, -8], elL: [hc[0] + 20, hc[1] + 30], elR: [hc[0] + 26, hc[1] + 24], shW: 0, hipW: 5, prefK: [0, 1], renk: '#E8774A', goz: 'genis', agiz: 'korku', ifade: 'korku', ayak: 'sag' });
+    c += kisi({ x: cx, y: 215, s: S, sh: [rxu, -173], hip: [rxu, -108], ayL: [rxu - 8, -8], ayR: [rxu + 14, -8], elL: [rxu - 6, -80], elR: tutan, shW: 0, hipW: 5, renk: '#3E8EDE', agiz: 'duz', ifade: 'odak', prefK: [0, 1], ayak: 'sag' });
     if (t > 4.0) { const gl = .6 + .4 * Math.sin(t * 10); c += `<g transform="translate(${cx} 215) scale(${S})"><circle cx="${hip[0] + .66 * 65 * u[0] + n[0] * 27}" cy="${hip[1] + .66 * 65 * u[1] + n[1] * 27}" r="${20 + 4 * gl}" fill="none" stroke="#FFD23F" stroke-width="${4 / S}" opacity="${fd(t, 4.0, 4.3).toFixed(2)}"/></g>`; }
     let say = 0; VUR.forEach((a, i) => { if (t >= a) say = i + 1; });
     if (say) c += `<g transform="translate(370 -190)"><circle r="56" fill="#E8323C"/>` + txt(String(say), 0, 24, 70, '#FFFFFF') + `</g>`;
@@ -374,17 +367,17 @@ MO.sahne({
   sarsinti: [[3.7, 6], [4.0, 6], [4.3, 6], [4.6, 6], [4.9, 8], [5.74, 12]],
   ciz: t => {
     let o = yBas(t, 'bogaz', 'HEIMLICH MANEVRASI', '#FFD23F', .05, 400);
-    const S = 2.1, cx = 30, phi = 12 * Math.PI / 180, hip = [0, -95], u = [Math.sin(phi), -Math.cos(phi)], sh = [hip[0] + 65 * u[0], hip[1] + 65 * u[1]], nr = [Math.cos(phi), Math.sin(phi)];
+    const S = 1.95, cx = 30, phi = 12 * Math.PI / 180, hip = [0, -108], u = [Math.sin(phi), -Math.cos(phi)], sh = [hip[0] + 65 * u[0], hip[1] + 65 * u[1]], nr = [Math.cos(phi), Math.sin(phi)];
     const B = [hip[0] + .3 * 65 * u[0] + nr[0] * 35, hip[1] + .3 * 65 * u[1] + nr[1] * 35];
     const TH = [3.7, 4.0, 4.3, 4.6, 4.9];
     let ith = 0; TH.forEach(a => { ith = Math.max(ith, MO.E.outQuad(fd(t, a - .1, a + .08)) * (1 - MO.E.outQuad(fd(t, a + .08, a + .2)))); });
     const F = [B[0] - 20 * ith, B[1] - 18 * ith];
     const rxu = -46 - 330 * (1 - MO.E.outCubic(fd(t, .14, 1.3))), ar = fd(t, 1.1, 1.8);
-    const hL = [rxu + 36, -66], hR = [rxu + 40, -62];
+    const hL = [rxu + 30, -80], hR = [rxu + 34, -76];
     const eL = [F[0] * ar + hL[0] * (1 - ar), (F[1] - 5) * ar + hL[1] * (1 - ar)], eR = [F[0] * ar + hR[0] * (1 - ar), (F[1] + 3) * ar + hR[1] * (1 - ar)];
     let c = yer(215);
-    c += kisi({ x: cx, y: 215, s: S, sh, hip, ayL: [-8, 0], ayR: [18, 0], elL: [sh[0] + 22, sh[1] + 36], elR: [sh[0] + 24, sh[1] + 40], shW: 0, hipW: 5, renk: '#E8774A', goz: 'genis', agiz: 'acik', bas: [sh[0] + 12, sh[1] - 40] });
-    c += kisi({ x: cx, y: 215, s: S, sh: [rxu, -158], hip: [rxu - 4, -95], ayL: [rxu - 14, 0], ayR: [rxu + 14, 0], elL: eL, elR: eR, shW: 0, hipW: 5, renk: '#3E8EDE', agiz: 'duz', prefK: [0, 1], bas: [rxu + 10, -198] });
+    c += kisi({ x: cx, y: 215, s: S, sh, hip, ayL: [-8, -8], ayR: [16, -8], elL: [sh[0] + 22, sh[1] + 40], elR: [sh[0] + 26, sh[1] + 44], shW: 0, hipW: 5, renk: '#E8774A', goz: 'genis', agiz: 'korku', ifade: 'korku', bas: [sh[0] + 12, sh[1] - 40], ayak: 'sag' });
+    c += kisi({ x: cx, y: 215, s: S, sh: [rxu, -171], hip: [rxu - 4, -108], ayL: [rxu - 10, -8], ayR: [rxu + 12, -8], elL: eL, elR: eR, shW: 0, hipW: 5, renk: '#3E8EDE', agiz: 'duz', ifade: 'odak', prefK: [0, 1], bas: [rxu + 10, -212], ayak: 'sag' });
     if (ar > .9) c += `<g transform="translate(${cx} 215) scale(${S})">` + yumruk(F[0] + 4, F[1], 1) + '</g>';
     if (t > 1.84 && t < 3.6) c += `<g transform="translate(${cx} 215) scale(${S})" opacity="${fd(t, 1.84, 2.1).toFixed(2)}"><path d="M${B[0] - 12} ${B[1] + 16} h24 M${B[0]} ${B[1] + 4} v24" stroke="#FFD23F" stroke-width="${4 / S}" stroke-linecap="round"/></g>` + `<g transform="translate(${cx + 150 * S * .5 + 120} ${215 - 70 * S - 20})" opacity="${fd(t, 1.84, 2.2).toFixed(2)}">` + R(-120, -30, 240, 60, 30, '#FFD23F') + txt('GÖBEK ÜSTÜ', 0, 14, 34, '#1B2440') + '</g>';
     if (t > 3.5 && t < 5.5) c += `<g transform="translate(${cx} 215) scale(${S})" opacity="${fd(t, 3.5, 3.8).toFixed(2)}"><path d="M${B[0] + 62} ${B[1] + 22} Q${B[0] + 40} ${B[1] + 6} ${B[0] + 20} ${B[1] - 8} Q${B[0] + 4} ${B[1] - 20} ${B[0] - 2} ${B[1] - 44} M${B[0] - 14} ${B[1] - 34} L${B[0] - 2} ${B[1] - 48} L${B[0] + 14} ${B[1] - 36}" stroke="#E8323C" stroke-width="${8 / S}" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>`;
@@ -408,7 +401,7 @@ MO.sahne({
   sarsinti: [[1.0, 8]],
   ciz: t => {
     let o = yBas(t, 'kalp', 'BİLİNCİ KAPANIRSA', '#E8323C', .05, 400);
-    const S = 2.0, x0 = -170, px = x0 + 160 * S, th = MO.E.inQuad(fd(t, .3, 1.0));
+    const S = 2.0, x0 = -170, px = x0 + 173 * S, th = MO.E.inQuad(fd(t, .3, 1.0));
     let c = yer(215);
     if (t < 1.9) c += th < 1 ? dusus(px, 215, S, th, { renk: '#3E8EDE', basEk: Math.sin(t * 20) * 3 * (1 - th) }) : yatan(x0, 215, S, { renk: '#3E8EDE' });
     else c += cprFig(x0, 215, S, cprD(t, 1.95, 2, 13));

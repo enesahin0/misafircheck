@@ -87,7 +87,7 @@ MO.sahne({
     let o = `<g transform="translate(540 430) rotate(-3)">` + R(-460 + 10, -80 + 14, 920, 160, 30, '#000', .4) + R(-460, -80, 920, 160, 30, '#E8323C') + `<rect x="-440" y="-64" width="880" height="128" rx="20" fill="none" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="5"/>` + txt('YANINDA BİRİ YIĞILDI', 0, 22, 62, '#FFFFFF') + `</g>`;
     o += gTxt('NE', 540, 690, 150, '#FFF3E0') + gTxt('YAPACAKSIN?', 540, 830, 140, '#FFD23F');
     o += R(-100, 1160, 1280, 400, 0, '#1A2238') + R(-100, 1160, 1280, 6, 0, '#2E3A5C');
-    o += dur(300, 1160, 1.15, { renk: '#3E8EDE', goz: 'genis', agiz: 'acik' }) + yatan(840 - 160 * 1.15, 1160, 1.15, { renk: '#E8774A' });
+    o += dur(300, 1160, 1.15, { renk: '#3E8EDE', goz: 'genis', agiz: 'korku', ifade: 'korku' }) + yatan(840 - 173 * 1.15, 1160, 1.15, { renk: '#E8774A' });
     o += `<text x="520" y="1040" font-size="130" font-weight="900" text-anchor="middle" style="fill:#FFD23F" opacity=".95">?</text>`;
     const f = 'cvf'; o += `<defs><linearGradient id="${f}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(8,10,24,0)"/><stop offset="1" stop-color="#080A18"/></linearGradient></defs><rect x="0" y="1040" width="1080" height="300" fill="url(#${f})" opacity=".0"/><rect x="0" y="1338" width="1080" height="582" fill="#080A18"/>`;
     const ust = 'SAĞLIK & VÜCUT · İLK YARDIM'; o += `<rect x="${540 - (ust.length * 21 + 70) / 2}" y="1215" width="${ust.length * 21 + 70}" height="56" rx="28" fill="#FF6B81"/><text class="mono" x="540" y="1253" font-size="28" text-anchor="middle" letter-spacing="4" style="fill:#080A18">${ust}</text>`;
