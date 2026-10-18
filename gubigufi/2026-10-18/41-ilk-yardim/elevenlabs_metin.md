@@ -4,11 +4,13 @@
 
 [curious] Cevap verirse, bayılmıştır. [calm] Sırtüstü yatır, bacaklarını kaldır. Ağzına bir şey verme. Kendine gelmezse ya da göğsü ağrıyorsa, 112.
 
-[serious] Cevap yok mu? [short pause] Hemen 112'yi ara, hoparlöre al. Telefondaki sağlık görevlisi seni yönlendirir. [curious] Sonra göğsüne bak: nefes alıyor mu? On saniyeyi geçme. [serious] Nabız aramaya kalkma, vakit kaybettirir. Nefes yoksa, ya da hırıltılı, düzensizse: kalbi durmuş say.
+[serious] Cevap yok mu? [short pause] Hemen 112'yi ara, hoparlöre al; telefondaki sağlık görevlisi seni yönlendirir. [curious] Sonra göğsüne bak: nefes alıyor mu? On saniyeyi geçme. [serious] Nabız aramaya kalkma, vakit kaybettirir.
 
-[serious] Göğsünün ortasına, iki elini üst üste koy. Kollar dümdüz. Sert ve hızlı bas: yaklaşık beş santim, saniyede iki kere. [calm] Nefes vermek zorunda değilsin; sadece bas. Kalp şok cihazı olan biri varsa getirtsin: cihaz sana sesle yol gösterir. Ambulans gelene kadar bırakma.
+[calm] Göğsü düzgün inip kalkıyorsa nefes alıyordur: onu yan çevir, ağzı aşağı baksın. Kusarsa ya da köpürürse boğulmasın. Nefesini izle. [serious] Ama nefes yoksa, ya da hırıltılı, çok yavaş, düzensizse: kalbi durmuş say.
 
-[curious] Kaza olduysa? [serious] Kişiyi oynatma; boynunu ve başını sabit tut. Ama nefes almıyorsa boynu düşünme: önce göğüs masajı.
+[serious] Göğsünün ortasına, iki elini üst üste koy. Kollar dümdüz. Sert ve hızlı bas: yaklaşık beş santim, saniyede iki kere. [calm] Nefes vermek zorunda değilsin; sadece bas. Ambulans gelene kadar bırakma.
+
+[curious] Kaza olduysa? [serious] Tehlike yoksa kişiyi oynatma, yan da çevirme; boynunu ve başını sabit tut. Ama nefes almıyorsa hemen göğüs masajı: önce kalp, sonra boyun.
 
 [curious] Ya yemek yerken boğazını tutuyorsa? [serious] Öksürebiliyorsa karışma. Konuşamıyor, nefes alamıyorsa: arkasına geç, öne eğ, kürek kemikleri arasına beş sert vuruş. Olmadıysa arkadan sarıl, yumruğunu göbeğinin üstüne koy, beş kere içe ve yukarı çek. Buna Heimlich denir. [calm] Bilincini kaybederse yatır, kalp masajına geç.
 

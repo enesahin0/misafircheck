@@ -6,7 +6,7 @@ Kategori: SAĞLIK & VÜCUT (#FF6B81). ~221 kelime ≈ 105 sn. Düz metin = `elev
 - 12–20 İLK 10 SN (her durumda): tehlike? → sars + seslen.
 - 20–30 CEVAP VERİRSE = bayılma: yatır, bacak kaldır, ağzına bir şey verme, gelmezse/göğüs ağrısı → 112.
 - 30–48 CEVAP YOK: 112 + hoparlör → nefes bak (≤10 sn) → "nabız arama" (şaşırtıcı) → nefes yok/hırıltılı = kalp durmuş say.
-- 48–68 KALP MASAJI: göğsün ortası, iki el, 5 cm, saniyede ~2, sadece bas, defibrilatör, bırakma.
+- 48–62 YAN ÇEVİR (düzenli nefes) / KALP DURMUŞ SAY (hırıltılı-yavaş-düzensiz) → 62–76 KALP MASAJI: göğsün ortası, iki el, 5 cm, saniyede ~2, sadece bas, bırakma. (Defibrilatör satırı kullanıcı isteğiyle ÇIKARILDI — 'sadece ikiniz' kurgusuna uymuyor.)
 - 68–78 KAZA: oynatma, boyun sabit, AMA nefes yoksa önce masaj.
 - 78–98 BOĞULMA: "öksürebiliyorsa karışma" → 5 sırt vuruşu → 5 karın itme (Heimlich) → bilinç kaybı = masaj.
 - 98–105 STORY çağrısı + takip.
@@ -33,3 +33,10 @@ ORTA:
 - CPR sahnesi: yandan kesit, göğüs çökmesi 5 cm ölçeği + saniyede 2 vuruş ritim göstergesi.
 - Heimlich: arkadan sarılma, yumruk yeri (göbek üstü) vurgulu; 5 vuruş + 5 itme sayacı.
 - Son kart (hikâyede paylaşılacak): BAYILMA / KALP DURMASI / KAZA / BOĞULMA — tek cümle kural + "STORY'NE AT".
+
+## v2 düzeltmeleri (kullanıcı geri bildirimi)
+- Defibrilatör/OED cümlesi çıkarıldı (tek başına kurgusuyla çelişiyordu).
+- "boynu düşünme" → "önce kalp, sonra boyun" (aynı kural, daha net). Kaza: tehlike yoksa oynatma + YAN DA ÇEVİRME (ERC 2025: travmada recovery position yok).
+- YAN ÇEVİRME (koma/derlenme pozisyonu) eklendi: ERC 2025 First Aid — yanıtsız ama NORMAL nefes alan, travma olmayan kişi; nefesi izle, bozulursa sırtüstü + CPR. "Agonal solunum ve travmada recovery position YOK."
+- "Hırıltılı" tuzağı: hırıltılı/çok yavaş/düzensiz/gasping nefes = kalp durması (ERC 2025: agonal gasping) → masaj. "Şüphedeysen CPR". Horlama gibi yüzeysel ayrımlar metinde YOK (karıştırma riski).
+- Ağızdan köpük/kusmuk: nefes düzgünse yan çevirme zaten çözer. CPR sırasında köpük/kusma gelirse masajı bölme (Avustralya Resüsitasyon Konseyi: köpüğü boşaltmaya çalışma, CPR'a devam) — videoda YOK, kaynak tek; uzman teyidi gerek. Nöbet (havale) ayrı video konusu.
