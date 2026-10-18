@@ -194,7 +194,7 @@ const BN = (t, a, b, tur, s, fs = 54, y = 1215) => MO.sar(bant(tur, s, fs), MO.o
 const yBas = (t, tur, ad, renk, a = .05, y = 400) => MO.sar(yerBas(tur, ad, renk, 50), MO.oge(t, { gir: a, agirlik: 'hafif', giris: 'yuksel', x: 540 }), 540, y, { golge: false });
 const hoparlor = (x, y, s, t, renk = '#FFD23F') => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-40 -26 L10 -26 L60 -66 L60 66 L10 26 L-40 26Z" fill="${renk}"/>` + [0, 1, 2].map(i => { const q = (Math.sin(t * 7 - i * 1.1) + 1) / 2; return `<path d="M${84 + i * 30} -${24 + i * 14} Q${112 + i * 30} 0 ${84 + i * 30} ${24 + i * 14}" stroke="${renk}" stroke-width="9" fill="none" stroke-linecap="round" opacity="${(.35 + .65 * q).toFixed(2)}"/>`; }).join('') + `</g>`;
 
-const logo = () => { const S = 140 / 233; let l = `<g transform="translate(540 1650) scale(${S}) translate(-141.5 -141.5)">`; for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`; return l + '</g>'; };
+const logo = () => { const S = 126 / 233; let l = `<g transform="translate(540 1599) scale(${S}) translate(-141.5 -141.5)">`; for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`; return l + '</g>'; };
 const gTxt = (s, x, y, size, renk) => txt(s, x + 6, y + 8, size, '#000', 900, 'opacity=".45"') + txt(s, x, y, size, renk);
 MO.sahne({
   zemin: MO.zemin({ ust: '#2A1424', alt: '#0A0710', isik: [540, 760, '#FF8A4A', .30], ikinci: [900, 300, '#E8323C', .14] }),

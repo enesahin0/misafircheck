@@ -394,7 +394,7 @@ const MAS = (t, o = {}) => gubi(t, { x: 880, y: 1650, boy: 150, duygu: o.gd || '
   + gufi(t, { x: 200, y: 1840, boy: 210, duygu: o.gf || 'merak', bakHedef: o.bh || [540, 800], isaretHedef: o.ih || null })
   + (o.b || []).map(([k, a, b, m]) => bm(t, a, b, k === 'gubi' ? 720 : 360, 1492, m, { yon: k === 'gubi' ? 1 : -1 })).join('');
 
-const logo = () => { const S = 140 / 233; let l = `<g transform="translate(540 1650) scale(${S}) translate(-141.5 -141.5)">`; for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`; return l + '</g>'; };
+const logo = () => { const S = 126 / 233; let l = `<g transform="translate(540 1599) scale(${S}) translate(-141.5 -141.5)">`; for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`; return l + '</g>'; };
 const gTxt = (s, x, y, size, renk) => txt(s, x + 6, y + 8, size, '#000', 900, 'opacity=".45"') + txt(s, x, y, size, renk);
 MO.sahne({
   zemin: MO.zemin({ ust: '#2A1424', alt: '#0A0710', isik: [540, 760, '#FF6B81', .30], ikinci: [900, 300, '#E8323C', .14] }),

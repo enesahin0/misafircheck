@@ -78,7 +78,7 @@ print("sahneler yazıldı")
 
 # ---- kapak (reels_kapak.jpg): kanal.js'siz tek kare; profil ızgarası 3:4 güvenli alan (y 240–1680) ----
 KAPAK_JS = r"""
-const logo = () => { const S = 140 / 233; let l = `<g transform="translate(540 1650) scale(${S}) translate(-141.5 -141.5)">`; for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`; return l + '</g>'; };
+const logo = () => { const S = 126 / 233; let l = `<g transform="translate(540 1599) scale(${S}) translate(-141.5 -141.5)">`; for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`; return l + '</g>'; };
 const gTxt = (s, x, y, size, renk) => txt(s, x + 6, y + 8, size, '#000', 900, 'opacity=".45"') + txt(s, x, y, size, renk);
 MO.sahne({
   zemin: MO.zemin({ ust: '#1A1228', alt: '#07050C', isik: [540, 1000, '#FF6A1F', .30], ikinci: [900, 300, '#E8323C', .14] }), kamera: [[0, 1.0, 540, 960]], gren: .04,
