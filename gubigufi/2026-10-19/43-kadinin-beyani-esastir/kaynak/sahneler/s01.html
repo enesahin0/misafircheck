@@ -548,7 +548,7 @@ MO.sahne({
       o += `</g>`;
       o += ET(t, 2.15, 5.0, 'SIRF BİR SÖZLE', '#FFD23F', MUREK, 76, 500, -2) + ET(t, 3.5, 5.1, 'HAPSE Mİ?', '#E8323C', '#FFFFFF', 116, 680, 2);
     }
-    const q = fd(t, 5.3, 5.7);
+    const q = fd(t, 5.1, 5.45);
     if (q > .01) {
       o += `<g opacity="${q.toFixed(2)}">`;
       for (let i = 0; i < 14; i++) { const a = i * Math.PI * 2 / 14 + t * .3; o += `<path d="M540 1040 L${F1(540 + Math.cos(a - .06) * 700)} ${F1(1040 + Math.sin(a - .06) * 700)} L${F1(540 + Math.cos(a + .06) * 700)} ${F1(1040 + Math.sin(a + .06) * 700)}Z" fill="${ALTIN}" opacity="${t > 7.1 ? .16 : .06}"/>`; }

@@ -547,7 +547,7 @@ MO.sahne({
     if (B > .01) {
       const n = Math.round(3 + 7 * ob(fd(t, 4.1, 5.5)));
       o += `<g opacity="${B.toFixed(2)}"><g transform="translate(540 880)">` + `<g transform="translate(0 30) scale(1.4)">` + silK('adam', '#8890A8') + `</g>` + kafesK(420, 400, ob(fd(t, 3.2, 3.8))) + `</g>`;
-      o += MO.sar(R(-260, -90, 520, 180, 44, '#0B1433') + `<rect x="-260" y="-90" width="520" height="180" rx="44" fill="none" stroke="#E8323C" stroke-width="6"/>` + txt((t < 4.1 ? '3' : (n < 10 ? '3–' + n : '3–10')) + ' GÜN', 0, 36, 100, '#FFFFFF'), MO.oge(t, { gir: 4.0, agirlik: 'agir', giris: 'olcek', x: 540 }), 540, 1170, { golge: false });
+      o += MO.sar(R(-260, -90, 520, 180, 44, '#0B1433') + `<rect x="-260" y="-90" width="520" height="180" rx="44" fill="none" stroke="#E8323C" stroke-width="6"/>` + txt((n <= 3 ? '3' : (n < 10 ? '3–' + n : '3–10')) + ' GÜN', 0, 36, 100, '#FFFFFF'), MO.oge(t, { gir: 4.0, agirlik: 'agir', giris: 'olcek', x: 540 }), 540, 1170, { golge: false });
       o += `</g>` + ET(t, 3.1, 6.9, 'TEDBİRE UYMAYAN', '#FFD23F', MUREK, 54, 440, -2) + ET(t, 5.7, 6.9, 'ZORLAMA HAPSİ', '#E8323C', '#FFFFFF', 74, 570, 2);
     }
     return o;

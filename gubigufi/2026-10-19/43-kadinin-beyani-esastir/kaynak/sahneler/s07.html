@@ -544,7 +544,7 @@ MO.sahne({
     let sol = ''; [[ -30, 40, -6], [20, 8, 5], [-4, -28, -2]].forEach(([x, y, r], i) => { const k = fd(t, 2.5 + i * .4, 3.0 + i * .4); if (k > 0) sol += `<g transform="translate(0 ${F1((1 - ob(k)) * -200)})" opacity="${Math.min(1, k * 3).toFixed(2)}">` + doc(x, y, r) + `</g>`; });
     const sag = `<g transform="translate(0 20) scale(.75)">` + silK('adam', '#AEB8D0') + `</g>`;
     o += teraziF(540, 800, 1.0, ang, sol, sag);
-    o += ET(t, .3, 2.3, 'CEZA DAVASI', ALTIN, MUREK, 90, 470, -2) + ET(t, 1.1, 2.3, 'AYRI BİR DÜNYA', '#FFFFFF', '#E8323C', 60, 620, 2);
+    o += ET(t, .3, 2.3, 'CEZA DAVASI', ALTIN, MUREK, 90, 470, -2) + ET(t, 1.1, 2.3, 'AYRI BİR DÜNYA', '#FFFFFF', '#E8323C', 60, 650, 2);
     o += ET(t, 2.4, 4.4, 'BÜTÜN DELİLLER', '#FFD23F', MUREK, 66, 470, -2);
     o += ET(t, 4.55, 99, 'ŞÜPHE KALIRSA', '#FFFFFF', '#E8323C', 62, 470, -2) + ET(t, 5.35, 99, 'SANIK LEHİNE', ALTIN, MUREK, 88, 620, 2);
     return o;

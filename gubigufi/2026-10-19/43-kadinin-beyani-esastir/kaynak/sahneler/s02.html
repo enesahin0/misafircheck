@@ -544,15 +544,15 @@ MO.sahne({
       o += MO.sar(damga('KANUNDA YOK', '#E8323C', 96, -8), MO.oge(t, { gir: 2.2, cik: 3.0, agirlik: 'agir', giris: 'damga', materyal: 'lastik', x: 540 }), 540, 1010, { golge: false });
       o += ET(t, .2, 3.0, 'KANUNDA ARIYORUZ…', '#FFD23F', MUREK, 54, 480, -2);
     }
-    const hb = fd(t, 3.0, 3.5) * (1 - fd(t, 5.5, 5.9));
+    const hb = fd(t, 3.0, 3.5) * (1 - fd(t, 5.3, 5.7));
     if (hb > .01) {
       o += `<g opacity="${hb.toFixed(2)}">` + kalab(540, 1330, 1400, 18, t, '#1B1626', 1, 1.25) + R(110, 640, 860, 230, 64, '#FFF6E6') + `<path d="M340 868 L380 960 L430 868Z" fill="#FFF6E6"/>` + txt('"Kadının beyanı', 540, 735, 62, MUREK) + txt('esastır"', 540, 820, 62, MUREK) + `</g>`;
-      o += ET(t, 3.3, 5.8, 'HALK ARASINDA', '#FFD23F', MUREK, 58, 470, -2) + ET(t, 4.0, 5.8, 'KISA ÖZET', '#FFFFFF', '#E8323C', 76, 1010, 2);
+      o += ET(t, 3.3, 5.45, 'HALK ARASINDA', '#FFD23F', MUREK, 58, 470, -2) + ET(t, 4.0, 5.45, 'KISA ÖZET', '#FFFFFF', '#E8323C', 76, 1010, 2);
     }
-    const kn = fd(t, 5.5, 5.9);
+    const kn = fd(t, 5.75, 6.0);
     if (kn > .01) {
-      o += `<g transform="translate(540 1030) scale(${(1.15 * ob(fd(t, 5.7, 6.3))).toFixed(3)}) rotate(${F1(Math.sin(t * 3) * 5)})">` + soru(1) + `</g>`;
-      o += ET(t, 5.75, 99, 'PEKİ KURAL NE?', '#FFFFFF', '#E8323C', 86, 600, -2);
+      o += `<g transform="translate(540 1030) scale(${(1.15 * ob(fd(t, 5.75, 6.35))).toFixed(3)}) rotate(${F1(Math.sin(t * 3) * 5)})">` + soru(1) + `</g>`;
+      o += ET(t, 5.8, 99, 'PEKİ KURAL NE?', '#FFFFFF', '#E8323C', 86, 600, -2);
     }
     return o;
   },

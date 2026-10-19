@@ -18,7 +18,7 @@ MO.sahne({
       o += `</g>`;
       o += ET(t, 2.15, 5.0, 'SIRF BİR SÖZLE', '#FFD23F', MUREK, 76, 500, -2) + ET(t, 3.5, 5.1, 'HAPSE Mİ?', '#E8323C', '#FFFFFF', 116, 680, 2);
     }
-    const q = fd(t, 5.3, 5.7);
+    const q = fd(t, 5.1, 5.45);
     if (q > .01) {
       o += `<g opacity="${q.toFixed(2)}">`;
       for (let i = 0; i < 14; i++) { const a = i * Math.PI * 2 / 14 + t * .3; o += `<path d="M540 1040 L${F1(540 + Math.cos(a - .06) * 700)} ${F1(1040 + Math.sin(a - .06) * 700)} L${F1(540 + Math.cos(a + .06) * 700)} ${F1(1040 + Math.sin(a + .06) * 700)}Z" fill="${ALTIN}" opacity="${t > 7.1 ? .16 : .06}"/>`; }
@@ -46,15 +46,15 @@ MO.sahne({
       o += MO.sar(damga('KANUNDA YOK', '#E8323C', 96, -8), MO.oge(t, { gir: 2.2, cik: 3.0, agirlik: 'agir', giris: 'damga', materyal: 'lastik', x: 540 }), 540, 1010, { golge: false });
       o += ET(t, .2, 3.0, 'KANUNDA ARIYORUZ…', '#FFD23F', MUREK, 54, 480, -2);
     }
-    const hb = fd(t, 3.0, 3.5) * (1 - fd(t, 5.5, 5.9));
+    const hb = fd(t, 3.0, 3.5) * (1 - fd(t, 5.3, 5.7));
     if (hb > .01) {
       o += `<g opacity="${hb.toFixed(2)}">` + kalab(540, 1330, 1400, 18, t, '#1B1626', 1, 1.25) + R(110, 640, 860, 230, 64, '#FFF6E6') + `<path d="M340 868 L380 960 L430 868Z" fill="#FFF6E6"/>` + txt('"Kadının beyanı', 540, 735, 62, MUREK) + txt('esastır"', 540, 820, 62, MUREK) + `</g>`;
-      o += ET(t, 3.3, 5.8, 'HALK ARASINDA', '#FFD23F', MUREK, 58, 470, -2) + ET(t, 4.0, 5.8, 'KISA ÖZET', '#FFFFFF', '#E8323C', 76, 1010, 2);
+      o += ET(t, 3.3, 5.45, 'HALK ARASINDA', '#FFD23F', MUREK, 58, 470, -2) + ET(t, 4.0, 5.45, 'KISA ÖZET', '#FFFFFF', '#E8323C', 76, 1010, 2);
     }
-    const kn = fd(t, 5.5, 5.9);
+    const kn = fd(t, 5.75, 6.0);
     if (kn > .01) {
-      o += `<g transform="translate(540 1030) scale(${(1.15 * ob(fd(t, 5.7, 6.3))).toFixed(3)}) rotate(${F1(Math.sin(t * 3) * 5)})">` + soru(1) + `</g>`;
-      o += ET(t, 5.75, 99, 'PEKİ KURAL NE?', '#FFFFFF', '#E8323C', 86, 600, -2);
+      o += `<g transform="translate(540 1030) scale(${(1.15 * ob(fd(t, 5.75, 6.35))).toFixed(3)}) rotate(${F1(Math.sin(t * 3) * 5)})">` + soru(1) + `</g>`;
+      o += ET(t, 5.8, 99, 'PEKİ KURAL NE?', '#FFFFFF', '#E8323C', 86, 600, -2);
     }
     return o;
   },
@@ -145,8 +145,8 @@ MO.sahne({
     }
     if (B > .01) {
       o += `<g opacity="${B.toFixed(2)}">`;
-      for (let i = 0; i < 6; i++) o += ayKutu(130 + i * 164, 960, i + 1, fd(t, 3.9 + i * .1, 4.3 + i * .1), t > 4.1 + i * .16);
-      o += `</g>` + ET(t, 3.6, 5.2, 'EN FAZLA', '#FFFFFF', '#E8323C', 64, 470, -2) + ET(t, 4.2, 5.2, '6 AY', ALTIN, MUREK, 130, 1120, 2);
+      for (let i = 0; i < 6; i++) o += ayKutu(130 + i * 164, 880, i + 1, fd(t, 3.9 + i * .1, 4.3 + i * .1), t > 4.1 + i * .16);
+      o += `</g>` + ET(t, 3.6, 5.2, 'EN FAZLA', '#FFFFFF', '#E8323C', 64, 470, -2) + ET(t, 4.2, 5.2, '6 AY', ALTIN, MUREK, 130, 1140, 2);
     }
     if (C > .01) {
       o += `<g opacity="${C.toFixed(2)}">` + MO.sar(R(-210, -150, 420, 300, 30, '#14654F') + txt('TEDBİR', 0, -30, 70, '#FFFFFF') + txt('KORUMA', 0, 50, 44, '#BFF0E4'), MO.oge(t, { gir: 5.4, agirlik: 'agir', giris: 'yuksel', materyal: 'plastik', x: 540 }), 290, 960, { golge: false }) +
@@ -177,7 +177,7 @@ MO.sahne({
     if (B > .01) {
       const n = Math.round(3 + 7 * ob(fd(t, 4.1, 5.5)));
       o += `<g opacity="${B.toFixed(2)}"><g transform="translate(540 880)">` + `<g transform="translate(0 30) scale(1.4)">` + silK('adam', '#8890A8') + `</g>` + kafesK(420, 400, ob(fd(t, 3.2, 3.8))) + `</g>`;
-      o += MO.sar(R(-260, -90, 520, 180, 44, '#0B1433') + `<rect x="-260" y="-90" width="520" height="180" rx="44" fill="none" stroke="#E8323C" stroke-width="6"/>` + txt((t < 4.1 ? '3' : (n < 10 ? '3–' + n : '3–10')) + ' GÜN', 0, 36, 100, '#FFFFFF'), MO.oge(t, { gir: 4.0, agirlik: 'agir', giris: 'olcek', x: 540 }), 540, 1170, { golge: false });
+      o += MO.sar(R(-260, -90, 520, 180, 44, '#0B1433') + `<rect x="-260" y="-90" width="520" height="180" rx="44" fill="none" stroke="#E8323C" stroke-width="6"/>` + txt((n <= 3 ? '3' : (n < 10 ? '3–' + n : '3–10')) + ' GÜN', 0, 36, 100, '#FFFFFF'), MO.oge(t, { gir: 4.0, agirlik: 'agir', giris: 'olcek', x: 540 }), 540, 1170, { golge: false });
       o += `</g>` + ET(t, 3.1, 6.9, 'TEDBİRE UYMAYAN', '#FFD23F', MUREK, 54, 440, -2) + ET(t, 5.7, 6.9, 'ZORLAMA HAPSİ', '#E8323C', '#FFFFFF', 74, 570, 2);
     }
     return o;
@@ -200,7 +200,7 @@ MO.sahne({
     let sol = ''; [[ -30, 40, -6], [20, 8, 5], [-4, -28, -2]].forEach(([x, y, r], i) => { const k = fd(t, 2.5 + i * .4, 3.0 + i * .4); if (k > 0) sol += `<g transform="translate(0 ${F1((1 - ob(k)) * -200)})" opacity="${Math.min(1, k * 3).toFixed(2)}">` + doc(x, y, r) + `</g>`; });
     const sag = `<g transform="translate(0 20) scale(.75)">` + silK('adam', '#AEB8D0') + `</g>`;
     o += teraziF(540, 800, 1.0, ang, sol, sag);
-    o += ET(t, .3, 2.3, 'CEZA DAVASI', ALTIN, MUREK, 90, 470, -2) + ET(t, 1.1, 2.3, 'AYRI BİR DÜNYA', '#FFFFFF', '#E8323C', 60, 620, 2);
+    o += ET(t, .3, 2.3, 'CEZA DAVASI', ALTIN, MUREK, 90, 470, -2) + ET(t, 1.1, 2.3, 'AYRI BİR DÜNYA', '#FFFFFF', '#E8323C', 60, 650, 2);
     o += ET(t, 2.4, 4.4, 'BÜTÜN DELİLLER', '#FFD23F', MUREK, 66, 470, -2);
     o += ET(t, 4.55, 99, 'ŞÜPHE KALIRSA', '#FFFFFF', '#E8323C', 62, 470, -2) + ET(t, 5.35, 99, 'SANIK LEHİNE', ALTIN, MUREK, 88, 620, 2);
     return o;
@@ -220,7 +220,7 @@ MO.sahne({
     if (A > .01) {
       o += `<g opacity="${A.toFixed(2)}">` + MO.sar(sayfaK(620, 480, 5, -1, 'ŞİKÂYET'), MO.oge(t, { gir: .15, cik: 3.4, agirlik: 'agir', giris: 'yuksel', materyal: 'plastik', x: 540 }), 540, 900, { golge: false }) + `</g>`;
       o += MO.sar(damga('ASILSIZ', '#E8323C', 100, -10), MO.oge(t, { gir: 1.5, cik: 3.4, agirlik: 'agir', giris: 'damga', materyal: 'lastik', x: 540 }), 560, 900, { golge: false });
-      o += ET(t, .1, 2.0, 'ASILSIZ SUÇLAMA?', '#FFD23F', MUREK, 66, 470, -2) + ET(t, 2.0, 3.4, 'BİLE BİLE YALAN', '#FFFFFF', '#E8323C', 70, 470, -2);
+      o += ET(t, .1, 1.9, 'ASILSIZ SUÇLAMA?', '#FFD23F', MUREK, 66, 470, -2) + ET(t, 2.15, 3.4, 'BİLE BİLE YALAN', '#FFFFFF', '#E8323C', 70, 470, -2);
     }
     if (B > .01) {
       o += `<g opacity="${B.toFixed(2)}">`;
