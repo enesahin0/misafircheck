@@ -1,12 +1,12 @@
 # #43 "Kadının beyanı esastır" gerçekten kanun mu? · seslendirme metni ve üretim planı
-Durum: METİN HAZIR → kullanıcı ElevenLabs'te seslendirecek (Yasemin – Deep Smooth and Warm, aynı ayarlar). Yapıştırılacak dosya: `elevenlabs_metin.md` (200 sözcük ≈ 100 sn).
+Durum: METİN HAZIR → kullanıcı ElevenLabs'te seslendirecek (Yasemin – Deep Smooth and Warm, aynı ayarlar). Yapıştırılacak dosya: `elevenlabs_metin.md` (≈ 185 sözcük ≈ 95 sn).
 Mod: `mod='gundem'` (ciddi konu; maskot sesi yok, şakacı seslenme yok, sakin tepki + balon).
 
 ## Tutma haritası
 | sn (≈) | An | Sebep |
 |---|---|---|
-| 0–8 | "Kadının beyanı esastır." → "gerçekten kanun mu? Sadece sözüyle biri hapse girer mi?" | Herkesin bir fikri olan slogan + açık döngü (yanlış bilinen cevap) |
-| 8–16 | "Bu cümle kanunda yazmıyor." | Şok düzeltme (yanlış bilgi yıkılır) |
+| 0–8 | "Kadının beyanı esastır. Yani sırf bir kadının sözüyle hapse mi gireceksin? Aslında bunun cevabı seni de şaşırtacak." | Herkesin bir fikri olan slogan + doğrudan "sen" sorusu + açık döngü (şaşırtıcı cevap) |
+| 6–14 | "Önce şunu bil: bu cümle kanunda yazmıyor." | Şok düzeltme (yanlış bilgi yıkılır) |
 | 16–36 | 6284 sayılı kanun, 8. madde: koruma tedbiri için delil aranmaz; neden: şiddet tanıksız | Asıl cevap (kanun cümlesi) |
 | 36–54 | Tedbir ≠ mahkûmiyet; 6 ay; 2 hafta itiraz; zorlama hapsi 3–10 gün | Denge: karşı tarafın hakkı |
 | 54–72 | Ceza davası ayrı: tüm deliller, şüpheden sanık yararlanır; iftira 1–4 yıl | İkinci yanlış bilgi yıkılır |

@@ -1,4 +1,4 @@
-[serious] Kadının beyanı esastır. [short pause] [curious] Peki bu cümle gerçekten kanun mu? Sadece sözüyle biri hapse girer mi? Çoğu kişi cevabı yanlış biliyor. İpucu sonda.
+[serious] Kadının beyanı esastır. [short pause] [curious] Yani sırf bir kadının sözüyle hapse mi gireceksin? [short pause] [calm] Aslında bunun cevabı seni de şaşırtacak.
 
 [serious] Önce şunu bil: bu cümle kanunda yazmıyor. Halk arasında, bir kuralın kısa özeti. [calm] Peki kural ne?
 
