@@ -112,7 +112,9 @@ class Tasarim:
         kare = int(round(ip['t'] * 30)); var = ((_tohum(kare, ip['kaynak'] if isinstance(ip['kaynak'], str) else 'sentez') % 1000) / 1000 - .5) * .5  # ±0,25 yarım ton
         x = ip['kaynak'] if isinstance(ip['kaynak'], np.ndarray) else Y(ip['kaynak'], sure=ip['sure'])
         if isinstance(ip['kaynak'], np.ndarray) and ip['sure']: x = _sondur(x, ip['sure'])
-        x = _perde(x, ip['perde'] + var)
+        kal = getattr(self, 'kalin', False); ak = ip['aile'] in ('ui', 'aksan', 'whoosh', 'kagit', 'doku')
+        x = _perde(x, ip['perde'] + var - ((3 if ip['aile'] in ('ui', 'aksan', 'doku') else 2) if (kal and ak) else 0))
+        if kal and ak: x = filt(x, 'lowpass', 2600)
         if ip['ters']: x = x[::-1].copy()
         a = AILE[ip['aile']]; g = db(a['g'] + (ip['guc'] - .5) * 6)
         p = np.clip((ip['x'] - 540) / 540, -1, 1) * .35; L, R = np.cos((p + 1) * np.pi / 4), np.sin((p + 1) * np.pi / 4)
@@ -123,7 +125,10 @@ class Tasarim:
         self.bus['oda'][max(0, i0):j] += st * ip['oda']
 
     # ---- görsel olaylar → ses (3b) ----
-    def olaylardan(self, yol, kelime_doku=False, sade=True):
+    def olaylardan(self, yol, kelime_doku=False, sade=True, kalin=False):
+        # kalin=True (kullanıcı 19.10.2026: 'otomatik sesleri geri ekle ama ince ses koyma'): tam otomatik efekt seti, AMA ince/parlak sesler elenir:
+        # hafif/oyuncu çip girişleri ve sayaç tikleri yok; tüm UI/aksan/whoosh/kağıt dokuları 2,6 kHz alçak geçiren + yarım-ton aşağı perde; yoğunluk hedefi ≈0,7/sn
+        self.kalin = kalin
         # sade=True (varsayılan, 19.10.2026 kullanıcı: 'geçiş efektlerini çok koyuyorsun, cıv cuv ince sesler'): hafif/oyuncu girişlerinde ses YOK,
         # öğe girişlerinde ön-whoosh YOK, çıkış whoosh'ı YOK, sahne geçişleri ve kamera whoosh'ı daha kısık, olay yoğunluğu hedefi ≈0,45/sn
         ol = json.load(open(yol)); ham = []; self.sade = sade
@@ -131,7 +136,7 @@ class Tasarim:
             t, x, tur = o['t'], o.get('x', 540), o['tur']
             if tur == 'giris':
                 ag = o.get('agirlik', 'orta')
-                if sade and ag in ('hafif', 'oyuncu'): continue
+                if (sade or kalin) and ag in ('hafif', 'oyuncu'): continue
                 yt, gd, sub, onW = AGIRLIK.get(ag, AGIRLIK['orta']); mat = o.get('materyal')
                 guc = .5 + gd / 12; M = MATERYAL.get(mat, MATERYAL[None]); s = _tohum(t, x)
                 ham.append(dict(kaynak=self._sec(mat, tohum=s, agirlik=ag), t=t, aile={'hafif': 'ui', 'oyuncu': 'ui', 'agir': 'darbe', 'kahraman': 'darbe'}.get(ag, M['aile']), guc=guc, x=x, perde=yt, sure=.9, oncelik=3 if ag in ('agir', 'kahraman') else 2))
@@ -151,6 +156,7 @@ class Tasarim:
                 elif g == 'kayma': ham.append(dict(kaynak='rol:gecis_hizli#0', t=t, aile='whoosh', guc=.45 if sade else .7, x=900, perde=0, sure=.5, oncelik=3))
                 elif g == 'perde': ham.append(dict(kaynak=self._sec('kumas', tohum=s, uzun=True), t=t, aile='kagit', guc=.6, x=540, perde=-2, sure=.7, oncelik=2))
             elif tur == 'sayac':
+                if kalin: continue
                 n = max(6, int(o.get('sure', 1) * 14))
                 for k in range(n):
                     u = k / (n - 1); tt = t + o.get('sure', 1) * (1 - (1 - u) ** .35) * .98
@@ -161,7 +167,7 @@ class Tasarim:
                 ham.append(dict(kaynak='rol:darbe#3', t=t, aile='darbe', guc=.45, x=x, perde=0, sure=.8, oncelik=3))
             elif tur == 'kelime' and kelime_doku:
                 ham.append(dict(kaynak='ui:minimal/click', t=t + .05, aile='doku', guc=.3, x=x, perde=0, oncelik=-1, doku=1))
-        self._budala(ham, hedef=.45 if sade else .9)
+        self._budala(ham, hedef=.45 if sade else (.7 if kalin else .9))
 
     # ---- budama: maske penceresi, aile hız sınırı, küresel yoğunluk ----
     def _budala(self, ham, pencere=.06, hedef=.9):
