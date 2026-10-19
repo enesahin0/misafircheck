@@ -114,11 +114,11 @@ class Tasarim:
         x = ip['kaynak'] if isinstance(ip['kaynak'], np.ndarray) else Y(ip['kaynak'], sure=ip['sure'])
         if isinstance(ip['kaynak'], np.ndarray) and ip['sure']: x = _sondur(x, ip['sure'])
         kal = getattr(self, 'kalin', False); ak = ip['aile'] in ('ui', 'aksan', 'whoosh', 'kagit', 'doku')
-        x = _perde(x, ip['perde'] + var - ((3 if ip['aile'] in ('ui', 'aksan', 'doku') else 2) if (kal and ak) else 0))
-        if kal and ak: x = filt(x, 'lowpass', 2600)
+        x = _perde(x, ip['perde'] + var - ((3 if ip['aile'] in ('ui', 'aksan', 'doku') else 1) if (kal and ak) else 0))
+        if kal and ak: x = filt(x, 'lowpass', 6500 if ip['aile'] == 'whoosh' else 2600)   # whoosh geniş bantlı kalır (hava), UI/aksan/doku koyulaşır
         if kal and ip['aile'] in ('darbe', 'damga'): x = filt(filt(x, 'lowpass', 1300), 'lowpass', 1300)   # kalın mod: vuruşlar tok kalır, tıkırtı/parlaklık gider
         if ip['ters']: x = x[::-1].copy()
-        a = AILE[ip['aile']]; g = db(a['g'] + (ip['guc'] - .5) * 6)
+        a = AILE[ip['aile']]; g = db(a['g'] + (ip['guc'] - .5) * 6 + (2.5 if (kal and ip['aile'] == 'whoosh') else 0))
         p = np.clip((ip['x'] - 540) / 540, -1, 1) * .35; L, R = np.cos((p + 1) * np.pi / 4), np.sin((p + 1) * np.pi / 4)
         i0 = int(kare / 30 * SR) - (len(x) if ip['ters'] else 0); j = min(self.n, i0 + len(x))
         if j <= max(0, i0): return
@@ -138,15 +138,15 @@ class Tasarim:
             t, x, tur = o['t'], o.get('x', 540), o['tur']
             if tur == 'giris':
                 ag = o.get('agirlik', 'orta')
-                if (sade or kalin) and ag in ('hafif', 'oyuncu'): continue
+                if sade and ag in ('hafif', 'oyuncu'): continue
                 yt, gd, sub, onW = AGIRLIK.get(ag, AGIRLIK['orta']); mat = o.get('materyal')
-                guc = .5 + gd / 12; M = MATERYAL.get(mat, MATERYAL[None]); s = _tohum(t, x)
-                ham.append(dict(kaynak=self._sec(mat, tohum=s, agirlik=ag), t=t, aile={'hafif': 'ui', 'oyuncu': 'ui', 'agir': 'darbe', 'kahraman': 'darbe'}.get(ag, M['aile']), guc=guc, x=x, perde=yt, sure=.9, oncelik=3 if ag in ('agir', 'kahraman') else 2))
+                guc = .5 + gd / 12; M = MATERYAL.get(mat, MATERYAL[None]); s = _tohum(t, x); ince = kalin and ag in ('hafif', 'oyuncu'); onW = onW or (.5 if kalin else 0)
+                if not ince: ham.append(dict(kaynak=self._sec(mat, tohum=s, agirlik=ag), t=t, aile={'hafif': 'ui', 'oyuncu': 'ui', 'agir': 'darbe', 'kahraman': 'darbe'}.get(ag, M['aile']), guc=guc, x=x, perde=yt, sure=.9, oncelik=3 if ag in ('agir', 'kahraman') else 2))
                 if sub and not kalin: ham.append(dict(kaynak=_sub(52 if ag == 'kahraman' else 60), t=t, aile='darbe', guc=sub, x=540, perde=0, oncelik=3, eslik=1))
                 if onW and not sade and o.get('giris') in ('dus', 'yan', 'yuksel'):
                     ham.append(dict(kaynak=f"rol:gecis_yumusak#{s % 2}", t=t, aile='whoosh', guc=.35 * onW, x=x, perde=yt, sure=.45, ters=True, oncelik=1, eslik=1))
             elif tur == 'cikis':
-                if not sade: ham.append(dict(kaynak=f"rol:gecis_hizli#{_tohum(t) % 2}", t=t + .05, aile='whoosh', guc=.2, x=x, perde=4, sure=.3, oncelik=0))
+                if not sade: ham.append(dict(kaynak=f"rol:gecis_hizli#{_tohum(t) % 2}", t=t + .05, aile='whoosh', guc=.3 if kalin else .2, x=x, perde=4, sure=.3, oncelik=0))
             elif tur == 'kamera':
                 h = o.get('hiz', 0)
                 if h > (450 if sade else 250): ham.append(dict(kaynak=f"rol:gecis#{_tohum(t) % 4}", t=t - .15, aile='whoosh', guc=(.6 if sade else 1) * min(.85, .3 + h / 2000), x=o.get('x', 540), perde=-2 if o.get('olcekDegisim', 1) > 1 else 1, sure=max(.5, o.get('sure', .8)), oncelik=2))
@@ -169,7 +169,7 @@ class Tasarim:
                 ham.append(dict(kaynak='rol:darbe#3', t=t, aile='darbe', guc=.45, x=x, perde=0, sure=.8, oncelik=3))
             elif tur == 'kelime' and kelime_doku:
                 ham.append(dict(kaynak='ui:minimal/click', t=t + .05, aile='doku', guc=.3, x=x, perde=0, oncelik=-1, doku=1))
-        self._budala(ham, hedef=.45 if sade else (.7 if kalin else .9))
+        self._budala(ham, hedef=.45 if sade else (.9 if kalin else .9))
 
     # ---- budama: maske penceresi, aile hız sınırı, küresel yoğunluk ----
     def _budala(self, ham, pencere=.06, hedef=.9):
