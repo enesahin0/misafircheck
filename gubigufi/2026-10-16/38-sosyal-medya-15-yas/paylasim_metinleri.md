@@ -14,7 +14,7 @@ Bunu çocuğu olan ya da sosyal medyada vakit geçiren birine gönder 💛
 
 Kaynak: Sosyal Ağ Sağlayıcı Tarafından Çocuklara Özgü Ayrıştırılmış Hizmet Sunulmasına ve Yaş Doğrulamaya İlişkin Yönetmelik (Resmî Gazete, 10 Ekim 2026; yürürlük 1 Kasım 2026), 5651 sayılı Kanun ek md. 4.
 
-#sosyalmedya #egevlet #yaşdoğrulama #gündem #gubigufi
+#sosyalmedya #edevlet #yaşdoğrulama #gündem #gubigufi
 
 gubigufi ✦ her gün bir merak
 
