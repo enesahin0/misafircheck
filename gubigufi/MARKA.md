@@ -26,7 +26,10 @@ Yeni videolar `marka/sablon_v2/` iskeletiyle kurulur. Sistem: `marka/ortak/motio
 - Eski `pop()`/`bam()`/`AU.zemin` ile kurulmuş sahneler çalışmaya devam eder; yeni işte kullanılmaz.
 
 ## SES SADE OLSUN (kullanıcı kuralı, KALICI — 19.10.2026)
-"Geçiş efektlerini çok koyuyorsun, cıv cuv ince sesler." → `ses2.olaylardan(..., sade=True)` ARTIK VARSAYILAN: hafif çip/ikon girişlerinde ses yok, öğe girişlerinde ön-whoosh ve çıkış whoosh'ı yok, sahne geçişi/kamera whoosh'ı daha kısık, hedef ≈ 0,45 olay/sn. Elle eklenen ince `tik/bip` efektleri çok seyrek ve kısık kullanılır; sesin altında kalır. Ağır darbe/damga ve konuşmayı destekleyen birkaç vurgu yeter.
+"Geçiş efektlerini çok koyuyorsun, cıv cuv ince sesler… sesleri kaldır, kendin ses üretme, kütüphaneden koy, her şeye ses ekleme; arkaya çok derin yavaş bir şey koy."
+- Görüntüden otomatik efekt üretimi (`T.olaylardan`) KULLANILMAZ (en fazla `sade=True` ile, çok seyrek). Çip/ikon/geçiş/çıkış whoosh'ı YOK.
+- Efekt yalnızca 3–5 gerçek vurguda (damga, ağır darbe, derin kalp) ve YALNIZCA kütüphaneden; sentez (`_sub`, `muzik_yatak`) YOK.
+- Arkada çok derin, yavaş KÜTÜPHANE yatağı: `mk:yatak_derin_ruzgar` (Mixkit "Deep cinematic wind hum", ~93 Hz, 54 sn; gerekirse 3 sn çapraz geçişle döngü, 2,5 sn giriş / 3,5 sn çıkış), `T.bus['muzik']`'a eklenir, `yaz(muzik_db=-23)`. Alternatifler: `mk:yatak_gerilim_ambiyans`, `mk:yatak_uzay`. Örnek: `2026-10-16/38-sosyal-medya-15-yas/kaynak/ses.py`.
 
 ## RAKAMI "OHA"YA ÇEVİR (kullanıcı kuralı, KALICI — 16.10.2026, #39 Tesla)
 Seslendirmede çıplak rakam/özellik söylenmez; her rakamın hemen ardından **izleyicinin kafasında canlandıracağı somut bir kıyas** gelir ("çüş oha" dedirtmeli): izleyicinin kendi eşyası/araba ("senin araban kaç saniye?"), düşen taş, uzay mekiği, bir yol/boy ölçüsü, kat sayısı ("on yedi kere"). Haber anlatımı ("söz verdi ama…") izleyiciyi içine almaz → İLK cümle izleyiciye soru, devamı "oha merdiveni" (her 6–9 sn'de yeni kıyas + ekranda görsel kıyas animasyonu). Kıyaslar önce hesapla doğrulanır (md'de formül/varsayım yazılır) ve şirket iddiası ise seste/ekranda "…diyor" hedge'i verilir.

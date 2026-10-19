@@ -98,5 +98,9 @@
  "sehir_kalabalik": 361,
  "kalabalik_konusma": 364,
  "alarm_klasik": 995,
- "cam_kir_cekic": 759
+ "cam_kir_cekic": 759,
+ "yatak_derin_ruzgar": 1177,
+ "yatak_gerilim_ambiyans": 2510,
+ "yatak_uzay": 653,
+ "yatak_bas_hum": 2297
 }
