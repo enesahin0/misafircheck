@@ -97,6 +97,7 @@ class Tasarim:
     # ---- havuzdan seç: kısa, keskin atak; tekrar yasağı (döndürme) ----
     def _sec(self, materyal, rol_yedek='pop', uzun=False, tohum=0, agirlik='orta'):
         M = MATERYAL.get(materyal, MATERYAL[None]); aday = [k for k, v in self.ix.items() if v['kat'] in M['bsb']]
+        if getattr(self, 'kalin', False): aday = [k for k in aday if self.ix[k]['merkez'] <= 1700] or aday   # kalın mod: parlak/ince örnekler elenir
         if not aday: return f"rol:{(M['rol'] or [rol_yedek])[0]}#{tohum % 4}"
         # ağırlık eşlemesi: parlaklık hedefi (ağır → koyu, hafif → parlak); en az kullanılan önce
         hedef = {'hafif': 4200, 'orta': 2600, 'agir': 1500, 'kahraman': 1100, 'oyuncu': 3000}.get(agirlik, 2600)
@@ -115,6 +116,7 @@ class Tasarim:
         kal = getattr(self, 'kalin', False); ak = ip['aile'] in ('ui', 'aksan', 'whoosh', 'kagit', 'doku')
         x = _perde(x, ip['perde'] + var - ((3 if ip['aile'] in ('ui', 'aksan', 'doku') else 2) if (kal and ak) else 0))
         if kal and ak: x = filt(x, 'lowpass', 2600)
+        if kal and ip['aile'] in ('darbe', 'damga'): x = filt(filt(x, 'lowpass', 1300), 'lowpass', 1300)   # kalın mod: vuruşlar tok kalır, tıkırtı/parlaklık gider
         if ip['ters']: x = x[::-1].copy()
         a = AILE[ip['aile']]; g = db(a['g'] + (ip['guc'] - .5) * 6)
         p = np.clip((ip['x'] - 540) / 540, -1, 1) * .35; L, R = np.cos((p + 1) * np.pi / 4), np.sin((p + 1) * np.pi / 4)
@@ -140,7 +142,7 @@ class Tasarim:
                 yt, gd, sub, onW = AGIRLIK.get(ag, AGIRLIK['orta']); mat = o.get('materyal')
                 guc = .5 + gd / 12; M = MATERYAL.get(mat, MATERYAL[None]); s = _tohum(t, x)
                 ham.append(dict(kaynak=self._sec(mat, tohum=s, agirlik=ag), t=t, aile={'hafif': 'ui', 'oyuncu': 'ui', 'agir': 'darbe', 'kahraman': 'darbe'}.get(ag, M['aile']), guc=guc, x=x, perde=yt, sure=.9, oncelik=3 if ag in ('agir', 'kahraman') else 2))
-                if sub: ham.append(dict(kaynak=_sub(52 if ag == 'kahraman' else 60), t=t, aile='darbe', guc=sub, x=540, perde=0, oncelik=3, eslik=1))
+                if sub and not kalin: ham.append(dict(kaynak=_sub(52 if ag == 'kahraman' else 60), t=t, aile='darbe', guc=sub, x=540, perde=0, oncelik=3, eslik=1))
                 if onW and not sade and o.get('giris') in ('dus', 'yan', 'yuksel'):
                     ham.append(dict(kaynak=f"rol:gecis_yumusak#{s % 2}", t=t, aile='whoosh', guc=.35 * onW, x=x, perde=yt, sure=.45, ters=True, oncelik=1, eslik=1))
             elif tur == 'cikis':
