@@ -25,6 +25,9 @@ Yeni videolar `marka/sablon_v2/` iskeletiyle kurulur. Sistem: `marka/ortak/motio
   Miks: ducking (dokular konuşma altında), 2–5 kHz EQ oyuğu, ortak kısa oda, bus kompresör, limitör, sonra loudnorm −14 LUFS. Müzik yatağı kesmelerde "nefes" alır. Gündem/ciddi videoda `mod='gundem'` (maskot sesi yok).
 - Eski `pop()`/`bam()`/`AU.zemin` ile kurulmuş sahneler çalışmaya devam eder; yeni işte kullanılmaz.
 
+## SES SADE OLSUN (kullanıcı kuralı, KALICI — 19.10.2026)
+"Geçiş efektlerini çok koyuyorsun, cıv cuv ince sesler." → `ses2.olaylardan(..., sade=True)` ARTIK VARSAYILAN: hafif çip/ikon girişlerinde ses yok, öğe girişlerinde ön-whoosh ve çıkış whoosh'ı yok, sahne geçişi/kamera whoosh'ı daha kısık, hedef ≈ 0,45 olay/sn. Elle eklenen ince `tik/bip` efektleri çok seyrek ve kısık kullanılır; sesin altında kalır. Ağır darbe/damga ve konuşmayı destekleyen birkaç vurgu yeter.
+
 ## RAKAMI "OHA"YA ÇEVİR (kullanıcı kuralı, KALICI — 16.10.2026, #39 Tesla)
 Seslendirmede çıplak rakam/özellik söylenmez; her rakamın hemen ardından **izleyicinin kafasında canlandıracağı somut bir kıyas** gelir ("çüş oha" dedirtmeli): izleyicinin kendi eşyası/araba ("senin araban kaç saniye?"), düşen taş, uzay mekiği, bir yol/boy ölçüsü, kat sayısı ("on yedi kere"). Haber anlatımı ("söz verdi ama…") izleyiciyi içine almaz → İLK cümle izleyiciye soru, devamı "oha merdiveni" (her 6–9 sn'de yeni kıyas + ekranda görsel kıyas animasyonu). Kıyaslar önce hesapla doğrulanır (md'de formül/varsayım yazılır) ve şirket iddiası ise seste/ekranda "…diyor" hedge'i verilir.
 

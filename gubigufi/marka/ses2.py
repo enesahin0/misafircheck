@@ -123,28 +123,32 @@ class Tasarim:
         self.bus['oda'][max(0, i0):j] += st * ip['oda']
 
     # ---- görsel olaylar → ses (3b) ----
-    def olaylardan(self, yol, kelime_doku=False):
-        ol = json.load(open(yol)); ham = []
+    def olaylardan(self, yol, kelime_doku=False, sade=True):
+        # sade=True (varsayılan, 19.10.2026 kullanıcı: 'geçiş efektlerini çok koyuyorsun, cıv cuv ince sesler'): hafif/oyuncu girişlerinde ses YOK,
+        # öğe girişlerinde ön-whoosh YOK, çıkış whoosh'ı YOK, sahne geçişleri ve kamera whoosh'ı daha kısık, olay yoğunluğu hedefi ≈0,45/sn
+        ol = json.load(open(yol)); ham = []; self.sade = sade
         for o in ol:
             t, x, tur = o['t'], o.get('x', 540), o['tur']
             if tur == 'giris':
-                ag = o.get('agirlik', 'orta'); yt, gd, sub, onW = AGIRLIK.get(ag, AGIRLIK['orta']); mat = o.get('materyal')
+                ag = o.get('agirlik', 'orta')
+                if sade and ag in ('hafif', 'oyuncu'): continue
+                yt, gd, sub, onW = AGIRLIK.get(ag, AGIRLIK['orta']); mat = o.get('materyal')
                 guc = .5 + gd / 12; M = MATERYAL.get(mat, MATERYAL[None]); s = _tohum(t, x)
                 ham.append(dict(kaynak=self._sec(mat, tohum=s, agirlik=ag), t=t, aile={'hafif': 'ui', 'oyuncu': 'ui', 'agir': 'darbe', 'kahraman': 'darbe'}.get(ag, M['aile']), guc=guc, x=x, perde=yt, sure=.9, oncelik=3 if ag in ('agir', 'kahraman') else 2))
                 if sub: ham.append(dict(kaynak=_sub(52 if ag == 'kahraman' else 60), t=t, aile='darbe', guc=sub, x=540, perde=0, oncelik=3, eslik=1))
-                if onW and o.get('giris') in ('dus', 'yan', 'yuksel'):
+                if onW and not sade and o.get('giris') in ('dus', 'yan', 'yuksel'):
                     ham.append(dict(kaynak=f"rol:gecis_yumusak#{s % 2}", t=t, aile='whoosh', guc=.35 * onW, x=x, perde=yt, sure=.45, ters=True, oncelik=1, eslik=1))
             elif tur == 'cikis':
-                ham.append(dict(kaynak=f"rol:gecis_hizli#{_tohum(t) % 2}", t=t + .05, aile='whoosh', guc=.2, x=x, perde=4, sure=.3, oncelik=0))
+                if not sade: ham.append(dict(kaynak=f"rol:gecis_hizli#{_tohum(t) % 2}", t=t + .05, aile='whoosh', guc=.2, x=x, perde=4, sure=.3, oncelik=0))
             elif tur == 'kamera':
                 h = o.get('hiz', 0)
-                if h > 250: ham.append(dict(kaynak=f"rol:gecis#{_tohum(t) % 4}", t=t - .15, aile='whoosh', guc=min(.85, .3 + h / 2000), x=o.get('x', 540), perde=-2 if o.get('olcekDegisim', 1) > 1 else 1, sure=max(.5, o.get('sure', .8)), oncelik=2))
+                if h > (450 if sade else 250): ham.append(dict(kaynak=f"rol:gecis#{_tohum(t) % 4}", t=t - .15, aile='whoosh', guc=(.6 if sade else 1) * min(.85, .3 + h / 2000), x=o.get('x', 540), perde=-2 if o.get('olcekDegisim', 1) > 1 else 1, sure=max(.5, o.get('sure', .8)), oncelik=2))
             elif tur == 'gecis':
                 g = o.get('gecisTur'); s = _tohum(t)
                 if g == 'yildiz': ham += [dict(kaynak='rol:gecis#0', t=t, aile='whoosh', guc=.7, x=540, perde=0, sure=.6, oncelik=3), dict(kaynak='rol:pop#1', t=t + .06, aile='aksan', guc=.45, x=540, perde=-2, oncelik=3, eslik=1)]
                 elif g == 'itme': ham += [dict(kaynak='rol:riser#2', t=t, aile='riser', guc=.6, x=540, perde=0, sure=.9, ters=True, oncelik=3), dict(kaynak='rol:boom#1', t=t, aile='darbe', guc=.55, x=540, perde=0, sure=1.2, oncelik=3, eslik=1)]
-                elif g == 'odak': ham.append(dict(kaynak='rol:gecis_yumusak#1', t=t, aile='whoosh', guc=.45, x=540, perde=-3, sure=.7, oncelik=2))
-                elif g == 'kayma': ham.append(dict(kaynak='rol:gecis_hizli#0', t=t, aile='whoosh', guc=.7, x=900, perde=0, sure=.5, oncelik=3))
+                elif g == 'odak': ham.append(dict(kaynak='rol:gecis_yumusak#1', t=t, aile='whoosh', guc=.3 if sade else .45, x=540, perde=-3, sure=.7, oncelik=2))
+                elif g == 'kayma': ham.append(dict(kaynak='rol:gecis_hizli#0', t=t, aile='whoosh', guc=.45 if sade else .7, x=900, perde=0, sure=.5, oncelik=3))
                 elif g == 'perde': ham.append(dict(kaynak=self._sec('kumas', tohum=s, uzun=True), t=t, aile='kagit', guc=.6, x=540, perde=-2, sure=.7, oncelik=2))
             elif tur == 'sayac':
                 n = max(6, int(o.get('sure', 1) * 14))
@@ -157,7 +161,7 @@ class Tasarim:
                 ham.append(dict(kaynak='rol:darbe#3', t=t, aile='darbe', guc=.45, x=x, perde=0, sure=.8, oncelik=3))
             elif tur == 'kelime' and kelime_doku:
                 ham.append(dict(kaynak='ui:minimal/click', t=t + .05, aile='doku', guc=.3, x=x, perde=0, oncelik=-1, doku=1))
-        self._budala(ham)
+        self._budala(ham, hedef=.45 if sade else .9)
 
     # ---- budama: maske penceresi, aile hız sınırı, küresel yoğunluk ----
     def _budala(self, ham, pencere=.06, hedef=.9):
