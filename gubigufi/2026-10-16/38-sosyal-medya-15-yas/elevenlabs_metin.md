@@ -1,4 +1,4 @@
-[excited] Türkiye'de sosyal medya yasaklanıyor! [short pause] [curious] Herkese değil... ama hesabın bu işin içinde. Kapanacak mı? [serious] Üç şey var; sonuncusu seni şaşırtacak.
+[serious] Türkiye'de sosyal medya yasaklanıyor! [short pause] [curious] Hesabın bu işin içinde olabilir. Bir kontrol etsen iyi olur. [serious] Üç şey var; sonuncusu ise seni epey şaşırtacak.
 
 [serious] Bir: bir Kasım'dan itibaren hesap açarken yaşını e-Devlet'ten kanıtlayacaksın. Aldığın kodda sadece "on beş oldun mu, on sekiz oldun mu" yazıyor; adın, kimlik numaran yok.
 
