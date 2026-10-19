@@ -96,3 +96,9 @@ Dayanak: 5651 sayılı Kanun ek m.4 (7578 sayılı Kanun ile değişik) + **"Sos
 - Dürüstlük notu: "yasaklanıyor" herkes için değil; "Herkese değil" ikinci cümlede söyleniyor ve kime uygulandığı 3. maddede açılıyor. Yönetmelik: Resmî Gazete 10.10.2026, yürürlük 1.11.2026, mevcut hesaplar için doğrulama 31.3.2027'ye kadar (aşağıdaki doğrulama notları aynen geçerli; 19.10'da erteleme/iptal haberi bulunamadı).
 - Sıra değişti: (1) e-Devlet belirteci (herkes), (2) eski hesaplar 31 Mart (cevap: yetişkinsen kapanmaz), (3) çocuklar için asıl yasak + 15–17 kısıtları. Dolandırıcılık uyarısı sona yakın.
 - Kapak önerisi: "SOSYAL MEDYA YASAKLANIYOR" (kırmızı çip) / "HESABIN KAPANACAK MI?" / alt şerit "1 KASIM" + e-Devlet kalkanı.
+
+### Görsel kural (kullanıcı, 19.10.2026): İLK SAHNE GEÇİŞİ 2. SANİYEDE BAŞLAR
+- Sahne 1 yalnızca ~0–2,3 sn sürer: "Türkiye'de sosyal medya yasaklanıyor!" cümlesi bitince (≈1,8–2,0 sn) geçiş başlar; geçiş türü hızlı (`kayma` ya da `odak`), ölü kare yok.
+- Sahne 2 "Herkese değil... ama hesabın bu işin içinde. Kapanacak mı?" (≈2–7 sn); ardından "Üç şey var" için bir sonraki geçiş ~7 sn.
+- İlk 2 sn'de ekranda tek şey: büyük "SOSYAL MEDYA YASAKLANIYOR" damgası + telefon/hesap kartı (kilit ikonu iner); izleyiciyi tutan hareket 0. sn'den başlar.
+- Genel ritim: ilk 10 sn'de en az 3 görsel değişim.
