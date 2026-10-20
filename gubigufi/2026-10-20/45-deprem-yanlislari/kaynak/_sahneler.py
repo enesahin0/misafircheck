@@ -106,7 +106,7 @@ MO.sahne({
   ciz: t => {
     let o = '';
     o += MO.sar(R(-170, -70, 340, 140, 36, '#F3E3C3') + `<rect x="-170" y="-70" width="340" height="140" rx="36" fill="none" stroke="#2FA89A" stroke-width="7"/>` + txt('AFAD', 0, 40, 110, '#1F3A32'), MO.oge(t, { gir: .2, agirlik: 'agir', giris: 'olcek', materyal: 'plastik', x: 540 }), 540, 700, { golge: false });
-    o += ET(t, .6, 99, 'ÇOK SAĞLAM OLDUĞUNU', '#FFFFFF', '#2FA89A', 56, 900, -2) + ET(t, 1.2, 99, 'BİLMEDİĞİN KAPIYI', '#FFD23F', '#1F3A32', 60, 1030, 2) + ET(t, 2.0, 99, 'KULLANMA', '#D8402E', '#FFFFFF', 86, 1180, -2);
+    o += ET(t, .6, 99, 'ÇOK SAĞLAM OLDUĞUNU', '#FFFFFF', '#2FA89A', 56, 840, -2) + ET(t, 1.2, 99, 'BİLMEDİĞİN KAPIYI', '#FFD23F', '#1F3A32', 60, 960, 2) + ET(t, 2.0, 99, 'KULLANMA', '#D8402E', '#FFFFFF', 86, 1090, -2);
     return o;
   },
   onCiz: t => MF(t, { gd: 'merak', gf: 'merak' })
