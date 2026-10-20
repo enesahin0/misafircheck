@@ -1,0 +1,33 @@
+// #45 Deprem hakkında 5 inanış — altyazı (global saniye, Whisper kelime zamanları; metin elle düzeltildi)
+window.CAP = [
+  [0.00, 3.28, "Deprem hakkında bildiğin bir şey, *seni tehlikeye atabilir.*"],
+  [3.92, 7.42, "*Beş* yaygın inanış var; hangisi doğru, hangisi *tuzak?*"],
+  [7.76, 10.04, "*Beşincisinde* bilim insanları bile ayrılıyor."],
+  [10.62, 13.32, "*Bir:* \"Küçük depremler, büyüğünü önler.\""],
+  [13.80, 18.18, "*Yanlış.* Büyüklük bir artınca enerji yaklaşık *otuz iki kat* artar."],
+  [18.58, 21.78, "Yedilik bir depremin enerjisi, beşlik *bin depreme* eşit."],
+  [22.06, 23.88, "Küçükler, büyüğün yerini *tutmaz.*"],
+  [24.46, 27.08, "*İki:* \"Kapı eşiği en güvenli yerdir.\""],
+  [27.08, 31.32, "*Yanlış.* Evlerdeki iç kapıların çoğu duvardan sağlam değil;"],
+  [31.62, 33.52, "üstelik kapı sallanıp sana *çarpabilir.*"],
+  [33.98, 37.48, "*AFAD* de, çok sağlam olduğunu bilmediğin kapıyı kullanma, diyor."],
+  [38.10, 40.86, "*Gubi,* sence hayvanlar depremi önceden sezer mi?"],
+  [41.36, 43.40, "*Üç:* bilim bunu *kanıtlayamadı.*"],
+  [43.74, 46.08, "Hayvanlar deprem sırasında *tuhaf davranabilir;*"],
+  [46.40, 48.32, "ama önceden bildikleri *gösterilmedi.*"],
+  [48.86, 51.40, "*Dört:* \"Şu gün, şu saatte deprem olacak.\""],
+  [51.96, 53.28, "Bu paylaşımları *gördün mü?*"],
+  [53.28, 58.80, "Bugün hiçbir bilim insanı bir depremin *gününü, saatini, büyüklüğünü* önceden söyleyemiyor."],
+  [59.00, 61.64, "Yalnızca *yıllara yayılan olasılık* hesaplanıyor."],
+  [62.12, 65.32, "*Ve beş:* çök-kapan-tutun mu, *hayat üçgeni* mi?"],
+  [65.74, 67.08, "Burada *uzmanlar ayrışıyor.*"],
+  [67.44, 69.96, "*AFAD'ın* ana önerisi çök-kapan-tutun."],
+  [70.18, 75.54, "*AKUT* gibi birçok kurtarma uzmanı ise, bina çökerse *masanın altının* ezilebileceğini söylüyor;"],
+  [75.86, 80.90, "sağlam bir masanın ya da dolabın *yanına geçip,* yan yatarak *hayat üçgeni* oluşturmayı öneriyor."],
+  [81.20, 82.58, "*Altına değil, yanına.*"],
+  [82.58, 85.02, "Sen bu beşinden *hangisine* inanıyordun?"],
+  [85.22, 85.94, "*Yorumlara yaz.*"],
+  [86.24, 87.60, "Her gün bir merak için"],
+  [87.70, 89.00, "*gubigufi'yi takip et.*"]
+];
+window.KANAL = { kategori: 'DOĞA & ŞEHİR · DEPREM', renk: '#E8903D', sesSonu: 89.2, vinyet: .2 };
