@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/au.js"></script>
+<script>
+const T_ = (s, x, y, fs, r = '#FFF3D6', w = 900) => `<text x="${x}" y="${y}" font-size="${fs}" font-weight="${w}" text-anchor="middle" style="fill:${r}">${s}</text>`;
+const Tm = (s, x, y, fs, r = '#FFF3D6') => `<text class="mono" x="${x}" y="${y}" font-size="${fs}" text-anchor="middle" letter-spacing="2" style="fill:${r}">${s}</text>`;
+
+const D = ['merak','mutlu','uzgun','korku','saskin','sinirli','kararli','uykulu','asik','utangac','aglamakli','uyu'];
+window.renderAt = t => {
+  let o = `<rect width="1080" height="1920" fill="#2A2238"/>` + T_('YAŞLI GUBI & GUFI', 540, 150, 64) + Tm('DUYGULAR', 540, 205, 28, '#FFD978');
+  D.forEach((du, i) => { const c = i % 3, r = Math.floor(i / 3), cx = 180 + c * 360, cy = 250 + r * 300;
+    o += `<rect x="${cx - 170}" y="${cy}" width="340" height="285" rx="22" fill="#3A3050"/>` + Tm(du, cx, cy + 268, 24, '#FFD978');
+    o += M.canli('gufi', { t: t + i, x: cx - 62, y: cy + 215, boy: 125, duygu: du, yasli: true, canlilik: false, seed: 2 + i, bak: [.2, 0] });
+    o += M.canli('gubi', { t: t + i, x: cx + 92, y: cy + 120, boy: 100, duygu: du, yasli: true, canlilik: false, seed: 1 + i, eller: false, bak: [-.2, 0] });
+  });
+  document.getElementById('dinamik').innerHTML = o;
+};
+</script></body></html>

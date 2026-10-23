@@ -1,0 +1,246 @@
+{
+ "ses": "../ses_orijinal.mp3",
+ "toplam_sure": 57.664,
+ "konusma_bloklari": [
+  [
+   0.0,
+   2.699
+  ],
+  [
+   3.245,
+   3.893
+  ],
+  [
+   4.347,
+   7.376
+  ],
+  [
+   7.761,
+   10.164
+  ],
+  [
+   10.516,
+   12.087
+  ],
+  [
+   12.385,
+   16.516
+  ],
+  [
+   16.889,
+   19.847
+  ],
+  [
+   20.656,
+   21.081
+  ],
+  [
+   21.401,
+   23.667
+  ],
+  [
+   24.01,
+   24.878
+  ],
+  [
+   25.176,
+   27.507
+  ],
+  [
+   27.855,
+   29.734
+  ],
+  [
+   30.094,
+   32.193
+  ],
+  [
+   33.036,
+   34.099
+  ],
+  [
+   34.503,
+   36.23
+  ],
+  [
+   36.622,
+   36.945
+  ],
+  [
+   37.312,
+   39.673
+  ],
+  [
+   40.003,
+   42.436
+  ],
+  [
+   42.783,
+   43.046
+  ],
+  [
+   43.526,
+   45.578
+  ],
+  [
+   45.996,
+   48.061
+  ],
+  [
+   48.442,
+   48.745
+  ],
+  [
+   49.089,
+   51.118
+  ],
+  [
+   51.461,
+   53.271
+  ],
+  [
+   53.556,
+   54.338
+  ],
+  [
+   54.669,
+   57.66
+  ]
+ ],
+ "cumleler": [
+  {
+   "no": 1,
+   "baslangic": 0.0,
+   "bitis": 2.7,
+   "sure": 2.7,
+   "metin": "DASK sel zararını öder sanıyorsun, değil mi?"
+  },
+  {
+   "no": 2,
+   "baslangic": 2.7,
+   "bitis": 3.89,
+   "sure": 1.19,
+   "metin": "Ödemiyor."
+  },
+  {
+   "no": 3,
+   "baslangic": 3.89,
+   "bitis": 7.38,
+   "sure": 3.48,
+   "metin": "Bu hafta İstanbul'da bin iki yüzden fazla yeri su bastı."
+  },
+  {
+   "no": 4,
+   "baslangic": 7.38,
+   "bitis": 10.16,
+   "sure": 2.79,
+   "metin": "Ama DASK sadece depremi karşılar."
+  },
+  {
+   "no": 5,
+   "baslangic": 10.16,
+   "bitis": 16.52,
+   "sure": 6.35,
+   "metin": "Evinin selden zararını, ancak konut sigortanda \"sel ve su baskını\" teminatı varsa alırsın."
+  },
+  {
+   "no": 6,
+   "baslangic": 16.52,
+   "bitis": 19.85,
+   "sure": 3.33,
+   "metin": "Gubi, sence trafik sigortası arabayı öder mi?"
+  },
+  {
+   "no": 7,
+   "baslangic": 19.85,
+   "bitis": 20.63,
+   "sure": 0.78,
+   "metin": "Hayır."
+  },
+  {
+   "no": 8,
+   "baslangic": 20.63,
+   "bitis": 23.22,
+   "sure": 2.59,
+   "metin": "O sadece karşı tarafın zararını öder."
+  },
+  {
+   "no": 9,
+   "baslangic": 23.22,
+   "bitis": 27.06,
+   "sure": 3.84,
+   "metin": "Senin arabanı, ancak sel teminatı olan kasko öder."
+  },
+  {
+   "no": 10,
+   "baslangic": 27.06,
+   "bitis": 29.28,
+   "sure": 2.23,
+   "metin": "Bunu bilmeyen birine şimdi gönder."
+  },
+  {
+   "no": 11,
+   "baslangic": 29.28,
+   "bitis": 31.74,
+   "sure": 2.46,
+   "metin": "Gufi, sen poliçeni hiç okudun mu?"
+  },
+  {
+   "no": 12,
+   "baslangic": 31.74,
+   "bitis": 33.2,
+   "sure": 1.46,
+   "metin": "Tahmin etmiştim."
+  },
+  {
+   "no": 13,
+   "baslangic": 33.2,
+   "bitis": 35.33,
+   "sure": 2.13,
+   "metin": "Hasar olunca üç şeyi unutma."
+  },
+  {
+   "no": 14,
+   "baslangic": 35.33,
+   "bitis": 41.54,
+   "sure": 6.21,
+   "metin": "Bir: Suya gömülen arabanın motorunu çalıştırma; hem hasar büyür, hem ödemen riske girer."
+  },
+  {
+   "no": 15,
+   "baslangic": 41.54,
+   "bitis": 47.16,
+   "sure": 5.62,
+   "metin": "İki: Her şeyin fotoğrafını ve videosunu çek; eksper gelmeden hiçbir şeyi atma."
+  },
+  {
+   "no": 16,
+   "baslangic": 47.16,
+   "bitis": 50.22,
+   "sure": 3.06,
+   "metin": "Üç: Beş iş günü içinde sigortana bildir."
+  },
+  {
+   "no": 17,
+   "baslangic": 50.22,
+   "bitis": 52.37,
+   "sure": 2.15,
+   "metin": "Senin sigortan seli kapsıyor mu?"
+  },
+  {
+   "no": 18,
+   "baslangic": 52.37,
+   "bitis": 53.44,
+   "sure": 1.07,
+   "metin": "Yorumlara yaz."
+  },
+  {
+   "no": 19,
+   "baslangic": 53.44,
+   "bitis": 56.76,
+   "sure": 3.32,
+   "metin": "Her gün bir merak için gubigufi'yi takip et."
+  }
+ ],
+ "not": "Gubi ve Gufi sorularından sonra +0,45 sn sessizlik eklendi."
+}

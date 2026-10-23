@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
+</svg>
+<script>window.SB = 23.3; const TP = {"gubi": [[3.0, "sasir"]], "gufi": [[0.4, "uzgun"], [6.2, "sasir"]]};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script><script src="../ortak/nb.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = K.yaziGen(s, fs, { mono: true, ls: 3 }) + fs * 1.7; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+const R = PR.R, h = HK.hash;
+const PROJ = KO.giy('gufi', [['kasket', { renk: '#2A2E40', siper: '#1B1F2A' }]]);
+const ARSIV = KO.giy('gubi', [['papyon', { renk: '#C8232F' }], 'gozluk']);
+const DEDEKTIF = KO.giy('gufi', [['melon', { renk: '#5A4A3A', bant: '#1B1640' }], ['monokl', {}]]);
+
+window.renderAt = t => {
+  const T = t + 23.3, yil = Math.round(2006 + 17 * FX.E.inOutQuart(A(t, .2, 2.0)));
+  const ic = `<text x="450" y="330" font-size="260" font-weight="900" text-anchor="middle" style="fill:#1B1640">${yil}</text><text x="450" y="450" font-size="48" font-weight="800" text-anchor="middle" style="fill:#C8232F" opacity="${A(t, 1.4, 2.0)}">17 YIL SONRA</text>`;
+  let o = NB.salon(T, ic, { isik: .6 });
+  // örümcek ağları koltuklarda (sessizlik)
+  const ag = (x, y, s, yon) => `<g transform="translate(${x} ${y}) scale(${yon * s} ${s})" opacity="${A(t, .8, 1.6) * (1 - A(t, 2.8, 3.2))}"><path d="M0 0 L120 0 M0 0 L100 70 M0 0 L60 110 M0 0 L0 130 M40 0 Q50 30 0 40 M80 0 Q90 55 0 80 M120 0 Q130 80 0 120" stroke="#E8E0D0" stroke-width="3" fill="none"/></g>`;
+  o += NB.koltuk(300, 1250, 1.0, 'Z.D.') + NB.koltuk(780, 1250, 1.0, 'N.B.C.') + ag(200, 880, 1.2, 1) + ag(880, 880, 1.2, -1);
+  // uçan takvim yaprakları
+  for (let i = 0; i < 8; i++) { const q = A(t, .1 + i * .2, .9 + i * .2); if (q > 0 && q < 1) o += `<g transform="translate(${540 + (i % 2 ? 1 : -1) * 260 * q} ${1000 - 500 * q + 140 * q * q}) rotate(${(i % 2 ? 1 : -1) * 180 * q})" opacity="${1 - q}">` + NB.R(-60, -70, 120, 140, 10, '#FFFDF6') + NB.R(-60, -70, 120, 36, 10, '#E8323C') + '</g>'; }
+  // kitap geliyor (günlük sayfaları)
+  const kg = A(t, 2.8, 3.5);
+  if (t > 5.8) for (let i = 0; i < 6; i++) { const q = A(t, 6.0 + i * .12, 7.4 + i * .12); if (q > 0 && q < 1) o += `<g transform="translate(${540 + (h(i) - .5) * 700 * q} ${900 - 420 * Math.sin(q * 3) + 300 * q}) rotate(${(h(i + 3) - .5) * 360 * q})" opacity="${1 - q * .6}">` + NB.R(-70, -90, 140, 180, 8, '#F6F2E8') + [0, 1, 2, 3].map(k => NB.R(-50, -62 + k * 34, 100 - (k % 2) * 30, 8, 4, '#B8B4A8')).join('') + '</g>'; }
+  const a = pop(t, .25); if (a > 0) o += grp(NB.cipO('SONRA…', 0, 0, '#1B1640', '#FFE45C', 36), 540, 1130, a);
+  const b = pop(t, 6.2); if (b > 0) o += grp(NB.cipO('ESKİ YARA AÇILDI', 0, 0, '#B8232F', '#FFFFFF', 34), 540, 1130, b);
+  o += gubi(t, { yol: [[0, 800, 1620, 230], [2.0, 800, 1620, 230], [2.6, 560, 1560, 230]], x: 800, y: 1620, boy: 230, duygu: t < 2.5 ? 'uzgun' : 'merak', bakHedef: [540, 900], ust: ARSIV });
+  o += gufi(t, { x: 230, y: 1800, boy: 270, duygu: t < 2.5 ? 'uzgun' : 'merak', bakHedef: [540, 900], ust: PROJ });
+  o += DP.sar(t, 3.0, 5.6, d => NBD.kitap(d));
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

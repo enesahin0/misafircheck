@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 3.67;</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/isik.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+
+$('zemin').innerHTML = I.bg({ nx: 540, ny: 800, neb: I.UZ.amber, no: .12 }) + I.parca(5, 50);
+window.renderAt = t => {
+  let o = '';
+  const b = pop(t, .25) * (1 - A(t, 1.6, 1.9)); if (b > 0) o += grp(`<rect x="-300" y="-60" width="600" height="120" rx="60" fill="${I.UZ.mag}"/>` + txt('BENZETME DEĞİL', 0, 20, 56, '#0B1433'), 540, 760, b);
+  const r = pop(t, 1.9, .5); if (r > 0) { o += `<g transform="translate(540 800) scale(${r}) translate(-540 -800)">${I.oda(1 - E(A(t, 6.2, 6.9)))}</g>`; }
+  const et = pop(t, 2.1); if (et > 0) o += grp(`<rect x="-230" y="-46" width="460" height="92" rx="46" fill="#0B1433" opacity=".8"/>` + `<text class="mono" x="0" y="14" font-size="40" text-anchor="middle" letter-spacing="4" style="fill:#FFB547">2009 · JAPONYA</text>`, 540, 360, et);
+  const g5 = pop(t, 4.1); if (g5 > 0) o += grp(`<rect x="-150" y="-40" width="300" height="80" rx="40" fill="${I.UZ.cyan}"/>` + txt('5 GÖNÜLLÜ', 0, 16, 42, '#0B1433'), 540, 1215, g5);
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

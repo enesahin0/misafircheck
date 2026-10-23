@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/au.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const R = PR.R, A = (t,a,b)=>Math.max(0,Math.min(1,(t-a)/(b-a))), E = q => q, kam = (s) => s;
+const trB = (x, y, w) => { const hh = w * 2 / 3, r = hh / 4; return `<g transform="translate(${x} ${y})">` + R(-w / 2, -hh / 2, w, hh, 6, '#E30A17') + `<circle cx="${-w * .14}" cy="0" r="${r}" fill="#FFFFFF"/><circle cx="${-w * .1}" cy="0" r="${r * .8}" fill="#E30A17"/>` + yildiz(w * .1, 0, r * .55, 5, '#FFFFFF') + '</g>'; };
+const azB = (x, y, w) => { const hh = w / 2, s = hh / 3; return `<g transform="translate(${x} ${y})">` + R(-w / 2, -hh / 2, w, s, 0, '#00B5E2') + R(-w / 2, -hh / 2 + s, w, s, 0, '#EF3340') + R(-w / 2, -hh / 2 + 2 * s, w, s, 0, '#509E2F') + `<circle cx="${-w * .03}" cy="0" r="${s * .38}" fill="#FFFFFF"/><circle cx="${w * .0}" cy="0" r="${s * .31}" fill="#EF3340"/>` + yildiz(w * .07, 0, s * .2, 8, '#FFFFFF') + '</g>'; };
+function yildiz(x, y, r, n, renk) { let d = ''; for (let i = 0; i < n * 2; i++) { const a = -Math.PI / 2 + i * Math.PI / n, rr = i % 2 ? r * (n === 8 ? .55 : .42) : r; d += (i ? 'L' : 'M') + (x + rr * Math.cos(a)).toFixed(1) + ' ' + (y + rr * Math.sin(a)).toFixed(1); } return `<path d="${d}Z" fill="${renk}"/>`; }
+// ---- #36b çizim yardımcıları (fotoğraf yerine)
+const dalgaBayrak = (x, y, w, h, t, ic, faz = 0) => { const id = `db${Math.round(x)}_${Math.round(y)}`; let d = `M${x} ${y}`; const n = 12;
+  for (let i = 0; i <= n; i++) { const q = i / n; d += ` L${x + w * q} ${y + Math.sin(q * 5 + t * 3 + faz) * h * .05 * q}`; }
+  for (let i = n; i >= 0; i--) { const q = i / n; d += ` L${x + w * q} ${y + h + Math.sin(q * 5 + t * 3 + faz + .4) * h * .05 * q}`; }
+  let gl = ''; for (let i = 0; i < 4; i++) gl += `<rect x="${x + w * (.15 + i * .22)}" y="${y - h * .1}" width="${w * .08}" height="${h * 1.2}" fill="#000" opacity="${.08 + .05 * Math.sin(t * 3 + i)}"/>`;
+  return `<defs><clipPath id="${id}"><path d="${d}Z"/></clipPath></defs><g clip-path="url(#${id})">${ic}${gl}</g>`; };
+const alevKule = (x, y, s, renk) => `<path transform="translate(${x} ${y}) scale(${s})" d="M-40 0 L40 0 L36 -180 Q30 -300 0 -340 Q-34 -300 -38 -180Z" fill="${renk}"/>` + `<g transform="translate(${x} ${y}) scale(${s})" opacity=".35">${[0, 1, 2, 3, 4, 5, 6].map(i => `<path d="M-36 ${-30 - i * 42} L36 ${-30 - i * 42}" stroke="#FFB347" stroke-width="3"/>`).join('')}</g>`;
+function bakuBalkon(t) {
+  let o = `<defs><linearGradient id="gk1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F5A65B"/><stop offset=".55" stop-color="#F7C98B"/><stop offset="1" stop-color="#9CC0E0"/></linearGradient></defs><rect x="0" y="300" width="1080" height="1000" fill="url(#gk1)"/>`;
+  o += alevKule(200, 760, 1.0, '#6A4A6A') + alevKule(300, 760, .82, '#7A5A78') + alevKule(390, 760, .66, '#8A6A86');
+  for (let i = 0; i < 9; i++) o += R(i * 130 - 20, 640 + (i % 3) * 30, 120, 200, 4, '#C8A890', .55);
+  // eski Bakü binası: taş cephe + ahşap pencere + balkon
+  o += R(470, 380, 560, 900, 0, '#E8D2B0') + R(470, 380, 560, 30, 0, '#5A6A7A');
+  for (let r = 0; r < 9; r++) o += `<path d="M470 ${440 + r * 90} H1030" stroke="#D4BC98" stroke-width="3"/>`;
+  o += R(600, 470, 300, 330, 10, '#7A4A2A') + R(616, 486, 130, 140, 6, '#5A7AA8') + R(754, 486, 130, 140, 6, '#5A7AA8') + R(616, 636, 130, 150, 6, '#5A7AA8') + R(754, 636, 130, 150, 6, '#5A7AA8');
+  o += R(616, 486, 130, 40, 0, '#FFFFFF', .15) + R(754, 486, 130, 40, 0, '#FFFFFF', .15);
+  o += R(540, 820, 430, 26, 6, '#4A3A30') + R(540, 1000, 430, 40, 4, '#5A4A3A') + R(530, 1040, 450, 30, 4, '#3A2E26');
+  for (let i = 0; i < 10; i++) o += R(556 + i * 44, 846, 8, 154, 3, '#3A2E26');
+  // balkondan sarkan iki bayrak (yan yana)
+  o += dalgaBayrak(560, 846, 200, 135, t, trB(660, 913, 200), 0) + dalgaBayrak(770, 846, 200, 135, t, azB(870, 913, 200).replace('translate(870 913)', 'translate(870 913) scale(1 1.35)'), 1.3);
+  o += `<path d="M0 1080 L470 1080 L470 1300 L0 1300Z" fill="#B89878"/>`;
+  return o;
+}
+function tb2(x, y, s = 1) {  // Bayraktar TB2 yandan: ince gövde, ters V kuyruk, arkada pervane, burun altı kamera topu, üç teker
+  return `<g transform="translate(${x} ${y}) scale(${s})">` +
+    `<path d="M-330 -40 Q-350 -60 -310 -70 L180 -78 Q230 -78 250 -70 L300 -64 L300 -54 L240 -48 L-300 -36Z" fill="#E8ECF0"/>` +
+    `<path d="M-300 -40 L240 -50 L240 -44 L-300 -36Z" fill="#B8C0CC"/>` +
+    `<path d="M150 -76 L250 -150 L275 -150 L210 -74Z" fill="#D8DEE6"/><path d="M180 -60 L250 -6 L268 -6 L215 -58Z" fill="#C8D0DA"/>` +
+    `<rect x="236" y="-140" width="22" height="16" fill="#E30A17"/><circle cx="244" cy="-132" r="5" fill="#FFFFFF"/>` +
+    `<path d="M-60 -74 L120 -74 L130 -68 L-70 -66Z" fill="#9AA4B2"/>` +
+    `<ellipse cx="305" cy="-59" rx="6" ry="40" fill="#5A6070" opacity=".75"/>` +
+    `<circle cx="-270" cy="-28" r="16" fill="#3A3F50"/><circle cx="-274" cy="-30" r="6" fill="#6A7AA0"/>` +
+    `<path d="M-240 -38 L-240 0 M60 -48 L50 0 M90 -48 L100 0" stroke="#4A4F60" stroke-width="7"/>` +
+    `<circle cx="-240" cy="4" r="12" fill="#1A1A22"/><circle cx="50" cy="4" r="14" fill="#1A1A22"/><circle cx="100" cy="4" r="14" fill="#1A1A22"/>` +
+    `<text x="-120" y="-50" font-size="18" font-weight="900" style="fill:#5A6478">BAYRAKTAR</text></g>`;
+}
+function pist(t) {
+  let o = `<defs><linearGradient id="gk5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FB8E0"/><stop offset="1" stop-color="#DCE8F2"/></linearGradient></defs><rect x="0" y="480" width="1080" height="480" fill="url(#gk5)"/>`;
+  for (let i = 0; i < 12; i++) o += `<ellipse cx="${i * 100 - 20}" cy="${775 - (i % 3) * 8}" rx="70" ry="${30 + (i % 4) * 8}" fill="#5A7A4A" opacity=".8"/>`;
+  o += R(0, 790, 1080, 200, 0, '#8A929C') + R(0, 790, 1080, 6, 0, '#C8CED6');
+  for (let i = 0; i < 8; i++) o += R(i * 160 - ((t * 0) % 160), 860, 90, 10, 3, '#FFFFFF', .85);
+  o += `<ellipse cx="520" cy="852" rx="330" ry="14" fill="#000" opacity=".22"/>` + tb2(520, 845, 1.0);
+  return o;
+}
+function tokalasma(t) {  // bayraklar önünde iki lider (Aliyev solda, Erdoğan sağda) + el sıkışma
+  let o = `<rect x="0" y="440" width="1080" height="700" fill="#2A3A5A"/>` + R(0, 440, 1080, 380, 0, '#3A4E72');
+  o += R(160, 470, 10, 420, 4, '#C8B080') + dalgaBayrak(170, 480, 220, 150, t, azB(280, 555, 220).replace('translate(280 555)', 'translate(280 555) scale(1 1.36)'), 0);
+  o += R(910, 470, 10, 420, 4, '#C8B080') + `<g transform="translate(1830 0) scale(-1 1)">` + dalgaBayrak(920, 480, 220, 150, t, `<g transform="translate(2060 0) scale(-1 1)">${trB(1030, 555, 225)}</g>`, 1) + '</g>';
+  o += R(0, 1000, 1080, 140, 0, '#1E2A40');
+  o += KS.kisi({ x: 370, y: 1080, boy: 470, ten: 'acik', sac: { tip: 'geriTarali', renk: '#4A4642' }, biyik: { renk: '#3E3A36', tip: 'kalin' }, kiyafet: { renk: '#1E2230', yaka: 'ceket', gomlek: '#FFFFFF' }, kravat: '#23395B', yas: 1, ifade: 'gulumse', bak: [.4, 0] });
+  o += KS.kisi({ x: 720, y: 1080, boy: 500, ten: 'acik', sac: { tip: 'kisaYan', renk: '#C8C4BC' }, biyik: { renk: '#B0ABA2', tip: 'kalin' }, kiyafet: { renk: '#2A2E3A', yaka: 'ceket', gomlek: '#FFFFFF' }, kravat: '#4A2A3A', yas: 2, ifade: 'gulumse', bak: [-.4, 0] });
+  // el sıkışma (ön planda): iki ceket kolu + beyaz manşet + kenetlenmiş eller
+  const sal = Math.sin(t * 6) * 4;
+  o += `<g transform="translate(0 ${sal})"><path d="M330 1060 Q420 1000 500 990 L510 1030 Q430 1040 360 1090Z" fill="#1E2230"/><path d="M760 1060 Q660 1000 580 990 L570 1030 Q650 1040 730 1090Z" fill="#2A2E3A"/>` +
+    `<rect x="490" y="984" width="22" height="50" rx="6" fill="#FFFFFF" transform="rotate(-12 500 1008)"/><rect x="568" y="984" width="22" height="50" rx="6" fill="#FFFFFF" transform="rotate(12 580 1008)"/>` +
+    `<path d="M505 990 Q540 970 575 990 Q585 1012 570 1030 Q540 1044 510 1030 Q496 1012 505 990Z" fill="#F2C9A6"/><path d="M520 996 Q545 990 565 1000 M518 1010 Q545 1004 568 1014 M520 1024 Q544 1020 562 1026" stroke="#D9A580" stroke-width="4" fill="none" stroke-linecap="round"/></g>`;
+  return o;
+}
+
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const gtxt = (s, x, y, size, renk) => txt(s, x + 6, y + 8, size, '#000', 900, 'opacity=".45"') + txt(s, x, y, size, renk);
+const sticker = (s, x, y, fs, zem, yazi, rot) => { const w = K.yaziGen(s, fs) + 70; return `<g transform="translate(${x} ${y}) rotate(${rot})">` + R(-w / 2 + 8, -fs * .95 + 10, w, fs * 1.9, 24, '#000', .4) + R(-w / 2, -fs * .95, w, fs * 1.9, 24, zem) + txt(s, 0, fs * .35, fs, yazi) + '</g>'; };
+window.renderAt = t => {
+  let o = `<rect width="1080" height="1920" fill="#120A10"/>`;
+  const ic = `<g transform="translate(-200 -330) scale(1.3)">${bakuBalkon(1.2)}</g>`;
+  const z = [[560, -10], [520, 200], [600, 380], [500, 560], [585, 760], [510, 960], [560, 1200]], yol = z.map(p => p.join(' ')).join(' L');
+  o += `<defs><clipPath id="sol"><path d="M0 0 L560 0 L${yol} L560 1920 L0 1920Z"/></clipPath><clipPath id="sag"><path d="M1080 0 L560 0 L${yol} L560 1920 L1080 1920Z"/></clipPath>
+    <linearGradient id="alt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5A1E2A" stop-opacity="0"/><stop offset="1" stop-color="#5A1E2A"/></linearGradient>
+    <radialGradient id="kor"><stop offset="0" stop-color="#FF4A3A" stop-opacity=".9"/><stop offset="1" stop-color="#FF4A3A" stop-opacity="0"/></radialGradient></defs>`;
+  o += `<rect x="440" y="0" width="200" height="1200" fill="url(#kor)"/>`;
+  o += `<g transform="translate(-34 6) rotate(-2 300 600)"><g clip-path="url(#sol)">${ic}</g></g><g transform="translate(34 -6) rotate(2 780 600)"><g clip-path="url(#sag)">${ic}</g></g>`;
+  o += `<path d="M${yol}" stroke="#FFD0A0" stroke-width="5" fill="none" opacity=".8"/>`;
+  o += sticker('TEK MİLLET İKİ DEVLET?', 540, 420, 52, '#FFF3E0', '#7A2E3A', -3);
+  o += sticker('BAŞÖRTÜSÜ', 250, 760, 40, '#E8323C', '#FFFFFF', -6) + sticker("SİLAH", 860, 640, 44, '#FFD23F', '#1B1410', 5);
+  o += `<rect x="0" y="900" width="1080" height="260" fill="url(#alt)"/>`;
+  o += M.canli('gufi', { t: 1, x: 540, y: 1158, boy: 180, duygu: 'saskin', bakHedef: [540, 600] });
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#5A1E2A"/><rect x="0" y="1150" width="1080" height="10" fill="#FFD23F"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="30" text-anchor="middle" letter-spacing="5" style="fill:#FFD23F">BAŞÖRTÜSÜ · SİLAHLAR · ANKARA</text>`;
+  o += gtxt("AZERBAYCAN'LA", 540, 1362, 104, '#FFF3E0') + gtxt('NE OLUYOR?', 540, 1470, 104, '#FFD23F');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  o += l + '</g>';
+  document.getElementById('dinamik').innerHTML = o;
+};
+</script></body></html>

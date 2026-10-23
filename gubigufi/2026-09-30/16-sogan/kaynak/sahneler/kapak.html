@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/sg.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  const T = CV.ton('seftali');
+  let o = SG.mutfak(T, 980);
+  o += M.canli('gufi', { t: .5, x: 640, y: 1080, boy: 420, duygu: 'uzgun', bakHedef: 'kamera' }) + SG.gufiYas(640, 1080, 420, .6);
+  o += `<rect x="0" y="950" width="1080" height="210" fill="${T.cokKoyu}"/><rect x="0" y="950" width="1080" height="14" fill="#FFFFFF" opacity=".12"/>` + SG.tahta(300, 940, 1.0) + SG.sogan(260, 820, 1.0) + SG.sogan(430, 900, .55, { yarim: 1 }) + `<g transform="translate(250 700) rotate(-35)">` + SG.bicak(0, 0, .8, 0) + '</g>';
+  o += SG.gaz(330, 850, 1.3, 1, 260);
+  o += M.canli('gubi', { t: 1.2, x: 900, y: 420, boy: 170, duygu: 'saskin', bakHedef: [640, 700], ust: KO.giy('gubi', [['simitci', {}]]) });
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#5A2A3A"/><rect x="0" y="1150" width="1080" height="18" fill="#D8A032"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#F2CE7A">MUTFAK LABORATUVARI</text>`;
+  o += txt('SOĞAN NEDEN', 540, 1365, 104) + txt('AĞLATIR?', 540, 1462, 88, '#F2CE7A');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
+</svg>
+<script>window.SB = 26.3; const TP = {"gubi": [], "gufi": [[0.6, "dusun"], [4.7, "aha"]]};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script><script src="../ortak/dv.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = K.yaziGen(s, fs, { mono: true, ls: 3 }) + fs * 1.7; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+const MAV = '#E07A3F';
+const MUZ = KO.giy('gubi', [['bere', { renk: '#7E2E3A' }]]);
+const TARIHCI = KO.giy('gubi', ['gozluk']);
+// Gufi HEKİM: hekim başlığı + sağ elinde matula (idrar şişesi); eller:false ile kullan (üçüncü el çıkmasın)
+const HEKIM_G = (x, y, boy, ifade, t) => KO.giy('gufi', ['hekim'])(x, y, boy) + DV.matula(x + boy * .66, y - boy * .66, boy / 330, t) + `<circle cx="${x + boy * .64}" cy="${y - boy * .5}" r="${boy * .12}" fill="#8E1B3F"/><circle cx="${x + boy * .63}" cy="${y - boy * .51}" r="${boy * .12}" fill="#EE312E"/>`;
+
+$('zemin').innerHTML = `<g style="filter:blur(10px)">${DV.meydan({ y0: 1150 })}</g><rect width="1080" height="1920" fill="#1B1030" opacity=".25"/>`;
+window.renderAt = t => {
+  let o = KS.karakter(Object.assign({ x: 170, y: 1300, boy: 480, t, bak: [.6, -.3], ifade: 'notr' }, DV.HEKIM(0))) + KS.karakter(Object.assign({ x: 910, y: 1300, boy: 470, t, bak: [-.6, -.3], ifade: 'notr' }, DV.HEKIM(1)));
+  o += gufi(t, { x: 540, y: 1250, boy: 330, bakHedef: [700, 820], ust: HEKIM_G, eller: false });
+  const c = pop(t, .3); if (c > 0) o += grp(cip('ŞEHRİN HEKİMLERİ', 0, 0, '#1B1640', '#FFE45C', 34), 540, 380, c);
+  const d = pop(t, 4.65); if (d > 0) { o += grp(`<rect x="-330" y="-80" width="660" height="160" rx="40" fill="#E07A3F"/>` + txt('DAHA ÇOK DANS!', 0, 26, 74, '#FFFFFF'), 540, 560, d);
+    for (let k = 0; k < 6; k++) { const q = ((t - 4.65) * .9 + k / 6) % 1; o += DV.nota(200 + k * 140, 800 - q * 300, .9, '#FFE45C', 1 - q); } }
+  o += DP.sar(t, 2.1, 4.55, d => DVD.recete(d));
+  o += FX.gecis(t, { orta: 0, renk: '#E07A3F', serit: '#1B1640', kapat: { sure: .01 }, ac: { tur: 'egik', sure: .4 } });
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

@@ -1,0 +1,33 @@
+// #38 Sosyal medya kısıtlanıyor — altyazı (global saniye, Whisper kelime zamanları; metin elle düzeltildi)
+window.CAP = [
+  [0.00, 1.92, "Türkiye'de *sosyal medya kısıtlanıyor.*"],
+  [2.42, 3.94, "*Hesabın* bu işin içinde olabilir."],
+  [4.52, 5.66, "Bir *kontrol* etsen iyi olur."],
+  [6.16, 6.76, "*Üç şey* var."],
+  [7.40, 9.56, "Sonuncusuysa seni epey *şaşırtacak.*"],
+  [10.08, 10.50, "*Bir:*"],
+  [10.84, 14.86, "*Bir Kasım'dan* itibaren hesap açarken yaşını *e-Devlet'ten* kanıtlayacaksın."],
+  [15.32, 19.12, "Aldığın kodda sadece *15 oldun mu, 18 oldun mu* yazıyor."],
+  [19.60, 20.96, "Adın, kimlik numaran *yok.*"],
+  [21.46, 23.54, "*Gubi,* sence eski hesaplar ne olacak?"],
+  [24.18, 24.60, "*İki:*"],
+  [24.94, 27.20, "Onlar da *31 Mart'a* kadar doğrulanacak."],
+  [27.62, 29.38, "Yetişkinsen, hesabın *kapanmaz.*"],
+  [29.38, 30.02, "*Üç:*"],
+  [30.54, 32.38, "Yasağın asıl hedefi *çocuklar.*"],
+  [32.66, 35.14, "*On beşini* doldurmayan artık hesap açamayacak."],
+  [35.44, 36.92, "*Ebeveyn izni* bile yetmeyecek."],
+  [37.32, 39.88, "On beşini geçen gencin hesabı ise *gizli* olacak."],
+  [40.38, 42.22, "*Canlı yayın* yok, *\"görüldü\"* yok."],
+  [42.64, 45.94, "Kaydırdıkça ardı ardına akan video akışı da *yasak.*"],
+  [46.32, 48.44, "*Gufi,* sen kaydırmadan durabilir misin?"],
+  [49.06, 49.78, "*Sanmıyorum.*"],
+  [50.26, 50.76, "Bir *uyarı:*"],
+  [51.24, 52.90, "Kodu sadece *e-Devlet* verir."],
+  [53.22, 55.88, "Şifre ya da *kimlik fotoğrafı* isteyen siteye girme."],
+  [56.20, 57.40, "Sence *doğru karar* mı?"],
+  [57.40, 59.16, "Bunu bir *arkadaşına gönder.*"],
+  [59.50, 60.80, "Her gün bir merak için"],
+  [60.90, 62.20, "*gubigufi'yi takip et.*"]
+];
+window.KANAL = { kategori: 'GÜNDEM · DİJİTAL', renk: '#FF8A3D', sesSonu: 62.4, vinyet: .2 };

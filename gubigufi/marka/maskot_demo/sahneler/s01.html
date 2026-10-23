@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 0;
+window.KANAL = { kategori: 'MASKOT TESTİ', renk: '#FBAC39', sesSonu: 60, vinyet: .15 };
+window.CAP = [[0.2,1.8,'Sahneye *giriş* (zıplayarak / süzülerek)'],[1.9,3.3,'El *sallama*'],[3.4,4.8,'Eliyle *gösterme*'],[4.9,6.1,'*Düşünme*'],[6.2,9.4,'Kameraya *yaklaşma* + arka plan *bulanık*'],[9.6,11.2,'*Dönüş* + *alkış*'],[11.3,13.2,'Göz kapatma + *omuz silkme*'],[13.3,16.2,'*Aha!* + *ta-da*'],[16.3,18.4,'*Görüşürüz!*']];
+</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/zemin.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const TP = {"gubi": [[2.0, "selam"], [3.4, "isaret"], [9.7, "donus"], [12.4, "omuzSilk"], [13.9, "aha"], [15.0, "goster"], [16.4, "selam"]], "gufi": [[2.5, "selam"], [4.9, "dusun"], [7.0, "selam"], [8.3, "kahkaha"], [10.2, "alkis"], [11.3, "gozKapa"], [16.6, "selam"]]};
+$('zemin').innerHTML = `<defs><linearGradient id="gk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FD3F4"/><stop offset="1" stop-color="#CDEFFF"/></linearGradient></defs><rect width="1080" height="1920" fill="url(#gk)"/>`
+  + K.glow({ x: 850, y: 380, r: 380, renk: '#FFF3B0', guc: .8 }) + `<circle cx="850" cy="380" r="80" fill="#FFE27A"/>`
+  + (() => { const t1 = Z.tepe({ y0: 1030, dalga: [[34, 900, .4], [12, 300, 1]] }), t2 = Z.tepe({ y0: 1130, dalga: [[26, 1100, 2], [8, 260, .3]] });
+      return t1.yol('#9ED36A') + Z.agac(150, t1.yer(150), 1) + Z.agac(930, t1.yer(930), .8) + t2.yol('#7BC24E') + Z.agac(760, t2.yer(760) + 20, .6); })();
+const gezegen = (x, y, r, t) => K.kure({ x, y, r, renk: '#FF8A5B', rim: '#FFE1C8', golge: '#C9533A', isikYon: [1, -1] }) + `<ellipse cx="${x}" cy="${y}" rx="${r * 1.6}" ry="${r * .35}" fill="none" stroke="#FFD27A" stroke-width="${r * .12}" transform="rotate(-15 ${x} ${y})" opacity=".85"/>`;
+window.renderAt = t => {
+  const kF = M.yakinlas(t, 6.2, 9.4), kB = M.yakinlas(t, 13.3, 16.2), k = Math.max(kF, kB);
+  M.bulanik(k);
+  // arka plan nesnesi: gezegen (bulanıklaşan katmanda)
+  let arka = '';
+  const gp = K.aralik(t, 3.1, 3.5); const pat = A(t, 11.2, 11.5);
+  if (gp > 0 && pat < 1) arka += `<g transform="translate(540 540) scale(${(gp < 1 ? gp : 1) * (1 + .6 * pat)}) translate(-540 -540)" opacity="${1 - pat}">` + gezegen(540, 540, 90, t) + `</g>`;
+  if (pat > 0 && pat < 1) for (let i = 0; i < 12; i++) { const a = i / 12 * 6.28; arka += `<circle cx="${540 + Math.cos(a) * 300 * pat}" cy="${540 + Math.sin(a) * 300 * pat}" r="${18 * (1 - pat)}" fill="#FF8A5B"/>`; }
+  // Gufi: soldan zıplayarak girer; yaklaşmada merkeze büyür
+  const fYol = [[0, -160, 1260, 170], [1.5, 330, 1260, 170]];
+  const bYol = [[0.3, 1250, 250, 150], [1.7, 760, 900, 150]];
+  const gpos = M.hareket(fYol, t), bpos = M.hareket(bYol, t);
+  const hedefGez = [540, 540];
+  const fBak = t < 1.9 ? [1000, 800] : t < 3.3 ? [760, 900] : t < 6.2 ? hedefGez : kF > .5 ? 'kamera' : [760, 900];
+  const bBak = t < 1.9 ? [330, 1100] : t < 3.3 ? [330, 1100] : t < 6.2 ? hedefGez : t > 13.3 && kB > .3 ? 'kamera' : [330, 1100];
+  let on = '', gufiSvg, gubiSvg;
+  const fx = gpos.x + (540 - gpos.x) * kF, fy = gpos.y + (1320 - gpos.y) * kF, fb = gpos.boy + (480 - gpos.boy) * kF;
+  gufiSvg = M.canli('gufi', { t, x: fx, y: fy, boy: fb, yol: t < 1.6 ? fYol : null, bakHedef: fBak, tepkiler: TP.gufi });
+  const bx = bpos.x + (540 - bpos.x) * kB, by = bpos.y + (900 - bpos.y) * kB, bb = bpos.boy + (440 - bpos.boy) * kB;
+  gubiSvg = M.canli('gubi', { t, x: bx, y: by, boy: bb, yol: t < 1.8 ? bYol : null, bakHedef: bBak, tepkiler: TP.gubi, isaretHedef: hedefGez });
+  // odaktaki karakter önde net, diğeri arka katmanda bulanık
+  if (kF > .01) { arka += gubiSvg; on = gufiSvg; } else if (kB > .01) { arka += gufiSvg; on = gubiSvg; } else { on = gufiSvg + gubiSvg; }
+  // düşünce balonu (Gufi düşünürken)
+  const db = A(t, 5.3, 5.6) * (1 - A(t, 6.0, 6.2)); if (db > 0) on += M.balon(560, 820, gezegen(0, 0, 38, t), { w: 200, h: 140, yon: -1, olcek: db });
+  $('dinamik').innerHTML = M.bulanikSar(arka, k) + on;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

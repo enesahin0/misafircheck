@@ -1,0 +1,189 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 47.39,
+  "konusma_bloklari": [
+    [
+      0.0,
+      2.944
+    ],
+    [
+      3.388,
+      4.949
+    ],
+    [
+      5.215,
+      6.061
+    ],
+    [
+      6.536,
+      11.136
+    ],
+    [
+      11.567,
+      12.754
+    ],
+    [
+      13.182,
+      15.66
+    ],
+    [
+      16.01,
+      17.443
+    ],
+    [
+      17.903,
+      21.795
+    ],
+    [
+      22.199,
+      23.601
+    ],
+    [
+      24.115,
+      26.414
+    ],
+    [
+      26.913,
+      29.544
+    ],
+    [
+      29.951,
+      31.872
+    ],
+    [
+      32.263,
+      36.182
+    ],
+    [
+      36.651,
+      39.925
+    ],
+    [
+      40.383,
+      42.502
+    ],
+    [
+      42.764,
+      44.655
+    ],
+    [
+      45.056,
+      47.134
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 2.94,
+      "sure": 2.94,
+      "metin": "Venüs'te doğum günün, bir günden daha sık gelir."
+    },
+    {
+      "no": 2,
+      "baslangic": 2.94,
+      "bitis": 6.06,
+      "sure": 3.12,
+      "metin": "Çünkü Venüs'te bir gün, bir yıldan uzun."
+    },
+    {
+      "no": 3,
+      "baslangic": 6.06,
+      "bitis": 11.14,
+      "sure": 5.07,
+      "metin": "Venüs, Güneş'in etrafındaki turunu yaklaşık iki yüz yirmi beş günde tamamlar."
+    },
+    {
+      "no": 4,
+      "baslangic": 11.14,
+      "bitis": 12.75,
+      "sure": 1.62,
+      "metin": "Bu, onun bir yılı."
+    },
+    {
+      "no": 5,
+      "baslangic": 12.75,
+      "bitis": 15.66,
+      "sure": 2.91,
+      "metin": "Ama kendi etrafında bir kez dönmesi..."
+    },
+    {
+      "no": 6,
+      "baslangic": 15.66,
+      "bitis": 17.44,
+      "sure": 1.78,
+      "metin": "iki yüz kırk üç gün sürer."
+    },
+    {
+      "no": 7,
+      "baslangic": 17.44,
+      "bitis": 21.8,
+      "sure": 4.35,
+      "metin": "Yani Venüs yılını bitirir, ama gününü hâlâ bitirememiştir."
+    },
+    {
+      "no": 8,
+      "baslangic": 21.8,
+      "bitis": 23.6,
+      "sure": 1.81,
+      "metin": "Üstelik ters yönde döner."
+    },
+    {
+      "no": 9,
+      "baslangic": 23.6,
+      "bitis": 26.41,
+      "sure": 2.81,
+      "metin": "Bu yüzden orada Güneş, batıdan doğar."
+    },
+    {
+      "no": 10,
+      "baslangic": 26.41,
+      "bitis": 29.54,
+      "sure": 3.13,
+      "metin": "Peki bir sabahtan ötekine ne kadar geçer?"
+    },
+    {
+      "no": 11,
+      "baslangic": 29.54,
+      "bitis": 31.87,
+      "sure": 2.33,
+      "metin": "Yaklaşık yüz on yedi Dünya günü."
+    },
+    {
+      "no": 12,
+      "baslangic": 31.87,
+      "bitis": 36.18,
+      "sure": 4.31,
+      "metin": "Yani bir kahvaltıdan diğerine, neredeyse dört ay beklersin."
+    },
+    {
+      "no": 13,
+      "baslangic": 36.18,
+      "bitis": 39.92,
+      "sure": 3.74,
+      "metin": "Tabii kahvaltını, dört yüz altmış derecede yapman gerekir."
+    },
+    {
+      "no": 14,
+      "baslangic": 39.92,
+      "bitis": 42.5,
+      "sure": 2.58,
+      "metin": "Kısacası, Venüs'te yaşasaydın..."
+    },
+    {
+      "no": 15,
+      "baslangic": 42.5,
+      "bitis": 44.66,
+      "sure": 2.15,
+      "metin": "çok daha fazla doğum günü kutlardın."
+    },
+    {
+      "no": 16,
+      "baslangic": 44.66,
+      "bitis": 47.13,
+      "sure": 2.48,
+      "metin": "Ama çok daha az sabah görürdün."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

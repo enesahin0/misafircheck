@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
+</svg>
+<script>window.SB = 13.1; const TP = {"gubi": [], "gufi": [[2.0, "gozle"], [3.8, "titre"]]};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script><script src="../ortak/au.js"></script><script src="../ortak/kp.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = q => q < .5 ? 4 * q * q * q : 1 - Math.pow(-2 * q + 2, 3) / 2;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = K.yaziGen(s, fs, { mono: true, ls: 3 }) + fs * 1.7; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+const R = PR.R, h = HK.hash, C = AU.C, KC = KP.C;
+const VELI = KO.giy('gufi', [['kasket', { renk: '#2A3A6A', siper: '#1B2440' }]]);
+const GONULLU = KO.giy('gubi', [['bere', { renk: '#C2551E', tuy: '#FFE6B8' }]]);
+const kam = (s, { x = 540, y = 900, k = 1, dx = 0, dy = 0 } = {}) => `<g transform="translate(${dx} ${dy}) translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const klip = (s, x, y, w, hh) => { const i = 'kl' + Math.round(x) + '_' + Math.round(y) + '_' + Math.round(w); return `<defs><clipPath id="${i}"><rect x="${x}" y="${y}" width="${w}" height="${hh}"/></clipPath></defs><g clip-path="url(#${i})">${s}</g>`; };
+const bam = (t, a, d = .35) => { const q = A(t, a, a + d); return q > 0 && q < 1 ? `<rect width="1080" height="1920" fill="#FFFFFF" opacity="${.55 * (1 - q)}"/>` : ''; };
+
+window.renderAt = t => {
+  const sh = Math.sin(t * 1.7) * 7 + Math.sin(t * 3.1) * 4, sv = Math.cos(t * 2.3) * 5;
+  let o = KP.sokak(0, { ofs: t * 20, ufuk: 1020 });
+  o += R(800, 640, 280, 380, 8, '#D8DEE8') + R(780, 610, 320, 50, 8, '#B04040') + AU.yaz('OKUL', 940, 720, 44, '#B04040') + R(880, 860, 120, 160, 6, '#3A4466') + R(830, 760, 60, 60, 4, '#A8C0E8') + R(990, 760, 60, 60, 4, '#A8C0E8');
+  o += KP.lamba(300, 1230, 1, '#22305A');
+  [[60, .55, 'kara'], [175, .6, 'sari'], [110, .5, 'benek']].forEach(([x, s, r], i) => o += KP.kopek(x, 1225 + i * 6, s, { renk: r, t: t + i, karanlik: .35, kupe: true }));
+  const yol = 520 + 60 * E(A(t, 0, 3.6));
+  o += KP.cocuk(yol + 230, 1235, .8, { renk: '#22305A', canta: '#F2B630', adim: t < 3.6 ? t * 1.4 : null });
+  o += gufi(t, { x: yol, y: 1235, boy: 210, ust: VELI, duygu: 'uzgun', isaretHedef: [yol + 200, 1120], bakHedef: t > 1.8 ? [150, 1150] : [yol + 120, 1080] });
+  o = kam(o, { k: 1.05, dx: sh, dy: sv });
+  o += grp(AU.cip('BİR TARAF', 0, 0, KC.MAVI, '#FFFFFF', 36), 540, 400, pop(t, .3));
+  const b = pop(t, 1.5); if (b > 0 && t < 3.65) o += KP.balonYaz(540, 620, ['“Çocuğum okula', 'korkarak gidiyor.”'], { fs: 50, sc: b, kx: 60 });
+  // BAM kartları
+  if (t >= 3.65 && t < 7.0) {
+    const ikinci = t >= 5.0; o += `<rect width="1080" height="1920" fill="#0B1433" opacity=".55"/>`;
+    let k = KP.kart(540, 820, 860, 640, { renk: '#1A2A4E', kenar: KC.MAVI });
+    if (!ikinci) k += KP.cocuk(360, 1060, 1.45, { renk: '#C8D8EE', canta: '#5A6A9A', sargi: true, yon: 1 }) + KP.kopek(700, 1060, 1.15, { yon: -1, mod: 'tehdit', t, karanlik: .8 }) + AU.yaz('ISIRILAN ÇOCUKLAR', 540, 620, 56, '#FFFFFF');
+    else { k += KP.yasli(340, 1060, 1.2, { renk: '#C8D8EE' }) + KP.kopek(720, 1060, 1.15, { yon: -1, mod: 'tehdit', t, karanlik: .8 }) + AU.yaz('SALDIRIYA UĞRAYAN YAŞLILAR', 540, 620, 46, '#FFFFFF');
+      for (let i = 0; i < 3; i++) k += `<path d="M${560 - i * 26} ${880 - i * 30} q-20 30 0 60" stroke="#FFD34A" stroke-width="7" fill="none" stroke-linecap="round" opacity="${.5 + .5 * Math.sin(t * 20 + i)}"/>`; }
+    const p = pop(t, ikinci ? 5.0 : 3.65, .3); o += olc(k, 540, 820, .8 + .2 * p) + bam(t, ikinci ? 5.0 : 3.65);
+  }
+  if (t >= 7.0) { o += `<rect width="1080" height="1920" fill="#0B1433" opacity="${.5 * A(t, 7.0, 7.3)}"/>` + grp(KP.kalkan(0, 0, 1.6), 540, 740, pop(t, 7.0)) + grp(AU.cip('MESELE: GÜVENLİK', 0, 0, KC.MAVI, '#FFFFFF', 46), 540, 1060, pop(t, 7.3)); }
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

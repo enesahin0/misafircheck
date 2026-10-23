@@ -1,0 +1,8 @@
+Bilgisayar hatalarına neden "bug", yani böcek diyoruz? Cevap, bir defterde bantlı duruyor.
+Dokuz Eylül, bin dokuz yüz kırk yedi. Harvard'da, oda büyüklüğündeki Mark İki bilgisayarı durmadan hata veriyor.
+Mühendisler makinenin içini tek tek arıyor. Ve yetmiş numaralı rölenin arasında, sıkışmış bir güve buluyorlar.
+Güveyi çıkarıp deftere bantlıyorlar. Altına da bir not düşüyorlar: "Gerçek bir böceğin bulunduğu ilk vaka."
+Ama dikkat: "gerçek" kelimesi bir espri. Çünkü "bug" kelimesi zaten kullanılıyordu. Edison bile, bin sekiz yüz yetmiş sekizde, makinelerdeki arızalara böyle diyordu.
+Hikâyeyi dünyaya yayan ise, bilgisayar öncüsü Grace Hopper oldu.
+O güve bugün hâlâ, Smithsonian müzesinde, defterin sayfasında duruyor.
+Yani "debug" dediğimiz şey, bir zamanlar gerçekten... böcek ayıklamaktı.

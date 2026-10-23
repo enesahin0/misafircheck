@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 61.1; const TP = {"gubi": [], "gufi": [[0.3, "yaklas"], [2.6, "goster"]]};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = K.yaziGen(s, fs, { mono: true, ls: 3 }) + fs * 1.7; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+const fmt = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+const MILYONER = KO.giy('gufi', [['silindir', { renk: '#2A2440', bant: '#D8A032' }], 'monokl', ['papyon', { renk: '#D8A032' }]]);
+const YESIL = '#2FBF71';
+// sayı satırı: s içindeki ilk `kalan` karakter kalır, diğerleri t0'dan itibaren fırlar (sıfırlar uçar, noktalar söner)
+const uc = (s, x, y, fs, renk, t, t0, kalan, { hedef = null, yerY = 1900 } = {}) => {
+  const ch = [...s], w = ch.map(c => c === '.' || c === ',' ? fs * .3 : fs * .6), W = w.reduce((a, b) => a + b, 0);
+  const Wk = w.slice(0, kalan).reduce((a, b) => a + b, 0), kay = FX.E.expo(A(t, t0 + .5, t0 + 1.0));
+  let xx = x - W / 2 + (W - Wk) / 2 * kay, o = '';
+  ch.forEach((c, i) => { const cx = xx + w[i] / 2; xx += w[i];
+    if (i < kalan || t < t0) { o += `<text x="${cx}" y="${y}" font-size="${fs}" font-weight="900" text-anchor="middle" style="fill:${renk}">${c}</text>`; return; }
+    const d = t - t0 - (i - kalan) * .05; if (d < 0) { o += `<text x="${cx}" y="${y}" font-size="${fs}" font-weight="900" text-anchor="middle" style="fill:${renk}">${c}</text>`; return; }
+    if (c !== '0') { if (d < .25) o += `<text x="${cx}" y="${y}" font-size="${fs}" font-weight="900" text-anchor="middle" style="fill:${renk}" opacity="${1 - d / .25}">${c}</text>`; return; }
+    let px, py, r;
+    if (hedef) { const q = FX.E.inOutQuart(A(d, 0, 1)); px = cx + (hedef[0] - cx) * q; py = y + (hedef[1] - y) * q - Math.sin(q * Math.PI) * 260; r = q * 540; if (q >= 1) return; }
+    else { const h = FX.hash(i * 7.1 + s.length), vx = (h - .5) * 900 + (i - kalan - 2) * 90, vy = -700 - h * 300; px = cx + vx * d; py = Math.min(yerY, y + vy * d + 1900 * d * d); r = vx * d * .8; if (d > 1.6) return; }
+    o += `<text x="${px}" y="${py}" font-size="${fs}" font-weight="900" text-anchor="middle" transform="rotate(${r} ${px} ${py - fs * .35})" style="fill:${renk}">0</text>`; });
+  return o;
+};
+
+const T = CV.ton('seftali');
+$('zemin').innerHTML = CV.oda(T, { zeminY: 1300, pencere: [120, 300, 260, 330] }) + CV.raf(560, 360, 440, T, 4) + CV.cerceveResim(620, 640, 150, 110, T) + CV.lamba(80, 1300, .9, T) + CV.bitki(1000, 1300, .9, T) + CV.hali(540, 1560, 900, 170, T);
+window.renderAt = t => {
+  const k = M.yakinlas(t, .3, 9); M.bulanik(k * .8);
+  const ac = FX.E.expo(A(t, .6, 1.2));
+  let arka = PR.cekmece(760, 1320, .9, ac, T, PR.banknot(0, -150, 320, { deger: '1.000.000' }));
+  arka += gubi(t, { x: 900, y: 820, boy: 180, bakHedef: [760, 1150] });
+  const b = FX.E.expo(A(t, 1.2, 2.1)); let on = '';
+  if (b > 0) on += K.glow({ x: 700, y: 760, r: 300, renk: '#FFE9A8', guc: .5 * b }) + PR.banknot(760 - 60 * b, 1170 - 410 * b, 320 + 180 * b, { deger: '1.000.000', rot: -6 + 3 * Math.sin(t * 2) });
+  on += gufi(t, { x: 330, y: 1700 + 120 * k, boy: 240 + 200 * k, bakHedef: k > .5 ? 'kamera' : [760, 1150] });
+  const q = pop(t, 3.0); if (q > 0) on += grp(txt('?', 0, 0, 160, '#E8505B'), 820, 470, q, 10);
+  $('dinamik').innerHTML = M.bulanikSar(arka, k * .8) + on;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

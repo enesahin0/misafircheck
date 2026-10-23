@@ -1,0 +1,14 @@
+{
+ "fps": 30,
+ "genislik": 1080,
+ "yukseklik": 1920,
+ "ses": "sessiz.wav",
+ "cikti": "demo_svg.mp4",
+ "sahneler": [
+  {
+   "dosya": "sahneler/s01.html",
+   "baslangic": 0,
+   "bitis": 10
+  }
+ ]
+}

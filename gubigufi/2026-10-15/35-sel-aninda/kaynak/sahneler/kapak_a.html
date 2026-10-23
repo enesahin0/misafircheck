@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/au.js"></script><script src="../ortak/kp.js"></script><script src="../ortak/sl.js"></script><script src="../ortak/se.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const R = PR.R, h = HK.hash;
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  let o = AU.zemin('#E8323C', '#9A1A2A');
+  for (let i = 0; i < 12; i++) o += `<circle cx="${80 + (i % 4) * 300}" cy="${120 + Math.floor(i / 4) * 330}" r="120" fill="#FFFFFF" opacity=".04"/>`;
+  const st = [[1, 'KEMER', '#E8A020'], [2, 'CAM', '#3E8EDE'], [3, 'ÇIK', '#2FBF71']];
+  st.forEach(([n, ad, r], i) => { const y = 300 + i * 260, x = 450 + i * 60;
+    o += R(x - 300, y - 100, 640, 200, 100, '#000', .25) + R(x - 310, y - 110, 640, 200, 100, '#FFF8EE') + `<circle cx="${x - 210}" cy="${y - 10}" r="78" fill="${r}"/>` + txt(String(n), x - 210, y + 22, 96, '#FFFFFF') + txt(ad, x + 70, y + 28, 110, '#1B2440'); });
+  o += M.canli('gufi', { t: 1, x: 900, y: 1130, boy: 170, duygu: 'kararli', bakHedef: [400, 500] }) + M.canli('gubi', { t: 1, x: 150, y: 1050, boy: 110, duygu: 'saskin', bakHedef: [400, 500] });
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#1B2440"/><rect x="0" y="1150" width="1080" height="18" fill="#FFD23F"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#FFD23F">ARABAN SUDA KALIRSA</text>`;
+  o += txt('BU SIRAYI', 540, 1362, 96) + txt('UNUTMA!', 540, 1470, 96, '#FFD23F');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>

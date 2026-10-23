@@ -1,0 +1,267 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 79.39,
+  "konusma_bloklari": [
+    [
+      0.0,
+      2.041
+    ],
+    [
+      2.561,
+      4.113
+    ],
+    [
+      4.414,
+      6.946
+    ],
+    [
+      7.331,
+      8.97
+    ],
+    [
+      9.325,
+      9.737
+    ],
+    [
+      10.134,
+      11.221
+    ],
+    [
+      11.859,
+      13.794
+    ],
+    [
+      14.303,
+      16.146
+    ],
+    [
+      16.664,
+      20.259
+    ],
+    [
+      20.746,
+      23.034
+    ],
+    [
+      23.485,
+      25.492
+    ],
+    [
+      26.02,
+      29.068
+    ],
+    [
+      29.456,
+      31.5
+    ],
+    [
+      31.963,
+      33.597
+    ],
+    [
+      34.021,
+      36.174
+    ],
+    [
+      36.674,
+      37.756
+    ],
+    [
+      38.208,
+      39.242
+    ],
+    [
+      39.598,
+      39.848
+    ],
+    [
+      40.215,
+      41.05
+    ],
+    [
+      41.46,
+      43.268
+    ],
+    [
+      43.71,
+      45.976
+    ],
+    [
+      46.428,
+      49.493
+    ],
+    [
+      50.024,
+      51.598
+    ],
+    [
+      52.044,
+      52.933
+    ],
+    [
+      53.408,
+      56.321
+    ],
+    [
+      56.764,
+      58.512
+    ],
+    [
+      58.918,
+      61.854
+    ],
+    [
+      62.29,
+      63.727
+    ],
+    [
+      64.168,
+      68.664
+    ],
+    [
+      69.045,
+      69.685
+    ],
+    [
+      70.11,
+      73.059
+    ],
+    [
+      73.523,
+      76.938
+    ],
+    [
+      77.389,
+      79.39
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 6.95,
+      "sure": 6.95,
+      "metin": "\"Cannes'ın muhtarı mısın, nesin sen?\" Türk sinemasının iki devi, on yedi yıllık sessizliği bu cümleyle bozdu."
+    },
+    {
+      "no": 2,
+      "baslangic": 6.95,
+      "bitis": 9.74,
+      "sure": 2.79,
+      "metin": "Soran Zeki Demirkubuz."
+    },
+    {
+      "no": 3,
+      "baslangic": 9.74,
+      "bitis": 11.22,
+      "sure": 1.48,
+      "metin": "Soru, Nuri Bilge Ceylan'a."
+    },
+    {
+      "no": 4,
+      "baslangic": 11.22,
+      "bitis": 13.79,
+      "sure": 2.57,
+      "metin": "Ortada eski bir dostluk vardı."
+    },
+    {
+      "no": 5,
+      "baslangic": 13.79,
+      "bitis": 16.15,
+      "sure": 2.35,
+      "metin": "Ortada eski bir kırgınlık da."
+    },
+    {
+      "no": 6,
+      "baslangic": 16.15,
+      "bitis": 23.03,
+      "sure": 6.89,
+      "metin": "Başlangıç, iki bin altıdaki Antalya Altın Portakal denildi: Demirkubuz'un Kader'i en iyi film oldu."
+    },
+    {
+      "no": 7,
+      "baslangic": 23.03,
+      "bitis": 25.49,
+      "sure": 2.46,
+      "metin": "Sonra on yedi yıl ses yok."
+    },
+    {
+      "no": 8,
+      "baslangic": 25.49,
+      "bitis": 29.07,
+      "sure": 3.58,
+      "metin": "Ta ki Ceylan, Kış Uykusu kitabını çıkarana kadar."
+    },
+    {
+      "no": 9,
+      "baslangic": 29.07,
+      "bitis": 31.5,
+      "sure": 2.43,
+      "metin": "Günlük notlar, eski yarayı açtı."
+    },
+    {
+      "no": 10,
+      "baslangic": 31.5,
+      "bitis": 33.6,
+      "sure": 2.1,
+      "metin": "Demirkubuz televizyona çıktı."
+    },
+    {
+      "no": 11,
+      "baslangic": 33.6,
+      "bitis": 36.17,
+      "sure": 2.58,
+      "metin": "Küslüğü Ceylan'ın başlattığını söyledi."
+    },
+    {
+      "no": 12,
+      "baslangic": 36.17,
+      "bitis": 37.76,
+      "sure": 1.58,
+      "metin": "Cannes çıkışını yaptı."
+    },
+    {
+      "no": 13,
+      "baslangic": 37.76,
+      "bitis": 39.85,
+      "sure": 2.09,
+      "metin": "\"Adilik yapmasın\" dedi."
+    },
+    {
+      "no": 14,
+      "baslangic": 39.85,
+      "bitis": 43.27,
+      "sure": 3.42,
+      "metin": "Ve bomba: Üç Maymun'u hiç izlemediğini."
+    },
+    {
+      "no": 15,
+      "baslangic": 43.27,
+      "bitis": 49.49,
+      "sure": 6.23,
+      "metin": "Çünkü yıllardır bir iddia konuşuluyordu: Üç Maymun'un senaryosu, Demirkubuz'dan çalınmıştı."
+    },
+    {
+      "no": 16,
+      "baslangic": 49.49,
+      "bitis": 51.6,
+      "sure": 2.1,
+      "metin": "Ceylan sessizliğini bozdu."
+    },
+    {
+      "no": 17,
+      "baslangic": 51.6,
+      "bitis": 76.94,
+      "sure": 25.34,
+      "metin": "X'ten yazdı: \"Kendine şimdiden bir YouTube kanalı açarsa iyi eder.\" Demirkubuz'un cevabı gecikmedi: \"Otur oturduğun yerde ve dişini sıkmaya devam et.\" Ceylan son sözü yazdı: \"Hiçbir kanıtı olmayan bir sürü hayal ürünü iddiayla uğraşmak kolay değilmiş.\" Ve ekledi: \"Filmlerimin hiçbirinde sana yapılmış bir gönderme yok.\" İki yönetmen, aynı olayı iki ayrı film gibi anlattı."
+    },
+    {
+      "no": 18,
+      "baslangic": 76.94,
+      "bitis": 79.39,
+      "sure": 2.45,
+      "metin": "Final sahnesini sen seç."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

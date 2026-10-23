@@ -1,0 +1,1 @@
+Kaynak: https://github.com/JohnHeibel/ClaudeAnimationBase (commit 0ac8bf2) · Lisans: MIT · Kurulum: 2026-10-02 · Kişisel kullanım

@@ -1,0 +1,269 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 59.56,
+  "konusma_bloklari": [
+    [
+      0.0,
+      2.14
+    ],
+    [
+      2.543,
+      3.222
+    ],
+    [
+      3.482,
+      5.131
+    ],
+    [
+      5.542,
+      7.938
+    ],
+    [
+      8.328,
+      10.407
+    ],
+    [
+      10.812,
+      11.686
+    ],
+    [
+      12.015,
+      12.998
+    ],
+    [
+      13.308,
+      16.207
+    ],
+    [
+      16.561,
+      18.536
+    ],
+    [
+      18.948,
+      20.725
+    ],
+    [
+      21.063,
+      25.229
+    ],
+    [
+      25.561,
+      26.382
+    ],
+    [
+      26.656,
+      30.592
+    ],
+    [
+      30.854,
+      32.964
+    ],
+    [
+      33.267,
+      34.496
+    ],
+    [
+      34.879,
+      37.228
+    ],
+    [
+      37.511,
+      39.54
+    ],
+    [
+      39.917,
+      40.701
+    ],
+    [
+      40.959,
+      42.279
+    ],
+    [
+      42.578,
+      44.98
+    ],
+    [
+      45.332,
+      46.904
+    ],
+    [
+      47.274,
+      47.893
+    ],
+    [
+      48.254,
+      48.617
+    ],
+    [
+      49.054,
+      49.426
+    ],
+    [
+      49.795,
+      50.761
+    ],
+    [
+      51.038,
+      51.625
+    ],
+    [
+      52.03,
+      53.778
+    ],
+    [
+      54.102,
+      55.418
+    ],
+    [
+      55.696,
+      56.48
+    ],
+    [
+      56.764,
+      59.56
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 5.13,
+      "sure": 5.13,
+      "metin": "Sel anında üç yerden birindesin: sokakta, bodrumda ya da arabada."
+    },
+    {
+      "no": 2,
+      "baslangic": 5.13,
+      "bitis": 7.94,
+      "sure": 2.81,
+      "metin": "Her birinde ilk yapman gereken şey farklı."
+    },
+    {
+      "no": 3,
+      "baslangic": 7.94,
+      "bitis": 10.41,
+      "sure": 2.47,
+      "metin": "Ve çoğumuz tam tersini yapıyoruz."
+    },
+    {
+      "no": 4,
+      "baslangic": 10.41,
+      "bitis": 13.0,
+      "sure": 2.59,
+      "metin": "Sokaktaysan: Akan suya girme."
+    },
+    {
+      "no": 5,
+      "baslangic": 13.0,
+      "bitis": 16.21,
+      "sure": 3.21,
+      "metin": "On beş santim akan su seni ayaklarından düşürebilir."
+    },
+    {
+      "no": 6,
+      "baslangic": 16.21,
+      "bitis": 20.73,
+      "sure": 4.52,
+      "metin": "Asıl tehlike ise görmediğin şey: Kapağı kalkmış bir rögar."
+    },
+    {
+      "no": 7,
+      "baslangic": 20.73,
+      "bitis": 25.23,
+      "sure": 4.5,
+      "metin": "Yüksek bir yere çık; elektrik direklerinden ve alt geçitlerden uzak dur."
+    },
+    {
+      "no": 8,
+      "baslangic": 25.23,
+      "bitis": 28.53,
+      "sure": 3.3,
+      "metin": "Bodrumdaysan: Su içeri sızmaya başladığı an çık."
+    },
+    {
+      "no": 9,
+      "baslangic": 28.53,
+      "bitis": 30.59,
+      "sure": 2.06,
+      "metin": "Eşyalarını kurtarmaya çalışma."
+    },
+    {
+      "no": 10,
+      "baslangic": 30.59,
+      "bitis": 34.5,
+      "sure": 3.9,
+      "metin": "Çünkü su kapının önünde yükselince, kapıyı açamayabilirsin."
+    },
+    {
+      "no": 11,
+      "baslangic": 34.5,
+      "bitis": 37.23,
+      "sure": 2.73,
+      "metin": "Elektriği kapatacaksan ayağın kuru olsun."
+    },
+    {
+      "no": 12,
+      "baslangic": 37.23,
+      "bitis": 39.54,
+      "sure": 2.31,
+      "metin": "Değilse dokunma, sadece çık."
+    },
+    {
+      "no": 13,
+      "baslangic": 39.54,
+      "bitis": 42.28,
+      "sure": 2.74,
+      "metin": "Arabadaysan: Su basmış yola girme."
+    },
+    {
+      "no": 14,
+      "baslangic": 42.28,
+      "bitis": 44.98,
+      "sure": 2.7,
+      "metin": "Otuz santim akan su arabanı yüzdürebilir."
+    },
+    {
+      "no": 15,
+      "baslangic": 44.98,
+      "bitis": 48.62,
+      "sure": 3.64,
+      "metin": "Mahsur kalırsan sıra şu: Kemer, cam, çık."
+    },
+    {
+      "no": 16,
+      "baslangic": 48.62,
+      "bitis": 51.62,
+      "sure": 3.01,
+      "metin": "Ve her durumda: yüz on iki."
+    },
+    {
+      "no": 17,
+      "baslangic": 51.62,
+      "bitis": 53.78,
+      "sure": 2.15,
+      "metin": "Bu videoyu sevdiğin birine gönder."
+    },
+    {
+      "no": 18,
+      "baslangic": 53.78,
+      "bitis": 55.42,
+      "sure": 1.64,
+      "metin": "Sen hiç selde kaldın mı?"
+    },
+    {
+      "no": 19,
+      "baslangic": 55.42,
+      "bitis": 56.48,
+      "sure": 1.06,
+      "metin": "Yorumlara yaz."
+    },
+    {
+      "no": 20,
+      "baslangic": 56.48,
+      "bitis": 59.56,
+      "sure": 3.08,
+      "metin": "Her gün bir merak için gubigufi'yi takip et."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

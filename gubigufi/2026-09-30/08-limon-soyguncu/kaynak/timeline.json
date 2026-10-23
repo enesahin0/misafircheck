@@ -1,0 +1,177 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 56.53,
+  "konusma_bloklari": [
+    [
+      0.0,
+      3.682
+    ],
+    [
+      4.127,
+      7.168
+    ],
+    [
+      7.634,
+      8.426
+    ],
+    [
+      8.883,
+      11.951
+    ],
+    [
+      12.324,
+      14.283
+    ],
+    [
+      14.754,
+      15.943
+    ],
+    [
+      16.41,
+      19.352
+    ],
+    [
+      19.834,
+      22.098
+    ],
+    [
+      22.622,
+      24.964
+    ],
+    [
+      25.46,
+      28.433
+    ],
+    [
+      28.906,
+      30.542
+    ],
+    [
+      31.073,
+      34.43
+    ],
+    [
+      34.917,
+      36.654
+    ],
+    [
+      36.945,
+      38.816
+    ],
+    [
+      39.31,
+      42.936
+    ],
+    [
+      43.201,
+      45.312
+    ],
+    [
+      45.771,
+      47.873
+    ],
+    [
+      48.302,
+      51.072
+    ],
+    [
+      51.453,
+      52.556
+    ],
+    [
+      52.957,
+      54.313
+    ],
+    [
+      54.603,
+      56.53
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 3.68,
+      "sure": 3.68,
+      "metin": "Bin dokuz yüz doksan beşte bir adam, yüzüne limon suyu sürdü..."
+    },
+    {
+      "no": 2,
+      "baslangic": 3.68,
+      "bitis": 7.17,
+      "sure": 3.49,
+      "metin": "ve maskesiz, güpegündüz iki banka soydu."
+    },
+    {
+      "no": 3,
+      "baslangic": 7.17,
+      "bitis": 14.28,
+      "sure": 7.11,
+      "metin": "Çünkü emindi: limon suyu görünmez mürekkep yapımında kullanılıyorsa, onu da kameralara görünmez yapardı."
+    },
+    {
+      "no": 4,
+      "baslangic": 14.28,
+      "bitis": 15.94,
+      "sure": 1.66,
+      "metin": "Üstelik test etmişti."
+    },
+    {
+      "no": 5,
+      "baslangic": 15.94,
+      "bitis": 19.35,
+      "sure": 3.41,
+      "metin": "Kendi fotoğrafını çekti ve fotoğrafta yüzü yoktu."
+    },
+    {
+      "no": 6,
+      "baslangic": 19.35,
+      "bitis": 22.1,
+      "sure": 2.75,
+      "metin": "Muhtemelen kamerayı yanlış yöne tutmuştu."
+    },
+    {
+      "no": 7,
+      "baslangic": 22.1,
+      "bitis": 24.96,
+      "sure": 2.87,
+      "metin": "Aynı gece yüzü bütün haberlerdeydi."
+    },
+    {
+      "no": 8,
+      "baslangic": 24.96,
+      "bitis": 38.82,
+      "sure": 13.85,
+      "metin": "Polis kapısını çaldığında şaşkınlıkla şunu söyledi: \"Ama ben limon suyu sürmüştüm!\" Bu hikâyeyi okuyan psikolog David Dunning bir soru sordu: Bir konuda beceriksiz olan biri, beceriksiz olduğunu fark edebilir mi?"
+    },
+    {
+      "no": 9,
+      "baslangic": 38.82,
+      "bitis": 45.31,
+      "sure": 6.5,
+      "metin": "Justin Kruger'la yaptığı deneylerde, en düşük puanı alanlar kendilerini ortalamanın üstünde sandı."
+    },
+    {
+      "no": 10,
+      "baslangic": 45.31,
+      "bitis": 47.87,
+      "sure": 2.56,
+      "metin": "Buna Dunning-Kruger etkisi deniyor."
+    },
+    {
+      "no": 11,
+      "baslangic": 47.87,
+      "bitis": 51.07,
+      "sure": 3.2,
+      "metin": "Bilim, etkinin büyüklüğünü hâlâ tartışıyor."
+    },
+    {
+      "no": 12,
+      "baslangic": 51.07,
+      "bitis": 56.53,
+      "sure": 5.46,
+      "metin": "Ama bir ders net: Ne kadar emin olduğun, ne kadar bildiğini göstermez."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

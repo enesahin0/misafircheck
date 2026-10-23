@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 26.66;</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/venus.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+
+$('zemin').innerHTML = V.bg({ nx: 540, ny: 700, neb: V.PAL.cyan }) + V.yildiz(19, 60);
+window.renderAt = t => {
+  let o = V.glowDaire(540, 760, 480, V.PAL.amber, .25);
+  const p = E(A(t, 3.3, 5.0)), n = Math.max(1, Math.round(117 * p));
+  o += grp(V.takvim(0, 0, n, 'DÜNYA GÜNÜ'), 540, 760, pop(t, .15));
+  // kopan yapraklar
+  if (t > 3.3) { const R = K.rnd(4); for (let i = 0; i < 14; i++) { const st = 3.3 + i * .12, d = t - st; if (d < 0 || d > 1.0) continue; const x = 540 + (R() - .5) * 60 + d * (R() < .5 ? -1 : 1) * (500 + R() * 400), y = 700 - d * 400 + d * d * 1400; o += `<rect x="${x - 110}" y="${y - 90}" width="220" height="180" rx="24" fill="#FFF3D6" opacity="${.85 * (1 - d)}" transform="rotate(${d * 260 * (R() - .5)} ${x} ${y})"/>`; } }
+  o += grp(M.gubi({ x: 0, y: 0, boy: 130, duygu: t < 3.3 ? 'merak' : 'saskin', bak: [1, -.5], kirp: -1 }), 190, 470 + Math.sin(t * 2.5) * 10, pop(t, .25));
+  const q = pop(t, .5) * (1 - A(t, 3.1, 3.3)); if (q > 0) o += txt('?', 300, 380, 150 * q, V.PAL.amber);
+  const et = pop(t, 5.0); if (et > 0) o += grp(`<rect x="-230" y="-50" width="460" height="100" rx="50" fill="${V.PAL.amber}"/>` + txt('SABAHTAN SABAHA', 0, 16, 44, '#0B1433'), 540, 1150, et);
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/kk.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  let o = `<g style="filter:blur(7px)">${KK.salon(1, { gerilim: .4 })}</g><rect width="1080" height="1150" fill="#05060A" opacity=".5"/>`;
+  for (let i = 3; i >= 1; i--) o += `<g opacity="${.12 / i}">` + KK.kitapcik(520 - i * 18, 560, 3.7, -16 - i * 14) + '</g>';
+  o += `<ellipse cx="560" cy="780" rx="190" ry="30" fill="#000" opacity=".35"/>` + KK.kitapcik(540, 560, 3.7, -16);
+  o += `<g transform="translate(540 960)">` + `<text x="0" y="0" font-size="200" font-weight="900" text-anchor="middle" style="fill:#FF5A5A">%7500</text></g>`;
+  o += M.canli('gubi', { t: 1.2, x: 930, y: 1040, boy: 200, duygu: 'saskin', parla: .3, bakHedef: [540, 560], ust: KO.giy('gubi', [['papyon', { renk: '#2E4A9A' }], 'gozluk']) });
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#10261F"/><rect x="0" y="1150" width="1080" height="18" fill="#2FBF71"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#7AE8A8">PARANIN DİLİ · 2001</text>`;
+  o += txt('FIRLAYAN KİTAPÇIK', 540, 1362, 94) + txt('İKİ GÜN SONRA FAİZ %7500', 540, 1456, 58, '#7AE8A8');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>

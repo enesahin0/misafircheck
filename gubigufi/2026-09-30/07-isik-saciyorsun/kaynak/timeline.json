@@ -1,0 +1,205 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 49.71,
+  "konusma_bloklari": [
+    [
+      0.0,
+      1.596
+    ],
+    [
+      1.98,
+      3.438
+    ],
+    [
+      3.895,
+      5.101
+    ],
+    [
+      5.597,
+      10.934
+    ],
+    [
+      11.348,
+      14.16
+    ],
+    [
+      14.453,
+      16.0
+    ],
+    [
+      16.446,
+      16.937
+    ],
+    [
+      17.334,
+      19.957
+    ],
+    [
+      20.403,
+      21.246
+    ],
+    [
+      21.656,
+      24.815
+    ],
+    [
+      25.325,
+      27.013
+    ],
+    [
+      27.468,
+      30.688
+    ],
+    [
+      31.115,
+      31.756
+    ],
+    [
+      32.018,
+      34.875
+    ],
+    [
+      35.312,
+      37.054
+    ],
+    [
+      37.522,
+      39.459
+    ],
+    [
+      39.834,
+      40.885
+    ],
+    [
+      41.187,
+      43.644
+    ],
+    [
+      44.084,
+      46.012
+    ],
+    [
+      46.295,
+      48.079
+    ],
+    [
+      48.435,
+      49.71
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 1.6,
+      "sure": 1.6,
+      "metin": "Şu an vücudun parlıyor."
+    },
+    {
+      "no": 2,
+      "baslangic": 1.6,
+      "bitis": 3.44,
+      "sure": 1.84,
+      "metin": "Sadece gözün göremiyor."
+    },
+    {
+      "no": 3,
+      "baslangic": 3.44,
+      "bitis": 5.1,
+      "sure": 1.66,
+      "metin": "Bu bir benzetme değil."
+    },
+    {
+      "no": 4,
+      "baslangic": 5.1,
+      "bitis": 10.93,
+      "sure": 5.83,
+      "metin": "İki bin dokuzda Japonya'da bilim insanları, beş gönüllüyü zifiri karanlık bir odaya soktu."
+    },
+    {
+      "no": 5,
+      "baslangic": 10.93,
+      "bitis": 16.94,
+      "sure": 6.0,
+      "metin": "Ve dünyanın en hassas kameralarından biriyle, günlerce fotoğrafladılar."
+    },
+    {
+      "no": 6,
+      "baslangic": 16.94,
+      "bitis": 19.96,
+      "sure": 3.02,
+      "metin": "Sonuç: insan vücudu, gerçekten ışık yayıyor."
+    },
+    {
+      "no": 7,
+      "baslangic": 19.96,
+      "bitis": 21.25,
+      "sure": 1.29,
+      "metin": "Ama çok zayıf."
+    },
+    {
+      "no": 8,
+      "baslangic": 21.25,
+      "bitis": 24.82,
+      "sure": 3.57,
+      "metin": "Gözünün görebileceğinden yaklaşık bin kat daha zayıf."
+    },
+    {
+      "no": 9,
+      "baslangic": 24.82,
+      "bitis": 27.01,
+      "sure": 2.2,
+      "metin": "Peki bu ışık nereden geliyor?"
+    },
+    {
+      "no": 10,
+      "baslangic": 27.01,
+      "bitis": 30.69,
+      "sure": 3.67,
+      "metin": "Hücrelerinde her an sayısız kimyasal tepkime oluyor."
+    },
+    {
+      "no": 11,
+      "baslangic": 30.69,
+      "bitis": 34.88,
+      "sure": 4.19,
+      "metin": "Bazıları, yan ürün olarak minicik ışık parçacıkları bırakıyor."
+    },
+    {
+      "no": 12,
+      "baslangic": 34.88,
+      "bitis": 37.05,
+      "sure": 2.18,
+      "metin": "En çok parlayan yer, yüzün."
+    },
+    {
+      "no": 13,
+      "baslangic": 37.05,
+      "bitis": 39.46,
+      "sure": 2.41,
+      "metin": "Ve parıltın gün içinde değişiyor."
+    },
+    {
+      "no": 14,
+      "baslangic": 39.46,
+      "bitis": 43.64,
+      "sure": 4.18,
+      "metin": "Sabah daha sönük, öğleden sonra dört civarı en parlak."
+    },
+    {
+      "no": 15,
+      "baslangic": 43.64,
+      "bitis": 48.08,
+      "sure": 4.44,
+      "metin": "Yani bir dahaki sefere biri sana \"Bugün ışıl ışılsın\" derse..."
+    },
+    {
+      "no": 16,
+      "baslangic": 48.08,
+      "bitis": 49.71,
+      "sure": 1.63,
+      "metin": "teknik olarak haklı."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}
