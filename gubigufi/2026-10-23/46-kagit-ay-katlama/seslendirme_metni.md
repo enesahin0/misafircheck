@@ -1,5 +1,5 @@
 # #46 Kâğıdı katlayarak Ay'a ulaşmak (ve ötesi) — seslendirme metni ve üretim planı
-Durum: METİN HAZIR → ElevenLabs (Yasemin). ≈ 150 sözcük ≈ 75 sn. Kategori: MATEMATİK · EVREN. Mod: pratik/gündem arası; maskot sesi yok, balon + tepki.
+Durum: METİN HAZIR → ElevenLabs (Yasemin). ≈ 130 sözcük ≈ 60 sn. Kategori: MATEMATİK · EVREN. Mod: pratik/gündem arası; maskot sesi yok, balon + tepki.
 Referans: "How Many Folds To Reach The Moon?" (@MathMango, 30,8 sn, anlatıcısız; yalnız ekran yazısı + ses). Aynı fikir/stil, kendi çizimimiz ve Türkçe anlatımımız (referans kareler kullanılmaz).
 
 ## Referans videonun analizi
