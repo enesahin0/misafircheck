@@ -8,6 +8,7 @@
 | `3_TANITIM_VIDEO/` | 15 sn, 9:16 tanıtım videosu (sosyal medya için) |
 | `4_ILAN_METINLERI/` | Türkçe ve İngilizce ilan metni (başlık, açıklama, etiket) |
 | `KAYNAK_VE_LISANSLAR.md` | Veri kaynakları ve atıflar |
+| `5_YUKLEME_KOPYA_SAYFASI.md` | Forma kopyala/yapıştır alanları |
 | `Cults_Yukleme_STL.zip` | Tüm STL'lerin tek zip'i (dosya sayısı sınırına takılırsanız) |
 
 ## Yüklemeden önce — SİZİN karar vermeniz gerekenler
