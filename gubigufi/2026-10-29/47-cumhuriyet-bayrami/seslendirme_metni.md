@@ -1,5 +1,5 @@
 # #47 Cumhuriyet Bayramı — Cumhuriyet sana ne verdi? (29 Ekim 2026, 103. yıl)
-Durum: METİN HAZIR → ElevenLabs (Yasemin). Mod: sıcak/paylaşılabilir bayram videosu; tartışma YOK, siyaset YOK (tarafsız, kurumsal/tarihî doğrulanmış gerçekler). Paylaşım hedefi: hikâyede paylaşılan bayram kartı.
+Durum: VİDEO HAZIR (ses.mp3 76,5 sn → video 78,7 sn, −14,2 LUFS). Mod: sıcak/paylaşılabilir bayram videosu; tartışma YOK, siyaset YOK (tarafsız, kurumsal/tarihî doğrulanmış gerçekler). Paylaşım hedefi: hikâyede paylaşılan bayram kartı.
 Formül: kanca = "sen" + merak ("kaçını biliyorsun?") → özel gün/tarih cümlesi kancadan SONRA kısa tanım (MARKA #31 dersi: tarih ilk 10 sn'ye girmez) → 5 maddelik liste (ekran görüntüsü alınabilir kart) → Gubi/Gufi anı → duygu kapanışı → yorum sorusu + "gönder" çağrısı + takip.
 
 ## Doğrulama (tarihî olgular)
