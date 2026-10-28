@@ -1,0 +1,73 @@
+// ---------------- #47 Cumhuriyet Bayramı görselleri (düz silüetler; gerçek kişi YOK; merkez orijin) ----------------
+const CB_K = '#E30A17', CB_KD = '#A81B2D', CB_KREM = '#FFF3E0', CB_ALTIN = '#F2B544', CB_MUREK = '#2A0A12', CB_MOR = '#7B5EA7', CB_YESIL = '#2F8F5C', CB_TURUNCU = '#E8903D', CB_BORDO = '#8E2A45';
+const cbSil = (tur, renk = '#FFF6E6', sac = '#2A1A22') => {
+  if (tur === 'kadin') return `<path d="M-30 -62 Q-32 -104 0 -104 Q32 -104 30 -62 L36 -14 L-36 -14Z" fill="${sac}"/><circle cy="-62" r="26" fill="${renk}"/><path d="M-12 -34 H12 L46 60 H-46Z" fill="${renk}"/><rect x="-14" y="60" width="10" height="44" rx="4" fill="${renk}"/><rect x="4" y="60" width="10" height="44" rx="4" fill="${renk}"/>`;
+  if (tur === 'adam') return `<circle cy="-66" r="26" fill="${renk}"/><path d="M-34 -34 H34 L28 38 H-28Z" fill="${renk}"/><rect x="-24" y="38" width="20" height="66" rx="6" fill="${renk}"/><rect x="4" y="38" width="20" height="66" rx="6" fill="${renk}"/>`;
+  return `<circle cy="-18" r="20" fill="${renk}"/><path d="M-26 6 H26 L20 52 H-20Z" fill="${renk}"/><rect x="-16" y="52" width="12" height="34" rx="4" fill="${renk}"/><rect x="4" y="52" width="12" height="34" rx="4" fill="${renk}"/>`;
+};
+const cbAyak = tur => tur === 'cocuk' ? 86 : 104;   // yere basan taban (silüet orijinine göre)
+// oy sandığı: p ≥ 0 → zarf düşer (0..1)
+const cbSandik = (s = 1, p = -1, renk = CB_K, yazi = 'OY') => `<g transform="scale(${s})">` + R(-150 + 10, -100 + 16, 300, 270, 22, '#000', .28) + R(-150, -100, 300, 270, 22, renk) + R(-150, 70, 300, 100, 22, '#000', .12) +
+  R(-178, -138, 356, 58, 18, CB_KD) + R(-86, -118, 172, 18, 9, CB_MUREK) + `<circle cx="0" cy="62" r="62" fill="${CB_KREM}"/>` + txt(yazi, 0, 88, yazi.length > 2 ? 52 : 74, renk) +
+  (p >= 0 ? `<g transform="translate(0 ${(-300 + 192 * Math.min(1, p)).toFixed(1)}) rotate(${(Math.sin(p * 6) * 6).toFixed(1)})" opacity="${(1 - Math.max(0, Math.min(1, (p - .86) * 7))).toFixed(2)}">` + R(-54, -38, 108, 76, 8, '#FFFFFF') + `<path d="M-54 -38 L0 6 L54 -38" fill="none" stroke="#C9CFDA" stroke-width="4"/></g>` : '') + `</g>`;
+// hediye kutusu: ac 0..1 (kapak kalkar, ışık)
+const cbHediye = (s = 1, ac = 0, t = 0) => { const e = Math.min(1, Math.max(0, ac)); let o = `<g transform="scale(${s})">`;
+  if (e > 0) { o += `<circle cy="-40" r="${(220 + 160 * e).toFixed(0)}" fill="#FFD27A" opacity="${(.28 * e).toFixed(2)}"/>`; for (let i = 0; i < 12; i++) { const a = i * Math.PI / 6 + t * .25; o += `<path d="M0 -40 L${(Math.cos(a - .09) * 560).toFixed(0)} ${(-40 + Math.sin(a - .09) * 560).toFixed(0)} L${(Math.cos(a + .09) * 560).toFixed(0)} ${(-40 + Math.sin(a + .09) * 560).toFixed(0)}Z" fill="#FFE9A8" opacity="${(.2 * e).toFixed(2)}"/>`; } }
+  o += R(-150 + 10, -20 + 16, 300, 230, 16, '#000', .28) + R(-150, -20, 300, 230, 16, CB_K) + R(-24, -20, 48, 230, 0, CB_ALTIN);
+  o += `<g transform="translate(${(e * 120).toFixed(1)} ${(-e * 150).toFixed(1)}) rotate(${(e * 26).toFixed(1)})">` + R(-176, -90, 352, 76, 16, CB_KD) + R(-24, -90, 48, 76, 0, CB_ALTIN) + `<ellipse cx="-52" cy="-120" rx="60" ry="40" fill="${CB_ALTIN}" transform="rotate(-18 -52 -120)"/><ellipse cx="52" cy="-120" rx="60" ry="40" fill="${CB_ALTIN}" transform="rotate(18 52 -120)"/><circle cy="-100" r="22" fill="#D99A1F"/></g>`;
+  return o + `</g>`; };
+const cbTakvim = (ay = 'EKİM', gun = '29', yil = '1923', renk = CB_K) => R(-250 + 12, -290 + 18, 500, 580, 34, '#000', .3) + R(-250, -290, 500, 580, 34, '#FFF8EC') + R(-250, -290, 500, 130, 34, renk) + R(-250, -222, 500, 62, 0, renk) +
+  [-110, 110].map(x => `<rect x="${x - 14}" y="-318" width="28" height="64" rx="14" fill="#2A1A22"/>`).join('') + txt(ay, 0, -188, 66, '#FFFFFF') + txt(gun, 0, 70, 270, '#2A1218') + txt(yil, 0, 214, 70, '#8A6A5A');
+const cbTaht = (s = 1) => `<g transform="scale(${s})">` + R(-90, -170, 180, 250, 22, '#6B2B2B') + R(-110, 60, 220, 40, 10, '#4A1E1E') + R(-80, 20, 160, 50, 12, '#8A3A3A') + R(-120, -40, 36, 120, 10, '#4A1E1E') + R(84, -40, 36, 120, 10, '#4A1E1E') + `<path d="M-90 -170 Q0 -230 90 -170Z" fill="#8A3A3A"/></g>`;
+const cbTac = (s = 1, renk = CB_ALTIN) => `<g transform="scale(${s})"><path d="M-90 40 L-100 -50 L-50 -10 L0 -70 L50 -10 L100 -50 L90 40Z" fill="${renk}"/><rect x="-90" y="40" width="180" height="26" rx="8" fill="${renk}"/><circle cx="-100" cy="-56" r="12" fill="${renk}"/><circle cx="0" cy="-78" r="13" fill="${renk}"/><circle cx="100" cy="-56" r="12" fill="${renk}"/><circle cx="-45" cy="53" r="7" fill="${CB_K}"/><circle cx="0" cy="53" r="7" fill="#2F7DBF"/><circle cx="45" cy="53" r="7" fill="${CB_K}"/></g>`;
+const cbCarpi = (s = 1, renk = CB_K) => `<g transform="scale(${s})"><circle r="70" fill="${renk}"/><path d="M-28 -28 L28 28 M28 -28 L-28 28" stroke="#fff" stroke-width="16" stroke-linecap="round"/></g>`;
+const cbTik = (s = 1, renk = CB_YESIL) => `<g transform="scale(${s})"><circle r="60" fill="${renk}"/><path d="M-26 2 L-8 22 L28 -20" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+// kalabalık: ayakları yb çizgisinde; k = her kişi için giriş durumu (t0'dan sonra sıralı)
+const cbKal = (x, yb, w, n, t, t0 = 0, { kol = 0, boy = 1, set = 0 } = {}) => { const turler = ['kadin', 'adam', 'cocuk', 'kadin', 'adam', 'cocuk', 'adam', 'kadin'], rk = ['#FFE9A8', '#BFE3F0', '#FFC9B8', '#D9F0C8', '#F0D4F7', '#FFF6E6'];
+  let o = ''; for (let i = 0; i < n; i++) { const tur = turler[(i + set) % turler.length], sc = ((tur === 'cocuk' ? .95 : 1) * (.92 + .16 * hh(i * 7 + set))) * boy, px = x - w / 2 + (i + .5) * w / n, k = ob(Math.min(1, Math.max(0, (t - t0 - i * .07) / .4)));
+    if (k <= .01) continue; const sal = Math.sin(t * 2.6 + i * 1.7) * 3;
+    o += `<g transform="translate(${px.toFixed(1)} ${(yb - cbAyak(tur) * sc * k).toFixed(1)}) scale(${(sc * k).toFixed(3)})">` + `<ellipse cy="${cbAyak(tur) + 2}" rx="38" ry="8" fill="#000" opacity=".22"/>` + (kol ? `<path d="M${tur === 'cocuk' ? 22 : 30} ${tur === 'cocuk' ? 12 : -26} L${(52 + sal).toFixed(1)} ${tur === 'cocuk' ? -30 : -78}" stroke="${rk[(i + 2) % rk.length]}" stroke-width="16" stroke-linecap="round"/>` : '') + cbSil(tur, rk[(i + set) % rk.length]) + `</g>`; }
+  return o; };
+const cbKitap = (s = 1, ad = 'MEDENİ KANUN', ac = 0) => { if (ac > .5) return `<g transform="scale(${s})">` + R(-310 + 12, -190 + 18, 620, 380, 14, '#000', .3) + R(-310, -190, 310, 380, 14, '#EADDBF') + R(0, -190, 310, 380, 14, '#F7EBD2') + `<rect x="-6" y="-196" width="12" height="392" fill="#B49A66"/>` +
+    Array.from({ length: 9 }, (_, i) => R(-270, -140 + i * 38, i % 3 === 2 ? 150 : 230, 12, 6, '#B8AC90')).join('') + Array.from({ length: 9 }, (_, i) => R(40, -140 + i * 38, i % 4 === 3 ? 130 : 230, 12, 6, '#B8AC90')).join('') + `</g>`;
+  return `<g transform="scale(${s})">` + R(-200 + 12, -260 + 18, 400, 520, 20, '#000', .35) + R(-200, -260, 400, 520, 20, CB_BORDO) + R(-200, -260, 34, 520, 14, '#5E1428') + `<rect x="-168" y="-228" width="352" height="456" rx="10" fill="none" stroke="${CB_ALTIN}" stroke-width="6"/>` +
+    `<g transform="translate(10 -90)"><rect x="-8" y="-86" width="16" height="170" rx="6" fill="${CB_ALTIN}"/><rect x="-70" y="-90" width="140" height="12" rx="6" fill="${CB_ALTIN}"/><path d="M-70 -84 L-100 -10 H-40Z M70 -84 L40 -10 H100Z" fill="${CB_ALTIN}"/><rect x="-44" y="78" width="88" height="14" rx="7" fill="${CB_ALTIN}"/></g>` +
+    txt(ad.split(' ')[0], 10, 130, 56, CB_ALTIN) + txt(ad.split(' ')[1] || '', 10, 190, 56, CB_ALTIN) + `</g>`; };
+// altın terazi: aci > 0 → sol kefe aşağıda; solIc/sagIc kefe içeriği (kefe merkezi orijin, taban y = 0)
+const cbTerazi = (s, aci, solIc = '', sagIc = '') => { const a = aci * Math.PI / 180, L = 250, lx = -Math.cos(a) * L, ly = -Math.sin(a) * L, rx = Math.cos(a) * L, ry = Math.sin(a) * L;
+  const kefe = (px, py, ic) => `<g transform="translate(${px.toFixed(1)} ${py.toFixed(1)})"><path d="M0 0 L-100 150 M0 0 L100 150" stroke="${CB_ALTIN}" stroke-width="6"/>` + R(-124, 144, 248, 26, 13, CB_ALTIN) + `<g transform="translate(0 144)">${ic}</g></g>`;
+  return `<g transform="scale(${s})">` + R(-14, -10, 28, 480, 10, '#B88A2A') + R(-150, 456, 300, 34, 16, '#8A6A1E') + `<path d="M${lx.toFixed(1)} ${ly.toFixed(1)} L${rx.toFixed(1)} ${ry.toFixed(1)}" stroke="${CB_ALTIN}" stroke-width="18" stroke-linecap="round"/><circle r="30" fill="#FFD27A"/><circle r="12" fill="#B88A2A"/>` + kefe(lx, ly, solIc) + kefe(rx, ry, sagIc) + `</g>`; };
+// okul: kapi 0..1 açılma; (0,0) = taban çizgisi ortası
+const cbOkul = (s = 1, kapi = 0, t = 0) => { const w = 62 * (1 - kapi * .88); return `<g transform="scale(${s})">` + R(-330 + 10, -270 + 14, 660, 270, 12, '#000', .22) + R(-330, -230, 660, 230, 12, '#F6E3C0') + R(-120, -300, 240, 300, 10, '#F0D2A0') + `<path d="M-150 -300 L0 -400 L150 -300Z" fill="${CB_KD}"/><rect x="-340" y="-246" width="680" height="30" rx="8" fill="${CB_KD}"/>` +
+  [-270, -200, 200, 270].map(x => R(x - 22, -190, 44, 70, 6, '#7FB6D6') + R(x - 22, -190, 44, 20, 6, '#FFFFFF', .25)).join('') + [-60, 60].map(x => R(x - 22, -270, 44, 56, 6, '#7FB6D6')).join('') + `<circle cy="-338" r="20" fill="#FFF8EC"/><path d="M0 -338 V-352 M0 -338 L10 -330" stroke="#2A1A22" stroke-width="4" stroke-linecap="round"/>` +
+  R(-62, -110, 124, 110, 8, kapi > 0 ? '#FFD27A' : '#5A3A28') + (kapi > 0 ? `<path d="M-62 0 L-62 -110 L62 -110 L62 0Z" fill="#FFE9A8" opacity="${(kapi * .9).toFixed(2)}"/>` : '') + R(-62, -110, w, 110, 6, '#6B4630') + R(62 - w, -110, w, 110, 6, '#6B4630') +
+  R(-96, 0, 192, 16, 4, '#D9C7A0') + R(-120, 16, 240, 16, 4, '#CDB98C') + `<g transform="translate(0 -420)"><rect x="-4" y="-80" width="8" height="120" rx="3" fill="#E8E2D6"/>${dalgaBayrak(4, -78, 84, 56, t, trB(46, -50, 84), 0)}</g></g>`; };
+const cbTahta = (s, n, t) => { const L = ['A', 'B', 'C', 'Ç', 'D', 'E']; let o = `<g transform="scale(${s})">` + R(-360 + 12, -220 + 18, 720, 440, 28, '#000', .3) + R(-360, -220, 720, 440, 28, '#8A5A3A') + R(-336, -196, 672, 392, 18, '#2E6B4F') + R(-336, -196, 672, 100, 18, '#FFFFFF', .05) + R(-300, 214, 600, 22, 8, '#6B4630');
+  L.forEach((c, i) => { const k = ob(Math.min(1, Math.max(0, (t - n - i * .22) / .4))); if (k > .01) o += `<g transform="translate(${-250 + (i % 3) * 250} ${-40 + Math.floor(i / 3) * 190}) scale(${k.toFixed(3)}) rotate(${(Math.sin(i * 3) * 4).toFixed(1)})">` + txt(c, 0, 50, 170, i === 3 ? CB_ALTIN : '#FFFFFF') + `</g>`; });
+  return o + R(-200, 196, 60, 14, 6, '#FFFFFF') + `</g>`; };
+const cbKonfeti = (t, t0, n = 70) => { if (t < t0) return ''; let o = ''; const rk = [CB_K, CB_ALTIN, '#FFFFFF', '#2FA89A', '#FF8FA3', '#7FD0FF'];
+  for (let i = 0; i < n; i++) { const d = t - t0 - hh(i * 5 + 3) * .9; if (d < 0) continue; const x = hh(i * 3 + 1) * 1080 + Math.sin(d * 3 + i) * 40, y = -60 + d * (380 + 420 * hh(i * 7 + 2)), r = d * (180 + 200 * hh(i)) + i * 30;
+    if (y > 1960) continue; o += `<rect x="${x.toFixed(0)}" y="${y.toFixed(0)}" width="${14 + hh(i) * 14}" height="${8 + hh(i + 9) * 10}" fill="${rk[i % rk.length]}" transform="rotate(${r.toFixed(0)} ${x.toFixed(0)} ${y.toFixed(0)})"/>`; }
+  return o; };
+const cbUcak = s => `<g transform="scale(${s})"><path d="M-110 -10 L120 -80 L50 90 L10 20 L-30 50 L-24 4Z" fill="#fff"/><path d="M-110 -10 L120 -80 L10 20Z" fill="#CFC6EE"/><path d="M10 20 L50 90 L-24 4Z" fill="#9A8FCB"/></g>`;
+const cbYorum = s => `<g transform="scale(${s})">` + R(-90 + 8, -64 + 12, 180, 124, 34, '#000', .3) + R(-90, -64, 180, 124, 34, '#FFFFFF') + `<path d="M-40 56 L-62 100 L-4 60Z" fill="#FFFFFF"/>` + [-40, 0, 40].map(x => `<circle cx="${x}" cy="-2" r="11" fill="${CB_K}"/>`).join('') + `</g>`;
+// ikon dairesi
+const cbIk = (tur, r = 90, bg = CB_K) => {
+  let ic = '';
+  if (tur === 'oy') ic = `<g transform="translate(0 6) scale(.27)">${cbSandik(1, -1, '#FFFFFF', '')}</g>`;
+  else if (tur === 'kadin') ic = `<g transform="translate(0 12) scale(.66)">${cbSil('kadin', '#FFFFFF', '#FFE9A8')}</g>`;
+  else if (tur === 'kanun') ic = `<g transform="translate(0 4) scale(.22)">${cbKitap(1, 'KANUN')}</g>`;
+  else if (tur === 'okul') ic = `<g transform="translate(0 40) scale(.17)">${cbOkul(1, 0, 0)}</g>`;
+  else ic = txt('=', 0, 34, 110, '#FFFFFF');
+  return `<circle cx="6" cy="10" r="${r}" fill="#000" opacity=".28"/><circle r="${r}" fill="${bg}"/><circle r="${r - 9}" fill="none" stroke="#FFFFFF" stroke-opacity=".5" stroke-width="4"/>${ic}`; };
+// paylaşılabilir kart
+const CB_MADDE = [['1', 'OY HAKKI', CB_K], ['2', 'SEÇME VE SEÇİLME', CB_MOR], ['3', 'MEDENİ KANUN', CB_BORDO], ['4', 'HERKESE EĞİTİM', CB_YESIL], ['5', 'KANUN ÖNÜNDE EŞİTLİK', CB_TURUNCU]];
+const cbKart = (t, t0, w = 880) => { const h = 840; let o = R(-w / 2 + 12, -h / 2 + 18, w, h, 44, '#000', .32) + R(-w / 2, -h / 2, w, h, 44, CB_KREM) + R(-w / 2, -h / 2, w, 150, 44, CB_K) + R(-w / 2, -h / 2 + 90, w, 60, 0, CB_K) +
+  txt('CUMHURİYET SANA', 0, -h / 2 + 62, 58, '#FFFFFF') + txt('NE VERDİ?', 0, -h / 2 + 128, 66, CB_ALTIN);
+  CB_MADDE.forEach(([n, ad, rk], i) => { const k = ob(Math.min(1, Math.max(0, (t - t0 - i * .16) / .4))); if (k <= .01) return; const y = -h / 2 + 232 + i * 112;
+    o += `<g transform="translate(0 ${y}) scale(${k.toFixed(3)})" opacity="${Math.min(1, k * 2).toFixed(2)}">` + R(-w / 2 + 44, -46, w - 88, 92, 46, '#FFFFFF') + `<circle cx="${-w / 2 + 92}" r="38" fill="${rk}"/>` + txt(n, -w / 2 + 92, 14, 46, '#FFFFFF') + `<text x="${-w / 2 + 156}" y="14" font-size="${ad.length > 18 ? 40 : 46}" font-weight="900" style="fill:#3A1018">${ad}</text></g>`; });
+  return o + `<text class="mono" x="0" y="${h / 2 - 34}" font-size="26" text-anchor="middle" letter-spacing="3" style="fill:#8A6A5A">29 EKİM · 103. YIL · gubigufi ✦</text>`; };
+const cbDamga = (s, renk = CB_KD, fs = 80, rot = -8) => { const w = K.yaziGen(s, fs) + 70; return `<g transform="rotate(${rot})"><rect x="${-w / 2}" y="${-fs * .85}" width="${w}" height="${fs * 1.7}" rx="14" fill="rgba(255,248,236,.5)" stroke="${renk}" stroke-width="10"/>` + txt(s, 0, fs * .34, fs, renk) + `</g>`; };
+const cbChip = (s, renk = '#FFD23F', yazi = '#1B2440', fs = 44) => { const w = K.yaziGen(s, fs) + fs * 1.8; return R(-w / 2 + 6, -fs * .95 + 9, w, fs * 1.9, fs * .95, '#000', .3) + R(-w / 2, -fs * .95, w, fs * 1.9, fs * .95, renk) + txt(s, 0, fs * .34, fs, yazi); };
+const cbBayrakli = (x, y, w, t, faz = 0) => dalgaBayrak(x, y, w, w * 2 / 3, t, trB(x + w / 2, y + w / 3, w), faz);
+const cbFrBayrak = (x, y, w, sol, orta, sag) => { const hh_ = w * 2 / 3, u = w / 3; return `<g transform="translate(${x} ${y})">` + R(-w / 2, -hh_ / 2, u, hh_, 0, sol) + R(-w / 2 + u, -hh_ / 2, u, hh_, 0, orta) + R(-w / 2 + 2 * u, -hh_ / 2, u, hh_, 0, sag) + `<rect x="${-w / 2}" y="${-hh_ / 2}" width="${w}" height="${hh_}" fill="none" stroke="#000" stroke-opacity=".12" stroke-width="2"/></g>`; };

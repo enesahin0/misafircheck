@@ -1,0 +1,226 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 55.48,
+  "konusma_bloklari": [
+    [
+      0.0,
+      1.374
+    ],
+    [
+      1.765,
+      2.698
+    ],
+    [
+      3.045,
+      3.664
+    ],
+    [
+      4.098,
+      4.73
+    ],
+    [
+      5.184,
+      6.445
+    ],
+    [
+      6.79,
+      11.031
+    ],
+    [
+      11.391,
+      13.176
+    ],
+    [
+      13.616,
+      15.401
+    ],
+    [
+      15.785,
+      18.022
+    ],
+    [
+      18.405,
+      22.436
+    ],
+    [
+      22.835,
+      24.498
+    ],
+    [
+      24.834,
+      29.41
+    ],
+    [
+      29.775,
+      31.335
+    ],
+    [
+      31.698,
+      33.194
+    ],
+    [
+      33.489,
+      34.309
+    ],
+    [
+      34.751,
+      35.721
+    ],
+    [
+      36.088,
+      42.914
+    ],
+    [
+      43.238,
+      44.446
+    ],
+    [
+      44.834,
+      46.676
+    ],
+    [
+      47.054,
+      51.932
+    ],
+    [
+      52.264,
+      55.48
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 1.37,
+      "sure": 1.37,
+      "metin": "Yolda bir cüzdan buldun."
+    },
+    {
+      "no": 2,
+      "baslangic": 1.37,
+      "bitis": 4.73,
+      "sure": 3.36,
+      "metin": "İçinde para var, kimlik var."
+    },
+    {
+      "no": 3,
+      "baslangic": 4.73,
+      "bitis": 6.45,
+      "sure": 1.71,
+      "metin": "Ne yaparsın?"
+    },
+    {
+      "no": 4,
+      "baslangic": 6.45,
+      "bitis": 7.16,
+      "sure": 0.71,
+      "metin": "Kanun burada çok net."
+    },
+    {
+      "no": 5,
+      "baslangic": 7.16,
+      "bitis": 11.03,
+      "sure": 3.87,
+      "metin": "Türk Medeni Kanunu'na göre, bulduğun eşyayı sahibine bildirmek zorundasın."
+    },
+    {
+      "no": 6,
+      "baslangic": 11.03,
+      "bitis": 13.18,
+      "sure": 2.14,
+      "metin": "Sahibini bilmiyorsan, polise."
+    },
+    {
+      "no": 7,
+      "baslangic": 13.18,
+      "bitis": 15.4,
+      "sure": 2.22,
+      "metin": "Bildirmeden kendine saklarsan?"
+    },
+    {
+      "no": 8,
+      "baslangic": 15.4,
+      "bitis": 18.02,
+      "sure": 2.62,
+      "metin": "Bu, Türk Ceza Kanunu'na göre suç."
+    },
+    {
+      "no": 9,
+      "baslangic": 18.02,
+      "bitis": 22.44,
+      "sure": 4.41,
+      "metin": "Şikâyet olursa, bir yıla kadar hapis ya da adli para cezası var."
+    },
+    {
+      "no": 10,
+      "baslangic": 22.44,
+      "bitis": 24.5,
+      "sure": 2.06,
+      "metin": "Ama işin güzel tarafı da var."
+    },
+    {
+      "no": 11,
+      "baslangic": 24.5,
+      "bitis": 31.34,
+      "sure": 6.84,
+      "metin": "Cüzdanı sahibine geri verirsen, masraflarını ve uygun bir ödül isteyebilirsin."
+    },
+    {
+      "no": 12,
+      "baslangic": 31.34,
+      "bitis": 33.19,
+      "sure": 1.86,
+      "metin": "Hani şu \"yüzde on\" kuralı?"
+    },
+    {
+      "no": 13,
+      "baslangic": 33.19,
+      "bitis": 34.31,
+      "sure": 1.11,
+      "metin": "Kanunda böyle bir oran yok."
+    },
+    {
+      "no": 14,
+      "baslangic": 34.31,
+      "bitis": 35.72,
+      "sure": 1.41,
+      "metin": "O bir efsane."
+    },
+    {
+      "no": 15,
+      "baslangic": 35.72,
+      "bitis": 44.45,
+      "sure": 8.73,
+      "metin": "Bir istisna var: Başkasının evinde ya da bir kamu binasında bulduysan, eşyayı oranın sahibine veya görevlisine teslim edersin."
+    },
+    {
+      "no": 16,
+      "baslangic": 44.45,
+      "bitis": 46.68,
+      "sure": 2.23,
+      "metin": "Orada ödül istenmez."
+    },
+    {
+      "no": 17,
+      "baslangic": 46.68,
+      "bitis": 47.4,
+      "sure": 0.72,
+      "metin": "Peki sahibi hiç çıkmazsa?"
+    },
+    {
+      "no": 18,
+      "baslangic": 47.4,
+      "bitis": 51.93,
+      "sure": 4.53,
+      "metin": "Bildirdiğin tarihten itibaren beş yıl geçerse, cüzdan artık yasal olarak senin."
+    },
+    {
+      "no": 19,
+      "baslangic": 51.93,
+      "bitis": 55.48,
+      "sure": 3.55,
+      "metin": "Yani bu sefer dürüstlük, gerçekten kazandırıyor."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

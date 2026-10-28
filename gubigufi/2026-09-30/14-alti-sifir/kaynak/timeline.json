@@ -1,0 +1,242 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 65.07,
+  "konusma_bloklari": [
+    [
+      0.0,
+      2.816
+    ],
+    [
+      3.323,
+      3.778
+    ],
+    [
+      4.122,
+      6.066
+    ],
+    [
+      6.556,
+      7.647
+    ],
+    [
+      7.974,
+      10.741
+    ],
+    [
+      11.217,
+      13.695
+    ],
+    [
+      14.114,
+      15.62
+    ],
+    [
+      15.907,
+      18.214
+    ],
+    [
+      18.546,
+      20.764
+    ],
+    [
+      21.236,
+      24.562
+    ],
+    [
+      25.018,
+      26.002
+    ],
+    [
+      26.439,
+      28.419
+    ],
+    [
+      28.952,
+      30.158
+    ],
+    [
+      30.587,
+      32.617
+    ],
+    [
+      33.058,
+      35.719
+    ],
+    [
+      36.163,
+      38.623
+    ],
+    [
+      39.041,
+      41.242
+    ],
+    [
+      41.701,
+      42.96
+    ],
+    [
+      43.443,
+      45.264
+    ],
+    [
+      45.701,
+      48.604
+    ],
+    [
+      49.014,
+      50.765
+    ],
+    [
+      51.199,
+      53.837
+    ],
+    [
+      54.134,
+      56.58
+    ],
+    [
+      57.044,
+      60.881
+    ],
+    [
+      61.321,
+      65.07
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 2.82,
+      "sure": 2.82,
+      "metin": "Bir zamanlar Türkiye'de herkes milyonerdi."
+    },
+    {
+      "no": 2,
+      "baslangic": 2.82,
+      "bitis": 6.07,
+      "sure": 3.25,
+      "metin": "Ama bu, bir simit almaya bile zor yetiyordu."
+    },
+    {
+      "no": 3,
+      "baslangic": 6.07,
+      "bitis": 7.65,
+      "sure": 1.58,
+      "metin": "Yıl iki bin dört."
+    },
+    {
+      "no": 4,
+      "baslangic": 7.65,
+      "bitis": 10.74,
+      "sure": 3.09,
+      "metin": "Cüzdandaki en büyük banknot yirmi milyon lira."
+    },
+    {
+      "no": 5,
+      "baslangic": 10.74,
+      "bitis": 13.7,
+      "sure": 2.95,
+      "metin": "Bir dolar, yaklaşık bir buçuk milyon lira."
+    },
+    {
+      "no": 6,
+      "baslangic": 13.7,
+      "bitis": 20.76,
+      "sure": 7.07,
+      "metin": "Fiyatlar o kadar uzun ki kasiyerler sıfırları saymakta zorlanıyor, hesap makinelerinin ekranı bile yetmiyor."
+    },
+    {
+      "no": 7,
+      "baslangic": 20.76,
+      "bitis": 26.0,
+      "sure": 5.24,
+      "metin": "Türk lirası o yıllarda Guinness Rekorlar Kitabı'na girmişti."
+    },
+    {
+      "no": 8,
+      "baslangic": 26.0,
+      "bitis": 30.16,
+      "sure": 4.16,
+      "metin": "Unvanı da şuydu: dünyanın en değersiz parası."
+    },
+    {
+      "no": 9,
+      "baslangic": 30.16,
+      "bitis": 32.62,
+      "sure": 2.46,
+      "metin": "Peki çözüm neydi?"
+    },
+    {
+      "no": 10,
+      "baslangic": 32.62,
+      "bitis": 33.77,
+      "sure": 1.15,
+      "metin": "Paradan tam altı sıfır silmek."
+    },
+    {
+      "no": 11,
+      "baslangic": 33.77,
+      "bitis": 35.72,
+      "sure": 1.95,
+      "metin": "Bir Ocak iki bin beşte Yeni Türk Lirası doğdu."
+    },
+    {
+      "no": 12,
+      "baslangic": 35.72,
+      "bitis": 38.62,
+      "sure": 2.9,
+      "metin": "Bir milyon lira bir anda bir lira oldu."
+    },
+    {
+      "no": 13,
+      "baslangic": 38.62,
+      "bitis": 42.96,
+      "sure": 4.34,
+      "metin": "Yirmi milyonluk banknot da yirmi lira."
+    },
+    {
+      "no": 14,
+      "baslangic": 42.96,
+      "bitis": 45.26,
+      "sure": 2.3,
+      "metin": "Asıl ilginç kısım şu: bu yüzden kimse fakirleşmedi."
+    },
+    {
+      "no": 15,
+      "baslangic": 45.26,
+      "bitis": 50.77,
+      "sure": 5.5,
+      "metin": "Maaşlar da fiyatlar da aynı oranda küçüldü."
+    },
+    {
+      "no": 16,
+      "baslangic": 50.77,
+      "bitis": 51.72,
+      "sure": 0.95,
+      "metin": "Giden sadece sıfırlardı."
+    },
+    {
+      "no": 17,
+      "baslangic": 51.72,
+      "bitis": 56.58,
+      "sure": 4.86,
+      "metin": "Dört yıl sonra \"Yeni\" kelimesi de kalktı ve paramızın adı yeniden Türk lirası oldu."
+    },
+    {
+      "no": 18,
+      "baslangic": 56.58,
+      "bitis": 60.88,
+      "sure": 4.3,
+      "metin": "Yani o eski milyonerlik aslında bir sıfır yanılsamasıydı."
+    },
+    {
+      "no": 19,
+      "baslangic": 60.88,
+      "bitis": 65.07,
+      "sure": 4.19,
+      "metin": "Peki senin çekmecende hâlâ eski bir milyonluk duruyor mu?"
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

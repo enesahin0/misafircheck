@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/au.js"></script><script src="../ortak/kp.js"></script><script src="../ortak/sl.js"></script><script src="../ortak/se.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const R = PR.R, h = HK.hash;
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  let o = `<rect width="1080" height="600" fill="#2A3656"/>` + SL.yagmur(0, { y1: 600, n: 60, op: .5 });
+  o += R(0, 560, 1080, 120, 0, '#3E8EDE') + SE.dalga(560, 0, '#8CC8F4', 10, 14) + R(0, 680, 1080, 470, 0, '#5A4A3A') + R(0, 672, 1080, 14, 0, '#8A94A8');
+  o += R(430, 676, 220, 474, 14, '#0A0E18') + `<ellipse cx="780" cy="640" rx="110" ry="22" fill="#6A7488" transform="rotate(-20 780 640)"/>`;
+  o += KP.yetiskin(400, 560, .9, { renk: '#FFF3E0', adim: .25 });
+  o += `<circle cx="540" cy="760" r="190" fill="none" stroke="#E8323C" stroke-width="14" stroke-dasharray="30 18"/>` + txt('?', 540, 980, 200, '#E8323C');
+  o += `<g transform="rotate(-4 540 110)"><rect x="160" y="40" width="760" height="140" rx="30" fill="#FFFFFF"/>` + txt('GÖRMEDİĞİN TEHLİKE', 540, 135, 66, '#E8323C') + `</g>`;
+  o += M.canli('gufi', { t: 1, x: 900, y: 560, boy: 150, duygu: 'korku', bakHedef: [540, 760] }) + M.canli('gubi', { t: 1, x: 160, y: 440, boy: 100, duygu: 'saskin', bakHedef: [540, 760] });
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#1B2440"/><rect x="0" y="1150" width="1080" height="18" fill="#FFD23F"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#FFD23F">SEL ANINDA SOKAKTAYSAN</text>`;
+  o += txt('SUYUN ALTINDA', 540, 1362, 96) + txt('NE VAR?', 540, 1470, 96, '#FFD23F');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>

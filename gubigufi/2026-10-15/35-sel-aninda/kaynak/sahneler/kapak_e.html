@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/au.js"></script><script src="../ortak/kp.js"></script><script src="../ortak/sl.js"></script><script src="../ortak/se.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const R = PR.R, h = HK.hash;
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  let o = `<rect width="1080" height="1150" fill="#F4F1EA"/>`;
+  for (let i = 0; i < 40; i++) o += `<path d="M${(i * 97) % 1080} ${(i * 173) % 1100} l-14 40" stroke="#3E8EDE" stroke-width="5" stroke-linecap="round" opacity=".35"/>`;
+  o += R(240, 300, 600, 380, 60, '#000', .12) + R(230, 290, 600, 380, 60, '#E8323C') + txt('112', 530, 560, 260, '#FFFFFF');
+  const ik = [['SOKAK', 230], ['BODRUM', 530], ['ARABA', 830]];
+  ik.forEach(([ad, x]) => o += R(x - 140, 760, 280, 90, 45, '#1B2440') + txt(ad, x, 820, 44, '#FFFFFF'));
+  o += txt('HER DURUMDA', 530, 960, 56, '#E8323C');
+  o += M.canli('gufi', { t: 1, x: 140, y: 1130, boy: 150, duygu: 'kararli', bakHedef: [530, 480] }) + M.canli('gubi', { t: 1, x: 950, y: 250, boy: 110, duygu: 'merak', bakHedef: [530, 480] });
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#1B2440"/><rect x="0" y="1150" width="1080" height="18" fill="#E8323C"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#E8323C">SEL ANINDA</text>`;
+  o += txt('HAYAT KURTARAN', 540, 1362, 96) + txt('3 KURAL', 540, 1470, 96, '#E8323C');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>

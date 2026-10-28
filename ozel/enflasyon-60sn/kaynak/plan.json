@@ -1,0 +1,39 @@
+{
+ "fps": 30,
+ "genislik": 1080,
+ "yukseklik": 1920,
+ "ses": "miks.wav",
+ "cikti": "video_ham.mp4",
+ "sahneler": [
+  {
+   "dosya": "sahneler/s01.html",
+   "baslangic": 0,
+   "bitis": 10
+  },
+  {
+   "dosya": "sahneler/s02.html",
+   "baslangic": 10,
+   "bitis": 20
+  },
+  {
+   "dosya": "sahneler/s03.html",
+   "baslangic": 20,
+   "bitis": 30
+  },
+  {
+   "dosya": "sahneler/s04.html",
+   "baslangic": 30,
+   "bitis": 40
+  },
+  {
+   "dosya": "sahneler/s05.html",
+   "baslangic": 40,
+   "bitis": 50
+  },
+  {
+   "dosya": "sahneler/s06.html",
+   "baslangic": 50,
+   "bitis": 60
+  }
+ ]
+}

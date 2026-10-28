@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/au.js"></script><script src="../ortak/kp.js"></script><script src="../ortak/sl.js"></script><script src="../ortak/se.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const R = PR.R, h = HK.hash;
+let _id = 0; const gid = p => p + (++_id);
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const golgeTxt = (s, x, y, size, renk) => txt(s, x + 6, y + 8, size, '#000', 900, 'opacity=".45"') + txt(s, x, y, size, renk);
+const lin = (id, a, b, x2 = 0, y2 = 1) => `<linearGradient id="${id}" x1="0" y1="0" x2="${x2}" y2="${y2}"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient>`;
+const rad = (id, renk, op = 1) => `<radialGradient id="${id}"><stop offset="0" stop-color="${renk}" stop-opacity="${op}"/><stop offset="1" stop-color="${renk}" stop-opacity="0"/></radialGradient>`;
+const isik = (x, y, r, renk, op = .8) => { const i = gid('r'); return `<defs>${rad(i, renk, op)}</defs><circle cx="${x}" cy="${y}" r="${r}" fill="url(#${i})"/>`; };
+const koni = (x, y, x1, y1, x2, y2, renk, op = .55) => { const i = gid('k'); return `<defs><linearGradient id="${i}" gradientUnits="userSpaceOnUse" x1="${x}" y1="${y}" x2="${(x1 + x2) / 2}" y2="${(y1 + y2) / 2}"><stop offset="0" stop-color="${renk}" stop-opacity="${op}"/><stop offset="1" stop-color="${renk}" stop-opacity="0"/></linearGradient></defs><path d="M${x} ${y} L${x1} ${y1} L${x2} ${y2}Z" fill="url(#${i})"/>`; };
+const yagmur = (n, y0, y1, op = .45, renk = '#CFE6FF') => { let o = ''; for (let i = 0; i < n; i++) { const x = h(i) * 1120 - 20, y = y0 + h(i + 9) * (y1 - y0), L = 40 + 50 * h(i + 3); o += `<path d="M${x} ${y} l${-L * .15} ${L}" stroke="${renk}" stroke-width="${2 + 2 * h(i + 7)}" stroke-linecap="round" opacity="${op * (.5 + .5 * h(i + 2))}"/>`; } return o; };
+const simsek = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M0 0 L-40 140 L10 130 L-30 300 L60 100 L10 110 L40 0Z" fill="#FFFBE0"/></g>` + isik(x, y + 150, 260 * s, '#BFD8FF', .45);
+const vinyet = () => { const i = gid('v'); return `<defs><radialGradient id="${i}" cx=".5" cy=".42" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".65"/></radialGradient></defs><rect width="1080" height="1920" fill="url(#${i})"/>`; };
+const altBant = (renk, ust, l1, l2, r2) => { const i = gid('f'); return `<defs>${lin(i, 'rgba(8,10,24,0)', '#080A18')}</defs><rect x="0" y="1020" width="1080" height="320" fill="url(#${i})"/><rect x="0" y="1338" width="1080" height="582" fill="#080A18"/>` +
+  `<rect x="${540 - (ust.length * 21 + 70) / 2}" y="1190" width="${ust.length * 21 + 70}" height="56" rx="28" fill="${renk}"/><text class="mono" x="540" y="1228" font-size="28" text-anchor="middle" letter-spacing="4" style="fill:#080A18">${ust}</text>` +
+  golgeTxt(l1, 540, 1372, 104, '#FFF6E6') + golgeTxt(l2, 540, 1484, 104, r2); };
+const logo = () => { const S = 140 / 233; let l = `<g transform="translate(540 1650) scale(${S}) translate(-141.5 -141.5)">`; for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`; return l + '</g>'; };
+const su = (y, renk1 = '#2E78C8', renk2 = '#0E2E5A') => { const i = gid('s'); return `<defs>${lin(i, renk1, renk2)}</defs><rect x="0" y="${y}" width="1080" height="${1920 - y}" fill="url(#${i})"/>` + SE.dalga(y, .7, '#9ED2FF', 7, 12); };
+window.renderAt = t => {
+  let o = `<rect width="1080" height="1920" fill="#0C1224"/>`;
+  // zemin kat (sıcak) + bodrum (soğuk) kesiti
+  o += R(60, 140, 960, 420, 20, '#3A2E2A') + isik(540, 300, 380, '#FFC870', .35) + R(80, 160, 920, 380, 14, '#4A3A30', .6);
+  o += R(160, 230, 160, 200, 8, '#2A4060') + R(170, 240, 140, 180, 6, '#5A7AA8', .6) + R(700, 340, 220, 200, 10, '#6A4A30');
+  o += R(40, 560, 1000, 30, 0, '#8A94A8');
+  const g = gid('g'); o += `<defs>${lin(g, '#1A2440', '#0A0E1C')}</defs>` + R(60, 590, 960, 520, 20, `url(#${g})`);
+  // sallanan lamba
+  o += `<path d="M380 590 L400 690" stroke="#8A94A8" stroke-width="4"/><circle cx="402" cy="700" r="20" fill="#FFE9A8"/>` + isik(402, 720, 260, '#FFE9A8', .35) + koni(402, 715, 250, 1110, 560, 1110, '#FFE9A8', .25);
+  // merdiven + kapı + ışık
+  for (let i = 0; i < 7; i++) o += R(640 + i * 50, 1110 - (i + 1) * 70, 50, (i + 1) * 70, 0, '#4A5266');
+  o += R(960, 400, 50, 170, 4, '#8A6A4A') + koni(985, 470, 600, 600, 800, 900, '#FFC870', .25);
+  o += R(1010, 380, 20, 190, 0, '#2E78C8') + `<path d="M1000 470 l-50 0 m18 -16 l-18 16 l18 16" stroke="#FFFFFF" stroke-width="7" fill="none"/>`;
+  // bodrumda yükselen su + yansıma
+  o += `<clipPath id="bd"><rect x="60" y="590" width="960" height="520" rx="20"/></clipPath><g clip-path="url(#bd)">` + R(0, 900, 1080, 300, 0, '#2E78C8', .85) + SE.dalga(900, .2, '#9ED2FF', 7, 10) + R(140, 860, 90, 60, 6, '#C48A50') + R(250, 880, 70, 40, 6, '#8A5A3A') + '</g>';
+  // priz kıvılcımı
+  o += R(110, 820, 40, 56, 6, '#E8E8E8') + isik(130, 848, 80, '#FFE45C', .8) + `<path d="M130 848 l-22 -18 l14 -6 l-20 -22 M130 848 l26 -16 l-4 18 l22 -4" stroke="#FFE45C" stroke-width="5" fill="none"/>`;
+  o += KP.yetiskin(840, 1110 - 5 * 70, .45, { renk: '#F4E8D8', adim: .3 });
+  o += M.canli('gufi', { t: 1, x: 300, y: 905, boy: 130, duygu: 'korku', bakHedef: [985, 470] }) + M.canli('gubi', { t: 1, x: 520, y: 330, boy: 100, duygu: 'saskin', bakHedef: [300, 850] });
+  o += `<g transform="rotate(-4 540 70)"><rect x="210" y="20" width="660" height="110" rx="26" fill="#FFD23F"/>` + txt('KAPI AÇILMAZSA?', 540, 98, 60, '#0A1028') + `</g>`;
+  o += vinyet() + altBant('#7FD0FF', 'SEL ANINDA BODRUMDAYSAN', 'SU SIZDIĞI AN', 'HEMEN ÇIK!', '#7FD0FF') + logo();
+  document.getElementById('dinamik').innerHTML = o;
+};
+</script></body></html>

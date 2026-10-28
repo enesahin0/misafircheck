@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="kamYak"><g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g></g>
+</svg>
+<script>window.SB = 2.0; const TP = {"gubi": [[0.4, "selam"]], "gufi": []};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/zemin.js"></script><script src="../ortak/hareket.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/detay.js"></script><script src="../ortak/hb.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = K.yaziGen(s, fs, { mono: true, ls: 3 }) + fs * 1.7; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+const SUNUCU = KO.giy('gubi', [['papyon', { renk: '#E8323C' }]]);
+const MUHABIR = (x, y, boy, ifade, t) => HB.mikrofon(x, y, boy);
+const TICKER = "AKARYAKITTA E\u015eEL MOB\u0130L SONA ERD\u0130  \u00b7  BENZ\u0130NDE \u00d6TV EK\u0130M-KASIM-ARALIK KADEMEL\u0130 ARTACAK  \u00b7  LPG'DE \u00d6TV 11,38 TL/KG  \u00b7  EV\u0130M S\u0130STEM\u0130NDE YEN\u0130 KURALLAR Y\u00dcR\u00dcRL\u00dcKTE  \u00b7  ";
+
+const duvarIc = t => `<rect width="820" height="470" fill="#0A2448"/>` + HB.kure(160, 235, 130, t, .6) + HB.pompa(700, 440, .8) + `<text x="420" y="120" font-size="58" font-weight="900" text-anchor="middle" style="fill:#FFFFFF">EŞEL MOBİL</text><rect x="250" y="150" width="340" height="12" fill="#E8323C"/>`;
+const saha = t => HB.istasyon(t) + gufi(t, { x: 330, y: 1830, boy: 300, bakHedef: 'kamera', ust: MUHABIR, eller: false });
+window.renderAt = t => {
+  const z = FX.E.inOutQuart(A(t, 12.9, 14.0));
+  let o;
+  if (z <= 0) {
+    const ic = t < 11.4 ? duvarIc(t) : `<g transform="scale(${820 / 1080}) translate(0 -1230)">${saha(t)}</g><rect x="20" y="20" width="150" height="44" rx="8" fill="#E8323C"/><text class="mono" x="40" y="51" font-size="24" style="fill:#FFF">● CANLI</text>`;
+    o = HB.studyo(t, ic) + gubi(t, { x: 540, y: 905, boy: 250, bakHedef: 'kamera', ust: SUNUCU }) + HB.masa(t);
+    o += HB.ekran(t, { alt: t > 9.6 ? ['GUFİ SAHADA', 'CANLI BAĞLANTI'] : ['AKARYAKITTA EŞEL MOBİL DÖNEMİ SONA ERDİ', 'EKONOMİ'], altP: t > 9.6 ? A(t, 11.0, 11.5) : A(t, 2.6, 3.1), serit: TICKER });
+  } else {
+    // duvardaki yayın tam ekrana büyür
+    const [x, y, w, hh] = HB.DUVAR, X = x * (1 - z), Y = y * (1 - z), W = w + (1080 - w) * z, H = hh + (1920 - hh) * z;
+    const vb = [0, 1230 * (1 - z), 1080, (1080 * hh / w) * (1 - z) + 1920 * z];
+    o = HB.studyo(t, '') + `<svg x="${X}" y="${Y}" width="${W}" height="${H}" viewBox="${vb.join(' ')}" preserveAspectRatio="xMidYMid slice">${saha(t)}</svg>`;
+  }
+  o += DP.sar(t, 7.2, 10.9, d => HB.gazete(d));
+  o += HB.parazit(t, 14.4, .7);
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

@@ -1,0 +1,195 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 56.11,
+  "konusma_bloklari": [
+    [
+      0.0,
+      3.986
+    ],
+    [
+      4.447,
+      4.957
+    ],
+    [
+      5.293,
+      6.938
+    ],
+    [
+      7.366,
+      9.321
+    ],
+    [
+      9.855,
+      10.538
+    ],
+    [
+      10.799,
+      14.556
+    ],
+    [
+      15.033,
+      17.57
+    ],
+    [
+      17.993,
+      20.154
+    ],
+    [
+      20.412,
+      22.059
+    ],
+    [
+      22.51,
+      24.419
+    ],
+    [
+      24.826,
+      26.401
+    ],
+    [
+      26.822,
+      29.169
+    ],
+    [
+      29.695,
+      30.35
+    ],
+    [
+      30.722,
+      32.583
+    ],
+    [
+      32.994,
+      35.669
+    ],
+    [
+      36.144,
+      38.519
+    ],
+    [
+      38.771,
+      40.936
+    ],
+    [
+      41.396,
+      45.372
+    ],
+    [
+      45.855,
+      50.378
+    ],
+    [
+      50.801,
+      52.632
+    ],
+    [
+      52.925,
+      54.414
+    ],
+    [
+      54.871,
+      56.11
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 3.99,
+      "sure": 3.99,
+      "metin": "Bilgisayar hatalarına neden \"bug\", yani böcek diyoruz?"
+    },
+    {
+      "no": 2,
+      "baslangic": 3.99,
+      "bitis": 6.94,
+      "sure": 2.95,
+      "metin": "Cevap, bir defterde bantlı duruyor."
+    },
+    {
+      "no": 3,
+      "baslangic": 6.94,
+      "bitis": 9.32,
+      "sure": 2.38,
+      "metin": "Dokuz Eylül, bin dokuz yüz kırk yedi."
+    },
+    {
+      "no": 4,
+      "baslangic": 9.32,
+      "bitis": 14.56,
+      "sure": 5.23,
+      "metin": "Harvard'da, oda büyüklüğündeki Mark İki bilgisayarı durmadan hata veriyor."
+    },
+    {
+      "no": 5,
+      "baslangic": 14.56,
+      "bitis": 17.57,
+      "sure": 3.01,
+      "metin": "Mühendisler makinenin içini tek tek arıyor."
+    },
+    {
+      "no": 6,
+      "baslangic": 17.57,
+      "bitis": 22.06,
+      "sure": 4.49,
+      "metin": "Ve yetmiş numaralı rölenin arasında, sıkışmış bir güve buluyorlar."
+    },
+    {
+      "no": 7,
+      "baslangic": 22.06,
+      "bitis": 24.42,
+      "sure": 2.36,
+      "metin": "Güveyi çıkarıp deftere bantlıyorlar."
+    },
+    {
+      "no": 8,
+      "baslangic": 24.42,
+      "bitis": 32.58,
+      "sure": 8.16,
+      "metin": "Altına da bir not düşüyorlar: \"Gerçek bir böceğin bulunduğu ilk vaka.\" Ama dikkat: \"gerçek\" kelimesi bir espri."
+    },
+    {
+      "no": 9,
+      "baslangic": 32.58,
+      "bitis": 35.67,
+      "sure": 3.09,
+      "metin": "Çünkü \"bug\" kelimesi zaten kullanılıyordu."
+    },
+    {
+      "no": 10,
+      "baslangic": 35.67,
+      "bitis": 40.94,
+      "sure": 5.27,
+      "metin": "Edison bile, bin sekiz yüz yetmiş sekizde, makinelerdeki arızalara böyle diyordu."
+    },
+    {
+      "no": 11,
+      "baslangic": 40.94,
+      "bitis": 45.37,
+      "sure": 4.44,
+      "metin": "Hikâyeyi dünyaya yayan ise, bilgisayar öncüsü Grace Hopper oldu."
+    },
+    {
+      "no": 12,
+      "baslangic": 45.37,
+      "bitis": 50.38,
+      "sure": 5.01,
+      "metin": "O güve bugün hâlâ, Smithsonian müzesinde, defterin sayfasında duruyor."
+    },
+    {
+      "no": 13,
+      "baslangic": 50.38,
+      "bitis": 54.41,
+      "sure": 4.04,
+      "metin": "Yani \"debug\" dediğimiz şey, bir zamanlar gerçekten..."
+    },
+    {
+      "no": 14,
+      "baslangic": 54.41,
+      "bitis": 56.11,
+      "sure": 1.7,
+      "metin": "böcek ayıklamaktı."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

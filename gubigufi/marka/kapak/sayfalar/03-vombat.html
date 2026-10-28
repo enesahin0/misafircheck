@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak_m/stil.css"><link rel="stylesheet" href="../ortak_m/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="dinamik"></g></svg>
+<script src="../ortak_m/logo_paths.js"></script>
+<script>
+const Z = '#1F4D3A', ZK = '#153828', V = '#F29E4C', Y = '#FFF3E0';
+const P = (cx, cy, r) => { let d = ''; for (let i = 0; i < 4; i++) { const a = -Math.PI / 2 + i * Math.PI / 2, b = a + Math.PI / 4, n = a + Math.PI / 2; d += (i ? '' : `M${cx + Math.cos(a) * r} ${cy + Math.sin(a) * r}`) + ` Q${cx + Math.cos(b) * r * .16} ${cy + Math.sin(b) * r * .16} ${cx + Math.cos(n) * r} ${cy + Math.sin(n) * r}`; } return d + 'Z'; };
+window.renderAt = t => {
+  const baslik = 'KÜP KAKA', alt = 'Vombatın köşeli sırrı';
+  const bs = baslik.length > 14 ? Math.max(70, 1500 / baslik.length) : 118, as = alt.length > 20 ? Math.max(44, 1300 / alt.length) : 62;
+  let o = `<defs><linearGradient id="zg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${Z}"/><stop offset="1" stop-color="${ZK}"/></linearGradient>` +
+    `<clipPath id="kart"><rect x="70" y="400" width="940" height="780" rx="56"/></clipPath></defs>` +
+    `<rect width="1080" height="1920" fill="url(#zg)"/>` +
+    `<circle cx="980" cy="260" r="420" fill="#FFFFFF" opacity=".05"/><circle cx="60" cy="1700" r="520" fill="#000000" opacity=".08"/>` +
+    // kart: gölge + görsel + ince açık çerçeve (kontur değil, iç ışık şeridi)
+    `<rect x="84" y="420" width="940" height="780" rx="56" fill="#000" opacity=".22"/>` +
+    `<g clip-path="url(#kart)"><rect x="70" y="400" width="940" height="780" fill="${ZK}"/><image href="../gorsel/03-vombat.png" x="70" y="400" width="940" height="780" preserveAspectRatio="xMidYMid slice"/>` +
+    `<rect x="70" y="400" width="940" height="10" fill="#FFFFFF" opacity=".25"/></g>` +
+    // üst etiket
+    `<path d="${P(116, 318, 16)}" fill="${V}"/><text class="mono" x="146" y="330" font-size="34" letter-spacing="6" style="fill:${Y}">DOĞADA TEK</text>` +
+    // başlık
+    `<text x="540" y="${1320 + (bs - 100) * .35}" font-size="${bs}" font-weight="900" text-anchor="middle" style="fill:${Y}">${baslik}</text>` +
+    `<text x="540" y="1430" font-size="${as}" font-weight="900" text-anchor="middle" style="fill:${V}">${alt}</text>`;
+  const S = 150 / 233; let l = `<g transform="translate(540 1565) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? Y : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>

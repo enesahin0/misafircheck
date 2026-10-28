@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/au.js"></script><script src="../ortak/kp.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const R = PR.R, C = AU.C;
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+const klip = (s, x, w, i) => `<defs><clipPath id="${i}"><rect x="${x}" y="0" width="${w}" height="1920"/></clipPath></defs><g clip-path="url(#${i})">${s}</g>`;
+window.renderAt = t => {
+  let L = AU.zemin('#2A4A8E', '#0E1830') + K.glow({ x: 300, y: 900, r: 420, renk: '#3E6FD8', guc: .3 });
+  L += KP.kopek(360, 1080, 1.35, { yon: -1, mod: 'tehdit', t: 0, karanlik: .6 }) + KP.cocuk(90, 1080, 1.2, { renk: '#C8D8EE', canta: '#5A6A9A' });
+  L += AU.cip('KÂBUS', 250, 600, KP.C.MAVI, '#FFFFFF', 48);
+  let Rr = AU.zemin('#FFB25E', '#C2551E') + K.glow({ x: 780, y: 900, r: 420, renk: '#FFE08A', guc: .35 });
+  Rr += KP.kopek(720, 1080, 1.35, { yon: 1, mod: 'dost', t: .3 }) + KP.yetiskin(1010, 1080, .7, { renk: '#5A2A1E', poz: 'diz', yon: -1 }) + KP.kalp(880, 760, .3, '#E8505B');
+  Rr += AU.cip('AİLE', 830, 600, KP.C.TURU, '#FFFFFF', 48);
+  let o = klip(L, 0, 540, 'a') + klip(Rr, 540, 540, 'b') + `<path d="M540 0 V1150" stroke="#FFFFFF" stroke-width="10"/>`;
+  o += M.canli('gufi', { t: 1, x: 440, y: 655, boy: 130, duygu: 'korku', bakHedef: [250, 950] });
+  o += M.canli('gubi', { t: 1, x: 650, y: 590, boy: 100, duygu: 'mutlu', bakHedef: [830, 950] });
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#0B1433"/><rect x="0" y="1150" width="540" height="18" fill="#3E6FD8"/><rect x="540" y="1150" width="540" height="18" fill="#FF8A3D"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#8FE3B4">4 EKİM · SOKAK KÖPEKLERİ</text>`;
+  o += txt('AYNI KÖPEK,', 540, 1362, 90) + txt('İKİ TÜRKİYE', 540, 1458, 90, '#FFD978');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>

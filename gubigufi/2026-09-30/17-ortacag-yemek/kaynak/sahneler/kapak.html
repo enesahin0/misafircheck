@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/oc.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  const T = CV.ton('adacayi');
+  let sahne = OC.koy(T) + KS.karakter(Object.assign({ x: 140, y: 1150, boy: 360, t: .3, ifade: 'gulumse' }, KS.donem(1300, 1))) + KS.karakter(Object.assign({ x: 960, y: 1150, boy: 360, t: .3, ifade: 'gulumse' }, KS.donem(1300, 0)));
+  sahne += OC.kazan(600, 1080, .95, .5, '#8FB050') + M.canli('gubi', { t: 1.2, x: 860, y: 640, boy: 180, duygu: 'mutlu', bakHedef: [600, 900], ust: KO.giy('gubi', [['kukuleta', { renk: '#6A7A4A' }]]) });
+  let o = `<defs><clipPath id="sol"><rect x="0" y="0" width="420" height="1150"/></clipPath><clipPath id="sag"><rect x="420" y="0" width="660" height="1150"/></clipPath></defs>`;
+  o += `<g clip-path="url(#sag)">${sahne}</g><g clip-path="url(#sol)"><g style="filter:grayscale(1) brightness(.9)">${sahne}</g></g><path d="M420 0 L420 1150" stroke="#FFFDF6" stroke-width="10"/>`;
+  o += M.canli('gufi', { t: .5, x: 250, y: 1150, boy: 280, duygu: 'saskin', bakHedef: [600, 900], ust: KO.giy('gufi', [['kasket', { renk: '#2E9AD8', siper: '#1F6B9E' }]]) });
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#3E3420"/><rect x="0" y="1150" width="1080" height="18" fill="#D8A032"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#F2CE7A">TARİHİN DİPNOTU</text>`;
+  o += txt('ORTA ÇAĞ KÖYLÜSÜ', 540, 1362, 92) + txt('GRİ LAPA MI YERDİ?', 540, 1458, 76, '#F2CE7A');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>

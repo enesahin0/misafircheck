@@ -1,0 +1,334 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 94.35,
+  "konusma_bloklari": [
+    [
+      0.0,
+      4.238
+    ],
+    [
+      4.716,
+      5.555
+    ],
+    [
+      5.808,
+      6.698
+    ],
+    [
+      7.137,
+      9.149
+    ],
+    [
+      9.726,
+      10.773
+    ],
+    [
+      11.248,
+      11.757
+    ],
+    [
+      12.173,
+      14.304
+    ],
+    [
+      14.755,
+      17.361
+    ],
+    [
+      17.797,
+      21.582
+    ],
+    [
+      22.01,
+      26.206
+    ],
+    [
+      26.662,
+      31.537
+    ],
+    [
+      31.969,
+      35.815
+    ],
+    [
+      36.247,
+      38.209
+    ],
+    [
+      38.555,
+      40.149
+    ],
+    [
+      40.573,
+      44.383
+    ],
+    [
+      44.793,
+      49.518
+    ],
+    [
+      49.922,
+      51.66
+    ],
+    [
+      52.027,
+      54.524
+    ],
+    [
+      54.887,
+      57.218
+    ],
+    [
+      57.596,
+      58.357
+    ],
+    [
+      58.768,
+      60.82
+    ],
+    [
+      61.216,
+      65.653
+    ],
+    [
+      66.064,
+      69.008
+    ],
+    [
+      69.422,
+      70.756
+    ],
+    [
+      71.148,
+      75.251
+    ],
+    [
+      75.622,
+      77.002
+    ],
+    [
+      77.412,
+      79.417
+    ],
+    [
+      79.857,
+      84.139
+    ],
+    [
+      84.562,
+      87.983
+    ],
+    [
+      88.457,
+      90.133
+    ],
+    [
+      90.51,
+      91.104
+    ],
+    [
+      91.359,
+      91.972
+    ],
+    [
+      92.228,
+      92.995
+    ],
+    [
+      93.388,
+      94.35
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 4.24,
+      "sure": 4.24,
+      "metin": "Asgari ücretle dolar alırsan, son yirmi yılın en iyi dönemindesin."
+    },
+    {
+      "no": 2,
+      "baslangic": 4.24,
+      "bitis": 6.7,
+      "sure": 2.46,
+      "metin": "Altın alırsan, en kötüsündesin."
+    },
+    {
+      "no": 3,
+      "baslangic": 6.7,
+      "bitis": 9.15,
+      "sure": 2.45,
+      "metin": "İkisi aynı anda nasıl doğru olabilir?"
+    },
+    {
+      "no": 4,
+      "baslangic": 9.15,
+      "bitis": 11.76,
+      "sure": 2.61,
+      "metin": "Önce kelimeye bakalım."
+    },
+    {
+      "no": 5,
+      "baslangic": 11.76,
+      "bitis": 14.3,
+      "sure": 2.55,
+      "metin": "Asgari, Arapça kökenli ve \"en az\" demek."
+    },
+    {
+      "no": 6,
+      "baslangic": 14.3,
+      "bitis": 17.36,
+      "sure": 3.06,
+      "metin": "Azami hızdaki \"azami\"nin tam tersi."
+    },
+    {
+      "no": 7,
+      "baslangic": 17.36,
+      "bitis": 21.58,
+      "sure": 4.22,
+      "metin": "Yani asgari ücret, bir işçiye ödenebilecek en düşük para."
+    },
+    {
+      "no": 8,
+      "baslangic": 21.58,
+      "bitis": 26.21,
+      "sure": 4.62,
+      "metin": "Dünyada bunu ilk deneyen ülke, bin sekiz yüz doksan dörtte Yeni Zelanda oldu."
+    },
+    {
+      "no": 9,
+      "baslangic": 26.21,
+      "bitis": 31.54,
+      "sure": 5.33,
+      "metin": "Türkiye'de ilk yönetmelik bin dokuz yüz elli birde çıktı, ama her şehrin rakamı ayrıydı."
+    },
+    {
+      "no": 10,
+      "baslangic": 31.54,
+      "bitis": 35.81,
+      "sure": 4.28,
+      "metin": "İki bin dörtte asgari ücretli her ay üç yüz milyon lira alıyordu."
+    },
+    {
+      "no": 11,
+      "baslangic": 35.81,
+      "bitis": 40.15,
+      "sure": 4.33,
+      "metin": "Ertesi yıl altı sıfır silindi, maaş üç yüz elli lira oldu."
+    },
+    {
+      "no": 12,
+      "baslangic": 40.15,
+      "bitis": 44.38,
+      "sure": 4.23,
+      "metin": "O üç yüz elli lirayla yaklaşık on yedi gram altın alınabiliyordu."
+    },
+    {
+      "no": 13,
+      "baslangic": 44.38,
+      "bitis": 49.52,
+      "sure": 5.13,
+      "metin": "Bugünkü yirmi sekiz bin yetmiş beş lirayla, yılbaşı fiyatından, dört gram civarı."
+    },
+    {
+      "no": 14,
+      "baslangic": 49.52,
+      "bitis": 51.66,
+      "sure": 2.14,
+      "metin": "Ama aynı maaşı dolara çevir."
+    },
+    {
+      "no": 15,
+      "baslangic": 51.66,
+      "bitis": 54.52,
+      "sure": 2.86,
+      "metin": "İki bin beşte iki yüz altmış dolar civarıydı."
+    },
+    {
+      "no": 16,
+      "baslangic": 54.52,
+      "bitis": 58.36,
+      "sure": 3.83,
+      "metin": "Bu yılbaşında altı yüz elli doları buldu."
+    },
+    {
+      "no": 17,
+      "baslangic": 58.36,
+      "bitis": 60.82,
+      "sure": 2.46,
+      "metin": "Sır şurada: Maaş, dolardan daha hızlı arttı."
+    },
+    {
+      "no": 18,
+      "baslangic": 60.82,
+      "bitis": 65.65,
+      "sure": 4.83,
+      "metin": "Altın ise sadece burada değil, bütün dünyada rekor üstüne rekor kırdı."
+    },
+    {
+      "no": 19,
+      "baslangic": 65.65,
+      "bitis": 69.01,
+      "sure": 3.35,
+      "metin": "Yani alım gücü, neyle ölçtüğüne göre değişiyor."
+    },
+    {
+      "no": 20,
+      "baslangic": 69.01,
+      "bitis": 70.76,
+      "sure": 1.75,
+      "metin": "Bir de görünmeyen kısım var."
+    },
+    {
+      "no": 21,
+      "baslangic": 70.76,
+      "bitis": 75.25,
+      "sure": 4.5,
+      "metin": "Asgari ücretli bir çalışanın patrona maliyeti kırk bin liranın üstünde."
+    },
+    {
+      "no": 22,
+      "baslangic": 75.25,
+      "bitis": 77.0,
+      "sure": 1.75,
+      "metin": "Cebe giren yirmi sekiz bin."
+    },
+    {
+      "no": 23,
+      "baslangic": 77.0,
+      "bitis": 79.42,
+      "sure": 2.42,
+      "metin": "Arası vergi ve sigorta primi."
+    },
+    {
+      "no": 24,
+      "baslangic": 79.42,
+      "bitis": 84.14,
+      "sure": 4.72,
+      "metin": "Avrupa'yla kıyaslarsak, Türkiye otuz üç ülke arasında sondan beşinci."
+    },
+    {
+      "no": 25,
+      "baslangic": 84.14,
+      "bitis": 87.98,
+      "sure": 3.84,
+      "metin": "Almanya'da asgari ücret, bunun üç buçuk katından fazla."
+    },
+    {
+      "no": 26,
+      "baslangic": 87.98,
+      "bitis": 93.0,
+      "sure": 5.01,
+      "metin": "Sen maaşını neyle ölçüyorsun: dolar mı, altın mı, market fişi mi?"
+    },
+    {
+      "no": 27,
+      "baslangic": 93.0,
+      "bitis": 94.35,
+      "sure": 1.35,
+      "metin": "Yorumlara yaz."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

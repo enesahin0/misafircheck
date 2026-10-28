@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/au.js"></script><script src="../ortak/kp.js"></script><script src="../ortak/sl.js"></script><script src="../ortak/se.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const R = PR.R, h = HK.hash;
+let _id = 0; const gid = p => p + (++_id);
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const golgeTxt = (s, x, y, size, renk) => txt(s, x + 6, y + 8, size, '#000', 900, 'opacity=".45"') + txt(s, x, y, size, renk);
+const lin = (id, a, b, x2 = 0, y2 = 1) => `<linearGradient id="${id}" x1="0" y1="0" x2="${x2}" y2="${y2}"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient>`;
+const rad = (id, renk, op = 1) => `<radialGradient id="${id}"><stop offset="0" stop-color="${renk}" stop-opacity="${op}"/><stop offset="1" stop-color="${renk}" stop-opacity="0"/></radialGradient>`;
+const isik = (x, y, r, renk, op = .8) => { const i = gid('r'); return `<defs>${rad(i, renk, op)}</defs><circle cx="${x}" cy="${y}" r="${r}" fill="url(#${i})"/>`; };
+const koni = (x, y, x1, y1, x2, y2, renk, op = .55) => { const i = gid('k'); return `<defs><linearGradient id="${i}" gradientUnits="userSpaceOnUse" x1="${x}" y1="${y}" x2="${(x1 + x2) / 2}" y2="${(y1 + y2) / 2}"><stop offset="0" stop-color="${renk}" stop-opacity="${op}"/><stop offset="1" stop-color="${renk}" stop-opacity="0"/></linearGradient></defs><path d="M${x} ${y} L${x1} ${y1} L${x2} ${y2}Z" fill="url(#${i})"/>`; };
+const yagmur = (n, y0, y1, op = .45, renk = '#CFE6FF') => { let o = ''; for (let i = 0; i < n; i++) { const x = h(i) * 1120 - 20, y = y0 + h(i + 9) * (y1 - y0), L = 40 + 50 * h(i + 3); o += `<path d="M${x} ${y} l${-L * .15} ${L}" stroke="${renk}" stroke-width="${2 + 2 * h(i + 7)}" stroke-linecap="round" opacity="${op * (.5 + .5 * h(i + 2))}"/>`; } return o; };
+const simsek = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M0 0 L-40 140 L10 130 L-30 300 L60 100 L10 110 L40 0Z" fill="#FFFBE0"/></g>` + isik(x, y + 150, 260 * s, '#BFD8FF', .45);
+const vinyet = () => { const i = gid('v'); return `<defs><radialGradient id="${i}" cx=".5" cy=".42" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".65"/></radialGradient></defs><rect width="1080" height="1920" fill="url(#${i})"/>`; };
+const altBant = (renk, ust, l1, l2, r2) => { const i = gid('f'); return `<defs>${lin(i, 'rgba(8,10,24,0)', '#080A18')}</defs><rect x="0" y="1020" width="1080" height="320" fill="url(#${i})"/><rect x="0" y="1338" width="1080" height="582" fill="#080A18"/>` +
+  `<rect x="${540 - (ust.length * 21 + 70) / 2}" y="1190" width="${ust.length * 21 + 70}" height="56" rx="28" fill="${renk}"/><text class="mono" x="540" y="1228" font-size="28" text-anchor="middle" letter-spacing="4" style="fill:#080A18">${ust}</text>` +
+  golgeTxt(l1, 540, 1372, 104, '#FFF6E6') + golgeTxt(l2, 540, 1484, 104, r2); };
+const logo = () => { const S = 140 / 233; let l = `<g transform="translate(540 1650) scale(${S}) translate(-141.5 -141.5)">`; for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`; return l + '</g>'; };
+const su = (y, renk1 = '#2E78C8', renk2 = '#0E2E5A') => { const i = gid('s'); return `<defs>${lin(i, renk1, renk2)}</defs><rect x="0" y="${y}" width="1080" height="${1920 - y}" fill="url(#${i})"/>` + SE.dalga(y, .7, '#9ED2FF', 7, 12); };
+// ---- #37 yardımcıları
+const ev = (x, y, s = 1, renk = '#F4E8D8') => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-150 0 L-150 -170 L0 -290 L150 -170 L150 0Z" fill="${renk}"/><path d="M-185 -150 L0 -310 L185 -150 L160 -128 L0 -265 L-160 -128Z" fill="#B8463A"/><rect x="-40" y="-110" width="80" height="110" rx="8" fill="#7A4A2A"/><rect x="-120" y="-150" width="60" height="55" rx="6" fill="#7FB0E0"/><rect x="60" y="-150" width="60" height="55" rx="6" fill="#7FB0E0"/><rect x="85" y="-270" width="30" height="60" fill="#8A5A4A"/></g>`;
+const daskKalkan = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M0 -110 L90 -76 Q90 40 0 110 Q-90 40 -90 -76Z" fill="#2E78C8"/><path d="M0 -110 L90 -76 Q90 40 0 110Z" fill="#000" opacity=".15"/><path d="M0 -92 L74 -64 Q74 32 0 92 Q-74 32 -74 -64Z" fill="none" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="5"/><text x="0" y="16" font-size="46" font-weight="900" text-anchor="middle" style="fill:#FFFFFF">DASK</text></g>`;
+const isaretV = (x, y, s = 1, renk = '#2FBF71') => `<g transform="translate(${x} ${y}) scale(${s})"><circle r="30" fill="${renk}"/><path d="M-14 0 L-4 11 L15 -11" stroke="#FFF" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+const isaretX = (x, y, s = 1, renk = '#E8323C') => `<g transform="translate(${x} ${y}) scale(${s})"><circle r="30" fill="${renk}"/><path d="M-11 -11 L11 11 M11 -11 L-11 11" stroke="#FFF" stroke-width="7" stroke-linecap="round"/></g>`;
+const police = (x, y, w, baslik, satirlar, renk = '#2E78C8', vurgu = -1, vk = 0) => { const hh = 130 + satirlar.length * 92; let o = R(x - w / 2 + 10, y - hh / 2 + 14, w, hh, 28, '#000', .3) + R(x - w / 2, y - hh / 2, w, hh, 28, '#FFF8EE') + R(x - w / 2, y - hh / 2, w, 96, 28, renk) + R(x - w / 2, y - hh / 2 + 60, w, 36, 0, renk);
+  o += txt(baslik, x, y - hh / 2 + 64, 40, '#FFFFFF');
+  satirlar.forEach(([ad, d], i) => { const yy = y - hh / 2 + 160 + i * 92; if (i === vurgu && vk > 0) o += R(x - w / 2 + 18, yy - 46, (w - 36) * vk, 80, 16, '#FFD23F', .55);
+    o += `<text x="${x - w / 2 + 50}" y="${yy + 12}" font-size="36" font-weight="800" style="fill:#1B2440">${ad}</text>` + (d === 1 ? isaretV(x + w / 2 - 60, yy, .9) : d === 0 ? isaretX(x + w / 2 - 60, yy, .9) : d === 2 ? `<g transform="translate(${x + w / 2 - 60} ${yy})"><circle r="27" fill="#C8D0DC"/><text y="13" font-size="38" font-weight="900" text-anchor="middle" style="fill:#5A6478">?</text></g>` : ''); });
+  return o; };
+const suY = (y, t, op = .9) => R(0, y, 1080, 1920 - y, 0, SE.SU, op) + SE.dalga(y, t);
+const deprem = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-70 0 L-40 0 L-28 -36 L-12 40 L4 -54 L18 30 L30 -16 L42 0 L70 0" stroke="#E8A020" stroke-width="9" fill="none" stroke-linejoin="round" stroke-linecap="round"/></g>`;
+
+const sticker = (s, x, y, fs, zem, yazi, rot) => { const w = K.yaziGen(s, fs) + 70; return `<g transform="translate(${x} ${y}) rotate(${rot})">` + R(-w / 2 + 8, -fs * .95 + 10, w, fs * 1.9, 24, '#000', .45) + R(-w / 2, -fs * .95, w, fs * 1.9, 24, zem) + txt(s, 0, fs * .35, fs, yazi) + '</g>'; };
+const para = (x, y, r, s = 1) => `<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><rect x="-110" y="-55" width="220" height="110" rx="10" fill="#7CC08A"/><rect x="-96" y="-42" width="192" height="84" rx="6" fill="none" stroke="#4E9A5E" stroke-width="5"/><circle r="26" fill="#4E9A5E"/><text y="12" font-size="34" font-weight="900" text-anchor="middle" style="fill:#E8F5EA">₺</text></g>`;
+
+window.renderAt = t => {
+  const g = gid('g'); let o = `<defs>${lin(g, '#0B0A12', '#0B0A12')}</defs><rect width="1080" height="1920" fill="url(#${g})"/>`;
+  // gerçek fotoğraf (640x804) -> genişlik 1080, yükseklik ~1357
+  o += `<image href="../ortak/img/foto1.jpg" x="0" y="120" width="1080" height="1357" preserveAspectRatio="xMidYMid slice"/>`;
+  // üst karartma: sayı okunaklı olsun
+  const ug = gid('u'); o += `<defs>${lin(ug, 'rgba(11,10,18,1)', 'rgba(11,10,18,0)')}</defs><rect x="0" y="0" width="1080" height="700" fill="url(#${ug})"/>`;
+  o += golgeTxt('0.59 SN', 540, 510, 250, '#7FD0FF');
+  o += `<g transform="translate(540 608)">` + R(-230 + 6, -34 + 8, 460, 68, 34, '#000', .45) + R(-230, -34, 460, 68, 34, '#FFF3E0') + `<text class="mono" x="0" y="13" font-size="36" font-weight="800" text-anchor="middle" letter-spacing="2" style="fill:#0B0A12">ÜSTELİK UÇUYOR</text></g>`;
+  o += vinyet() + altBant('#7FD0FF', 'GÜNDEM · TEKNOLOJİ', 'YARIM SANİYE', 'TESLA ROADSTER', '#7FD0FF') + logo();
+  document.getElementById('dinamik').innerHTML = o;
+};
+</script></body></html>

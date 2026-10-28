@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 50.0; const TP = {"gubi": [[1.0, "mutlu"]], "gufi": [[1.2, "mutlu"]]};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/kisi.js"></script><script src="../ortak/tip.js"></script>
+<script src="../ortak/harita/d3-array.min.js"></script><script src="../ortak/harita/d3-geo.min.js"></script><script src="../ortak/harita/topojson-client.min.js"></script><script src="../ortak/harita/dunya50.js"></script><script src="../ortak/harita/ulke_tablo.js"></script><script src="../ortak/harita/turkiye10.js"></script><script src="../ortak/harita/harita.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = s.length * fs * .62 + 70; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+const uyari = `<rect x="330" y="1234" width="420" height="40" rx="20" fill="#FFFFFF" opacity=".7"/><text class="mono" x="540" y="1261" font-size="22" text-anchor="middle" letter-spacing="1" style="fill:#1B1640">Tıbbi tavsiye değildir</text>`;
+$('zemin').innerHTML = D.zemin('#FFF3D6', '#FFE09A', [540, 700, 700, '#FFFFFF', .6]) + `<path d="M0 0 H180 Q140 700 200 1920 H0Z" fill="${D.P.bordo}"/><path d="M1080 0 H900 Q940 700 880 1920 H1080Z" fill="${D.P.bordo}"/>`;
+window.renderAt = t => {
+  let o = '';
+  const y = pop(t, .1); if (y > 0) o += grp(cip('1984 → 2005', 0, 0, D.P.bordo, '#FFFFFF', 34), 540, 400, y);
+  o += olc(D.madalya(540, 720, 170, t * 2.2 * (1 - A(t, 1.2, 2.2)) + (t > 2.2 ? 0 : 0)), 540, 720, pop(t, .3, .5) + .001);
+  const n = pop(t, .9); if (n > 0) o += grp(txt('NOBEL', 0, 0, 72, D.P.bordo), 540, 980, n);
+  const w = pop(t, 1.2), m = pop(t, 1.4);
+  if (w > 0) o += olc(D.warren({ x: 330, y: 1240, boy: 250, ifade: 'gulumse' }), 330, 1240, w);
+  if (m > 0) o += olc(D.marshall({ x: 750, y: 1240, boy: 250 }), 750, 1240, m);
+  o += gubi(t, { x: 540, y: 1140, boy: 90, bakHedef: [540, 720] });
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

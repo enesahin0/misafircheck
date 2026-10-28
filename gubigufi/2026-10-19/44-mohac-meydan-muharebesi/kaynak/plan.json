@@ -1,0 +1,82 @@
+{
+ "fps": 30,
+ "genislik": 1080,
+ "yukseklik": 1920,
+ "ses": "miks.wav",
+ "cikti": "video_ham.mp4",
+ "sahneler": [
+  {
+   "dosya": "sahneler/s01.html",
+   "baslangic": 0,
+   "bitis": 5.0,
+   "alt_kare": 2
+  },
+  {
+   "dosya": "sahneler/s02.html",
+   "baslangic": 5.0,
+   "bitis": 12.6
+  },
+  {
+   "dosya": "sahneler/s03.html",
+   "baslangic": 12.6,
+   "bitis": 16.4
+  },
+  {
+   "dosya": "sahneler/s04.html",
+   "baslangic": 16.4,
+   "bitis": 22.5
+  },
+  {
+   "dosya": "sahneler/s05.html",
+   "baslangic": 22.5,
+   "bitis": 30.2,
+   "alt_kare": 2
+  },
+  {
+   "dosya": "sahneler/s06.html",
+   "baslangic": 30.2,
+   "bitis": 33.8
+  },
+  {
+   "dosya": "sahneler/s07.html",
+   "baslangic": 33.8,
+   "bitis": 42.0
+  },
+  {
+   "dosya": "sahneler/s08.html",
+   "baslangic": 42.0,
+   "bitis": 48.5
+  },
+  {
+   "dosya": "sahneler/s09.html",
+   "baslangic": 48.5,
+   "bitis": 55.5,
+   "alt_kare": 2
+  },
+  {
+   "dosya": "sahneler/s10.html",
+   "baslangic": 55.5,
+   "bitis": 60.2
+  },
+  {
+   "dosya": "sahneler/s11.html",
+   "baslangic": 60.2,
+   "bitis": 70.4
+  },
+  {
+   "dosya": "sahneler/s12.html",
+   "baslangic": 70.4,
+   "bitis": 74.6
+  },
+  {
+   "dosya": "sahneler/s13.html",
+   "baslangic": 74.6,
+   "bitis": 77.8
+  },
+  {
+   "dosya": "sahneler/s14.html",
+   "baslangic": 77.8,
+   "bitis": 80.0
+  }
+ ]
+}

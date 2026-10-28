@@ -1,0 +1,40 @@
+// ---------------- #38 sosyal medya görselleri (düz; merkez orijin; gerçek marka/logo YOK) ----------------
+const MOR = '#2A1245', PEMBE = '#FF4F9A', TURUNCU = '#FF8A3D', SARI = '#FFD23F', MINT = '#2FD6A8', EDK = '#D8222E';
+const silK = (tur, renk = '#FFF6E6') => {
+  if (tur === 'kadin') return `<circle cy="-62" r="26" fill="${renk}"/><path d="M-12 -34 H12 L46 60 H-46Z" fill="${renk}"/><rect x="-14" y="60" width="10" height="44" rx="4" fill="${renk}"/><rect x="4" y="60" width="10" height="44" rx="4" fill="${renk}"/>`;
+  if (tur === 'adam') return `<circle cy="-66" r="26" fill="${renk}"/><path d="M-34 -34 H34 L28 38 H-28Z" fill="${renk}"/><rect x="-24" y="38" width="20" height="66" rx="6" fill="${renk}"/><rect x="4" y="38" width="20" height="66" rx="6" fill="${renk}"/>`;
+  if (tur === 'cocuk') return `<circle cy="-18" r="20" fill="${renk}"/><path d="M-26 6 H26 L20 52 H-20Z" fill="${renk}"/><rect x="-16" y="52" width="12" height="34" rx="4" fill="${renk}"/><rect x="4" y="52" width="12" height="34" rx="4" fill="${renk}"/>`;
+  return '';
+};
+// telefon gövdesi; ic = ekran içi (merkez orijin, 380×780)
+const telK = (s, ic = '', glow = PEMBE) => `<g transform="scale(${s})"><rect x="-206" y="-414" width="412" height="828" rx="60" fill="#000" opacity=".4" transform="translate(10 18)"/><rect x="-206" y="-414" width="412" height="828" rx="60" fill="#0B0A14"/><rect x="-206" y="-414" width="412" height="828" rx="60" fill="none" stroke="${glow}" stroke-width="5" opacity=".8"/>` +
+  `<clipPath id="tlk"><rect x="-190" y="-396" width="380" height="792" rx="44"/></clipPath><g clip-path="url(#tlk)"><rect x="-190" y="-396" width="380" height="792" fill="#17122B"/>${ic}</g><rect x="-52" y="-388" width="104" height="24" rx="12" fill="#0B0A14"/></g>`;
+const postK = (y, i) => { const c = [PEMBE, TURUNCU, '#7E5BFF', MINT][i % 4];
+  return `<g transform="translate(0 ${y})"><circle cx="-140" cy="-130" r="26" fill="${c}"/><rect x="-100" y="-142" width="120" height="14" rx="7" fill="#6A5F95"/><rect x="-100" y="-120" width="80" height="10" rx="5" fill="#4A4070"/>` + R(-170, -96, 340, 200, 18, c, .9) + `<path d="M-30 -20 L40 14 L-30 48Z" fill="#fff" opacity=".85"/><circle cx="-140" cy="136" r="12" fill="#FF4F6D"/><rect x="-116" y="130" width="60" height="12" rx="6" fill="#6A5F95"/></g>`; };
+const feedK = (t, hiz = 260) => { let o = ''; const h = 330, off = (t * hiz) % h; for (let i = -1; i < 4; i++) o += postK(-300 + i * h + off, i + Math.floor(t * hiz / h)); return o; };
+const profilK = (k = 1, soru = 0) => `<g transform="translate(0 -60)"><circle r="92" fill="${PEMBE}"/><circle r="84" fill="#17122B"/><circle cy="-18" r="30" fill="#FFF6E6"/><path d="M-48 52 Q0 6 48 52Z" fill="#FFF6E6"/>` +
+  `<rect x="-90" y="120" width="180" height="22" rx="11" fill="#9A8FCB"/><rect x="-60" y="154" width="120" height="14" rx="7" fill="#6A5F95"/>` +
+  [-110, 0, 110].map(x => `<rect x="${x - 36}" y="196" width="72" height="14" rx="7" fill="#6A5F95"/><rect x="${x - 24}" y="176" width="48" height="16" rx="8" fill="#FFF6E6"/>`).join('') + R(-130, 250, 260, 56, 28, PEMBE) + `</g>` +
+  (soru > 0 ? `<g transform="translate(110 -190) scale(${soru.toFixed(3)})"><circle r="52" fill="${SARI}"/><text y="30" font-size="84" font-weight="900" text-anchor="middle" style="fill:#2A1245">?</text></g>` : '');
+const kilitK = (s, renk = SARI) => `<g transform="scale(${s})"><path d="M-34 -10 V-42 A34 34 0 0 1 34 -42 V-10" fill="none" stroke="${renk}" stroke-width="16" stroke-linecap="round"/><rect x="-54" y="-14" width="108" height="86" rx="18" fill="${renk}"/><circle cy="22" r="11" fill="#2A1245"/><rect x="-4" y="26" width="8" height="22" rx="4" fill="#2A1245"/></g>`;
+const edevlet = (s = 1) => `<g transform="scale(${s})"><path d="M0 -120 L100 -84 V6 Q100 80 0 124 Q-100 80 -100 6 V-84Z" fill="#000" opacity=".3" transform="translate(8 12)"/><path d="M0 -120 L100 -84 V6 Q100 80 0 124 Q-100 80 -100 6 V-84Z" fill="${EDK}"/><path d="M0 -120 L100 -84 V6 Q100 80 0 124Z" fill="#000" opacity=".12"/><text y="22" font-size="64" font-weight="900" text-anchor="middle" style="fill:#fff">e</text><text y="70" font-size="26" font-weight="900" text-anchor="middle" style="fill:#fff" letter-spacing="1">Devlet</text></g>`;
+const takvimK = (ust, gun, alt, renk = EDK, w = 520) => R(-w / 2 + 10, -250 + 16, w, 520, 34, '#000', .35) + R(-w / 2, -250, w, 520, 34, '#F7F2EA') + R(-w / 2, -250, w, 110, 34, renk) + R(-w / 2, -190, w, 50, 0, renk) + txt(ust, 0, -168, 62, '#fff') + txt(gun, 0, 84, 250, '#1B1626') + txt(alt, 0, 200, 56, '#6A5F95');
+const tik = (s, renk = MINT) => `<g transform="scale(${s})"><circle r="60" fill="${renk}"/><path d="M-26 2 L-8 22 L28 -20" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+const hayirK = (s, renk = '#E8323C') => `<g transform="scale(${s})"><circle r="60" fill="${renk}"/><path d="M-24 -24 L24 24 M24 -24 L-24 24" stroke="#fff" stroke-width="14" stroke-linecap="round"/></g>`;
+const rozetIc = (tur, renk) => {
+  if (tur === 'kilit') return kilitK(.5, '#fff');
+  if (tur === 'canli') return `<circle r="22" fill="#fff"/><circle r="9" fill="${renk}"/><path d="M-34 -10 Q-46 0 -34 10 M34 -10 Q46 0 34 10" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round"/>`;
+  if (tur === 'goz') return `<path d="M-32 0 Q0 -30 32 0 Q0 30 -32 0Z" fill="#fff"/><circle r="10" fill="${renk}"/>`;
+  if (tur === 'kaydir') return R(-24, -34, 48, 28, 6, '#fff') + R(-24, 4, 48, 28, 6, '#fff', .7) + `<path d="M0 30 V50 M-10 42 L0 52 L10 42" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+  return '';
+};
+// rozet: ikon + ad; yasak=0..1 → üstüne kırmızı çarpı damgası
+const rozetK = (tur, ad, renk, yasak = 0) => R(-330 + 10, -64 + 14, 660, 128, 40, '#000', .35) + R(-330, -64, 660, 128, 40, '#241A44') + `<rect x="-330" y="-64" width="660" height="128" rx="40" fill="none" stroke="${renk}" stroke-width="5"/>` +
+  `<circle cx="-262" r="46" fill="${renk}"/><g transform="translate(-262 0)">${rozetIc(tur, renk)}</g>` + txt(ad, 50, 20, ad.length > 16 ? 40 : 54, '#FFF6E6') +
+  (yasak > 0 ? `<g opacity="${yasak.toFixed(2)}"><path d="M-300 -52 L300 52" stroke="#E8323C" stroke-width="12" stroke-linecap="round" opacity=".0"/></g>` : '');
+const sahteSite = (s = 1) => `<g transform="scale(${s})">` + R(-300 + 10, -190 + 16, 600, 380, 26, '#000', .35) + R(-300, -190, 600, 380, 26, '#F4F1E8') + R(-300, -190, 600, 62, 26, '#D9D2C2') + R(-300, -150, 600, 22, 0, '#D9D2C2') +
+  [-264, -238, -212].map((x, i) => `<circle cx="${x}" cy="-160" r="8" fill="${['#E8323C', '#FFD23F', '#2FBF71'][i]}"/>`).join('') + R(-170, -176, 440, 34, 17, '#fff') + `<text x="-150" y="-152" font-size="20" font-weight="800" style="fill:#B33A3A" text-anchor="start">dogrula-hizli.site</text>` +
+  R(-250, -90, 500, 56, 12, '#fff') + `<text x="-230" y="-54" font-size="26" font-weight="800" style="fill:#7A7490" text-anchor="start">e-Devlet ŞİFRENİ GİR</text>` + R(-250, -20, 500, 56, 12, '#fff') + `<text x="-230" y="16" font-size="26" font-weight="800" style="fill:#7A7490" text-anchor="start">KİMLİK FOTOĞRAFI YÜKLE</text>` + R(-250, 60, 500, 70, 35, '#E8323C') + txt('DOĞRULA', 0, 108, 44, '#fff') + `</g>`;
+const ucakK = (s) => `<g transform="scale(${s})"><path d="M-110 -10 L120 -80 L50 90 L10 20 L-30 50 L-24 4Z" fill="#fff"/><path d="M-110 -10 L120 -80 L10 20Z" fill="#CFC6EE"/><path d="M10 20 L50 90 L-24 4Z" fill="#9A8FCB"/></g>`;
+const mercekK = (s) => `<g transform="scale(${s})"><circle r="70" fill="#BFE0FF" opacity=".25"/><circle r="70" fill="none" stroke="${SARI}" stroke-width="14"/><rect x="50" y="52" width="18" height="110" rx="9" fill="#8A5A3A" transform="rotate(-45 50 52)"/></g>`;
+const damga = (s, renk = '#E8323C', fs = 80, rot = -8) => { const w = K.yaziGen(s, fs) + 70; return `<g transform="rotate(${rot})"><rect x="${-w / 2}" y="${-fs * .85}" width="${w}" height="${fs * 1.7}" rx="14" fill="${renk === MINT ? 'rgba(10,20,30,.55)' : 'rgba(30,10,20,.55)'}" stroke="${renk}" stroke-width="10"/>` + txt(s, 0, fs * .34, fs, renk) + `</g>`; };

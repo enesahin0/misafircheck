@@ -1,0 +1,208 @@
+{
+  "ses": "../ses.mp3",
+  "toplam_sure": 62.85,
+  "konusma_bloklari": [
+    [
+      0.0,
+      4.294
+    ],
+    [
+      4.759,
+      8.326
+    ],
+    [
+      8.86,
+      10.51
+    ],
+    [
+      10.988,
+      16.719
+    ],
+    [
+      17.089,
+      18.878
+    ],
+    [
+      19.164,
+      20.462
+    ],
+    [
+      20.876,
+      25.182
+    ],
+    [
+      25.494,
+      29.151
+    ],
+    [
+      29.474,
+      32.439
+    ],
+    [
+      32.765,
+      34.488
+    ],
+    [
+      34.78,
+      35.554
+    ],
+    [
+      35.89,
+      38.376
+    ],
+    [
+      38.821,
+      41.179
+    ],
+    [
+      41.597,
+      46.819
+    ],
+    [
+      47.157,
+      49.819
+    ],
+    [
+      50.098,
+      52.41
+    ],
+    [
+      52.883,
+      54.277
+    ],
+    [
+      54.583,
+      57.722
+    ],
+    [
+      58.031,
+      60.349
+    ],
+    [
+      60.673,
+      62.85
+    ]
+  ],
+  "cumleler": [
+    {
+      "no": 1,
+      "baslangic": 0.0,
+      "bitis": 4.29,
+      "sure": 4.29,
+      "metin": "İstanbul'da bugün bir metrekareye yüz doksan üç litre yağmur düştü."
+    },
+    {
+      "no": 2,
+      "baslangic": 4.29,
+      "bitis": 8.33,
+      "sure": 4.03,
+      "metin": "Bu, her metrekareye on dokuz kova su boşaltmak gibi."
+    },
+    {
+      "no": 3,
+      "baslangic": 8.33,
+      "bitis": 10.51,
+      "sure": 2.18,
+      "metin": "Peki tam olarak ne oldu?"
+    },
+    {
+      "no": 4,
+      "baslangic": 10.51,
+      "bitis": 16.72,
+      "sure": 6.21,
+      "metin": "Balkanlardan gelen soğuk hava, Akdeniz'den gelen nemli sistemle İstanbul'un üstünde karşılaştı."
+    },
+    {
+      "no": 5,
+      "baslangic": 16.72,
+      "bitis": 20.46,
+      "sure": 3.74,
+      "metin": "Soğuk hava nemi yukarı itti, nem de sağanağa döndü."
+    },
+    {
+      "no": 6,
+      "baslangic": 20.46,
+      "bitis": 25.18,
+      "sure": 4.72,
+      "metin": "Marmara'da koca bir Ekim ayında ortalama yetmiş iki litre yağmur düşer."
+    },
+    {
+      "no": 7,
+      "baslangic": 25.18,
+      "bitis": 29.15,
+      "sure": 3.97,
+      "metin": "Beykoz'a tek günde bunun iki buçuk katından fazlası düştü."
+    },
+    {
+      "no": 8,
+      "baslangic": 29.15,
+      "bitis": 32.44,
+      "sure": 3.29,
+      "metin": "On dört saatte iki bin beş yüzü aşkın ihbar geldi."
+    },
+    {
+      "no": 9,
+      "baslangic": 32.44,
+      "bitis": 35.55,
+      "sure": 3.12,
+      "metin": "Bin iki yüzü aşkın su baskını, on beş heyelan."
+    },
+    {
+      "no": 10,
+      "baslangic": 35.55,
+      "bitis": 38.38,
+      "sure": 2.82,
+      "metin": "Metrolar ve alt geçitler su altında kaldı."
+    },
+    {
+      "no": 11,
+      "baslangic": 38.38,
+      "bitis": 41.18,
+      "sure": 2.8,
+      "metin": "Peki şehir neden bu kadar çabuk doldu?"
+    },
+    {
+      "no": 12,
+      "baslangic": 41.18,
+      "bitis": 46.82,
+      "sure": 5.64,
+      "metin": "Uzmanlara göre toprak betonla kaplanınca su emilemiyor, doğrudan yollara akıyor."
+    },
+    {
+      "no": 13,
+      "baslangic": 46.82,
+      "bitis": 49.82,
+      "sure": 3.0,
+      "metin": "Üstü kapatılan dereler eski yatağını arıyor."
+    },
+    {
+      "no": 14,
+      "baslangic": 49.82,
+      "bitis": 52.41,
+      "sure": 2.59,
+      "metin": "Kanallar da böyle bir yağışı taşıyamıyor."
+    },
+    {
+      "no": 15,
+      "baslangic": 52.41,
+      "bitis": 54.28,
+      "sure": 1.87,
+      "metin": "Yağış yarın da sürecek."
+    },
+    {
+      "no": 16,
+      "baslangic": 54.28,
+      "bitis": 60.35,
+      "sure": 6.07,
+      "metin": "Su birikintilerinden ve elektrik direklerinden uzak durun, alt geçitlere ve bodrum katlara girmeyin."
+    },
+    {
+      "no": 17,
+      "baslangic": 60.35,
+      "bitis": 62.85,
+      "sure": 2.5,
+      "metin": "Acil durumda yüz on ikiyi arayın."
+    }
+  ],
+  "not": "Cümle zamanları duraklamalara göre tahmini hizalandı; kritik anlarda ±0.5 sn sapma olabilir."
+}

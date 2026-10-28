@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css">
+</head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <g id="zemin"></g><g class="kamera"><g id="sabit"></g><g id="dinamik"></g></g>
+</svg>
+<script>window.SB = 0; const TP = {"gubi": [], "gufi": [[0.5, "merak"], [3.3, "kararli"]]};</script>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/limon.js"></script>
+<script src="../ortak/logo_paths.js"></script><script src="../ortak/altyazi.js"></script>
+<script>
+const $ = i => document.getElementById(i), A = K.aralik, E = K.ease;
+const back = x => { const c1 = 1.70158, c3 = c1 + 1; return x <= 0 ? 0 : 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const pop = (t, a, d = .45) => back(A(t, a, a + d));
+const grp = (s, x, y, k = 1, r = 0, op = 1) => `<g transform="translate(${x} ${y}) scale(${k}) rotate(${r})" opacity="${op}">${s}</g>`;
+const olc = (s, x, y, k) => `<g transform="translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})">${s}</g>`;
+const txt = (s, x, y, size, renk = '#FFF3D6', w = 900, ek = '') => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}" ${ek}>${s}</text>`;
+const cip = (s, x, y, renk, yazi = '#0B1433', fs = 38) => { const w = s.length * fs * .62 + 70; return `<rect x="${x - w / 2}" y="${y - fs * 1.2}" width="${w}" height="${fs * 2.2}" rx="${fs * 1.1}" fill="${renk}"/><text class="mono" x="${x}" y="${y + fs * .36}" font-size="${fs}" text-anchor="middle" letter-spacing="3" style="fill:${yazi}">${s}</text>`; };
+const gubi = (t, o) => M.canli('gubi', Object.assign({ t, tepkiler: TP.gubi }, o));
+const gufi = (t, o) => M.canli('gufi', Object.assign({ t, tepkiler: TP.gufi }, o));
+
+$('zemin').innerHTML = L.bg({ nx: 540, ny: 700, neb: L.P.limon, no: .14 }) + L.parca(3, 60);
+window.renderAt = t => {
+  let o = '';
+  const yil = pop(t, .25); if (yil > 0) o += grp(cip('1995', 0, 0, L.P.limon, '#0B1433', 44), 540, 400, yil);
+  const lp = pop(t, .05, .5), ay = E(A(t, 1.2, 1.7));
+  if (ay <= 0) o += olc(L.limon(540, 700, 170), 540, 700, lp * (1 + .03 * Math.sin(t * 4)));
+  else {
+    // sol yarı kalır, sağ yarı Gufi'ye uçar ve yüzüne sürülür
+    o += L.dilim(540 - 120 * ay, 700 + 20 * ay, 150, -20 * ay);
+    for (let i = 0; i < 4; i++) { const q = A(t, 1.4 + i * .3, 2.3 + i * .3); if (q > 0 && q < 1) o += L.damla(430 + i * 40, 800 + q * 300, 1, L.P.limon, 1 - q); }
+    const u = E(A(t, 1.7, 2.3)), sur = A(t, 2.2, 3.4);
+    const hx = 540 + 150 * ay + (560 - 540 - 150) * u + Math.sin(sur * Math.PI * 6) * 70 * (sur > 0 && sur < 1), hy = 700 + (1000 - 700) * u + Math.sin(sur * Math.PI * 3) * 40 * (sur > 0 && sur < 1);
+    o += gufi(t, { x: 540, y: 1250, boy: 230, bakHedef: [hx, hy], ust: L.cila(540, 1250, 230, sur, t) });
+    o += L.dilim(hx, hy, 120 * (1 - .15 * u), 30 - 60 * u);
+    if (sur > 0 && sur < 1) for (let i = 0; i < 3; i++) o += L.damla(hx - 60 + i * 60, hy + 80 + ((t * 300 + i * 50) % 90), .7, L.P.limonA, .8);
+  }
+  if (ay <= 0) o += gufi(t, { x: 540, y: 1250, boy: 230, bakHedef: [540, 700] });
+  $('dinamik').innerHTML = o;
+};
+</script>
+<script src="../ortak/kanal.js"></script>
+</body></html>

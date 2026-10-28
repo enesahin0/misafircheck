@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../ortak/stil.css"><link rel="stylesheet" href="../ortak/kanal.css"></head><body>
+<svg viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"><g id="dinamik"></g></svg>
+<script src="../ortak/kit.js"></script><script src="../ortak/maskot.js"></script><script src="../ortak/cevre.js"></script><script src="../ortak/kostum.js"></script><script src="../ortak/para.js"></script><script src="../ortak/hk.js"></script><script src="../ortak/logo_paths.js"></script>
+<script>
+const txt = (s, x, y, size, renk = '#FFF3E0', w = 900) => `<text x="${x}" y="${y}" font-size="${size}" font-weight="${w}" text-anchor="middle" style="fill:${renk}">${s}</text>`;
+window.renderAt = t => {
+  const T = CV.ton('seftali');
+  let o = PR.sokak(T, 0, 900) + HK.agac(180, 920, .9, '#F28F3A', '#C8623A') + HK.agac(930, 920, .85, '#FFB44C', '#E07A2A') + HK.yapraklar(3.3, ['#F28F3A', '#E8505B', '#FFB44C', '#C8623A'], 14, [0, 1080, 0, 1100]);
+  o += K.glow({ x: 720, y: 680, r: 260, renk: '#FFE9A8', guc: .7 });
+  o += PR.cuzdan(720, 700, .9, .55);
+  o += PR.banknot(660, 590, 250, { deger: '200', birim: 'TL', pal: 'yesil', rot: -14 }) + PR.banknot(790, 575, 250, { deger: '100', birim: 'TL', pal: 'mavi', rot: 10 }) + HK.kimlik(860, 660, .6, 16);
+  o += M.canli('gufi', { t: .5, x: 300, y: 1140, boy: 330, duygu: 'saskin', bakHedef: [700, 560] });
+  o += M.canli('gubi', { t: 1.2, x: 890, y: 960, boy: 170, duygu: 'kararli', bakHedef: [300, 900], ust: KO.giy('gubi', ['gozluk', ['papyon', { renk: '#1B1640' }]]) }) + HK.tokmak(990, 1010, .7, -30);
+  o += `<text x="520" y="620" font-size="170" font-weight="900" text-anchor="middle" style="fill:#8C6CFF" transform="rotate(10 520 620)">?</text>`;
+  o += `<rect x="0" y="1150" width="1080" height="770" fill="#33294F"/><rect x="0" y="1150" width="1080" height="18" fill="#D8A032"/>`;
+  o += `<text class="mono" x="540" y="1250" font-size="38" text-anchor="middle" letter-spacing="6" style="fill:#F2CE7A">KANUN BÖYLE DİYOR</text>`;
+  o += txt('BULDUĞUN CÜZDAN', 540, 1365, 96) + txt('KİMİN?', 540, 1462, 84, '#F2CE7A');
+  const S = 150 / 233; let l = `<g transform="translate(540 1600) scale(${S}) translate(-141.5 -141.5)">`;
+  for (const p of window.LOGO_PATHS) l += `<path transform="${p.t}" d="${p.d}" fill="${p.fill === '#231f20' ? '#FFF3E0' : p.fill}"/>`;
+  document.getElementById('dinamik').innerHTML = o + l + '</g>';
+};
+</script></body></html>
